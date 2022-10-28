@@ -333,7 +333,7 @@
     <string name="kvp_family_planning">Family Planning</string>
     <string name="kvp_tb_screening">TB Screening</string>
     <string name="kvp_sti_screening">STI Screening</string>
-    <string name="kvp_heptitis_screening">Hepatitis Screening</string>
+    <string name="kvp_heptitis_test">Hepatitis Test</string>
     <string name="kvp_vmmc">VMMC</string>
     <string name="kvp_cervical_screening">Cervical Screening</string>
     <string name="kvp_mat">MAT</string>

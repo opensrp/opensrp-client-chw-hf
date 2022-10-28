@@ -6,6 +6,13 @@ condition: "action_taken_hiv_problems.containsKey('tested')"
 actions:
   - "test_results_visibility =  true"
 ---
+name: "reason_no_action_was_taken_visibility"
+description: "reason_no_action_was_taken visibility"
+priority: 1
+condition: "action_taken_hiv_problems.containsKey('no_action_taken')"
+actions:
+  - "reason_no_action_was_taken_visibility =  true"
+---
 name: "enrolled_to_clinic_visibility"
 description: "enrolled_to_clinic visibility"
 priority: 1
@@ -16,7 +23,7 @@ actions:
 name: "ctc_number_visibility"
 description: "ctc_number visibility"
 priority: 1
-condition: "test_results.containsKey('positive') && enrolled_to_clinic.containsKey('yes') && action_taken_hiv_problems.containsKey('tested')"
+condition: "reason_no_action_was_taken.containsKey('known_positive') || (test_results.containsKey('positive') && enrolled_to_clinic.containsKey('yes') && action_taken_hiv_problems.containsKey('tested'))"
 actions:
   - "ctc_number_visibility =  true"
 ---
@@ -26,6 +33,13 @@ priority: 1
 condition: "test_results.containsKey('positive') && enrolled_to_clinic.containsKey('no') && action_taken_hiv_problems.containsKey('tested')"
 actions:
   - "prompt_for_ctc_enrollment_visibility =  true"
+---
+name: "test_results_calculation"
+description: "test_results calculation"
+priority: 1
+condition: "reason_no_action_was_taken.containsKey('known_positive')"
+actions:
+  - "test_results_calculation = 'positive'"
 ---
 name: "hiv_facility_visit_date_calculation"
 description: "hiv_facility_visit_date calculation"

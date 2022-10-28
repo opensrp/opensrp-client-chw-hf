@@ -735,7 +735,7 @@
     ]
   },
   "step8": {
-    "title": "PrEP Analysis",
+    "title": "PrEP Assessment",
     "next": "step9",
     "fields": [
       {
@@ -982,7 +982,7 @@
         "openmrs_entity_id": "client_group",
         "label": "Select the client group as screened by the health care provider",
         "text_color": "#000000",
-        "type": "native_radio",
+        "type": "radio_group",
         "options": [
           {
             "key": "fsw",

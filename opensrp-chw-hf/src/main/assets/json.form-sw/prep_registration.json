@@ -46,10 +46,10 @@
     "title": "PrEP Registration",
     "fields": [
       {
-        "key": "also_known_as",
+        "key": "nickname",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "also_known_as",
+        "openmrs_entity_id": "nickname",
         "type": "edit_text",
         "hint": "Jina maarufu la Mteja",
         "edit_type": "name",
@@ -63,10 +63,10 @@
         }
       },
       {
-        "key": "agreed_preventive_medicine",
+        "key": "agreed_to_use_prep",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "agreed_preventive_medicine",
+        "openmrs_entity_id": "agreed_to_use_prep",
         "label": "Ridhaa ya kutumia dawa kinga",
         "text_color": "#000000",
         "type": "native_radio",

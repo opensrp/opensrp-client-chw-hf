@@ -93,9 +93,56 @@
               }
             }
           ],
-          "required_status": "yes:Tafadhali chagua hatua zilizochukuliwa",
+          "required_status": "yes:Please select action taken",
           "dependent_calculations": [
             "hiv_facility_visit_date"
+          ]
+        },
+        {
+          "name": "reason_no_action_was_taken",
+          "type": "radio_group",
+          "properties": {
+            "text": "Reasons actions was not taken"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "reason_no_action_was_taken",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "known_positive",
+              "text": "Known Positive",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "known_positive",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "client_declined",
+              "text": "Client Declined",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "client_declined",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "test_not_required_based_on_risk_assessment",
+              "text": "Test not required based on risk assessment",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "test_not_required_based_on_risk_assessment",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select action taken",
+          "subjects": "action_taken_hiv_problems:map",
+          "dependent_calculations": [
+            "test_results_calculation"
           ]
         },
         {
@@ -189,7 +236,7 @@
             }
           ],
           "required_status": "true:Tafadhali jaza namba ya CTC ya mteja",
-          "subjects": "enrolled_to_clinic:map,test_results:map, action_taken_hiv_problems:map"
+          "subjects": "reason_no_action_was_taken:map, enrolled_to_clinic:map,test_results:map, action_taken_hiv_problems:map"
         },
         {
           "name": "prompt_for_ctc_enrollment",

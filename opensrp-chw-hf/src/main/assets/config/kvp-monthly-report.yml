@@ -506,7 +506,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Male')
@@ -517,7 +517,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -529,7 +529,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -541,7 +541,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -553,7 +553,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -565,7 +565,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -577,7 +577,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -589,7 +589,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -601,7 +601,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -613,7 +613,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Male')
@@ -624,7 +624,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Male')
@@ -635,7 +635,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -647,7 +647,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -659,7 +659,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -671,7 +671,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -683,7 +683,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -695,7 +695,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -707,7 +707,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -719,7 +719,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -731,7 +731,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Male')
@@ -3220,7 +3220,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Female')
@@ -3231,7 +3231,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -3243,7 +3243,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -3255,7 +3255,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -3267,7 +3267,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -3279,7 +3279,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -3291,7 +3291,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -3303,7 +3303,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -3315,7 +3315,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -3327,7 +3327,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Female')
@@ -3338,7 +3338,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Female')
@@ -3349,7 +3349,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -3361,7 +3361,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -3373,7 +3373,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -3385,7 +3385,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -3397,7 +3397,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -3409,7 +3409,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -3421,7 +3421,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -3433,7 +3433,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -3445,7 +3445,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwid'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Female')
@@ -5934,7 +5934,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Male')
@@ -5945,7 +5945,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -5957,7 +5957,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -5969,7 +5969,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -5981,7 +5981,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -5993,7 +5993,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -6005,7 +6005,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -6017,7 +6017,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -6029,7 +6029,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -6041,7 +6041,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Male')
@@ -6052,7 +6052,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Male')
@@ -6063,7 +6063,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -6075,7 +6075,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -6087,7 +6087,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -6099,7 +6099,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -6111,7 +6111,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -6123,7 +6123,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -6135,7 +6135,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -6147,7 +6147,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -6159,7 +6159,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Male')
@@ -8648,7 +8648,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Female')
@@ -8659,7 +8659,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -8671,7 +8671,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -8683,7 +8683,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -8695,7 +8695,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -8707,7 +8707,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -8719,7 +8719,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -8731,7 +8731,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -8743,7 +8743,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -8755,7 +8755,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Female')
@@ -8766,7 +8766,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Female')
@@ -8777,7 +8777,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_c_screening = 'positive' OR ekbms.hep_c_screening = 'negative' OR ekbms.hep_c_screening = 'positive_and_referred')
+WHERE (ekbms.hep_c_testing = 'positive' OR ekbms.hep_c_testing = 'negative' OR ekbms.hep_c_testing = 'positive_and_referred')
 AND ekr.client_group ='pwud'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -11362,7 +11362,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Female')
@@ -11373,7 +11373,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -11385,7 +11385,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -11397,7 +11397,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -11409,7 +11409,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -11421,7 +11421,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -11433,7 +11433,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -11445,7 +11445,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -11457,7 +11457,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -11469,7 +11469,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='fsw'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Female')
@@ -14076,7 +14076,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Male')
@@ -14087,7 +14087,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -14099,7 +14099,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))
@@ -14111,7 +14111,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+20 years') <= date('now'))
 AND (date(efm.dob, '+25 years') > date('now'))
@@ -14123,7 +14123,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+25 years') <= date('now'))
 AND (date(efm.dob, '+30 years') > date('now'))
@@ -14135,7 +14135,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+30 years') <= date('now'))
 AND (date(efm.dob, '+35 years') > date('now'))
@@ -14147,7 +14147,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+35 years') <= date('now'))
 AND (date(efm.dob, '+40 years') > date('now'))
@@ -14159,7 +14159,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+40 years') <= date('now'))
 AND (date(efm.dob, '+45 years') > date('now'))
@@ -14171,7 +14171,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date(efm.dob, '+45 years') <= date('now'))
 AND (date(efm.dob, '+50 years') > date('now'))
@@ -14183,7 +14183,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='msm'
 AND (date('now')-date(efm.dob))>=50
 AND (efm.gender='Male')
@@ -16790,7 +16790,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='mobile_population'
 AND (date('now')-date(efm.dob))<10
 AND (efm.gender='Male')
@@ -16801,7 +16801,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='mobile_population'
 AND (date(efm.dob, '+10 years') <= date('now'))
 AND (date(efm.dob, '+15 years') > date('now'))
@@ -16813,7 +16813,7 @@ date(substr(ekbms.kvp_visit_date, 7, 4) || '-' || substr(ekbms.kvp_visit_date, 4
     indicatorQuery: " SELECT count(DISTINCT ekbms.entity_id) as count FROM ec_kvp_bio_medical_services ekbms
 INNER JOIN ec_family_member efm ON efm.base_entity_id = ekbms.entity_id
 INNER JOIN ec_kvp_register ekr ON efm.base_entity_id = ekr.id
-WHERE (ekbms.hep_b_screening = 'positive' OR ekbms.hep_b_screening = 'negative' OR ekbms.hep_b_screening = 'positive_and_referred')
+WHERE (ekbms.hep_b_testing = 'positive' OR ekbms.hep_b_testing = 'negative' OR ekbms.hep_b_testing = 'positive_and_referred')
 AND ekr.client_group ='mobile_population'
 AND (date(efm.dob, '+15 years') <= date('now'))
 AND (date(efm.dob, '+20 years') > date('now'))

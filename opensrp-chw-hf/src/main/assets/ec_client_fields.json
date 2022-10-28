@@ -8037,19 +8037,19 @@
           }
         },
         {
-          "column_name": "hep_b_screening",
+          "column_name": "hep_b_testing",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hep_b_screening"
+            "concept": "hep_b_testing"
           }
         },
         {
-          "column_name": "hep_c_screening",
+          "column_name": "hep_c_testing",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "hep_c_screening"
+            "concept": "hep_c_testing"
           }
         },
         {

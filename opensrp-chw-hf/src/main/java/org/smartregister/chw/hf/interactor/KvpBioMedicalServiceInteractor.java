@@ -1,13 +1,16 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.util.JsonFormUtils.VALUE;
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.AppExecutors;
+import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpCervicalCancerScreeningActionHelper;
-import org.smartregister.chw.hf.actionhelper.kvp.KvpClientStatusActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpCondomProvisionActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpFamilyPlanningActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpHepatitisActionHelper;
@@ -16,6 +19,7 @@ import org.smartregister.chw.hf.actionhelper.kvp.KvpPrepPepActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpStiScreeningActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpTbScreeningActionHelper;
 import org.smartregister.chw.hf.actionhelper.kvp.KvpVmmcActionHelper;
+import org.smartregister.chw.hf.dao.HfKvpDao;
 import org.smartregister.chw.kvp.contract.BaseKvpVisitContract;
 import org.smartregister.chw.kvp.dao.KvpDao;
 import org.smartregister.chw.kvp.domain.VisitDetail;
@@ -65,7 +69,8 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
                 } else {
                     evaluateCervicalScreening(details);
                 }
-                evaluateMat(details);
+                if (shouldShowMat())
+                    evaluateMat(details);
             } catch (Exception e) {
                 Timber.e(e);
             }
@@ -80,6 +85,12 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
 
         JSONObject clientStatusForm = FormUtils.getFormUtils().getFormJson(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_CLIENT_STATUS);
         JSONArray fields = clientStatusForm.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+
+        //update client status
+        JSONObject client_status_object = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "client_status");
+        if (StringUtils.isNotBlank(HfKvpDao.getClientStatus(memberObject.getBaseEntityId()))) {
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(client_status_object, "new_client");
+        }
 
         //update other_kvp_category
         JSONObject other_kvp_category = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "other_kvp_category");
@@ -123,12 +134,22 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
     }
 
     private void evaluatePrepPep(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
+        JSONObject kvpPrepPepJson = FormUtils.getFormUtils().getFormJson(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_PrEP_PEP);
+        try {
+            JSONArray fields = kvpPrepPepJson.getJSONObject(org.smartregister.chw.hf.utils.Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+            //update enrolled_to_prep
+            JSONObject enrolled_to_prep_object = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "enrolled_to_prep");
+            enrolled_to_prep_object.put(VALUE, KvpDao.getPrEPMember(memberObject.getBaseEntityId()) != null);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         KvpPrepPepActionHelper actionHelper = new KvpPrepPepActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_prep_and_pep))
                 .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
+                .withJsonPayload(kvpPrepPepJson.toString())
                 .withFormName(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_PrEP_PEP)
                 .build();
 
@@ -150,12 +171,17 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
 
     private void evaluateFamilyPlanning(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
 
+        String formName;
+        if (memberObject.getGender().equalsIgnoreCase("male"))
+            formName = Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_MALE_FAMILY_PLANNING_SERVICES;
+        else
+            formName = Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_FEMALE_FAMILY_PLANNING_SERVICES;
         KvpFamilyPlanningActionHelper actionHelper = new KvpFamilyPlanningActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_family_planning))
                 .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
-                .withFormName(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_FAMILY_PLANNING_SERVICES)
+                .withFormName(formName)
                 .build();
 
         actionList.put(context.getString(R.string.kvp_family_planning), action);
@@ -190,14 +216,14 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
     private void evaluateHepatitis(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
 
         KvpHepatitisActionHelper actionHelper = new KvpHepatitisActionHelper();
-        BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_heptitis_screening))
+        BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_heptitis_test))
                 .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
                 .withFormName(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_HEPATITIS)
                 .build();
 
-        actionList.put(context.getString(R.string.kvp_heptitis_screening), action);
+        actionList.put(context.getString(R.string.kvp_heptitis_test), action);
     }
 
     private void evaluateVmmc(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
@@ -254,7 +280,8 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
         public String postProcess(String s) {
             if (StringUtils.isBlank(hiv_status) || !(hiv_status.equalsIgnoreCase("positive") || hiv_status.equalsIgnoreCase("known_positive"))) {
                 try {
-                    evaluatePrepPep(details);
+                    if (KvpDao.getPrEPMember(memberObject.getBaseEntityId()) == null)
+                        evaluatePrepPep(details);
                 } catch (BaseKvpVisitAction.ValidationException e) {
                     e.printStackTrace();
                 }
@@ -264,5 +291,41 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(s);
         }
+    }
+
+    private class KvpClientStatusActionHelper extends org.smartregister.chw.hf.actionhelper.kvp.KvpClientStatusActionHelper {
+        private String other_kvp_category;
+
+        @Override
+        public void onPayloadReceived(String jsonPayload) {
+            try {
+                JSONObject jsonObject = new JSONObject(jsonPayload);
+                other_kvp_category = CoreJsonFormUtils.getValue(jsonObject, "other_kvp_category");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public String postProcess(String s) {
+            if ((other_kvp_category.contains("pwud") || other_kvp_category.contains("pwid")) && !shouldShowMat()) {
+                try {
+                    evaluatePrepPep(details);
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
+            } else if (!shouldShowMat()) {
+                actionList.remove(context.getString(R.string.kvp_mat));
+            }
+
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+
+            return super.postProcess(s);
+        }
+    }
+
+    private boolean shouldShowMat() {
+        return KvpDao.getDominantKVPGroup(memberObject.getBaseEntityId()).equalsIgnoreCase("pwud") ||
+                KvpDao.getDominantKVPGroup(memberObject.getBaseEntityId()).equalsIgnoreCase("pwid");
     }
 }

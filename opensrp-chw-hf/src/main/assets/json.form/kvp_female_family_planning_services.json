@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "KVP Hepatitis",
+  "encounter_type": "KVP Family Planning",
   "entity_id": "",
   "metadata": {
     "start": {
@@ -43,39 +43,75 @@
   },
   "global": {},
   "step1": {
-    "title": "Hepatitis B&C",
+    "title": "Family Planning",
     "fields": [
       {
-        "key": "hep_b_testing",
+        "key": "family_planning_service",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hep_b_testing",
+        "openmrs_entity_id": "family_planning_service",
         "type": "native_radio",
-        "label": "Client tested for Hepatitis B virus (HBV)",
+        "label": "Family planning service provided",
         "options": [
           {
-            "key": "positive",
-            "text": "Positive",
+            "key": "pill",
+            "text": "Pill",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
+            "openmrs_entity_id": "pill"
           },
           {
-            "key": "positive_and_referred",
-            "text": "Positive and referred",
+            "key": "injectable",
+            "text": "Injectables",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive_and_referred"
+            "openmrs_entity_id": "injectable"
           },
           {
-            "key": "negative",
-            "text": "Negative",
+            "key": "implanon",
+            "text": "Implanon",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
+            "openmrs_entity_id": "implanon"
           },
           {
-            "key": "not_tested",
-            "text": "Not tested",
+            "key": "jadelle",
+            "text": "Jadelle",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "not_tested"
+            "openmrs_entity_id": "jadelle"
+          },
+          {
+            "key": "iucd",
+            "text": "IUCD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "iucd"
+          },
+          {
+            "key": "traditional",
+            "text": "Traditional",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "traditional"
+          },
+          {
+            "key": "tube_ligation",
+            "text": "Tube Ligation",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tube_ligation"
+          },
+          {
+            "key": "referral",
+            "text": "Referral",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "referral"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          },
+          {
+            "key": "refused",
+            "text": "Refused",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "refused"
           }
         ],
         "v_required": {
@@ -84,36 +120,27 @@
         }
       },
       {
-        "key": "hep_c_testing",
+        "key": "condom_provided",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hep_c_testing",
+        "openmrs_entity_id": "condom_provided",
+        "label": "Was the client also provided with condom as a family planning method?",
+        "text_color": "#000000",
         "type": "native_radio",
-        "label": "Client tested for Hepatitis C virus (HCV)",
         "options": [
           {
-            "key": "positive",
-            "text": "Positive",
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive"
+            "openmrs_entity_id": "yes"
           },
           {
-            "key": "positive_and_referred",
-            "text": "Positive and referred",
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "positive_and_referred"
-          },
-          {
-            "key": "negative",
-            "text": "Negative",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "negative"
-          },
-          {
-            "key": "not_tested",
-            "text": "Not tested",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "not_tested"
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {

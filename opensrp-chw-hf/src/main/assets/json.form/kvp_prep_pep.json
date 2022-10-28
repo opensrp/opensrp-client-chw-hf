@@ -50,36 +50,8 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "enrolled_to_prep",
-        "label": "Was the client enrolled in PrEP services?",
         "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "enrolled",
-            "text": "Enrolled",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "enrolled"
-          },
-          {
-            "key": "not_enrolled",
-            "text": "Not enrolled",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "not_enrolled"
-          },
-          {
-            "key": "not_applicable",
-            "text": "Not applicable",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "not_applicable"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select one"
-        }
+        "type": "hidden"
       },
       {
         "key": "pep_provision",
@@ -126,7 +98,7 @@
         "relevance": {
           "step1:enrolled_to_prep": {
             "type": "string",
-            "ex": "notEqualTo(., \"enrolled\")"
+            "ex": "notEqualTo(., \"true\")"
           }
         }
       }

@@ -54,46 +54,16 @@
         "label": "Family planning service provided",
         "options": [
           {
-            "key": "pill",
-            "text": "Pill",
+            "key": "vasectomy",
+            "text": "Vasectomy",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "pill"
-          },
-          {
-            "key": "injectable",
-            "text": "Injectables",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "injectable"
-          },
-          {
-            "key": "implanon",
-            "text": "Implanon",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "implanon"
-          },
-          {
-            "key": "jadelle",
-            "text": "Jadelle",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "jadelle"
-          },
-          {
-            "key": "iucd",
-            "text": "IUCD",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "iucd"
+            "openmrs_entity_id": "vasectomy"
           },
           {
             "key": "traditional",
             "text": "Traditional",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "traditional"
-          },
-          {
-            "key": "tl_vasectomy",
-            "text": "TL/Vasectomy",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "tl_vasectomy"
           },
           {
             "key": "referral",
