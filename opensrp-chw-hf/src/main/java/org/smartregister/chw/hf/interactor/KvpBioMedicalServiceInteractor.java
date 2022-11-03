@@ -90,6 +90,8 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
         JSONObject client_status_object = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "client_status");
         if (StringUtils.isNotBlank(HfKvpDao.getClientStatus(memberObject.getBaseEntityId()))) {
             KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(client_status_object, "new_client");
+        } else {
+            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(client_status_object, "return");
         }
 
         //update other_kvp_category
@@ -304,13 +306,14 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            super.onPayloadReceived(jsonPayload);
         }
 
         @Override
         public String postProcess(String s) {
             if ((other_kvp_category.contains("pwud") || other_kvp_category.contains("pwid")) && !shouldShowMat()) {
                 try {
-                    evaluatePrepPep(details);
+                    evaluateMat(details);
                 } catch (Exception e) {
                     Timber.e(e);
                 }

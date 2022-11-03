@@ -438,13 +438,6 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no_results"
-          },
-          {
-            "key": "not_applicable",
-            "text": "Not applicable",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "not_applicable"
           }
         ],
         "v_required": {
@@ -608,6 +601,21 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "prep_screening_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prep_enrollment_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "prep_enrollment_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_calculation.yml"
             }
           }
         }

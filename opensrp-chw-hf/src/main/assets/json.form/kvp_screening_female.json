@@ -180,42 +180,6 @@
           "value": "true",
           "err": "Please select an answer"
         }
-      },
-      {
-        "key": "risk_of_having_sexual_intercourse",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "risk_of_having_sexual_intercourse",
-        "label": "Has the client thought of having sexual intercourse or at risk of having sexual intercourse?",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an answer"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "kvp_screening_female_relevance.yml"
-            }
-          }
-        }
       }
     ]
   },
@@ -306,7 +270,7 @@
         "openmrs_entity_id": "partner_hiv_care_status",
         "label": "Select the partner's criteria of HIV care status",
         "text_color": "#000000",
-        "type": "native_radio",
+        "type": "check_box",
         "options": [
           {
             "key": "not_started_art",
@@ -982,7 +946,7 @@
         "openmrs_entity_id": "client_group",
         "label": "Select the client group as screened by the health care provider",
         "text_color": "#000000",
-        "type": "radio_group",
+        "type": "native_radio",
         "options": [
           {
             "key": "fsw",

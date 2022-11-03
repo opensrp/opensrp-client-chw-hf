@@ -11,3 +11,19 @@ actions:
                     || (step1_weight_35_or_above != '' && step1_weight_35_or_above == 'no')
                     || (step1_crcl_results != '' && step1_crcl_results == 'less_than_60' )
                     || (step1_acute_hiv != '' && step1_acute_hiv == 'yes')) ? 'no' : 'yes'"
+---
+name: step1_prep_enrollment_date
+description: prep_enrollment_date calculation
+priority: 1
+condition: "(step1_diabetes != ''
+              && step1_blood_pressure != ''
+              && step1_kidney_disease != ''
+              && step1_tested_hbv != ''
+              && step1_nephrotoxic_drugs != ''
+              && step1_tested_hcv != ''
+              && step1_tested_crcl != ''
+              && step1_weight_35_or_above != ''
+              && step1_acute_hiv != ''
+              && step1_substantial_criteria != '') && step1_should_initiate == 'yes' && global_visit_type == 'new_client'"
+actions:
+  - "calculation = helper.getDateToday()"

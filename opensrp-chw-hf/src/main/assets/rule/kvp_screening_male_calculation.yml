@@ -25,7 +25,7 @@ description: check if client falls in sdc
 priority: 1
 condition: "true"
 actions:
-  - "calculation = (step5_hiv_status.equals('negative') && step5_hiv_positive_partner.equals('yes')) ? 'yes' : 'no' "
+  - "calculation = (step5_hiv_status_on_screening.equals('negative') && step5_hiv_positive_partner.equals('yes')) ? 'yes' : 'no' "
 ---
 name: step6_is_ovp_kvp
 description: check if client falls in other vunerable population

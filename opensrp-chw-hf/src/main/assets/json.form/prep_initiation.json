@@ -144,6 +144,10 @@
             "type": "string",
             "ex": "equalTo(., \"tdf_ftc\")"
           }
+        },
+        "v_max": {
+          "value": "30",
+          "err": "Number of pills must be equal to or less than  30"
         }
       },
       {

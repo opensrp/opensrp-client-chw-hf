@@ -13,7 +13,7 @@ condition: "step3_sexual_intercourse.equals('yes')"
 actions:
   - "isRelevant = true"
 ---
-name: step5_hiv_status
+name: step5_hiv_status_on_screening
 description: hiv_status relevance
 priority: 1
 condition: "step3_sexual_intercourse.equals('yes')"
@@ -23,7 +23,7 @@ actions:
 name: step5_hiv_positive_partner
 description: hiv_positive_partner relevance
 priority: 1
-condition: "step5_hiv_status.equals('negative')"
+condition: "step5_hiv_status_on_screening.equals('negative')"
 actions:
   - "isRelevant = true"
 ---

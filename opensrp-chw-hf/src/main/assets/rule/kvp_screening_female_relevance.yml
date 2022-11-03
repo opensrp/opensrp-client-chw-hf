@@ -13,8 +13,8 @@ condition: "step3_sexual_intercourse.equals('no') && (global_age >= 10 && global
 actions:
   - "isRelevant = true"
 ---
-name: step4_hiv_status
-description: hiv_status relevance
+name: step4_hiv_status_on_screening
+description: hiv_status_on_screening relevance
 priority: 1
 condition: "step3_sexual_intercourse.equals('yes')"
 actions:
@@ -23,21 +23,21 @@ actions:
 name: step4_hiv_positive_partner
 description: hiv_positive_partner relevance
 priority: 1
-condition: "step4_hiv_status.equals('negative')"
+condition: "step4_hiv_status_on_screening.equals('negative')"
 actions:
   - "isRelevant = true"
 ---
 name: step5_sex_for_money
 description: sex_for_money relevance
 priority: 1
-condition: "!step4_hiv_status.isEmpty()"
+condition: "!step4_hiv_status_on_screening.isEmpty()"
 actions:
   - "isRelevant = true"
 ---
 name: step6_client_in_school
 description: client_in_school relevance
 priority: 1
-condition: "(global_age >= 10 && global_age <= 24)"
+condition: "(step5_is_fsw.equals('no') && global_age >= 10 && global_age <= 24)"
 actions:
   - "isRelevant = true"
 ---
@@ -105,7 +105,7 @@ actions:
   - "isRelevant = true"
 ---
 name: step9_client_group
-description: prompt_no_group
+description: client_group
 priority: 1
 condition: "step8_should_enroll.equals('yes')"
 actions:

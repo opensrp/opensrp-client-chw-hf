@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class PrEPVisitTypeActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper {
 
-    private String visit_type;
-    private String jsonPayload;
+    protected String visit_type;
+    protected String jsonPayload;
 
     @Override
     public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {

@@ -8218,6 +8218,14 @@
           }
         },
         {
+          "column_name": "prep_enrollment_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prep_enrollment_date"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {

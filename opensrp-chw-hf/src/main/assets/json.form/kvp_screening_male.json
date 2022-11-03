@@ -333,7 +333,7 @@
         "openmrs_entity_id": "partner_hiv_care_status",
         "label": "Select the partner's criteria of HIV care status",
         "text_color": "#000000",
-        "type": "native_radio",
+        "type": "check_box",
         "options": [
           {
             "key": "not_started_art",

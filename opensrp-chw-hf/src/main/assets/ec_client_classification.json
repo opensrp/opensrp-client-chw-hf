@@ -959,6 +959,7 @@
             "field": "eventType",
             "field_value": "PrEP Follow-up Visit",
             "creates_case": [
+              "ec_prep_register",
               "ec_prep_followup"
             ]
           }

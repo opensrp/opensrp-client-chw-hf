@@ -18,21 +18,21 @@ description: check if client falls in sdc
 priority: 1
 condition: "true"
 actions:
-  - "calculation = (step4_hiv_status.equals('negative') && step4_hiv_positive_partner.equals('yes')) ? 'yes' : 'no' "
+  - "calculation = (step4_hiv_status_on_screening.equals('negative') && step4_hiv_positive_partner.equals('yes')) ? 'yes' : 'no' "
 ---
 name: step5_is_fsw
 description: check if client falls in msm
 priority: 1
 condition: "true"
 actions:
-  - "calculation = (step5_sex_for_money.equals('yes') && step5_main_income_source_is_sex.equals('yes')) ? 'yes' : 'no'"
+  - "calculation = (global_age >= 18 && step5_sex_for_money.equals('yes') && step5_main_income_source_is_sex.equals('yes')) ? 'yes' : 'no'"
 ---
 name: step6_is_agyw
 description: check if client falls in msm
 priority: 1
 condition: "true"
 actions:
-  - "calculation = !step6_harsh_condition_impact.isEmpty() && !step8_harsh_condition_impact.equals('not_applicable') ? 'yes' : 'no'"
+  - "calculation = (!step6_harsh_condition_impact.isEmpty() && !step6_harsh_condition_impact.contains('not_applicable')) ? 'yes' : 'no'"
 ---
 name: step7_is_ovp_kvp
 description: check if client falls in other vunerable population
