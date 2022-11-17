@@ -1,5 +1,15 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.util.Utils.getAllSharedPreferences;
+
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import org.smartregister.chw.core.activity.CoreCdpRegisterActivity;
@@ -13,10 +23,6 @@ import org.smartregister.chw.hf.listener.CdpBottomNavigationListener;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
 import org.smartregister.view.fragment.BaseRegisterFragment;
-
-import androidx.fragment.app.Fragment;
-
-import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class CdpRegisterActivity extends CoreCdpRegisterActivity {
     private final String userLocationTag = getAllSharedPreferences().fetchUserLocationTag();
@@ -59,14 +65,28 @@ public class CdpRegisterActivity extends CoreCdpRegisterActivity {
             bottomNavigationView.getMenu().removeItem(org.smartregister.cdp.R.id.action_add_outlet);
             BottomNavigationListener familyBottomNavigationListener = new CdpBottomNavigationListener(this);
             bottomNavigationView.setOnNavigationItemSelectedListener(familyBottomNavigationListener);
-        }
-    }
 
-    @Override
-    public int getMenuResource() {
-        if (userLocationTag.contains("msd_code")) {
-            return R.menu.bottom_nav_cdp_msd_facility;
+
+            BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+
+            for (int i = 2; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+
+                TextView smallLabel = item.findViewById(R.id.smallLabel);
+                TextView largeLabel = item.findViewById(R.id.largeLabel);
+
+                smallLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
+                largeLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
+
+                smallLabel.setGravity(Gravity.CENTER);
+                largeLabel.setGravity(Gravity.CENTER);
+
+                smallLabel.setMaxLines(2);
+                largeLabel.setMaxLines(2);
+
+            }
+            bottomNavigationView.invalidate();
+            bottomNavigationView.requestLayout();
         }
-        return super.getMenuResource();
     }
 }

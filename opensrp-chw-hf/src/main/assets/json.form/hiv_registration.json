@@ -143,11 +143,11 @@
               }
             },
             {
-              "name": "home_selftest_service",
-              "text": "Home selftest service",
+              "name": "community_based_hiv_testing_service",
+              "text": "Community Based HIV Testing Service",
               "meta_data": {
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "home_selftest_service",
+                "openmrs_entity_id": "community_based_hiv_testing_service",
                 "openmrs_entity_parent": ""
               }
             },

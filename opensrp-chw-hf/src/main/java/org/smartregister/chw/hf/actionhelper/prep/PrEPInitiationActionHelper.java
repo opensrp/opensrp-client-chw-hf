@@ -45,7 +45,7 @@ public class PrEPInitiationActionHelper implements BaseKvpVisitAction.KvpVisitAc
             JSONObject prepPillsNumber = JsonFormUtils.getFieldJSONObject(fields, "prep_pills_number");
 
 
-            String enrollmentDateString = KvpDao.getPrepEnrollmentDate(baseEntityId);
+            String enrollmentDateString = KvpDao.getPrepInitiationDate(baseEntityId);
             if (enrollmentDateString != null) {
                 Date enrollmentDate = df.parse(enrollmentDateString);
                 if (enrollmentDate != null) {

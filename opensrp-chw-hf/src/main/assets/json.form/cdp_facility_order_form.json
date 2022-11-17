@@ -43,7 +43,7 @@
   },
   "global": {},
   "step1": {
-    "title": "Record Order",
+    "title": "Request Condoms",
     "fields": [
       {
         "key": "condom_type",
@@ -72,56 +72,6 @@
         "v_required": {
           "value": "true",
           "err": "Please select the condom type"
-        }
-      },
-      {
-        "key": "condom_brand",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "condom_brand",
-        "label": "Select condom brand",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "public_sc",
-            "text": "Public sector condom",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "public_sc"
-          },
-          {
-            "key": "dume",
-            "text": "Dume",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "dume"
-          },
-          {
-            "key": "salama",
-            "text": "Salama",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "salama"
-          },
-          {
-            "key": "familia",
-            "text": "Familia",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "familia"
-          },
-          {
-            "key": "other",
-            "text": "Other",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "other"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select the condom brand"
         }
       },
       {

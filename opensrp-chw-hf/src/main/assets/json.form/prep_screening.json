@@ -289,6 +289,21 @@
         }
       },
       {
+        "key": "hbv_test_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "hbv_test_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "tested_hcv",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -367,9 +382,25 @@
           "err": "Please select an answer"
         },
         "relevance": {
-          "step1:tested_hcv": {
-            "type": "string",
-            "ex": "equalTo(., \"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hcv_test_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "hcv_test_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_calculation.yml"
+            }
           }
         }
       },
@@ -378,7 +409,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "tested_crcl",
-        "label": "Tested for Serum Creatinine (CrCL)",
+        "label":  "Tested for Serum Creatinine (CrCL)",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -448,6 +479,21 @@
           "step1:tested_crcl": {
             "type": "string",
             "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "crcl_test_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "crcl_test_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_screening_calculation.yml"
+            }
           }
         }
       },
@@ -601,21 +647,6 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "prep_screening_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "prep_enrollment_date",
-        "type": "edit_text",
-        "hidden": "true",
-        "openmrs_entity_id": "prep_enrollment_date",
-        "openmrs_entity": "concept",
-        "openmrs_entity_parent": "",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "prep_screening_calculation.yml"
             }
           }
         }

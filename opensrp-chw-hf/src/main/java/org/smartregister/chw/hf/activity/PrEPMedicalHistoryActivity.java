@@ -199,7 +199,7 @@ public class PrEPMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
 
 
                         try {
-                            int resource = context.getResources().getIdentifier("kvp_" + entry.getKey(), "string", context.getPackageName());
+                            int resource = context.getResources().getIdentifier("prep_" + entry.getKey(), "string", context.getPackageName());
                             evaluateView(context, vals, visitDetailTv, entry.getKey(), resource, "");
                         } catch (Exception e) {
                             Timber.e(e);

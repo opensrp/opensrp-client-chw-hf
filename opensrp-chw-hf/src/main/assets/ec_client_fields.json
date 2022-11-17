@@ -7423,6 +7423,13 @@
           }
         },
         {
+          "column_name": "receiving_order_facility",
+          "type": "Event",
+          "json_mapping": {
+            "field": "receiving_order_facility"
+          }
+        },
+        {
           "column_name": "form_submission_id",
           "type": "Event",
           "json_mapping": {
@@ -7677,35 +7684,11 @@
           }
         },
         {
-          "column_name": "male_condom_brand",
+          "column_name": "condom_brand",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "male_condom_brand"
-          }
-        },
-        {
-          "column_name": "other_male_condom_brand",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "other_male_condom_brand"
-          }
-        },
-        {
-          "column_name": "female_condom_brand",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "female_condom_brand"
-          }
-        },
-        {
-          "column_name": "other_female_condom_brand",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "other_female_condom_brand"
+            "concept": "condom_brand"
           }
         },
         {
@@ -8218,11 +8201,43 @@
           }
         },
         {
-          "column_name": "prep_enrollment_date",
+          "column_name": "prep_initiation_date",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "prep_enrollment_date"
+            "concept": "prep_initiation_date"
+          }
+        },
+        {
+          "column_name": "hbv_test_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hbv_test_date"
+          }
+        },
+        {
+          "column_name": "hcv_test_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hcv_test_date"
+          }
+        },
+        {
+          "column_name": "crcl_test_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "crcl_test_date"
+          }
+        },
+        {
+          "column_name": "crcl_results",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "crcl_results"
           }
         },
         {

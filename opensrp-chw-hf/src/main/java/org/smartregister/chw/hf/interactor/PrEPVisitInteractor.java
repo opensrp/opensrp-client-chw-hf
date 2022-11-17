@@ -1,13 +1,17 @@
 package org.smartregister.chw.hf.interactor;
 
+import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
+import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
+
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.prep.PrEPInitiationActionHelper;
 import org.smartregister.chw.hf.actionhelper.prep.PrEPOtherServicesActionHelper;
+import org.smartregister.chw.hf.dao.HfKvpDao;
 import org.smartregister.chw.kvp.contract.BaseKvpVisitContract;
 import org.smartregister.chw.kvp.domain.VisitDetail;
 import org.smartregister.chw.kvp.interactor.BaseKvpVisitInteractor;
@@ -54,11 +58,24 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
     }
 
     private void evaluateVisitType(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
+        JSONObject prepVisitType = FormUtils.getFormUtils().getFormJson(Constants.PrEP_FOLLOWUP_FORMS.VISIT_TYPE);
+
+        try {
+            if (HfKvpDao.hasPrepFollowup(memberObject.getBaseEntityId())) {
+                JSONArray fields = prepVisitType.getJSONObject(STEP1).getJSONArray(FIELDS);
+                JSONObject visitType = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_type");
+                visitType.getJSONArray("options").remove(2);
+                visitType.getJSONArray("options").remove(0);
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         PrEPVisitTypeActionHelper actionHelper = new PrEPVisitTypeActionHelper();
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.prep_visit_type))
                 .withOptional(false)
                 .withDetails(details)
+                .withJsonPayload(prepVisitType.toString())
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.VISIT_TYPE)
                 .build();
@@ -66,21 +83,11 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
         actionList.put(context.getString(R.string.prep_visit_type), action);
     }
 
-    private void evaluatePrEPScreening(String visitType, Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
-        JSONObject prepScreening = FormUtils.getFormUtils().getFormJson(Constants.PrEP_FOLLOWUP_FORMS.SCREENING);
-        try {
-            prepScreening.put(org.smartregister.util.JsonFormUtils.ENTITY_ID, memberObject.getBaseEntityId());
-            JSONObject global = prepScreening.getJSONObject("global");
-            global.put("visit_type", visitType);
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-
-        PrEPScreeningActionHelper actionHelper = new PrEPScreeningActionHelper();
+    private void evaluatePrEPScreening(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
+        PrEPScreeningActionHelper actionHelper = new PrEPScreeningActionHelper(memberObject.getBaseEntityId());
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.prep_screening))
                 .withOptional(true)
                 .withDetails(details)
-                .withJsonPayload(prepScreening.toString())
                 .withHelper(actionHelper)
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.SCREENING)
                 .build();
@@ -89,12 +96,25 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
     }
 
     private void evaluatePrEPInitiation(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
+        JSONObject prepInitiation = FormUtils.getFormUtils().getFormJson(Constants.PrEP_FOLLOWUP_FORMS.INITIATION);
+
+        try {
+            if (HfKvpDao.isPrEPInitiated(memberObject.getBaseEntityId())) {
+                JSONArray fields = prepInitiation.getJSONObject(STEP1).getJSONArray(FIELDS);
+                JSONObject prepStatus = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "prep_status");
+                prepStatus.getJSONArray("options").remove(3);
+                prepStatus.getJSONArray("options").remove(0);
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         PrEPInitiationActionHelper actionHelper = new PrEPInitiationActionHelper(memberObject.getBaseEntityId());
         BaseKvpVisitAction action = getBuilder(context.getString(R.string.prep_initiation))
                 .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
+                .withJsonPayload(prepInitiation.toString())
                 .withFormName(Constants.PrEP_FOLLOWUP_FORMS.INITIATION)
                 .build();
 
@@ -129,7 +149,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
         public String postProcess(String s) {
             if (StringUtils.isNotBlank(visit_type)) {
                 try {
-                    evaluatePrEPScreening(visit_type, details);
+                    evaluatePrEPScreening(details);
                 } catch (BaseKvpVisitAction.ValidationException e) {
                     e.printStackTrace();
                 }
@@ -145,6 +165,10 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
     }
 
     private class PrEPScreeningActionHelper extends org.smartregister.chw.hf.actionhelper.prep.PrEPScreeningActionHelper {
+        public PrEPScreeningActionHelper(String baseEntityId) {
+            super(baseEntityId);
+        }
+
         @Override
         public String postProcess(String s) {
             if (should_initiate.equalsIgnoreCase("yes")) {

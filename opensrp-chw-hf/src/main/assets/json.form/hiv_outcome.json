@@ -245,7 +245,7 @@
           "properties": {
             "notification_type": "info",
             "dismissible": "no",
-            "text": "Refer the client to CTC for verification and enrollment",
+            "text": "Continue with counseling until the client is ready to be enrolled",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           },

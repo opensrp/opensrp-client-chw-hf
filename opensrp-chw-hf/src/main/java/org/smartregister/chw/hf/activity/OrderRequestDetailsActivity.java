@@ -22,7 +22,7 @@ public class OrderRequestDetailsActivity extends BaseOrderDetailsActivity {
     protected void setupViews() {
         super.setupViews();
 
-        btnGroup.setVisibility(View.VISIBLE);
+        stockDistributionBtn.setVisibility(View.VISIBLE);
         if (client != null && presenter != null)
             presenter.refreshViewPageBottom(client);
     }

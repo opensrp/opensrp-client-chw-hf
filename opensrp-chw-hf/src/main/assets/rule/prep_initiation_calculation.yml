@@ -1,0 +1,7 @@
+---
+name: step1_prep_initiation_date
+description: prep_initiation_date calculation
+priority: 1
+condition: "step1_prep_status.equals('initiated')"
+actions:
+  - "calculation = helper.getDateToday()"

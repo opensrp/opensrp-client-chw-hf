@@ -287,11 +287,11 @@
               }
             },
             {
-              "name": "home_selftest_service",
+              "name": "community_based_hiv_testing_service",
               "text": "Huduma za upimaji nyumbani",
               "meta_data": {
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "home_selftest_service",
+                "openmrs_entity_id": "community_based_hiv_testing_service",
                 "openmrs_entity_parent": ""
               }
             },

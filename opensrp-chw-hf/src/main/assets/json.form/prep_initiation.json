@@ -477,6 +477,21 @@
         }
       },
       {
+        "key": "prep_initiation_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "prep_initiation_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "next_visit_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
