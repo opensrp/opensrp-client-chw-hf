@@ -1,0 +1,97 @@
+{
+    "count": "1",
+    "encounter_type": "KVP TB Investigation",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "TB Investigation",
+        "fields": [
+            {
+                "key": "tb_screening",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "tb_screening",
+                "type": "native_radio",
+                "label": "Mteja amefanyiwa uchunguzi wa kifua kikuu",
+                "options": [
+                    {
+                        "key": "presumptive",
+                        "text": "Ana dalili ",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "presumptive"
+                    },
+                    {
+                        "key": "not_presumptive",
+                        "text": "Hana dalili",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_presumptive"
+                    },
+                    {
+                        "key": "not_screened",
+                        "text": "Hajachunguzwa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_screened"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chaguwa jibu"
+                }
+            },
+            {
+                "key": "prompt_for_tb_investigation",
+                "type": "toaster_notes",
+                "text": "Mpatiye mteja rufa kwa jili ya kipimo cha kifuwa kikuu",
+                "openmrs_entity_id": "prompt_for_Tachycardia",
+                "openmrs_entity": "concept",
+                "openmrs_entity_parent": "",
+                "toaster_type": "problem",
+                "relevance": {
+                    "step1:tb_screening": {
+                        "type": "string",
+                        "ex": "equalTo(., \"presumptive\")"
+                    }
+                }
+            }
+        ]
+    }
+}

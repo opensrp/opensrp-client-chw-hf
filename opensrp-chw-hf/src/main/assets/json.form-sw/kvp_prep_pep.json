@@ -1,0 +1,107 @@
+{
+    "count": "1",
+    "encounter_type": "KVP PrEP and PEP",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "PrEP and PEP",
+        "fields": [
+            {
+                "key": "enrolled_to_prep",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "enrolled_to_prep",
+                "text_color": "#000000",
+                "type": "hidden"
+            },
+            {
+                "key": "pep_provision",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "pep_provision",
+                "label": "Ameandikishwa  kwenye huduma za dawa kinga  ",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "provided",
+                        "text": "Amepewa ",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "community"
+                    },
+                    {
+                        "key": "not_provided",
+                        "text": "Hajapewa",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "facility"
+                    },
+                    {
+                        "key": "referred",
+                        "text": "amepewa rufa",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "referred"
+                    },
+                    {
+                        "key": "not_applicable",
+                        "text": "Haihusiki",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_applicable"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadali chaguwa moja "
+                },
+                "relevance": {
+                    "step1:enrolled_to_prep": {
+                        "type": "string",
+                        "ex": "notEqualTo(., \"true\")"
+                    }
+                }
+            }
+        ]
+    }
+}

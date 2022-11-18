@@ -1,0 +1,390 @@
+{
+    "count": "1",
+    "encounter_type": "KVP HTS",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "HTS",
+        "fields": [
+            {
+                "key": "previous_hiv_testing_method",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "previous_hiv_testing_method",
+                "label": "Mbinu ya awali ya kupima VVU",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "hivst",
+                        "text": "HIVST",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "hivst"
+                    },
+                    {
+                        "key": "hiv_cv_test",
+                        "text": "HIV conventional test",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "hiv_cv_test"
+                    },
+                    {
+                        "key": "hivst_and_hiv_cv_test",
+                        "text": "HIVST na HIV conventional test",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "hivst_and_hiv_cv_test"
+                    },
+                    {
+                        "key": "other_method",
+                        "text": " Mbinu nyingine",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "other_method"
+                    },
+                    {
+                        "key": "not_tested",
+                        "text": "Haijapimwa",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_tested"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua moja"
+                }
+            },
+            {
+                "key": "other_previous_hiv_testing_method",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other_previous_hiv_testing_method",
+                "type": "edit_text",
+                "hint": " Nyingine(Bainisha)",
+                "v_required": {
+                    "value": "true",
+                    "err": " Tafadhali fafanua"
+                },
+                "relevance": {
+                    "step1:previous_hiv_testing_method": {
+                        "type": "string",
+                        "ex": "equalTo(., \"other_method\")"
+                    }
+                }
+            },
+            {
+                "key": "testing_site",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "testing_site",
+                "label": "saiti ya upimaji ya mteja",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "community",
+                        "text": "Jumuiya",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "community"
+                    },
+                    {
+                        "key": "facility",
+                        "text": "Kituoni",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "facility"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua moja"
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "kvp_hts_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
+                "key": "testing_approach",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "testing_approach",
+                "label": "Mbinu ya upimaji wa mteja",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "citc",
+                        "text": "CITC",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "citc"
+                    },
+                    {
+                        "key": "pitc",
+                        "text": "PITC",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "pitc"
+                    },
+                    {
+                        "key": "index",
+                        "text": "Washirika wa kingono",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "index"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua moja"
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "kvp_hts_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
+                "key": "tested_hiv",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "tested_hiv",
+                "label": "Je, mteja amepima VVU?",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "yes",
+                        "text": "Ndiyo",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "yes"
+                    },
+                    {
+                        "key": "no",
+                        "text": "Hapana",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "no"
+                    },
+                    {
+                        "key": "not_applicable",
+                        "text": "Haihusiki",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_applicable"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua moja"
+                }
+            },
+            {
+                "key": "hiv_status",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "hiv_status",
+                "label": "Matokeo baada ya mteja kupimwa",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "positive",
+                        "text": "Chanja",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "positive"
+                    },
+                    {
+                        "key": "negative",
+                        "text": "Hasi",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "negative"
+                    },
+                    {
+                        "key": "inconclusive",
+                        "text": "Haikukamilika",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "inconclusive"
+                    },
+                    {
+                        "key": "refused_results",
+                        "text": "Mteja alikataa kupokea matokeo",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "refused_results"
+                    },
+                    {
+                        "key": "known_positive",
+                        "text": "Inajulikana kuwa chanya",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "known_positive"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua moja"
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "kvp_hts_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
+                "key": "ctc_services",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "ctc_services",
+                "label": "Kujiandikisha kwa huduma za CTC",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "enrolled_but_not_on_arv",
+                        "text": "Amejiandikisha lakini haijaanzishwa kutumia ARV",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "enrolled_but_not_on_arv"
+                    },
+                    {
+                        "key": "enrolled_and_on_arv",
+                        "text": "Amejiandikisha na kuanza kutumia ARV",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "enrolled_and_on_arv"
+                    },
+                    {
+                        "key": "not_applicable",
+                        "text": "Haihusiki",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_applicable"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": " Tafadhali chagua moja"
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "kvp_hts_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
+                "key": "ctc_number",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "ctc_number",
+                "type": "mask_edit_text",
+                "mask": "##-##-####-######",
+                "mask_hint": "12345678912345",
+                "allowed_chars": "0123456789",
+                "hint": "Namba ya CTC",
+                "edit_type": "number",
+                "v_regex": {
+                    "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+                    "err": "Nambari ya CTC inapaswa kuwa ya fomati (XX-XX-XXXX-XXXXXX)"
+                },
+                "v_max_length": {
+                    "value": "17",
+                    "is_fixed_size": "true",
+                    "err": "Please enter a valid CTC Number"
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "kvp_hts_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
+                "key": "kits_distributed",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "kits_distributed",
+                "label": " Vifaa vya HIVST vilivyosambazwa",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "yes",
+                        "text": "Ndio",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "yes"
+                    },
+                    {
+                        "key": "no",
+                        "text": "Hapana",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "no"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua moja"
+                }
+            }
+        ]
+    }
+}

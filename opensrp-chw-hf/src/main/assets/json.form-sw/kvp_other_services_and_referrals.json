@@ -1,0 +1,142 @@
+{
+    "count": "1",
+    "encounter_type": "KVP Other Services",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "Other Services and Referral",
+        "fields": [
+            {
+                "key": "other_services_referrals_provided",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other_services_referrals_provided",
+                "type": "check_box",
+                "label": "Huduma/rufaa zingine zinazotolewa kwa mteja",
+                "combine_checkbox_option_values": "true",
+                "label_text_style": "normal",
+                "text_color": "#C0C0C0",
+                "exclusive": [
+                    "none"
+                ],
+                "options": [
+                    {
+                        "key": "rch",
+                        "text": "RCH",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "rch"
+                    },
+                    {
+                        "key": "mental_health",
+                        "text": "Afya ya Kiakili",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "mental_health"
+                    },
+                    {
+                        "key": "covid_vaccine",
+                        "text": "Chanjo ya covid-19",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "covid_vaccine"
+                    },
+                    {
+                        "key": "legal_services",
+                        "text": "Huduma za kisheria",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "legal_services"
+                    },
+                    {
+                        "key": "iga",
+                        "text": "IGA",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "iga"
+                    },
+                    {
+                        "key": "other",
+                        "text": "Mengineyo",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "other"
+                    },
+                    {
+                        "key": "none",
+                        "text": "Hakuna",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "none"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua angalau moja"
+                }
+            },
+            {
+                "key": "other_other_services_referrals_provided",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other_other_services_referrals_provided",
+                "type": "edit_text",
+                "hint": "Nyingine(Bainisha)",
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali fafanua"
+                },
+                "relevance": {
+                    "step1:other_services_referrals_provided": {
+                        "ex-checkbox": [
+                            {
+                                "or": [
+                                    "other"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
