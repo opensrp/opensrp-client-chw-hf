@@ -1,0 +1,866 @@
+{
+  "count": "8",
+  "skip_blank_steps": true,
+  "encounter_type": "KVP Registration",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "PWUD",
+    "next": "step2",
+    "fields": [
+      {
+        "key": "drug_use",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "drug_use",
+        "label": "Umewahi kutumia  Dawa za kulevya ndani ya miezi 12 iliyopita?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        }
+      },
+      {
+        "key": "is_pwud",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_pwud",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step2": {
+    "title": "PWID",
+    "next": "step3",
+    "fields": [
+      {
+        "key": "drug_injection",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "drug_injection",
+        "label": "Umewahi kujidunga sindano za dawa ya kulevya?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_pwid",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_pwid",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step3": {
+    "title": "Sexual Behavior",
+    "next": "step4",
+    "fields": [
+      {
+        "key": "sexual_intercourse",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sexual_intercourse",
+        "label": "Umewahi kushiriki tendo la ngono",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        }
+      }
+    ]
+  },
+  "step4": {
+    "title": "MSM",
+    "next": "step5",
+    "fields": [
+      {
+        "key": "sexual_intercourse_with",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sexual_intercourse_with",
+        "label": "Je, unashiriki ngono na Mwanaume, Mwanamke au Wote?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "man",
+            "text": "Mwanaume",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "man"
+          },
+          {
+            "key": "woman",
+            "text": "Mwanamke",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "woman"
+          },
+          {
+            "key": "both",
+            "text": "wote",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "both"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_msm",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_msm",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step5": {
+    "title": "Serodiscordant Couple",
+    "next": "step6",
+    "fields": [
+      {
+        "key": "hiv_status_on_screening",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_status_on_screening",
+        "label": "Hali yako ya maambukizi ya VVU yakoje?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Chanya",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "hasi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "unknown",
+            "text": "haijulikani",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "unknown"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_positive_partner",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hiv_positive_partner",
+        "label": "Je upo kwenye mahusiano ya kingono na mwenza mwenye VVU",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "partner_hiv_care_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_hiv_care_status",
+        "label": " chunguza vigezo vifuatavyo vya mwenza wake",
+        "text_color": "#000000",
+        "type": "check_box",
+        "options": [
+          {
+            "key": "not_started_art",
+            "text": "Hajaanza dawa za ART ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_started_art"
+          },
+          {
+            "key": "art_more_than_six_months_unused",
+            "text": "Hajatumia dawa za ART zaidi ya miezi 6 ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "art_more_than_six_months_unused"
+          },
+          {
+            "key": "art_adherence_doubt",
+            "text": "Ana mashaka juu ya ufuasi au matumizi ya dawa za ART",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "art_adherence_doubt"
+          },
+          {
+            "key": "no_evidence_low_vl",
+            "text": "Mwenza hana ushahidi juu kufubaza VVU",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_evidence_low_vl"
+          }
+        ],
+        "relevance": {
+          "step5:hiv_positive_partner": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_counsel_for_testing",
+        "type": "toaster_notes",
+        "text": "Mshauri mteja kuhusu upimaji wa VVU",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step5:hiv_status": {
+            "type": "string",
+            "ex": "equalTo(., \"unknown\")"
+          }
+        }
+      },
+      {
+        "key": "is_sdc",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_sdc",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step6": {
+    "title": "Other Vulnerable Population",
+    "next": "step7",
+    "fields": [
+      {
+        "key": "prisoner_or_rumandee",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prisoner_or_rumandee",
+        "label": "Je mteja ni mfungwa au mahabusu?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "prisoner",
+            "text": "Mfungwa",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prisoner"
+          },
+          {
+            "key": "rumandee",
+            "text": "Mahabusu",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rumandee"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Haihusiki",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        }
+      },
+      {
+        "key": "mobile_population",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mobile_population",
+        "label": "Makundi ya wanaohamahama ",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "long_distance_drivers",
+            "text": "Madereva wa masafa marefu",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "long_distance_drivers"
+          },
+          {
+            "key": "fishermen",
+            "text": "Wavuvi",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fishermen"
+          },
+          {
+            "key": "mining_workers",
+            "text": "Wafanyakazi migodini ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mining_workers"
+          },
+          {
+            "key": "large_farm_farmers",
+            "text": "Wakulima wa mashamba makubwa ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "large_farm_farmers"
+          },
+          {
+            "key": "road_builders",
+            "text": "Wajenzi wa barabara ",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "road_builders"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Haihusiki",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        }
+      },
+      {
+        "key": "other_groups_at_risk",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_groups_at_risk",
+        "label": "Makundi mengine yaliyo katika hatari ya maambukizi ya VVU",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "disabled",
+            "text": "Walemavu",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "disabled"
+          },
+          {
+            "key": "street_children_or_orphans",
+            "text": "Watoto wa mitaani au yatima",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "street_children_or_orphans"
+          },
+          {
+            "key": "street_working_children",
+            "text": "Watoto wadogo wanaofanya kazi mitaani",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "street_working_children"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Haihusiki",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        }
+      },
+      {
+        "key": "is_ovp_kvp",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_ovp_kvp",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "step7": {
+    "title": "PrEP Assessment",
+    "next": "step8",
+    "fields": [
+      {
+        "key": "should_enroll",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "should_enroll",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prep_assessment",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_assessment",
+        "label": "Has the client been assessed for the use of PrEP?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        }
+      },
+      {
+        "key": "prep_qualified",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "prep_qualified",
+        "label": "Je, mteja amefanyiwa tathmini ya matumizi ya dawa kinga?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la swali"
+        },
+        "relevance": {
+          "step7:prep_assessment": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      }
+    ]
+  },
+  "step8": {
+    "title": "KVP Enrollment",
+    "fields": [
+      {
+        "key": "prompt_for_sdc_kvp",
+        "type": "toaster_notes",
+        "text": "Mteja huyu ni Mwenzi mwenye majibu kinzani, mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_msm_kvp",
+        "type": "toaster_notes",
+        "text": "Mteja huyu ni Mwanaume anayefanya ngono na mwanaume mwenzie, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_pwud_kvp",
+        "type": "toaster_notes",
+        "text": "Mteja huyu ni Mtumiaji wa dawa za kulevya kwa njia nyingine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_pwid_kvp",
+        "type": "toaster_notes",
+        "text": "Mteja huyu ni Mjidunga dawa za kulevya, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_no_group",
+        "type": "toaster_notes",
+        "text": "Mteja huyu anguki kwenye kundi lolote la wateja wa kundi malumu, Usimsajilimteja kwenye kuni malumu",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_ovp_kvp",
+        "type": "toaster_notes",
+        "text": "Mteja huyu ni Makundi mengine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "birth_region",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "birth_region",
+        "type": "edit_text",
+        "hint": "Jaza mkoa mteja aliozaliwa",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la maswali"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "enrollment_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "enrollment_date",
+        "type": "date_picker",
+        "hint": "Tarehe ya kuandikishwa",
+        "expanded": false,
+        "min_date": "today-1m",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la maswali"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_group",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_group",
+        "label": "Select the client group as screened by the health care provider",
+        "text_color": "#000000",
+        "type": "radio_group",
+        "options": [
+          {
+            "key": "msm",
+            "text": "MSM",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "msm"
+          },
+          {
+            "key": "pwud",
+            "text": "PWUD",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pwud"
+          },
+          {
+            "key": "pwid",
+            "text": "PWID",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pwid"
+          },
+          {
+            "key": "prisoner",
+            "text": "Prisoners",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prisoner"
+          },
+          {
+            "key": "rumandee",
+            "text": "Rumandee",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rumandee"
+          },
+          {
+            "key": "serodiscordant_couple",
+            "text": "Serodiscordant couple",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "serodiscordant_couple"
+          },
+          {
+            "key": "mobile_population",
+            "text": "Mobile population",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mobile_population"
+          },
+          {
+            "key": "other_vulnerable_population",
+            "text": "Other vulnerable population",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_vulnerable_population"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza jibu la maswali"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_screening_male_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

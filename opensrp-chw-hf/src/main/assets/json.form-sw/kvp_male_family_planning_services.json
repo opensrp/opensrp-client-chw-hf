@@ -1,0 +1,123 @@
+{
+    "count": "1",
+    "encounter_type": "KVP Family Planning",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "Family Planning",
+        "fields": [
+            {
+                "key": "family_planning_service",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "family_planning_service",
+                "type": "native_radio",
+                "label": "Huduma ya uzazi wa mpango alizopewa",
+                "options": [
+                    {
+                        "key": "vasectomy",
+                        "text": "Kufunga uzazi ",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "vasectomy"
+                    },
+                    {
+                        "key": "traditional",
+                        "text": "Njia ya asili",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "traditional"
+                    },
+                    {
+                        "key": "referral",
+                        "text": "Amepewa rufaa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "referral"
+                    },
+                    {
+                        "key": "not_applicable",
+                        "text": "Haihusiki",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_applicable"
+                    },
+                    {
+                        "key": "refused",
+                        "text": "Amekataa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "refused"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali jaza jibu la swali"
+                }
+            },
+            {
+                "key": "condom_provided",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "condom_provided",
+                "label": "Je Mteja alipewa kondom kama njia za uzazi wa mpango",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "yes",
+                        "text": "Ndio",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "yes"
+                    },
+                    {
+                        "key": "no",
+                        "text": "Hapana",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "no"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali jaza jibu la swali"
+                }
+            }
+        ]
+    }
+}

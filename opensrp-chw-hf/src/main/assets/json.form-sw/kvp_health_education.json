@@ -1,0 +1,147 @@
+{
+    "count": "1",
+    "encounter_type": "KVP Health Education",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "Health Education",
+        "fields": [
+            {
+                "key": "health_education_provided",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "health_education_provided",
+                "type": "check_box",
+                "label": "Elimu ya afya iliotolewa kwa mteja",
+                "combine_checkbox_option_values": "true",
+                "label_text_style": "normal",
+                "text_color": "#C0C0C0",
+                "exclusive": [
+                    "none"
+                ],
+                "options": [
+                    {
+                        "key": "sti",
+                        "text": "STI",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "sti"
+                    },
+                    {
+                        "key": "hbv_hcv",
+                        "text": "HBV and HCV",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "hbv_hcv"
+                    },
+                    {
+                        "key": "tb",
+                        "text": "TB",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "tb"
+                    },
+                    {
+                        "key": "gbv",
+                        "text": "GBV",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "gbv"
+                    },
+                    {
+                        "key": "pep",
+                        "text": "PEP",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "pep"
+                    },
+                    {
+                        "key": "vmmc",
+                        "text": "VMMC",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "vmmc"
+                    },
+                    {
+                        "key": "cacx",
+                        "text": "CaCx",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "cacx"
+                    },
+                    {
+                        "key": "drug_use_disorder",
+                        "text": "Ugonjwa wa matumizi ya dawa za kulevya",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "drug_use_disorder"
+                    },
+                    {
+                        "key": "hiv_aids",
+                        "text": "Wanandoa wa VVU na UKIMWI",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "hiv_aids"
+                    },
+                    {
+                        "key": "others",
+                        "text": "Wengine",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "others"
+                    },
+                    {
+                        "key": "none",
+                        "text": "Hakuna",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "none"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": " Tafadhali chagua angalau moja"
+                }
+            }
+        ]
+    }
+}

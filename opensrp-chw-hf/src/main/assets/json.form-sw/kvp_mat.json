@@ -1,0 +1,82 @@
+{
+    "count": "1",
+    "encounter_type": "KVP MAT",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "MAT",
+        "fields": [
+            {
+                "key": "mat_provided",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "mat_provided",
+                "type": "native_radio",
+                "label": " Je, mteja alipewa huduma za MAT?",
+                "options": [
+                    {
+                        "key": "yes",
+                        "text": "Ndiyo",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "yes"
+                    },
+                    {
+                        "key": "no_but_referral_given",
+                        "text": "Hapana, lakini mteja alipewa rufaa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "no_but_referral_given"
+                    },
+                    {
+                        "key": "not_applicable",
+                        "text": "Haihusiki",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_applicable"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": " Tafadhali chagua jibu"
+                }
+            }
+        ]
+    }
+}
