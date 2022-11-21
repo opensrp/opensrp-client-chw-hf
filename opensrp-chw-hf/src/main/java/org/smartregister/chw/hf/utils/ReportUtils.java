@@ -290,7 +290,7 @@ public class ReportUtils {
     }
 
     public static class SelfTestingReport {
-        public static String computeReport(Date now) {
+        public static String computeSelfTestingReportReport(Date now) {
             String report = "";
             SelfTestingMonthlyReportObject selfTestingMonthlyReportObject = new SelfTestingMonthlyReportObject(now);
             try {

@@ -70,7 +70,7 @@ public class HfWebAppInterface {
         }
         if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.SELF_TESTING_REPORT)){
             ReportUtils.setPrintJobName("self_testing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
-            return ReportUtils.SelfTestingReport.computeReport(ReportUtils.getReportDate());
+            return ReportUtils.SelfTestingReport.computeSelfTestingReportReport(ReportUtils.getReportDate());
         }
         if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.KVP_REPORT)){
             ReportUtils.setPrintJobName("kvp_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
