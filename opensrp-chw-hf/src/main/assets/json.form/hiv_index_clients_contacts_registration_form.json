@@ -326,6 +326,10 @@
         "v_max": {
           "value": "120",
           "err": "Age must be equal or less than 120"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the age"
         }
       },
       {
@@ -620,7 +624,7 @@
       {
         "key": "gbv_analysis",
         "type": "toaster_notes",
-        "text": "Conduct GBV Analysis",
+        "text": "Conduct GBV Screening",
         "text_color": "#1199F9",
         "toaster_type": "info",
         "relevance": {

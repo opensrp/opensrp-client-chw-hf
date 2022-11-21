@@ -11,7 +11,6 @@ import org.json.JSONObject;
 import org.smartregister.chw.hf.interactor.HivFormsInteractor;
 import org.smartregister.chw.hf.presenter.HivFormActivityActivityPresenter;
 import org.smartregister.chw.hiv.activity.BaseHivFormsActivity;
-import org.smartregister.chw.hiv.interactor.BaseHivFormsInteractor;
 import org.smartregister.chw.hiv.presenter.BaseHivFormsActivityPresenter;
 import org.smartregister.chw.hiv.util.Constants;
 import org.smartregister.chw.hiv.util.DBConstants;

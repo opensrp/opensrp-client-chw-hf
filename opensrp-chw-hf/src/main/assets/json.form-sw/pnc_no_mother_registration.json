@@ -75,11 +75,11 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la ukoo"
+          "err": "Tafadhali weka Jina la Ukoo"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Tafadhali weka jina la ukoo"
+          "err": "Tafadhali weka Jina la Ukoo"
         }
       },
       {
@@ -92,7 +92,7 @@
         "edit_type": "name",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la kwanza"
+          "err": "Tafadhali weka Jina la Kwanza"
         },
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -105,7 +105,7 @@
         "openmrs_entity": "person",
         "openmrs_entity_id": "middle_name",
         "type": "edit_text",
-        "hint": "Jina la kati la Mtoto",
+        "hint": "Jina la Kati la Mtoto",
         "edit_type": "name",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -113,7 +113,7 @@
         },
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la kati"
+          "err": "Tafadhali weka Jina la Kati"
         }
       },
       {
