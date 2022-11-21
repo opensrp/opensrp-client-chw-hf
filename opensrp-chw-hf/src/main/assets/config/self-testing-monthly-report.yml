@@ -6459,7 +6459,7 @@ indicators:
   - key: "hivst-4-a"
     description: "Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Washirika wa Ngono, Rafiki Rika)"
     indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
-                     WHERE kit_for='peer_friend' OR kit_for='sexual_partner'
+                     WHERE (kit_for='peer_friend' OR kit_for='sexual_partner')
                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                      date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
   - key: "hivst-5-a"
@@ -6477,14 +6477,14 @@ indicators:
                   date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
   - key: "hivst-4-b"
     description: "B- Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Washirika wa Ngono, Rafiki Rika)"
-    indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
-                     WHERE kit_for!='client'
+    indicatorQuery: " SELECT count(base_entity_id) as count FROM ec_hivst_results
+                     WHERE (kit_for='peer_friend' OR kit_for='sexual_partner')
                      AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                      date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
   - key: "hivst-5-b"
     description: "B- Jumla ya vitendanishi vya kujipima VVU vilivyosambazwa (Binafsi, Washrika wa Ngono, Rafiki rika)"
-    indicatorQuery: " SELECT count(id) as count FROM ec_hivst_results
-                      WHERE kit_for IS NOT NULL
+    indicatorQuery: " SELECT count(base_entity_id) as count FROM ec_hivst_results
+                      WHERE kit_for='client' OR kit_for='peer_friend' OR kit_for='sexual_partner'
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                       date(substr(result_date, 7, 4) || '-' || substr(result_date, 4, 2) || '-' || '01')"
   - key: "hivst-6-b"

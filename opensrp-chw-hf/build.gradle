@@ -296,7 +296,7 @@ dependencies {
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-ld'
     }
     
-    implementation('org.smartregister:opensrp-client-chw-ld:1.0.29-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-ld:1.0.30-NACP-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
