@@ -27,6 +27,7 @@ import org.smartregister.chw.hf.actionhelper.AncConsultationAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncLabTestAction;
 import org.smartregister.chw.hf.actionhelper.AncMalariaInvestigationAction;
+import org.smartregister.chw.hf.actionhelper.AncNextFollowupVisitAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTriageAction;
 import org.smartregister.chw.hf.actionhelper.AncTtVaccinationAction;
@@ -209,7 +210,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         HfAncJsonFormUtils.populateForm(triageForm, details);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                     Timber.e(e);
                 }
 
                 JSONObject consultationForm = null;
@@ -223,7 +224,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         HfAncJsonFormUtils.populateForm(consultationForm, details);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                     Timber.e(e);
                 }
 
                 JSONObject pharmacyForm = null;
@@ -239,7 +240,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         HfAncJsonFormUtils.populateForm(pharmacyForm, details);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                     Timber.e(e);
                 }
 
                 JSONObject malariaInvestigationForm = null;
@@ -252,7 +253,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                         HfAncJsonFormUtils.populateForm(malariaInvestigationForm, details);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                     Timber.e(e);
                 }
 
                 JSONObject labTestForm = null;
@@ -313,7 +314,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .build();
                         actionList.put(context.getString(R.string.anc_recuring_visit_triage), triage);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
+                         Timber.e(e);
                     }
                     try {
                         BaseAncHomeVisitAction consultation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_cunsultation))
@@ -325,7 +326,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .build();
                         actionList.put(context.getString(R.string.anc_recuring_visit_cunsultation), consultation);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
+                         Timber.e(e);
                     }
                     try {
                         BaseAncHomeVisitAction malariaInvestigation = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_visit_malaria_investigation))
@@ -337,7 +338,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .build();
                         actionList.put(context.getString(R.string.anc_visit_malaria_investigation), malariaInvestigation);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
+                         Timber.e(e);
                     }
                     try {
                         BaseAncHomeVisitAction labTests = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.anc_recuring_visit_lab_tests))
@@ -349,7 +350,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .build();
                         actionList.put(context.getString(R.string.anc_recuring_visit_lab_tests), labTests);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
+                         Timber.e(e);
                     }
                     try {
                         if (HfAncDao.isEligibleForTtVaccination(memberObject.getBaseEntityId())) {
@@ -363,7 +364,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                             actionList.put(context.getString(R.string.anc_first_visit_tt_vaccination), vaccinationAction);
                         }
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
+                         Timber.e(e);
                     }
 
 
@@ -377,7 +378,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .build();
                         actionList.put(context.getString(R.string.anc_recuring_visit_pharmacy), pharmacy);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
+                         Timber.e(e);
                     }
 
                     try {
@@ -390,7 +391,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                 .build();
                         actionList.put(context.getString(R.string.anc_first_and_recurring_visit_counselling), counselling);
                     } catch (BaseAncHomeVisitAction.ValidationException e) {
-                        e.printStackTrace();
+                         Timber.e(e);
                     }
 
                     if (!HfAncBirthEmergencyPlanDao.isAllFilled(baseEntityId)) {
@@ -414,8 +415,20 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                                     .build();
                             actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
                         } catch (BaseAncHomeVisitAction.ValidationException e) {
-                            e.printStackTrace();
+                             Timber.e(e);
                         }
+                    }
+
+                    try {
+                        BaseAncHomeVisitAction nextFollowupVisitDate = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.next_visit))
+                                .withOptional(true)
+                                .withDetails(details)
+                                .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                                .withHelper(new AncNextFollowupVisitAction())
+                                .build();
+                        actionList.put(context.getString(R.string.next_visit), nextFollowupVisitDate);
+                    } catch (BaseAncHomeVisitAction.ValidationException e) {
+                       Timber.e(e);
                     }
                 }
             } else {
@@ -427,6 +440,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 actionList.remove(context.getString(R.string.anc_visit_malaria_investigation));
                 actionList.remove(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan));
                 actionList.remove(context.getString(R.string.anc_first_visit_tt_vaccination));
+                actionList.remove(context.getString(R.string.next_visit));
             }
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(s);
@@ -467,7 +481,7 @@ public class AncRecurringFacilityVisitInteractorFlv implements AncFirstFacilityV
                 consultation.setJsonPayload(consultationJsonPayloadObject.toString());
                 consultation.evaluateStatus();
             } catch (JSONException e) {
-                e.printStackTrace();
+                 Timber.e(e);
             }
         }
     }

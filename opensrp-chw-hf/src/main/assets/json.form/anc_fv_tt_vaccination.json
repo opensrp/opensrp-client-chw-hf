@@ -45,6 +45,28 @@
     "title": "Td Vaccination",
     "fields": [
       {
+        "key": "completed_tt_vaccination",
+        "type": "native_radio",
+        "label": "Has the client completed all vaccinations for Td?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "completed_tt_vaccination",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "text": "Yes",
+            "key": "yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ]
+      },
+      {
         "key": "tt_vaccination",
         "type": "native_radio",
         "label": "Has the client been vaccinated for Td?",
@@ -64,7 +86,13 @@
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
-        ]
+        ],
+        "relevance": {
+          "step1:completed_tt_vaccination": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
       },
       {
         "key": "tt1_vaccination_prompt",

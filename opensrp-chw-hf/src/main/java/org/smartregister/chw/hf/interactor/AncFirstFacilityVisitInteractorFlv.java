@@ -24,6 +24,7 @@ import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncMalariaInvestigationAction;
+import org.smartregister.chw.hf.actionhelper.AncNextFollowupVisitAction;
 import org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTbScreeningAction;
@@ -383,6 +384,14 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withHelper(new AncBirthReviewAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
+
+        BaseAncHomeVisitAction nextFollowupVisitDate = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.next_visit))
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                .withHelper(new AncNextFollowupVisitAction())
+                .build();
+        actionList.put(context.getString(R.string.next_visit), nextFollowupVisitDate);
     }
 
     private void evaluateBaselineInvestigation(MemberObject memberObject, Context context, Map<String, List<VisitDetail>> details, boolean isKnownOnART) throws BaseAncHomeVisitAction.ValidationException {

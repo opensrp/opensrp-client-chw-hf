@@ -5,30 +5,31 @@ import android.content.Context;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.domain.VisitDetail;
+import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
-import org.smartregister.chw.pmtct.model.BasePmtctHomeVisitAction;
 
 import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
 
-public class NextFollowupVisitAction implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper {
+public class AncNextFollowupVisitAction implements BaseAncHomeVisitAction.AncHomeVisitActionHelper {
 
     private String jsonPayload;
 
     private String next_facility_visit_date;
-    private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
+    private BaseAncHomeVisitAction.ScheduleStatus scheduleStatus;
     private String subTitle;
     private Context context;
 
-    public NextFollowupVisitAction() {
+    public AncNextFollowupVisitAction() {
 
     }
 
 
     @Override
-    public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<org.smartregister.chw.pmtct.domain.VisitDetail>> map) {
+    public void onJsonFormLoaded(String jsonPayload, Context context, Map<String, List<VisitDetail>> map) {
         this.jsonPayload = jsonPayload;
         this.context = context;
     }
@@ -56,7 +57,7 @@ public class NextFollowupVisitAction implements BasePmtctHomeVisitAction.PmtctHo
     }
 
     @Override
-    public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
+    public BaseAncHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
         return scheduleStatus;
     }
 
@@ -81,16 +82,16 @@ public class NextFollowupVisitAction implements BasePmtctHomeVisitAction.PmtctHo
     }
 
     @Override
-    public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
+    public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
         if (StringUtils.isBlank(next_facility_visit_date))
-            return BasePmtctHomeVisitAction.Status.PENDING;
+            return BaseAncHomeVisitAction.Status.PENDING;
         else {
-            return BasePmtctHomeVisitAction.Status.COMPLETED;
+            return BaseAncHomeVisitAction.Status.COMPLETED;
         }
     }
 
     @Override
-    public void onPayloadReceived(BasePmtctHomeVisitAction basePmtctHomeVisitAction) {
+    public void onPayloadReceived(BaseAncHomeVisitAction baseAncHomeVisitAction) {
         Timber.d("onPayloadReceived");
     }
 

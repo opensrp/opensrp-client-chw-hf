@@ -55,7 +55,7 @@ public class AncTtVaccinationAction implements BaseAncHomeVisitAction.AncHomeVis
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             checkObject.clear();
-            checkObject.put("tt_vaccination", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "tt_vaccination")));
+            checkObject.put("completed_tt_vaccination", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "completed_tt_vaccination")));
         } catch (JSONException e) {
             Timber.e(e);
         }

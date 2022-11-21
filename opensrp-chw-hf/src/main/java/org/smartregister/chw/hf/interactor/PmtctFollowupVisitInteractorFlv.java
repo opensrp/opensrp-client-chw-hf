@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.actionhelper.NextFollowupVisitAction;
+import org.smartregister.chw.hf.actionhelper.PmtctNextFollowupVisitAction;
 import org.smartregister.chw.hf.actionhelper.PmtctArvLineAction;
 import org.smartregister.chw.hf.actionhelper.PmtctBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.PmtctCd4SampleCollection;
@@ -292,7 +292,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                     .withDetails(details)
                     .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
                     .withJsonPayload(nextVisitForm.toString())
-                    .withHelper(new NextFollowupVisitAction())
+                    .withHelper(new PmtctNextFollowupVisitAction())
                     .build();
             actionList.put(context.getString(R.string.next_visit), NextFollowupVisitDate);
         } catch (BasePmtctHomeVisitAction.ValidationException e) {
