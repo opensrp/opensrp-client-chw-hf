@@ -467,6 +467,26 @@
     <string name="prep_initiation">PrEP Initiation</string>
     <string name="prep_screening">PrEP Screening</string>
 
+    <string name="amtsl_uterotonic_title">Uterotonic</string>
+    <string name="amtsl_placenta_and_membranes">Placenta and Membrane</string>
+    <string name="amtsl_method_used_to_remove_the_placenta">The method used to remove/deliver the placenta</string>
+    <string name="amtsl_placenta_and_membrane_expulsion">Expulsion of the Placenta and Membranes</string>
+    <string name="amtsl_type_of_incomplete_placenta">Type of incomplete placenta</string>
+    <string name="amtsl_placenta_removed_by_hand">Was the placenta/product removed by hand?</string>
+    <string name="amtsl_conducted_mva">MVA.D&C was conducted?</string>
+    <string name="amtsl_administered_antibiotics">Was the client administered antibiotics ?</string>
+    <string name="amtsl_removal_date">Removal Date</string>
+    <string name="amtsl_removal_duration">How long did it take to remove the placenta? (In minutes)</string>
+    <string name="amtsl_estimated_blood_loss">Estimated blood loss (mls)</string>
+    <string name="amtsl_provided_blood_transfusion">Provided blood transfusion?</string>
+    <string name="amtsl_name_of_the_provider_who_removed_the_placenta">Name of the Provider who removed the placenta</string>
+    <string name="amtsl_uterus_massage">Uterus Massage</string>
+    <string name="amtsl_uterus_massage_after_delivery">Massage the Uterus after delivery of placenta</string>
+    <string name="amtsl_reason_for_not_massaging_uterus_after_delivery">Reason for not massaging uterus after delivery</string>
+    <string name="amtsl_pre_eclampsia_and_eclampsia_management_title">Pre-Eclampsia and Eclampsia Management</string>
+    <string name="amtsl_has_signs_of_eclampsia">Does the client have signs of pre-eclampsia/eclampsia?</string>
+    <string name="amtsl_administered_magnesium_sulphate">Was the client administered Magnesium Sulphate?</string>
+    <string name="amtsl_reason_for_not_administering_magnesium_sulphate">Reason for not administering magnesium sulphate</string>
 
     <!-- PMTCT Medical History -->
     <string name="pmtct_visit">PMTCT Visits</string>
@@ -813,5 +833,59 @@
 
 
 
+
+    <string name="triage">Triage</string>
+    <string name="systolic_blood_pressure">Systolic (Blood Pressure) :</string>
+    <string name="diastolic_blood_pressure">Diastolic (Blood Pressure) :</string>
+    <string name="pulse_rate_beats_per_minute">Pulse Rate (Beats per minute) :</string>
+    <string name="respiratory_rate_breaths_per_minute">Respiratory Rate (Breaths per minute) :</string>
+    <string name="count_fetal_heart_rate_bpm">Count Fetal Heart Rate (bpm) :</string>
+    <string name="temperature_c">Temperature (C) :</string>
+    <string name="weight_kg">Weight (KG) :</string>
+    <string name="height_cm">Height (CM) :</string>
+    <string name="body_mass_index_bmi">Body Mass Index (BMI) :</string>
+    <string name="danger_signs_present">Danger signs present :</string>
+    <string name="true_labour">True Labour</string>
+    <string name="admission_information">Admission Information</string>
+    <string name="admission_date">Admission Date :</string>
+    <string name="admission_time">Admission Time :</string>
+    <string name="admitting_nurse_doctor_name">Admitting Nurse/Doctor Name :</string>
+    <string name="admitted_from">Admitted From :</string>
+    <string name="reason_for_admission">Reason for Admission :</string>
+    <string name="reason_for_referral_management_received">Reason for Referral/Management Received :</string>
+    <string name="obstetric_history">Obstetric History</string>
+    <string name="gravida">Gravida :</string>
+    <string name="para">Para :</string>
+    <string name="number_of_children_alive">Number of children alive :</string>
+    <string name="number_of_abortions">Number of abortions :</string>
+    <string name="last_normal_menstrual_period_lnmp">Last Normal Menstrual Period (LNMP) :</string>
+    <string name="edd">Edd :</string>
+    <string name="gestational_age_ga_in_weeks">Gestational Age (GA) in Weeks :</string>
+    <string name="expected_date_of_delivery_edd">Expected Date of Delivery (EDD) :</string>
+    <string name="gest_age">Gest Age :</string>
+    <string name="anc_clinic_findings">ANC Clinic Findings</string>
+    <string name="number_of_visits">Number of Visits :</string>
+    <string name="ipt_doses">IPT Doses :</string>
+    <string name="tt_doses">TT Doses :</string>
+    <string name="was_itn_llin_used">Was ITN/LLIN used? :</string>
+    <string name="last_measured_hb_level_g_dl">Last Measured HB Level (g/dl) :</string>
+    <string name="was_management_provided_for_abnormal_hb_level">Was management provided for abnormal HB Level? :</string>
+    <string name="last_measured_hb_date">Last Measured HB Date :</string>
+    <string name="pmtct">PMTCT :</string>
+    <string name="was_management_provided_for_pmtct">Was management provided for PMTCT? :</string>
+    <string name="last_pmtct_test_date">Last PMTCT test Date :</string>
+    <string name="art_prescription">ART/Prescription :</string>
+    <string name="vdrl_syphilis">VDRL (Syphilis) :</string>
+    <string name="was_management_provided_for_syphilis">Was management provided for syphilis? :</string>
+    <string name="blood_group">Blood Group :</string>
+    <string name="rh">Rh :</string>
+    <string name="was_management_provided_for_negative_rh">Was management provided for negative RH? :</string>
+    <string name="current_labour">Current Labour</string>
+    <string name="labour_onset_date">Labour onset Date :</string>
+    <string name="labour_onset_time">Labour onset Time :</string>
+    <string name="membrane_ruptured">Membrane ruptured? :</string>
+    <string name="membrane_rupture_date">Membrane rupture Date :</string>
+    <string name="membrane_rupture_time">Membrane rupture Time :</string>
+    <string name="fetal_movement">Fetal movement :</string>
 
 </resources>

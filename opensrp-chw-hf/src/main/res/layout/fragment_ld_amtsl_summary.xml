@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.LDAmtslSummary">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lbl_amtsl_uterotonic_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/light_grey"
+                android:padding="4dp"
+                android:text="@string/amtsl_uterotonic_title"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_uterotonic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_uterotonic_title"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_uterotonic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lbl_amtsl_placenta_and_membranes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/light_grey"
+                android:padding="4dp"
+                android:text="@string/amtsl_placenta_and_membranes"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_method_used_to_remove_the_placenta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_method_used_to_remove_the_placenta"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_method_used_to_remove_the_placenta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_placenta_and_membrane_expulsion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_placenta_and_membrane_expulsion"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_placenta_and_membrane_expulsion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_type_of_incomplete_placenta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_type_of_incomplete_placenta"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_type_of_incomplete_placenta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_placenta_removed_by_hand"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_placenta_removed_by_hand"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_placenta_removed_by_hand"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_conducted_mva"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_conducted_mva"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_conducted_mva"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_administered_antibiotics"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_administered_antibiotics"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_administered_antibiotics"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_removal_date"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_removal_date"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_removal_date"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_removal_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_removal_duration"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_removal_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_estimated_blood_loss"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_estimated_blood_loss"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_estimated_blood_loss"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_provided_blood_transfusion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_provided_blood_transfusion"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_provided_blood_transfusion"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_name_of_the_provider_who_removed_the_placenta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_name_of_the_provider_who_removed_the_placenta"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_name_of_the_provider_who_removed_the_placenta"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lbl_amtsl_uterus_massage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/light_grey"
+                android:padding="4dp"
+                android:text="@string/amtsl_uterus_massage"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="visible" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_uterus_massage_after_delivery"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_uterus_massage_after_delivery"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_uterus_massage_after_delivery"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_reason_for_not_massaging_uterus_after_delivery"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_reason_for_not_massaging_uterus_after_delivery"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_reason_for_not_massaging_uterus_after_delivery"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lbl_amtsl_pre_eclampsia_and_eclampsia_management_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/light_grey"
+                android:padding="4dp"
+                android:text="@string/amtsl_pre_eclampsia_and_eclampsia_management_title"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_has_signs_of_eclampsia"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_has_signs_of_eclampsia"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_has_signs_of_eclampsia"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_administered_magnesium_sulphate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_administered_magnesium_sulphate"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_administered_magnesium_sulphate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_amtsl_reason_for_not_administering_magnesium_sulphate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/amtsl_reason_for_not_administering_magnesium_sulphate"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/amtsl_reason_for_not_administering_magnesium_sulphate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

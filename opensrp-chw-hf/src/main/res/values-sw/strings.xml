@@ -329,8 +329,8 @@
     <string name="kvp_client_status">Client Status</string>
     <string name="kvp_hts">HTS</string>
     <string name="kvp_prep_and_pep">PrEP and PEP</string>
-    <string name="kvp_condom_provision">Condom Provision</string>
-    <string name="kvp_family_planning">Family Planning</string>
+    <string name="kvp_condom_provision">Ugawaji Kondomu</string>
+    <string name="kvp_family_planning">Uzazi wa Mpango</string>
     <string name="kvp_tb_screening">TB Screening</string>
     <string name="kvp_sti_screening">STI Screening</string>
     <string name="kvp_heptitis_test">Hepatitis Test</string>
@@ -338,9 +338,9 @@
     <string name="kvp_cervical_screening">Cervical Screening</string>
     <string name="kvp_mat">MAT</string>
     <string name="kvp_iec_sbcc">IEC/SBCC</string>
-    <string name="kvp_health_education">Health Education</string>
+    <string name="kvp_health_education">Elimu ya Kiafya</string>
     <string name="kvp_gbv_analysis">GBV Analysis</string>
-    <string name="kvp_other_services_referrals">Other Services and Referrals</string>
+    <string name="kvp_other_services_referrals">Afua Zinginezo na Rufaa</string>
     <string name="prep_visit_type">Visit Type</string>
     <string name="self_testing_reports_subtitle">View Self Testing Report</string>
     <string name="selftesting_reports">Self Testing Reports</string>
