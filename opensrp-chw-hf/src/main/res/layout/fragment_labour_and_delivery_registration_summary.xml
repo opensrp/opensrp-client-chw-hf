@@ -1,0 +1,1597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.LDRegistrationSummaryFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/triage_stage_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:background="@color/light_grey"
+                android:padding="4dp"
+                android:text="@string/triage"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_systolic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/systolic_blood_pressure"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/systolic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_diastolic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/diastolic_blood_pressure"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/diastolic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_pulse_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/pulse_rate_beats_per_minute"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/pulse_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_respiratory_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/respiratory_rate_breaths_per_minute"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/respiratory_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_fetal_heart_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/count_fetal_heart_rate_bpm"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/fetal_heart_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/temperature_c"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_weight"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/weight_kg"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/weight"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_height"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/height_cm"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/height"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_bmi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/body_mass_index_bmi"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/bmi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weightSum="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lbl_title_danger_signs"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:text="@string/danger_signs_present"
+                    android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/danger_signs"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:drawableStart="@color/alert_completed"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/true_labour_stage_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/light_grey"
+                    android:padding="4dp"
+                    android:text="@string/true_labour"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_true_labour"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="True labour? :"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/true_labour"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/admission_information_stage_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/light_grey"
+                    android:padding="4dp"
+                    android:text="@string/admission_information"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_admission_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/admission_date"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/admission_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_admission_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/admission_time"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/admission_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_admitting_person_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/admitting_nurse_doctor_name"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/admitting_person_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_admission_place"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/admitted_from"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/admission_place"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_admission_reason"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/reason_for_admission"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/admission_reason"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_reason_for_referral"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/reason_for_referral_management_received"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/reason_for_referral"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_admission_info_danger_signs"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="Danger signs present :"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/admission_info_danger_signs"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/obstetric_history_stage_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/light_grey"
+                    android:padding="4dp"
+                    android:text="@string/obstetric_history"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_gravida"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/gravida"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/gravida"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_para"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/para"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/para"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_children_alive"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/number_of_children_alive"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/children_alive"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_number_of_abortion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/number_of_abortions"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/number_of_abortion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_last_menstrual_period"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/last_normal_menstrual_period_lnmp"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/last_menstrual_period"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_edd"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/edd"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/edd"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_gest_age_note"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/gestational_age_ga_in_weeks"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/gest_age_note"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_edd_note"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/expected_date_of_delivery_edd"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/edd_note"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_gest_age"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/gest_age"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/gest_age"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/anc_clinic_findings_stage_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/light_grey"
+                    android:padding="4dp"
+                    android:text="@string/anc_clinic_findings"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_visit_number"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/number_of_visits"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/visit_number"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_ipt_doses"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/ipt_doses"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/ipt_doses"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_tt_doses"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/tt_doses"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tt_doses"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_itn_llin_used"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/was_itn_llin_used"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/itn_llin_used"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_hb_level"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/last_measured_hb_level_g_dl"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/hb_level"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_management_provided_for_hb_level"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/was_management_provided_for_abnormal_hb_level"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/management_provided_for_hb_level"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_hb_test_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/last_measured_hb_date"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/hb_test_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_pmtct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/pmtct"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/pmtct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_management_provided_for_pmtct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/was_management_provided_for_pmtct"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/management_provided_for_pmtct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_pmtct_test_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/last_pmtct_test_date"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/pmtct_test_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_art_prescription"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/art_prescription"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/art_prescription"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_syphilis"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/vdrl_syphilis"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/syphilis"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_management_provided_for_syphilis"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/was_management_provided_for_syphilis"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/management_provided_for_syphilis"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_blood_group"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/blood_group"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/blood_group"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_rh_factor"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/rh"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/rh_factor"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_management_provided_for_rh"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/was_management_provided_for_negative_rh"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/management_provided_for_rh"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/current_labour_stage_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/light_grey"
+                    android:padding="4dp"
+                    android:text="@string/current_labour"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_labour_onset_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/labour_onset_date"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/labour_onset_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_llabour_onset_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/labour_onset_time"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/labour_onset_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_ruptured_membrane"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/membrane_ruptured"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/ruptured_membrane"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_membrane_ruptured_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/membrane_rupture_date"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/membrane_ruptured_date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_membrane_ruptured_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/membrane_rupture_time"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/membrane_ruptured_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weightSum="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_title_fetal_movement"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:text="@string/fetal_movement"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/fetal_movement"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@color/alert_completed"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
