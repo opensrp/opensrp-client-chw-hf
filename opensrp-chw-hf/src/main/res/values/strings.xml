@@ -467,6 +467,26 @@
     <string name="prep_initiation">PrEP Initiation</string>
     <string name="prep_screening">PrEP Screening</string>
 
+    <string name="amtsl_uterotonic_title">Uterotonic</string>
+    <string name="amtsl_placenta_and_membranes">Placenta and Membrane</string>
+    <string name="amtsl_method_used_to_remove_the_placenta">The method used to remove/deliver the placenta</string>
+    <string name="amtsl_placenta_and_membrane_expulsion">Expulsion of the Placenta and Membranes</string>
+    <string name="amtsl_type_of_incomplete_placenta">Type of incomplete placenta</string>
+    <string name="amtsl_placenta_removed_by_hand">Was the placenta/product removed by hand?</string>
+    <string name="amtsl_conducted_mva">MVA.D&C was conducted?</string>
+    <string name="amtsl_administered_antibiotics">Was the client administered antibiotics ?</string>
+    <string name="amtsl_removal_date">Removal Date</string>
+    <string name="amtsl_removal_duration">How long did it take to remove the placenta? (In minutes)</string>
+    <string name="amtsl_estimated_blood_loss">Estimated blood loss (mls)</string>
+    <string name="amtsl_provided_blood_transfusion">Provided blood transfusion?</string>
+    <string name="amtsl_name_of_the_provider_who_removed_the_placenta">Name of the Provider who removed the placenta</string>
+    <string name="amtsl_uterus_massage">Uterus Massage</string>
+    <string name="amtsl_uterus_massage_after_delivery">Massage the Uterus after delivery of placenta</string>
+    <string name="amtsl_reason_for_not_massaging_uterus_after_delivery">Reason for not massaging uterus after delivery</string>
+    <string name="amtsl_pre_eclampsia_and_eclampsia_management_title">Pre-Eclampsia and Eclampsia Management</string>
+    <string name="amtsl_has_signs_of_eclampsia">Does the client have signs of pre-eclampsia/eclampsia?</string>
+    <string name="amtsl_administered_magnesium_sulphate">Was the client administered Magnesium Sulphate?</string>
+    <string name="amtsl_reason_for_not_administering_magnesium_sulphate">Reason for not administering magnesium sulphate</string>
 
     <!-- PMTCT Medical History -->
     <string name="pmtct_visit">PMTCT Visits</string>
