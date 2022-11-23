@@ -473,7 +473,7 @@
     <string name="amtsl_placenta_and_membrane_expulsion">Expulsion of the Placenta and Membranes</string>
     <string name="amtsl_type_of_incomplete_placenta">Type of incomplete placenta</string>
     <string name="amtsl_placenta_removed_by_hand">Was the placenta/product removed by hand?</string>
-    <string name="amtsl_conducted_mva">MVA.D&C was conducted?</string>
+    <string name="amtsl_conducted_mva">MVA.D&amp;C was conducted?</string>
     <string name="amtsl_administered_antibiotics">Was the client administered antibiotics ?</string>
     <string name="amtsl_removal_date">Removal Date</string>
     <string name="amtsl_removal_duration">How long did it take to remove the placenta? (In minutes)</string>
