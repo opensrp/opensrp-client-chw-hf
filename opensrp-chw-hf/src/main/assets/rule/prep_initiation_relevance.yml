@@ -1,0 +1,35 @@
+---
+name: step1_prep_drug_offered
+description: prep_drug_offered
+priority: 1
+condition: "step1_prep_status != '' && (!(step1_prep_status == 'not_initiated' || step1_prep_status == 'discontinued_quit' ))"
+actions:
+  - "isRelevant = true "
+---
+name: step1_reasons_stopping_prep
+description: step1_reasons_stopping_prep
+priority: 1
+condition: "step1_prep_status != '' && step1_prep_status == 'discontinued_quit'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_next_visit_date
+description: step1_next_visit_date
+priority: 1
+condition: "step1_prep_status != '' && step1_prep_status != 'discontinued_quit'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_prep_adherence
+description: step1_prep_adherence
+priority: 1
+condition: "step1_prep_status != '' && step1_prep_status != 'not_initiated' && step1_prep_status != 'initiated' && step1_prep_status != 're_start'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_prep_side_effects
+description: step1_prep_side_effects
+priority: 1
+condition: "step1_prep_status != '' && step1_prep_status != 'not_initiated' && step1_prep_status != 'initiated' && step1_prep_status != 're_start'"
+actions:
+  - "isRelevant = true "

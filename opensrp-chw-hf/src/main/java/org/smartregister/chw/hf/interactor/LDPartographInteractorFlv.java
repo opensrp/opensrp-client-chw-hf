@@ -31,6 +31,7 @@ import timber.log.Timber;
 public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor {
 
     LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
+    private boolean editMode;
 
     @Override
     public LinkedHashMap<String, BaseLDVisitAction> calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
@@ -38,10 +39,12 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
         Context context = view.getContext();
         Map<String, List<VisitDetail>> details = null;
 
+        editMode = view.getEditMode();
+
         //get preloaded data
-        if (view.getEditMode()){
+        if (editMode) {
             Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.LD_PARTOGRAPHY);
-            if (lastVisit != null){
+            if (lastVisit != null) {
                 details = VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
             }
         }
@@ -61,7 +64,7 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
                 .withOptional(false)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getPartographTimeForm())
-                .withHelper(new PartographProcessActionHelper(memberObject, actionList, context, details, callBack))
+                .withHelper(new PartographProcessActionHelper(memberObject, editMode, actionList, context, details, callBack))
                 .build();
 
         actionList.put(context.getString(R.string.ld_partograph_time), partographTime);
@@ -75,9 +78,9 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
         private final BaseLDVisitContract.InteractorCallBack callBack;
         private final MemberObject memberObject;
 
-        public PartographProcessActionHelper(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Context context,
-                                             Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack){
-            super(memberObject);
+        public PartographProcessActionHelper(MemberObject memberObject, boolean editMode, LinkedHashMap<String, BaseLDVisitAction> actionList, Context context,
+                                             Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack) {
+            super(memberObject, editMode);
             this.actionList = actionList;
             this.context = context;
             this.details = details;
@@ -87,13 +90,13 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
 
         @Override
         public String postProcess(String s) {
-            if (StringUtils.isNotBlank(time) && StringUtils.isNotBlank(date)){
+            if (StringUtils.isNotBlank(time) && StringUtils.isNotBlank(date)) {
                 try {
                     BaseLDVisitAction fetalWellBeingAction = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_partograph_fetal_well_being))
                             .withOptional(true)
                             .withDetails(details)
                             .withFormName(Constants.JsonForm.LabourAndDeliveryPartograph.getFetalWellBingForm())
-                            .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject,memberObject.getBaseEntityId()))
+                            .withHelper(new LDPartographFetalWellBeingActionHelper(memberObject, memberObject.getBaseEntityId()))
                             .build();
 
                     actionList.put(context.getString(R.string.ld_partograph_fetal_well_being), fetalWellBeingAction);
@@ -125,10 +128,10 @@ public class LDPartographInteractorFlv implements LDPartographInteractor.Flavor 
 
                     actionList.put(context.getString(R.string.ld_partograph_treatment_during_labor), treatmentDuringLabour);
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     Timber.e(e);
                 }
-            }else{
+            } else {
                 if (actionList.containsKey(context.getString(R.string.ld_partograph_fetal_well_being)))
                     actionList.remove(context.getString(R.string.ld_partograph_fetal_well_being));
 

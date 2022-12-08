@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class KvpCondomProvisionActionHelper implements BaseKvpVisitAction.KvpVisitActionHelper {
 
-    private String provided_male_condoms;
+    private String condoms_given;
     private String jsonPayload;
 
     @Override
@@ -38,7 +38,7 @@ public class KvpCondomProvisionActionHelper implements BaseKvpVisitAction.KvpVis
     public void onPayloadReceived(String jsonPayload) {
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
-            provided_male_condoms = CoreJsonFormUtils.getValue(jsonObject, "provided_male_condoms");
+            condoms_given = CoreJsonFormUtils.getValue(jsonObject, "condoms_given");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -66,7 +66,7 @@ public class KvpCondomProvisionActionHelper implements BaseKvpVisitAction.KvpVis
 
     @Override
     public BaseKvpVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(provided_male_condoms))
+        if (StringUtils.isBlank(condoms_given))
             return BaseKvpVisitAction.Status.PENDING;
         else {
             return BaseKvpVisitAction.Status.COMPLETED;

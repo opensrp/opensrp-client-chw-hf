@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -14,6 +15,7 @@ import org.smartregister.chw.hf.interactor.KvpBioMedicalServiceInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.kvp.activity.BaseKvpVisitActivity;
 import org.smartregister.chw.kvp.domain.MemberObject;
+import org.smartregister.chw.kvp.model.BaseKvpVisitAction;
 import org.smartregister.chw.kvp.presenter.BaseKvpVisitPresenter;
 import org.smartregister.chw.kvp.util.Constants;
 import org.smartregister.family.util.JsonFormUtils;
@@ -21,6 +23,8 @@ import org.smartregister.family.util.Utils;
 import org.smartregister.util.LangUtils;
 
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class KvpBioMedicalServiceActivity extends BaseKvpVisitActivity {
 
@@ -67,5 +71,42 @@ public class KvpBioMedicalServiceActivity extends BaseKvpVisitActivity {
     @Override
     public void redrawHeader(MemberObject memberObject) {
         tvTitle.setText(R.string.bio_medical_services);
+    }
+
+    @Override
+    public void initializeActions(LinkedHashMap<String, BaseKvpVisitAction> map) {
+        actionList.clear();
+
+        //Necessary evil to rearrange the actions according to a specific arrangement
+        //assuming the list will have client_status, then hts, then the third action is prep_pep
+
+        //TODO: fix this if the case of client_status action would be moved from biomedical
+        if (map.containsKey(getString(R.string.kvp_client_status))) {
+            BaseKvpVisitAction clientStatusAction = map.get(getString(R.string.kvp_client_status));
+            actionList.put(getString(R.string.kvp_client_status), clientStatusAction);
+        }
+
+        if (map.containsKey(getString(R.string.kvp_hts))) {
+            BaseKvpVisitAction htsAction = map.get(getString(R.string.kvp_hts));
+            actionList.put(getString(R.string.kvp_hts), htsAction);
+        }
+
+        if (map.containsKey(getString(R.string.kvp_prep_and_pep))) {
+            BaseKvpVisitAction PrEPPepAction = map.get(getString(R.string.kvp_prep_and_pep));
+            actionList.put(getString(R.string.kvp_prep_and_pep), PrEPPepAction);
+        }
+        for (Map.Entry<String, BaseKvpVisitAction> entry : map.entrySet()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                actionList.putIfAbsent(entry.getKey(), entry.getValue());
+            } else {
+                actionList.put(entry.getKey(), entry.getValue());
+            }
+        }
+        //====================End of Necessary evil ====================================
+
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+        displayProgressBar(false);
     }
 }

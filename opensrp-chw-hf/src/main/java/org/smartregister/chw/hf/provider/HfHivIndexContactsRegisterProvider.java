@@ -71,9 +71,15 @@ public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProv
             viewHolder.textViewReferralDay.setText(referralDay);
             viewHolder.textViewReferralDay.setTextColor(context.getResources().getColor(R.color.due_vaccine_red));
             viewHolder.textViewReferralDay.setBackgroundColor(context.getResources().getColor(R.color.referral_text_background));
-        } else if (!hivIndexContactObject.getHasTheContactClientBeenTested().equals("") && hivIndexContactObject.getCtcNumber().equals("")) {
+        } else if (!hivIndexContactObject.getHasTheContactClientBeenTested().equals("") && !hivIndexContactObject.getHasTheContactClientBeenTested().equals("no") && hivIndexContactObject.getCtcNumber().equals("")) {
             viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
             String pendingCtcRegistration = viewHolder.itemView.getContext().getString(R.string.pending_ctc_registration);
+            viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
+            viewHolder.textViewReferralDay.setTextColor(context.getResources().getColor(R.color.due_vaccine_red));
+            viewHolder.textViewReferralDay.setBackgroundColor(context.getResources().getColor(R.color.referral_text_background));
+        }else if (!hivIndexContactObject.getHasTheContactClientBeenTested().equals("") && hivIndexContactObject.getHasTheContactClientBeenTested().equals("no")) {
+            viewHolder.textViewReferralDay.setVisibility(View.VISIBLE);
+            String pendingCtcRegistration = viewHolder.itemView.getContext().getString(R.string.client_was_not_tested);
             viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
             viewHolder.textViewReferralDay.setTextColor(context.getResources().getColor(R.color.due_vaccine_red));
             viewHolder.textViewReferralDay.setBackgroundColor(context.getResources().getColor(R.color.referral_text_background));

@@ -54,6 +54,9 @@
         "label": "Chagua Ushauri uliyotolewa kwa mteja kwenye tembeleo hili",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
+        "exclusive": [
+          "chk_none"
+        ]
         "options": [
           {
             "key": "chk_sexual_relationship",
@@ -126,6 +129,12 @@
             "text": "Ulishaji wa mtoto",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_child_feeding"
+          },
+          {
+            "key": "chk_none",
+            "text": "Ushauri haukutolewa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
           }
         ]
       },

@@ -3,6 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.smartregister.chw.hf">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name=".HealthFacilityApplication"
         android:allowBackup="true"
@@ -12,6 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/HFTheme"
         tools:replace="android:theme, android:icon">
+        <activity
+            android:name=".activity.AncFilterActivity"
+            android:exported="false"
+            android:theme="@style/HFTheme.NoActionBar"/>
         <activity
             android:name=".activity.LoginActivity"
             android:icon="@drawable/ic_launcher"
@@ -72,6 +88,12 @@
         <activity
             android:name=".activity.AncBirthReviewAndEmergencyPlanJsonWizardFormActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.AncPartnerTestingHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDRegistrationAdmissionInformationJsonWizardFormActivity"
             android:theme="@style/HFTheme.NoActionBar" />
@@ -221,6 +243,10 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.AncMedicalHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AncRegistrationDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
@@ -440,12 +466,39 @@
             android:name=".activity.LDPostDeliveryManagementMotherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
-
+        <activity
+            android:name=".activity.LDRegistrationDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LdSummaryDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PrEPMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.SelfTestingReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.SelfTestingReportsViewActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CdpReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.CdpReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpReportsViewActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KvpReportsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <meta-data
@@ -511,19 +564,4 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
 </manifest>

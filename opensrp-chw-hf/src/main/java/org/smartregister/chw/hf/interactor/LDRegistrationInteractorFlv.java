@@ -10,7 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
@@ -25,10 +24,15 @@ import org.smartregister.chw.hf.actionhelper.LDRegistrationTrueLabourConfirmatio
 import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
+import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.contract.BaseLDVisitContract;
 import org.smartregister.chw.ld.domain.MemberObject;
+import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
+import org.smartregister.chw.ld.util.AppExecutors;
+import org.smartregister.chw.ld.util.JsonFormUtils;
+import org.smartregister.chw.ld.util.VisitUtils;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 
 import java.util.LinkedHashMap;
@@ -154,35 +158,53 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
     public LinkedHashMap<String, BaseLDVisitAction> calculateActions(BaseLDVisitContract.View view, MemberObject memberObject, BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
 
         Context context = view.getContext();
+
         obstetricForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryObstetricHistory());
         ancClinicForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAncClinicFindings());
         ancTriageForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryRegistrationTriage());
+        admissionInformationForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation()));
+
 
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
-        if (AncDao.isANCMember(memberObject.getBaseEntityId())) {
-            if (obstetricForm != null) {
-                try {
-                    JSONArray fields = obstetricForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    populateObstetricForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        if (view.getEditMode()) {
+            Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.LD_REGISTRATION);
+            if (lastVisit != null) {
+                details = VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+
+                if (!details.isEmpty()) {
+                    JsonFormUtils.populateForm(obstetricForm, details);
+                    JsonFormUtils.populateForm(ancClinicForm, details);
+                    JsonFormUtils.populateForm(ancTriageForm, details);
+                    JsonFormUtils.populateForm(admissionInformationForm, details);
                 }
             }
-            if (ancClinicForm != null) {
-                try {
-                    JSONArray fields = ancClinicForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    populateAncFindingsForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        } else {
+            // get the preloaded data
+            if (AncDao.isANCMember(memberObject.getBaseEntityId())) {
+                if (obstetricForm != null) {
+                    try {
+                        JSONArray fields = obstetricForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        populateObstetricForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-            if (ancTriageForm != null) {
-                try {
-                    JSONArray fields = ancTriageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    populateTriageForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if (ancClinicForm != null) {
+                    try {
+                        JSONArray fields = ancClinicForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        populateAncFindingsForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (ancTriageForm != null) {
+                    try {
+                        JSONArray fields = ancTriageForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        populateTriageForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -215,8 +237,6 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
                 .build();
         actionList.put(context.getString(R.string.ld_registration_true_labour_title), ldRegistrationTrueLabourConfirmation);
 
-        admissionInformationForm = initializeHealthFacilitiesList(FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation()));
-
 
     }
 
@@ -242,12 +262,13 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
                     BaseLDVisitAction ldRegistrationAdmissionInformation = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_admission_information_title))
                             .withOptional(false)
                             .withDetails(details)
-                            .withJsonPayload(admissionInformationForm.toString())
                             .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation())
+                            .withJsonPayload(admissionInformationForm.toString())
                             .withHelper(new RegistrationAdmissionAction(memberObject, actionList, context))
                             .build();
 
                     actionList.put(context.getString(R.string.ld_registration_admission_information_title), ldRegistrationAdmissionInformation);
+                    ldRegistrationAdmissionInformation.evaluateStatus();
                 } catch (Exception e) {
                     Timber.e(e);
                 }

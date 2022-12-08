@@ -43,7 +43,7 @@
   },
   "global": {},
   "step1": {
-    "title": "GBV Analysis",
+    "title": "GBV Screening",
     "fields": [
       {
         "key": "gbv_screening",

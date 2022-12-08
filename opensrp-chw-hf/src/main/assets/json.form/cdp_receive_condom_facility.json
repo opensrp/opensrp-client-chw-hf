@@ -153,6 +153,32 @@
         }
       },
       {
+        "key": "batch_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "batch_number",
+        "type": "edit_text",
+        "hint": "Batch Number",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the batch number"
+        }
+      },
+      {
+        "key": "expiry_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "expiry_date",
+        "type": "date_picker",
+        "hint": "Expiry Date",
+        "expanded": false,
+        "min_date": "today",
+        "v_required": {
+          "value": true,
+          "err": "Expiry date is required"
+        }
+      },
+      {
         "key": "stock_event_type",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

@@ -440,7 +440,7 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     protected void startPregnancyConfirmation(HivMemberObject hivMemberObject) {
 
         AncRegisterActivity.startAncRegistrationActivity(HivProfileActivity.this, hivMemberObject.getBaseEntityId(), hivMemberObject.getPhoneNumber(),
-                org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmation(), null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName());
+                CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION, null, hivMemberObject.getFamilyBaseEntityId(), hivMemberObject.getFamilyName());
     }
 
     protected void startPregnancyOutcome(HivMemberObject hivMemberObject) {

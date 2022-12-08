@@ -76,6 +76,21 @@
           "value": "true",
           "err": "Please select an answer"
         }
+      },
+      {
+        "key": "prompt_for_tb_investigation",
+        "type": "toaster_notes",
+        "text": "Refer for TB investigation",
+        "openmrs_entity_id": "prompt_for_Tachycardia",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:tb_screening": {
+            "type": "string",
+            "ex": "equalTo(., \"presumptive\")"
+          }
+        }
       }
     ]
   }

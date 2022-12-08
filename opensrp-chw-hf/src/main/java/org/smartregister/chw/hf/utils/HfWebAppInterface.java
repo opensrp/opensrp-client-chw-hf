@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.CDPReportKeys.ISSUING_REPORTS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.CDPReportKeys.RECEIVING_REPORTS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.EID_MONTHLY;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWELVE_MONTHS;
@@ -8,6 +10,7 @@ import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 import android.content.Context;
 import android.webkit.JavascriptInterface;
+
 
 public class HfWebAppInterface {
     private static final String DEFAULT_LOCALITY_NAME = "dfltLocName";
@@ -67,9 +70,25 @@ public class HfWebAppInterface {
         }
         if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.SELF_TESTING_REPORT)){
             ReportUtils.setPrintJobName("self_testing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
-            return ReportUtils.SelfTestingReport.computeReport(ReportUtils.getReportDate());
+            return ReportUtils.SelfTestingReport.computeSelfTestingReportReport(ReportUtils.getReportDate());
         }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.KVP_REPORT)){
+            ReportUtils.setPrintJobName("kvp_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+            return ReportUtils.KvpReport.computeReport(ReportUtils.getReportDate());
+        }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
+              switch (key) {
+                case ISSUING_REPORTS:
+                    ReportUtils.setPrintJobName("CDP_issuing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.CDPReports.computeIssuingReports(ReportUtils.getReportDate());
+                  case RECEIVING_REPORTS:
+                      ReportUtils.setPrintJobName("CDP_issuing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                      return ReportUtils.CBHSReport.computeReport(ReportUtils.getReportDate());
 
+                default:
+                    return "";
+            }
+        }
         return "";
     }
 
@@ -83,6 +102,10 @@ public class HfWebAppInterface {
         if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.PMTCT_REPORT)){
             return ReportUtils.getReportPeriodForCohortReport(reportKey);
         }
+        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
+            return ReportUtils.getReportPeriodForCohortReport(reportKey);
+        }
+
         return ReportUtils.getReportPeriod();
     }
 

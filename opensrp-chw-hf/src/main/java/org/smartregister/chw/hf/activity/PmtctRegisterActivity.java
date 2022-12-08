@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.activity;
 import static org.smartregister.chw.hf.utils.Constants.HIV_STATUS.POSITIVE;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistration;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistrationForClientsKnownOnArtForm;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.getPmtctRegistrationForTiClientsForm;
 import static org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_REGISTRATION;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.VALUE;
@@ -21,7 +20,6 @@ import org.smartregister.chw.core.activity.CorePmtctRegisterActivity;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.FacilityMenu;
-import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.fragment.PmtctRegisterFragment;
 import org.smartregister.chw.hf.listener.HfFamilyBottomNavListener;
 import org.smartregister.chw.hf.presenter.PmtctRegisterPresenter;
@@ -42,10 +40,7 @@ public class PmtctRegisterActivity extends CorePmtctRegisterActivity {
     public static void startPmtctRegistrationActivity(Activity activity, String baseEntityID, String ctcNumber, boolean isKnownOnArt) {
         Intent intent = new Intent(activity, PmtctRegisterActivity.class);
         intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
-        if (HfAncDao.isTransferInClient(baseEntityID)) {
-            intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getPmtctRegistrationForTiClientsForm());
-            intent.putExtra(CTC_NUMBER, ctcNumber);
-        } else if (isKnownOnArt) {
+        if (isKnownOnArt) {
             intent.putExtra(org.smartregister.chw.pmtct.util.Constants.ACTIVITY_PAYLOAD.PMTCT_FORM_NAME, getPmtctRegistrationForClientsKnownOnArtForm());
             intent.putExtra(CTC_NUMBER, ctcNumber);
         } else {

@@ -133,7 +133,7 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
                 }
                 return true;
             case R.id.action_malaria_diagnosis:
-              //  displayShortToast(R.string.clicked_malaria_diagnosis);
+                //  displayShortToast(R.string.clicked_malaria_diagnosis);
                 startHfMalariaFollowupForm();
                 return true;
             default:

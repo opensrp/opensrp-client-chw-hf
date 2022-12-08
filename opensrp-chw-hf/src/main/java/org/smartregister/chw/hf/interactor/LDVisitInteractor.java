@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.LDBloodGroupTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDGeneralExaminationActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHBTestActionHelper;
 import org.smartregister.chw.hf.actionhelper.LDHIVTestActionHelper;
@@ -73,6 +74,10 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 if (LDDao.getHivStatus(memberObject.getBaseEntityId()) == null ||
                         (!Objects.equals(LDDao.getHivStatus(memberObject.getBaseEntityId()), Constants.HIV_STATUS.POSITIVE) && testDateIsThreeMonthsAgo(memberObject.getBaseEntityId()))) {
                     evaluateHIVStatus(details);
+                }
+                if (LDDao.getBloodGroup(memberObject.getBaseEntityId()) == null ||
+                        (Objects.equals(LDDao.getBloodGroup(memberObject.getBaseEntityId()), "test_not_conducted"))) {
+                    evaluateBloodGroupTest(details);
                 }
 
                 if (hbTestMoreThanTwoWeeksAgo(memberObject.getBaseEntityId())) {
@@ -196,6 +201,21 @@ public class LDVisitInteractor extends BaseLDVisitInteractor {
                 .withHelper(actionHelper)
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.LDVisit.getLdHivTest())
+                .build();
+
+        actionList.put(title, action);
+    }
+
+    private void evaluateBloodGroupTest(Map<String, List<VisitDetail>> details) throws BaseLDVisitAction.ValidationException {
+
+        String title = context.getString(R.string.lb_visit_blood_group_test_action_title);
+
+        LDBloodGroupTestActionHelper actionHelper = new LDBloodGroupTestActionHelper(context);
+        BaseLDVisitAction action = getBuilder(title)
+                .withOptional(true)
+                .withHelper(actionHelper)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.LDVisit.getLdBloodGroupTest())
                 .build();
 
         actionList.put(title, action);

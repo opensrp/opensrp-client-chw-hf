@@ -5,7 +5,10 @@ import static org.smartregister.chw.hf.utils.Constants.JsonForm.getLdRegistratio
 import android.app.Activity;
 import android.content.Intent;
 
+import androidx.fragment.app.Fragment;
+
 import org.smartregister.chw.core.activity.CoreLDRegisterActivity;
+import org.smartregister.chw.hf.fragment.LDDischargedRegisterFragment;
 import org.smartregister.chw.hf.fragment.LDRegisterFragment;
 import org.smartregister.chw.hf.presenter.LDRegisterPresenter;
 import org.smartregister.chw.ld.interactor.BaseLDRegisterInteractor;
@@ -38,5 +41,12 @@ public class LDRegisterActivity extends CoreLDRegisterActivity {
     @Override
     protected void initializePresenter() {
         presenter = new LDRegisterPresenter(this, new BaseLDRegisterModel(), new BaseLDRegisterInteractor());
+    }
+
+    @Override
+    protected Fragment[] getOtherFragments() {
+        Fragment[] otherFragments = new Fragment[1];
+        otherFragments[0] = new LDDischargedRegisterFragment();
+        return otherFragments;
     }
 }

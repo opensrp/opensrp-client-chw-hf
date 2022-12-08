@@ -6,6 +6,7 @@ import android.view.View;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONObject;
+import org.smartregister.chw.cdp.provider.BaseReceivedOrdersRegisterProvider;
 import org.smartregister.chw.cdp.util.Constants;
 import org.smartregister.chw.core.fragment.CoreOrdersRegisterFragment;
 import org.smartregister.chw.hf.R;
@@ -13,6 +14,7 @@ import org.smartregister.chw.hf.activity.OrderRequestDetailsActivity;
 import org.smartregister.chw.hf.presenter.RequestOrdersRegisterFragmentPresenter;
 import org.smartregister.chw.hf.utils.JsonFormUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 
 import static org.smartregister.chw.core.utils.FormUtils.getStartFormActivity;
 
@@ -20,7 +22,7 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
 
     @Override
     protected int getFragmentTitle() {
-        return R.string.menu_cdp;
+        return R.string.menu_issue_condoms;
     }
 
     @Override
@@ -63,5 +65,14 @@ public class RequestOrdersRegisterFragment extends CoreOrdersRegisterFragment {
     @Override
     public void showDetails(CommonPersonObjectClient cp) {
         OrderRequestDetailsActivity.startMe(requireActivity(), cp);
+    }
+
+
+    @Override
+    public void initializeAdapter(String tableName) {
+        BaseReceivedOrdersRegisterProvider registerProvider = new BaseReceivedOrdersRegisterProvider(getActivity(), registerActionHandler, paginationViewHandler);
+        clientAdapter = new RecyclerViewPaginatedAdapter(null, registerProvider, context().commonrepository(this.tablename));
+        clientAdapter.setCurrentlimit(20);
+        clientsView.setAdapter(clientAdapter);
     }
 }

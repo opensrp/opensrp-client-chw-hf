@@ -64,9 +64,9 @@ actions:
 name: step1_hiv
 description: hiv calculated
 priority: 1
-condition: "true"
+condition: "step1_medical_surgical_history.contains('known_on_art')"
 actions:
-  - "calculation = step1_medical_surgical_history.contains('known_on_art')? 'positive':''"
+  - "calculation = step1_medical_surgical_history.contains('known_on_art')? 'positive'"
 ---
 name: step1_known_on_art
 description: known_on_art calculated

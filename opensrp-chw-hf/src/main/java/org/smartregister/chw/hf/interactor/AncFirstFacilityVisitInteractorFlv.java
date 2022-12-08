@@ -24,6 +24,7 @@ import org.smartregister.chw.hf.actionhelper.AncBaselineInvestigationAction;
 import org.smartregister.chw.hf.actionhelper.AncBirthReviewAction;
 import org.smartregister.chw.hf.actionhelper.AncCounsellingAction;
 import org.smartregister.chw.hf.actionhelper.AncMalariaInvestigationAction;
+import org.smartregister.chw.hf.actionhelper.AncNextFollowupVisitAction;
 import org.smartregister.chw.hf.actionhelper.AncObstetricExaminationAction;
 import org.smartregister.chw.hf.actionhelper.AncPharmacyAction;
 import org.smartregister.chw.hf.actionhelper.AncTbScreeningAction;
@@ -47,6 +48,7 @@ import java.util.Set;
 import timber.log.Timber;
 
 public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisitInteractor.Flavor {
+    private boolean editMode;
     LinkedHashMap<String, BaseAncHomeVisitAction> actionList = new LinkedHashMap<>();
 
     public static JSONObject initializeHealthFacilitiesList(JSONObject form) {
@@ -148,10 +150,11 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
     public LinkedHashMap<String, BaseAncHomeVisitAction> calculateActions(BaseAncHomeVisitContract.View view, MemberObject memberObject, BaseAncHomeVisitContract.InteractorCallBack callBack) throws BaseAncHomeVisitAction.ValidationException {
 
         Context context = view.getContext();
+        this.editMode = view.getEditMode();
 
         Map<String, List<VisitDetail>> details = null;
         // get the preloaded data
-        if (view.getEditMode()) {
+        if (editMode) {
             Visit lastVisit = AncLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.ANC_FIRST_FACILITY_VISIT);
             if (lastVisit != null) {
                 details = VisitUtils.getVisitGroups(AncLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
@@ -290,10 +293,18 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         try {
             malariaInvestigationForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncFirstVisit.getMalariaInvestigation());
             malariaInvestigationForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-            malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(memberObject.getBaseEntityId()));
-            malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(memberObject.getBaseEntityId()));
-            malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(memberObject.getBaseEntityId()));
-            malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(memberObject.getBaseEntityId()));
+
+            if (editMode) {
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.previousMalariaIptDosage("malaria_preventive_therapy_ipt1", memberObject.getBaseEntityId()));
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.previousMalariaIptDosage("malaria_preventive_therapy_ipt2", memberObject.getBaseEntityId()));
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.previousMalariaIptDosage("malaria_preventive_therapy_ipt3", memberObject.getBaseEntityId()));
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.previousMalariaIptDosage("malaria_preventive_therapy_ipt4", memberObject.getBaseEntityId()));
+            } else {
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaIptDosage("malaria_preventive_therapy_ipt1", memberObject.getBaseEntityId()));
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaIptDosage("malaria_preventive_therapy_ipt2", memberObject.getBaseEntityId()));
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaIptDosage("malaria_preventive_therapy_ipt3", memberObject.getBaseEntityId()));
+                malariaInvestigationForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaIptDosage("malaria_preventive_therapy_ipt4", memberObject.getBaseEntityId()));
+            }
             if (details != null && !details.isEmpty()) {
                 HfAncJsonFormUtils.populateForm(malariaInvestigationForm, details);
             }
@@ -318,11 +329,12 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
         try {
             pharmacyForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.getPharmacy());
             pharmacyForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
-            pharmacyForm.getJSONObject("global").put("deworming_given", HfAncDao.isDewormingGiven(memberObject.getBaseEntityId()));
-            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt1", HfAncDao.malariaDosageIpt1(memberObject.getBaseEntityId()));
-            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt2", HfAncDao.malariaDosageIpt2(memberObject.getBaseEntityId()));
-            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt3", HfAncDao.malariaDosageIpt3(memberObject.getBaseEntityId()));
-            pharmacyForm.getJSONObject("global").put("malaria_preventive_therapy_ipt4", HfAncDao.malariaDosageIpt4(memberObject.getBaseEntityId()));
+
+            if (editMode) {
+                pharmacyForm.getJSONObject("global").put("deworming_given", HfAncDao.wasDewormingGivenPreviously(memberObject.getBaseEntityId()));
+            } else {
+                pharmacyForm.getJSONObject("global").put("deworming_given", HfAncDao.isDewormingGiven(memberObject.getBaseEntityId()));
+            }
             if (details != null && !details.isEmpty()) {
                 HfAncJsonFormUtils.populateForm(pharmacyForm, details);
             }
@@ -383,6 +395,14 @@ public class AncFirstFacilityVisitInteractorFlv implements AncFirstFacilityVisit
                 .withHelper(new AncBirthReviewAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.anc_recuring_visit_review_birth_and_emergency_plan), birthReview);
+
+        BaseAncHomeVisitAction nextFollowupVisitDate = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.next_visit))
+                .withOptional(true)
+                .withDetails(details)
+                .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                .withHelper(new AncNextFollowupVisitAction())
+                .build();
+        actionList.put(context.getString(R.string.next_visit), nextFollowupVisitDate);
     }
 
     private void evaluateBaselineInvestigation(MemberObject memberObject, Context context, Map<String, List<VisitDetail>> details, boolean isKnownOnART) throws BaseAncHomeVisitAction.ValidationException {

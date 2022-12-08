@@ -21,7 +21,7 @@ public class PmtctRegisterPresenter extends BasePmtctRegisterPresenter {
 
         JSONObject form = model.getFormAsJson(formName, entityId, currentLocationId);
 
-        if (formName.equals(Constants.JsonForm.getPmtctRegistrationForClientsKnownOnArtForm()) || formName.equals(Constants.JsonForm.getPmtctRegistrationForTiClientsForm())) {
+        if (formName.equals(Constants.JsonForm.getPmtctRegistrationForClientsKnownOnArtForm())) {
             String ctcNumber = ((PmtctRegisterActivity) getView()).getCtcNumber();
             if (ctcNumber == null) {
                 ctcNumber = HfAncDao.getClientCtcNumber(entityId);

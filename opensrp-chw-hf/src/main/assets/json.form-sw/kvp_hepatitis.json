@@ -1,0 +1,126 @@
+{
+    "count": "1",
+    "encounter_type": "KVP Hepatitis",
+    "entity_id": "",
+    "metadata": {
+        "start": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "start",
+            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "end": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "end",
+            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "deviceid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "deviceid",
+            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "subscriberid": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "subscriberid",
+            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "simserial": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "simserial",
+            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "phonenumber": {
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_data_type": "phonenumber",
+            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "encounter_location": ""
+    },
+    "global": {},
+    "step1": {
+        "title": "Hepatitis B&C",
+        "fields": [
+            {
+                "key": "hep_b_testing",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "hep_b_testing",
+                "type": "native_radio",
+                "label": "Mteja alipimwa homa ya ini B",
+                "options": [
+                    {
+                        "key": "positive",
+                        "text": "Amepima na ana maambukizi",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "positive"
+                    },
+                    {
+                        "key": "positive_and_referred",
+                        "text": "Amepima anamaambukizi na amepewa rufaa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "positive_and_referred"
+                    },
+                    {
+                        "key": "negative",
+                        "text": "hasi",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "negative"
+                    },
+                    {
+                        "key": "not_tested",
+                        "text": "Hajapimwa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_tested"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chaguwa jubu"
+                }
+            },
+            {
+                "key": "hep_c_testing",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "hep_c_testing",
+                "type": "native_radio",
+                "label": "Mteja amepimwa homa ya ini c",
+                "options": [
+                    {
+                        "key": "positive",
+                        "text": "Amepima na ana maambukizi",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "positive"
+                    },
+                    {
+                        "key": "positive_and_referred",
+                        "text": "Amepima anamaambukizi na amepewa rufaa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "positive_and_referred"
+                    },
+                    {
+                        "key": "negative",
+                        "text": "hasi",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "negative"
+                    },
+                    {
+                        "key": "not_tested",
+                        "text": "Hajapimwa",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_tested"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chaguwa jubu"
+                }
+            }
+        ]
+    }
+}

@@ -10,6 +10,7 @@ import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -173,6 +174,17 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         return null;
     }
 
+    public static String getBloodGroup(String baseEntityId) {
+        String sql = "SELECT blood_group FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "blood_group");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
+
     public static String getFundalHeight(String baseEntityId) {
         String sql = "SELECT fundal_height FROM " + Constants.TABLES.EC_LD_GENERAL_EXAMINATION + " WHERE base_entity_id = '" + baseEntityId + "'";
 
@@ -206,4 +218,41 @@ public class LDDao extends org.smartregister.chw.ld.dao.LDDao {
         return readData(sql, dataMap);
     }
 
+    public static boolean isClosed(String baseEntityId) {
+        String sql = "SELECT is_closed FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "is_closed");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0).equalsIgnoreCase("1");
+        return false;
+    }
+
+    public static String getLastInteractedWith(String baseEntityId) {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String sql = "SELECT last_interacted_with FROM " + Constants.TABLES.LD_CONFIRMATION + " WHERE base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "last_interacted_with");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            Date lastInteractedWithDate = new Date(Long.parseLong(res.get(0)));
+            return  df.format(lastInteractedWithDate);
+        }
+        return null;
+    }
+
+    public static String getPreviousPartographTime(String baseEntityId) {
+        String sql = "SELECT partograph_time FROM " + Constants.TABLES.EC_LD_PARTOGRAPH + " WHERE entity_id = '" + baseEntityId + "' " +
+                "order by DATETIME(substr(partograph_date, 7, 4) || '-' || substr(partograph_date, 4, 2) || '-' ||\n" +
+                "                  substr(partograph_date, 1, 2) || ' ' || partograph_time || ':' || '00') DESC LIMIT 1,1";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "partograph_time");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0)
+            return res.get(0);
+        return null;
+    }
 }

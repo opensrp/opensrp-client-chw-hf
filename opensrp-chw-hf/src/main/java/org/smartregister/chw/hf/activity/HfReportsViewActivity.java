@@ -41,7 +41,6 @@ public class HfReportsViewActivity extends AppCompatActivity {
         setUpToolbar(reportTitle);
         WebView webView = findViewById(R.id.webview);
 
-        webView.loadUrl("");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         ReportUtils.setReportPeriod(reportDate);

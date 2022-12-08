@@ -110,6 +110,25 @@
         }
       },
       {
+        "key": "other_reason_for_removing_the_client",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_for_removing_the_client",
+        "type": "edit_text",
+        "hint": "Specify other reasons",
+        "edit_type": "name",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the reason"
+        },
+        "relevance": {
+          "step1:remove_reason": {
+            "type": "string",
+            "ex": "equalTo(., \"Other\")"
+          }
+        }
+      },
+      {
         "key": "dob",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

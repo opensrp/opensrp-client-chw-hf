@@ -18,7 +18,7 @@ public class SelfTestingMonthlyReportObject extends ReportObject {
             "9","9-i","9-ii","9-iii","9-iv","9-v","9-vi"
     };
     private final String[] ageGroups = new String[]{
-            "15-19","20-24","25-29","30-34","35-39","40-44","45-49",">50"
+            "18-19","20-24","25-29","30-34","35-39","40-44","45-49",">50"
     };
     private final String[] genderGroups = new String[]{
             "ME","KE"
@@ -43,6 +43,13 @@ public class SelfTestingMonthlyReportObject extends ReportObject {
                 }
             }
         }
+        jsonObject.put("hivst-4-a", ReportDao.getReportPerIndicatorCode("hivst-4-a", reportDate));
+        jsonObject.put("hivst-5-a", ReportDao.getReportPerIndicatorCode("hivst-5-a", reportDate));
+        jsonObject.put("hivst-6-a", ReportDao.getReportPerIndicatorCode("hivst-6-a", reportDate));
+        jsonObject.put("hivst-4-b", ReportDao.getReportPerIndicatorCode("hivst-4-b", reportDate));
+        jsonObject.put("hivst-5-b", ReportDao.getReportPerIndicatorCode("hivst-5-b", reportDate));
+        jsonObject.put("hivst-6-b", ReportDao.getReportPerIndicatorCode("hivst-6-b", reportDate));
+
         // get total of all Male & Female in Qn 2 & 7
         //and the whole total for both of them
         funcGetTotal();

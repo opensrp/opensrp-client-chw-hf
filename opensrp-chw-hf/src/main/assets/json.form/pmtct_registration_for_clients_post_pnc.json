@@ -1,0 +1,700 @@
+{
+  "count": "1",
+  "encounter_type": "PMTCT Post PNC Registration",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "ART",
+    "fields": [
+      {
+        "key": "relational_id",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "relational_id",
+        "type": "hidden"
+      },
+      {
+        "key": "pmtct_register_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "pmtct_register_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registation_for_clients_post_pnc_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_registration_date",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "hiv_registration_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registation_for_clients_post_pnc_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "known_on_art",
+        "type": "native_radio",
+        "label": "Is the client on ART?",
+        "openmrs_entity_id": "known_on_art",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "notify_retest",
+        "type": "toaster_notes",
+        "text": "Please conduct HIV verification test for the client",
+        "openmrs_entity_id": "notify_retest",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        }
+      },
+      {
+        "key": "test_results",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "test_results",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registation_for_clients_post_pnc_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv",
+        "type": "edit_text",
+        "hidden": "true",
+        "openmrs_entity_id": "hiv",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registation_for_clients_post_pnc_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "hiv_status",
+        "type": "native_radio",
+        "label": "HIV status",
+        "openmrs_entity_id": "hiv_status",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity_id": "positive",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity_id": "negative",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "has_the_client_been_provided_with_ctc_number",
+        "type": "native_radio",
+        "label": "Has the client been provided with CTC Number?",
+        "openmrs_entity_id": "has_the_client_been_provided_with_ctc_number",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_for_clients_post_pnc_relevance.yml"
+            }
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "CTC Number",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "CTC number should be of the format (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid CTC Number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid CTC Number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_for_clients_post_pnc_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_transfer_in_client",
+        "type": "native_radio",
+        "label": "Is the client a Transfer-In (TI) Client?",
+        "openmrs_entity_id": "is_transfer_in_client",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_id": "yes",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_id": "no",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "pmtct_register_date_from_originating_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_register_date_from_originating_facility",
+        "type": "date_picker",
+        "hint": "Date of PMTCT Registration at the originating health facility",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of PMTCT Registration at the originating health facility"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_for_clients_post_pnc_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pmtct_register_date_at_this_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_register_date_at_this_facility",
+        "type": "date_picker",
+        "hint": "Date of PMTCT Registration",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of PMTCT Registration"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_for_clients_post_pnc_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "notify_continue_with_anc",
+        "type": "toaster_notes",
+        "text": "Ask the client to continue with routine Services",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:hiv_status": {
+            "type": "string",
+            "ex": "equalTo(.,\"negative\")"
+          }
+        }
+      },
+      {
+        "key": "next_facility_visit_date",
+        "type": "hidden",
+        "openmrs_entity_id": "next_facility_visit_date",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registation_for_clients_post_pnc_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "visit_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "visit_number",
+        "type": "hidden",
+        "value": "1"
+      },
+      {
+        "key": "followup_status",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_status",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registation_for_clients_post_pnc_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "delivery_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "delivery_date",
+        "type": "date_picker",
+        "hint": "Delivery Date",
+        "expanded": false,
+        "min_date": "today-17m",
+        "max_date": "today-42d",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter date the woman delivered"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_for_clients_post_pnc_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "risk_category",
+        "type": "native_radio",
+        "label": "HIV exposure risk of the newborn(s)",
+        "openmrs_entity_id": "risk_category",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "high",
+            "text": "High",
+            "openmrs_entity_id": "high",
+            "openmrs_entity": "concept"
+          },
+          {
+            "key": "low",
+            "text": "Low",
+            "openmrs_entity_id": "low",
+            "openmrs_entity": "concept"
+          }
+        ],
+        "v_required": {
+          "value": true,
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_for_clients_post_pnc_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "no_immediate_new_born",
+        "type": "repeating_group",
+        "reference_edit_text_hint": "Number of children",
+        "repeating_group_label": "Baby Details #",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "",
+        "openmrs_entity_id": "",
+        "repeating_group_max": "4",
+        "expand_on_text_change": "true",
+        "value": [
+          {
+            "key": "spacer",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "spacer",
+            "spacer_height": "15dp"
+          },
+          {
+            "key": "surname",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "type": "edit_text",
+            "hint": "Surname",
+            "edit_type": "name",
+            "v_regex": {
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+              "err": "Please enter a valid name"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Please enter the surname"
+            },
+            "relevance": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "anc_pregnancy_outcome_relevance.yml"
+                }
+              }
+            }
+          },
+          {
+            "key": "same_as_fam_name_chk",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "",
+            "openmrs_data_type": "text",
+            "type": "check_box",
+            "options": [
+              {
+                "key": "same_as_fam_name",
+                "text": "Surname same as family name",
+                "text_size": "18px",
+                "value": "false"
+              }
+            ]
+          },
+          {
+            "key": "first_name",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "person",
+            "openmrs_entity_id": "first_name",
+            "type": "edit_text",
+            "hint": "First name",
+            "edit_type": "name",
+            "v_required": {
+              "value": "true",
+              "err": "Please enter the first name"
+            },
+            "v_regex": {
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+              "err": "Please enter a valid name"
+            }
+          },
+          {
+            "key": "middle_name",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "person",
+            "openmrs_entity_id": "middle_name",
+            "type": "edit_text",
+            "hint": "Middle name",
+            "edit_type": "name",
+            "v_regex": {
+              "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+              "err": "Please enter a valid name"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Please enter the middle name"
+            }
+          },
+          {
+            "key": "dob",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "person",
+            "openmrs_entity_id": "birthdate",
+            "type": "hidden"
+          },
+          {
+            "key": "gender",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "person",
+            "openmrs_entity_id": "gender",
+            "type": "spinner",
+            "hint": "Sex",
+            "values": [
+              "Male",
+              "Female",
+              "Ambiguous"
+            ],
+            "keys": [
+              "Male",
+              "Female",
+              "Ambiguous"
+            ],
+            "v_required": {
+              "value": "true",
+              "err": "Gender required"
+            }
+          },
+          {
+            "key": "disabilities",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "disabilities",
+            "type": "spinner",
+            "hint": "Physical disabilities",
+            "values": [
+              "Yes",
+              "No"
+            ],
+            "keys": [
+              "Yes",
+              "No"
+            ],
+            "openmrs_choice_ids": {
+              "Yes": "Yes",
+              "No": "No"
+            },
+            "v_required": {
+              "value": "true",
+              "err": "Required"
+            }
+          },
+          {
+            "key": "prompt_for_disabilities",
+            "type": "toaster_notes",
+            "text": "Refer for further management",
+            "openmrs_entity_id": "",
+            "openmrs_entity": "",
+            "openmrs_entity_parent": "",
+            "toaster_type": "problem",
+            "relevance": {
+              "step1:disabilities": {
+                "type": "string",
+                "ex": "equalTo(.,\"Yes\")"
+              }
+            }
+          },
+          {
+            "key": "type_of_disability",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "type_of_disability",
+            "type": "check_box",
+            "combine_checkbox_option_values": "true",
+            "label": "Type of disability",
+            "label_text_style": "normal",
+            "text_color": "#C0C0C0",
+            "options": [
+              {
+                "key": "physical_impairments",
+                "text": "Mobility and Physical Impairments",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "physical_impairments"
+              },
+              {
+                "key": "spinal_cord_disability",
+                "text": "Spinal Cord Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "spinal_cord_disability"
+              },
+              {
+                "key": "brain_disability",
+                "text": "Head Injuries - Brain Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "brain_disability"
+              },
+              {
+                "key": "vision_disability",
+                "text": "Vision Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "vision_disability"
+              },
+              {
+                "key": "hearing_disability",
+                "text": "Hearing Disability",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "hearing_disability"
+              },
+              {
+                "key": "learning_disabilities",
+                "text": "Cognitive or Learning Disabilities",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "learning_disabilities"
+              },
+              {
+                "key": "psychological_disorders",
+                "text": "Psychological Disorders",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "psychological_disorders"
+              },
+              {
+                "key": "invisible_disabilities",
+                "text": "Invisible Disabilities",
+                "value": false,
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "invisible_disabilities"
+              }
+            ],
+            "relevance": {
+              "rules-engine": {
+                "ex-rules": {
+                  "rules-dynamic": "anc_pregnancy_outcome_relevance.yml"
+                }
+              }
+            }
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number of children"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_for_clients_post_pnc_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "notify_first_visit",
+        "type": "toaster_notes",
+        "text": "Perform PMTCT Visit",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info",
+        "relevance": {
+          "step1:known_on_art": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      }
+    ]
+  }
+}

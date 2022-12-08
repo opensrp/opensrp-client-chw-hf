@@ -20,6 +20,7 @@ import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.hf.activity.HivProfileActivity;
+import org.smartregister.chw.hf.activity.KvpProfileActivity;
 import org.smartregister.chw.hf.activity.LDProfileActivity;
 import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
@@ -89,6 +90,9 @@ public class AllClientsUtils {
                 case CoreConstants.REGISTER_TYPE.LD:
                     AllClientsUtils.goToLDProfile(activity, commonPersonObjectClient);
                     break;
+                case CoreConstants.REGISTER_TYPE.KVP:
+                    AllClientsUtils.goToKVPProfile(activity, commonPersonObjectClient);
+                    break;
                 default:
                     AllClientsUtils.goToOtherMemberProfile(activity, commonPersonObjectClient, bundle,
                             familyDetailsModel.getFamilyHead(), familyDetailsModel.getPrimaryCareGiver());
@@ -139,6 +143,10 @@ public class AllClientsUtils {
 
     public static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {
         LDProfileActivity.startProfileActivity(activity, patient.getCaseId());
+    }
+
+    public static void goToKVPProfile(Activity activity, CommonPersonObjectClient patient) {
+        KvpProfileActivity.startProfile(activity, patient.getCaseId());
     }
 
     private static Intent initProfileActivityIntent(Activity activity, CommonPersonObjectClient patient, Bundle bundle, Class clazz) {

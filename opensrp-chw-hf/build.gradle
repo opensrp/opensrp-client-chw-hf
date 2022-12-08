@@ -206,11 +206,11 @@ android {
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
             buildConfigField "String", 'opensrp_url', '"https://ucs.nacp.go.tz/opensrp/"'
-            buildConfigField "String", 'opensrp_url_debug', '"https://ucs.nacp.go.tz/opensrp/"'
+            buildConfigField "String", 'opensrp_url_debug', '"http://50.116.15.4:8082/opensrp/"'
 //            buildConfigField "String", 'opensrp_url', '"http://45.79.110.194:8082/opensrp/"'
 //            buildConfigField "String", 'opensrp_url_debug', '"http://45.79.110.194:8082/opensrp/"'
             buildConfigField "boolean", 'SUPPORT_QR', 'true'
-            buildConfigField "int", "DATABASE_VERSION", '13'
+            buildConfigField "int", "DATABASE_VERSION", '15'
             buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
             buildConfigField "long", "MAX_SERVER_TIME_DIFFERENCE", "1800000l"
             buildConfigField "boolean", "TIME_CHECK", "false"
@@ -284,7 +284,7 @@ flavors.each { productFlavorName ->
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.5.35.4-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.5.36.10-NACP-SNAPSHOT@aar') {
 //    implementation(project(":opensrp-chw-core")) {
         transitive = true
         exclude group: 'com.android.support', module: 'appcompat-v7'
@@ -296,7 +296,7 @@ dependencies {
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-ld'
     }
     
-    implementation('org.smartregister:opensrp-client-chw-ld:1.0.29-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-ld:1.0.30-NACP-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'

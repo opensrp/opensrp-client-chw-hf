@@ -46,12 +46,12 @@
     "title": "Hepatitis B&C",
     "fields": [
       {
-        "key": "hep_b_screening",
+        "key": "hep_b_testing",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hep_b_screening",
+        "openmrs_entity_id": "hep_b_testing",
         "type": "native_radio",
-        "label": "Client screened for Hepatitis B virus (HBV)",
+        "label": "Client tested for Hepatitis B virus (HBV)",
         "options": [
           {
             "key": "positive",
@@ -84,12 +84,12 @@
         }
       },
       {
-        "key": "hep_c_screening",
+        "key": "hep_c_testing",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hep_c_screening",
+        "openmrs_entity_id": "hep_c_testing",
         "type": "native_radio",
-        "label": "Client screened for Hepatitis C virus (HCV)",
+        "label": "Client tested for Hepatitis C virus (HCV)",
         "options": [
           {
             "key": "positive",

@@ -20,7 +20,7 @@ import org.smartregister.chw.hf.actionhelper.HeiArvPrescriptionHighOrLowRiskInfa
 import org.smartregister.chw.hf.actionhelper.HeiArvPrescrptionHighRiskInfantAction;
 import org.smartregister.chw.hf.actionhelper.HeiCtxAction;
 import org.smartregister.chw.hf.actionhelper.HeiDnaPcrTestAction;
-import org.smartregister.chw.hf.actionhelper.NextFollowupVisitAction;
+import org.smartregister.chw.hf.actionhelper.PmtctNextFollowupVisitAction;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.pmtct.PmtctLibrary;
@@ -189,7 +189,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                 .withDetails(details)
                 .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
                 .withJsonPayload(nextVisitForm.toString())
-                .withHelper(new NextFollowupVisitAction())
+                .withHelper(new PmtctNextFollowupVisitAction())
                 .build();
         actionList.put(context.getString(R.string.next_visit), NextFollowupVisitDate);
     }

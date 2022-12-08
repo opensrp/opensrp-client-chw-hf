@@ -284,6 +284,7 @@ public class PncMedicalHistoryActivity extends CorePncMedicalHistoryActivity {
                         // HIV Test
                         case "hiv":
                         case "hiv_test_result_date":
+                        case "next_facility_visit_date":
                             hivMap.put(visitDetail.getVisitKey(), visitDetail.getDetails());
                             break;
                         default:

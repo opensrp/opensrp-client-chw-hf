@@ -114,7 +114,7 @@
       {
         "key": "using_family_planning_method",
         "type": "native_radio",
-        "label": "Is the client using Family Planning Method?",
+        "label": "Is the client already using any Family Planning Method?",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "using_family_planning_method",
         "openmrs_entity_parent": "",
@@ -135,6 +135,38 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "has_the_client_been_provided_fp_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "has_the_client_been_provided_fp_method",
+        "type": "native_radio",
+        "label": "Has the client been provided any family planning method?",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:using_family_planning_method": {
+            "type": "string",
+            "ex": "equalTo(.,\"no\")"
+          }
         }
       },
       {
@@ -192,12 +224,6 @@
             "text": "Referred for other FP services",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_referred_fp_services"
-          },
-          {
-            "key": "chk_none",
-            "text": "None",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {
@@ -205,9 +231,9 @@
           "err": "Please answer this question"
         },
         "relevance": {
-          "step1:using_family_planning_method": {
+          "step1:has_the_client_been_provided_fp_method": {
             "type": "string",
-            "ex": "equalTo(.,\"no\")"
+            "ex": "equalTo(.,\"yes\")"
           }
         }
       },

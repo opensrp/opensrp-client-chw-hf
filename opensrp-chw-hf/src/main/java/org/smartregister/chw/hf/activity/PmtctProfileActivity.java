@@ -136,7 +136,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.findItem(R.id.action_remove_member).setVisible(false);
+        menu.findItem(R.id.action_remove_member).setVisible(true);
         if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {
             int age = memberObject.getAge();
             menu.findItem(R.id.action_hivst_registration).setVisible(HivstDao.isRegisteredForHivst(baseEntityId) && age >= 15);
@@ -144,12 +144,11 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         return true;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         try {
-            if (itemId == R.id.action_mark_as_deceased) {
+            if (itemId == R.id.action_remove_member) {
                 removeMember();
                 return true;
             } else if (itemId == R.id.action_issue_pmtct_followup_referral) {

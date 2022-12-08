@@ -1,0 +1,187 @@
+{
+  "validate_on_submit": true,
+  "show_errors_on_submit": false,
+  "count": "1",
+  "encounter_type": "Blood Group Test",
+  "entity_id": "",
+  "relational_id": "",
+  "global": {},
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Blood Group Test",
+    "fields": [
+      {
+        "key": "blood_group",
+        "type": "spinner",
+        "hint": "Blood Group",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_group",
+        "openmrs_entity_parent": "",
+        "values": [
+          "A",
+          "B",
+          "AB",
+          "O",
+          "Test not conducted"
+        ],
+        "keys": [
+          "A",
+          "B",
+          "AB",
+          "O",
+          "test_not_conducted"
+        ],
+        "openmrs_choice_ids": {
+          "A": "A",
+          "B": "B",
+          "AB": "AB",
+          "O": "O",
+          "test_not_conducted": "test_not_conducted"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please choose a blood group"
+        }
+      },
+      {
+        "key": "rh_factor",
+        "type": "native_radio",
+        "label": "Rh",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "rh_factor",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:blood_group": {
+            "type": "string",
+            "ex": "notEqualTo(., \"test_not_conducted\")"
+          }
+        }
+      },
+      {
+        "key": "management_provided_for_rh",
+        "type": "native_radio",
+        "label": "Was management provided for negative RH?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "management_provided_for_rh",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:rh_factor": {
+            "type": "string",
+            "ex": "equalTo(., \"negative\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_rh_negative",
+        "type": "toaster_notes",
+        "text": "Provide management according to SOP and Standard Guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:management_provided_for_rh": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_conducting_blood_group_test",
+        "type": "edit_text",
+        "hint": "Why was the Blood Group Test not conducted?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_conducting_blood_group_test",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "step1:blood_group": {
+            "type": "string",
+            "ex": "equalTo(., \"test_not_conducted\")"
+          }
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter the reason"
+        }
+      }
+    ]
+  }
+}

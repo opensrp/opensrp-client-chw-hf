@@ -145,7 +145,6 @@
         "key": "hvl_sample_id",
         "type": "edit_text",
         "hint": "HVL Sample ID",
-        "edit_type": "number",
         "openmrs_entity_id": "hvl_sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

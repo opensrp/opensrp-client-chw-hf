@@ -561,14 +561,14 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return new SimpleDateFormat("yyyy-MM-dd").format(date);
     }
 
-    private JSONObject getFormAsJson(String formName, String entityId, String currentLocationId) throws Exception {
+    public static JSONObject getFormAsJson(String formName, String entityId, String currentLocationId) throws Exception {
         JSONObject jsonObject = getJsonForm(formName);
         org.smartregister.chw.anc.util.JsonFormUtils.getRegistrationForm(jsonObject, entityId, currentLocationId);
 
         return jsonObject;
     }
 
-    private JSONObject getJsonForm(String formName) throws Exception {
+    public static JSONObject getJsonForm(String formName) throws Exception {
         return FormUtils.getInstance(HealthFacilityApplication.getInstance().getApplicationContext().getApplicationContext()).getFormJson(formName);
     }
 

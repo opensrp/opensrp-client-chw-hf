@@ -576,19 +576,22 @@
           "A",
           "B",
           "AB",
-          "O"
+          "O",
+          "Test not conducted"
         ],
         "keys": [
           "A",
           "B",
           "AB",
-          "O"
+          "O",
+          "test_not_conducted"
         ],
         "openmrs_choice_ids": {
           "A": "A",
           "B": "B",
           "AB": "AB",
-          "O": "O"
+          "O": "O",
+          "test_not_conducted": "test_not_conducted"
         },
         "v_required": {
           "value": "true",
@@ -619,6 +622,12 @@
         "v_required": {
           "value": "true",
           "err": "Please answer this question"
+        },
+        "relevance": {
+          "step1:blood_group": {
+            "type": "string",
+            "ex": "notEqualTo(., \"test_not_conducted\")"
+          }
         }
       },
       {

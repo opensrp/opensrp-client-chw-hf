@@ -2,8 +2,13 @@ package org.smartregister.chw.hf.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
 
 import org.smartregister.chw.core.activity.CoreKvpProfileActivity;
+import org.smartregister.chw.hf.R;
+import org.smartregister.chw.kvp.KvpLibrary;
+import org.smartregister.chw.kvp.domain.Visit;
 import org.smartregister.chw.kvp.util.Constants;
 
 public class PrEPProfileActivity extends CoreKvpProfileActivity {
@@ -18,6 +23,38 @@ public class PrEPProfileActivity extends CoreKvpProfileActivity {
 
     @Override
     public void openFollowupVisit() {
-      PrEPVisitActivity.startPrEPVisitActivity(this,memberObject.getBaseEntityId(), false);
+        PrEPVisitActivity.startPrEPVisitActivity(this, memberObject.getBaseEntityId(), false);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.textview_continue) {
+            PrEPVisitActivity.startPrEPVisitActivity(this, memberObject.getBaseEntityId(), true);
+        } else {
+            super.onClick(view);
+        }
+    }
+
+    @Override
+    public void refreshMedicalHistory(boolean hasHistory) {
+        Visit kvpBehavioralServices = getVisit(Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT);
+        if (kvpBehavioralServices != null) {
+            rlLastVisit.setVisibility(View.VISIBLE);
+            findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
+            ((TextView) findViewById(R.id.vViewHistory)).setText(R.string.visits_history);
+            ((TextView) findViewById(R.id.ivViewHistoryArrow)).setText(getString(R.string.view_visits_history));
+        } else {
+            rlLastVisit.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void openMedicalHistory() {
+        PrEPMedicalHistoryActivity.startMe(this, memberObject);
+    }
+
+    private Visit getVisit(String eventType) {
+        return KvpLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), eventType);
     }
 }

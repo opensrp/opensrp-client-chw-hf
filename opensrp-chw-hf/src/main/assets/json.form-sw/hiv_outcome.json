@@ -93,7 +93,7 @@
               }
             }
           ],
-          "required_status": "yes:Tafadhali chagua hatua zilizochukuliwa",
+          "required_status": "yes:Please select action taken",
           "dependent_calculations": [
             "hiv_facility_visit_date"
           ]

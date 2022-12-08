@@ -81,6 +81,9 @@
         "openmrs_entity_id": "counselling_topics_provided",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
+        "exclusive": [
+          "chk_none"
+        ],
         "options": [
           {
             "key": "chk_hiv_info",
@@ -171,6 +174,12 @@
             "text": "Jinsi ya kuishi na maambukizi ya VVU",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "chk_living_with_hiv"
+          },
+          {
+            "key": "chk_none",
+            "text": "Ushauri haukutolewa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "chk_none"
           }
         ],
         "v_required": {

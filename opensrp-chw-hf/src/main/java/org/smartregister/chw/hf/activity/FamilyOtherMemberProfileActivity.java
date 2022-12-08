@@ -153,6 +153,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startKvpPrEPRegistration() {
+        //do nothing--> this is for chw
+    }
+
+    @Override
+    protected void startKvpRegistration() {
         String gender = AllClientsUtils.getClientGender(baseEntityId);
         String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
         int age = Utils.getAgeFromDate(dob);
@@ -162,6 +167,19 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         if (gender.equalsIgnoreCase(Constants.GENDER.FEMALE)) {
             KvpRegisterActivity.startKvpScreeningFemale(FamilyOtherMemberProfileActivity.this, baseEntityId, gender, age);
         }
+    }
+
+    @Override
+    protected void startPrEPRegistration() {
+        String gender = AllClientsUtils.getClientGender(baseEntityId);
+        String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+        int age = Utils.getAgeFromDate(dob);
+        PrEPRegisterActivity.startMe(this, baseEntityId, gender, age);
+    }
+
+    @Override
+    protected void startAgywScreening() {
+        //do nothing
     }
 
     @Override
@@ -275,6 +293,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
             if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
                 menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
+                menu.findItem(R.id.action_pmtct_register).setVisible(true);
             }
             menu.findItem(R.id.action_fp_change).setVisible(false);
             menu.findItem(R.id.action_fp_initiation).setVisible(false);
@@ -287,7 +306,9 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         }
 
         if (HealthFacilityApplication.getApplicationFlavor().hasKvpPrEP()) {
-            menu.findItem(R.id.action_kvp_prep_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId));
+            String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
+            int age = Utils.getAgeFromDate(dob);
+            menu.findItem(R.id.action_kvp_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId) && age >= 15);
         }
 
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
@@ -311,7 +332,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     protected void startPregnancyConfirmation() {
         AncRegisterActivity.startAncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                Constants.JsonForm.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
+                CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION, null, familyBaseEntityId, familyName);
     }
 
     private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {

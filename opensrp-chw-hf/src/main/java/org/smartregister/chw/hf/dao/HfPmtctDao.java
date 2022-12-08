@@ -547,6 +547,20 @@ public class HfPmtctDao extends CorePmtctDao {
         return false;
     }
 
+    public static boolean wasPreviousResultsAfterEAC(String baseEntityId) {
+        String sql = "SELECT enroll_to_eac " +
+                "FROM ec_pmtct_hvl_results " +
+                "WHERE entity_id = '" + baseEntityId + "'" +
+                " ORDER BY hvl_result_date DESC" +
+                " LIMIT 1,1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "enroll_to_eac");
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
+
     public static Date getDateEACRecorded(String baseEntityId) {
         String sql = "SELECT strftime('%d-%m-%Y', form_submission_timestamp) as record_date " +
                 " FROM ec_pmtct_eac_visit " +
@@ -612,5 +626,10 @@ public class HfPmtctDao extends CorePmtctDao {
             return res.get(0);
         }
         return null;
+    }
+
+    public static void deleteEntryFromTableByFormSubmissionId(String tableName, String submissionId) {
+        String sql = "delete from " + tableName + " where base_entity_id = '" + submissionId + "'";
+        updateDB(sql);
     }
 }

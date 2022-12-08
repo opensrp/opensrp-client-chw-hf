@@ -955,7 +955,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-15-19"
     description: "BBA"
@@ -966,7 +966,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-20-24"
     description: "BBA"
@@ -977,7 +977,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-25-29"
     description: "BBA"
@@ -989,7 +989,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-30-34"
     description: "BBA"
@@ -1000,7 +1000,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-35+"
     description: "BBA"
@@ -1010,7 +1010,7 @@ indicators:
                       WHERE epo.delivery_place = 'Birth before Arrival (BBA)'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-10-14"
     description: "TBA"
@@ -1021,7 +1021,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-15-19"
     description: "TBA"
@@ -1032,7 +1032,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-20-24"
     description: "TBA"
@@ -1043,7 +1043,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-25-29"
     description: "TBA"
@@ -1054,7 +1054,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-30-34"
     description: "TBA"
@@ -1065,7 +1065,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-35+"
     description: "TBA"
@@ -1075,7 +1075,7 @@ indicators:
                       WHERE epo.delivery_place = 'Traditional birth attendant'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-10-14"
     description: "Idadi ya waliojifungulia nyumbani"
@@ -1086,7 +1086,7 @@ indicators:
                         AND (date(fm.dob, '+10 years') <= date('now'))
                         AND (date(fm.dob, '+15 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-15-19"
     description: "Idadi ya waliojifungulia nyumbani"
@@ -1097,7 +1097,7 @@ indicators:
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-20-24"
     description: "Idadi ya waliojifungulia nyumbani"
@@ -1108,7 +1108,7 @@ indicators:
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-25-29"
     description: "Idadi ya waliojifungulia nyumbani"
@@ -1119,7 +1119,7 @@ indicators:
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-30-34"
     description: "Idadi ya waliojifungulia nyumbani"
@@ -1130,7 +1130,7 @@ indicators:
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-35+"
     description: "Idadi ya waliojifungulia nyumbani"
@@ -1140,7 +1140,7 @@ indicators:
                       WHERE epo.delivery_place = 'At home'
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
-                            date(substr(epo.delivery_place, 7, 4) || '-' || substr(epo.delivery_place, 4, 2) || '-' || '01')"
+                            date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-10-14"
     description: "Waliopata ushauri wa uzazi wa mpango"

@@ -1,0 +1,153 @@
+{
+  "count": "1",
+  "encounter_type": "KVP Family Planning",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "Family Planning",
+    "fields": [
+      {
+        "key": "family_planning_service",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "family_planning_service",
+        "type": "native_radio",
+        "label": "Family planning service provided",
+        "options": [
+          {
+            "key": "pill",
+            "text": "Pill",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pill"
+          },
+          {
+            "key": "injectable",
+            "text": "Injectables",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "injectable"
+          },
+          {
+            "key": "implanon",
+            "text": "Implanon",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "implanon"
+          },
+          {
+            "key": "jadelle",
+            "text": "Jadelle",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "jadelle"
+          },
+          {
+            "key": "iucd",
+            "text": "IUCD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "iucd"
+          },
+          {
+            "key": "traditional",
+            "text": "Traditional",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "traditional"
+          },
+          {
+            "key": "tube_ligation",
+            "text": "Tube Ligation",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tube_ligation"
+          },
+          {
+            "key": "referral",
+            "text": "Referral",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "referral"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not applicable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
+          },
+          {
+            "key": "refused",
+            "text": "Refused",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "refused"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      },
+      {
+        "key": "condom_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_provided",
+        "label": "Was the client also provided with condom as a family planning method?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        }
+      }
+    ]
+  }
+}

@@ -85,7 +85,7 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
     public void startPartnerTestingForm(MemberObject memberObject) {
         JSONObject partnerTestingForm;
         try {
-            partnerTestingForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.AncRecurringVisit.PARTNER_TESTING);
+            partnerTestingForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(CoreConstants.JSON_FORM.PARTNER_TESTING);
             partnerTestingForm.getJSONObject("global").put("hiv_testing_done", HfAncDao.isPartnerTestedForHiv(memberObject.getBaseEntityId()));
             partnerTestingForm.getJSONObject("global").put("gestational_age", memberObject.getGestationAge());
             partnerTestingForm.getJSONObject("global").put("syphilis_testing_done", HfAncDao.isPartnerTestedForSyphilis(memberObject.getBaseEntityId()));
@@ -99,8 +99,8 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
             JSONObject partnerHivTestNumberField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "partner_hiv_test_number");
             JSONObject gest_ageField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gest_age");
             partnerHivTestNumberField.put(JsonFormUtils.VALUE, HfAncDao.getNextPartnerHivTestNumber(memberObject.getBaseEntityId()));
-            gest_ageField.put(JsonFormUtils.VALUE,memberObject.getGestationAge());
-            if(HfAncDao.getNextPartnerHivTestNumber(memberObject.getBaseEntityId()) == 2){
+            gest_ageField.put(JsonFormUtils.VALUE, memberObject.getGestationAge());
+            if (HfAncDao.getNextPartnerHivTestNumber(memberObject.getBaseEntityId()) == 2) {
                 renamePartnerSecondHivAt32.put("label", getView().getContext().getString(R.string.second_hiv_test_results_partner));
             }
 
@@ -115,6 +115,6 @@ public class AncMemberProfilePresenter extends CoreAncMemberProfilePresenter {
     }
 
     public void savePartnerTestingEvent(AllSharedPreferences allSharedPreferences, String jsonString, String entityID) throws Exception {
-        ancMemberProfileInteractor.createTestingEvent(allSharedPreferences,jsonString,entityID);
+        ancMemberProfileInteractor.createTestingEvent(allSharedPreferences, jsonString, entityID);
     }
 }

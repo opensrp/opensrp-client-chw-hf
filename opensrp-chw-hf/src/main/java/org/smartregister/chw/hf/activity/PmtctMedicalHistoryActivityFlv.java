@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -16,11 +17,15 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.core.activity.DefaultAncMedicalHistoryActivityFlv;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.pmtct.util.Constants;
 
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -90,7 +95,7 @@ public class PmtctMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActi
             }
 
             processLastVisit(days, context);
-            processVisit(hf_visits, context);
+            processVisit(hf_visits, visits, context);
         }
     }
 
@@ -120,7 +125,7 @@ public class PmtctMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActi
     }
 
 
-    protected void processVisit(List<Map<String, String>> hf_visits, Context context) {
+    protected void processVisit(List<Map<String, String>> hf_visits, List<Visit> visits, Context context) {
         if (hf_visits != null && hf_visits.size() > 0) {
             linearLayoutHealthFacilityVisit.setVisibility(View.VISIBLE);
 
@@ -149,8 +154,24 @@ public class PmtctMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActi
                 TextView tvOtherReasonForNotPrescribingArv = view.findViewById(R.id.other_reason_for_not_prescribing_arv);
                 TextView tvNumberOfArvRegimesDaysDispensed = view.findViewById(R.id.number_of_arv_regimes_days_dispensed);
                 TextView tvNextFacilityVisitDate = view.findViewById(R.id.next_facility_visit_date);
+                TextView tvEdit = view.findViewById(R.id.textview_edit);
 
-                evaluateTitle(context, x, vals, tvTitle);
+                evaluateTitle(context, x, visits.get(x).getDate(), tvTitle);
+
+
+                // Updating visibility of EDIT button if the visit is the last visit
+                if (x == visits.size() - 1)
+                    tvEdit.setVisibility(View.VISIBLE);
+                else
+                    tvEdit.setVisibility(View.GONE);
+
+                tvEdit.setOnClickListener(view1 -> {
+                    ((Activity) context).finish();
+                    Visit visit = visits.get(0);
+                    if (visit != null && visit.getVisitType().equalsIgnoreCase(Constants.EVENT_TYPE.PMTCT_FOLLOWUP) && visit.getBaseEntityId() != null)
+                        PmtctFollowupVisitActivity.startPmtctFollowUpActivity((Activity) context, visit.getBaseEntityId(), true);
+                });
+
 
                 evaluateView(context, vals, tvFollowupStatus, "followup_status", R.string.pmtct_followup_status, "pmtct_followup_status_");
                 evaluateView(context, vals, tvCounsellingTopicsProvided, "counselling_topics_provided", R.string.pmtct_counselling_topics_provided, "pmtct_counselling_topics_provided_");
@@ -197,13 +218,12 @@ public class PmtctMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActi
     }
 
 
-    private void evaluateTitle(Context context, int x, Map<String, String> vals, TextView tvTitle) {
-        String visitDate = vals.get("followup_visit_date");
-        if (StringUtils.isBlank(visitDate)) {
+    private void evaluateTitle(Context context, int x, Date visitDate, TextView tvTitle) {
+        if (visitDate == null) {
             tvTitle.setVisibility(View.GONE);
         } else {
             try {
-                tvTitle.setText(MessageFormat.format(context.getString(R.string.pmtct_visit_title), x + 1, visitDate));
+                tvTitle.setText(MessageFormat.format(context.getString(R.string.pmtct_visit_title), x + 1, new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(visitDate)));
             } catch (Exception e) {
                 Timber.e(e);
             }

@@ -29,6 +29,8 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
     protected ConstraintLayout ldReportsLayout;
     protected ConstraintLayout motherChampionReportsLayout;
     protected ConstraintLayout selfTestingReports;
+    protected ConstraintLayout condomDistributionReports;
+    protected ConstraintLayout kvpReports;
 
     @Override
     protected void onCreation() {
@@ -47,6 +49,8 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         ldReportsLayout = findViewById(R.id.ld_reports);
         motherChampionReportsLayout = findViewById(R.id.mother_champion_reports);
         selfTestingReports = findViewById(R.id.self_testing_reports);
+        condomDistributionReports = findViewById(R.id.cdp_reports);
+        kvpReports = findViewById(R.id.kvp_reports);
 
         if (HealthFacilityApplication.getApplicationFlavor().hasLD())
             ldReportsLayout.setVisibility(View.VISIBLE);
@@ -63,6 +67,8 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         ldReportsLayout.setOnClickListener(this);
         motherChampionReportsLayout.setOnClickListener(this);
         selfTestingReports.setOnClickListener(this);
+        condomDistributionReports.setOnClickListener(this);
+        kvpReports.setOnClickListener(this);
     }
 
     public void setUpToolbar() {
@@ -115,6 +121,14 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
             startActivity(new Intent(this, MotherChampionReportsActivity.class));
         } else if (id == R.id.self_testing_reports) {
             Intent intent = new Intent(this, SelfTestingReportsActivity.class);
+            startActivity(intent);
+        }
+        else if (id==R.id.cdp_reports){
+            Intent intent = new Intent(this, CdpReportsActivity.class);
+            startActivity(intent);
+        }
+        else if (id==R.id.kvp_reports){
+            Intent intent = new Intent(this, KvpReportsActivity.class);
             startActivity(intent);
         }
     }

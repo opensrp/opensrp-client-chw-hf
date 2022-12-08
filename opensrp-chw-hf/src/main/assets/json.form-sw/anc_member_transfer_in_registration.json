@@ -48,11 +48,29 @@
     "fields": [
       {
         "key": "is_transfer_in",
-        "openmrs_entity_parent": "",
+        "type": "native_radio",
+        "label": "Client registration type",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_transfer_in",
-        "type": "hidden",
-        "value": "true"
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "true",
+            "text": "On Transit",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "true"
+          },
+          {
+            "key": "false",
+            "text": "Continuing Client",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "false"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "key": "pregnancy_confirmation_status",

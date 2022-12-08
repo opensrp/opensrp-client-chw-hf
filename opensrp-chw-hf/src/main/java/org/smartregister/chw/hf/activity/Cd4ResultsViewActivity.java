@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.pmtct.util.DBConstants.KEY.FORM_SUBMISSION_ID;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +15,10 @@ import com.vijay.jsonwizard.domain.Form;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.dao.HomeVisitDao;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.Cd4ResultsFragment;
+import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.pmtct.activity.BaseHvlResultsViewActivity;
 import org.smartregister.chw.pmtct.fragment.BaseHvlResultsFragment;
 import org.smartregister.chw.pmtct.util.Constants;
@@ -122,6 +126,14 @@ public class Cd4ResultsViewActivity extends BaseHvlResultsViewActivity implement
                                 .withFieldDataType("text")
                                 .withParentCode("")
                                 .withHumanReadableValues(new ArrayList<>()));
+
+                JSONObject jsonObject = new JSONObject(jsonString);
+                if (jsonObject.has(FORM_SUBMISSION_ID)) {
+                    Event processedEvent = HomeVisitDao.getEventByFormSubmissionId(jsonObject.getString(FORM_SUBMISSION_ID));
+                    baseEvent.setEventDate(processedEvent.getEventDate());
+                    PmtctVisitUtils.deleteSavedEvent(allSharedPreferences, processedEvent.getBaseEntityId(), processedEvent.getEventId(), processedEvent.getFormSubmissionId(), "event");
+                }
+
                 NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(baseEvent)));
 
             } catch (JSONException e) {
