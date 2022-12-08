@@ -51,7 +51,7 @@ allprojects {
 
 android {
     useLibrary 'org.apache.http.legacy'
-    compileSdkVersion 30
+    compileSdkVersion 32
     buildToolsVersion androidBuildToolsVersion
 
     compileOptions {
@@ -62,7 +62,7 @@ android {
     defaultConfig {
         applicationId "org.smartregister.chw.hf"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 11
         versionName "1.2.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -201,13 +201,12 @@ android {
             applicationId "org.smartregister.chw.moh.hf"
             minSdkVersion 21
             targetSdkVersion 31
-            versionCode 10
-            versionName "1.1.2"
+            versionCode 12
+            versionName "1.1.4"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
             buildConfigField "String", 'opensrp_url', '"https://ucs.nacp.go.tz/opensrp/"'
             buildConfigField "String", 'opensrp_url_debug', '"http://50.116.15.4:8082/opensrp/"'
-//            buildConfigField "String", 'opensrp_url', '"http://45.79.110.194:8082/opensrp/"'
 //            buildConfigField "String", 'opensrp_url_debug', '"http://45.79.110.194:8082/opensrp/"'
             buildConfigField "boolean", 'SUPPORT_QR', 'true'
             buildConfigField "int", "DATABASE_VERSION", '15'
