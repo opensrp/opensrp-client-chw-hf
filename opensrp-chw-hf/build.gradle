@@ -51,7 +51,7 @@ allprojects {
 
 android {
     useLibrary 'org.apache.http.legacy'
-    compileSdkVersion 30
+    compileSdkVersion 32
     buildToolsVersion androidBuildToolsVersion
 
     compileOptions {
@@ -62,7 +62,7 @@ android {
     defaultConfig {
         applicationId "org.smartregister.chw.hf"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 11
         versionName "1.2.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
