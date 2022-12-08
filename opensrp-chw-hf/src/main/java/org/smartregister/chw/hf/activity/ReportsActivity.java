@@ -58,6 +58,12 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         if (HealthFacilityApplication.getApplicationFlavor().hasHivst())
             selfTestingReports.setVisibility(View.VISIBLE);
 
+        if (HealthFacilityApplication.getApplicationFlavor().hasCdp())
+            condomDistributionReports.setVisibility(View.VISIBLE);
+
+        if (HealthFacilityApplication.getApplicationFlavor().hasKvpPrEP())
+            kvpReports.setVisibility(View.VISIBLE);
+
 
         pmtctReportsLayout.setOnClickListener(this);
         ancReportsLayout.setOnClickListener(this);
