@@ -1,0 +1,105 @@
+---
+name: step1_ctc_number
+description: ctc_number relevance
+priority: 1
+condition: "step1_known_on_art.contains('yes') || step1_has_the_client_been_provided_with_ctc_number.contains('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_has_the_client_been_provided_with_ctc_number
+description: has_the_client_been_provided_with_ctc_number relevance
+priority: 1
+condition: "(!step1_hiv_status.equals('') && step1_hiv_status.contains('positive'))"
+actions:
+  - "isRelevant = true"
+---
+name: step1_hiv
+description: hiv relevance
+priority: 1
+condition: "!step1_medical_surgical_history.contains('known_on_art')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_is_test_at_32
+description: is_test_at_32 relevance
+priority: 1
+condition: "!step1_gest_age.equals('') && !step1_hiv.equals('') && step1_gest_age >= 32 && step1_hiv.contains('negative')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_pmtct_register_date_from_originating_facility
+description: pmtct_register_date_from_originating_facility relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_clinical_staging_disease
+description: clinical_staging_disease relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_on_tb_treatment
+description: on_tb_treatment relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_was_the_test_for_cd4_count_conducted
+description: was_the_test_for_cd4_count_conducted relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_was_the_test_for_cd4_count_conducted
+description: was_the_test_for_cd4_count_conducted relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_was_the_hvl_test_conducted
+description: was_the_hvl_test_conducted relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_arv_line
+description: arv_line relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_pmtct_register_date_at_this_facility
+description: pmtct_register_date_at_this_facility relevance
+priority: 1
+condition: "step1_known_on_art.equals('yes') &&  step1_is_transfer_in_client.equals('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_risk_category
+description: risk_category relevance
+priority: 1
+condition: "step1_known_on_art.equals('yes')  || step1_hiv_status.equals('positive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_delivery_date
+description: delivery_date relevance
+priority: 1
+condition: "step1_known_on_art.equals('yes')  || step1_hiv_status.equals('positive')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_no_immediate_new_born
+description: no_immediate_new_born relevance
+priority: 1
+condition: "step1_known_on_art.equals('yes')  || step1_hiv_status.equals('positive')"
+actions:
+  - "isRelevant = true"

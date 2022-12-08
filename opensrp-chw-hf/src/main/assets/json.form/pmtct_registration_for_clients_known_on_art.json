@@ -124,9 +124,31 @@
           "err": "Please enter the date of PMTCT Registration at the originating health facility"
         },
         "relevance": {
-          "step1:is_transfer_in_client": {
-            "type": "string",
-            "ex": "equalTo(.,\"yes\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "pmtct_register_date_at_this_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_register_date_at_this_facility",
+        "type": "date_picker",
+        "hint": "Date of PMTCT Registration",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date of PMTCT Registration"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
           }
         }
       },

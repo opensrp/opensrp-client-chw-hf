@@ -1774,7 +1774,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_bcg_vacc",
         "type": "spinner",
-        "hint": "Reason as to why the BCG vaccine was not given",
+        "hint": "Reason as to why the BCG vaccine was not administered",
         "values": [
           "Out of stock",
           "Others (Specify)"
@@ -1867,7 +1867,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_opv0_vacc",
         "type": "spinner",
-        "hint": "Reason as to why the OPV 0 vaccine was not given",
+        "hint": "Reason as to why the OPV 0 vaccine was not administered",
         "values": [
           "Out of stock",
           "Others (Specify)"
@@ -1960,7 +1960,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "reason_for_not_providing_hepatitis_b_vacc",
         "type": "spinner",
-        "hint": "Reason as to why the Hepatitis B vaccine was not given",
+        "hint": "Reason as to why the Hepatitis B vaccine was not administered",
         "values": [
           "Out of stock vaccine",
           "Others (Specify)"
@@ -2374,7 +2374,6 @@
         "key": "sample_id",
         "type": "edit_text",
         "hint": "DNA-PCR Sample ID",
-        "edit_type": "number",
         "openmrs_entity_id": "sample_id",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

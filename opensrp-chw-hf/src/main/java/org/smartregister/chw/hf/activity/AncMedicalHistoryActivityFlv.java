@@ -1,24 +1,38 @@
 package org.smartregister.chw.hf.activity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.BulletSpan;
+import android.text.style.StyleSpan;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.core.activity.DefaultAncMedicalHistoryActivityFlv;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
+import timber.log.Timber;
+
 public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivityFlv {
+    private final StyleSpan boldSpan = new StyleSpan(android.graphics.Typeface.BOLD);
 
     @Override
     protected void processAncCard(String has_card, Context context) {
@@ -63,7 +77,7 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
 
             int days = 0;
             String has_card = "No";
-            List<Map<String, String>> hf_visits = new ArrayList<>();
+            List<LinkedHashMap<String, String>> hfVisitsMaps = new ArrayList<>();
 
             int x = 0;
             while (x < visits.size()) {
@@ -83,21 +97,27 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                 }
 
 
-                String[] hf_params = {"weight", "height", "systolic", "fundal_height", "diastolic", "hb_level", "mRDT_for_malaria", "hiv", "anc_visit_date", "gest_age"};
-                extractHFVisit(visits, hf_params, hf_visits, x, context);
+                String[] hf_params = {"gest_age", "medical_surgical_history", "other_medical_surgical_history", "ctc_number", "gravida", "parity",
+                        "glucose_in_urine", "reason_for_not_conducting_glucose_in_urine_test", "other_reason_for_not_conducting_glucose_in_urine_test", "protein_in_urine", "reason_for_not_conducting_protein_in_urine_test", "other_reason_for_not_conducting_protein_in_urine_test", "blood_group", "reason_for_not_conducting_blood_group_test", "other_reason_for_not_conducting_blood_group_test", "rh_factor", "hb_level_test", "hb_level", "reason_for_not_conducting_hb_test", "other_reason_hb_test_not_conducted", "blood_for_glucose_test", "type_of_blood_for_glucose_test", "blood_for_glucose", "hiv", "reason_for_not_conducting_hiv_test", "other_reason_for_not_conducting_hiv_test", "hiv_counselling_before_testing", "hiv_counselling_after_testing", "syphilis", "reason_for_not_conducting_syphilis_test", "other_reason_for_not_conducting_syphilis_test", "syphilis_treatment", "hepatitis", "prescribe_arv_hepb_at_above_twenty_eight", "reason_for_not_conducting_hepatitis_test", "other_reason_for_not_conducting_hepatitis_test", "other_stds", "other_stds_treatment", "reason_for_not_giving_medication_for_other_stds", "other_reason_for_not_giving_medication_for_other_stds",
+                        "weight", "height", "systolic", "diastolic", "pulse_rate", "temperature", "fundal_height", "abdominal_scars", "abdominal_movement_with_respiration", "abdominal_contour", "fundal_height", "lie", "presentation", "fetal_heart_rate", "abnormal_vaginal_discharge", "vaginal_sores", "vaginal_swelling",
+                        "tt_vaccination", "tt_vaccination_type",
+                        "client_on_malaria_medication", "mRDT_for_malaria", "reason_for_not_conducting_malaria_test", "other_reason_for_not_conducting_malaria_test", "llin_provision", "reason_for_not_providing_llin", "other_reason_llin_not_given",
+                        "delivery_place", "name_of_hf", "transport", "birth_companion", "emergency_funds", "household_support", "blood_donor",
+                        "next_facility_visit_date"};
+                extractHFVisit(visits, hf_params, hfVisitsMaps, x, context);
 
                 x++;
             }
 
             processLastVisit(days, context);
             processAncCard(has_card, context);
-            processFacilityVisit(hf_visits, context);
+            processFacilityVisit(hfVisitsMaps, visits, context);
         }
     }
 
-    private void extractHFVisit(List<Visit> sourceVisits, String[] hf_params, List<Map<String, String>> hf_visits, int iteration, Context context) {
+    private void extractHFVisit(List<Visit> sourceVisits, String[] hf_params, List<LinkedHashMap<String, String>> hf_visits, int iteration, Context context) {
         // get the hf details
-        Map<String, String> map = new HashMap<>();
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
         for (String param : hf_params) {
             try {
                 List<VisitDetail> details = sourceVisits.get(iteration).getVisitDetails().get(param);
@@ -121,68 +141,57 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
     }
 
 
-    protected void processFacilityVisit(List<Map<String, String>> hf_visits, Context context) {
-        if (hf_visits != null && hf_visits.size() > 0) {
+    protected void processFacilityVisit(List<LinkedHashMap<String, String>> hfVisitsDetails, List<Visit> visits, Context context) {
+        if (hfVisitsDetails != null && hfVisitsDetails.size() > 0) {
             linearLayoutHealthFacilityVisit.setVisibility(View.VISIBLE);
 
             int x = 0;
-            for (Map<String, String> vals : hf_visits) {
+            for (Map<String, String> vals : hfVisitsDetails) {
                 View view = inflater.inflate(R.layout.medical_history_anc_visit, null);
 
                 TextView tvTitle = view.findViewById(R.id.title);
-                TextView tvGA = view.findViewById(R.id.gest_age);
-                TextView tvFundalHeight = view.findViewById(R.id.fundal_height);
-                TextView tvHeight = view.findViewById(R.id.height);
-                TextView tvWeight = view.findViewById(R.id.weight);
-                TextView tvBP = view.findViewById(R.id.bp);
-                TextView tvHB = view.findViewById(R.id.hb);
-                TextView tvMrdtMalaria = view.findViewById(R.id.mrdt_malaria);
-                TextView tvHivStatus = view.findViewById(R.id.hiv_status);
+                TextView tvEdit = view.findViewById(R.id.textview_edit);
+                LinearLayout visitDetailsLayout = view.findViewById(R.id.visit_details_layout);
 
 
-                tvTitle.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.anc_visit_date), x + 1, getMapValue(vals, "anc_visit_date")));
+                // Updating visibility of EDIT button if the visit is the last visit
+                if (x == visits.size() - 1)
+                    tvEdit.setVisibility(View.VISIBLE);
+                else
+                    tvEdit.setVisibility(View.GONE);
 
-                if (StringUtils.isBlank(getMapValue(vals, "fundal_height"))) {
-                    tvFundalHeight.setVisibility(View.GONE);
-                } else {
-                    tvFundalHeight.setText(MessageFormat.format(context.getString(R.string.fundal_height), getMapValue(vals, "fundal_height")));
-                }
 
-                tvGA.setText(MessageFormat.format(context.getString(R.string.gestation_age), getMapValue(vals, "gest_age")));
-                if (StringUtils.isBlank(getMapValue(vals, "weight"))) {
-                    tvWeight.setVisibility(View.GONE);
-                } else {
-                    tvWeight.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.weight_in_kgs), getMapValue(vals, "weight")));
-                }
+                tvTitle.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.anc_visit_date), x + 1, new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(visits.get(x).getDate())));
 
-                if (StringUtils.isBlank(getMapValue(vals, "height"))) {
-                    tvHeight.setVisibility(View.GONE);
-                } else {
-                    tvHeight.setText(MessageFormat.format(context.getString(R.string.height_in_cm), getMapValue(vals, "height")));
-                }
 
-                if (StringUtils.isBlank(getMapValue(vals, "systolic"))) {
-                    tvBP.setVisibility(View.GONE);
-                } else {
-                    tvBP.setText(MessageFormat.format(context.getString(org.smartregister.chw.core.R.string.bp_in_mmhg), getMapValue(vals, "systolic"), getMapValue(vals, "diastolic")));
-                }
+                tvEdit.setOnClickListener(view1 -> {
+                    ((Activity) context).finish();
+                    Visit visit = visits.get(0);
+                    if (visit != null && visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_FIRST_FACILITY_VISIT) && visit.getBaseEntityId() != null)
+                        AncFirstFacilityVisitActivity.startMe((Activity) context, visit.getBaseEntityId(), true);
+                    else if (visit != null && visit.getVisitType().equalsIgnoreCase(Constants.Events.ANC_RECURRING_FACILITY_VISIT) && visit.getBaseEntityId() != null)
+                        AncRecurringFacilityVisitActivity.startMe((Activity) context, visit.getBaseEntityId(), true);
+                });
 
-                if (StringUtils.isBlank(getMapValue(vals, "hb_level"))) {
-                    tvHB.setVisibility(View.GONE);
-                } else {
-                    tvHB.setText(context.getString(org.smartregister.chw.core.R.string.hb_level_in_g_dl, getMapValue(vals, "hb_level")));
-                }
 
-                if (StringUtils.isBlank(getMapValue(vals, "mRDT_for_malaria"))) {
-                    tvMrdtMalaria.setVisibility(View.GONE);
-                } else {
-                    tvMrdtMalaria.setText(MessageFormat.format(context.getString(R.string.malaria), getMapValue(vals, "mRDT_for_malaria")));
-                }
+                for (LinkedHashMap.Entry<String, String> entry : vals.entrySet()) {
+                    TextView visitDetailTv = new TextView(context);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                            ((int) LinearLayout.LayoutParams.MATCH_PARENT, (int) LinearLayout.LayoutParams.WRAP_CONTENT);
 
-                if (StringUtils.isBlank(getMapValue(vals, "hiv"))) {
-                    tvHivStatus.setVisibility(View.GONE);
-                } else {
-                    tvHivStatus.setText(MessageFormat.format(context.getString(R.string.hiv_status), getMapValue(vals, "hiv")));
+                    visitDetailTv.setLayoutParams(params);
+                    float scale = context.getResources().getDisplayMetrics().density;
+                    int dpAsPixels = (int) (10 * scale + 0.5f);
+                    visitDetailTv.setPadding(dpAsPixels, 0, 0, 0);
+                    visitDetailsLayout.addView(visitDetailTv);
+
+
+                    try {
+                        int resource = context.getResources().getIdentifier("anc_" + entry.getKey(), "string", context.getPackageName());
+                        evaluateView(context, vals, visitDetailTv, entry.getKey(), resource, "");
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
                 }
 
 
@@ -195,11 +204,45 @@ public class AncMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
 
     private String getMapValue(Map<String, String> map, String key) {
         if (map.containsKey(key)) {
-            if (map.get(key) != null && map.get(key).length() > 1) {
-                return map.get(key).split(",")[0];
-            }
             return map.get(key);
         }
         return "";
     }
+
+    private void evaluateView(Context context, Map<String, String> vals, TextView tv, String valueKey, int viewTitleStringResource, String valuePrefixInStringResources) {
+        if (StringUtils.isNotBlank(getMapValue(vals, valueKey))) {
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+            spannableStringBuilder.append(context.getString(viewTitleStringResource), boldSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE).append("\n");
+
+            String stringValue = getMapValue(vals, valueKey);
+            String[] stringValueArray;
+            if (stringValue.contains(",")) {
+                stringValueArray = stringValue.split(",");
+                for (String value : stringValueArray) {
+                    spannableStringBuilder.append(getStringResource(context, valuePrefixInStringResources, value.trim()) + "\n", new BulletSpan(10), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+            } else {
+                spannableStringBuilder.append(getStringResource(context, valuePrefixInStringResources, stringValue)).append("\n");
+            }
+            tv.setText(spannableStringBuilder);
+        } else {
+            tv.setVisibility(View.GONE);
+        }
+    }
+
+    private String getStringResource(Context context, String prefix, String resourceName) {
+        int resourceId = context.getResources().
+                getIdentifier(prefix + resourceName.trim(), "string", context.getPackageName());
+        try {
+            return context.getString(resourceId);
+        } catch (Exception e) {
+            Timber.e(e);
+            if (resourceName.contains("_")) {
+                resourceName = resourceName.replace("_", " ");
+                resourceName = WordUtils.capitalize(resourceName);
+            }
+            return resourceName;
+        }
+    }
+
 }

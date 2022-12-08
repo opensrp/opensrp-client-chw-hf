@@ -172,7 +172,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
             JSONObject hasBeenProvidedWithTptBefore = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "has_been_provided_with_tpt_before");
             if (HfPmtctDao.hasTheClientBeenProvidedWithTptInPreviousSessions(memberObject.getBaseEntityId())) {
                 hasBeenProvidedWithTptBefore.remove("relevance");
-                hasBeenProvidedWithTptBefore.put("value", "partial");
+                hasBeenProvidedWithTptBefore.put("value", "partial_complete");
                 hasBeenProvidedWithTptBefore.put("type", "hidden");
             }
 

@@ -33,3 +33,10 @@ priority: 1
 condition: "step1_is_transfer_in_client.equals('yes') && step1_known_on_art.equals('yes')"
 actions:
   - "isRelevant = true"
+---
+name: step1_pmtct_register_date_at_this_facility
+description: pmtct_register_date_at_this_facility relevance
+priority: 1
+condition: "step1_is_transfer_in_client.equals('no') && step1_known_on_art.equals('yes')"
+actions:
+  - "isRelevant = true"

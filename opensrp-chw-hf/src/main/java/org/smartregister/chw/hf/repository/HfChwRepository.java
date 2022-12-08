@@ -78,6 +78,10 @@ public class HfChwRepository extends CoreChwRepository {
                     upgradeToVersion11(db);
                 case 12:
                     upgradeToVersion12(db);
+                case 13:
+                    upgradeToVersion14(db);
+                case 14:
+                    upgradeToVersion15(db);
                 default:
                     break;
             }
@@ -262,6 +266,49 @@ public class HfChwRepository extends CoreChwRepository {
             db.execSQL(VisitRepository.ADD_VISIT_GROUP_COLUMN);
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion12");
+        }
+    }
+
+    private static void upgradeToVersion14(SQLiteDatabase db) {
+        try {
+            // add missing columns
+            db.execSQL("ALTER TABLE ec_ld_confirmation ADD COLUMN blood_group TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_ld_confirmation ADD COLUMN rh_factor TEXT NULL;");
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion14");
+        }
+    }
+
+    private static void upgradeToVersion15(SQLiteDatabase db) {
+        try {
+            // add missing columns
+            db.execSQL("ALTER TABLE ec_anc_register ADD COLUMN next_facility_visit_date TEXT NULL;");
+
+            db.execSQL("ALTER TABLE ec_pregnancy_outcome ADD COLUMN next_facility_visit_date TEXT NULL;");
+
+            db.execSQL("ALTER TABLE ec_ld_confirmation ADD COLUMN blood_group TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_ld_confirmation ADD COLUMN rh_factor TEXT NULL;");
+
+            db.execSQL("ALTER TABLE ec_cdp_orders ADD COLUMN receiving_order_facility TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_cdp_stock_log ADD COLUMN other_issuing_organization TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_cdp_stock_log ADD COLUMN condom_brand TEXT NULL;");
+
+            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN client_group TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN prep_assessment TEXT NULL;");
+
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN prep_status TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN prep_initiation_date TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN hbv_test_date TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN hcv_test_date TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN crcl_test_date TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN crcl_results TEXT NULL;");
+
+
+            DatabaseMigrationUtils.createAddedECTables(db,
+                    new HashSet<>(Arrays.asList("ec_cdp_issuing_hf","ec_kvp_bio_medical_services","ec_kvp_behavioral_services","ec_kvp_structural_services","ec_kvp_other_services","ec_prep_followup")),
+                    HealthFacilityApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion15");
         }
     }
 

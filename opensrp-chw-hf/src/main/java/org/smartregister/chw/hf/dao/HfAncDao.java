@@ -1,12 +1,12 @@
 package org.smartregister.chw.hf.dao;
 
-import org.smartregister.dao.AbstractDao;
+import org.smartregister.chw.core.dao.AncDao;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class HfAncDao extends AbstractDao {
+public class HfAncDao extends AncDao {
 
     public static boolean isReviewFormFilled(String baseEntityId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "name_of_hf");
@@ -249,21 +249,32 @@ public class HfAncDao extends AbstractDao {
         return res != null && res.size() > 0 && res.get(0) != null;
     }
 
-    public static String malariaDosageIpt1(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy_ipt1");
-
+    //This method is used to obtain previous values during Editing Visits.
+    public static boolean wasDewormingGivenPreviously(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "deworming");
         String sql = String.format(
-                "SELECT malaria_preventive_therapy_ipt1 FROM %s WHERE base_entity_id = '%s' " +
-                        "AND is_closed = 0",
-                "ec_anc_register",
+                "SELECT deworming FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 AND deworming is not null AND deworming <> 'medication_not_given' ORDER BY visit_date DESC Limit 1,1",
+                "ec_anc_followup",
                 baseEntityId
         );
 
         List<String> res = readData(sql, dataMap);
-        if (res != null && res.size() > 0 && res.get(0) != null) {
-            return res.get(0);
-        }
-        return "null";
+        return res != null && res.size() > 0 && res.get(0) != null;
+    }
+
+    //This method is used to obtain previous values during Editing Visits.
+    public static boolean isDewormingGivenPreviously(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "deworming");
+        String sql = String.format(
+                "SELECT deworming FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 AND deworming is not null AND deworming <> 'medication_not_given' ORDER BY visit_date DESC Limit 1",
+                "ec_anc_followup",
+                baseEntityId
+        );
+
+        List<String> res = readData(sql, dataMap);
+        return res != null && res.size() > 0 && res.get(0) != null;
     }
 
     public static String malariaLastIptDose(String baseEntityId) {
@@ -283,52 +294,40 @@ public class HfAncDao extends AbstractDao {
         return "null";
     }
 
-    public static String malariaDosageIpt2(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy_ipt2");
+    public static String malariaIptDosage(String iptDosage, String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, iptDosage);
 
         String sql = String.format(
-                "SELECT malaria_preventive_therapy_ipt2 FROM %s WHERE base_entity_id = '%s' " +
-                        "AND is_closed = 0",
-                "ec_anc_register",
-                baseEntityId
+                "SELECT %s FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 AND %s IS NOT NULL ORDER BY visit_date DESC Limit 1",
+                iptDosage,
+                "ec_anc_followup",
+                baseEntityId,
+                iptDosage
         );
 
         List<String> res = readData(sql, dataMap);
-        if (res.get(0) != null) {
+        if (res != null && res.size() > 0 && res.get(0) != null) {
             return res.get(0);
         }
         return "null";
     }
 
-    public static String malariaDosageIpt3(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy_ipt3");
+    //This method is used to obtain previous Malaria IPT Dosage during Editing Visits.
+    public static String previousMalariaIptDosage(String iptDosage, String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, iptDosage);
 
         String sql = String.format(
-                "SELECT malaria_preventive_therapy_ipt3 FROM %s WHERE base_entity_id = '%s' " +
-                        "AND is_closed = 0",
-                "ec_anc_register",
-                baseEntityId
+                "SELECT %s FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 AND %s IS NOT NULL ORDER BY visit_date DESC Limit 1,1",
+                iptDosage,
+                "ec_anc_followup",
+                baseEntityId,
+                iptDosage
         );
 
         List<String> res = readData(sql, dataMap);
-        if (res.get(0) != null) {
-            return res.get(0);
-        }
-        return "null";
-    }
-
-    public static String malariaDosageIpt4(String baseEntityId) {
-        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy_ipt4");
-
-        String sql = String.format(
-                "SELECT malaria_preventive_therapy_ipt4 FROM %s WHERE base_entity_id = '%s' " +
-                        "AND is_closed = 0",
-                "ec_anc_register",
-                baseEntityId
-        );
-
-        List<String> res = readData(sql, dataMap);
-        if (res.get(0) != null) {
+        if (res != null && res.size() > 0 && res.get(0) != null) {
             return res.get(0);
         }
         return "null";

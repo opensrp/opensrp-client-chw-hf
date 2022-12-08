@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.REQUEST_FILTERS;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
@@ -163,7 +165,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
     }
 
     public static String getFormTable() {
-        if (form_name != null && (form_name.equals(CoreConstants.JSON_FORM.getAncRegistration()) || form_name.equals(org.smartregister.chw.hf.utils.Constants.JsonForm.getAncPregnancyConfirmationForm()))) {
+        if (form_name != null && (form_name.equals(CoreConstants.JSON_FORM.getAncRegistration()) || form_name.equals(CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION))) {
             return CoreConstants.TABLE_NAME.ANC_MEMBER;
         }
         return CoreConstants.TABLE_NAME.ANC_PREGNANCY_OUTCOME;
@@ -225,7 +227,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
     @Override
     public String getRegisterEventType() {
-        return org.smartregister.chw.hf.utils.Constants.Events.ANC_PREGNANCY_CONFIRMATION;
+        return CoreConstants.EventType.ANC_PREGNANCY_CONFIRMATION;
     }
 
     @Override
@@ -235,7 +237,6 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
     @Override
     protected void onActivityResultExtended(int requestCode, int resultCode, Intent data) {
-
         if (resultCode == Activity.RESULT_OK && requestCode == Constants.REQUEST_CODE_GET_JSON) {
 //            process the form
             try {
@@ -262,7 +263,7 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
 
                     presenter().saveForm(jsonString, false, table);
 
-                } else if (encounter_type.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.ANC_FOLLOWUP_CLIENT_FOLLOWUP)) {
+                } else if (encounter_type.equalsIgnoreCase(CoreConstants.EventType.ANC_FOLLOWUP_CLIENT_REGISTRATION)) {
 
                     presenter().saveForm(jsonString, false, table);
 
@@ -275,6 +276,8 @@ public class AncRegisterActivity extends CoreAncRegisterActivity {
                 Timber.e(e);
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        } else if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_FILTERS) {
+            ((AncRegisterFragment) mBaseFragment).onFiltersUpdated(requestCode, data);
         }
     }
 

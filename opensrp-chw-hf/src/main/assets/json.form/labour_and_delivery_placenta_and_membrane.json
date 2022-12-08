@@ -234,7 +234,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "administered_antibiotics",
-        "label": "Was the client administered antibiotics ?",
+        "label": "Was the client administered antibiotics?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [

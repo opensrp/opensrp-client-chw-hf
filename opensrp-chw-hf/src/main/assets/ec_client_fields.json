@@ -1848,6 +1848,14 @@
           }
         },
         {
+          "column_name": "next_facility_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_facility_visit_date"
+          }
+        },
+        {
           "column_name": "last_contact_visit",
           "type": "Event",
           "json_mapping": {
@@ -2711,6 +2719,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "next_visit_date"
+          }
+        },
+        {
+          "column_name": "next_facility_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_facility_visit_date"
           }
         },
         {
@@ -5531,6 +5547,22 @@
           "json_mapping": {
             "field": "obs.formSubmissionField",
             "concept": "malaria"
+          }
+        },
+        {
+          "column_name": "blood_group",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "blood_group"
+          }
+        },
+        {
+          "column_name": "rh_factor",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "rh_factor"
           }
         },
         {

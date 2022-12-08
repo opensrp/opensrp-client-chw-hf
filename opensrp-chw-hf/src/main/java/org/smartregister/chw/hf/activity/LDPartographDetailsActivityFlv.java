@@ -1,14 +1,19 @@
 package org.smartregister.chw.hf.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Period;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.core.activity.DefaultAncMedicalHistoryActivityFlv;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.LDDao;
+import org.smartregister.chw.ld.domain.MemberObject;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -69,7 +74,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
             }
 
             processLastVisit();
-            processFacilityVisit(hf_visits, context);
+            processFacilityVisit(hf_visits, visits, context);
         }
     }
 
@@ -94,10 +99,11 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
     }
 
 
-    protected void processFacilityVisit(List<Map<String, String>> hf_visits, Context context) {
+    protected void processFacilityVisit(List<Map<String, String>> hf_visits, List<Visit> visits, Context context) {
         if (hf_visits != null && hf_visits.size() > 0) {
             linearLayoutHealthFacilityVisit.setVisibility(View.VISIBLE);
 
+            int x = 0;
             for (Map<String, String> vals : hf_visits) {
                 View view = inflater.inflate(R.layout.ld_patograph_details, null);
                 TextView tvPartographDateTime = view.findViewById(R.id.partograph_date_time);
@@ -114,6 +120,25 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 TextView tvCervixDilation = view.findViewById(R.id.cervix_dilation);
                 TextView tvDescentPresentingPart = view.findViewById(R.id.descent_presenting_part);
                 TextView tvContraction = view.findViewById(R.id.contraction);
+                TextView tvEdit = view.findViewById(R.id.textview_edit);
+
+                // Updating visibility of EDIT button if the visit is the last visit
+                if (x == visits.size() - 1)
+                    tvEdit.setVisibility(View.VISIBLE);
+                else
+                    tvEdit.setVisibility(View.GONE);
+
+                tvEdit.setOnClickListener(view1 -> {
+                    ((Activity) context).finish();
+                    Visit visit = visits.get(0);
+                    MemberObject memberObject = LDDao.getLDMember(visit.getBaseEntityId());
+
+                    if (memberObject != null && visit.getBaseEntityId() != null) {
+                        ((Activity) context).finish();
+                        LDPartographActivity.startMe((Activity) context, memberObject.getBaseEntityId(), true,
+                                memberObject.getFirstName() + " " + memberObject.getMiddleName(), String.valueOf(new Period(new DateTime(memberObject.getAge()), new DateTime()).getYears()));
+                    }
+                });
 
                 evaluatePartographDateTime(context, vals, tvPartographDateTime);
                 evaluateFetalHeartRate(context, vals, tvFetalHeartRate);
@@ -153,6 +178,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 }
 
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);
+                x++;
 
             }
         }
@@ -163,7 +189,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
         if (StringUtils.isBlank(vals.get("partograph_date"))) {
             tvPartographDateTime.setVisibility(View.GONE);
         } else {
-            tvPartographDateTime.setText(MessageFormat.format(context.getString(R.string.partograph_date_time), getMapValue(vals, "partograph_date"), getMapValue(vals, "partograph_time") ,  getMapValue(vals, "name_of_the_health_care_provider")));
+            tvPartographDateTime.setText(MessageFormat.format(context.getString(R.string.partograph_date_time), getMapValue(vals, "partograph_date"), getMapValue(vals, "partograph_time"), getMapValue(vals, "name_of_the_health_care_provider")));
         }
     }
 

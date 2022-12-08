@@ -1,10 +1,17 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.util.Utils.getName;
+
 import android.content.Context;
 import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.viewpager.widget.ViewPager;
 
 import com.vijay.jsonwizard.utils.FormUtils;
 
@@ -42,13 +49,7 @@ import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
-import androidx.annotation.RequiresApi;
-import androidx.viewpager.widget.ViewPager;
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
-import static org.smartregister.util.Utils.getName;
 
 public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfileActivity {
 
@@ -61,6 +62,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_location_info).setVisible(true);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
+        menu.findItem(R.id.action_remove_member).setVisible(true);
         if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
             AllClientsUtils.updateHivMenuItems(baseEntityId, menu);
             // AllClientsUtils.updateTbMenuItems(baseEntityId, menu);
@@ -70,6 +72,7 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
             menu.findItem(R.id.action_anc_registration).setVisible(true);
             menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
+            menu.findItem(R.id.action_pmtct_register).setVisible(true);
         } else
             menu.findItem(R.id.action_anc_registration).setVisible(false);
 
@@ -111,6 +114,10 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
         int itemId = item.getItemId();
         if (itemId == org.smartregister.chw.core.R.id.action_pregnancy_confirmation) {
             startPregnancyConfirmation();
+            return true;
+        }
+        if (itemId == org.smartregister.chw.core.R.id.action_pmtct_register) {
+            startPmtctRegisration();
             return true;
         }
         if (itemId == org.smartregister.chw.core.R.id.action_anc_registration) {
@@ -280,7 +287,8 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startPmtctRegisration() {
-        //Do nothing - not required here
+        PncRegisterActivity.startPncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
+                Constants.JsonForm.getPmtctRegistrationForClientsPostPnc(), null, familyBaseEntityId, familyName, null, false);
     }
 
     @Override
@@ -371,12 +379,12 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     protected void startPregnancyConfirmation() {
         AncRegisterActivity.startAncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                Constants.JsonForm.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
+                CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION, null, familyBaseEntityId, familyName);
     }
 
     protected void startAncTransferInRegistration() {
         AncRegisterActivity.startAncRegistrationActivity(AllClientsMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                Constants.JsonForm.getAncTransferInRegistrationForm(), null, familyBaseEntityId, familyName);
+                Constants.JSON_FORM.ANC_TRANSFER_IN_REGISTRATION, null, familyBaseEntityId, familyName);
     }
 
 }

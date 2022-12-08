@@ -153,6 +153,27 @@
             }
           }
         }
+      },
+      {
+        "key": "pmtct_register_date_at_this_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pmtct_register_date_at_this_facility",
+        "type": "date_picker",
+        "hint": "Tarehe ya usajili katika huduma za PMTCT",
+        "expanded": false,
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza tarehe ya usajili katika huduma za PMTCT"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pmtct_registration_relevance.yml"
+            }
+          }
+        }
       }
     ]
   },

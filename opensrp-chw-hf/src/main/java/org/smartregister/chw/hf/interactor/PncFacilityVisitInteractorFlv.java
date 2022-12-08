@@ -15,6 +15,7 @@ import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.model.ChildModel;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.AncNextFollowupVisitAction;
 import org.smartregister.chw.hf.actionhelper.PncChildGeneralExamination;
 import org.smartregister.chw.hf.actionhelper.PncFamilyPlanningServicesAction;
 import org.smartregister.chw.hf.actionhelper.PncHivTestingAction;
@@ -208,6 +209,18 @@ public class PncFacilityVisitInteractorFlv implements AncFirstFacilityVisitInter
                 .withHelper(new PncNutrionSupplementAction(memberObject))
                 .build();
         actionList.put(context.getString(R.string.nutritional_supplements_title), nutritionSupplements);
+
+        try {
+            BaseAncHomeVisitAction nextFollowupVisitDate = new BaseAncHomeVisitAction.Builder(context, context.getString(R.string.next_visit))
+                    .withOptional(true)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.getNextFacilityVisitForm())
+                    .withHelper(new AncNextFollowupVisitAction())
+                    .build();
+            actionList.put(context.getString(R.string.next_visit), nextFollowupVisitDate);
+        } catch (BaseAncHomeVisitAction.ValidationException e) {
+            Timber.e(e);
+        }
     }
 
 

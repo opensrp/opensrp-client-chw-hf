@@ -6,6 +6,8 @@
     <color name="hf_primary">#218CC5</color>
     <color name="hf_primary_dark">#0d384e</color>
     <color name="hf_accent">#3797ca</color>
+    <color name="hf_accent_magenta">#FFF2504D</color>
+    <color name="hf_accent_yellow">#EFED3E</color>
 
     <color name="contact_complete_grey_border">#CDCDCD</color>
 </resources>

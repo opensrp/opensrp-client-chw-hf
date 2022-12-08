@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+
 import android.content.Context;
 import android.os.Build;
 import android.view.Menu;
@@ -43,9 +46,6 @@ import org.smartregister.family.util.DBConstants;
 import org.smartregister.view.contract.BaseProfileContract;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfileActivity {
     private FamilyMemberFloatingMenu familyFloatingMenu;
@@ -293,6 +293,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
             if (gender.equalsIgnoreCase("female") && !AncDao.isANCMember(baseEntityId)) {
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
                 menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
+                menu.findItem(R.id.action_pmtct_register).setVisible(true);
             }
             menu.findItem(R.id.action_fp_change).setVisible(false);
             menu.findItem(R.id.action_fp_initiation).setVisible(false);
@@ -331,7 +332,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     protected void startPregnancyConfirmation() {
         AncRegisterActivity.startAncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                Constants.JsonForm.getAncPregnancyConfirmation(), null, familyBaseEntityId, familyName);
+                CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION, null, familyBaseEntityId, familyName);
     }
 
     private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {

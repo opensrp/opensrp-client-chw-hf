@@ -111,7 +111,7 @@ public class PregnancyConfirmationViewActivity extends ReferralTaskViewActivity 
             AllClientsUtils.goToClientProfile(this, personObjectClient);
         } else if (view.getId() == R.id.mark_ask_done) {
             AncRegisterActivity.startAncRegistrationActivity(PregnancyConfirmationViewActivity.this, getBaseEntityId(), getFamilyMemberContacts(),
-                    Constants.JsonForm.getAncPregnancyConfirmation(), null, getBaseEntityId(), name, task.getIdentifier());
+                    CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION, null, getBaseEntityId(), name, task.getIdentifier());
         }
     }
 

@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.sync;
 
+import static org.smartregister.chw.anc.util.Constants.EVENT_TYPE.DELETE_EVENT;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.ANC_FOLLOWUP_CLIENT_REGISTRATION;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.ANC_PARTNER_TESTING;
+import static org.smartregister.chw.core.utils.CoreConstants.EventType.ANC_PREGNANCY_CONFIRMATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_FIRST_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACILITY_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP;
@@ -10,6 +14,7 @@ import static org.smartregister.chw.hf.utils.Constants.Events.LD_GENERAL_EXAMINA
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_PARTOGRAPHY;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_REGISTRATION;
+import static org.smartregister.chw.hf.utils.Constants.Events.PNC_CHILD_FOLLOWUP;
 import static org.smartregister.chw.hf.utils.Constants.Events.PNC_VISIT;
 import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.CTC_NUMBER;
 import static org.smartregister.chw.hf.utils.Constants.FormConstants.FormSubmissionFields.HIV_TEST_RESULT;
@@ -20,8 +25,10 @@ import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.util.NCUtils;
+import org.smartregister.chw.core.dao.EventDao;
 import org.smartregister.chw.core.sync.CoreClientProcessor;
 import org.smartregister.chw.hf.dao.HeiDao;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.pmtct.util.Constants;
 import org.smartregister.domain.Event;
 import org.smartregister.domain.Obs;
@@ -31,6 +38,7 @@ import org.smartregister.domain.jsonmapping.Table;
 import org.smartregister.sync.ClientProcessorForJava;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import timber.log.Timber;
@@ -63,14 +71,18 @@ public class HfClientProcessor extends CoreClientProcessor {
         super.processEvents(clientClassification, vaccineTable, serviceTable, eventClient, event, eventType);
 
         switch (eventType) {
+            case ANC_PREGNANCY_CONFIRMATION:
+            case ANC_FOLLOWUP_CLIENT_REGISTRATION:
             case ANC_FIRST_FACILITY_VISIT:
             case ANC_RECURRING_FACILITY_VISIT:
             case PNC_VISIT:
+            case PNC_CHILD_FOLLOWUP:
             case LD_PARTOGRAPHY:
             case LD_REGISTRATION:
             case LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR:
             case LD_GENERAL_EXAMINATION:
             case LD_POST_DELIVERY_MOTHER_MANAGEMENT:
+            case ANC_PARTNER_TESTING:
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_BEHAVIORAL_SERVICE_VISIT:
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_BIO_MEDICAL_SERVICE_VISIT:
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_STRUCTURAL_SERVICE_VISIT:
@@ -90,6 +102,10 @@ public class HfClientProcessor extends CoreClientProcessor {
                 processEvent(eventClient.getEvent(), eventClient.getClient(), clientClassification);
                 processHeiFollowupCEvent(eventClient.getEvent());
                 break;
+
+            case org.smartregister.chw.ld.util.Constants.EVENT_TYPE.VOID_EVENT:
+            case DELETE_EVENT:
+                processDeleteEvent(eventClient.getEvent());
             default:
                 break;
         }
@@ -152,6 +168,44 @@ public class HfClientProcessor extends CoreClientProcessor {
 
             if (typeOfHivTest != null && typeOfHivTest.equals("Antibody Test"))
                 HeiDao.saveAntiBodyTestResults(event.getBaseEntityId(), event.getFormSubmissionId(), hivTestResult, hivTestResultDate, ctcNumber);
+        }
+    }
+
+    @Override
+    public void processDeleteEvent(Event event) {
+        try {
+            List<String> pmtctFollowupTables = Arrays.asList("ec_ld_partograph", "ec_pmtct_followup", "ec_pmtct_hvl_results", "ec_pmtct_cd4_results", "ec_hei_followup", "ec_hei_hiv_results", "ec_anc_followup", "ec_pnc_followup", "ec_prep_followup");
+            if (event.getDetails().containsKey(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.DELETE_FORM_SUBMISSION_ID)) {
+                // delete from vaccine table
+                EventDao.deleteVaccineByFormSubmissionId(event.getDetails().get(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.DELETE_FORM_SUBMISSION_ID));
+                // delete from visit table
+                EventDao.deleteVisitByFormSubmissionId(event.getDetails().get(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.DELETE_FORM_SUBMISSION_ID));
+                // delete from recurring service table
+                EventDao.deleteServiceByFormSubmissionId(event.getDetails().get(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.DELETE_FORM_SUBMISSION_ID));
+
+                //delete from all PMTCT Case Based Management tables that use formSubmissionIds as primaryKeys
+                for (String tableName : pmtctFollowupTables) {
+                    try {
+                        HfPmtctDao.deleteEntryFromTableByFormSubmissionId(tableName, event.getDetails().get(org.smartregister.chw.anc.util.Constants.JSON_FORM_EXTRA.DELETE_FORM_SUBMISSION_ID));
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
+                }
+            } else {
+                super.processDeleteEvent(event);
+                //delete from all PMTCT Case Based Management tables that use formSubmissionIds as primaryKeys
+                for (String tableName : pmtctFollowupTables) {
+                    try {
+                        HfPmtctDao.deleteEntryFromTableByFormSubmissionId(tableName, event.getFormSubmissionId());
+                    } catch (Exception e) {
+                        Timber.e(e);
+                    }
+                }
+            }
+
+            Timber.d("Ending processDeleteEvent: %s", event.getEventId());
+        } catch (Exception e) {
+            Timber.e(e);
         }
     }
 }

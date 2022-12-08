@@ -12,8 +12,8 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.utils.Constants;
-import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.VisitDetail;
 import org.smartregister.chw.ld.model.BaseLDVisitAction;
@@ -36,14 +36,16 @@ import timber.log.Timber;
 public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitActionHelper {
 
     private Context context;
+    private boolean editMode;
     protected String time;
     protected String date;
     private final MemberObject memberObject;
     private final DateFormat hourFormat = new SimpleDateFormat("HH:mm");
     private final DateFormat completeDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
-    public LDPartographTimeActionHelper(MemberObject memberObject) {
+    public LDPartographTimeActionHelper(MemberObject memberObject, boolean editMode) {
         this.memberObject = memberObject;
+        this.editMode = editMode;
     }
 
     @Override
@@ -77,7 +79,9 @@ public class LDPartographTimeActionHelper implements BaseLDVisitAction.LDVisitAc
                     partographTimeForm.getJSONObject("global").put("partograph_monitoring_date", partographDate);
                 }
 
-                if (LDDao.getPartographTime(baseEntityId) != null) {
+                if (editMode && LDDao.getPreviousPartographTime(baseEntityId) != null) {
+                    partographTime = LDDao.getPreviousPartographTime(baseEntityId);
+                }else if (!editMode && LDDao.getPartographTime(baseEntityId) != null) {
                     partographTime = LDDao.getPartographTime(baseEntityId);
                 } else if (LDDao.getVaginalExaminationTime(baseEntityId) != null) {
                     partographTime = LDDao.getVaginalExaminationTime(baseEntityId);

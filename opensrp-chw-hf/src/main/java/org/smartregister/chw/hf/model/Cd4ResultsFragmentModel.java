@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.model;
 
+import static org.smartregister.chw.cdp.util.DBConstants.KEY.FORM_SUBMISSION_ID;
+
 import androidx.annotation.NonNull;
 
 import org.smartregister.chw.core.utils.ChildDBConstants;
@@ -51,6 +53,7 @@ public class Cd4ResultsFragmentModel extends BaseHvlResultsFragmentModel {
         columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_FOLLOW_UP + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.CD4_SAMPLE_COLLECTION_DATE);
         columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_CD4_RESULTS + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.CD4_RESULT_DATE);
         columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_CD4_RESULTS + "." + org.smartregister.chw.pmtct.util.DBConstants.KEY.CD4_FOLLOWUP_FORM_SUBMISSION_ID);
+        columnList.add(org.smartregister.chw.pmtct.util.Constants.TABLES.PMTCT_CD4_RESULTS + "." + DBConstants.KEY.BASE_ENTITY_ID + " as " + FORM_SUBMISSION_ID);
 
         return columnList.toArray(new String[columnList.size()]);
 

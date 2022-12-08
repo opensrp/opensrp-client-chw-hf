@@ -395,7 +395,7 @@
         "type": "date_picker",
         "hint": "Tarehe ya Mama ya kujifungua",
         "expanded": false,
-        "min_date": "today-1m",
+        "min_date": "today-42d",
         "max_date": "today",
         "v_required": {
           "value": "true",

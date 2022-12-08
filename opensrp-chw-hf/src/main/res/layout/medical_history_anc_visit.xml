@@ -4,94 +4,52 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/title"
-        style="@style/CustomFontTextViewStyle.ClientList"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="@string/anc_visit_date"
-        android:textColor="@color/medical_text_inner"
-        android:textSize="16sp" />
+        android:orientation="horizontal">
 
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/gest_age"
-        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/gestation_age"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/fundal_height"
-        style="@style/CustomFontTextViewStyle.ClientList.ThreeLines"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/fundal_height"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
+        <org.smartregister.view.customcontrols.CustomFontTextView
+            android:id="@+id/title"
+            style="@style/CustomFontTextViewStyle.ClientList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/textview_edit"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:layout_centerVertical="true"
+            android:paddingBottom="10dp"
+            android:text="@string/anc_visit_date"
+            android:textColor="@color/medical_text_inner"
+            android:textSize="16sp" />
 
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/weight"
-        style="@style/CustomFontTextViewStyle.ClientList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/weight_in_kgs"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/height"
-        style="@style/CustomFontTextViewStyle.ClientList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/height_in_cm"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
+        <org.smartregister.view.customcontrols.CustomFontTextView
+            android:id="@+id/textview_edit"
+            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:padding="8dp"
+            android:text="@string/hiv_visit_edit"
+            android:background="@drawable/record_btn_anc_selector"
+            android:textColor="@color/anc_member_profile_bg"
+            android:textAllCaps="true" />
 
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/bp"
-        style="@style/CustomFontTextViewStyle.ClientList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/bp_in_mmhg"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
+    </RelativeLayout>
 
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/hb"
-        style="@style/CustomFontTextViewStyle.ClientList"
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:id="@+id/visit_details_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/hb_level_in_g_dl"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
+        android:orientation="vertical">
 
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/mrdt_malaria"
-        style="@style/CustomFontTextViewStyle.ClientList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/malaria"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
-    <org.smartregister.view.customcontrols.CustomFontTextView
-        android:id="@+id/hiv_status"
-        style="@style/CustomFontTextViewStyle.ClientList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:text="@string/hiv_status"
-        android:textColor="@color/medical_sub_text_inner"
-        android:textSize="14sp" />
+    </LinearLayout>
 
 
     <View

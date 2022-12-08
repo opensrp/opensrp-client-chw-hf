@@ -38,7 +38,7 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
             NavigationOption op19 = new NavigationOption(R.mipmap.sidemenu_hiv, R.mipmap.sidemenu_hiv_active, R.string.menu_kvp, CoreConstants.DrawerMenu.KVP, 0);
             NavigationOption op20 = new NavigationOption(R.mipmap.sidemenu_hiv, R.mipmap.sidemenu_hiv_active, R.string.menu_prep, CoreConstants.DrawerMenu.PrEP, 0);
 
-            // ANC, PMTCT, LD, PNC, HEI, Child,LTFU, Referrals
+           // ANC, PMTCT, LD, PNC, HEI, Child,LTFU, Referrals
             if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
                 if (BuildConfig.BUILD_FOR_PMTCT_CASE_BASED_MANAGEMENT) {
                     navigationOptions.addAll(Arrays.asList(op1, op3, op4, op13, op14, op12));
@@ -60,7 +60,7 @@ public class NavigationModel implements org.smartregister.chw.core.model.Navigat
                         navigationOptions.add(2, op15);
                     }
                     else{
-                        navigationOptions.add(10, op15);
+                        navigationOptions.add(6, op15);
                     }
                 }
                 if(HealthFacilityApplication.getApplicationFlavor().hasChildModule()) {

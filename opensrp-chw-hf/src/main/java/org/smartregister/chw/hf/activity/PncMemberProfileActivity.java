@@ -301,7 +301,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
         } else if (itemId == org.smartregister.chw.core.R.id.action_hivst_registration) {
             startHivstRegistration();
             return true;
-        } else if (itemId == R.id.action_mark_as_deceased) {
+        } else if (itemId == R.id.action_remove_member) {
             removeMember();
             return true;
         } else if (itemId == R.id.action_pmtct_register) {
@@ -574,6 +574,7 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     protected void removePncMember() {
         //creates an event to close pnc visits and removes member from pnc register
         closePncMemberVisits(baseEntityID);
+        finish();
     }
 
     @Override

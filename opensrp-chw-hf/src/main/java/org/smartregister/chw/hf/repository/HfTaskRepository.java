@@ -11,6 +11,9 @@ import org.smartregister.domain.Task;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.TaskNotesRepository;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import timber.log.Timber;
 
 public class HfTaskRepository extends ChwTaskRepository {
@@ -35,5 +38,28 @@ public class HfTaskRepository extends ChwTaskRepository {
             Timber.e(e);
         }
         return task;
+    }
+
+    @Override
+    public Set<Task> getReferralTasksForClientByStatus(String planId, String forEntity, String businessStatus) {
+        AllSharedPreferences allSharedPreferences = getAllSharedPreferences();
+        String anm = allSharedPreferences.fetchRegisteredANM();
+
+        Cursor cursor = null;
+        Set<Task> taskSet = new HashSet<>();
+        try {
+            cursor = getReadableDatabase().rawQuery(String.format("SELECT * FROM %s WHERE %s=? COLLATE NOCASE AND %s =? AND %s = ? COLLATE NOCASE AND code = 'Referral' AND  %s <> ? ",
+                    TASK_TABLE, CoreConstants.DB_CONSTANTS.PLAN_ID, CoreConstants.DB_CONSTANTS.BUSINESS_STATUS, CoreConstants.DB_CONSTANTS.FOR, CoreConstants.DB_CONSTANTS.OWNER), new String[]{planId, businessStatus, forEntity, anm});
+            while (cursor.moveToNext()) {
+                Task task = readCursor(cursor);
+                taskSet.add(task);
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return taskSet;
     }
 }

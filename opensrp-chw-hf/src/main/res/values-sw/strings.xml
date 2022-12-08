@@ -148,7 +148,7 @@
     <string name="existing_client">Mteja Aliyepo</string>
     <string name="all_male_clients">Wateja Wote wa Kiume</string>
     <string name="register_partner_dialog_title">Sajili huyu Mteja kama Mwenza?</string>
-    <string name="view_partner_prefile">Angalia Wasifu Wa Mwenza</string>
+    <string name="view_partner_profile">Angalia Wasifu Wa Mwenza</string>
     <string name="return_to_anc_profile">Rudi kwa Wasifu wa %s</string>
     <string name="partner_testing">Upimaji wa Mwenza</string>
     <string name="record_partner_testing_results">Ingiza Majibu</string>

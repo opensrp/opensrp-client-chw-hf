@@ -48,11 +48,29 @@
     "fields": [
       {
         "key": "is_transfer_in",
-        "openmrs_entity_parent": "",
+        "type": "native_radio",
+        "label": "Client registration type",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "is_transfer_in",
-        "type": "hidden",
-        "value": "true"
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "true",
+            "text": "On Transit",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "true"
+          },
+          {
+            "key": "false",
+            "text": "Continuing Client",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "false"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
       },
       {
         "key": "pregnancy_confirmation_status",
@@ -524,7 +542,7 @@
       {
         "key": "has_the_client_received_ipt_doses_from_previous_facility",
         "type": "native_radio",
-        "label": "Has the client has received any IPT doses in the previous clinic",
+        "label": "Has the client received any IPT doses in the previous clinic",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "has_the_client_received_ipt_doses_from_previous_facility",
         "openmrs_entity_parent": "",
@@ -592,6 +610,71 @@
         },
         "relevance": {
           "step2:has_the_client_received_ipt_doses_from_previous_facility": {
+            "type": "string",
+            "ex": "equalTo(.,\"yes\")"
+          }
+        }
+      },
+      {
+        "key": "has_the_client_received_deworming_from_previous_facility",
+        "type": "native_radio",
+        "label": "Has the client received Deworming doses in the previous clinic",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "has_the_client_received_deworming_from_previous_facility",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        },
+        "relevance": {
+          "step2:gest_age_note": {
+            "type": "numeric",
+            "ex": "greaterThanEqualTo(.,\"13\")"
+          }
+        }
+      },
+      {
+        "key": "deworming",
+        "type": "check_box",
+        "label": "Deworming",
+        "combine_checkbox_option_values": "true",
+        "openmrs_entity_id": "deworming",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "exclusive": [
+          "mebendazole",
+          "albendazole"
+        ],
+        "options": [
+          {
+            "text": "Mebendazole(500Mg)",
+            "key": "mebendazole",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mebendazole"
+          },
+          {
+            "text": "Albendazole(400Mg)",
+            "key": "albendazole",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "albendazole"
+          }
+        ],
+        "relevance": {
+          "step2:has_the_client_received_deworming_from_previous_facility": {
             "type": "string",
             "ex": "equalTo(.,\"yes\")"
           }

@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.REQUEST_FILTERS;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -88,6 +90,12 @@ public class PncRegisterActivity extends CorePncRegisterActivity implements Bott
                 form.setName(getString(R.string.pregnancy_outcome_title));
                 form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
                 form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
+            } else if (jsonForm.getString("encounter_type").equals("PMTCT Post PNC Registration")) {
+                form.setWizard(true);
+                form.setNavigationBackground(org.smartregister.chw.core.R.color.family_navigation);
+                form.setName(getString(R.string.pmtct_registration));
+                form.setNextLabel(this.getResources().getString(org.smartregister.chw.core.R.string.next));
+                form.setPreviousLabel(this.getResources().getString(org.smartregister.chw.core.R.string.back));
             }
 
             startActivityForResult(intent, org.smartregister.family.util.JsonFormUtils.REQUEST_CODE_GET_JSON);
@@ -131,8 +139,15 @@ public class PncRegisterActivity extends CorePncRegisterActivity implements Bott
 
     @Override
     public void onRegistrationSaved(String encounterType, boolean isEdit, boolean hasChildren) {
-        if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
+        if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME) || encounterType.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_POST_PNC_REGISTRATION)) {
+            hideProgressDialog();
             Timber.d("We are home - PNC Register");
+            if (encounterType.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_POST_PNC_REGISTRATION)) {
+                finish();
+                Intent intent = new Intent(this, PmtctRegisterActivity.class);
+                startActivity(intent);
+            }
+
         } else {
             super.onRegistrationSaved(encounterType, isEdit, hasChildren);
         }
@@ -153,10 +168,13 @@ public class PncRegisterActivity extends CorePncRegisterActivity implements Bott
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResultExtended(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_FILTERS) {
+            ((PncRegisterFragment) mBaseFragment).onFiltersUpdated(requestCode, data);
+        } else if (resultCode == Activity.RESULT_OK) {
             try {
                 JSONObject form = new JSONObject(data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON));
                 String encounter_type = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
+                String table = data.getStringExtra(Constants.ACTIVITY_PAYLOAD.TABLE_NAME);
 
                 if (CoreConstants.EventType.PREGNANCY_OUTCOME.equals(encounter_type)) {
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
@@ -166,8 +184,8 @@ public class PncRegisterActivity extends CorePncRegisterActivity implements Bott
                         this.finish();
                         return;
                     }
-
-
+                } else if (encounter_type.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_POST_PNC_REGISTRATION)) {
+                    presenter().saveForm(form.toString(), false, table);
                 }
                 SyncServiceJob.scheduleJobImmediately(SyncServiceJob.TAG);
 

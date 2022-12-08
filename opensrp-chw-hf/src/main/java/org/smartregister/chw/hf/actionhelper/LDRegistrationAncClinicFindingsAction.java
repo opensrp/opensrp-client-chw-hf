@@ -31,7 +31,6 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
     private String pmtct;
     private String syphilis;
     private String bloodGroup;
-    private String rhFactor;
     private String hbTestConducted;
     private Context context;
 
@@ -63,7 +62,6 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
             pmtct = CoreJsonFormUtils.getValue(jsonObject, "anc_hiv_status");
             syphilis = CoreJsonFormUtils.getValue(jsonObject, "syphilis");
             bloodGroup = CoreJsonFormUtils.getValue(jsonObject, "blood_group");
-            rhFactor = CoreJsonFormUtils.getValue(jsonObject, "rh_factor");
         } catch (JSONException e) {
             Timber.e(e);
         }
@@ -120,8 +118,7 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
                         !StringUtils.isBlank(hbTestDate))) &&
                 !StringUtils.isBlank(pmtct) &&
                 !StringUtils.isBlank(syphilis) &&
-                !StringUtils.isBlank(bloodGroup) &&
-                !StringUtils.isBlank(rhFactor);
+                !StringUtils.isBlank(bloodGroup);
     }
 
     /**
@@ -136,8 +133,7 @@ public class LDRegistrationAncClinicFindingsAction implements BaseLDVisitAction.
                 !StringUtils.isBlank(hbTestDate) ||
                 !StringUtils.isBlank(pmtct) ||
                 !StringUtils.isBlank(syphilis) ||
-                !StringUtils.isBlank(bloodGroup) ||
-                !StringUtils.isBlank(rhFactor);
+                !StringUtils.isBlank(bloodGroup);
 
     }
 

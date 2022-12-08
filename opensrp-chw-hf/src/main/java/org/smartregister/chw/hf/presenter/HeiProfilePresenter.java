@@ -10,7 +10,7 @@ import org.smartregister.family.contract.FamilyProfileContract;
 import org.smartregister.family.domain.FamilyEventClient;
 import org.smartregister.repository.AllSharedPreferences;
 
-public class HeiProfilePresenter extends BasePmtctProfilePresenter implements  FamilyProfileContract.InteractorCallBack{
+public class HeiProfilePresenter extends BasePmtctProfilePresenter implements FamilyProfileContract.InteractorCallBack {
     private HeiProfileInteractor heiProfileInteractor;
 
     public HeiProfilePresenter(PmtctProfileContract.View view, PmtctProfileContract.Interactor interactor, MemberObject memberObject) {

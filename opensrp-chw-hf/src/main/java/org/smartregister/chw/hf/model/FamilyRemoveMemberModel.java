@@ -12,6 +12,6 @@ public class FamilyRemoveMemberModel extends CoreFamilyRemoveMemberModel {
     @Override
     public String getForm(CommonPersonObjectClient client) {
         Date dob = Utils.dobStringToDate(Utils.getValue(client.getColumnmaps(), DBConstants.KEY.DOB, false));
-        return ((dob != null && getDiffYears(dob, new Date()) >= 5) ? Constants.JsonForm.getMarkClientAsDeceased() : Constants.JsonForm.getMarkChildAsDeceased());
+        return ((dob != null && getDiffYears(dob, new Date()) >= 5) ? Constants.JSON_FORM.getFamilyDetailsRemoveMember() : Constants.JSON_FORM.getFamilyDetailsRemoveChild());
     }
 }

@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.core.activity.DefaultAncMedicalHistoryActivityFlv;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -47,14 +49,14 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                 }
 
 
-                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed","number_of_azt_nvp_days_dispensed", "infant_feeding_practice", "sample_id", "next_facility_visit_date"};
+                String[] hf_params = {"pmtct_visit_date", "actual_age", "followup_status", "weight", "number_of_ctx_days_dispensed", "number_of_nvp_days_dispensed", "number_of_azt_nvp_days_dispensed", "infant_feeding_practice", "sample_id", "next_facility_visit_date"};
                 extractHFVisit(visits, hf_params, hf_visits, x, context);
 
                 x++;
             }
 
             processLastVisit(days, context);
-            processFacilityVisit(hf_visits, context);
+            processFacilityVisit(hf_visits, visits, context);
         }
     }
 
@@ -84,7 +86,7 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
     }
 
 
-    protected void processFacilityVisit(List<Map<String, String>> hf_visits, Context context) {
+    protected void processFacilityVisit(List<Map<String, String>> hf_visits, List<Visit> visits, Context context) {
         if (hf_visits != null && hf_visits.size() > 0) {
             linearLayoutHealthFacilityVisit.setVisibility(View.VISIBLE);
 
@@ -98,6 +100,22 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
                 TextView tvNvp = view.findViewById(R.id.nvp);
                 TextView tvFeedingPractice = view.findViewById(R.id.feeding_practice);
                 TextView tvDnaPcr = view.findViewById(R.id.dna_pcr);
+                TextView tvEdit = view.findViewById(R.id.textview_edit);
+
+                // Updating visibility of EDIT button if the visit is the last visit
+                if (x == visits.size() - 1)
+                    tvEdit.setVisibility(View.VISIBLE);
+                else
+                    tvEdit.setVisibility(View.GONE);
+
+                tvEdit.setOnClickListener(view1 -> {
+                    ((Activity) context).finish();
+                    Visit visit = visits.get(0);
+                    if (visit != null && visit.getVisitType().equalsIgnoreCase(Constants.Events.HEI_FOLLOWUP) && visit.getBaseEntityId() != null)
+                        HeiFollowupVisitActivity.startHeiFollowUpActivity((Activity) context, visit.getBaseEntityId(), true);
+                });
+
+
                 evaluateTitle(context, x, vals, tvTitle);
                 evaluateFollowupStatus(context, vals, tvTypeOfVisit);
                 evaluateWeight(context, vals, tvWeight);
@@ -169,7 +187,7 @@ public class HeiMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivi
         if (StringUtils.isBlank(getMapValue(vals, "number_of_nvp_days_dispensed")) && StringUtils.isBlank(getMapValue(vals, "number_of_azt_nvp_days_dispensed"))) {
             tvNvp.setVisibility(View.GONE);
         } else {
-            String message =  StringUtils.isBlank(getMapValue(vals, "number_of_azt_nvp_days_dispensed")) ?
+            String message = StringUtils.isBlank(getMapValue(vals, "number_of_azt_nvp_days_dispensed")) ?
                     MessageFormat.format(context.getString(R.string.nvp_days_dispensed), getMapValue(vals, "number_of_nvp_days_dispensed")) : MessageFormat.format(context.getString(R.string.nvp_days_dispensed), getMapValue(vals, "number_of_azt_nvp_days_dispensed"));
             tvNvp.setText(message);
         }

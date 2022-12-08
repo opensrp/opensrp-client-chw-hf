@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.json.JSONObject;
+import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.dataloader.CoreFamilyMemberDataLoader;
 import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
@@ -39,15 +40,17 @@ import org.smartregister.chw.hf.BuildConfig;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.HfLDProfileContract;
+import org.smartregister.chw.hf.dao.HfAncDao;
 import org.smartregister.chw.hf.dao.HfPncDao;
+import org.smartregister.chw.hf.dao.LDDao;
 import org.smartregister.chw.hf.interactor.LDProfileInteractor;
 import org.smartregister.chw.hf.interactor.PncMemberProfileInteractor;
 import org.smartregister.chw.hf.presenter.LDProfilePresenter;
 import org.smartregister.chw.hf.utils.LDReferralFormUtils;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
+import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.ld.LDLibrary;
 import org.smartregister.chw.ld.activity.BaseLDProfileActivity;
-import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.ld.domain.MemberObject;
 import org.smartregister.chw.ld.domain.Visit;
 import org.smartregister.chw.ld.util.Constants;
@@ -115,6 +118,15 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
         refreshMedicalHistory(true);
         invalidateOptionsMenu();
         ((LDProfilePresenter) profilePresenter).fetchTasks();
+
+
+        if (LDDao.isClosed(memberObject.getBaseEntityId())) {
+            textViewRecordLD.setVisibility(View.GONE);
+            TextView forecastSvdTitle = findViewById(R.id.forecast_svd_title);
+            forecastSvdTitle.setText("Discharged Date");
+            vaginalExamDate.setText(LDDao.getLastInteractedWith(memberObject.getBaseEntityId()));
+            forecastSVDTime.setVisibility(View.GONE);
+        }
     }
 
     protected void setupViews() {
@@ -139,13 +151,18 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
         findViewById(org.smartregister.ld.R.id.primary_ld_caregiver).setVisibility(View.GONE);
         findViewById(org.smartregister.ld.R.id.family_ld_head).setVisibility(View.GONE);
 
-        Boolean isRegisteredForLd = isTheClientReferred(memberObject.getBaseEntityId());
-        if (isRegisteredForLd != null && isRegisteredForLd) {
+        Boolean theClientReferred = isTheClientReferred(memberObject.getBaseEntityId());
+        if (theClientReferred != null && theClientReferred) {
             referredLabel.setVisibility(View.VISIBLE);
             referredLabel.setText(getString(R.string.referred_for_ld_emergency));
-            textViewRecordLD.setVisibility(View.GONE);
         } else {
             referredLabel.setVisibility(View.GONE);
+        }
+
+        if (!(LDDao.getLabourStage(memberObject.getBaseEntityId()) == null && (LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) == null || !LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section")))) {
+            rlLdDetails.setVisibility(View.VISIBLE);
+        } else {
+            rlLdDetails.setVisibility(View.GONE);
         }
 
     }
@@ -238,9 +255,18 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
                 openPostDeliveryManagementMother(false);
             } else if (((TextView) view).getText().equals(getString(R.string.ld_discharge_client))) {
                 closeLDVisit(memberObject.getBaseEntityId(), LDProfileActivity.this);
+            } else if (((TextView) view).getText().equals(getString(R.string.pregnancy_outcome_title))) {
+                CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
+                String familyBaseEntityId = org.smartregister.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.RELATIONAL_ID, false);
+                boolean motherHivStatus = LDDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") || HivDao.isRegisteredForHiv(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId()) || HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive");
+                PncRegisterActivity.startPncRegistrationActivity(LDProfileActivity.this, memberObject.getBaseEntityId(), null, CoreConstants.JSON_FORM.getPregnancyOutcome(), AncLibrary.getInstance().getUniqueIdRepository().getNextUniqueId().getOpenmrsId(), familyBaseEntityId, memberObject.getFamilyName(), null, motherHivStatus);
             }
         } else if (id == R.id.textview_process_partograph) {
             processPartographEvent();
+        } else if (id == R.id.rlRegistrationDetails) {
+            LDRegistrationDetailsActivity.startMe(this, memberObject);
+        } else if (id == R.id.rlLdDetails) {
+            LdSummaryDetailsActivity.startMe(this, memberObject);
         } else {
             super.onClick(view);
         }
@@ -260,7 +286,10 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
     }
 
     private void setTextViewRecordLDText() {
-        if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null && (LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) == null || !LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section"))) {
+        Boolean theClientReferred = isTheClientReferred(memberObject.getBaseEntityId());
+        if (theClientReferred != null && theClientReferred) {
+            textViewRecordLD.setText(R.string.pregnancy_outcome_title);
+        } else if (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null && (LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) == null || !LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section"))) {
             currentVisitItemTitle = getString(R.string.labour_and_delivery_labour_stage_title);
             textViewRecordLD.setText(R.string.labour_and_delivery_labour_stage_title);
         } else if ((LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()) != null && LDDao.getReasonsForAdmission(memberObject.getBaseEntityId()).equalsIgnoreCase("elective_cesarean_section")) && (LDDao.getLabourStage(memberObject.getBaseEntityId()) == null || (!LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("complete") && !LDDao.getLabourStage(memberObject.getBaseEntityId()).equals("3")))) {

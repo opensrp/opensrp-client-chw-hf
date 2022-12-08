@@ -110,11 +110,12 @@ public class AncRegisterInteractor extends BaseAncRegisterInteractor {
                 encounterType = form.optString(Constants.JSON_FORM_EXTRA.ENCOUNTER_TYPE);
                 String motherBaseId = form.optString(Constants.JSON_FORM_EXTRA.ENTITY_TYPE);
 
-                if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME)) {
+                if (encounterType.equalsIgnoreCase(Constants.EVENT_TYPE.PREGNANCY_OUTCOME) || encounterType.equalsIgnoreCase(org.smartregister.chw.hf.utils.Constants.Events.PMTCT_POST_PNC_REGISTRATION)) {
                     String tableName = CoreConstants.TABLE_NAME.ANC_PREGNANCY_OUTCOME;
                     saveRegistration(form.toString(), tableName, motherBaseId);
 
                     JSONArray fields = org.smartregister.util.JsonFormUtils.fields(form);
+
                     JSONObject deliveryDate = getFieldJSONObject(fields, DELIVERY_DATE);
                     JSONObject famNameObject = getFieldJSONObject(fields, DBConstants.KEY.FAM_NAME);
                     JSONObject riskCategoryObject = getFieldJSONObject(fields, RISK_CATEGORY);
