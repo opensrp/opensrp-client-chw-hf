@@ -71,7 +71,7 @@ public class KvpMonthlyReportObject extends ReportObject {
         for (String question: kvpQuestionsGroups) {
                 for (String kvpGroup : kvpGroups) {
                     totalofthewholekvpgroup+=getTotalPerEachIndicator(question,kvpGroup);
-                    jsonObject.put("kvp"+"-"+question+"-"+kvpGroup+"-jumla-kuu",totalofthewholekvpgroup); //total for all kvp groups
+                    jsonObject.put("kvp"+"-"+question+"-jumla-kuu",totalofthewholekvpgroup); //total for all kvp groups
                 }
             totalofthewholekvpgroup = 0;
         }

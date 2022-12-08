@@ -1,6 +1,6 @@
 {
     "count": "1",
-    "encounter_type": "KVP STI",
+    "encounter_type": "PrEP Registration",
     "entity_id": "",
     "metadata": {
         "start": {
@@ -43,91 +43,81 @@
     },
     "global": {},
     "step1": {
-        "title": "STI",
+        "title": "PrEP Registration",
         "fields": [
             {
-                "key": "sti_screening",
+                "key": "nickname",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "sti_screening",
-                "type": "native_radio",
-                "label": "Kuchunguzwa magonjwa ya Ngono",
-                "options": [
-                    {
-                        "key": "positive",
-                        "text": "chanya",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "positive"
-                    },
-                    {
-                        "key": "negative",
-                        "text": "hasi",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "negative"
-                    },
-                    {
-                        "key": "screening_not_conducted",
-                        "text": "Hajachunguzwa",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "screening_not_conducted"
-                    }
-                ],
+                "openmrs_entity_id": "nickname",
+                "type": "edit_text",
+                "hint": "Jina Marufu",
+                "edit_type": "name",
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
-                }
-            },
-            {
-                "key": "treatment_provided",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "treatment_provided",
-                "type": "native_radio",
-                "label": "Ametibiwa magonjwa ya ngono (kama alipata)",
-                "options": [
-                    {
-                        "key": "treated",
-                        "text": "Ametibiwa",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "treated"
-                    },
-                    {
-                        "key": "referral",
-                        "text": "Amepewa rufaa",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "referral"
-                    },
-                    {
-                        "key": "not_treated",
-                        "text": "Haihusiki",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "not_treated"
-                    }
-                ],
-                "v_required": {
-                    "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali jaza jina"
                 },
-                "relevance": {
-                    "step1:sti_screening": {
-                        "type": "string",
-                        "ex": "equalTo(., \"positive\")"
-                    }
+                "v_regex": {
+                    "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+                    "err": "Tafadhali jaza jina halisi"
                 }
             },
             {
-                "key": "prompt_for_further_management",
-                "type": "toaster_notes",
-                "text": "Mpe refa kwa huduma zaidi",
-                "openmrs_entity_id": "prompt_for_further_management",
-                "openmrs_entity": "concept",
+                "key": "agreed_to_use_prep",
                 "openmrs_entity_parent": "",
-                "toaster_type": "problem",
-                "relevance": {
-                    "step1:treatment_provided": {
-                        "type": "string",
-                        "ex": "equalTo(., \"not_treated\")"
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "agreed_to_use_prep",
+                "label": "Ridhaa ya kutumia Dawa Kinga",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "yes",
+                        "text": "Ndio",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "yes"
+                    },
+                    {
+                        "key": "no",
+                        "text": "Hapana",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "no"
                     }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chaguwa jibu"
+                }
+            },
+            {
+                "key": "sms_notification_service",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "sms_notification_service",
+                "label": "Ridhaa ya kutumiwa ujumbe kwa njia ya simu",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "yes",
+                        "text": "Ndio",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "yes"
+                    },
+                    {
+                        "key": "no",
+                        "text": "Hapana",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "no"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chaguwa jibu"
                 }
             }
         ]

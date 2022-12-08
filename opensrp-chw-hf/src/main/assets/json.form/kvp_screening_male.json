@@ -790,7 +790,7 @@
         "openmrs_entity_id": "client_group",
         "label": "Select the client group as screened by the health care provider",
         "text_color": "#000000",
-        "type": "radio_group",
+        "type": "native_radio",
         "options": [
           {
             "key": "msm",

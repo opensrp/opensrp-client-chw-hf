@@ -466,6 +466,7 @@
 
         <activity
             android:name=".activity.KvpReportsViewActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity

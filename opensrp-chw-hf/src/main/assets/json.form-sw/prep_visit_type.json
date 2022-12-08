@@ -1,6 +1,6 @@
 {
     "count": "1",
-    "encounter_type": "KVP STI",
+    "encounter_type": "PrEP Visit Type",
     "entity_id": "",
     "metadata": {
         "start": {
@@ -43,91 +43,78 @@
     },
     "global": {},
     "step1": {
-        "title": "STI",
+        "title": "PrEP Visit Type",
         "fields": [
             {
-                "key": "sti_screening",
+                "key": "place",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "sti_screening",
+                "openmrs_entity_id": "place",
+                "label": "Mahali",
+                "text_color": "#000000",
                 "type": "native_radio",
-                "label": "Kuchunguzwa magonjwa ya Ngono",
                 "options": [
                     {
-                        "key": "positive",
-                        "text": "chanya",
+                        "key": "facility",
+                        "text": "Kituo cha Afya",
+                        "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
-                        "openmrs_entity_id": "positive"
+                        "openmrs_entity_id": "facility"
                     },
                     {
-                        "key": "negative",
-                        "text": "hasi",
+                        "key": "community_outreach",
+                        "text": "Jamii/Ufikiaji",
+                        "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
-                        "openmrs_entity_id": "negative"
-                    },
-                    {
-                        "key": "screening_not_conducted",
-                        "text": "Hajachunguzwa",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "screening_not_conducted"
+                        "openmrs_entity_id": "community_outreach"
                     }
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
-                "key": "treatment_provided",
+                "key": "visit_type",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "treatment_provided",
+                "openmrs_entity_id": "visit_type",
+                "label": "Aina ya tembeleo",
+                "text_color": "#000000",
                 "type": "native_radio",
-                "label": "Ametibiwa magonjwa ya ngono (kama alipata)",
                 "options": [
                     {
-                        "key": "treated",
-                        "text": "Ametibiwa",
+                        "key": "new_client",
+                        "text": "Mteja mpya",
+                        "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
-                        "openmrs_entity_id": "treated"
+                        "openmrs_entity_id": "new_client"
                     },
                     {
-                        "key": "referral",
-                        "text": "Amepewa rufaa",
+                        "key": "returning_client",
+                        "text": "Anaerudi",
+                        "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
-                        "openmrs_entity_id": "referral"
+                        "openmrs_entity_id": "returning_client"
                     },
                     {
-                        "key": "not_treated",
-                        "text": "Haihusiki",
+                        "key": "transfer_in",
+                        "text": "Mteja alie hamia kutoka kituo kingine",
+                        "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
-                        "openmrs_entity_id": "not_treated"
+                        "openmrs_entity_id": "transfer_in"
+                    },
+                    {
+                        "key": "visited_another_facility",
+                        "text": "Alitembelea kituo kingine (refill/outreach/transit)",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "visited_another_facility"
                     }
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
-                },
-                "relevance": {
-                    "step1:sti_screening": {
-                        "type": "string",
-                        "ex": "equalTo(., \"positive\")"
-                    }
-                }
-            },
-            {
-                "key": "prompt_for_further_management",
-                "type": "toaster_notes",
-                "text": "Mpe refa kwa huduma zaidi",
-                "openmrs_entity_id": "prompt_for_further_management",
-                "openmrs_entity": "concept",
-                "openmrs_entity_parent": "",
-                "toaster_type": "problem",
-                "relevance": {
-                    "step1:treatment_provided": {
-                        "type": "string",
-                        "ex": "equalTo(., \"not_treated\")"
-                    }
+                    "err": "Tafadhali chagua jibu"
                 }
             }
         ]

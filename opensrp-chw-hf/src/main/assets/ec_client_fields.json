@@ -7834,6 +7834,14 @@
           }
         },
         {
+          "column_name": "prep_assessment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "prep_assessment"
+          }
+        },
+        {
           "column_name": "hiv_status",
           "type": "Event",
           "json_mapping": {

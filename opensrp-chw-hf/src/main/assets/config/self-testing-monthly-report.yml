@@ -3666,7 +3666,7 @@ indicators:
   #     // 7 and age 15-19
   - key: "hivst-7-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3684,7 +3684,7 @@ indicators:
   #     // 7 and age 20-24
   - key: "hivst-7-20-24-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3702,7 +3702,7 @@ indicators:
   #     // 7 and age 25-29
   - key: "hivst-7-25-29-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3720,7 +3720,7 @@ indicators:
     #     // 7 and age 30-34
   - key: "hivst-7-30-34-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3738,7 +3738,7 @@ indicators:
   #     // 7 and age 35-39
   - key: "hivst-7-35-39-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3756,7 +3756,7 @@ indicators:
   #     // 7 and age 40-44
   - key: "hivst-7-40-44-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3774,7 +3774,7 @@ indicators:
   #     // 7 and age 45-49
   - key: "hivst-7-45-49-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3792,7 +3792,7 @@ indicators:
   #     // 7 and age ->50
   - key: "hivst-7->50-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 50 kuendelea"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3812,7 +3812,7 @@ indicators:
   #     // 7-i and age 15-19
   - key: "hivst-7-i-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3831,7 +3831,7 @@ indicators:
   #     // 7-i and age 20-24
   - key: "hivst-7-i-20-24-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3850,7 +3850,7 @@ indicators:
   #     // 7-i and age 25-29
   - key: "hivst-7-i-25-29-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3869,7 +3869,7 @@ indicators:
   #     // 7-i and age 30-34
   - key: "hivst-7-i-30-34-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3888,7 +3888,7 @@ indicators:
   #     // 7-i and age 35-39
   - key: "hivst-7-i-35-39-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3907,7 +3907,7 @@ indicators:
   #     // 7-i and age 40-44
   - key: "hivst-7-i-40-44-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3925,7 +3925,7 @@ indicators:
                                    '-' || '01')"
   - key: "hivst-7-i-45-49-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3944,7 +3944,7 @@ indicators:
   #     // 7-i and age ->50
   - key: "hivst-7-i->50-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3964,7 +3964,7 @@ indicators:
   #     // 7-ii and age 15-19
   - key: "hivst-7-ii-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -3983,7 +3983,7 @@ indicators:
   #     // 7-ii and age 20-24
   - key: "hivst-7-ii-20-24-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4002,7 +4002,7 @@ indicators:
   #     // 7-ii and age 25-29
   - key: "hivst-7-ii-25-29-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4021,7 +4021,7 @@ indicators:
   #     // 7-ii and age 30-34
   - key: "hivst-7-ii-30-34-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4040,7 +4040,7 @@ indicators:
   #     // 7-ii and age 35-39
   - key: "hivst-7-ii-35-39-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4059,7 +4059,7 @@ indicators:
   #     // 7-ii and age 40-44
   - key: "hivst-7-ii-40-44-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4078,7 +4078,7 @@ indicators:
   #     // 7-ii and age 45-49
   - key: "hivst-7-ii-45-49-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4097,7 +4097,7 @@ indicators:
   #     // 7-ii and age ->50
   - key: "hivst-7-ii->50-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4117,7 +4117,7 @@ indicators:
   #     // 7-iii and age 15-19
   - key: "hivst-7-iii-18-19-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					   INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4136,7 +4136,7 @@ indicators:
   #     // 7-iii and age 20-24
   - key: "hivst-7-iii-20-24-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 20 - 24 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					   INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4155,7 +4155,7 @@ indicators:
   #     // 7-iii and age 25-29
   - key: "hivst-7-iii-25-29-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 25 - 29 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					   INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4174,7 +4174,7 @@ indicators:
   #     // 7-iii and age 30-34
   - key: "hivst-7-iii-30-34-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 30 - 34 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4193,7 +4193,7 @@ indicators:
   #     // 7-iii and age 35-39
   - key: "hivst-7-iii-35-39-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 35 - 39 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4213,7 +4213,7 @@ indicators:
   #     // 7-iv and age 15-19
   - key: "hivst-7-iv-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4232,7 +4232,7 @@ indicators:
   #     // 7-iv and age 20-24
   - key: "hivst-7-iv-20-24-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4251,7 +4251,7 @@ indicators:
   #     // 7-iv and age 25-29
   - key: "hivst-7-iv-25-29-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4270,7 +4270,7 @@ indicators:
   #     // 7-iv and age 30-34
   - key: "hivst-7-iv-30-34-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4289,7 +4289,7 @@ indicators:
   #     // 7-iv and age 35-39
   - key: "hivst-7-iv-35-39-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4308,7 +4308,7 @@ indicators:
   #     // 7-iv and age 40-44
   - key: "hivst-7-iv-40-44-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4327,7 +4327,7 @@ indicators:
   #     // 7-iv and age 45-49
   - key: "hivst-7-iv-45-49-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4346,7 +4346,7 @@ indicators:
   #     // 7-iv and age 20-24
   - key: "hivst-7-iv->50-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4366,7 +4366,7 @@ indicators:
   #     // 7-v and age 15-19
   - key: "hivst-7-v-18-19-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4385,7 +4385,7 @@ indicators:
   #     // 7-v and age 20-24
   - key: "hivst-7-v-20-24-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 20 - 24 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4404,7 +4404,7 @@ indicators:
   #     // 7-v and age 25-29
   - key: "hivst-7-v-25-29-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 25 - 29 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4423,7 +4423,7 @@ indicators:
   #     // 7-v and age 30-34
   - key: "hivst-7-v-30-34-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 30 - 34 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4442,7 +4442,7 @@ indicators:
   #     // 7-v and age 35-39
   - key: "hivst-7-v-35-39-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 35 - 39 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4461,7 +4461,7 @@ indicators:
   #     // 7-v and age 40-44
   - key: "hivst-7-v-40-44-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 40 - 44 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4480,7 +4480,7 @@ indicators:
   #     // 7-v and age 45-49
   - key: "hivst-7-v-45-49-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 45 - 49 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4499,7 +4499,7 @@ indicators:
   #     // 7-v and age ->50
   - key: "hivst-7-v->50-ME"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka ->50 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4519,7 +4519,7 @@ indicators:
   #     // 7-vi and age 15-19
   - key: "hivst-7-vi-18-19-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4538,7 +4538,7 @@ indicators:
   #     // 7-vi and age 20-24
   - key: "hivst-7-vi-20-24-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4557,7 +4557,7 @@ indicators:
   #     // 7-vi and age 25-29
   - key: "hivst-7-vi-25-29-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4576,7 +4576,7 @@ indicators:
   #     // 7-vi and age 30-34
   - key: "hivst-7-vi-30-34-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4595,7 +4595,7 @@ indicators:
   #     // 7-vi and age 35-39
   - key: "hivst-7-vi-35-39-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4614,7 +4614,7 @@ indicators:
   #     // 7-vi and age 40-44
   - key: "hivst-7-vi-40-44-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4633,7 +4633,7 @@ indicators:
   #     // 7-vi and age 45-49
   - key: "hivst-7-vi-45-49-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -4652,7 +4652,7 @@ indicators:
   #     // 7-vi and age ->50
   - key: "hivst-7-vi->50-ME"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5395,7 +5395,7 @@ indicators:
   #     // 7 and age 15-19
   - key: "hivst-7-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5413,7 +5413,7 @@ indicators:
   #     // 7 and age 20-24
   - key: "hivst-7-20-24-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5431,7 +5431,7 @@ indicators:
   #     // 7 and age 25-29
   - key: "hivst-7-25-29-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5449,7 +5449,7 @@ indicators:
     #     // 7 and age 30-34
   - key: "hivst-7-30-34-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5467,7 +5467,7 @@ indicators:
   #     // 7 and age 35-39
   - key: "hivst-7-35-39-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5485,7 +5485,7 @@ indicators:
   #     // 7 and age 40-44
   - key: "hivst-7-40-44-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5503,7 +5503,7 @@ indicators:
   #     // 7 and age 45-49
   - key: "hivst-7-45-49-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5521,7 +5521,7 @@ indicators:
   #     // 7 and age ->50
   - key: "hivst-7->50-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 50 kuendelea"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5540,7 +5540,7 @@ indicators:
   #     // 7-i and age 15-19
   - key: "hivst-7-i-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5559,7 +5559,7 @@ indicators:
   #     // 7-i and age 20-24
   - key: "hivst-7-i-20-24-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5578,7 +5578,7 @@ indicators:
   #     // 7-i and age 25-29
   - key: "hivst-7-i-25-29-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5597,7 +5597,7 @@ indicators:
   #     // 7-i and age 30-34
   - key: "hivst-7-i-30-34-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5616,7 +5616,7 @@ indicators:
   #     // 7-i and age 35-39
   - key: "hivst-7-i-35-39-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5635,7 +5635,7 @@ indicators:
   #     // 7-i and age 40-44
   - key: "hivst-7-i-40-44-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5653,7 +5653,7 @@ indicators:
                                    '-' || '01')"
   - key: "hivst-7-i-45-49-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5672,7 +5672,7 @@ indicators:
   #     // 7-i and age ->50
   - key: "hivst-7-i->50-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni wajidunga madawa ya kulevya"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5692,7 +5692,7 @@ indicators:
   #     // 7-ii and age 15-19
   - key: "hivst-7-ii-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5711,7 +5711,7 @@ indicators:
   #     // 7-ii and age 20-24
   - key: "hivst-7-ii-20-24-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5730,7 +5730,7 @@ indicators:
   #     // 7-ii and age 25-29
   - key: "hivst-7-ii-25-29-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5749,7 +5749,7 @@ indicators:
   #     // 7-ii and age 30-34
   - key: "hivst-7-ii-30-34-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5768,7 +5768,7 @@ indicators:
   #     // 7-ii and age 35-39
   - key: "hivst-7-ii-35-39-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5787,7 +5787,7 @@ indicators:
   #     // 7-ii and age 40-44
   - key: "hivst-7-ii-40-44-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5806,7 +5806,7 @@ indicators:
   #     // 7-ii and age 45-49
   - key: "hivst-7-ii-45-49-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5825,7 +5825,7 @@ indicators:
   #     // 7-ii and age ->50
   - key: "hivst-7-ii->50-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni wafungwa wa mahabusu"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5845,7 +5845,7 @@ indicators:
   #     // 7-iii and age 15-19
   - key: "hivst-7-iii-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					   INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5864,7 +5864,7 @@ indicators:
   #     // 7-iii and age 20-24
   - key: "hivst-7-iii-20-24-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 20 - 24 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					   INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5883,7 +5883,7 @@ indicators:
   #     // 7-iii and age 25-29
   - key: "hivst-7-iii-25-29-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 25 - 29 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					   INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5902,7 +5902,7 @@ indicators:
   #     // 7-iii and age 30-34
   - key: "hivst-7-iii-30-34-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 30 - 34 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5922,7 +5922,7 @@ indicators:
   #     // 7-iii and age 35-39
   - key: "hivst-7-iii-35-39-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 35 - 39 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5941,7 +5941,7 @@ indicators:
   #     // 7-iii and age 40-44
   - key: "hivst-7-iii-40-44-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 40 - 44 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5960,7 +5960,7 @@ indicators:
   #     // 7-iii and age 45-49
   - key: "hivst-7-iii-45-49-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 45 - 49 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5979,7 +5979,7 @@ indicators:
   #     // 7-iii and age ->50
   - key: "hivst-7-iii->50-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka ->50 na ni fsw (wanawake wanaojiuza)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -5999,7 +5999,7 @@ indicators:
   #     // 7-iv and age 15-19
   - key: "hivst-7-iv-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6018,7 +6018,7 @@ indicators:
   #     // 7-iv and age 20-24
   - key: "hivst-7-iv-20-24-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6037,7 +6037,7 @@ indicators:
   #     // 7-iv and age 25-29
   - key: "hivst-7-iv-25-29-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6056,7 +6056,7 @@ indicators:
   #     // 7-iv and age 30-34
   - key: "hivst-7-iv-30-34-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6075,7 +6075,7 @@ indicators:
   #     // 7-iv and age 35-39
   - key: "hivst-7-iv-35-39-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6094,7 +6094,7 @@ indicators:
   #     // 7-iv and age 40-44
   - key: "hivst-7-iv-40-44-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6113,7 +6113,7 @@ indicators:
   #     // 7-iv and age 45-49
   - key: "hivst-7-iv-45-49-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6132,7 +6132,7 @@ indicators:
   #     // 7-iv and age 20-24
   - key: "hivst-7-iv->50-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni msm (male sex with male)"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6151,7 +6151,7 @@ indicators:
   #     // 7-v and age 15-19
   - key: "hivst-7-v-18-19-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 15 - 19 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6170,7 +6170,7 @@ indicators:
   #     // 7-v and age 20-24
   - key: "hivst-7-v-20-24-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 20 - 24 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6189,7 +6189,7 @@ indicators:
   #     // 7-v and age 25-29
   - key: "hivst-7-v-25-29-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 25 - 29 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6208,7 +6208,7 @@ indicators:
   #     // 7-v and age 30-34
   - key: "hivst-7-v-30-34-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 30 - 34 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6227,7 +6227,7 @@ indicators:
   #     // 7-v and age 35-39
   - key: "hivst-7-v-35-39-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 35 - 39 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6246,7 +6246,7 @@ indicators:
   #     // 7-v and age 40-44
   - key: "hivst-7-v-40-44-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 40 - 44 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6265,7 +6265,7 @@ indicators:
   #     // 7-v and age 45-49
   - key: "hivst-7-v-45-49-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka 45 - 49 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6284,7 +6284,7 @@ indicators:
   #     // 7-v and age ->50
   - key: "hivst-7-v->50-KE"
     description: "Idadi ya wateja wa kike waliopewa condom kwa umri wa miaka ->50 na ni vijana rila la balehe"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6307,7 +6307,7 @@ indicators:
   #     // 7-vi and age 15-19
   - key: "hivst-7-vi-18-19-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 15 - 19 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6326,7 +6326,7 @@ indicators:
   #     // 7-vi and age 20-24
   - key: "hivst-7-vi-20-24-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 20 - 24 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6345,7 +6345,7 @@ indicators:
   #     // 7-vi and age 25-29
   - key: "hivst-7-vi-25-29-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 25 - 29 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                       FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6364,7 +6364,7 @@ indicators:
   #     // 7-vi and age 30-34
   - key: "hivst-7-vi-30-34-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 30 - 34 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6383,7 +6383,7 @@ indicators:
   #     // 7-vi and age 35-39
   - key: "hivst-7-vi-35-39-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 35 - 39 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6402,7 +6402,7 @@ indicators:
   #     // 7-vi and age 40-44
   - key: "hivst-7-vi-40-44-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 40 - 44 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6421,7 +6421,7 @@ indicators:
   #     // 7-vi and age 45-49
   - key: "hivst-7-vi-45-49-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka 45 - 49 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id
@@ -6440,7 +6440,7 @@ indicators:
   #     // 7-vi and age ->50
   - key: "hivst-7-vi->50-KE"
     description: "waliojipima wenyewe na kurudisha majibu kwa umri wa miaka ->50 na ni makundi ya others"
-    indicatorQuery: "SELECT count(efm.base_entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efm.base_entity_id) as count
                        FROM ec_hivst_results ehr
  					  INNER JOIN ec_family_member efm ON efm.base_entity_id = ehr.entity_id
 					  INNER JOIN ec_hivst_followup ehf ON ehf.entity_id=ehr.entity_id

@@ -326,22 +326,24 @@
     <string name="callPhoneRequestTitle">Ruhusu Ukusanyaji wa Nambari ya Simu</string>
     <string name="callPhoneRequestMessage">Mtoa Huduma wa Afya ngazi ya kituoni hukusanya nambari za simu za wateja zitakazotumika kwa ufuatiliaji, tathmini na uchambuzi wa ziara zinazofanywa na wateja kwenye kituo cha afya.</string>
     <string name="referral_for_mother_champion_services_sent">Ameunganishwa na Mama Kinara</string>
-    <string name="kvp_client_status">Client Status</string>
-    <string name="kvp_hts">HTS</string>
+    <string name="kvp_client_status">Hali ya Mteja</string>
+    <string name="kvp_hts">Ushauri Nasaha na Upimaji</string>
     <string name="kvp_prep_and_pep">PrEP and PEP</string>
     <string name="kvp_condom_provision">Ugawaji Kondomu</string>
     <string name="kvp_family_planning">Uzazi wa Mpango</string>
-    <string name="kvp_tb_screening">TB Screening</string>
-    <string name="kvp_sti_screening">STI Screening</string>
-    <string name="kvp_heptitis_test">Hepatitis Test</string>
+    <string name="kvp_tb_screening">Uchunguzi wa Kifua Kikuu</string>
+    <string name="kvp_sti_screening">Uchunguzi wa Magonjwa ya Ngono</string>
+    <string name="kvp_heptitis_test">Uchunguzi wa Homa ya Ini</string>
     <string name="kvp_vmmc">VMMC</string>
-    <string name="kvp_cervical_screening">Cervical Screening</string>
+    <string name="kvp_cervical_screening">Uchunguzi wa Saratani ya Shingo ya Kizazi</string>
     <string name="kvp_mat">MAT</string>
     <string name="kvp_iec_sbcc">IEC/SBCC</string>
     <string name="kvp_health_education">Elimu ya Kiafya</string>
-    <string name="kvp_gbv_analysis">GBV Analysis</string>
+    <string name="kvp_gbv_analysis">Uchunguzi wa Ukatili wa Kijinsia</string>
     <string name="kvp_other_services_referrals">Afua Zinginezo na Rufaa</string>
-    <string name="prep_visit_type">Visit Type</string>
+    <string name="prep_visit_type">Aina ya Hudhurio</string>
+    <string name="prep_initiation">Kuanzisha PrEP</string>
+    <string name="prep_screening">PrEP Screening</string>
     <string name="self_testing_reports_subtitle">View Self Testing Report</string>
     <string name="selftesting_reports">Self Testing Reports</string>
     <string name="selftesting_reports_title">Self Testing Reports</string>
@@ -350,8 +352,8 @@
     <string name="cdp_reports">CDP REPORTS</string>
     <string name="cdp_issuing_report">CDP Issuing Report</string>
     <string name="cdp_receiving_report">CDP Receiving Report</string>
-    <string name="kvp_reports">KVP REPORTS</string>
-    <string name="kvp_reports_subtitle">View Reports For KVP</string>
+    <string name="kvp_reports">Taarifa za KVP</string>
+    <string name="kvp_reports_subtitle">Tazama taarifa za KVP</string>
 
 
 </resources>
