@@ -96,11 +96,9 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .withHelper(new PmtctFollowupStatusAction(view, memberObject, callBack, details))
                 .build();
 
-        if (PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId()) != null)
-            actionList.put(context.getString(R.string.pmtct_followup_status_title), FollowupStatus);
+        actionList.put(context.getString(R.string.pmtct_followup_status_title), FollowupStatus);
 
-
-        JSONObject counsellingForm = null;
+        JSONObject counsellingForm;
         try {
             counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctCounselling());
             JSONArray fields = counsellingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
