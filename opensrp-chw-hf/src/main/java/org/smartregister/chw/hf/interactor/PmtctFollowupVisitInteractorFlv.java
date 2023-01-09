@@ -179,16 +179,11 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
         try {
             nextVisitForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getNextFacilityVisitForm());
 
-            JSONArray fields = nextVisitForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            //update visit number
-            JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
-            visitNumber.put(JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
-
             //loads details to the form
             if (details != null && !details.isEmpty()) {
                 JsonFormUtils.populateForm(nextVisitForm, details);
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             Timber.e(e);
         }
 
@@ -420,11 +415,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 try {
                     counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctCounselling());
 
-                    JSONArray fields = counsellingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-                    //update visit number
-                    JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
-                    visitNumber.put(JsonFormUtils.VALUE, HfPmtctDao.getVisitNumber(memberObject.getBaseEntityId()));
-
                     //loads details to the form
                     if (details != null && !details.isEmpty()) {
                         JsonFormUtils.populateForm(counsellingForm, details);
@@ -438,9 +428,7 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                             .build();
                     actionList.put(context.getString(R.string.pmtct_counselling_title), Counselling);
 
-                } catch (JSONException e) {
-                    Timber.e(e);
-                } catch (BasePmtctHomeVisitAction.ValidationException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 addActions(details, memberObject, context);

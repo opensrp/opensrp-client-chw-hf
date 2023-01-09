@@ -21,7 +21,6 @@ public class PmtctFollowupStatusAction implements BasePmtctHomeVisitAction.Pmtct
    protected String followup_status;
    private Context context;
    private String subTitle;
-   private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
 
    public PmtctFollowupStatusAction(MemberObject memberObject) {
       this.memberObject = memberObject;
@@ -57,7 +56,7 @@ public class PmtctFollowupStatusAction implements BasePmtctHomeVisitAction.Pmtct
 
    @Override
    public BasePmtctHomeVisitAction.ScheduleStatus getPreProcessedStatus() {
-      return scheduleStatus;
+      return null;
    }
 
    @Override
