@@ -43,7 +43,7 @@
     },
     "global": {},
     "step1": {
-        "title": "VMMC",
+        "title": "Huduma za Tohara",
         "fields": [
             {
                 "key": "vmcc_provided",
@@ -51,7 +51,7 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "vmcc_provided",
                 "type": "native_radio",
-                "label": "Je, mteja alipewa huduma za VMMC?",
+                "label": "Je, mteja alipewa huduma za Tohara?",
                 "options": [
                     {
                         "key": "provided",

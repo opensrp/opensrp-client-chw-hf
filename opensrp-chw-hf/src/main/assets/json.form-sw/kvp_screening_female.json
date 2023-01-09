@@ -44,7 +44,7 @@
     },
     "global": {},
     "step1": {
-        "title": "PWUD",
+        "title": "Watumiaji wa Dawa Za Kulevya kwa Njia Nyengine",
         "next": "step2",
         "fields": [
             {
@@ -93,7 +93,7 @@
         ]
     },
     "step2": {
-        "title": "PWID",
+        "title": "Wakujidunga",
         "next": "step3",
         "fields": [
             {
@@ -149,7 +149,7 @@
         ]
     },
     "step3": {
-        "title": "Sexual Behavior",
+        "title": "Tabia ya Ngono",
         "next": "step4",
         "fields": [
             {
@@ -184,7 +184,7 @@
         ]
     },
     "step4": {
-        "title": "Serodiscordant Couple",
+        "title": "Mwenza Mwenye Majibu Kinzani",
         "next": "step5",
         "fields": [
             {
@@ -340,7 +340,7 @@
         ]
     },
     "step5": {
-        "title": "FSW",
+        "title": "Mwanamke Anayefanya Biashara ya Ngono",
         "next": "step6",
         "fields": [
             {
@@ -431,7 +431,7 @@
         ]
     },
     "step6": {
-        "title": "AGYW",
+        "title": "Msichana Rika ya Balehe",
         "next": "step7",
         "fields": [
             {
@@ -543,7 +543,7 @@
         ]
     },
     "step7": {
-        "title": "Other Vulnerable Population",
+        "title": "Makundi Mengine Hatarishi",
         "next": "step8",
         "fields": [
             {
@@ -699,7 +699,7 @@
         ]
     },
     "step8": {
-        "title": "PrEP Assessment",
+        "title": "Tathmini ya Dawa Kinga",
         "next": "step9",
         "fields": [
             {
@@ -721,20 +721,20 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "prep_assessment",
-                "label": "Has the client been assessed for the use of PrEP?",
+                "label": "Mteja amekwisha fanyiwa asesmenti ya dawa kinga?",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
                     {
                         "key": "yes",
-                        "text": "Yes",
+                        "text": "Ndio",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "yes"
                     },
                     {
                         "key": "no",
-                        "text": "No",
+                        "text": "Hapana",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "no"
@@ -742,7 +742,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali jaza jibu la maswali"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
