@@ -492,6 +492,34 @@
         }
       },
       {
+        "key": "maximum_date_for_next_visit",
+        "type": "hidden",
+        "openmrs_entity_id": "maximum_date_for_next_visit",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "minimum_date_for_next_visit",
+        "type": "hidden",
+        "openmrs_entity_id": "minimum_date_for_next_visit",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "next_visit_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -511,7 +539,19 @@
               "rules-file": "prep_initiation_relevance.yml"
             }
           }
-        }
+        },
+        "constraints": [
+          {
+            "type": "date",
+            "ex": "greaterThanEqualTo(., step1:minimum_date_for_next_visit)",
+            "err": "The next appoint date should be within 3 days of the medication provided"
+          },
+          {
+            "type": "date",
+            "ex": "lessThanEqualTo(., step1:maximum_date_for_next_visit)",
+            "err": "The next appoint date should be within 3 days of the medication provided"
+          }
+        ]
       }
     ]
   }

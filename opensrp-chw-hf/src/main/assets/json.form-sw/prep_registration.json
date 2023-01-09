@@ -1,125 +1,121 @@
 {
-    "count": "1",
-    "encounter_type": "PrEP Registration",
-    "entity_id": "",
-    "metadata": {
-        "start": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_data_type": "start",
-            "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        "end": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_data_type": "end",
-            "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        "deviceid": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_data_type": "deviceid",
-            "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        "subscriberid": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_data_type": "subscriberid",
-            "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        "simserial": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_data_type": "simserial",
-            "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        "phonenumber": {
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_data_type": "phonenumber",
-            "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        },
-        "encounter_location": ""
+  "count": "1",
+  "encounter_type": "PrEP Registration",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
-    "global": {},
-    "step1": {
-        "title": "PrEP Registration",
-        "fields": [
-            {
-                "key": "nickname",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "nickname",
-                "type": "edit_text",
-                "hint": "Jina Marufu",
-                "edit_type": "name",
-                "v_required": {
-                    "value": "true",
-                    "err": "Tafadhali jaza jina"
-                },
-                "v_regex": {
-                    "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-                    "err": "Tafadhali jaza jina halisi"
-                }
-            },
-            {
-                "key": "agreed_to_use_prep",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "agreed_to_use_prep",
-                "label": "Ridhaa ya kutumia Dawa Kinga",
-                "text_color": "#000000",
-                "type": "native_radio",
-                "options": [
-                    {
-                        "key": "yes",
-                        "text": "Ndio",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "yes"
-                    },
-                    {
-                        "key": "no",
-                        "text": "Hapana",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "no"
-                    }
-                ],
-                "v_required": {
-                    "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
-                }
-            },
-            {
-                "key": "sms_notification_service",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "sms_notification_service",
-                "label": "Ridhaa ya kutumiwa ujumbe kwa njia ya simu",
-                "text_color": "#000000",
-                "type": "native_radio",
-                "options": [
-                    {
-                        "key": "yes",
-                        "text": "Ndio",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "yes"
-                    },
-                    {
-                        "key": "no",
-                        "text": "Hapana",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "no"
-                    }
-                ],
-                "v_required": {
-                    "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
-                }
-            }
-        ]
-    }
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "PrEP Registration",
+    "fields": [
+      {
+        "key": "nickname",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "nickname",
+        "type": "edit_text",
+        "hint": "Jina Marufu",
+        "edit_type": "name",
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali jaza jina halisi"
+        }
+      },
+      {
+        "key": "agreed_to_use_prep",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "agreed_to_use_prep",
+        "label": "Ridhaa ya kutumia Dawa Kinga",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chaguwa jibu"
+        }
+      },
+      {
+        "key": "sms_notification_service",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "sms_notification_service",
+        "label": "Ridhaa ya kutumiwa ujumbe kwa njia ya simu",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndio",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chaguwa jibu"
+        }
+      }
+    ]
+  }
 }
