@@ -180,6 +180,8 @@ public class PmtctMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActi
                 String clinicalStage = getMapValue(vals, "clinical_staging_disease");
                 if (StringUtils.isNotBlank(clinicalStage)) {
                     evaluateView(context, vals, tvSymptoms, clinicalStage + "_symptoms", R.string.pmtct_symptoms, "pmtct_clinical_staging_symptoms_");
+                } else {
+                    tvSymptoms.setVisibility(View.GONE);
                 }
 
                 evaluateView(context, vals, tvTbRegistrationNumber, "tb_registration_number", R.string.pmtct_tb_registration_number, "");
@@ -200,6 +202,8 @@ public class PmtctMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActi
                 String arvLine = getMapValue(vals, "arv_line");
                 if (StringUtils.isNotBlank(arvLine)) {
                     evaluateView(context, vals, tvArvPrescription, arvLine, R.string.pmtct_arv_prescription, "pmtct_");
+                }else{
+                    tvArvPrescription.setVisibility(View.GONE);
                 }
 
                 evaluateView(context, vals, tvReasonsForNotPrescribingArv, "reason_for_not_prescribing_arv", R.string.pmtct_reason_for_not_prescribing_arv, "");
