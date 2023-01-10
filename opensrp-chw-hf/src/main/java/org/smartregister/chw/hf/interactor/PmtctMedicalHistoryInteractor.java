@@ -44,8 +44,7 @@ public class PmtctMedicalHistoryInteractor extends CoreBaseAncMedicalHistoryInte
     public void getMemberHistory(final String memberID, final Context context, final BaseAncMedicalHistoryContract.InteractorCallBack callBack) {
         final Runnable runnable = () -> {
 
-            String[] eventTypes = new String[2];
-            eventTypes[0] = Constants.EVENT_TYPE.PMTCT_FOLLOWUP;
+            String[] eventTypes = new String[] {Constants.EVENT_TYPE.PMTCT_FOLLOWUP};
             List<Visit> visits = getVisits(memberID, eventTypes);
             final List<Visit> all_visits = new ArrayList<>(visits);
 

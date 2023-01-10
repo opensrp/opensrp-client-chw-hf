@@ -45,12 +45,16 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
     LinkedHashMap<String, BasePmtctHomeVisitAction> actionList = new LinkedHashMap<>();
 
     private static String getFollowupStatusString(String followup_status, Context context) {
-        if (followup_status.equals("continuing_with_services")) {
-            return context.getString(R.string.continuing_with_services);
-        } else if (followup_status.equals("transfer_out")) {
-            return context.getString(R.string.transfer_out);
+        switch (followup_status) {
+            case "continuing_with_services":
+                return context.getString(R.string.continuing_with_services);
+            case "transfer_out":
+                return context.getString(R.string.transfer_out);
+            case "lost_to_followup":
+                return context.getString(R.string.lost_to_followup);
+            default:
+                return "";
         }
-        return "";
     }
 
     @Override
@@ -97,37 +101,6 @@ public class PmtctFollowupVisitInteractorFlv implements PmtctFollowupVisitIntera
                 .build();
 
         actionList.put(context.getString(R.string.pmtct_followup_status_title), FollowupStatus);
-
-        JSONObject counsellingForm;
-        try {
-            counsellingForm = FormUtils.getFormUtils().getFormJson(Constants.JsonForm.getPmtctCounselling());
-            JSONArray fields = counsellingForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
-            //add globals
-
-            JSONObject global = counsellingForm.getJSONObject("global");
-            global.put("is_visit_zero", PmtctDao.getPmtctFollowUpVisitDate(memberObject.getBaseEntityId()) == null);
-
-            //loads details to the form
-            if (details != null && !details.isEmpty()) {
-                JsonFormUtils.populateForm(counsellingForm, details);
-            }
-            BasePmtctHomeVisitAction Counselling = new BasePmtctHomeVisitAction.Builder(context, context.getString(R.string.pmtct_counselling_title))
-                    .withOptional(true)
-                    .withDetails(details)
-                    .withFormName(Constants.JsonForm.getPmtctCounselling())
-                    .withJsonPayload(counsellingForm.toString())
-                    .withHelper(new PmtctCounsellingAction(memberObject))
-                    .build();
-            actionList.put(context.getString(R.string.pmtct_counselling_title), Counselling);
-
-        } catch (JSONException e) {
-            Timber.e(e);
-        } catch (BasePmtctHomeVisitAction.ValidationException e) {
-            e.printStackTrace();
-        }
-
-        addActions(details, memberObject, context);
-
     }
 
     private void addActions(Map<String, List<VisitDetail>> details, MemberObject memberObject, Context context) {
