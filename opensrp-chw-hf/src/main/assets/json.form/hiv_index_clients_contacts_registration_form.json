@@ -824,7 +824,7 @@
           },
           {
             "key": "provider_referral",
-            "text": "Provider Referral ",
+            "text": "Provider Referral",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "provider_referral"
           },
