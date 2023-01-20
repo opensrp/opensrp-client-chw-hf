@@ -67,7 +67,7 @@
                     },
                     {
                         "key": "negative",
-                        "text": "hasi",
+                        "text": "Hasi",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "negative"
                     },
@@ -80,7 +80,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jubu"
+                    "err": "Tafadhali chagua jubu"
                 }
             },
             {
@@ -105,7 +105,7 @@
                     },
                     {
                         "key": "negative",
-                        "text": "hasi",
+                        "text": "Hasi",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "negative"
                     },
@@ -118,7 +118,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jubu"
+                    "err": "Tafadhali chagua jubu"
                 }
             }
         ]

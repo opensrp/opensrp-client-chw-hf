@@ -56,21 +56,21 @@
                 "options": [
                     {
                         "key": "hivst",
-                        "text": "HIVST",
+                        "text": "Kajipima mwenyewe",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "hivst"
                     },
                     {
                         "key": "hiv_cv_test",
-                        "text": "HIV conventional test",
+                        "text": "Ya kawaida",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "hiv_cv_test"
                     },
                     {
                         "key": "hivst_and_hiv_cv_test",
-                        "text": "HIVST na HIV conventional test",
+                        "text": "Zote",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "hivst_and_hiv_cv_test"
@@ -118,7 +118,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "testing_site",
-                "label": "saiti ya upimaji ya mteja",
+                "label": "Mahali huduma ya upimaji ilipofanyika",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
@@ -239,7 +239,7 @@
                 "options": [
                     {
                         "key": "positive",
-                        "text": "Chanja",
+                        "text": "Chanya",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "positive"
@@ -290,7 +290,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "ctc_services",
-                "label": "Kujiandikisha kwa huduma za CTC",
+                "label": "Kujiandikisha kwenye huduma za CTC",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
@@ -361,7 +361,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "kits_distributed",
-                "label": " Vifaa vya HIVST vilivyosambazwa",
+                "label": "Amepewa kitepe cha Jipime",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [

@@ -85,7 +85,7 @@
                     },
                     {
                         "key": "traditional",
-                        "text": "Njia  za kawaida",
+                        "text": "Njia ya asili",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "traditional"
                     },
@@ -116,7 +116,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
@@ -124,7 +124,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "condom_provided",
-                "label": "Je mteja alipewa codom kama njia ya uzazi wa mtango",
+                "label": "Je mteja alipewa condom kama njia ya uzazi wa mtango",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
@@ -145,7 +145,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu "
+                    "err": "Tafadhali chagua jibu "
                 }
             }
         ]

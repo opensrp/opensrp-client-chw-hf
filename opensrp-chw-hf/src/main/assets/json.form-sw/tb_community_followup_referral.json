@@ -50,13 +50,13 @@
   },
   "steps": [
     {
-      "title": "Rufaa ya ufwatiliaji wa wateja wa TB katika ngazi ya jamii",
+      "title": "Rufaa ya ufuatiliaji wa wateja wa TB katika ngazi ya jamii",
       "fields": [
         {
           "name": "reasons_for_issuing_community_referral",
           "type": "radio_group",
           "properties": {
-            "text": "Sababu za kutoa rufaa ya ufwatiliaji kwenye Jamii"
+            "text": "Sababu za kutoa rufaa ya ufuatiliaji kwenye Jamii"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -94,7 +94,7 @@
               }
             }
           ],
-          "required_status": "yes:Tafadhali chagua sababu za kutoa rufaa ya ufwatiliaji katika ngazi ya jamii",
+          "required_status": "yes:Tafadhali chagua sababu za kutoa rufaa ya ufuatiliaji katika ngazi ya jamii",
           "dependent_calculations": [
             "tb_community_referral_date"
           ]

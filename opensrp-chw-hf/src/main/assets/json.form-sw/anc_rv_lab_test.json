@@ -491,7 +491,7 @@
         "options": [
           {
             "key": "positive",
-            "text": "Chanja ",
+            "text": "Chanya ",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "positive",
             "openmrs_entity_parent": ""

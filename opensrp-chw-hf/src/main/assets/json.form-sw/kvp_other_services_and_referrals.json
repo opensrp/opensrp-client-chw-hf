@@ -61,42 +61,42 @@
                 "options": [
                     {
                         "key": "rch",
-                        "text": "RCH",
+                        "text": "Huduma za mama na mtoto",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "rch"
                     },
                     {
                         "key": "mental_health",
-                        "text": "Afya ya Kiakili",
+                        "text": "Afya ya akili na msaada wa kisaikolojia",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "mental_health"
                     },
                     {
                         "key": "covid_vaccine",
-                        "text": "Chanjo ya covid-19",
+                        "text": "Chanjo ya UVIKO",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "covid_vaccine"
                     },
                     {
                         "key": "legal_services",
-                        "text": "Huduma za kisheria",
+                        "text": "Huduma za msaada wa kisheria",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "legal_services"
                     },
                     {
                         "key": "iga",
-                        "text": "IGA",
+                        "text": "Huduma za kuongeza kipato",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "iga"
                     },
                     {
                         "key": "other",
-                        "text": "Mengineyo",
+                        "text": "Nyinginezo",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "other"

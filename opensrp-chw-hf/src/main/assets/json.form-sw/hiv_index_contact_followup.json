@@ -453,7 +453,7 @@
           "options": [
             {
               "name": "known_positive",
-              "text": "Mteja tayari amekwisha pima na ana HIV",
+              "text": "Mteja tayari amekwisha pima na ana VVU",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "known_positive",

@@ -62,7 +62,7 @@
     <string name="none_option_for_medical_surgical_history">Hakuna</string>
     <string name="record_ctc_number">Rekodi namba ya CTC</string>
     <string name="referral_sent">Rufaa Imetumwa</string>
-    <string name="index_contact_has_feedback_from_community">Ana majibu ya ufwatiliaji kutoka ngazi ya jamii</string>
+    <string name="index_contact_has_feedback_from_community">Ana majibu ya ufuatiliaji kutoka ngazi ya jamii</string>
     <string name="pending_ctc_registration">Usajili wa CTC haujakamilika</string>
     <string name="record_anc_first_visit">Rekodi Hudhurio la Kwanza la ANC</string>
     <string name="record_anc_followup_visit">Rekodi Hudhurio la Ufuatiliaji la ANC</string>
@@ -195,6 +195,14 @@
     <string name="pmtct_reports_subtitle"><![CDATA[Tazama Ripoti za Vikundi vya PMTCT (Wanawake na Watoto)]]></string>
     <string name="pnc_reports">RIPOTI za PNC</string>
     <string name="view_reports_for_women_in_pnc">Tazama Ripoti za Wanawake katika PNC</string>
+    <string name="community_ltfu_summary">RIPOTI za LTFU</string>
+    <string name="community_ltfu_summary_subtitle">Tazama Ripoti za LTFU</string>
+    <string name="ld_reports_subtitle">Tazama Ripoti za LD</string>
+    <string name="ld_report_title">Repoti za LD</string>
+    <string name="cbhs_reports_title">Ripoti za CBHS</string>
+    <string name="view_reports_for_cbhs">Tazama Ripoti za Mwezi za CBHS</string>
+    <string name="mother_champion_reports_subtitle">Tazama Ripoti za Mwanamke Kinara</string>
+    <string name="mother_champion_reports">Ripoti za Mwanamke Kinara</string>
     <string name="pmtct_reports_title">TAARIFA ZA KUNDI LA PMTCT</string>
     <string name="anc_monthly_report">Ripoti ya kila Mwezi</string>
     <string name="select_reporting_month_anc">Chagua Mwezi wa Kuripoti</string>
@@ -343,20 +351,20 @@
     <string name="kvp_gbv_analysis">Uchunguzi wa Ukatili wa Kijinsia</string>
     <string name="kvp_other_services_referrals">Afua Zinginezo na Rufaa</string>
     <string name="prep_visit_type">Aina ya Hudhurio</string>
-    <string name="prep_initiation">Kuanzisha PrEP</string>
-    <string name="prep_screening">PrEP Screening</string>
+    <string name="prep_initiation">Kuanzisha dawa kinga (PrEP)</string>
+    <string name="prep_screening">Uchunguzi wa ustahili wa dawa kinga</string>
     <string name="visits_history">Historia ya Mahudhurio</string>
     <string name="view_visits_history">Tazama Historia ya Mahudhurio</string>
-    <string name="self_testing_reports_subtitle">View Self Testing Report</string>
-    <string name="selftesting_reports">Self Testing Reports</string>
+    <string name="self_testing_reports_subtitle">Tazama Ripoti za Jipime</string>
+    <string name="selftesting_reports">Ripoti za Jipime</string>
     <string name="selftesting_reports_title">Self Testing Reports</string>
     <string name="condom_distribution_reports_subtitle">View Condom Distribution Report</string>
     <string name="condom_distribution_reports">Condom Distribution Reports</string>
-    <string name="cdp_reports">CDP REPORTS</string>
+    <string name="cdp_reports">RIPOTI za CDP</string>
     <string name="cdp_issuing_report">CDP Issuing Report</string>
     <string name="cdp_receiving_report">CDP Receiving Report</string>
-    <string name="kvp_reports">Taarifa za KVP</string>
-    <string name="kvp_reports_subtitle">Tazama taarifa za KVP</string>
-
+    <string name="kvp_reports">RIPOTI za KVP</string>
+    <string name="kvp_reports_subtitle">Tazama Ripoti za KVP</string>
+    <string name="global_search_description"><![CDATA[Jaza jina la mteja kisha Tafuta kwenye kanzi data ya kitaifa ya UCS]]></string>
 
 </resources>

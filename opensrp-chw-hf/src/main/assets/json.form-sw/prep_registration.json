@@ -43,7 +43,7 @@
   },
   "global": {},
   "step1": {
-    "title": "PrEP Registration",
+    "title": "Uandikishwaji wa dawa kinga",
     "fields": [
       {
         "key": "nickname",
@@ -51,7 +51,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "nickname",
         "type": "edit_text",
-        "hint": "Jina Marufu",
+        "hint": "Jina maarufu",
         "edit_type": "name",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
@@ -84,7 +84,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chaguwa jibu"
+          "err": "Tafadhali chagua jibu"
         }
       },
       {
@@ -113,7 +113,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali chaguwa jibu"
+          "err": "Tafadhali chagua jibu"
         }
       }
     ]

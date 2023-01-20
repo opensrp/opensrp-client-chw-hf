@@ -87,7 +87,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_kvp_category",
         "type": "check_box",
-        "label": "Aina nyengine ya Makundi Maalum",
+        "label": "Aina nyingine ya Makundi Maalum",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
@@ -97,70 +97,70 @@
         "options": [
           {
             "key": "pwud",
-            "text": "PWUD",
+            "text": "Watumiaji wa dawa za kulevya kwa njia nyingine",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pwud"
           },
           {
             "key": "pwid",
-            "text": "PWID",
+            "text": "Mjidunga dawa za kulevya",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "pwid"
           },
           {
             "key": "fsw",
-            "text": "FSW",
+            "text": "Mwanamke anayefanya biashara ya ngono",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "fsw"
           },
           {
             "key": "msm",
-            "text": "MSM",
+            "text": "Mwanaume anayefanya ngono na mwanaume mwenzie",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "msm"
           },
           {
             "key": "agyw",
-            "text": "AGYW",
+            "text": "Msichana rika balehe na mwanamke kijana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "agyw"
           },
           {
             "key": "prisoner",
-            "text": "Wafungwa",
+            "text": "Mfungwa",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "prisoner"
           },
           {
             "key": "rumandee",
-            "text": "Rumandee",
+            "text": "Mahabusu",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "rumandee"
           },
           {
             "key": "mobile_population",
-            "text": "Makundi ya watu yanayo hama hama",
+            "text": "Makundi ya watu wanao hamahama",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "mobile_population"
           },
           {
             "key": "serodiscordant_couple",
-            "text": "Wenza wenye majibu kinzani",
+            "text": "Mwenza mwenye majibu kinzani",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "serodiscordant_couple"
           },
           {
             "key": "other_vulnerable_population",
-            "text": "Makundi yaliyo kwenye mazingira hatarishi",
+            "text": "Makundi mengine hatarishi",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other_vulnerable_population"

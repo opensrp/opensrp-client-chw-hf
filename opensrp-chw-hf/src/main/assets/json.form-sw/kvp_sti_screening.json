@@ -61,7 +61,7 @@
                     },
                     {
                         "key": "negative",
-                        "text": "hasi",
+                        "text": "Hasi",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "negative"
                     },
@@ -74,7 +74,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
@@ -106,7 +106,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 },
                 "relevance": {
                     "step1:sti_screening": {

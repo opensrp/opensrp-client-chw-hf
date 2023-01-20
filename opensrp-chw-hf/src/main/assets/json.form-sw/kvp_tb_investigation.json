@@ -74,13 +74,13 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
                 "key": "prompt_for_tb_investigation",
                 "type": "toaster_notes",
-                "text": "Mpatiye mteja rufa kwa jili ya kipimo cha kifuwa kikuu",
+                "text": "Mpatie mteja rufa kwa ajili ya kipimo cha kifua kikuu",
                 "openmrs_entity_id": "prompt_for_Tachycardia",
                 "openmrs_entity": "concept",
                 "openmrs_entity_parent": "",

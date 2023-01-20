@@ -1,6 +1,6 @@
 {
   "count": "8",
-  "skip_blank_steps": true,
+  "skip_blank_steps": false,
   "encounter_type": "KVP Registration",
   "entity_id": "",
   "metadata": {

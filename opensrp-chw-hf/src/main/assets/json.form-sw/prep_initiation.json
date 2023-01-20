@@ -43,14 +43,14 @@
     },
     "global": {},
     "step1": {
-        "title": "PrEP Initiation",
+        "title": "Kuanza dawa kinga",
         "fields": [
             {
                 "key": "prep_status",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "prep_status",
-                "label": "Hali ya dawa kinga katika ughurio",
+                "label": "Hali ya dawa kinga katika hudhurio",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
@@ -92,7 +92,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu "
+                    "err": "Tafadhali chagua jibu "
                 }
             },
             {
@@ -114,7 +114,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu "
+                    "err": "Tafadhali chagua jibu "
                 },
                 "relevance": {
                     "rules-engine": {
@@ -147,7 +147,7 @@
                 },
                 "v_max": {
                     "value": "30",
-                    "err": "Number ya vidonge inatakiwa iwe sawa au chini ya 30"
+                    "err": "Namba ya vidonge inatakiwa iwe sawa au chini ya 30"
                 }
             },
             {
@@ -183,7 +183,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu "
+                    "err": "Tafadhali chagua jibu "
                 },
                 "relevance": {
                     "rules-engine": {
@@ -256,7 +256,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 },
                 "relevance": {
                     "step1:prep_adherence": {
@@ -353,7 +353,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu moja"
+                    "err": "Tafadhali chagua jibu moja"
                 },
                 "relevance": {
                     "rules-engine": {
@@ -406,7 +406,7 @@
                     },
                     {
                         "key": "side_effect_or_allergy",
-                        "text": "Madhara ya Dawa au allergy",
+                        "text": "Madhara ya dawa au allergy",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "side_effect_or_allergy"
                     },
@@ -443,7 +443,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu "
+                    "err": "Tafadhali chagua jibu "
                 },
                 "relevance": {
                     "rules-engine": {
@@ -462,7 +462,7 @@
                 "hint": "Sababu zingine",
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa sabau"
+                    "err": "Tafadhali chagua sabau"
                 },
                 "relevance": {
                     "step1:reasons_stopping_prep": {

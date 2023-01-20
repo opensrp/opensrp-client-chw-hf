@@ -94,7 +94,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "condom_provided",
-                "label": "Je Mteja alipewa kondom kama njia za uzazi wa mpango",
+                "label": "Je Mteja alipewa condom kama njia za uzazi wa mpango",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [

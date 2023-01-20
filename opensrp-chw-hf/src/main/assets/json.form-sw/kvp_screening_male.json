@@ -1,6 +1,6 @@
 {
   "count": "8",
-  "skip_blank_steps": true,
+  "skip_blank_steps": false,
   "encounter_type": "KVP Registration",
   "entity_id": "",
   "metadata": {
@@ -267,7 +267,7 @@
           },
           {
             "key": "negative",
-            "text": "hasi",
+            "text": "Hasi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
           },
@@ -581,7 +581,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "prep_assessment",
-        "label": "Mteja amekwisha fanyiwa asesmenti ya dawa kinga?",
+        "label": "Mteja amekwisha fanyiwa tathmini ya matumizi ya dawa kinga?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -610,7 +610,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "prep_qualified",
-        "label": "Je, mteja amefanyiwa tathmini ya matumizi ya dawa kinga?",
+        "label": "Je, mteja anastahili kuanzishiwa dawa kinga?",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -643,12 +643,12 @@
     ]
   },
   "step8": {
-    "title": "KVP Enrollment",
+    "title": "Uandikishaji wa Makundi Maalum",
     "fields": [
       {
         "key": "prompt_for_sdc_kvp",
         "type": "toaster_notes",
-        "text": "Mteja huyu ni Mwenzi mwenye majibu kinzani, mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "text": "Mteja huyu ni Mwenzi mwenye majibu kinzani, mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum ",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -664,7 +664,7 @@
       {
         "key": "prompt_for_msm_kvp",
         "type": "toaster_notes",
-        "text": "Mteja huyu ni Mwanaume anayefanya ngono na mwanaume mwenzie, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "text": "Mteja huyu ni Mwanaume anayefanya ngono na mwanaume mwenzie, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum ",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -680,7 +680,7 @@
       {
         "key": "prompt_for_pwud_kvp",
         "type": "toaster_notes",
-        "text": "Mteja huyu ni Mtumiaji wa dawa za kulevya kwa njia nyingine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "text": "Mteja huyu ni Mtumiaji wa dawa za kulevya kwa njia nyingine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum ",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -696,7 +696,7 @@
       {
         "key": "prompt_for_pwid_kvp",
         "type": "toaster_notes",
-        "text": "Mteja huyu ni Mjidunga dawa za kulevya, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "text": "Mteja huyu ni Mjidunga dawa za kulevya, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum ",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -712,7 +712,7 @@
       {
         "key": "prompt_no_group",
         "type": "toaster_notes",
-        "text": "Mteja huyu anguki kwenye kundi lolote la wateja wa kundi malumu, Usimsajilimteja kwenye kuni malumu",
+        "text": "Mteja huyu anguki kwenye kundi lolote la wateja wa kundi malumu, Usimsajilimteja kwenye kuni maalum",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
@@ -728,7 +728,7 @@
       {
         "key": "prompt_for_ovp_kvp",
         "type": "toaster_notes",
-        "text": "Mteja huyu ni Makundi mengine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu ",
+        "text": "Mteja huyu ni Makundi mengine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum ",
         "openmrs_entity_id": "",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",

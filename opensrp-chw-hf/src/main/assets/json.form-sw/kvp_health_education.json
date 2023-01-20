@@ -61,28 +61,28 @@
                 "options": [
                     {
                         "key": "sti",
-                        "text": "STI",
+                        "text": "Magonjwa ya ngono",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "sti"
                     },
                     {
                         "key": "hbv_hcv",
-                        "text": "HBV and HCV",
+                        "text": "Homa ya ini B&C",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "hbv_hcv"
                     },
                     {
                         "key": "tb",
-                        "text": "TB",
+                        "text": "Kifua kikuu",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "tb"
                     },
                     {
                         "key": "gbv",
-                        "text": "GBV",
+                        "text": "Ukatili wa kijinsia",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "gbv"
@@ -96,35 +96,35 @@
                     },
                     {
                         "key": "vmmc",
-                        "text": "VMMC",
+                        "text": "Huduma za tohara",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "vmmc"
                     },
                     {
                         "key": "cacx",
-                        "text": "CaCx",
+                        "text": "Saratani ya shingo ya kizazi",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "cacx"
                     },
                     {
                         "key": "drug_use_disorder",
-                        "text": "Ugonjwa wa matumizi ya dawa za kulevya",
+                        "text": "Athari za dawa za kulevya",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "drug_use_disorder"
                     },
                     {
                         "key": "hiv_aids",
-                        "text": "Wanandoa wa VVU na UKIMWI",
+                        "text": "VVU na UKIMWI",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "hiv_aids"
                     },
                     {
                         "key": "others",
-                        "text": "Wengine",
+                        "text": "Nyinginezo (Taja)",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "others"

@@ -59,7 +59,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="Fill in client’s name &amp; search through UCS\’s global database"
+                    android:text="@string/global_search_description"
                     app:layout_constraintBottom_toTopOf="@+id/first_name_ll"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
