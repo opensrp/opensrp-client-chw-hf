@@ -1088,3 +1088,58 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01') =
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "cbhs-6-kisheria"
+    description: ""
+    indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
+                      FROM ec_cbhs_followup ecf
+                      WHERE  instr(ecf.referrals_issued_to_other_services ,'legal_services')  AND
+                      date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                      substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
+                      date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "cbhs-6-vikundi"
+    description: ""
+    indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
+                      FROM ec_cbhs_followup ecf
+                      WHERE  instr(ecf.referrals_issued_to_other_services ,'support_groups')  AND
+                      date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                      substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
+                      date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "cbhs-6-huduma-zingine"
+    description: ""
+    indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
+                      FROM ec_cbhs_followup ecf
+                      WHERE  instr(ecf.referrals_issued_to_other_services ,'other_referrals')  AND
+                      date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                      substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
+                      date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "cbhs-7-kisheria"
+    description: ""
+    indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
+                      FROM ec_cbhs_followup ecf
+                      WHERE  instr(ecf.referrals_to_other_services_completed ,'legal_services')  AND
+                      date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                      substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
+                      date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "cbhs-7-vikundi"
+    description: ""
+    indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
+                      FROM ec_cbhs_followup ecf
+                      WHERE  instr(ecf.referrals_to_other_services_completed ,'support_groups')  AND
+                      date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                      substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
+                      date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "cbhs-7-huduma-zingine"
+    description: ""
+    indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
+                      FROM ec_cbhs_followup ecf
+                      WHERE  instr(ecf.referrals_to_other_services_completed ,'other_referrals')  AND
+                      date(substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                      substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
+                      date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
+  - key: "cbhs-8-jumla"
+    description: ""
+    indicatorQuery: " SELECT count(DISTINCT ecr.provider_id) as count
+                      FROM ec_cbhs_register ecr
+                      WHERE date(substr(strftime('%Y-%m-%d', datetime(ecr.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||
+                      substr(strftime('%Y-%m-%d', datetime(ecr.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
+                      date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
