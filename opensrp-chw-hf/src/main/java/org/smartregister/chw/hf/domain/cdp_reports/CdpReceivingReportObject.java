@@ -27,6 +27,9 @@ public class CdpReceivingReportObject extends ReportObject {
         List<Map<String, String>> getHfCdpStockLogList = ReportDao.getHfCdpStockLog(reportDate);
 
         int i = 0;
+        int flag_count_female=0;
+        int flag_count_male=0;
+
         for (Map<String, String> getHfCdpStockLog : getHfCdpStockLogList) {
             JSONObject reportJsonObject = new JSONObject();
             reportJsonObject.put("id", ++i);
@@ -36,6 +39,19 @@ public class CdpReceivingReportObject extends ReportObject {
             reportJsonObject.put("female-condom-brand", getCbhsClientDetails(getHfCdpStockLog, "female_condom_brand"));
             reportJsonObject.put("number-of-male-condom", getCbhsClientDetails(getHfCdpStockLog, "male_condoms_offset"));
             reportJsonObject.put("number-of-female-condom", getCbhsClientDetails(getHfCdpStockLog, "female_condoms_offset"));
+            flag_count_male+=Integer.parseInt(getCbhsClientDetails(getHfCdpStockLog, "male_condoms_offset"));
+            flag_count_female+=Integer.parseInt(getCbhsClientDetails(getHfCdpStockLog, "female_condoms_offset"));
+            dataArray.put(reportJsonObject);
+        }
+
+        if (flag_count_male > 0 || flag_count_female > 0){
+            JSONObject reportJsonObject = new JSONObject();
+            reportJsonObject.put("total-id",i+1);
+            reportJsonObject.put("total","TOTAL NUMBER OF CONDOMS RECEIVED");
+            reportJsonObject.put("total-female-brand","");
+            reportJsonObject.put("total-male-brand","");
+            reportJsonObject.put("total-male-condoms",flag_count_male);
+            reportJsonObject.put("total-female-condoms",flag_count_female);
             dataArray.put(reportJsonObject);
         }
 
