@@ -7723,11 +7723,19 @@
           }
         },
         {
-          "column_name": "condom_brand",
+          "column_name": "male_condom_brand",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "condom_brand"
+            "concept": "male_condom_brand"
+          }
+        },
+        {
+          "column_name": "female_condom_brand",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "female_condom_brand"
           }
         },
         {

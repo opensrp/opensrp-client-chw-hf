@@ -26,7 +26,7 @@ public class CdpBottomNavigationListener extends BaseCdpBottomNavigationListener
             baseRegisterActivity.switchToBaseFragment();
         } else if (itemId == org.smartregister.cdp.R.id.action_order_receive) {
             baseRegisterActivity.switchToFragment(1);
-        } else if (itemId == org.smartregister.cdp.R.id.action_receive_from_msd) {
+        } else if (itemId == org.smartregister.cdp.R.id.action_receive_from_organizations) {
             baseRegisterActivity.switchToFragment(2);
         } else if (itemId == org.smartregister.cdp.R.id.action_add_outlet) {
             baseRegisterActivity.startOutletForm();
