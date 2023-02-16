@@ -807,6 +807,22 @@
         }
       },
       {
+        "key": "prompt_for_ipv_service",
+        "type": "toaster_notes",
+        "text": "Refer the client for post-IPV Services\n\nDiscuss with the client on the appropriate referral to communicate with Index Contact",
+        "openmrs_entity_id": "prompt_for_ipv_service",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "warning",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "hiv_index_contacts_registration_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "how_to_notify_the_contact_client",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

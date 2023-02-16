@@ -902,17 +902,73 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "birth_region",
-                "type": "edit_text",
-                "hint": "Mkoa Mteja alikozaliwa ",
-                "edit_type": "name",
+                "openmrs_data_type": "select one",
+                "type": "spinner",
+                "label_info_title": "Mkoa aliozaliwa mteja",
+                "label_info_text": "",
+                "hint": "Chagua mkoa aliozaliwa mteja",
+                "values": [
+                    "Arusha",
+                    "Dar es Salaam",
+                    "Dodoma",
+                    "Geita",
+                    "Iringa",
+                    "Kagera",
+                    "Katavi",
+                    "Kigoma",
+                    "Kilimanjaro",
+                    "Lindi",
+                    "Manyara",
+                    "Mara",
+                    "Mbeya",
+                    "Morogoro",
+                    "Mtwara",
+                    "Mwanza",
+                    "Njombe",
+                    "Pwani",
+                    "Rukwa",
+                    "Ruvuma",
+                    "Shinyanga",
+                    "Simiyu",
+                    "Singida",
+                    "Songwe",
+                    "Tanga"
+                ],
+                "keys": [
+                    "Arusha",
+                    "Dar es Salaam",
+                    "Dodoma",
+                    "Geita",
+                    "Iringa",
+                    "Kagera",
+                    "Katavi",
+                    "Kigoma",
+                    "Kilimanjaro",
+                    "Lindi",
+                    "Manyara",
+                    "Mara",
+                    "Mbeya",
+                    "Morogoro",
+                    "Mtwara",
+                    "Mwanza",
+                    "Njombe",
+                    "Pwani",
+                    "Rukwa",
+                    "Ruvuma",
+                    "Shinyanga",
+                    "Simiyu",
+                    "Singida",
+                    "Songwe",
+                    "Tanga"
+                ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali jaza jibu la maswali"
+                    "err": "Tafadhali chagua mkoa"
                 },
                 "relevance": {
                     "rules-engine": {
                         "ex-rules": {
-                            "rules-file": "kvp_screening_female_relevance.yml"
+                            "rules-file": "kvp_screening_male_relevance.yml"
                         }
                     }
                 }
