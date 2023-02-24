@@ -47,14 +47,8 @@ public class LFTUFormUtils {
                 JSONArray steps = formJsonObject.getJSONArray("steps");
                 JSONObject step = steps.getJSONObject(0);
                 JSONArray fields = step.getJSONArray("fields");
-                if ((gender.equalsIgnoreCase("Male") && age > 2) || !HfPmtctDao.isRegisteredForPmtct(baseEntityId)) {
+                if ((gender.equalsIgnoreCase("Male") && age > 2)) {
                     removeFieldOption(fields, "problem", "PMTCT");
-                }
-                if (!HfHivDao.isHivMember(baseEntityId)) {
-                    removeFieldOption(fields, "problem", "CTC");
-                }
-                if (!HfKvpDao.isRegisteredForPrEP(baseEntityId)) {
-                    removeFieldOption(fields, "problem", "Prep");
                 }
                 ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
             }
@@ -69,19 +63,6 @@ public class LFTUFormUtils {
             formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, Constants.JsonForm.getLtfuReferralForm());
             if (formJsonObject != null) {
                 formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-
-                JSONArray steps = formJsonObject.getJSONArray("steps");
-                JSONObject step = steps.getJSONObject(0);
-                JSONArray fields = step.getJSONArray("fields");
-                if (!HfPmtctDao.isRegisteredForPmtct(baseEntityId)) {
-                    removeFieldOption(fields, "problem", "PMTCT");
-                }
-                if (!HfHivDao.isHivMember(baseEntityId)) {
-                    removeFieldOption(fields, "problem", "CTC");
-                }
-                if (!HfKvpDao.isRegisteredForPrEP(baseEntityId)) {
-                    removeFieldOption(fields, "problem", "Prep");
-                }
 
                 ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
             }
