@@ -131,13 +131,33 @@ public class ReportDao extends AbstractDao {
 
     public static List<Map<String, String>> getHfCdpStockLog(Date reportDate)
     {
-        String sql = " SELECT female_condoms_offset,male_condoms_offset,issuing_organization,female_condom_brand,male_condom_brand\n" +
-                "FROM ec_cdp_stock_log\n" +
-                "WHERE (issuing_organization='MSD' OR issuing_organization='PSI' OR issuing_organization='T-MARC' OR  issuing_organization='other')\n" +
-                "AND (stock_event_type ='increment' )\n" +
-                " AND date(substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||\n" +
-                " substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =\n" +
-                " date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) ";
+        String sql = " SELECT female_condoms_offset,male_condoms_offset,issuing_organization,female_condom_brand,male_condom_brand   \n" +
+                "                   FROM ec_cdp_stock_log   \n" +
+                "                   WHERE (issuing_organization='MSD' OR issuing_organization='PSI' OR issuing_organization='T-MARC' OR  issuing_organization='other')   \n" +
+                "                   AND (stock_event_type ='increment' )   \n" +
+                "                    AND date(substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||   \n" +
+                "                    substr(strftime('%Y-%m-%d', datetime(date_updated / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =   \n" +
+                "                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))    \n" +
+                "                  UNION ALL   \n" +
+                "                  SELECT ec_cdp_order_feedback.quantity_response,'0' as  male_condoms_offset,location.name,ec_cdp_order_feedback.condom_brand,'-' as male_condom_brand   \n" +
+                "                   FROM task   \n" +
+                "                   INNER JOIN location ON location.uuid = task.group_id   \n" +
+                "                   INNER JOIN ec_cdp_order_feedback ON  ec_cdp_order_feedback.request_reference = task.reason_reference   \n" +
+                "\t\t\t\t   INNER JOIN ec_cdp_orders ON  ec_cdp_orders.form_submission_id = ec_cdp_order_feedback.request_reference\n" +
+                "                   WHERE (ec_cdp_order_feedback.condom_type = 'female_condom'  AND task.status = 'COMPLETED' AND request_type='facility_to_facility')   \n" +
+                "                    AND date(substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||   \n" +
+                "                    substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =   \n" +
+                "                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))    \n" +
+                "                  UNION ALL   \n" +
+                "                   SELECT '0' as  female_condoms_offset,quantity_response,location.name,'-' as female_condom_brand,ec_cdp_order_feedback.condom_brand   \n" +
+                "                   FROM task   \n" +
+                "                   INNER JOIN location ON location.uuid = task.group_id   \n" +
+                "                   INNER JOIN ec_cdp_order_feedback ON  ec_cdp_order_feedback.request_reference = task.reason_reference   \n" +
+                "\t\t\t\t   INNER JOIN ec_cdp_orders ON  ec_cdp_orders.form_submission_id = ec_cdp_order_feedback.request_reference\n" +
+                "                   WHERE (ec_cdp_order_feedback.condom_type = 'male_condom'  AND task.status = 'COMPLETED' AND request_type='facility_to_facility')   \n" +
+                "                    AND date(substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 1, 4) || '-' ||   \n" +
+                "                    substr(strftime('%Y-%m-%d', datetime(response_at / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =   \n" +
+                "                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) ";
 
         String queryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(reportDate);
 
