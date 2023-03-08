@@ -206,13 +206,13 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
             if (status.equalsIgnoreCase("alive")) {
                 if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                         StringUtils.isNotBlank(delivery_date)) {
-                    completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
+                    completed = !delivery_place.equalsIgnoreCase("at_a_health_facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
                             StringUtils.isNotBlank(name_of_delivery_person));
                 }
             } else {
                 if ((StringUtils.isNotBlank(delivery_place) && !delivery_place.equalsIgnoreCase("Place of delivery")) &&
                         StringUtils.isNotBlank(cause_of_death) && StringUtils.isNotBlank(time_of_death) && StringUtils.isNotBlank(delivery_date)) {
-                    completed = !delivery_place.equalsIgnoreCase("At a health facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
+                    completed = !delivery_place.equalsIgnoreCase("at_a_health_facility") || (StringUtils.isNotBlank(designation_of_delivery_personnel) &&
                             StringUtils.isNotBlank(name_of_delivery_person));
                 }
             }
@@ -227,14 +227,14 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
                 // Because of spinner delivery place is never blank it is the value of the hint
                 if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date)) {
                     partialCompletion = true;
-                } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
+                } else if (delivery_place.equalsIgnoreCase("at_a_health_facility")) {
                     partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person);
                 }
             } else {
                 if (delivery_place.equalsIgnoreCase("Place of delivery") || StringUtils.isBlank(delivery_date) || StringUtils.isBlank(cause_of_death) ||
                         StringUtils.isBlank(time_of_death)) {
                     partialCompletion = true;
-                } else if (delivery_place.equalsIgnoreCase("At a health facility")) {
+                } else if (delivery_place.equalsIgnoreCase("at_a_health_facility")) {
                     partialCompletion = StringUtils.isBlank(designation_of_delivery_personnel) || StringUtils.isBlank(name_of_delivery_person);
                 }
             }
@@ -279,15 +279,19 @@ public class MotherStatusActionHelper implements BaseLDVisitAction.LDVisitAction
     private void startActionForChild() {
         for (int i = 0; i < numberOfChildrenBorn; i++) {
             // Get visit details for each individual child
-            if (isEdit) {
-                Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "Post Delivery Mother Management");
-                if (lastVisit != null) {
-                    Visit lastImmediateNewBornCareVisit = LDLibrary.getInstance().visitRepository().getVisitsByParentVisitId(lastVisit.getVisitId(), "LND " + ordinal(i + 1) + " Newborn").get(0);
+            try {
+                if (isEdit) {
+                    Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(baseEntityId, "Post Delivery Mother Management");
+                    if (lastVisit != null) {
+                        Visit lastImmediateNewBornCareVisit = LDLibrary.getInstance().visitRepository().getVisitsByParentVisitId(lastVisit.getVisitId(), "LND " + ordinal(i + 1) + " Newborn").get(0);
 
-                    if (lastImmediateNewBornCareVisit != null) {
-                        details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastImmediateNewBornCareVisit.getVisitId()));
+                        if (lastImmediateNewBornCareVisit != null) {
+                            details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastImmediateNewBornCareVisit.getVisitId()));
+                        }
                     }
                 }
+            } catch (Exception e){
+                Timber.e(e);
             }
 
             String title;
