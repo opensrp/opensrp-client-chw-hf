@@ -35,6 +35,7 @@
     <string name="chw_followed_details">Waja ameonana na mtajwa</string>
     <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
     <string name="chw_test_location">Atapimwa wapi</string>
+    <string name="record_pmtct_visit">Rekodi ufuatiliaji wa pmtct</string>
     <string name="optional"></string>
     <string name="action_pregnancy_confirmation_referrals">Kuhakikisha Ujauzito</string>
     <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>

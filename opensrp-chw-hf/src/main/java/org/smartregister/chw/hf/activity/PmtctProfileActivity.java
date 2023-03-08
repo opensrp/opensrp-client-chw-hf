@@ -588,10 +588,10 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             }
             if (ctcNumber == null || ctcNumber.equals("") && statusAfterTesting != null && statusAfterTesting.equalsIgnoreCase("positive")) {
                 textViewRecordPmtct.setText(R.string.record_ctc_number);
-            } else if (HfPmtctDao.isTransferInClient(baseEntityId)) {
-                textViewRecordPmtct.setText(R.string.record_pmtct);
+            } else if (HfPmtctDao.isNewClient(baseEntityId)) {
+                textViewRecordPmtct.setText(R.string.record_pmtct_visit);
             } else {
-                textViewRecordPmtct.setText(R.string.record_first_pmtct);
+                textViewRecordPmtct.setText(R.string.record_pmtct);
             }
 
             Visit lastFolllowUpVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);

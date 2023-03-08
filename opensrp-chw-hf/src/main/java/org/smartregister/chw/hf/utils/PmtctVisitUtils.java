@@ -127,7 +127,7 @@ public class PmtctVisitUtils extends VisitUtils {
                 JSONObject checkObj = obs.getJSONObject(i);
                 if (checkObj.getString("fieldCode").equalsIgnoreCase("followup_status")) {
                     JSONArray values = checkObj.getJSONArray("values");
-                    if ((values.getString(0).equalsIgnoreCase("continuing_with_services"))) {
+                    if ((values.getString(0).equalsIgnoreCase("continuing_with_services")) || (values.getString(0).equalsIgnoreCase("new_client"))) {
                         isContinuingWithServices = true;
                         break;
                     }
