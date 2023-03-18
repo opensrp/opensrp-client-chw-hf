@@ -201,13 +201,13 @@ android {
             applicationId "org.smartregister.chw.moh.hf"
             minSdkVersion 21
             targetSdkVersion 31
-            versionCode 18
-            versionName "1.1.10"
+            versionCode 19
+            versionName "1.1.11"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
             buildConfigField "String", 'opensrp_url', '"https://ucs.nacp.go.tz/opensrp/"'
-            buildConfigField "String", 'opensrp_url_debug', '"http://50.116.15.4:8082/opensrp/"'
-//            buildConfigField "String", 'opensrp_url_debug', '"http://45.79.110.194:8082/opensrp/"'
+//            buildConfigField "String", 'opensrp_url_debug', '"http://50.116.15.4:8082/opensrp/"'
+            buildConfigField "String", 'opensrp_url_debug', '"http://170.187.199.69:8082/opensrp/"'
             buildConfigField "boolean", 'SUPPORT_QR', 'true'
             buildConfigField "int", "DATABASE_VERSION", '15'
             buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
