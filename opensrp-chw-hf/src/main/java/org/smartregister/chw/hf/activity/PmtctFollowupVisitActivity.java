@@ -25,6 +25,7 @@ import org.smartregister.util.LangUtils;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import timber.log.Timber;
 
@@ -87,6 +88,8 @@ public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
     public void initializeActions(LinkedHashMap<String, BasePmtctHomeVisitAction> map) {
         actionList.clear();
 
+        ConcurrentHashMap<String, BasePmtctHomeVisitAction> concurrentHashMap = new ConcurrentHashMap<>(map);
+
         //Necessary evil to rearrange the actions according to a specific arrangement
         if (map.containsKey(getString(R.string.pmtct_followup_status_title))) {
             BasePmtctHomeVisitAction followupStatusVisitAction = map.get(getString(R.string.pmtct_followup_status_title));
@@ -94,7 +97,7 @@ public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         }
         //====================End of Necessary evil ====================================
 
-        for (Map.Entry<String, BasePmtctHomeVisitAction> entry : map.entrySet()) {
+        for (Map.Entry<String, BasePmtctHomeVisitAction> entry : concurrentHashMap.entrySet()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 actionList.putIfAbsent(entry.getKey(), entry.getValue());
             } else {
