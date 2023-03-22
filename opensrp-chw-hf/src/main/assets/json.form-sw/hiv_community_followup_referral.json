@@ -94,7 +94,7 @@
               }
             }
           ],
-          "required_status": "yes:Tafadhali chagua sababu za kutoa rufaa ya ufwatiliaji katika ngazi ya jamii",
+          "required_status": "yes:Tafadhali chagua sababu za kutoa rufaa ya ufuatiliaji katika ngazi ya jamii",
           "dependent_calculations": [
             "hiv_community_referral_date"
           ]

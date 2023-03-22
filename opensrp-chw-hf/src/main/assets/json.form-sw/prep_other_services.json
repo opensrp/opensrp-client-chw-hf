@@ -43,7 +43,7 @@
     },
     "global": {},
     "step1": {
-        "title": "PrEP Other Services",
+        "title": "Huduma nyingine na rufaa",
         "fields": [
             {
                 "key": "health_edu_sti_provided",
@@ -63,7 +63,7 @@
                     },
                     {
                         "key": "no",
-                        "text": "Hapan",
+                        "text": "Hapana",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "no"
@@ -71,7 +71,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
@@ -100,7 +100,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
@@ -136,7 +136,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 },
                 "relevance": {
                     "step1:sti_rti_screening": {
@@ -171,7 +171,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
@@ -202,7 +202,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa jibu"
+                    "err": "Tafadhali chagua jibu"
                 },
                 "relevance": {
                     "step1:condoms_given": {
@@ -217,7 +217,7 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "number_of_male_condoms_issued",
                 "type": "edit_text",
-                "hint": "Idadi za Kondomu za Kiume zilizotolewa",
+                "hint": "Idadi ya Kondomu za Kiume zilizotolewa",
                 "v_numeric": {
                     "value": "true",
                     "err": "Jaza tarakimu sahihi"
@@ -248,7 +248,7 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "number_of_female_condoms_issued",
                 "type": "edit_text",
-                "hint": "Idadi za Kondomu za Kike zilizotolewa",
+                "hint": "Idadi ya Kondomu za Kike zilizotolewa",
                 "v_numeric": {
                     "value": "true",
                     "err": "Jaza tarakimu sahihi"
@@ -358,7 +358,7 @@
                 "hint": "Nyinginezo",
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali chaguwa"
+                    "err": "Tafadhali chagua"
                 },
                 "relevance": {
                     "step1:services_and_referral": {

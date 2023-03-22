@@ -16,7 +16,7 @@ import org.smartregister.chw.core.activity.CoreCdpRegisterActivity;
 import org.smartregister.chw.core.custom_views.NavigationMenu;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.fragment.CdpReceiveMsdRegisterFragment;
+import org.smartregister.chw.hf.fragment.CdpReceiveFromOrganizationsRegisterFragment;
 import org.smartregister.chw.hf.fragment.OrdersRegisterFragment;
 import org.smartregister.chw.hf.fragment.RequestOrdersRegisterFragment;
 import org.smartregister.chw.hf.listener.CdpBottomNavigationListener;
@@ -36,7 +36,7 @@ public class CdpRegisterActivity extends CoreCdpRegisterActivity {
     protected Fragment[] getOtherFragments() {
         return new Fragment[]{
                 new OrdersRegisterFragment(),
-                new CdpReceiveMsdRegisterFragment()
+                new CdpReceiveFromOrganizationsRegisterFragment()
         };
     }
 

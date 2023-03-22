@@ -1,0 +1,63 @@
+---
+name: "problem_for_on_art_visibility"
+description: "Show options for clients on ART"
+priority: 1
+condition: "on_art['yes'] != null"
+actions:
+  - "problem_for_on_art_visibility =  true"
+---
+name: "problem_for_not_on_art_visibility"
+description: "Show options for clients not on ART"
+priority: 1
+condition: "on_art['no'] != null"
+actions:
+  - "problem_for_not_on_art_visibility =  true"
+---
+name: "problem_calculation"
+description: "Selected problem"
+priority: 1
+condition: "true"
+actions:
+  - "problem_calculation = (problem_for_on_art != null &&  !problem_for_on_art.isEmpty())
+  ? problem_for_on_art : (problem_for_not_on_art != null &&  !problem_for_not_on_art.isEmpty())
+  ? problem_for_not_on_art : null"
+---
+name: "referral_date_calculation"
+description: "Referral date calculation"
+priority: 1
+condition: "true"
+actions:
+  - "referral_date_calculation =  System.currentTimeMillis()"
+---
+name: "referral_time_calculation"
+description: "Referral time calculation"
+priority: 1
+condition: "true"
+actions:
+  - "def getDate(dateFormat) {
+        import java.util.*;
+        import java.text.SimpleDateFormat;
+        return new SimpleDateFormat(dateFormat).format(System.currentTimeMillis());
+    }"
+  - "referral_time_calculation = getDate('HH:mm:ss.SSS')"
+---
+name: "referral_type_calculation"
+description: "Referral type calculation"
+priority: 1
+condition: "true"
+actions:
+  - "referral_type_calculation = 'facility_to_community_referral'"
+---
+name: "referral_status_calculation"
+description: "Referral type calculation"
+priority: 1
+condition: "true"
+actions:
+  - "referral_status_calculation = 'PENDING'"
+---
+name: "service_before_referral_calculation"
+description: "Service Before Referral"
+condition: "true"
+priority: 1
+actions:
+  - "service_before_referral_calculation = 'None'"

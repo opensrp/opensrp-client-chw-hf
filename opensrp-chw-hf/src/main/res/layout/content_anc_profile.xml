@@ -88,7 +88,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="8dp"
-                android:src="@drawable/ic_baseline_how_to_reg_24" />
+                android:src="@drawable/ic_baseline_how_to_reg_24"
+                />
 
             <ImageView
                 android:id="@+id/iv_last_visit_arrow"

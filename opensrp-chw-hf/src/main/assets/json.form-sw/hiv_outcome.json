@@ -102,7 +102,7 @@
           "name": "reason_no_action_was_taken",
           "type": "radio_group",
           "properties": {
-            "text": "Reasons actions was not taken"
+            "text": "Sababu ya kutopata matibabu"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -112,7 +112,7 @@
           "options": [
             {
               "name": "known_positive",
-              "text": "Known Positive",
+              "text": "Inajulikana chanya",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "known_positive",
@@ -121,7 +121,7 @@
             },
             {
               "name": "client_declined",
-              "text": "Client Declined",
+              "text": "Mteja amekataa",
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "client_declined",
@@ -130,7 +130,7 @@
             },
             {
               "name": "test_not_required_based_on_risk_assessment",
-              "text": "Test not required based on risk assessment",
+              "text": "Kipimo hakijafanyika kutokana na tathmini ya hatari",
               "is_exclusive": true,
               "meta_data": {
                 "openmrs_entity": "concept",

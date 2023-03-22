@@ -1,6 +1,6 @@
 {
     "count": "9",
-    "skip_blank_steps": true,
+    "skip_blank_steps": false,
     "encounter_type": "KVP Registration",
     "entity_id": "",
     "metadata": {
@@ -44,7 +44,7 @@
     },
     "global": {},
     "step1": {
-        "title": "PWUD",
+        "title": "Watumiaji wa Dawa Za Kulevya kwa Njia Nyengine",
         "next": "step2",
         "fields": [
             {
@@ -93,7 +93,7 @@
         ]
     },
     "step2": {
-        "title": "PWID",
+        "title": "Wakujidunga",
         "next": "step3",
         "fields": [
             {
@@ -149,7 +149,7 @@
         ]
     },
     "step3": {
-        "title": "Sexual Behavior",
+        "title": "Tabia ya Ngono",
         "next": "step4",
         "fields": [
             {
@@ -184,7 +184,7 @@
         ]
     },
     "step4": {
-        "title": "Serodiscordant Couple",
+        "title": "Mwenza Mwenye Majibu Kinzani",
         "next": "step5",
         "fields": [
             {
@@ -340,7 +340,7 @@
         ]
     },
     "step5": {
-        "title": "FSW",
+        "title": "Mwanamke Anayefanya Biashara ya Ngono",
         "next": "step6",
         "fields": [
             {
@@ -431,7 +431,7 @@
         ]
     },
     "step6": {
-        "title": "AGYW",
+        "title": "Msichana Rika ya Balehe",
         "next": "step7",
         "fields": [
             {
@@ -543,7 +543,7 @@
         ]
     },
     "step7": {
-        "title": "Other Vulnerable Population",
+        "title": "Makundi Mengine Hatarishi",
         "next": "step8",
         "fields": [
             {
@@ -699,7 +699,7 @@
         ]
     },
     "step8": {
-        "title": "PrEP Assessment",
+        "title": "Tathmini ya Dawa Kinga",
         "next": "step9",
         "fields": [
             {
@@ -721,20 +721,20 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "prep_assessment",
-                "label": "Has the client been assessed for the use of PrEP?",
+                "label": "Mteja amekwisha fanyiwa tathmini ya matumizi ya dawa kinga?",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
                     {
                         "key": "yes",
-                        "text": "Yes",
+                        "text": "Ndio",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "yes"
                     },
                     {
                         "key": "no",
-                        "text": "No",
+                        "text": "Hapana",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "no"
@@ -742,7 +742,7 @@
                 ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali jaza jibu la maswali"
+                    "err": "Tafadhali chagua jibu"
                 }
             },
             {
@@ -750,7 +750,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "prep_qualified",
-                "label": "Je, mteja amefanyiwa tathmini ya matumizi ya dawa kinga?",
+                "label": "Je, mteja anastahili kuanzishiwa dawa kinga?",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
@@ -783,12 +783,12 @@
         ]
     },
     "step9": {
-        "title": "KVP Enrollment",
+        "title": "Uandikishaji wa Makundi Maalum",
         "fields": [
             {
                 "key": "prompt_for_sdc_kvp",
                 "type": "toaster_notes",
-                "text": "Mteja huyu ni Mwenzi mwenye majibu kinzani, mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu",
+                "text": "Mteja huyu ni Mwenzi mwenye majibu kinzani, mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_parent": "",
@@ -804,7 +804,7 @@
             {
                 "key": "prompt_for_agyw_kvp",
                 "type": "toaster_notes",
-                "text": "Mteja huyu ni Msichana rika balehe na mwanamke kijana, mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu",
+                "text": "Mteja huyu ni Msichana rika balehe na mwanamke kijana, mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_parent": "",
@@ -820,7 +820,7 @@
             {
                 "key": "prompt_for_ovp_kvp",
                 "type": "toaster_notes",
-                "text": "Mteja huyu ni Makundi mengine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu",
+                "text": "Mteja huyu ni Makundi mengine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_parent": "",
@@ -852,7 +852,7 @@
             {
                 "key": "prompt_for_pwud_kvp",
                 "type": "toaster_notes",
-                "text": "Mteja huyu ni Mtumiaji wa dawa za kulevya kwa njia nyingine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu",
+                "text": "Mteja huyu ni Mtumiaji wa dawa za kulevya kwa njia nyingine, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_parent": "",
@@ -868,7 +868,7 @@
             {
                 "key": "prompt_for_pwid_kvp",
                 "type": "toaster_notes",
-                "text": "Mteja huyu ni Mjidunga dawa za kulevya, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi mahalumu",
+                "text": "Mteja huyu ni Mjidunga dawa za kulevya, Mteja anatakiwa kuandikishwa kwenye huduma rafiki za makundi maalum",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_parent": "",
@@ -884,7 +884,7 @@
             {
                 "key": "prompt_no_group",
                 "type": "toaster_notes",
-                "text": "Mteja huyu anguki kwenye kundi lolote la wateja wa kundi malumu, Usimsajilimteja kwenye kuni malumu",
+                "text": "Mteja huyu anguki kwenye kundi lolote la wateja wa kundi malumu, Usimsajilimteja kwenye kuni maalum",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_parent": "",
@@ -902,17 +902,73 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "birth_region",
-                "type": "edit_text",
-                "hint": "Mkoa Mteja alikozaliwa ",
-                "edit_type": "name",
+                "openmrs_data_type": "select one",
+                "type": "spinner",
+                "label_info_title": "Mkoa aliozaliwa mteja",
+                "label_info_text": "",
+                "hint": "Chagua mkoa aliozaliwa mteja",
+                "values": [
+                    "Arusha",
+                    "Dar es Salaam",
+                    "Dodoma",
+                    "Geita",
+                    "Iringa",
+                    "Kagera",
+                    "Katavi",
+                    "Kigoma",
+                    "Kilimanjaro",
+                    "Lindi",
+                    "Manyara",
+                    "Mara",
+                    "Mbeya",
+                    "Morogoro",
+                    "Mtwara",
+                    "Mwanza",
+                    "Njombe",
+                    "Pwani",
+                    "Rukwa",
+                    "Ruvuma",
+                    "Shinyanga",
+                    "Simiyu",
+                    "Singida",
+                    "Songwe",
+                    "Tanga"
+                ],
+                "keys": [
+                    "Arusha",
+                    "Dar es Salaam",
+                    "Dodoma",
+                    "Geita",
+                    "Iringa",
+                    "Kagera",
+                    "Katavi",
+                    "Kigoma",
+                    "Kilimanjaro",
+                    "Lindi",
+                    "Manyara",
+                    "Mara",
+                    "Mbeya",
+                    "Morogoro",
+                    "Mtwara",
+                    "Mwanza",
+                    "Njombe",
+                    "Pwani",
+                    "Rukwa",
+                    "Ruvuma",
+                    "Shinyanga",
+                    "Simiyu",
+                    "Singida",
+                    "Songwe",
+                    "Tanga"
+                ],
                 "v_required": {
                     "value": "true",
-                    "err": "Tafadhali jaza jibu la maswali"
+                    "err": "Tafadhali chagua mkoa"
                 },
                 "relevance": {
                     "rules-engine": {
                         "ex-rules": {
-                            "rules-file": "kvp_screening_female_relevance.yml"
+                            "rules-file": "kvp_screening_male_relevance.yml"
                         }
                     }
                 }
@@ -944,7 +1000,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "client_group",
-                "label": "chaguwa kundi la mteja kutokana na uchunguzi wa mtoa huduma",
+                "label": "chagua kundi la mteja kutokana na uchunguzi wa mtoa huduma",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [

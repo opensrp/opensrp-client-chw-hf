@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import org.smartregister.chw.core.fragment.CoreCdpReceiveMsdRegisterFragment;
 import org.smartregister.family.util.JsonFormUtils;
 
-public class CdpReceiveMsdRegisterFragment extends CoreCdpReceiveMsdRegisterFragment {
+public class CdpReceiveFromOrganizationsRegisterFragment extends CoreCdpReceiveMsdRegisterFragment {
     @Override
     public void startFormActivity(JSONObject form) {
         Intent intent = org.smartregister.chw.core.utils.Utils.formActivityIntent(requireActivity(), form.toString());

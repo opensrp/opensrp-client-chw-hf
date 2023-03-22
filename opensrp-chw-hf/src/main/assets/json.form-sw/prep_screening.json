@@ -43,7 +43,7 @@
     },
     "global": {},
     "step1": {
-        "title": "PrEP Screening",
+        "title": "Uchunguzi wa ustahili wa dawa kinga",
         "fields": [
             {
                 "key": "diabetes",
@@ -56,7 +56,7 @@
                 "options": [
                     {
                         "key": "treated",
-                        "text": "Ametibiwa/inaendelea vizuri",
+                        "text": "Ametibiwa/anaendelea vizuri",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "treated"
@@ -92,7 +92,7 @@
                 "options": [
                     {
                         "key": "treated",
-                        "text": "Ametibiwa/inaendelea vizuri",
+                        "text": "Ametibiwa/anaendelea vizuri",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "treated"
@@ -135,7 +135,7 @@
                 "options": [
                     {
                         "key": "treated",
-                        "text": "Ametibiwa/inaendelea vizuri",
+                        "text": "Ametibiwa/anaendelea vizuri",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "treated"
@@ -622,7 +622,7 @@
             {
                 "key": "prompt_for_prep_eligibility",
                 "type": "toaster_notes",
-                "text": "Mteja huyu anastahiki PrEP",
+                "text": "Mteja huyu anastahili PrEP",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "",
                 "openmrs_entity_parent": "",
@@ -638,7 +638,7 @@
             {
                 "key": "prompt_for_prep_ineligibility",
                 "type": "toaster_notes",
-                "text": "Mteja huyu hastahiki PrEP",
+                "text": "Mteja huyu hastahili PrEP",
                 "openmrs_entity_id": "",
                 "openmrs_entity": "",
                 "openmrs_entity_parent": "",

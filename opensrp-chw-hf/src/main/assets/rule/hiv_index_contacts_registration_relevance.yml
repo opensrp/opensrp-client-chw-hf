@@ -75,3 +75,10 @@ priority: 1
 condition: "!step2_relationship.equals('biological_child_under_15') && !step2_relationship.equals('siblings_under_15')"
 actions:
   - "isRelevant = true"
+---
+name: step2_prompt_for_ipv_service
+description: prompt_for_ipv_service relevance
+priority: 1
+condition: "step2_physical_abuse.equals('yes') || step2_threatened_to_be_hurt.equals('yes') || step2_sexual_assault.equals('yes') || step2_fearful_of_contact_client.equals('yes')"
+actions:
+  - "isRelevant = true"
