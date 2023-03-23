@@ -368,4 +368,6 @@
     <string name="kvp_reports_subtitle">Tazama Ripoti za KVP</string>
     <string name="global_search_description"><![CDATA[Jaza jina la mteja kisha Tafuta kwenye kanzi data ya kitaifa ya UCS]]></string>
 
+    <string name="referral_submitted_successfully">Rufaa imetumwa</string>
+
 </resources>

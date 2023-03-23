@@ -123,7 +123,7 @@ public class LDPartographDetailsActivityFlv extends DefaultAncMedicalHistoryActi
                 TextView tvEdit = view.findViewById(R.id.textview_edit);
 
                 // Updating visibility of EDIT button if the visit is the last visit
-                if (x == visits.size() - 1)
+                if ((x == visits.size() - 1) && !LDDao.isClosed(visits.get(x).getBaseEntityId()))
                     tvEdit.setVisibility(View.VISIBLE);
                 else
                     tvEdit.setVisibility(View.GONE);

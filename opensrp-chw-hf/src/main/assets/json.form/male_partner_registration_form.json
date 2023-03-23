@@ -270,7 +270,7 @@
           "label": "Age"
         },
         "min_date": "today-120y",
-        "max_date": "today-11y",
+        "max_date": "today-15y",
         "v_required": {
           "value": "true",
           "err": "Please enter the date of birth"
@@ -341,8 +341,8 @@
           "err": "Please enter a valid age"
         },
         "v_min": {
-          "value": "11",
-          "err": "Age must be equal or greater than 11"
+          "value": "15",
+          "err": "Age must be equal or greater than 15"
         },
         "v_max": {
           "value": "120",
