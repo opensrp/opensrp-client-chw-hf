@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.TransactionTooLargeException;
+import android.widget.Toast;
 
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
@@ -52,6 +54,9 @@ public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
         super.submittedAndClose();
     }
 
+    private long mLastExecutionTime = 0;
+    private static final long MINIMUM_INTERVAL_MS = 3000;
+
     @Override
     public void startFormActivity(JSONObject jsonForm) {
 
@@ -77,6 +82,17 @@ public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
 
         intent.putExtra(org.smartregister.family.util.Constants.WizardFormActivity.EnableOnCloseDialog, false);
         intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
+
+
+        //Necessary evil to disable multiple sequential clicks of actions that do sometimes cause app crushes
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - mLastExecutionTime < MINIMUM_INTERVAL_MS) {
+            // too soon to execute the function again, ignore this call
+            return;
+        }
+
+        // record the current time as the last execution time
+        mLastExecutionTime = currentTime;
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
     }
 
