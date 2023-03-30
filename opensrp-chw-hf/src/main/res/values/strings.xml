@@ -715,7 +715,8 @@
     <string name="condom_distribution_reports_subtitle">View Condom Distribution Report</string>
     <string name="condom_distribution_reports">Condom Distribution Reports</string>
     <string name="cdp_reports">CDP REPORTS</string>
-    <string name="cdp_issuing_report">CDP Issuing Report</string>
+    <string name="cdp_issuing_at_the_facility_report">CDP Issuing at the facility Report</string>
+    <string name="cdp_issuing_from_the_facility_report">CDP Issuing from the facility Report</string>
     <string name="cdp_receiving_report">CDP Receiving Report</string>
     <string name="kvp_reports">KVP REPORTS</string>
     <string name="kvp_reports_subtitle">View Reports For KVP</string>
@@ -1244,5 +1245,7 @@
     <string name="referred_from_community_filter_title">Referred From Community</string>
     <string name="next_facility_visit_date_filter_title">Next Facility Visit Date</string>
     <string name="global_search_description"><![CDATA[Fill in client’s name & search through UCS’s global database]]></string>
+    <string name="select_issued_condoms">Select Condoms issued report</string>
+    <string name="cdp_issuing_report">CDP Issuing Report</string>
 
 </resources>

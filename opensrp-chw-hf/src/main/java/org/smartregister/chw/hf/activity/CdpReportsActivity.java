@@ -1,11 +1,13 @@
 package org.smartregister.chw.hf.activity;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.Menu;
@@ -98,7 +100,7 @@ public class CdpReportsActivity extends SecuredActivity implements View.OnClickL
         int id = v.getId();
         switch (id) {
             case R.id.cdp_issuing_report:
-               CdpReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.CONDOM_DISTRIBUTION_ISSUING_REPORT_PATH, R.string.cdp_issuing_report, reportPeriod);
+                cdpIssuingSelector();
                 break;
             case R.id.cdp_receiving_report:
                 CdpReportsViewActivity.startMe(this, Constants.ReportConstants.ReportPaths.CONDOM_DISTRIBUTION_RECEIVING_REPORT_PATH, R.string.cdp_receiving_report, reportPeriod);
@@ -106,6 +108,29 @@ public class CdpReportsActivity extends SecuredActivity implements View.OnClickL
             default:
                 break;
         }
+    }
+
+    private void cdpIssuingSelector() {
+        final String[] Options =
+                {getResources().getString(R.string.cdp_issuing_at_the_facility_report),
+                        getResources().getString(R.string.cdp_issuing_from_the_facility_report)};
+        AlertDialog.Builder window;
+        window = new AlertDialog.Builder(this);
+        window.setTitle(getResources().getString(R.string.select_issued_condoms));
+        window.setItems(Options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(which == 0){
+                    CdpReportsViewActivity.startMe(CdpReportsActivity.this, Constants.ReportConstants.ReportPaths.CONDOM_DISTRIBUTION_ISSUING_AT_THE_FACILITY_REPORT_PATH, R.string.cdp_issuing_at_the_facility_report, reportPeriod);
+                }else if(which == 1){
+                    CdpReportsViewActivity.startMe(CdpReportsActivity.this, Constants.ReportConstants.ReportPaths.CONDOM_DISTRIBUTION_ISSUING_FROM_THE_FACILITY_REPORT_PATH, R.string.cdp_issuing_from_the_facility_report, reportPeriod);
+                }else{
+                    // cancel a simple window here
+                }
+            }
+        });
+
+        window.show();
     }
 
     private void showMonthPicker(Context context, Menu menu) {

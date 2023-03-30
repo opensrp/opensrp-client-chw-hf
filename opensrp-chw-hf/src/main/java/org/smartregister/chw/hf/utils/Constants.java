@@ -670,7 +670,8 @@ public class Constants extends CoreConstants {
         }
 
         public interface CDPReportKeys {
-            String ISSUING_REPORTS = "issuing_reports";
+            String ISSUING_AT_THE_FACILITY_REPORTS = "issuing_at_the_facility_reports";
+            String ISSUING_FROM_THE_FACILITY_REPORTS = "issuing_from_the_facility_reports";
             String RECEIVING_REPORTS = "receiving_reports";
         }
 
@@ -699,7 +700,8 @@ public class Constants extends CoreConstants {
             String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
             String MOTHER_CHAMPION_REPORT_PATH = "mother-champion-report";
             String SELF_TESTING_REPORT_PATH = "self-testing-report";
-            String CONDOM_DISTRIBUTION_ISSUING_REPORT_PATH = "condom-distribution-issuing-report";
+            String CONDOM_DISTRIBUTION_ISSUING_AT_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-at-the-facility";
+            String CONDOM_DISTRIBUTION_ISSUING_FROM_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-from-the-facility";
             String CONDOM_DISTRIBUTION_RECEIVING_REPORT_PATH = "condom-distribution-receiving-report";
             String KVP_REPORT_PATH = "kvp-report";
         }
