@@ -260,6 +260,24 @@
                 }
             },
             {
+                "key": "prompt_for_referral_for_peer_or_sexual_partner",
+                "type": "toaster_notes",
+                "text": "Mshauri mteja amshawishi rafiki rika/mshirika wa ngono kutembelea kituo cha afya kwa ajili ya kipimo cha uhakiki",
+                "toaster_info_text": "Mshauri mteja amshawishi rafiki rika/mshirika wa ngono kutembelea kituo cha afya kwa ajili ya kipimo cha uhakiki",
+                "toaster_info_title": "Mshauri mteja",
+                "openmrs_entity_id": "",
+                "openmrs_entity": "",
+                "openmrs_entity_parent": "",
+                "toaster_type": "warning",
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "hivst_results_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
                 "key": "register_to_hts",
                 "type": "hidden",
                 "openmrs_entity_parent": "",

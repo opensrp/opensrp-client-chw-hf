@@ -22,7 +22,8 @@ import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.cbhs_reports.CbhsMonthlyReportObject;
-import org.smartregister.chw.hf.domain.cdp_reports.CdpIssuingReportObject;
+import org.smartregister.chw.hf.domain.cdp_reports.CdpIssuingAtFacilityReportObject;
+import org.smartregister.chw.hf.domain.cdp_reports.CdpIssuingFromFacilityReportObject;
 import org.smartregister.chw.hf.domain.cdp_reports.CdpReceivingReportObject;
 import org.smartregister.chw.hf.domain.kvp_reports.KvpMonthlyReportObject;
 import org.smartregister.chw.hf.domain.ld_reports.LdMonthlyReportObject;
@@ -316,10 +317,20 @@ public class ReportUtils {
     }
 
     public static class CDPReports {
-        public static String computeIssuingReports(Date startDate) {
-            CdpIssuingReportObject cdpIssuingReportObject = new CdpIssuingReportObject(startDate);
+        public static String computeIssuingAtFacilityReports(Date startDate) {
+            CdpIssuingAtFacilityReportObject cdpIssuingAtFacilityReportObject = new CdpIssuingAtFacilityReportObject(startDate);
             try {
-                return cdpIssuingReportObject.getIndicatorDataAsGson(cdpIssuingReportObject.getIndicatorData());
+                return cdpIssuingAtFacilityReportObject.getIndicatorDataAsGson(cdpIssuingAtFacilityReportObject.getIndicatorData());
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+            return "";
+        }
+
+        public static String computeIssuingFromFacilityReports(Date startDate) {
+            CdpIssuingFromFacilityReportObject cdpIssuingFromFacilityReportObject = new CdpIssuingFromFacilityReportObject(startDate);
+            try {
+                return cdpIssuingFromFacilityReportObject.getIndicatorDataAsGson(cdpIssuingFromFacilityReportObject.getIndicatorData());
             } catch (JSONException e) {
                 Timber.e(e);
             }

@@ -1,6 +1,7 @@
 package org.smartregister.chw.hf.utils;
 
-import static org.smartregister.chw.hf.utils.Constants.ReportConstants.CDPReportKeys.ISSUING_REPORTS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.CDPReportKeys.ISSUING_AT_THE_FACILITY_REPORTS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.CDPReportKeys.ISSUING_FROM_THE_FACILITY_REPORTS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.CDPReportKeys.RECEIVING_REPORTS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.EID_MONTHLY;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
@@ -78,11 +79,14 @@ public class HfWebAppInterface {
         }
         if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
               switch (key) {
-                case ISSUING_REPORTS:
-                    ReportUtils.setPrintJobName("CDP_issuing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
-                    return ReportUtils.CDPReports.computeIssuingReports(ReportUtils.getReportDate());
+                case ISSUING_AT_THE_FACILITY_REPORTS:
+                    ReportUtils.setPrintJobName("CDP_issuing_at_the_facility_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.CDPReports.computeIssuingAtFacilityReports(ReportUtils.getReportDate());
+                  case ISSUING_FROM_THE_FACILITY_REPORTS:
+                      ReportUtils.setPrintJobName("CDP_issuing_from_the_facility_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                      return ReportUtils.CDPReports.computeIssuingFromFacilityReports(ReportUtils.getReportDate());
                   case RECEIVING_REPORTS:
-                      ReportUtils.setPrintJobName("CDP_issuing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                      ReportUtils.setPrintJobName("CDP_receiving_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
                       return ReportUtils.CBHSReport.computeReport(ReportUtils.getReportDate());
 
                 default:

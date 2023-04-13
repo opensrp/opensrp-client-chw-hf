@@ -75,56 +75,6 @@
                 }
             },
             {
-                "key": "client_testing_approach",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "client_testing_approach",
-                "label": "Njia za upimaji wa mteja ",
-                "text_color": "#000000",
-                "type": "native_radio",
-                "options": [
-                    {
-                        "key": "assisted_testing_on_site",
-                        "text": "Kwa Usaidizi ktk eneo la upimaji",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "assisted_testing_on_site"
-                    },
-                    {
-                        "key": "assisted_testing_off_site",
-                        "text": "Kwa Usaidizi nje ya eneo la upimaji",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "assisted_testing_off_site"
-                    },
-                    {
-                        "key": "unassisted_testing_on_site",
-                        "text": "Bila Usaidizi ndani ya eneo la upimaji",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "unassisted_testing_on_site"
-                    },
-                    {
-                        "key": "unassisted_testing_off_site",
-                        "text": "Bila Usaidizi nje ya eneo la upimaji",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "unassisted_testing_off_site"
-                    }
-                ],
-                "v_required": {
-                    "value": "true",
-                    "err": "Tafadhali chagua jibu "
-                },
-                "relevance": {
-                    "rules-engine": {
-                        "ex-rules": {
-                            "rules-file": "hivst_issue_kits_relevance.yml"
-                        }
-                    }
-                }
-            },
-            {
                 "key": "self_test_kit_given",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
@@ -176,11 +126,61 @@
                 }
             },
             {
+                "key": "client_testing_approach",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "client_testing_approach",
+                "label": "Njia za upimaji wa mteja ",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "assisted_testing_on_site",
+                        "text": "Kwa Usaidizi katika eneo la upimaji",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "assisted_testing_on_site"
+                    },
+                    {
+                        "key": "assisted_testing_off_site",
+                        "text": "Kwa Usaidizi nje ya eneo la upimaji",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "assisted_testing_off_site"
+                    },
+                    {
+                        "key": "unassisted_testing_on_site",
+                        "text": "Bila Usaidizi katika eneo la upimaji",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "unassisted_testing_on_site"
+                    },
+                    {
+                        "key": "unassisted_testing_off_site",
+                        "text": "Bila Usaidizi nje ya eneo la upimaji",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "unassisted_testing_off_site"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua jibu "
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "hivst_issue_kits_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
                 "key": "extra_kits_required",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "extra_kits_required",
-                "label": "Je mteja anahitaji vitepe vya ziada",
+                "label": "Je mteja anahitaji vitepe kwa ajili ya rafiki rika au mshirika ngono",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
@@ -218,7 +218,7 @@
                 "openmrs_entity_id": "extra_kits_issued_for",
                 "type": "check_box",
                 "combine_checkbox_option_values": "true",
-                "label": "vitepe vya ziada vilitoloea kwajili ya",
+                "label": "Vitepe vya ziada vilivyotolewa kwa ajili ya",
                 "label_text_style": "normal",
                 "text_color": "#C0C0C0",
                 "options": [
@@ -254,7 +254,7 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "peer_friend_kit_code",
                 "type": "edit_text",
-                "hint": "namba ya kitepe cha rafiki rika",
+                "hint": "msimbo wa kitepe cha rafiki rika",
                 "relevance": {
                     "step1:extra_kits_issued_for": {
                         "ex-checkbox": [
@@ -273,7 +273,7 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "sexual_partner_kit_code",
                 "type": "edit_text",
-                "hint": "Namba ya kitepe cha mshirika wa kingono",
+                "hint": "msimbo wa kitepe cha mshirika wa kingono",
                 "relevance": {
                     "step1:extra_kits_issued_for": {
                         "ex-checkbox": [
@@ -291,7 +291,7 @@
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "condoms_given",
-                "label": "Je mteja alipewa kondom",
+                "label": "Je mteja alipewa kondomu",
                 "text_color": "#000000",
                 "type": "native_radio",
                 "options": [
@@ -322,20 +322,20 @@
                 "openmrs_entity_id": "type_of_issued_condoms",
                 "type": "check_box",
                 "combine_checkbox_option_values": "true",
-                "label": "chagua aina ya kondom zilizotolewa",
+                "label": "Chagua aina ya kondomu zilizotolewa",
                 "label_text_style": "normal",
                 "text_color": "#C0C0C0",
                 "options": [
                     {
                         "key": "male_condoms",
-                        "text": "kondom za kiume",
+                        "text": "kondomu za kiume",
                         "value": false,
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "male_condoms"
                     },
                     {
                         "key": "female_condoms",
-                        "text": "kondom za kike",
+                        "text": "kondomu za kike",
                         "value": false,
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "female_condoms"
@@ -358,7 +358,7 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "number_of_male_condoms_issued",
                 "type": "edit_text",
-                "hint": "Idadi ya kondom za kiume zilizotolewa",
+                "hint": "Idadi ya kondomu za kiume zilizotolewa",
                 "v_numeric": {
                     "value": "true",
                     "err": "Tafadhali ingiza namba sahihi"
@@ -389,7 +389,7 @@
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "number_of_female_condoms_issued",
                 "type": "edit_text",
-                "hint": "Idadi aa kondom za kike zilizotolewa",
+                "hint": "Idadi aa kondomu za kike zilizotolewa",
                 "v_numeric": {
                     "value": "true",
                     "err": "Tafadhali ingiza namba sahihi"

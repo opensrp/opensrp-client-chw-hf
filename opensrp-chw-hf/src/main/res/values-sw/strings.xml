@@ -191,12 +191,12 @@
     <string name="anc_followup_client_registration">Usajili wa mahudhurio ya kliniki ya uzazi</string>
     <string name="malaria_investigation_complete">Uchunguzi wa malaria umekamilika</string>
     <string name="next_visit">Uthurio lijalo</string>
-    <string name="anc_reports_title">RIPOTI za ANC</string>
+    <string name="anc_reports_title">Ripoti za ANC</string>
     <string name="view_reports_for_anc_women">Tazama Ripoti za Wanawake wa ANC</string>
     <string name="pmtct_reports_subtitle"><![CDATA[Tazama Ripoti za Vikundi vya PMTCT (Wanawake na Watoto)]]></string>
-    <string name="pnc_reports">RIPOTI za PNC</string>
+    <string name="pnc_reports">Ripoti za PNC</string>
     <string name="view_reports_for_women_in_pnc">Tazama Ripoti za Wanawake katika PNC</string>
-    <string name="community_ltfu_summary">RIPOTI za LTFU</string>
+    <string name="community_ltfu_summary">Ripoti za LTFU</string>
     <string name="community_ltfu_summary_subtitle">Tazama Ripoti za LTFU</string>
     <string name="ld_reports_subtitle">Tazama Ripoti za LD</string>
     <string name="ld_report_title">Repoti za LD</string>
@@ -208,12 +208,12 @@
     <string name="anc_monthly_report">Ripoti ya kila Mwezi</string>
     <string name="select_reporting_month_anc">Chagua Mwezi wa Kuripoti</string>
     <string name="select_reporting_month_pnc">Chagua Mwezi wa Kuripoti</string>
-    <string name="reports_title">RIPOTI</string>
+    <string name="reports_title">Ripoti</string>
     <string name="pnc_registration">Usajili baada ya Kujifungua</string>
     <string name="high_risk">Hatari Kubwa</string>
     <string name="low_risk">Hatari Ndogo</string>
     <string name="reports_activity">Ripoti</string>
-    <string name="pnc_reports_title">RIPOTI za PNC</string>
+    <string name="pnc_reports_title">Ripoti za PNC</string>
     <string name="three_months_report">Ripoti ya Miezi 3</string>
     <string name="twelve_months_report">Ripoti ya Miezi 12</string>
     <string name="twenty_four_months_report">Ripoti ya Miezi 24</string>
@@ -359,14 +359,17 @@
     <string name="self_testing_reports_subtitle">Tazama Ripoti za Jipime</string>
     <string name="selftesting_reports">Ripoti za Jipime</string>
     <string name="selftesting_reports_title">Self Testing Reports</string>
-    <string name="condom_distribution_reports_subtitle">View Condom Distribution Report</string>
-    <string name="condom_distribution_reports">Condom Distribution Reports</string>
-    <string name="cdp_reports">RIPOTI za CDP</string>
-    <string name="cdp_issuing_report">CDP Issuing Report</string>
-    <string name="cdp_receiving_report">CDP Receiving Report</string>
-    <string name="kvp_reports">RIPOTI za KVP</string>
+    <string name="condom_distribution_reports_subtitle">Tazama Ripoti za Ugawaji Kondomu</string>
+    <string name="condom_distribution_reports">Ripoti za Ugawaji Kondomu</string>
+    <string name="cdp_reports">Ripoti za CDP</string>
+    <string name="cdp_issuing_at_the_facility_report">Kondomu kwenda kwanye kituo</string>
+    <string name="cdp_issuing_from_the_facility_report">Kondomu kutoka ndani ya kituo</string>
+    <string name="cdp_receiving_report">Taarifa ya kondomu zilizopokelewa</string>
+    <string name="kvp_reports">Ripoti za KVP</string>
     <string name="kvp_reports_subtitle">Tazama Ripoti za KVP</string>
     <string name="global_search_description"><![CDATA[Jaza jina la mteja kisha Tafuta kwenye kanzi data ya kitaifa ya UCS]]></string>
+    <string name="select_issued_condoms">Chagua taarifa ya kondomu zilizotolewa</string>
+    <string name="cdp_issuing_report">Taarifa ya kondomu zilizotolewa</string>
 
     <string name="referral_submitted_successfully">Rufaa imetumwa</string>
 
