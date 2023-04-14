@@ -59,7 +59,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "condom_brand",
-        "label": "Select condom brand",
+        "label": "Chagua chapa ya kondomu",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -93,7 +93,7 @@
           },
           {
             "key": "others",
-            "text": "Others",
+            "text": "Nyingine",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "others"
@@ -101,7 +101,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the condom brand"
+          "err": "Tafadhali chagua chapa ya kondomu"
         }
       },
       {
@@ -138,10 +138,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_condom_brand",
         "type": "edit_text",
-        "hint": "Other condom brand",
+        "hint": "Chapa nyingine",
         "v_required": {
           "value": "true",
-          "err": "Please enter the other condom brand"
+          "err": "Tafadhali weka chapa nyingine ya kondomu"
         },
         "relevance": {
           "step1:condom_brand": {
@@ -170,15 +170,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_male_condoms_public_sc",
         "type": "edit_text",
-        "hint": "Number of male condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kiume zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -193,15 +187,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_female_condoms_public_sc",
         "type": "edit_text",
-        "hint": "Number of female condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kike zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -216,15 +204,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_male_condoms_dume",
         "type": "edit_text",
-        "hint": "Number of male condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kiume zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -239,15 +221,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_female_condoms_dume",
         "type": "edit_text",
-        "hint": "Number of female condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kike zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -262,15 +238,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_male_condoms_salama",
         "type": "edit_text",
-        "hint": "Number of male condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kiume zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -285,15 +255,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_female_condoms_salama",
         "type": "edit_text",
-        "hint": "Number of female condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kike zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -308,15 +272,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_male_condoms_familia",
         "type": "edit_text",
-        "hint": "Number of male condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kiume zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -331,15 +289,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_female_condoms_familia",
         "type": "edit_text",
-        "hint": "Number of female condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kike zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -354,15 +306,9 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provided_male_condoms_other",
         "type": "edit_text",
-        "hint": "Number of male condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "hint": "Idadi ya kondomu za kiume zilizotolewa (vipande)",
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -378,14 +324,8 @@
         "openmrs_entity_id": "provided_female_condoms_other",
         "type": "hidden",
         "hint": "Number of female condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "v_numeric": { "value": "true", "err": "Please enter the number" },
+        "v_required": { "value": "true", "err": "Please enter the number" },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -401,14 +341,8 @@
         "openmrs_entity_id": "male_condoms_offset",
         "type": "hidden",
         "hint": "Number of male condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "v_numeric": { "value": "true", "err": "Please enter the number" },
+        "v_required": { "value": "true", "err": "Please enter the number" },
         "calculation": {
           "rules-engine": {
             "ex-rules": {
@@ -424,14 +358,8 @@
         "openmrs_entity_id": "female_condoms_offset",
         "type": "hidden",
         "hint": "Number of female condoms distributed (Pieces)",
-        "v_numeric": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
+        "v_numeric": { "value": "true", "err": "Please enter the number" },
+        "v_required": { "value": "true", "err": "Please enter the number" },
         "calculation": {
           "rules-engine": {
             "ex-rules": {
