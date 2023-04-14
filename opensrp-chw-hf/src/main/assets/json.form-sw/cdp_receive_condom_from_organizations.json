@@ -43,7 +43,7 @@
   },
   "global": {},
   "step1": {
-    "title": "Receive Condom from Organizations",
+    "title": "Kupokea Kondomu Kutoka Kwenye Mashirika",
     "fields": [
       {
         "key": "condom_receive_date",
@@ -51,13 +51,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "condom_receive_date",
         "type": "date_picker",
-        "hint": "Condom receive date",
+        "hint": "Tarehe ya kupokea kondomu",
         "expanded": false,
         "min_date": "today-1m",
         "max_date": "today",
         "v_required": {
           "value": "true",
-          "err": "Please enter the receiving date"
+          "err": "Tafadhali weka tarehe ya kupokea"
         }
       },
       {
@@ -66,27 +66,27 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "condom_type",
         "type": "check_box",
-        "label": "Select condom type",
+        "label": "Chagua aina ya kondomu",
         "combine_checkbox_option_values": "true",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
           {
             "key": "male_condom",
-            "text": "Male",
+            "text": "Kiume",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "male_condom"
           },
           {
             "key": "female_condom",
-            "text": "Female",
+            "text": "Kike",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "female_condom"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the condom type"
+          "err": "Tafadhali chagua aina ya kondomu"
         }
       },
       {
@@ -94,7 +94,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "male_condom_brand",
-        "label": "Select the Male condom brand",
+        "label": "Chagua chapa ya kondomu za kiume",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -128,7 +128,7 @@
           },
           {
             "key": "other",
-            "text": "Other",
+            "text": "Nyingine",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
@@ -136,18 +136,10 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the condom brand"
+          "err": "Tafadhali chagua chapa ya kondomu"
         },
         "relevance": {
-          "step1:condom_type": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "male_condom"
-                ]
-              }
-            ]
-          }
+          "step1:condom_type": { "ex-checkbox": [{ "or": ["male_condom"] }] }
         }
       },
       {
@@ -156,11 +148,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_male_condom_brand",
         "type": "edit_text",
-        "hint": "Other condom brand",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the brand"
-        },
+        "hint": "Chapa nyingine ya kondomu",
+        "v_required": { "value": "true", "err": "Tafadhali weka chapa" },
         "relevance": {
           "step1:male_condom_brand": {
             "type": "string",
@@ -174,26 +163,12 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "male_condoms_offset",
         "type": "edit_text",
-        "hint": "Number of restocked Male condoms  (Pieces)",
+        "hint": "Idadi ya kondomu za kiume zilizoongezwa (vipande)",
         "edit_type": "number",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_numeric": {
-          "value": "true",
-          "err":"Please enter the number"
-        },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
-          "step1:condom_type": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "male_condom"
-                ]
-              }
-            ]
-          }
+          "step1:condom_type": { "ex-checkbox": [{ "or": ["male_condom"] }] }
         }
       },
       {
@@ -201,7 +176,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "female_condom_brand",
-        "label": "Select the Female condom brand",
+        "label": "Chagua chapa ya kondomu za kike",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -235,7 +210,7 @@
           },
           {
             "key": "other",
-            "text": "Other",
+            "text": "Nyingine",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
@@ -243,18 +218,10 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please select the condom brand"
+          "err": "Tafadhali chagua chapa ya kondomu "
         },
         "relevance": {
-          "step1:condom_type": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "female_condom"
-                ]
-              }
-            ]
-          }
+          "step1:condom_type": { "ex-checkbox": [{ "or": ["female_condom"] }] }
         }
       },
       {
@@ -263,11 +230,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_female_condom_brand",
         "type": "edit_text",
-        "hint": "Other condom brand",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the brand"
-        },
+        "hint": "Chapa nyingine ya kondomu",
+        "v_required": { "value": "true", "err": "Tafadhali weka chapa" },
         "relevance": {
           "step1:female_condom_brand": {
             "type": "string",
@@ -281,26 +245,12 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "female_condoms_offset",
         "type": "edit_text",
-        "hint": "Number of restocked Female condoms (Pieces)",
+        "hint": "Idadi ya kondomu za kike zilizoongezwa (vipande)",
         "edit_type": "number",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the number"
-        },
-        "v_numeric": {
-          "value": "true",
-          "err":"Please enter the number"
-        },
+        "v_required": { "value": "true", "err": "Tafadhali weka namba" },
+        "v_numeric": { "value": "true", "err": "Tafadhali weka namba" },
         "relevance": {
-          "step1:condom_type": {
-            "ex-checkbox": [
-              {
-                "or": [
-                  "female_condom"
-                ]
-              }
-            ]
-          }
+          "step1:condom_type": { "ex-checkbox": [{ "or": ["female_condom"] }] }
         }
       },
       {
@@ -308,7 +258,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "issuing_organization",
-        "label": "Select issuing organization",
+        "label": "Chagua shirika linalotoa",
         "text_color": "#000000",
         "type": "native_radio",
         "options": [
@@ -335,16 +285,13 @@
           },
           {
             "key": "other",
-            "text": "Other",
+            "text": "Shirika Jingine",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }
         ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select the organization"
-        }
+        "v_required": { "value": "true", "err": "Tafadhali chagua shirika" }
       },
       {
         "key": "other_issuing_organization",
@@ -352,11 +299,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "other_issuing_organization",
         "type": "edit_text",
-        "hint": "Other issuing organization",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the name"
-        },
+        "hint": "Shirika jingine linalotoa",
+        "v_required": { "value": "true", "err": "Tafadhali weka jina" },
         "relevance": {
           "step1:issuing_organization": {
             "type": "string",
@@ -370,10 +314,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "batch_number",
         "type": "edit_text",
-        "hint": "Batch Number",
+        "hint": "Namba ya kundi (Batch number)",
         "v_required": {
           "value": "true",
-          "err": "Please enter the batch number"
+          "err": "Tafadhali weka namba ya kundi (Batch number)"
         }
       },
       {
@@ -382,12 +326,12 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "expiry_date",
         "type": "date_picker",
-        "hint": "Expiry Date",
+        "hint": "Tarehe ya mwisho wa matumizi",
         "expanded": false,
         "min_date": "today",
         "v_required": {
           "value": true,
-          "err": "Expiry date is required"
+          "err": "Tarehe ya mwisho wa matumizi inahitajika"
         }
       },
       {
@@ -396,16 +340,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "delivering_person_name",
         "type": "edit_text",
-        "hint": "Condom delivering person's name",
+        "hint": "Jina la mtu anayetoa kondomu",
         "edit_type": "name",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter a valid name"
+          "err": "Tafadhali weka jina halali"
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the name"
-        }
+        "v_required": { "value": "true", "err": "Tafadhali weka jina" }
       },
       {
         "key": "delivering_person_position",
@@ -413,11 +354,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "delivering_person_position",
         "type": "edit_text",
-        "hint": "Condom delivering person's position",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the position"
-        }
+        "hint": "Cheo cha mtu anayetoa kondomu",
+        "v_required": { "value": "true", "err": "Tafadhali weka cheo" }
       },
       {
         "key": "delivering_person_phone",
@@ -425,20 +363,17 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "delivering_person_phone",
         "type": "edit_text",
-        "hint": "Condom delivering person's phone number",
+        "hint": "Namba ya simu ya mtu anayetoa kondomu",
         "edit_type": "number",
         "v_numeric": {
           "value": "true",
-          "err": "Number must be a total of 10 digits in length"
+          "err": "Namba lazima iwe na tarakimu 10 "
         },
         "v_regex": {
           "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
-          "err": "Number must be 10 digits and must start with 06 or 07."
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the phone number"
-        }
+        "v_required": { "value": "true", "err": "Tafadhali weka namba ya simu" }
       },
       {
         "key": "receiving_person_name",
@@ -446,16 +381,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "receiving_person_name",
         "type": "edit_text",
-        "hint": "Condom receiving person's name",
+        "hint": "Jina la mtu anayepokea kondomu",
         "edit_type": "name",
         "v_regex": {
           "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter a valid name"
+          "err": "Tafadhali weka jina halali"
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the name"
-        }
+        "v_required": { "value": "true", "err": "Tafadhali weka jina" }
       },
       {
         "key": "receiving_person_position",
@@ -463,11 +395,8 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "receiving_person_position",
         "type": "edit_text",
-        "hint": "Condom receiving person's position",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the position"
-        }
+        "hint": "Cheo cha mtu anayepokea kondomu",
+        "v_required": { "value": "true", "err": "Tafadhali weka cheo" }
       },
       {
         "key": "receiving_person_phone",
@@ -475,20 +404,17 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "receiving_person_phone",
         "type": "edit_text",
-        "hint": "Condom receiving person's phone number",
+        "hint": "Namba ya simu ya mtu anayepokea kondomu",
         "edit_type": "number",
         "v_numeric": {
           "value": "true",
-          "err": "Number must be a total of 10 digits in length"
+          "err": "Namba lazima iwe na tarakimu 10 "
         },
         "v_regex": {
           "value": "(0[6-7][1-9][0-9][0-9]{6})|\\s*",
-          "err": "Number must be 10 digits and must start with 06 or 07."
+          "err": "Namba lazima iwe na tarakimu 10 na lazima ianze na 06 au 07."
         },
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the phone number"
-        }
+        "v_required": { "value": "true", "err": "Tafadhali weka namba ya simu" }
       },
       {
         "key": "stock_event_type",

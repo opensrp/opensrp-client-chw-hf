@@ -1,0 +1,149 @@
+{
+  "count": "1",
+  "encounter_type": "CDP Order From Facility",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "global": {},
+  "step1": {
+    "title": "Maombi Ya kondomu",
+    "fields": [
+      {
+        "key": "condom_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_type",
+        "label": "Chagua aina ya kondomu",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "male_condom",
+            "text": "kiume",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "male_condom"
+          },
+          {
+            "key": "female_condom",
+            "text": "kike",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "female_condom"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua aina ya kondomu"
+        }
+      },
+      {
+        "key": "other_condom_brand",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_condom_brand",
+        "type": "edit_text",
+        "hint": "Chapa nyingine ya kondomu",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza chapa nyingine ya kondomu"
+        },
+        "relevance": {
+          "step1:condom_brand": {
+            "type": "string",
+            "ex": "equalTo(., \"other\")"
+          }
+        }
+      },
+      {
+        "key": "requested_condoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "requested_condoms",
+        "type": "edit_text",
+        "hint": "Idadi ya kondomu zilizoagizwa",
+        "edit_type": "number",
+        "v_required": { "value": "true", "err": "Tafadhali weka nambari" },
+        "v_numeric": { "value": "true", "err": "Tafadhali weka nambari" }
+      },
+      {
+        "key": "receiving_order_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "receiving_order_facility",
+        "buttonText": "Chagua Kituo",
+        "sort": true,
+        "maxSelectable": 1,
+        "dialogTitle": "Chagua Kituo Cha Afya Kinachopokea Maombi",
+        "searchHint": "Ingiza Jina La Kituo Cha Afya",
+        "options": [],
+        "type": "multi_select_list",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali chagua kituo cha afya"
+        }
+      },
+      {
+        "key": "request_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "request_type",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": { "rules-file": "cdp_condom_order_calculation.yml" }
+          }
+        }
+      },
+      {
+        "key": "condom_order_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_order_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": { "rules-file": "cdp_condom_order_calculation.yml" }
+          }
+        }
+      }
+    ]
+  }
+}
