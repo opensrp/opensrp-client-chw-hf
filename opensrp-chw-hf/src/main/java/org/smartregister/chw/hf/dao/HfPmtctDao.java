@@ -3,15 +3,17 @@ package org.smartregister.chw.hf.dao;
 import org.joda.time.LocalDate;
 import org.joda.time.Months;
 import org.smartregister.chw.core.dao.CorePmtctDao;
+import org.smartregister.chw.hf.utils.TimeUtils;
 import org.smartregister.chw.pmtct.domain.MemberObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import timber.log.Timber;
 
 
 public class HfPmtctDao extends CorePmtctDao {
@@ -420,13 +422,37 @@ public class HfPmtctDao extends CorePmtctDao {
         return res;
     }
 
-    public static boolean isTransferInClient(String baseEntityId) {
-        DataMap<List<String>> dataMap = cursor -> Collections.singletonList(getCursorValue(cursor, "is_transfer_in_client"));
+    public static boolean isNewClient(String baseEntityId) {
+        DataMap<String> knownOnArtDataMap = cursor -> getCursorValue(cursor, "known_on_art");
+        DataMap<String> pmtctRegisterDateDataMap = cursor -> getCursorValue(cursor, "pmtct_register_date");
 
-        String sql = "SELECT is_transfer_in_client FROM ec_pmtct_registration WHERE base_entity_id = '" + baseEntityId + "' AND is_transfer_in_client = true";
+        String sql = "SELECT pmtct_register_date, known_on_art FROM ec_pmtct_registration WHERE base_entity_id = '" + baseEntityId + "' AND base_entity_id NOT IN (SELECT entity_id FROM ec_pmtct_followup)";
 
-        List<List<String>> res = readData(sql, dataMap);
-        return res == null || res.size() <= 0;
+        List<String> resKnownOnArtRes = readData(sql, knownOnArtDataMap);
+        List<String> pmtctRegisterDateRes = readData(sql, pmtctRegisterDateDataMap);
+        if (resKnownOnArtRes != null && resKnownOnArtRes.size() > 0) {
+            if (resKnownOnArtRes.get(0).equals("yes")) {
+                if (pmtctRegisterDateRes != null && pmtctRegisterDateRes.size() > 0) {
+                    try {
+                        Date pmtctRegisterDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(pmtctRegisterDateRes.get(0));
+                        int daysDiff = TimeUtils.getElapsedDays(pmtctRegisterDate);
+                        if (daysDiff < 2) {
+                            return true;
+                        }
+
+                    } catch (Exception e) {
+                        Timber.e(e);
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static Date getNextFacilityVisitDate(String baseEntityID) {

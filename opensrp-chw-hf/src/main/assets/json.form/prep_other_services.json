@@ -296,7 +296,7 @@
         "openmrs_entity_id": "services_and_referral",
         "label": "Other services and referral",
         "text_color": "#000000",
-        "type": "native_radio",
+        "type": "check_box",
         "options": [
           {
             "key": "rch",
@@ -361,9 +361,14 @@
           "err": "Please specify"
         },
         "relevance": {
-          "step1:services_and_referral": {
-            "type": "string",
-            "ex": "equalTo(., \"other\")"
+          "step1:type_of_issued_condoms": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
           }
         }
       }

@@ -88,6 +88,40 @@
         }
       },
       {
+        "key": "was_client_screened_for_tb",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "was_client_screened_for_tb",
+        "type": "native_radio",
+        "label": "Was the client screened for TB?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select one of the answer"
+        },
+        "relevance": {
+          "step1:on_tb_treatment": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
         "key": "tb_symptoms_screening",
         "type": "check_box",
         "label": "Please select if the client has any of the following TB symptoms",
@@ -147,9 +181,9 @@
           "err": "Please select the topic(s)"
         },
         "relevance": {
-          "step1:on_tb_treatment": {
+          "step1:was_client_screened_for_tb": {
             "type": "string",
-            "ex": "equalTo(., \"no\")"
+            "ex": "equalTo(., \"yes\")"
           }
         }
       },
@@ -285,6 +319,21 @@
           "step1:investigate_for_tb": {
             "type": "string",
             "ex": "equalTo(., \"positive\")"
+          }
+        }
+      },
+      {
+        "key": "prompt_for_screening_for_tb",
+        "type": "toaster_notes",
+        "text": "Please screen the client for TB and manage according standard guideline",
+        "openmrs_entity_id": "prompt_for_screening_for_tb",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:was_client_screened_for_tb": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
           }
         }
       },

@@ -6,6 +6,7 @@ import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.STEP1;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import timber.log.Timber;
 public class HvlResultsFragment extends BaseHvlResultsFragment {
 
     public static final String BASE_ENTITY_ID = "BASE_ENTITY_ID";
+    private long mLastClickTime = 0;
     private String baseEntityId;
 
     public static HvlResultsFragment newInstance(String baseEntityId) {
@@ -56,6 +58,11 @@ public class HvlResultsFragment extends BaseHvlResultsFragment {
 
     @Override
     protected void onViewClicked(View view) {
+        // mis-clicking prevention, using threshold of 5000 ms
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 5000){
+            return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
         if (getActivity() == null || !(view.getTag() instanceof CommonPersonObjectClient)) {
             return;
         }

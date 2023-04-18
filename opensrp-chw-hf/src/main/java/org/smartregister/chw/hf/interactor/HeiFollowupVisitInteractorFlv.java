@@ -263,7 +263,7 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
                     if (!StringUtils.isBlank(heiNumber)) {
                         JSONObject sampleId = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "sample_id");
                         sampleId.put(JsonFormUtils.VALUE, heiNumber);
-                        sampleId.put("editable", true);
+                        sampleId.put("editable", false);
                         sampleId.put("read_only", true);
                     }
 

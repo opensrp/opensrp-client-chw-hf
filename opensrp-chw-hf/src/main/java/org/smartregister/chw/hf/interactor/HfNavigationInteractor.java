@@ -53,7 +53,7 @@ public class HfNavigationInteractor extends NavigationInteractor {
                     "    FROM ec_hts_register \n"+
                     "    WHERE ec_hts_register.is_closed is 0\n" +
                     "    AND ec_hts_register.ctc_number is null \n " +
-                    "    AND ec_hts_register.chw_referral_service = 'Suspected HIV' \n"+
+                    "    AND ec_hts_register.chw_referral_service = 'Conventional HIV Test' \n"+
                     "    AND (ec_hts_register.client_hiv_status_after_testing IS NULL) \n"+
                     "    UNION ALL\n" +
                     "    SELECT ec_ld_confirmation.base_entity_id AS base_entity_id\n" +
@@ -96,7 +96,7 @@ public class HfNavigationInteractor extends NavigationInteractor {
                     "where ec_family_member.date_removed is null\n" +
                     "  and ec_hts_register.is_closed is 0\n" +
                     " AND ec_hts_register.ctc_number is null \n " +
-                    " AND ec_hts_register.chw_referral_service = 'Suspected HIV' \n"+
+                    " AND ec_hts_register.chw_referral_service = 'Conventional HIV Test' \n"+
                     " AND (ec_hts_register.client_hiv_status_after_testing IS NULL) \n"+
                     "  AND ec_hts_register.base_entity_id IN (%s)\n" +
                     "  AND ec_family_member.base_entity_id NOT IN (\n" +

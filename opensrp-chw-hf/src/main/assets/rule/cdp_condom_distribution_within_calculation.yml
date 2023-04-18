@@ -1,10 +1,31 @@
 ---
+name: step1_male_condom_brand
+description: male_condom_brand
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_condom_brand"
+---
+name: step1_female_condom_brand
+description: female_condom_brand
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_condom_brand"
+---
 name: step1_stock_event_type
 description: stock_event_type for distribution is decrement
 priority: 1
 condition: "true"
 actions:
   - "calculation = 'decrement' "
+---
+name: step1_condom_restock_date
+description: condom_restock_date
+priority: 1
+condition: "true"
+actions:
+  - "calculation = helper.getTimeInMillis() "
 ---
 name: step1_quantity_response
 description: quantity response is the number of condoms provided
@@ -26,3 +47,83 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = global_female_condom_count"
+---
+name: step1_male_condoms_public_sc
+description: stock on hand of male condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_male_condom_public_sc_count"
+---
+name: step1_female_condoms_public_sc
+description: stock on hand of female condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_female_condom_public_sc_count"
+---
+name: step1_male_condoms_dume
+description: stock on hand of male condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_male_condom_dume_count"
+---
+name: step1_female_condoms_dume
+description: stock on hand of female condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_female_condom_dume_count"
+---
+name: step1_male_condoms_salama
+description: stock on hand of male condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_male_condom_salama_count"
+---
+name: step1_female_condoms_salama
+description: stock on hand of female condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_female_condom_salama_count"
+---
+name: step1_male_condoms_familia
+description: stock on hand of male condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_male_condom_familia_count"
+---
+name: step1_female_condoms_familia
+description: stock on hand of female condoms
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_female_condom_familia_count"
+---
+name: step1_provided_male_condoms
+description: provided_male_condoms
+priority: 1
+condition: "step1_condom_type == 'male_condom'"
+actions:
+  - "calculation = step1_condom_brand == 'public_sc'? step1_provided_male_condoms_public_sc :
+                   step1_condom_brand == 'dume'? step1_provided_male_condoms_dume :
+                   step1_condom_brand == 'salama'? step1_provided_male_condoms_salama :
+                   step1_condom_brand == 'familia'? step1_provided_male_condoms_familia :
+                   step1_condom_brand == 'others'? step1_provided_male_condoms_other : 0
+                   "
+---
+name: step1_provided_female_condoms
+description: provided_female_condoms
+priority: 1
+condition: "step1_condom_type == 'female_condom'"
+actions:
+  - "calculation = step1_condom_brand == 'public_sc'? step1_provided_female_condoms_public_sc :
+                   step1_condom_brand == 'dume'? step1_provided_female_condoms_dume :
+                   step1_condom_brand == 'salama'? step1_provided_female_condoms_salama :
+                   step1_condom_brand == 'familia'? step1_provided_female_condoms_familia :
+                   step1_condom_brand == 'others'? step1_provided_female_condoms_other : 0
+                   "

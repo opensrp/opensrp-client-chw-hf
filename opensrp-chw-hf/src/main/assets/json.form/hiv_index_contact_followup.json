@@ -56,7 +56,7 @@
           "name": "has_the_client_been_reached",
           "type": "radio_group",
           "properties": {
-            "text": "Has the client been reached?"
+            "text": "Has the Index Contact been reached?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -92,7 +92,7 @@
           "name": "eligibility_for_testing",
           "type": "radio_group",
           "properties": {
-            "text": "Is the Client Eligible for testing?"
+            "text": "Is the Index Contact Eligible for testing?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -126,7 +126,7 @@
           "name": "has_the_contact_client_been_tested",
           "type": "radio_group",
           "properties": {
-            "text": "Has contact client been tested for HIV?"
+            "text": "Has the Index Contact been tested for HIV?"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -160,7 +160,7 @@
           "name": "reasons_conducting_testing_for_index_contact",
           "type": "spinner",
           "properties": {
-            "text": "Reasons as to why client was not tested"
+            "text": "Reasons as to why the Index Contact was not tested"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -212,7 +212,7 @@
           "name": "other_reason_for_not_testing",
           "type": "text_input_edit_text",
           "properties": {
-            "hint": "Specify the other reason for not testing the client"
+            "hint": "Specify the other reason for not testing the Index Contact"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -349,61 +349,12 @@
           "properties": {
             "notification_type": "info",
             "dismissible": "no",
-            "title": "Client should be enrolled to PrEP",
-            "text": "The client is a sex partner of a HIV Positive client and should be enrolled to PrEP",
+            "title": "Client should be enrolled to KVP/PrEP",
+            "text": "The client is a sex partner of a HIV Positive client and should be enrolled to KVP/PrEP",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           },
           "subjects": "relationship:text, test_results:map, has_the_contact_client_been_tested:map, eligibility_for_testing:map, has_the_client_been_reached:map"
-        },
-        {
-          "name": "enrolled_to_prep",
-          "type": "radio_group",
-          "properties": {
-            "text": "Has the client been enrolled into PrEP?"
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "enrolled_to_prep",
-            "openmrs_entity_parent": ""
-          },
-          "options": [
-            {
-              "name": "yes",
-              "text": "Yes",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "no",
-              "text": "No",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
-          "required_status": "yes:Please select the answer",
-          "subjects": "relationship:text, test_results:map, has_the_contact_client_been_tested:map, eligibility_for_testing:map, has_the_client_been_reached:map"
-        },
-        {
-          "name": "reason_for_not_being_enrolled_to_prep",
-          "type": "text_input_edit_text",
-          "properties": {
-            "hint": "What are the reasons for not being enrolled to PrEP",
-            "input_type": "text"
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_for_not_being_enrolled_to_prep",
-            "openmrs_entity_parent": ""
-          },
-          "required_status": "yes:Please add the reasons",
-          "subjects": "relationship:text, test_results:map, has_the_contact_client_been_tested:map, eligibility_for_testing:map, has_the_client_been_reached:map, enrolled_to_prep:map"
         },
         {
           "name": "enrolled_to_clinic",
@@ -492,7 +443,7 @@
           "type": "masked_edit_text",
           "properties": {
             "hint": "CTC Number e.g 12-34-5678-912345",
-            "type": "Clinic of Treatment and Care registration number (CTC Number)",
+            "type": "Care and Treatment Clinic registration number (CTC Number)",
             "mask": "##-##-####-######",
             "mask_hint": "12345678912345",
             "input_type": "number",

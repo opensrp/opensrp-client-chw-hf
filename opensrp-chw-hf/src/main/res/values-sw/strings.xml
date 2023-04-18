@@ -35,6 +35,7 @@
     <string name="chw_followed_details">Waja ameonana na mtajwa</string>
     <string name="chw_agreed_to_be_tested">Amekubali kupimwa</string>
     <string name="chw_test_location">Atapimwa wapi</string>
+    <string name="record_pmtct_visit">Rekodi ufuatiliaji wa pmtct</string>
     <string name="optional"></string>
     <string name="action_pregnancy_confirmation_referrals">Kuhakikisha Ujauzito</string>
     <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>
@@ -337,7 +338,7 @@
     <string name="kvp_screening">Uchunguzi wa Makundi Maalum (KVP/PrEP)</string>
     <string name="kvp_client_status">Hali ya Mteja</string>
     <string name="kvp_hts">Ushauri Nasaha na Upimaji</string>
-    <string name="kvp_prep_and_pep">PrEP and PEP</string>
+    <string name="kvp_pep_assesment">PEP assesment</string>
     <string name="kvp_condom_provision">Ugawaji Kondomu</string>
     <string name="kvp_family_planning">Uzazi wa Mpango</string>
     <string name="kvp_tb_screening">Uchunguzi wa Kifua Kikuu</string>
@@ -369,6 +370,10 @@
     <string name="global_search_description"><![CDATA[Jaza jina la mteja kisha Tafuta kwenye kanzi data ya kitaifa ya UCS]]></string>
     <string name="select_issued_condoms">Chagua taarifa ya kondomu zilizotolewa</string>
     <string name="cdp_issuing_report">Taarifa ya kondomu zilizotolewa</string>
+
+    <string name="referral_submitted_successfully">Rufaa imetumwa</string>
+    <string name="referral_submitted">Rufaa imetumwa</string>
+    <string name="ltfu_title">LTFU</string>
 
 
     <!--    CDP-->

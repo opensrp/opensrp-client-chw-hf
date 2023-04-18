@@ -147,7 +147,7 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
         }
 
         KvpPrepPepActionHelper actionHelper = new KvpPrepPepActionHelper();
-        BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_prep_and_pep))
+        BaseKvpVisitAction action = getBuilder(context.getString(R.string.kvp_pep_assesment))
                 .withOptional(true)
                 .withDetails(details)
                 .withHelper(actionHelper)
@@ -155,7 +155,7 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
                 .withFormName(Constants.KVP_BIO_MEDICAL_SERVICE_FORMS.KVP_PrEP_PEP)
                 .build();
 
-        actionList.put(context.getString(R.string.kvp_prep_and_pep), action);
+        actionList.put(context.getString(R.string.kvp_pep_assesment), action);
     }
 
     private void evaluateCondomProvision(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
@@ -288,7 +288,7 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
                     e.printStackTrace();
                 }
             } else {
-                actionList.remove(context.getString(R.string.kvp_prep_and_pep));
+                actionList.remove(context.getString(R.string.kvp_pep_assesment));
             }
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(s);

@@ -43,7 +43,7 @@
   },
   "global": {},
   "step1": {
-    "title": "GBV Screening",
+    "title": "GBV Analysis",
     "fields": [
       {
         "key": "gbv_screening",
@@ -54,26 +54,26 @@
         "label": "Gender Based Violence (GBV) screening (physical, psychological, emotional)",
         "options": [
           {
-            "key": "case_reported",
-            "text": "Case Reported",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "case_reported"
-          },
-          {
             "key": "case_not_reported",
-            "text": "Case not reported",
+            "text": "The client has not report any gender-based violence (GBV) cases",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "case_not_reported"
           },
           {
+            "key": "case_reported",
+            "text": "The client reported a case of gender-based violence (GBV).",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "case_reported"
+          },
+          {
             "key": "received_post_gbv_care",
-            "text": "Received post GBV care",
+            "text": "The client received post-GBV care for a reported case of gender-based violence (GBV)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "received_post_gbv_care"
           },
           {
             "key": "referred",
-            "text": "Referred",
+            "text": "The client was referred for further assistance after reporting a case of gender-based violence (GBV)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "referred"
           }

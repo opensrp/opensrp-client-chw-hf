@@ -310,7 +310,7 @@
       {
         "key": "notify_first_visit",
         "type": "toaster_notes",
-        "text": "Perform PMTCT Visit 0",
+        "text": "Perform PMTCT Visit",
         "openmrs_entity_id": "",
         "openmrs_entity": "",
         "openmrs_entity_parent": "",

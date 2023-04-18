@@ -6,6 +6,20 @@ condition: "step1_prep_status != '' && (!(step1_prep_status == 'not_initiated' |
 actions:
   - "isRelevant = true "
 ---
+name: step1_other_prep_drug_offered
+description: other_prep_drug_offered
+priority: 1
+condition: "step1_prep_drug_offered != '' && step1_prep_drug_offered == 'other_drugs'"
+actions:
+  - "isRelevant = true "
+---
+name: step1_prep_pills_number
+description: prep_pills_number
+priority: 1
+condition: "step1_prep_drug_offered != ''"
+actions:
+  - "isRelevant = true "
+---
 name: step1_reasons_stopping_prep
 description: step1_reasons_stopping_prep
 priority: 1

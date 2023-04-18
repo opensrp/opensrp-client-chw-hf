@@ -441,6 +441,22 @@
                 }
             },
             {
+                "key": "should_test_for_crcl",
+                "type": "toaster_notes",
+                "text": "Mteja anatakiwa kupimwa Serum Creatinine (CrCL)",
+                "openmrs_entity_id": "",
+                "openmrs_entity": "",
+                "openmrs_entity_parent": "",
+                "toaster_type": "warning",
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "prep_screening_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
                 "key": "crcl_results",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",

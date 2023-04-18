@@ -30,7 +30,6 @@ import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
-import org.smartregister.chw.core.dao.ChildDao;
 import org.smartregister.chw.core.domain.Child;
 import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
 import org.smartregister.chw.core.model.CoreAllClientsMemberModel;
@@ -39,6 +38,7 @@ import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.PncNoMotherFloatingMenu;
+import org.smartregister.chw.hf.dao.HfChildDao;
 import org.smartregister.chw.hf.dao.HfPncDao;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.utils.HfChildUtils;
@@ -90,7 +90,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
     public static void startChildForm(Activity activity, String childBaseEntityId) {
         JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(org.smartregister.chw.hf.utils.Constants.JsonForm.getPncChildGeneralExamination());
         try {
-            Child child = ChildDao.getChild(childBaseEntityId);
+            Child child = HfChildDao.getNoMotherChild(childBaseEntityId);
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ", Locale.getDefault());
             int ageInDays = PncUtil.getDaysDifference(dateFormat.format(child.getDateOfBirth()));
 

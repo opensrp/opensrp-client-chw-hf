@@ -83,7 +83,7 @@ public class AncObstetricExaminationAction implements BaseAncHomeVisitAction.Anc
                 checkObject.put("fundal_height", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "fundal_height")));
                 checkObject.put("fetal_heart_rate", StringUtils.isNotBlank(CoreJsonFormUtils.getValue(jsonObject, "fetal_heart_rate")));
             }
-            if (gestAge >= 35) {
+            if (gestAge > 35) {
                 checkObject.put("lie", lieCheck);
                 if (lie.contains("longitudinal")) {
                     checkObject.put("presentation", presentationCheck);

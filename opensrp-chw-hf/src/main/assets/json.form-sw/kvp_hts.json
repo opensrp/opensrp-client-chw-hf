@@ -150,6 +150,42 @@
                 }
             },
             {
+                "key": "tested_hiv",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "tested_hiv",
+                "label": "Je, mteja amepima VVU?",
+                "text_color": "#000000",
+                "type": "native_radio",
+                "options": [
+                    {
+                        "key": "yes",
+                        "text": "Ndiyo",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "yes"
+                    },
+                    {
+                        "key": "no",
+                        "text": "Hapana",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "no"
+                    },
+                    {
+                        "key": "not_applicable",
+                        "text": "Haihusiki",
+                        "openmrs_entity_parent": "",
+                        "openmrs_entity": "concept",
+                        "openmrs_entity_id": "not_applicable"
+                    }
+                ],
+                "v_required": {
+                    "value": "true",
+                    "err": "Tafadhali chagua moja"
+                }
+            },
+            {
                 "key": "testing_approach",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
@@ -190,42 +226,6 @@
                             "rules-file": "kvp_hts_relevance.yml"
                         }
                     }
-                }
-            },
-            {
-                "key": "tested_hiv",
-                "openmrs_entity_parent": "",
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "tested_hiv",
-                "label": "Je, mteja amepima VVU?",
-                "text_color": "#000000",
-                "type": "native_radio",
-                "options": [
-                    {
-                        "key": "yes",
-                        "text": "Ndiyo",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "yes"
-                    },
-                    {
-                        "key": "no",
-                        "text": "Hapana",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "no"
-                    },
-                    {
-                        "key": "not_applicable",
-                        "text": "Haihusiki",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "not_applicable"
-                    }
-                ],
-                "v_required": {
-                    "value": "true",
-                    "err": "Tafadhali chagua moja"
                 }
             },
             {

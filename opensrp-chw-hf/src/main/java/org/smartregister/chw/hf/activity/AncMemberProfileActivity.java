@@ -7,6 +7,7 @@ import static org.smartregister.chw.hf.utils.Constants.Events.ANC_RECURRING_FACI
 import static org.smartregister.chw.hf.utils.Constants.PartnerRegistrationConstants.INTENT_BASE_ENTITY_ID;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
+import static org.smartregister.family.util.DBConstants.KEY.ENTITY_TYPE;
 import static org.smartregister.util.JsonFormUtils.STEP1;
 
 import android.app.Activity;
@@ -507,12 +508,23 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         } else if (id == R.id.rlPartnerView || id == R.id.register_partner_btn) {
             if (StringUtils.isNotBlank(partnerBaseEntityId)) {
                 FamilyDetailsModel familyDetailsModel = FamilyDao.getFamilyDetail(partnerBaseEntityId);
-                Intent intent = new Intent(this, FamilyOtherMemberProfileActivity.class);
+
+                CommonPersonObjectClient commonPersonObjectClient = getClientDetailsByBaseEntityID(partnerBaseEntityId);
+                commonPersonObjectClient.setDetails(commonPersonObjectClient.getColumnmaps());
+                String entityType = commonPersonObjectClient.getColumnmaps().get(ENTITY_TYPE);
+                Intent intent;
+                if (CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT.equals(entityType)) {
+                    intent = new Intent(this, AllClientsMemberProfileActivity.class);
+                } else {
+                    intent = new Intent(this, FamilyOtherMemberProfileActivity.class);
+                }
                 intent.putExtras(new Bundle());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.BASE_ENTITY_ID, partnerBaseEntityId);
-                intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient(partnerBaseEntityId));
+                intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_BASE_ENTITY_ID, familyDetailsModel.getBaseEntityId());
+                intent.putExtra(CoreConstants.INTENT_KEY.CHILD_COMMON_PERSON, commonPersonObjectClient);
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, familyDetailsModel.getFamilyHead());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, familyDetailsModel.getPrimaryCareGiver());
+                intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_NAME, familyDetailsModel.getFamilyName());
                 intent.putExtra(org.smartregister.family.util.Constants.INTENT_KEY.VILLAGE_TOWN, familyDetailsModel.getVillageTown());
                 intent.putExtra(CoreConstants.INTENT_KEY.TOOLBAR_TITLE, String.format(getString(R.string.return_to_anc_profile), memberObject.getFirstName()));
                 startActivity(intent);

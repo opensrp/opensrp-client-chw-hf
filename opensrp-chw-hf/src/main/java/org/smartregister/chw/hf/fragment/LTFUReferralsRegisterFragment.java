@@ -49,7 +49,7 @@ public class LTFUReferralsRegisterFragment extends BaseReferralRegisterFragment 
 
     @Override
     protected int getToolBarTitle() {
-        return R.string.issued_referrals;
+        return R.string.ltfu_title;
     }
 
     @Override

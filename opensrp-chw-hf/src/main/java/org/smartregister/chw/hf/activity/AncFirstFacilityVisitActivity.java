@@ -14,6 +14,7 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.anc.presenter.BaseAncHomeVisitPresenter;
 import org.smartregister.chw.core.R;
 import org.smartregister.chw.core.task.RunnableTask;
+import org.smartregister.chw.hf.domain.JSONObjectHolder;
 import org.smartregister.chw.hf.interactor.AncFirstFacilityVisitInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.hf.utils.Constants;
@@ -31,7 +32,8 @@ import timber.log.Timber;
  * 11-10-2021
  */
 public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
-    public static String ANC_BIRTH_REVIEW_AND_EMERGENCY_PLAN;
+    private long mLastExecutionTime = 0;
+    private static final long MINIMUM_INTERVAL_MS = 3000;
 
     public static void startMe(Activity activity, String baseEntityID, Boolean isEditMode) {
         Intent intent = new Intent(activity, AncFirstFacilityVisitActivity.class);
@@ -63,8 +65,9 @@ public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
 
         try {
             if (jsonForm.getString("encounter_type").equals("Emergency Plan")) {
-                ANC_BIRTH_REVIEW_AND_EMERGENCY_PLAN = jsonForm.toString();
-                intent = new Intent(this, AncBirthReviewAndEmergencyPlanJsonWizardFormActivity.class);
+                // Set the large JSONObject in JSONObjectHolder
+                JSONObjectHolder.getInstance().setLargeJSONObject(jsonForm);
+                intent = new Intent(this, HfJsonWizardFormActivity.class);
             } else {
                 intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
                 intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
@@ -77,6 +80,17 @@ public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
 
         intent.putExtra(org.smartregister.family.util.Constants.WizardFormActivity.EnableOnCloseDialog, false);
         intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
+
+
+        //Necessary evil to disable multiple sequential clicks of actions that do sometimes cause app crushes
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - mLastExecutionTime < MINIMUM_INTERVAL_MS) {
+            // too soon to execute the function again, ignore this call
+            return;
+        }
+
+        // record the current time as the last execution time
+        mLastExecutionTime = currentTime;
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
     }
 

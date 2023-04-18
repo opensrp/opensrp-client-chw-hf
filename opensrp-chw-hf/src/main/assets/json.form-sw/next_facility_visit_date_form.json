@@ -65,6 +65,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "visit_number",
         "type": "hidden"
+      },
+      {
+        "key": "followup_status",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_status",
+        "type": "hidden"
       }
     ]
   }

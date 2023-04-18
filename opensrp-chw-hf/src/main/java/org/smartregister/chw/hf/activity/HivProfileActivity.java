@@ -329,7 +329,6 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void initializeCallFAB() {
         setHivFloatingMenu(new HivFloatingMenu(this, getHivMemberObject()));

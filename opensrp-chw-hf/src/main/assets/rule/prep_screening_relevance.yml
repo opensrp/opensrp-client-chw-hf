@@ -41,6 +41,13 @@ condition: "step1_nephrotoxic_drugs != '' && step1_nephrotoxic_drugs != 'yes' &&
 actions:
   - "isRelevant = true"
 ---
+name: step1_should_test_for_crcl
+description: show prompt
+priority: 1
+condition: "step1_tested_crcl == 'no'  && global_should_record_crcl_tests"
+actions:
+  - "isRelevant = true"
+---
 name: step1_hcv_results
 description: hcv_results relevance
 priority: 1

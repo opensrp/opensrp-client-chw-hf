@@ -20,10 +20,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/HFTheme"
-        android:usesCleartextTraffic="true"
         tools:replace="android:theme, android:icon">
         <activity
             android:name=".activity.AncFilterActivity"
@@ -87,12 +87,15 @@
             android:name=".activity.OrderRequestDetailsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
-            android:name=".activity.AncBirthReviewAndEmergencyPlanJsonWizardFormActivity"
-            android:theme="@style/HFTheme.NoActionBar" />
+            android:name=".activity.HfJsonWizardFormActivity"
+            android:theme="@style/HFTheme.NoActionBar"
+            android:launchMode="singleTask"/>
+
         <activity
             android:name=".activity.AncPartnerTestingHistoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDRegistrationAdmissionInformationJsonWizardFormActivity"
             android:theme="@style/HFTheme.NoActionBar" />
@@ -423,36 +426,42 @@
         <activity
             android:name=".activity.PncFacilityVisitActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDRegistrationFormActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDPartographActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LDPartographDetailsActivity"
-            android:screenOrientation="landscape"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDGeneralExaminationVisitActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDActiveManagementStageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.PmtctMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
+
         <activity
             android:name=".activity.LDPostDeliveryManagementMotherActivity"
             android:screenOrientation="portrait"
@@ -541,6 +550,7 @@
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </receiver>
+
         <receiver
             android:name="io.ona.kujaku.receivers.KujakuNetworkChangeReceiver"
             android:exported="false">

@@ -56,7 +56,8 @@
     <string name="eac_visit_done">EAC Visit, Session: %d Completed</string>
     <string name="record_eac_second_visit">Second EAC Visit</string>
     <string name="pmtct_followup_form_title">PMTCT Followup</string>
-    <string name="record_first_pmtct">Record PMTCT Visit Zero</string>
+    <string name="record_first_pmtct">Record PMTCT Visit</string>
+    <string name="record_pmtct_visit">Record PMTCT Visit</string>
     <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>git p
     <string name="pmtct_pending_registration">PMTCT Pending Registration</string>
     <string name="register_button_text">REGISTER</string>
@@ -451,7 +452,7 @@
     <string name="kvp_screening">KVP Screening</string>
     <string name="kvp_client_status">Client Status</string>
     <string name="kvp_hts">HTS</string>
-    <string name="kvp_prep_and_pep">PrEP and PEP</string>
+    <string name="kvp_pep_assesment">PEP assesment</string>
     <string name="kvp_condom_provision">Condom Provision</string>
     <string name="kvp_family_planning">Family Planning</string>
     <string name="kvp_tb_screening">TB Screening</string>
@@ -755,7 +756,7 @@
     <string name="kvp_family_planning_service">Family planning service provided:</string>
     <string name="kvp_cervical_cancer_screening">Was the client screened for Cervical Cancer:</string>
 
-    <string name="hivst">HIVST</string>
+    <string name="hivst">Self Testing</string>
     <string name="hiv_cv_test">HIV conventional test</string>
     <string name="hivst_and_hiv_cv_test">HIVST and HIV conventional test</string>
     <string name="other_method">Other method</string>
@@ -1247,5 +1248,9 @@
     <string name="global_search_description"><![CDATA[Fill in client’s name & search through UCS’s global database]]></string>
     <string name="select_issued_condoms">Select Condoms issued report</string>
     <string name="cdp_issuing_report">CDP Issuing Report</string>
+
+    <string name="referral_submitted_successfully">Referral sent successfully</string>
+    <string name="referral_submitted">Referral sent successfully</string>
+    <string name="ltfu_title">LTFU</string>
 
 </resources>

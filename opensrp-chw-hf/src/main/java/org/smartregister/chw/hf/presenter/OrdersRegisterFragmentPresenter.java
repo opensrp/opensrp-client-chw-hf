@@ -12,7 +12,11 @@ public class OrdersRegisterFragmentPresenter extends BaseOrdersRegisterFragmentP
 
     @Override
     public String getMainCondition() {
-        return super.getMainCondition() +  " AND " + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.FACILITY_TO_FACILITY_ORDER + "'";
+        String providerId = org.smartregister.Context.getInstance().allSharedPreferences().fetchRegisteredANM();
+        String userLocationId = org.smartregister.Context.getInstance().allSharedPreferences().fetchUserLocalityId(providerId);
+
+        return super.getMainCondition() + " AND " + getMainTable() + "." + DBConstants.KEY.REQUEST_TYPE + " = '" + Constants.ORDER_TYPES.FACILITY_TO_FACILITY_ORDER + "'" +
+                " AND " + getMainTable() + "." + DBConstants.KEY.LOCATION_ID + " = " + "'" + userLocationId + "'";
     }
 
 }
