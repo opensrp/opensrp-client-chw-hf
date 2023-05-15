@@ -297,6 +297,9 @@
         "label": "Other services and referral",
         "text_color": "#000000",
         "type": "check_box",
+        "exclusive": [
+          "none"
+        ],
         "options": [
           {
             "key": "rch",
@@ -361,7 +364,7 @@
           "err": "Please specify"
         },
         "relevance": {
-          "step1:type_of_issued_condoms": {
+          "step1:services_and_referral": {
             "ex-checkbox": [
               {
                 "or": [

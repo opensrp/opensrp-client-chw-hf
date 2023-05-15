@@ -208,9 +208,11 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             textViewRecordHeiNumber.setVisibility(View.VISIBLE);
             textViewRecordHeiNumber.setText(getString(R.string.record_hei_number));
             textViewRecordHeiNumber.setOnClickListener(this);
+            textViewRecordPmtct.setVisibility(View.GONE);
         } else {
             String heiNumber = HeiDao.getHeiNumber(baseEntityId);
             textViewRecordHeiNumber.setVisibility(View.GONE);
+            textViewRecordPmtct.setVisibility(View.VISIBLE);
             if (heiNumber != null) {
                 textViewClientRegNumber.setVisibility(View.VISIBLE);
                 textViewClientRegNumber.setText(this.getString(R.string.hei_number, heiNumber));

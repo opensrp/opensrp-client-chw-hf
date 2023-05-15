@@ -1252,5 +1252,6 @@
     <string name="referral_submitted_successfully">Referral sent successfully</string>
     <string name="referral_submitted">Referral sent successfully</string>
     <string name="ltfu_title">LTFU</string>
+    <string name="hts_return_to_previous_page">Return to all hts clients</string>
 
 </resources>
