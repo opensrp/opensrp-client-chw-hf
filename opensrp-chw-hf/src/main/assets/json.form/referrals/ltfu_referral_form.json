@@ -55,7 +55,7 @@
           "name": "on_art",
           "type": "radio_group",
           "properties": {
-            "text": "Is the client on ARV?"
+            "text": "Was the client on ARV?"
           },
           "options": [
             {
@@ -108,15 +108,6 @@
               "meta_data": {
                 "openmrs_entity": "concept",
                 "openmrs_entity_id": "CTC",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "Prep",
-              "text": "Prep",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "Prep",
                 "openmrs_entity_parent": ""
               }
             },

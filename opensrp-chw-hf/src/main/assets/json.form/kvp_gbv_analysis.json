@@ -55,7 +55,7 @@
         "options": [
           {
             "key": "case_not_reported",
-            "text": "The client has not report any gender-based violence (GBV) cases",
+            "text": "The client has not reported any gender-based violence (GBV) cases.",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "case_not_reported"
           },

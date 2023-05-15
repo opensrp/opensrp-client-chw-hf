@@ -9,7 +9,7 @@ actions:
 name: step1_testing_approach
 description: testing_approach relevance
 priority: 1
-condition: "!step1_tested_hiv.isEmpty() && !step1_tested_hiv.equals('yes')"
+condition: "!step1_tested_hiv.isEmpty() && step1_tested_hiv.equals('yes')"
 actions:
   - "isRelevant = true"
 ---

@@ -145,7 +145,7 @@ public class HivIndexContactProfileActivity extends CoreHivIndexContactProfileAc
             if (itemId == R.id.action_issue_hiv_community_followup_referral) {
                 JSONObject formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral());
                 initializeHealthFacilitiesList(formJsonObject);
-                HivRegisterActivity.startHIVFormActivity(this, getHivIndexContactObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral(), formJsonObject.toString());
+                HivIndexContactsContactsRegisterActivity.startHIVFormActivity(this, getHivIndexContactObject().getBaseEntityId(), CoreConstants.JSON_FORM.getHivIndexContactCommunityFollowupReferral(), formJsonObject.toString());
                 return true;
             } else if (itemId == R.id.action_location_info) {
                 //use this method in hf to get the chw_location instead of encounter_location for chw

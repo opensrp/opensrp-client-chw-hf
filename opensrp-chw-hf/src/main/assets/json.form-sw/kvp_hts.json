@@ -307,13 +307,6 @@
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "enrolled_and_on_arv"
-                    },
-                    {
-                        "key": "not_applicable",
-                        "text": "Haihusiki",
-                        "openmrs_entity_parent": "",
-                        "openmrs_entity": "concept",
-                        "openmrs_entity_id": "not_applicable"
                     }
                 ],
                 "v_required": {

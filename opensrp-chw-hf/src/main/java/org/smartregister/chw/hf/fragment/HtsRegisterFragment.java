@@ -126,7 +126,7 @@ public class HtsRegisterFragment extends CoreHivRegisterFragment {
     @Override
     protected void openProfile(CommonPersonObjectClient client) {
         if (getActivity() != null)
-            HivProfileActivity.startHivProfileActivity(getActivity(), Objects.requireNonNull(HfHtsDao.getMember(client.getCaseId())));
+            HivProfileActivity.startHivProfileActivity(getActivity(), Objects.requireNonNull(HfHtsDao.getMember(client.getCaseId())), R.string.hts_return_to_previous_page);
     }
 
 

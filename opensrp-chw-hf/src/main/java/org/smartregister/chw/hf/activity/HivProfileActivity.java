@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +17,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
@@ -73,12 +71,19 @@ import java.util.Objects;
 import timber.log.Timber;
 
 public class HivProfileActivity extends CoreHivProfileActivity implements HivProfileContract.View {
-
+    private static final String TITLE = "title";
     private CommonPersonObjectClient commonPersonObjectClient;
 
     public static void startHivProfileActivity(Activity activity, HivMemberObject memberObject) {
         Intent intent = new Intent(activity, HivProfileActivity.class);
         intent.putExtra(HIV_MEMBER_OBJECT, memberObject);
+        activity.startActivity(intent);
+    }
+
+    public static void startHivProfileActivity(Activity activity, HivMemberObject memberObject, int title) {
+        Intent intent = new Intent(activity, HivProfileActivity.class);
+        intent.putExtra(HIV_MEMBER_OBJECT, memberObject);
+        intent.putExtra(TITLE, title);
         activity.startActivity(intent);
     }
 
@@ -104,6 +109,10 @@ public class HivProfileActivity extends CoreHivProfileActivity implements HivPro
     @Override
     public void setupViews() {
         super.setupViews();
+        int titleStringResource = getIntent().getIntExtra(TITLE, -1);
+        if (titleStringResource != -1) {
+            ((TextView) findViewById(R.id.toolbar_title)).setText(titleStringResource);
+        }
         new SetIndexClientsTask(getHivMemberObject()).execute();
     }
 

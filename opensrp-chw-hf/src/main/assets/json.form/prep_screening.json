@@ -586,42 +586,6 @@
         }
       },
       {
-        "key": "substantial_criteria",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "substantial_criteria",
-        "label": "Was the client screened for substantial criteria?",
-        "text_color": "#000000",
-        "type": "native_radio",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Please select an answer"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "prep_screening_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "should_initiate",
         "type": "hidden",
         "openmrs_entity": "concept",

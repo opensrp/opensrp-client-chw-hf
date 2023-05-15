@@ -454,6 +454,7 @@
     <string name="quantity_label_text">Idadi (Vipande)</string>
     <string name="requester_name">Mwombaji:</string>
     <string name="facility_response_label">Majibu Kutoka Kituoni</string>
+    <string name="hts_return_to_previous_page">Rudi kwenye wateja wa HTS</string>
 
 
 </resources>

@@ -134,6 +134,9 @@ public class PrEPMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
 
                     String[] clientStatusServicesParams = {"client_status", "other_kvp_category"};
                     extractVisitDetails(visits, clientStatusServicesParams, visitDetails, x, context);
+                    
+                    String[] nextAppointmentDateParams = {"next_visit_date"};
+                    extractVisitDetails(visits, nextAppointmentDateParams, visitDetails, x, context);
 
                     hf_visits.add(visitDetails);
 

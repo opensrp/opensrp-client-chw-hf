@@ -723,7 +723,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "physical_abuse",
         "type": "native_radio",
-        "label": "Has contact client ever hit or abuse you physically?",
+        "label": "Has the contact client ever emotionally or physically hurt you in your lifetime?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -758,7 +758,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "threatened_to_be_hurt",
         "type": "native_radio",
-        "label": "Has contact client ever threaten to hit or hurt you?",
+        "label": "Has the contact client ever hit, kicked, slapped, or physically hurt you within the last year?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -793,7 +793,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "sexual_assault",
         "type": "native_radio",
-        "label": "Has the contact client ever used force or persuade you to have sex against your will?",
+        "label": "Has the contact client ever forced you to have sexual activities within the last year?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [
@@ -828,7 +828,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "fearful_of_contact_client",
         "type": "native_radio",
-        "label": "Are you threatened or fear contact client?",
+        "label": "Are you threatened or fear the contact client?",
         "label_text_style": "normal",
         "text_color": "#C0C0C0",
         "options": [

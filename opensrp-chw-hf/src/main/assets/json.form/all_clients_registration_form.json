@@ -307,14 +307,7 @@
             "text_size": "18px",
             "value": "false"
           }
-        ],
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "all_clients_member_relevance.yml"
-            }
-          }
-        }
+        ]
       },
       {
         "key": "age",
