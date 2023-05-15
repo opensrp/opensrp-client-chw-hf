@@ -82,6 +82,8 @@ public class HfChwRepository extends CoreChwRepository {
                     upgradeToVersion14(db);
                 case 14:
                     upgradeToVersion15(db);
+                case 16:
+                    upgradeToVersion16(db);
                 default:
                     break;
             }
@@ -309,6 +311,16 @@ public class HfChwRepository extends CoreChwRepository {
                     HealthFacilityApplication.createCommonFtsObject());
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion15");
+        }
+    }
+    private static void upgradeToVersion16(SQLiteDatabase db) {
+        try {
+            // add missing columns
+            db.execSQL("ALTER TABLE ec_cbhs_register ADD COLUMN provider_id TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_cdp_stock_log ADD COLUMN condom_brand TEXT NULL;");
+
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion16");
         }
     }
 
