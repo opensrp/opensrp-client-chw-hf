@@ -116,6 +116,12 @@
                 "v_required": {
                     "value": "true",
                     "err": "Tafadhali jaza jibu la swali"
+                },
+                "relevance": {
+                    "step1:family_planning_service": {
+                        "type": "string",
+                        "ex": "notEqualTo(., \"vasectomy\")"
+                    }
                 }
             }
         ]

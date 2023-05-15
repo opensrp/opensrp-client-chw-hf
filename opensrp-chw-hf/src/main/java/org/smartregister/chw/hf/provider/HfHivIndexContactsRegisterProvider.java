@@ -49,7 +49,7 @@ public class HfHivIndexContactsRegisterProvider extends CoreHivIndexContactsProv
     }
 
     private void showLatestHivReferralDay(CommonPersonObjectClient client, HfHivIndexContactsRegisterProvider.HfRegisterViewHolder viewHolder) {
-        HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.SUSPECTED_HIV, viewHolder.textViewReferralDay);
+        HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.CONVENTIONAL_HIV_TEST, viewHolder.textViewReferralDay);
         displayReferralSent(client, viewHolder);
     }
 

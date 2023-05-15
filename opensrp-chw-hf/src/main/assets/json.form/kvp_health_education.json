@@ -95,6 +95,13 @@
             "openmrs_entity_id": "pep"
           },
           {
+            "key": "prep",
+            "text": "PrEP",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prep"
+          },
+          {
             "key": "vmmc",
             "text": "VMMC",
             "openmrs_entity_parent": "",

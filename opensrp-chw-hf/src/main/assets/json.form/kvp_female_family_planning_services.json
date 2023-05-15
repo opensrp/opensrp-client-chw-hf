@@ -146,6 +146,12 @@
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "step1:family_planning_service": {
+            "type": "string",
+            "ex": "notEqualTo(., \"tube_ligation\")"
+          }
         }
       }
     ]

@@ -13,10 +13,11 @@ import org.smartregister.chw.hf.utils.Constants;
 
 import timber.log.Timber;
 
-public class AncJsonFormFragment extends JsonWizardFormFragment {
+public class HfJsonFormFragment extends JsonWizardFormFragment {
+    private static final String RECEIVING_ORDER_FACILITY = "receiving_order_facility";
 
-    public static AncJsonFormFragment getFormFragment(String stepName) {
-        AncJsonFormFragment jsonFormFragment = new AncJsonFormFragment();
+    public static HfJsonFormFragment getFormFragment(String stepName) {
+        HfJsonFormFragment jsonFormFragment = new HfJsonFormFragment();
         Bundle bundle = new Bundle();
         bundle.putString("stepName", stepName);
         jsonFormFragment.setArguments(bundle);
@@ -30,9 +31,16 @@ public class AncJsonFormFragment extends JsonWizardFormFragment {
             JSONArray fields = jsonObject.getJSONObject(Constants.JsonFormConstants.STEP1)
                     .getJSONArray(org.smartregister.chw.referral.util.JsonFormConstants.FIELDS);
 
-            JSONObject referralHealthFacilities = org.smartregister.family.util.JsonFormUtils.getFieldJSONObject(fields, Constants.JsonFormConstants.NAME_OF_HF);
+            //Removing not required options that might lead to unnecessarily large response json object
+            JSONObject receivingOrderFacility = org.smartregister.family.util.JsonFormUtils.getFieldJSONObject(fields, RECEIVING_ORDER_FACILITY);
+            if (receivingOrderFacility != null) {
+                receivingOrderFacility.put("options", new JSONArray());
+            }
 
-            referralHealthFacilities.put("options", new JSONArray());
+            JSONObject referralHealthFacilities = org.smartregister.family.util.JsonFormUtils.getFieldJSONObject(fields, Constants.JsonFormConstants.NAME_OF_HF);
+            if (referralHealthFacilities != null) {
+                referralHealthFacilities.put("options", new JSONArray());
+            }
 
             Intent newReturnIntent = new Intent();
             newReturnIntent.putExtra("json", jsonObject.toString());

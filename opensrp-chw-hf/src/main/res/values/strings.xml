@@ -452,7 +452,7 @@
     <string name="kvp_screening">KVP Screening</string>
     <string name="kvp_client_status">Client Status</string>
     <string name="kvp_hts">HTS</string>
-    <string name="kvp_prep_and_pep">PrEP and PEP</string>
+    <string name="kvp_pep_assesment">PEP assesment</string>
     <string name="kvp_condom_provision">Condom Provision</string>
     <string name="kvp_family_planning">Family Planning</string>
     <string name="kvp_tb_screening">TB Screening</string>
@@ -756,7 +756,7 @@
     <string name="kvp_family_planning_service">Family planning service provided:</string>
     <string name="kvp_cervical_cancer_screening">Was the client screened for Cervical Cancer:</string>
 
-    <string name="hivst">HIVST</string>
+    <string name="hivst">Self Testing</string>
     <string name="hiv_cv_test">HIV conventional test</string>
     <string name="hivst_and_hiv_cv_test">HIVST and HIV conventional test</string>
     <string name="other_method">Other method</string>
@@ -1250,5 +1250,7 @@
     <string name="cdp_issuing_report">CDP Issuing Report</string>
 
     <string name="referral_submitted_successfully">Referral sent successfully</string>
+    <string name="referral_submitted">Referral sent successfully</string>
+    <string name="ltfu_title">LTFU</string>
 
 </resources>

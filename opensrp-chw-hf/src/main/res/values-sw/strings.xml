@@ -338,7 +338,7 @@
     <string name="kvp_screening">Uchunguzi wa Makundi Maalum (KVP/PrEP)</string>
     <string name="kvp_client_status">Hali ya Mteja</string>
     <string name="kvp_hts">Ushauri Nasaha na Upimaji</string>
-    <string name="kvp_prep_and_pep">PrEP and PEP</string>
+    <string name="kvp_pep_assesment">PEP assesment</string>
     <string name="kvp_condom_provision">Ugawaji Kondomu</string>
     <string name="kvp_family_planning">Uzazi wa Mpango</string>
     <string name="kvp_tb_screening">Uchunguzi wa Kifua Kikuu</string>
@@ -372,6 +372,8 @@
     <string name="cdp_issuing_report">Taarifa ya kondomu zilizotolewa</string>
 
     <string name="referral_submitted_successfully">Rufaa imetumwa</string>
+    <string name="referral_submitted">Rufaa imetumwa</string>
+    <string name="ltfu_title">LTFU</string>
 
 
     <!--    CDP-->

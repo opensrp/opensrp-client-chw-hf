@@ -4,7 +4,7 @@ import com.vijay.jsonwizard.activities.JsonWizardFormActivity;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.utils.NativeFormLangUtils;
 
-import org.smartregister.chw.hf.fragment.AncJsonFormFragment;
+import org.smartregister.chw.hf.fragment.HfJsonFormFragment;
 
 public class LDRegistrationAdmissionInformationJsonWizardFormActivity extends JsonWizardFormActivity {
     @Override
@@ -20,7 +20,7 @@ public class LDRegistrationAdmissionInformationJsonWizardFormActivity extends Js
     @Override
     public synchronized void initializeFormFragment() {
         isFormFragmentInitialized = true;
-        AncJsonFormFragment formFragment = AncJsonFormFragment.getFormFragment(JsonFormConstants.FIRST_STEP_NAME);
+        HfJsonFormFragment formFragment = HfJsonFormFragment.getFormFragment(JsonFormConstants.FIRST_STEP_NAME);
         getSupportFragmentManager().beginTransaction()
                 .add(com.vijay.jsonwizard.R.id.container, formFragment).commitAllowingStateLoss();
     }

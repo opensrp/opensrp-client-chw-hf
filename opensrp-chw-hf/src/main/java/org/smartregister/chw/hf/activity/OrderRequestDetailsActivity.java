@@ -6,6 +6,7 @@ import android.view.View;
 
 import org.json.JSONObject;
 import org.smartregister.chw.cdp.activity.BaseOrderDetailsActivity;
+import org.smartregister.chw.cdp.dao.CdpStockingDao;
 import org.smartregister.chw.cdp.util.Constants;
 import org.smartregister.chw.core.utils.FormUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
@@ -21,8 +22,12 @@ public class OrderRequestDetailsActivity extends BaseOrderDetailsActivity {
     @Override
     protected void setupViews() {
         super.setupViews();
+        String providerId = org.smartregister.Context.getInstance().allSharedPreferences().fetchRegisteredANM();
+        String userLocationId = org.smartregister.Context.getInstance().allSharedPreferences().fetchUserLocalityId(providerId);
 
-        stockDistributionBtn.setVisibility(View.VISIBLE);
+        if ((CdpStockingDao.getCurrentMaleCondomCount(userLocationId) + CdpStockingDao.getCurrentFemaleCondomCount(userLocationId)) > 0) {
+            stockDistributionBtn.setVisibility(View.VISIBLE);
+        }
         if (client != null && presenter != null)
             presenter.refreshViewPageBottom(client);
     }

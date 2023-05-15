@@ -212,61 +212,12 @@
           "properties": {
             "notification_type": "info",
             "dismissible": "no",
-            "title": "Mteja anatakiwa anzishiwe PREP",
-            "text": "Mteja ni mshiriki wa kingono wa muathirika wa ukimwi, Anatakiwa kuanzishiwa PREP",
+            "title": "Mteja anatakiwa anzishiwe KVP/PREP",
+            "text": "Mteja ni mshiriki wa kingono wa muathirika wa ukimwi, Anatakiwa kuanzishiwa KVP/PREP",
             "background_color": "#082455",
             "text_color": "#EBEE2F"
           },
           "subjects": "relationship:text, when_the_test_was_conducted:number , months_after_last_test:number"
-        },
-        {
-          "name": "enrolled_to_prep",
-          "type": "radio_group",
-          "properties": {
-            "text": "Mteja amenazishwa PREP?"
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "enrolled_to_prep",
-            "openmrs_entity_parent": ""
-          },
-          "options": [
-            {
-              "name": "yes",
-              "text": "Ndio",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "yes",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
-              "name": "no",
-              "text": "Hapana",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "no",
-                "openmrs_entity_parent": ""
-              }
-            }
-          ],
-          "required_status": "yes:Please select the answer",
-          "subjects": "relationship:text, when_the_test_was_conducted:number , months_after_last_test:number"
-        },
-        {
-          "name": "reason_for_not_being_enrolled_to_prep",
-          "type": "text_input_edit_text",
-          "properties": {
-            "hint": "Sababu ya kuanzishwa PREP",
-            "input_type": "text"
-          },
-          "meta_data": {
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_for_not_being_enrolled_to_prep",
-            "openmrs_entity_parent": ""
-          },
-          "required_status": "yes:Please add the reasons",
-          "subjects": "when_the_test_was_conducted:number , enrolled_to_prep:map, months_after_last_test:number"
         },
         {
           "name": "toast_client_eligible_for_testing",
@@ -354,7 +305,7 @@
           "type": "text_input_edit_text",
           "properties": {
             "hint": "Jaza numbari ya CTC ya mteja",
-            "type": "Clinic of Treatment and Care registration number (CTC Number)"
+            "type": "Care and Treatment Clinic registration number (CTC Number)"
           },
           "meta_data": {
             "openmrs_entity": "concept",

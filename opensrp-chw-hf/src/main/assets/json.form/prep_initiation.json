@@ -110,11 +110,37 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tdf_ftc"
+          },
+          {
+            "key": "other_drugs",
+            "text": "Other Drugs",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_drugs"
           }
         ],
         "v_required": {
           "value": "true",
           "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_prep_drug_offered",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_prep_drug_offered",
+        "type": "edit_text",
+        "hint": "Other PrEP Drug Offered",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the other PrEP drug Offered"
         },
         "relevance": {
           "rules-engine": {
@@ -140,9 +166,10 @@
           "err": "Please enter the number"
         },
         "relevance": {
-          "step1:prep_drug_offered": {
-            "type": "string",
-            "ex": "equalTo(., \"tdf_ftc\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "prep_initiation_relevance.yml"
+            }
           }
         },
         "v_max": {
@@ -544,12 +571,12 @@
           {
             "type": "date",
             "ex": "greaterThanEqualTo(., step1:minimum_date_for_next_visit)",
-            "err": "The next appoint date should be within 3 days of the medication provided"
+            "err": "Date should be within 3 days of the medication provided"
           },
           {
             "type": "date",
             "ex": "lessThanEqualTo(., step1:maximum_date_for_next_visit)",
-            "err": "The next appoint date should be within 3 days of the medication provided"
+            "err": "Date should be within 3 days of the medication provided"
           }
         ]
       }

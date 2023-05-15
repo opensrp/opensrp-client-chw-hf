@@ -33,6 +33,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import timber.log.Timber;
+
 public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
     private static CommonPersonObjectClient client;
     private static Task task;
@@ -225,20 +227,25 @@ public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
     }
 
     private String getReferralClinic(String key, Context context) {
-        switch (key.toLowerCase()) {
-            case "ctc":
-                return context.getString(R.string.ltfu_clinic_ctc);
-            case "pwid":
-                return context.getString(R.string.ltfu_clinic_pwid);
-            case "prep":
-                return context.getString(R.string.ltfu_clinic_prep);
-            case "pmtct":
-                return context.getString(R.string.ltfu_clinic_pmtct);
-            case "tb":
-                return context.getString(R.string.ltfu_clinic_tb);
-            default:
-                return removeSquareBrackets(key);
+        try {
+            switch (key.toLowerCase()) {
+                case "ctc":
+                    return context.getString(R.string.ltfu_clinic_ctc);
+                case "pwid":
+                    return context.getString(R.string.ltfu_clinic_pwid);
+                case "prep":
+                    return context.getString(R.string.ltfu_clinic_prep);
+                case "pmtct":
+                    return context.getString(R.string.ltfu_clinic_pmtct);
+                case "tb":
+                    return context.getString(R.string.ltfu_clinic_tb);
+                default:
+                    return removeSquareBrackets(key);
+            }
+        }catch (Exception e){
+            Timber.e(e);
         }
+        return "";
     }
 
     private String removeSquareBrackets(String text){

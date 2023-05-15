@@ -21,7 +21,7 @@ public class HtsRegisterFragmentPresenter extends BaseHivRegisterFragmentPresent
     public String getMainCondition() {
         return " " + CoreConstants.TABLE_NAME.FAMILY_MEMBER + "." + DBConstants.Key.DATE_REMOVED + " is null " +
                 "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.CTC_NUMBER + " IS NULL " +
-                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + Constants.DBConstants.CHW_REFERRAL_SERVICE + " = 'Suspected HIV' " +
+                "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + Constants.DBConstants.CHW_REFERRAL_SERVICE + " = 'Conventional HIV Test' " +
                 "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.CLIENT_HIV_STATUS_AFTER_TESTING + " is NULL " +
                 "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.IS_CLOSED + " = '0' " +
                 "AND " + CoreConstants.TABLE_NAME.HTS_MEMBERS + "." + DBConstants.Key.BASE_ENTITY_ID +

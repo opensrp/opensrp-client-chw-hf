@@ -1,14 +1,72 @@
 ---
-name: step1_provided_male_condoms
-description: provided_male_condoms
+name: step1_provided_male_condoms_public_sc
+description: provided_male_condoms_public_sc
 priority: 1
-condition: "step1_condom_type == 'male_condom'"
+condition: "step1_condom_type == 'male_condom' && step1_condom_brand == 'public_sc'"
 actions:
   - "isRelevant = true"
 ---
-name: step1_provided_female_condoms
-description: provided_female_condoms
+name: step1_provided_female_condoms_public_sc
+description: provided_female_condoms_public_sc
 priority: 1
-condition: "step1_condom_type == 'female_condom'"
+condition: "step1_condom_type == 'female_condom' && step1_condom_brand == 'public_sc'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_male_condoms_dume
+description: provided_male_condoms_dume
+priority: 1
+condition: "step1_condom_type == 'male_condom' && step1_condom_brand == 'dume'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_female_condoms_dume
+description: provided_female_condoms_dume
+priority: 1
+condition: "step1_condom_type == 'female_condom' && step1_condom_brand == 'dume'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_provided_male_condoms_salama
+description: provided_male_condoms_salama
+priority: 1
+condition: "step1_condom_type == 'male_condom' && step1_condom_brand == 'salama'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_female_condoms_salama
+description: provided_female_condoms_salama
+priority: 1
+condition: "step1_condom_type == 'female_condom' && step1_condom_brand == 'salama'"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_provided_male_condoms_familia
+description: provided_male_condoms_familia
+priority: 1
+condition: "step1_condom_type == 'male_condom' && step1_condom_brand == 'familia'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_female_condoms_familia
+description: provided_female_condoms_familia
+priority: 1
+condition: "step1_condom_type == 'female_condom' && step1_condom_brand == 'familia'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_male_condoms_other
+description: provided_male_condoms_other
+priority: 1
+condition: "step1_condom_type == 'male_condom' && step1_condom_brand == 'others'"
+actions:
+  - "isRelevant = true"
+---
+name: step1_provided_female_condoms_other
+description: provided_female_condoms_other
+priority: 1
+condition: "step1_condom_type == 'female_condom' && step1_condom_brand == 'others'"
 actions:
   - "isRelevant = true"

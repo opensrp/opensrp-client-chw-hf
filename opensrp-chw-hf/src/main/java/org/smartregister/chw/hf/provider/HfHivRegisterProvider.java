@@ -69,7 +69,7 @@ public class HfHivRegisterProvider extends CoreHivProvider {
             String pendingCtcRegistration = context.getString(R.string.pending_ctc_registration);
             viewHolder.textViewReferralDay.setText(pendingCtcRegistration);
         } else {
-            HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.SUSPECTED_HIV, viewHolder.textViewReferralDay);
+            HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.CONVENTIONAL_HIV_TEST, viewHolder.textViewReferralDay);
         }
     }
 

@@ -3,17 +3,23 @@ package org.smartregister.chw.hf.activity;
 import android.os.Bundle;
 import android.os.Parcel;
 
-import com.vijay.jsonwizard.activities.JsonWizardFormActivity;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.utils.NativeFormLangUtils;
 
-import org.smartregister.chw.hf.fragment.AncJsonFormFragment;
+import org.json.JSONObject;
+import org.smartregister.chw.hf.domain.JSONObjectHolder;
+import org.smartregister.chw.hf.fragment.HfJsonFormFragment;
+import org.smartregister.family.activity.FamilyWizardFormActivity;
 
-public class AncBirthReviewAndEmergencyPlanJsonWizardFormActivity extends JsonWizardFormActivity {
+public class HfJsonWizardFormActivity extends FamilyWizardFormActivity {
+    //Implementation that handles passing of large data between activities that sometimes caused TransactionTooLarge exceptions
+    public final int MAX_BUNDLE_SIZE = 300;
+
     @Override
     protected String getJsonForm() {
-        String jsonForm = AncFirstFacilityVisitActivity.ANC_BIRTH_REVIEW_AND_EMERGENCY_PLAN;
-
+        // Retrieve the large JSONObject from JSONObjectHolder
+        JSONObject largeJSONObject = JSONObjectHolder.getInstance().getLargeJSONObject();
+        String jsonForm = largeJSONObject.toString();
         if (translateForm) {
             jsonForm = NativeFormLangUtils.getTranslatedStringWithDBResourceBundle(this, jsonForm, null);
         }
@@ -23,13 +29,11 @@ public class AncBirthReviewAndEmergencyPlanJsonWizardFormActivity extends JsonWi
     @Override
     public synchronized void initializeFormFragment() {
         isFormFragmentInitialized = true;
-        AncJsonFormFragment formFragment = AncJsonFormFragment.getFormFragment(JsonFormConstants.FIRST_STEP_NAME);
+        HfJsonFormFragment formFragment = HfJsonFormFragment.getFormFragment(JsonFormConstants.FIRST_STEP_NAME);
         getSupportFragmentManager().beginTransaction()
                 .add(com.vijay.jsonwizard.R.id.container, formFragment).commitAllowingStateLoss();
     }
 
-    //Implementation that handles passing of large data between activities that sometimes caused TransactionTooLarge exceptions
-    public final int MAX_BUNDLE_SIZE = 300;
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

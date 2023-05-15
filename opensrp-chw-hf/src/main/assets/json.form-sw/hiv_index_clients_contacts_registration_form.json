@@ -124,10 +124,10 @@
         "openmrs_entity_id": "cityVillage",
         "type": "edit_text",
         "edit_type": "name",
-        "hint": "Kijiji/Mtaa",
+        "hint": "Jina la eneo",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali weka jina la kijiji au mtaa"
+          "err": "Tafadhali jaza jina la eneo"
         }
       },
       {

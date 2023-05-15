@@ -514,7 +514,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
@@ -526,7 +526,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
     				  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
     				  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-    				  WHERE focus='Suspected HIV'
+    				  WHERE focus='Conventional HIV Test'
     				  AND (efm.gender='Male')
     				  AND (date(efm.dob, '+20 years') <= date('now'))
                       AND (date(efm.dob, '+25 years') > date('now'))
@@ -538,7 +538,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
                       AND (date(efm.dob, '+30 years') > date('now'))
@@ -550,7 +550,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
                       AND (date(efm.dob, '+35 years') > date('now'))
@@ -562,7 +562,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
                       AND (date(efm.dob, '+40 years') > date('now'))
@@ -574,7 +574,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
                       AND (date(efm.dob, '+45 years') > date('now'))
@@ -586,7 +586,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
                       AND (date(efm.dob, '+50 years') > date('now'))
@@ -598,7 +598,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -609,7 +609,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -622,7 +622,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -635,7 +635,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -648,7 +648,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -661,7 +661,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -674,7 +674,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -687,7 +687,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -700,7 +700,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='pwid')
 					  AND (date('now')-date(efm.dob))>=50
@@ -712,7 +712,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -725,7 +725,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -738,7 +738,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -751,7 +751,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -764,7 +764,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -777,7 +777,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -790,7 +790,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -803,7 +803,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='prisoners')
 					  AND (date('now')-date(efm.dob))>=50
@@ -815,7 +815,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -828,7 +828,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -841,7 +841,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -854,7 +854,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -867,7 +867,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -880,7 +880,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -893,7 +893,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -906,7 +906,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='msm')
 					  AND (date('now')-date(efm.dob))>=50
@@ -918,7 +918,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -931,7 +931,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -944,7 +944,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -957,7 +957,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -970,7 +970,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -983,7 +983,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -996,7 +996,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -1009,7 +1009,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Male')
 					  AND (client_group='others')
 					  AND (date('now')-date(efm.dob))>=50
@@ -1557,7 +1557,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
                       AND (date(efm.dob, '+20 years') > date('now'))
@@ -1569,7 +1569,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
     				  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
     				  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-    				  WHERE focus='Suspected HIV'
+    				  WHERE focus='Conventional HIV Test'
     				  AND (efm.gender='Female')
     				  AND (date(efm.dob, '+20 years') <= date('now'))
                       AND (date(efm.dob, '+25 years') > date('now'))
@@ -1581,7 +1581,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
                       AND (date(efm.dob, '+30 years') > date('now'))
@@ -1593,7 +1593,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
                       AND (date(efm.dob, '+35 years') > date('now'))
@@ -1605,7 +1605,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
                       AND (date(efm.dob, '+40 years') > date('now'))
@@ -1617,7 +1617,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
                       AND (date(efm.dob, '+45 years') > date('now'))
@@ -1629,7 +1629,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
                       AND (date(efm.dob, '+50 years') > date('now'))
@@ -1641,7 +1641,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (date('now')-date(efm.dob))>=50
                       AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1652,7 +1652,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -1665,7 +1665,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -1678,7 +1678,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -1691,7 +1691,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -1704,7 +1704,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -1717,7 +1717,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -1730,7 +1730,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -1743,7 +1743,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='pwid')
 					  AND (date('now')-date(efm.dob))>=50
@@ -1755,7 +1755,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -1768,7 +1768,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -1781,7 +1781,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -1794,7 +1794,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -1807,7 +1807,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -1820,7 +1820,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -1833,7 +1833,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -1846,7 +1846,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='prisoners')
 					  AND (date('now')-date(efm.dob))>=50
@@ -1858,7 +1858,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -1871,7 +1871,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -1884,7 +1884,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -1897,7 +1897,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -1910,7 +1910,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -1923,7 +1923,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -1936,7 +1936,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -1949,7 +1949,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='fsw')
 					  AND (date('now')-date(efm.dob))>=50
@@ -1961,7 +1961,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='agyw')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -1974,7 +1974,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='agyw')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -1987,7 +1987,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+18 years') <= date('now'))
@@ -2000,7 +2000,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+20 years') <= date('now'))
@@ -2013,7 +2013,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+25 years') <= date('now'))
@@ -2026,7 +2026,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+30 years') <= date('now'))
@@ -2039,7 +2039,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+35 years') <= date('now'))
@@ -2052,7 +2052,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+40 years') <= date('now'))
@@ -2065,7 +2065,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date(efm.dob, '+45 years') <= date('now'))
@@ -2078,7 +2078,7 @@ indicators:
     indicatorQuery: " SELECT count(efm.base_entity_id) as count FROM task
 					  INNER JOIN ec_family_member efm ON efm.base_entity_id = task.for
 					  INNER JOIN ec_hivst_register ON efm.base_entity_id = ec_hivst_register.base_entity_id
-					  WHERE focus='Suspected HIV'
+					  WHERE focus='Conventional HIV Test'
 					  AND (efm.gender='Female')
 					  AND (client_group='others')
 					  AND (date('now')-date(efm.dob))>=50

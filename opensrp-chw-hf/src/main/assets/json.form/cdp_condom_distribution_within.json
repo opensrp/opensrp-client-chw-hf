@@ -46,53 +46,6 @@
     "title": "Condom Distribution",
     "fields": [
       {
-        "key": "male_condoms",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "male_condoms",
-        "type": "edit_text",
-        "read_only": true,
-        "hint": "Available Male condoms",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "cdp_condom_distribution_within_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "female_condoms",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "female_condoms",
-        "type": "edit_text",
-        "read_only": true,
-        "hint": "Available Female condoms",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "cdp_condom_distribution_within_calculation.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "condom_restock_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "condom_restock_date",
-        "type": "date_picker",
-        "hint": "Condom distribution date",
-        "expanded": false,
-        "min_date": "today-1m",
-        "max_date": "today",
-        "v_required": {
-          "value": "true",
-          "err": "Please enter the distribution date"
-        }
-      },
-      {
         "key": "condom_type",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -122,6 +75,15 @@
         }
       },
       {
+        "key": "number_of_condoms_available",
+        "type": "toaster_notes",
+        "text": "",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "info"
+      },
+      {
         "key": "condom_brand",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -132,7 +94,7 @@
         "options": [
           {
             "key": "public_sc",
-            "text": "Zana",
+            "text": "Public sector condom",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "public_sc"
@@ -172,6 +134,34 @@
         }
       },
       {
+        "key": "male_condom_brand",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "male_condom_brand",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "female_condom_brand",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "female_condom_brand",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_calculation.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "other_condom_brand",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -190,15 +180,15 @@
         }
       },
       {
-        "key": "provided_male_condoms",
+        "key": "provided_male_condoms_public_sc",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "male_condoms_offset",
+        "openmrs_entity_id": "provided_male_condoms_public_sc",
         "type": "edit_text",
         "hint": "Number of male condoms distributed (Pieces)",
         "v_numeric": {
           "value": "true",
-          "err":"Please enter the number"
+          "err": "Please enter the number"
         },
         "v_required": {
           "value": "true",
@@ -210,44 +200,260 @@
               "rules-file": "cdp_condom_distribution_within_relevance.yml"
             }
           }
+        }
+      },
+      {
+        "key": "provided_female_condoms_public_sc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_female_condoms_public_sc",
+        "type": "edit_text",
+        "hint": "Number of female condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
         },
-        "constraints": [
-          {
-            "type": "numeric",
-            "ex": "lessThanEqualTo(., step1:male_condoms)",
-            "err": "Number must be less than or equal to the stock on hand"
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
           }
-        ]
+        }
+      },
+      {
+        "key": "provided_male_condoms_dume",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_male_condoms_dume",
+        "type": "edit_text",
+        "hint": "Number of male condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_female_condoms_dume",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_female_condoms_dume",
+        "type": "edit_text",
+        "hint": "Number of female condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_male_condoms_salama",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_male_condoms_salama",
+        "type": "edit_text",
+        "hint": "Number of male condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_female_condoms_salama",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_female_condoms_salama",
+        "type": "edit_text",
+        "hint": "Number of female condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_male_condoms_familia",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_male_condoms_familia",
+        "type": "edit_text",
+        "hint": "Number of male condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_female_condoms_familia",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_female_condoms_familia",
+        "type": "edit_text",
+        "hint": "Number of female condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_male_condoms_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_male_condoms_other",
+        "type": "edit_text",
+        "hint": "Number of male condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_female_condoms_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_female_condoms_other",
+        "type": "hidden",
+        "hint": "Number of female condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_male_condoms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "male_condoms_offset",
+        "type": "hidden",
+        "hint": "Number of male condoms distributed (Pieces)",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the number"
+        },
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_calculation.yml"
+            }
+          }
+        }
       },
       {
         "key": "provided_female_condoms",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "female_condoms_offset",
-        "type": "edit_text",
+        "type": "hidden",
         "hint": "Number of female condoms distributed (Pieces)",
         "v_numeric": {
           "value": "true",
-          "err":"Please enter the number"
+          "err": "Please enter the number"
         },
         "v_required": {
           "value": "true",
           "err": "Please enter the number"
         },
-        "relevance": {
+        "calculation": {
           "rules-engine": {
             "ex-rules": {
-              "rules-file": "cdp_condom_distribution_within_relevance.yml"
+              "rules-file": "cdp_condom_distribution_within_calculation.yml"
             }
           }
-        },
-        "constraints": [
-          {
-            "type": "numeric",
-            "ex": "lessThanEqualTo(., step1:female_condoms)",
-            "err": "Number must be less than or equal to the stock on hand"
-          }
-        ]
+        }
       },
       {
         "key": "quantity_response",
@@ -262,6 +468,49 @@
               "rules-file": "cdp_condom_distribution_within_calculation.yml"
             }
           }
+        }
+      },
+      {
+        "key": "stock_event_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "stock_event_type",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "condom_restock_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_restock_date",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "cdp_condom_distribution_within_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "condom_restock_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_restock_date",
+        "type": "date_picker",
+        "hint": "Condom distribution date",
+        "expanded": false,
+        "min_date": "today-1m",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the distribution date"
         }
       },
       {

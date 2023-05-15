@@ -118,7 +118,7 @@
           },
           {
             "key": "msm",
-            "text": "MSM",
+            "text": "High Risk Men",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "msm"

@@ -57,7 +57,7 @@
           "type": "masked_edit_text",
           "properties": {
             "hint": "CTC Number e.g 12-34-5678-912345",
-            "type": "Clinic of Treatment and Care registration number (CTC Number)",
+            "type": "Care and Treatment Clinic registration number (CTC Number)",
             "mask": "##-##-####-######",
             "mask_hint": "12345678912345",
             "input_type": "number",

@@ -72,6 +72,13 @@
                 "v_required": {
                     "value": "true",
                     "err": "Tafadhali chagua jibu "
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "hivst_issue_kits_relevance.yml"
+                        }
+                    }
                 }
             },
             {
@@ -136,7 +143,7 @@
                 "options": [
                     {
                         "key": "assisted_testing_on_site",
-                        "text": "Kwa Usaidizi katika eneo la upimaji",
+                        "text": "Kwa Usaidizi ktk eneo la upimaji",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "assisted_testing_on_site"
@@ -150,7 +157,7 @@
                     },
                     {
                         "key": "unassisted_testing_on_site",
-                        "text": "Bila Usaidizi katika eneo la upimaji",
+                        "text": "Bila Usaidizi ndani ya eneo la upimaji",
                         "openmrs_entity_parent": "",
                         "openmrs_entity": "concept",
                         "openmrs_entity_id": "unassisted_testing_on_site"
@@ -287,6 +294,46 @@
                 }
             },
             {
+                "key": "kits_batch_number",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "kit_batch_number",
+                "type": "edit_text",
+                "hint": "Kits Batch Namba",
+                "v_required": {
+                    "value": true,
+                    "err": "Tafadhali jaza batch namba"
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "hivst_issue_kits_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
+                "key": "kits_expiry_date",
+                "openmrs_entity_parent": "",
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "kits_expiry_date",
+                "type": "date_picker",
+                "hint": "Expiry Date",
+                "expanded": false,
+                "min_date": "today",
+                "v_required": {
+                    "value": true,
+                    "err": "Please select the Expiry date"
+                },
+                "relevance": {
+                    "rules-engine": {
+                        "ex-rules": {
+                            "rules-file": "hivst_issue_kits_relevance.yml"
+                        }
+                    }
+                }
+            },
+            {
                 "key": "condoms_given",
                 "openmrs_entity_parent": "",
                 "openmrs_entity": "concept",
@@ -364,7 +411,7 @@
                     "err": "Tafadhali ingiza namba sahihi"
                 },
                 "v_min": {
-                    "value": "0",
+                    "value": "1",
                     "err": "idadi ni lazima iwe sawa sawa au kubwa kuliko 0"
                 },
                 "v_required": {
@@ -395,7 +442,7 @@
                     "err": "Tafadhali ingiza namba sahihi"
                 },
                 "v_min": {
-                    "value": "0",
+                    "value": "1",
                     "err": "idadi ni lazima iwe sawa sawa au kubwa kuliko 0"
                 },
                 "v_required": {

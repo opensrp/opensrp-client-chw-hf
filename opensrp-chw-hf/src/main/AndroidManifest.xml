@@ -87,8 +87,9 @@
             android:name=".activity.OrderRequestDetailsActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
-            android:name=".activity.AncBirthReviewAndEmergencyPlanJsonWizardFormActivity"
-            android:theme="@style/HFTheme.NoActionBar" />
+            android:name=".activity.HfJsonWizardFormActivity"
+            android:theme="@style/HFTheme.NoActionBar"
+            android:launchMode="singleTask"/>
 
         <activity
             android:name=".activity.AncPartnerTestingHistoryActivity"
@@ -443,11 +444,9 @@
 
         <activity
             android:name=".activity.LDPartographActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LDPartographDetailsActivity"
-            android:screenOrientation="landscape"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <activity

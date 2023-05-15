@@ -44,7 +44,7 @@ actions:
 name: "place_where_test_was_conducted_visibility"
 description: "place_where_test_was_conducted visibility"
 priority: 1
-condition: "test_results['positive'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
+condition: "(test_results['positive'] != null || test_results['negative'] != null) && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
 actions:
   - "place_where_test_was_conducted_visibility = true"
 ---
@@ -61,20 +61,6 @@ priority: 2
 condition: "relationship == 'sex_partner' && test_results['negative'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
 actions:
   - "toast_enroll_the_client_to_prep_visibility = true"
----
-name: "enrolled_to_prep_visibility"
-description: "enrolled_to_prep visibility"
-priority: 2
-condition: "relationship == 'sex_partner' && test_results['negative'] != null && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null"
-actions:
-  - "enrolled_to_prep_visibility = true"
----
-name: "reason_for_not_being_enrolled_to_prep_visibility"
-description: "reason_for_not_being_enrolled_to_prep visibility"
-priority: 3
-condition: "test_results['negative'] != null && enrolled_to_prep['no'] != null && relationship == 'sex_partner' && has_the_contact_client_been_tested['yes'] != null && eligibility_for_testing['yes'] != null  && has_the_client_been_reached['yes'] != null "
-actions:
-  - "reason_for_not_being_enrolled_to_prep_visibility = true"
 ---
 name: "enrolled_to_clinic_visibility"
 description: "enrolled_to_clinic visibility"
