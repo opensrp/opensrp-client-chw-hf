@@ -56,9 +56,6 @@ public class AncFirstFacilityVisitActivity extends BaseAncHomeVisitActivity {
         super.submittedAndClose();
     }
 
-    private long mLastExecutionTime = 0;
-    private static final long MINIMUM_INTERVAL_MS = 3000;
-
     @Override
     public void startFormActivity(JSONObject jsonForm) {
 
