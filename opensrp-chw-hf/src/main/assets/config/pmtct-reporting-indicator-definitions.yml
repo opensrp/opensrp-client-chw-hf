@@ -1,5 +1,6 @@
 indicators:
   - key: "B3a"
+    grouping: "PMTCT"
     description: "pmtct_pnc_clients_with_age_10-14"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -11,6 +12,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B3b"
+    grouping: "PMTCT"
     description: "pmtct_pnc_clients_with_age_15-19"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -22,6 +24,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B3c"
+    grouping: "PMTCT"
     description: "pmtct_pnc_clients_with_age_20-24"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -33,6 +36,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B3d"
+    grouping: "PMTCT"
     description: "pmtct_pnc_clients_with_age_25+"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -43,6 +47,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "C3a"
+    grouping: "PMTCT"
     description: "pmtct_pnc_clients_who_are_new_on_art"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -53,6 +58,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "C3b"
+    grouping: "PMTCT"
     description: "pmtct_pnc_clients_who_are_known_on_art"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -63,6 +69,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "D3"
+    grouping: "PMTCT"
     description: "pmtct_transfer_in_client_TI"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -73,6 +80,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "E3"
+    grouping: "PMTCT"
     description: "pmtct_transfer_out_clients_TO"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -96,6 +104,7 @@ indicators:
   
   
   - key: "G3"
+    grouping: "PMTCT"
     description: "pmtct_clients_continuing_with_services"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -107,6 +116,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "H3"
+    grouping: "PMTCT"
     description: "pmtct_clients_with_three_consecutive_missed_appointments"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -126,6 +136,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "I3"
+    grouping: "PMTCT"
     description: "pmtct_clients_that_died"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -137,6 +148,7 @@ indicators:
   
   
   - key: "J3"
+    grouping: "PMTCT"
     description: "pmtct_clients_that_exited_to_ctc"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -146,6 +158,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "A12"
+    grouping: "PMTCT"
     description: "pmtct_clients_registered_month(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                     FROM ec_pmtct_registration epmtc
@@ -155,6 +168,7 @@ indicators:
                           date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "A24"
+    grouping: "PMTCT"
     description: "pmtct_clients_registered_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                     FROM ec_pmtct_registration epmtc
@@ -164,6 +178,7 @@ indicators:
                           date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B12"
+    grouping: "PMTCT"
     description: "pmtct_transfer_in_client_TI_since_month(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -174,6 +189,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "B24"
+    grouping: "PMTCT"
     description: "pmtct_transfer_in_client_TI_since_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -184,6 +200,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "C12"
+    grouping: "PMTCT"
     description: "pmtct_transfer_out_clients_since_month(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -206,6 +223,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "C24"
+    grouping: "PMTCT"
     description: "pmtct_transfer_out_clients_since_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -228,6 +246,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "E12"
+    grouping: "PMTCT"
     description: "pmtct_clients_continuing_with_services_with_visits_M10_or_M11_or_M12"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -246,6 +265,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "E24"
+    grouping: "PMTCT"
     description: "pmtct_clients_continuing_with_services_with_visits_M24"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -258,6 +278,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "F12"
+    grouping: "PMTCT"
     description: "pmtct_clients_with_hvl_test_in_the_last_6_months"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -271,6 +292,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "G12"
+    grouping: "PMTCT"
     description: "pmtct_clients_with_hvl_test_in_the_last_6_months_with_results_less_than_50_per_ul"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -287,6 +309,7 @@ indicators:
   
   
   - key: "H12"
+    grouping: "PMTCT"
     description: "pmtct_clients_who_are_ltf"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -310,6 +333,7 @@ indicators:
   
   
   - key: "F24"
+    grouping: "PMTCT"
     description: "pmtct_clients_who_are_ltf_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -332,6 +356,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "I12"
+    grouping: "PMTCT"
     description: "pmtct_clients_who_are_diseased_since_month(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -341,6 +366,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "G24"
+    grouping: "PMTCT"
     description: "pmtct_clients_who_are_diseased_since_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -351,6 +377,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "J12"
+    grouping: "PMTCT"
     description: "pmtct_clients_that_exited_to_ctc_since_month(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -361,6 +388,7 @@ indicators:
   
   
   - key: "H24"
+    grouping: "PMTCT"
     description: "pmtct_clients_that_exited_to_ctc_since_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT epmtc.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -370,6 +398,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "L12"
+    grouping: "PMTCT"
     description: "children_born_by_pmtctc_mothers_since_moonth(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -379,6 +408,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "J24"
+    grouping: "PMTCT"
     description: "children_born_by_pmtctc_mothers_since_moonth(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -388,6 +418,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "M12"
+    grouping: "PMTCT"
     description: "children_who_are_ltfs_since_month(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT t3.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -410,6 +441,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "Q24"
+    grouping: "PMTCT"
     description: "children_who_are_ltfs_since_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT t3.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -433,6 +465,7 @@ indicators:
   
   
   - key: "K24"
+    grouping: "PMTCT"
     description: "children_who_transfered_out_since_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT t3.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -455,6 +488,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "N12"
+    grouping: "PMTCT"
     description: "children_who_are_ltfs_since_month(0)_12_months_report"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -466,6 +500,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "P24"
+    grouping: "PMTCT"
     description: "children_who_are_ltfs_since_month(0)_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -477,6 +512,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "O12"
+    grouping: "PMTCT"
     description: "children_who_started_prophylaxis"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -488,6 +524,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "P12"
+    grouping: "PMTCT"
     description: "children_who_started_ctx_within_2_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -501,6 +538,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "Q12a"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_within_2_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -514,6 +552,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "Q12b"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_and_found_positive_within_2_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -529,6 +568,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "M24"
+    grouping: "PMTCT"
     description: "children_who_tested_negative_after_confimation_test_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -539,6 +579,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "N24"
+    grouping: "PMTCT"
     description: "children_who_tested_negative_but_have_not_completed_hei_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -548,6 +589,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "O24"
+    grouping: "PMTCT"
     description: "children_who_were_found_positive_24_months_report"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_pmtct_registration epmtc
@@ -558,6 +600,7 @@ indicators:
                             date(substr(epmtc.pmtct_register_date, 7, 4) || '-' || substr(epmtc.pmtct_register_date, 4, 2) || '-' || '01')"
   
   - key: "A"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_birth"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -568,6 +611,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "B"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_less_than_2_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -581,6 +625,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "C"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_2_months_to_12_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -596,6 +641,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "D"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_13_months_and_greater"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -609,6 +655,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "A1"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_birth_and_found_positive"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -621,6 +668,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "B1"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_less_than_2_months_and_found_positive"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -636,6 +684,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "C1"
+    grouping: "PMTCT"
     description: "children_who_were_first_tested_for_hiv_at_2_months_to_12_months_and_found_positive"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -653,6 +702,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "D1"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_13_months_and_greater_and_found_positive"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -668,6 +718,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "E1"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_13_months_and_greater_and_found_positive"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -682,6 +733,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "F"
+    grouping: "PMTCT"
     description: "children_who_were_given_proprophylactic_therapy"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -692,6 +744,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "G"
+    grouping: "PMTCT"
     description: "children_who_were_given_ctx_therapy"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -702,6 +755,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "H"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_9_months_to_12_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -719,6 +773,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "I"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_15_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -730,6 +785,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "J"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_18_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -741,6 +797,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "H1"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_9_months_to_12_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -759,6 +816,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "I1"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_15_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -771,6 +829,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "J1"
+    grouping: "PMTCT"
     description: "children_who_were_tested_for_hiv_at_18_months"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
@@ -783,6 +842,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "K"
+    grouping: "PMTCT"
     description: "children_found_positive_and_linked_to_ctc"
     indicatorQuery: " SELECT count(DISTINCT eh.base_entity_id) as count
                       FROM ec_hei eh
