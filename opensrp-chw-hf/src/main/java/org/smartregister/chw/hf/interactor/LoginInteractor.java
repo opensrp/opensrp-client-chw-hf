@@ -8,6 +8,7 @@ import org.smartregister.chw.core.job.HomeVisitServiceJob;
 import org.smartregister.chw.core.job.StockUsageReportJob;
 import org.smartregister.chw.core.job.VaccineRecurringServiceJob;
 import org.smartregister.chw.hf.BuildConfig;
+import org.smartregister.chw.hf.job.GenerateMonthlyTalliesJob;
 import org.smartregister.chw.hf.job.PncCloseDateServiceJob;
 import org.smartregister.chw.hf.job.ProcessVisitsServiceJob;
 import org.smartregister.immunization.job.VaccineServiceJob;
@@ -83,6 +84,7 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
         ProcessVisitsServiceJob.scheduleJobImmediately(ProcessVisitsServiceJob.TAG);
         PncCloseDateServiceJob.scheduleJobImmediately(PncCloseDateServiceJob.TAG);
+        GenerateMonthlyTalliesJob.scheduleJobImmediately(GenerateMonthlyTalliesJob.TAG);
         P2POptions p2POptions = CoreLibrary.getInstance().getP2POptions();
         if (p2POptions != null && p2POptions.isEnableP2PLibrary()) {
             // Finish processing any unprocessed sync records here
