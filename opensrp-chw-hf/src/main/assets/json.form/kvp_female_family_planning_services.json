@@ -148,9 +148,10 @@
           "err": "Please select an answer"
         },
         "relevance": {
-          "step1:family_planning_service": {
-            "type": "string",
-            "ex": "notEqualTo(., \"tube_ligation\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "kvp_family_planning_services_relevance.yml"
+            }
           }
         }
       }

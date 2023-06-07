@@ -1,0 +1,7 @@
+---
+name: step1_condom_provided
+description: condom_provided relevance
+priority: 1
+condition: "!step1_family_planning_service.equals('vasectomy') && !step1_family_planning_service.equals('tube_ligation') && !step1_family_planning_service.equals('refused')"
+actions:
+  - "isRelevant = true"

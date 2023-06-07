@@ -107,6 +107,11 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
             //remove MSM
             //TODO: extract keys to constant
             KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "msm");
+
+            if (memberObject.getAge() > 24) {
+                //remove AGYW
+                KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "agyw");
+            }
         }
 
 
