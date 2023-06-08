@@ -832,7 +832,7 @@
             },
             "v_max": {
               "value": "6",
-              "err": "Uzito lazima uwe sawasawa au chini ya 6 (KG)"
+              "err": "Uzito lazima uwe sawasawa au chini ya 7 (KG)"
             },
             "v_required": {
               "value": true,
@@ -1288,8 +1288,8 @@
               "err": "Uzito lazima uwe sawasawa au zaidi ya 1.5 (KG)"
             },
             "v_max": {
-              "value": "6",
-              "err": "Uzito lazima uwe sawasawa au chini ya 6 (KG)"
+              "value": "7",
+              "err": "Uzito lazima uwe sawasawa au chini ya 7 (KG)"
             }
           },
           {
