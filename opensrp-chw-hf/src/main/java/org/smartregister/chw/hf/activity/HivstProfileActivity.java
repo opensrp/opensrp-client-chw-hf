@@ -1,10 +1,14 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
@@ -21,16 +25,14 @@ import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.hivst.util.Constants;
 import org.smartregister.domain.AlertStatus;
 
-import androidx.annotation.NonNull;
 import timber.log.Timber;
-
-import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 public class HivstProfileActivity extends CoreHivstProfileActivity {
 
-    public static void startProfile(Activity activity, String baseEntityId) {
+    public static void startProfile(Activity activity, String baseEntityId, boolean openIssueSelfTestingKitsForm) {
         Intent intent = new Intent(activity, HivstProfileActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
+        intent.putExtra(OPEN_ISSUE_SELF_TESTING_KITS_FORM, openIssueSelfTestingKitsForm);
         activity.startActivity(intent);
     }
 
