@@ -104,4 +104,16 @@ public class HfKvpDao extends KvpDao {
         }
         return null;
     }
+
+    public static boolean wereSelfTestingKitsDistributed(String baseEntityId) {
+        String sql = "SELECT kits_distributed FROM ec_kvp_bio_medical_services p " +
+                " WHERE p.entity_id = '" + baseEntityId + "' ORDER BY kvp_visit_date DESC LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "kits_distributed");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
+    }
 }
