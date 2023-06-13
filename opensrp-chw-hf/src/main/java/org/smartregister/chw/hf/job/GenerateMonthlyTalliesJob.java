@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 
 import org.smartregister.AllConstants;
 import org.smartregister.chw.hf.sync.intent.GenerateMonthlyTalliesIntentService;
-import org.smartregister.chw.hf.sync.intent.ProcessVisitsIntentService;
 import org.smartregister.job.BaseJob;
 
 public class GenerateMonthlyTalliesJob extends BaseJob {

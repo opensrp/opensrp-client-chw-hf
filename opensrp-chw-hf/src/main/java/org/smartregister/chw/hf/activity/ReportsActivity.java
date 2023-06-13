@@ -16,7 +16,6 @@ import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.job.GenerateMonthlyTalliesJob;
-import org.smartregister.util.Utils;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 

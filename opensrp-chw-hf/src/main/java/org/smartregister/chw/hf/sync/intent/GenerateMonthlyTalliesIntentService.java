@@ -18,13 +18,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.ReportUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.dao.ReportDao;
-import org.smartregister.chw.hf.repository.HfMonthlyTalliesRepository;
-import org.smartregister.chw.hf.utils.HeiVisitUtils;
-import org.smartregister.chw.hf.utils.PmtctVisitUtils;
-import org.smartregister.chw.hf.utils.PncVisitUtils;
-import org.smartregister.chw.hf.utils.VisitUtils;
-import org.smartregister.chw.kvp.util.KvpVisitsUtil;
-import org.smartregister.chw.kvp.util.PrEPVisitsUtil;
+import org.smartregister.chw.hf.repository.HfMonthlyTalliesRepository;;
 import org.smartregister.domain.Response;
 import org.smartregister.repository.BaseRepository;
 import org.smartregister.repository.Hia2ReportRepository;
@@ -63,7 +57,7 @@ public class GenerateMonthlyTalliesIntentService extends IntentService {
                 minDate = MonthlyTalliesRepository.DF_YYYYMM.parse(lastCalculatedMonthlyTalliesDate);
             }
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            Timber.e(e);
         }
         for (Date date : generateStartDates(minDate, maxDate)) {
             generateMonthlyReport(date);

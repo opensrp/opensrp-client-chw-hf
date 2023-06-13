@@ -181,7 +181,7 @@ public class HfChwRepository extends CoreChwRepository {
             return true;
         } else {
             int savedVersion = Integer.parseInt(savedAppVersion);
-            return (org.smartregister.chw.hf.BuildConfig.VERSION_CODE > savedVersion);
+            return (BuildConfig.VERSION_CODE > savedVersion);
         }
     }
 
@@ -370,7 +370,7 @@ public class HfChwRepository extends CoreChwRepository {
 
                 reportingLibraryInstance.initIndicatorData(indicatorsConfigFile, db); // This will persist the data in the DB
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
-                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(org.smartregister.chw.hf.BuildConfig.VERSION_CODE));
+                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(BuildConfig.VERSION_CODE));
             }
         } catch (Exception e) {
             Timber.e(e);
