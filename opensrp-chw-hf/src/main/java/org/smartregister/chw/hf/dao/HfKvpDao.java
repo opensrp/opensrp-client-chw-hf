@@ -25,6 +25,19 @@ public class HfKvpDao extends KvpDao {
         return "";
     }
 
+    public static String getClientEnrollmentDate(String baseEntityId) {
+        String sql = "SELECT enrollment_date FROM ec_kvp_register p " +
+                " WHERE p.base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "enrollment_date");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() != 0 && res.get(0) != null) {
+            return res.get(0);
+        }
+        return "";
+    }
+
     public static boolean hasPrepFollowup(String baseEntityId) {
         String sql = "SELECT visit_type FROM ec_prep_followup p " +
                 " WHERE p.entity_id = '" + baseEntityId + "'";
@@ -103,5 +116,17 @@ public class HfKvpDao extends KvpDao {
             return res.get(0);
         }
         return null;
+    }
+
+    public static boolean wereSelfTestingKitsDistributed(String baseEntityId) {
+        String sql = "SELECT kits_distributed FROM ec_kvp_bio_medical_services p " +
+                " WHERE p.entity_id = '" + baseEntityId + "' ORDER BY kvp_visit_date DESC LIMIT 1";
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "kits_distributed");
+
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0).equalsIgnoreCase("yes");
+        }
+        return false;
     }
 }

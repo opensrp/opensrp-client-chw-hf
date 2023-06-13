@@ -825,7 +825,7 @@
         "type": "date_picker",
         "hint": "Enrollment date",
         "expanded": false,
-        "min_date": "today-1m",
+        "min_date": "01-05-2018",
         "max_date": "today",
         "v_required": {
           "value": "true",

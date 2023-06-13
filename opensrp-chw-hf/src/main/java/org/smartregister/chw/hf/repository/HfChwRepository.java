@@ -337,6 +337,7 @@ public class HfChwRepository extends CoreChwRepository {
 
     private static void upgradeToVersion17(SQLiteDatabase db) {
         try {
+            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
 
             ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
             String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";

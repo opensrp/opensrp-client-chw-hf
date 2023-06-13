@@ -29,7 +29,10 @@ import org.smartregister.chw.kvp.util.Constants;
 import org.smartregister.chw.kvp.util.KvpJsonFormUtils;
 import org.smartregister.chw.referral.util.JsonFormConstants;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -91,7 +94,25 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
         if (StringUtils.isNotBlank(HfKvpDao.getClientStatus(memberObject.getBaseEntityId()))) {
             KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(client_status_object, "new_client");
         } else {
-            KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(client_status_object, "return");
+            try {
+                String enrollmentDateString = HfKvpDao.getClientEnrollmentDate(memberObject.getBaseEntityId());
+                if (StringUtils.isNotBlank(enrollmentDateString)) {
+                    Date enrollmentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(enrollmentDateString);
+
+                    Date currentDate = new Date();
+                    long cutoffTime = currentDate.getTime() - (28L * 24L * 60L * 60L * 1000L);
+                    Date cutoffDate = new Date(cutoffTime);
+
+
+                    if (enrollmentDate != null && !enrollmentDate.before(cutoffDate)) {
+                        KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(client_status_object, "return");
+                    }
+                }
+            } catch (Exception e) {
+                Timber.e(e);
+                KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(client_status_object, "return");
+            }
+
         }
 
         //update other_kvp_category
@@ -107,6 +128,11 @@ public class KvpBioMedicalServiceInteractor extends BaseKvpVisitInteractor {
             //remove MSM
             //TODO: extract keys to constant
             KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "msm");
+
+            if (memberObject.getAge() > 24) {
+                //remove AGYW
+                KvpJsonFormUtils.removeOptionFromCheckboxListWithKey(other_kvp_category, "agyw");
+            }
         }
 
 
