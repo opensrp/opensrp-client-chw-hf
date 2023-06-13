@@ -49,7 +49,7 @@ public class KvpProfileActivity extends CoreKvpProfileActivity {
                     try {
                         Date lastSelfTestingFollowupDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(lastSelfTestingFollowupDateString);
                         Visit lastVisit = getVisit(org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_BIO_MEDICAL_SERVICE_VISIT);
-                        if (truncateTimeFromDate(lastSelfTestingFollowupDate).before(truncateTimeFromDate(lastVisit.getDate()))) {
+                        if (truncateTimeFromDate(lastSelfTestingFollowupDate).before(truncateTimeFromDate(lastVisit.getDate())) && lastVisit.getProcessed()) {
                             shouldIssueHivSelfTestingKits = true;
                         }
                     } catch (Exception e) {
@@ -69,6 +69,10 @@ public class KvpProfileActivity extends CoreKvpProfileActivity {
                     textViewRecordKvp.setVisibility(View.VISIBLE);
                     visitDone.setVisibility(View.GONE);
                     textViewVisitDone.setVisibility(View.GONE);
+                    if (isVisitOnProgress(profileType)) {
+                        textViewRecordKvp.setVisibility(View.GONE);
+                        visitInProgress.setVisibility(View.VISIBLE);
+                    }
                 }
             } else {
                 textViewRecordKvp.setVisibility(View.GONE);

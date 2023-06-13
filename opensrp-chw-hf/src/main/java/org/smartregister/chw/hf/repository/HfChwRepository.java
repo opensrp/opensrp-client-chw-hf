@@ -84,6 +84,8 @@ public class HfChwRepository extends CoreChwRepository {
                     upgradeToVersion15(db);
                 case 16:
                     upgradeToVersion16(db);
+                case 17:
+                    upgradeToVersion17(db);
                 default:
                     break;
             }
@@ -321,6 +323,15 @@ public class HfChwRepository extends CoreChwRepository {
 
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion16");
+        }
+    }
+    private static void upgradeToVersion17(SQLiteDatabase db) {
+        try {
+            // add missing columns
+            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
+
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion17");
         }
     }
 
