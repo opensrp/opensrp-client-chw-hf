@@ -1,6 +1,7 @@
 indicators:
   #  - Male under 2 years
   - key: "ltfu-less-2-me-ctc"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -16,6 +17,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-less-2-me-prep"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -31,6 +33,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -46,6 +49,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-tb"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -61,6 +65,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -76,6 +81,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -91,6 +97,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -106,6 +113,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-a1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -119,6 +127,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-b1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -132,6 +141,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-c1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -147,6 +157,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-d1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -160,6 +171,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-e1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -173,6 +185,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-f1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -186,6 +199,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-g1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -199,6 +213,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-h1"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -212,6 +227,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-a2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -225,6 +241,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-b2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -238,6 +255,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-c2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -251,6 +269,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-d2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -264,6 +283,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-e2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -277,6 +297,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-f2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -290,6 +311,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-g2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -303,6 +325,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-h2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -316,6 +339,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-i2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -329,6 +353,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-j2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -342,6 +367,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-me-k2"
+    grouping: "LTFU"
     description: "Wateja wanaume chini ya miaka 2 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -356,6 +382,7 @@ indicators:
 
   #  Female under 2 years
   - key: "ltfu-less-2-ke-ctc"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -371,6 +398,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-less-2-ke-prep"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -386,6 +414,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -401,6 +430,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-tb"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -416,6 +446,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -431,6 +462,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -446,6 +478,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanwake chini ya miaka 2 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                       FROM ec_referral er
@@ -461,6 +494,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-a1"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -474,6 +508,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-b1"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -487,6 +522,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-c1"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -502,6 +538,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-d1"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -515,6 +552,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-e1"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -528,6 +566,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-f1"
+    grouping: "LTFU"
     description: "Wateja wanwake chini ya miaka 2 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -541,6 +580,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-g1"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -554,6 +594,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-h1"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -567,6 +608,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-a2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -580,6 +622,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-b2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -593,6 +636,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-c2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -606,6 +650,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-d2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -619,6 +664,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-e2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -632,6 +678,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-f2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -645,6 +692,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-g2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -658,6 +706,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-h2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -671,6 +720,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-i2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -684,6 +734,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-j2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -697,6 +748,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-less-2-ke-k2"
+    grouping: "LTFU"
     description: "Wateja wanawake chini ya miaka 2 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -711,6 +763,7 @@ indicators:
 
   #  Male above 2 years and below 15 years
   - key: "ltfu-2-14-me-ctc"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -727,6 +780,7 @@ indicators:
                                 '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-2-14-me-prep"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -743,6 +797,7 @@ indicators:
                                 '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -759,6 +814,7 @@ indicators:
                                 '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-tb"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -775,6 +831,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -791,6 +848,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -807,6 +865,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -823,6 +882,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-a1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -837,6 +897,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-b1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -851,6 +912,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-c1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                         FROM ec_ltfu_feedback elf
@@ -867,6 +929,7 @@ indicators:
                             '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-d1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -881,6 +944,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-e1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -895,6 +959,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-f1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -909,6 +974,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-g1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -923,6 +989,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-h1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -937,6 +1004,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-a2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -951,6 +1019,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-b2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -965,6 +1034,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-c2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -979,6 +1049,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-d2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -993,6 +1064,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-e2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1007,6 +1079,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-f2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1021,6 +1094,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-g2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1035,6 +1109,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-h2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1049,6 +1124,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-i2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1063,6 +1139,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-j2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1077,6 +1154,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-me-k2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 2 na chini ya miaka 15 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1092,6 +1170,7 @@ indicators:
 
   #  Female above 2 years and below 15 years
   - key: "ltfu-2-14-ke-ctc"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1108,6 +1187,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-2-14-ke-prep"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1124,6 +1204,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1140,6 +1221,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-tb"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1156,6 +1238,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1172,6 +1255,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1188,6 +1272,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1204,6 +1289,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-a1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1218,6 +1304,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-b1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1232,6 +1319,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-c1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -1248,6 +1336,7 @@ indicators:
                       '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-d1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1262,6 +1351,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-e1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1276,6 +1366,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-f1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1290,6 +1381,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-g1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1304,6 +1396,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-h1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1318,6 +1411,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-a2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1332,6 +1426,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-b2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1346,6 +1441,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-c2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1360,6 +1456,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-d2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1374,6 +1471,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-e2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1388,6 +1486,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-f2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1402,6 +1501,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-g2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1416,6 +1516,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-h2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1430,6 +1531,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-i2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1444,6 +1546,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-j2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1458,6 +1561,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-2-14-ke-k2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 2 na chini ya miaka 15 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1473,6 +1577,7 @@ indicators:
 
   #  Male above 15 years and below 24 years
   - key: "ltfu-15-24-me-ctc"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1489,6 +1594,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-15-24-me-prep"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1505,6 +1611,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1521,6 +1628,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-tb"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1537,6 +1645,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1553,6 +1662,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1569,6 +1679,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1585,6 +1696,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-a1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1599,6 +1711,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-b1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1613,6 +1726,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-c1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -1629,6 +1743,7 @@ indicators:
                       '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-d1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1643,6 +1758,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-e1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1657,6 +1773,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-f1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1671,6 +1788,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-g1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1685,6 +1803,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-h1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1699,6 +1818,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-a2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1713,6 +1833,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-b2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1727,6 +1848,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-c2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1741,6 +1863,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-d2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1755,6 +1878,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-e2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1769,6 +1893,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-f2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1783,6 +1908,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-g2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1797,6 +1923,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-h2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1811,6 +1938,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-i2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1825,6 +1953,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-j2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1839,6 +1968,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-me-k2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 15 na chini ya miaka 24 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1855,6 +1985,7 @@ indicators:
 
   #  Female above 15 years and below 24 years
   - key: "ltfu-15-24-ke-ctc"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1871,6 +2002,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-15-24-ke-prep"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1887,6 +2019,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1903,6 +2036,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-tb"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1919,6 +2053,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1935,6 +2070,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1951,6 +2087,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -1967,6 +2104,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-a1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1978,6 +2116,7 @@ indicators:
                               (date(fm.dob, '+25 years') > date('now'))"
 
   - key: "ltfu-15-24-ke-b1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -1992,6 +2131,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-c1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -2008,6 +2148,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-d1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2022,6 +2163,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-e1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2036,6 +2178,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-f1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2050,6 +2193,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-g1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2064,6 +2208,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-h1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2078,6 +2223,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-a2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2092,6 +2238,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-b2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2106,6 +2253,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-c2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2120,6 +2268,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-d2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2134,6 +2283,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-e2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2148,6 +2298,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-f2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2162,6 +2313,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-g2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2176,6 +2328,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-h2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2190,6 +2343,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-i2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2204,6 +2358,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-j2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2218,6 +2373,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-15-24-ke-k2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 15 na chini ya miaka 25 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2234,6 +2390,7 @@ indicators:
 
   #  Male above 25 years and below 49 years
   - key: "ltfu-25-49-me-ctc"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2250,6 +2407,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-25-49-me-prep"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2266,6 +2424,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2282,6 +2441,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-tb"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2298,6 +2458,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2314,6 +2475,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2330,6 +2492,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2346,6 +2509,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-a1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 49 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2360,6 +2524,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-b1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2374,6 +2539,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-c1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -2390,6 +2556,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-d1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2404,6 +2571,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-e1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2418,6 +2586,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-f1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2432,6 +2601,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-g1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2446,6 +2616,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-h1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2460,6 +2631,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-a2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2474,6 +2646,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-b2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2488,6 +2661,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-c2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2502,6 +2676,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-d2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2516,6 +2691,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-e2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2530,6 +2706,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-f2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2544,6 +2721,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-g2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2558,6 +2736,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-h2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2572,6 +2751,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-i2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2586,6 +2766,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-j2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2600,6 +2781,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-me-k2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 25 na chini ya miaka 50 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2615,6 +2797,7 @@ indicators:
 
   #  Female above 25 years and below 49 years
   - key: "ltfu-25-49-ke-ctc"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2631,6 +2814,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-25-49-ke-prep"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2647,6 +2831,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2663,6 +2848,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-tb"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2679,6 +2865,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2695,6 +2882,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2711,6 +2899,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -2727,6 +2916,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-a1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 49 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2741,6 +2931,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-b1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2755,6 +2946,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-c1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -2771,6 +2963,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-d1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2785,6 +2978,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-e1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2799,6 +2993,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-f1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2813,6 +3008,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-g1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2827,6 +3023,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-h1"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2841,6 +3038,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-a2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2855,6 +3053,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-b2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2869,6 +3068,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-c2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2883,6 +3083,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-d2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2897,6 +3098,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-e2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2908,6 +3110,7 @@ indicators:
                               (date(fm.dob, '+50 years') > date('now'))"
 
   - key: "ltfu-25-49-ke-f2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2922,6 +3125,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-g2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2936,6 +3140,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-h2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2950,6 +3155,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-i2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2964,6 +3170,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-j2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2978,6 +3185,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-25-49-ke-k2"
+    grouping: "LTFU"
     description: "Wateja wanawake juu ya miaka 25 na chini ya miaka 50 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -2994,6 +3202,7 @@ indicators:
 
   #  Male above 50 years
   - key: "ltfu-50-me-ctc"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3009,6 +3218,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-50-me-prep"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3024,6 +3234,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3039,6 +3250,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-tb"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3054,6 +3266,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3069,6 +3282,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3084,6 +3298,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3099,6 +3314,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-a1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3112,6 +3328,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-b1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3125,6 +3342,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-c1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -3140,6 +3358,7 @@ indicators:
                           '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-d1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3153,6 +3372,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-e1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3166,6 +3386,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-f1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3179,6 +3400,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-g1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3192,6 +3414,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-h1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3205,6 +3428,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-a2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao walisahau"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3218,6 +3442,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-b2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3231,6 +3456,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-c2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3244,6 +3470,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-d2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3257,6 +3484,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-e2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3270,6 +3498,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-f2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3283,6 +3512,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-g2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3296,6 +3526,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-h2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu  ya miaka 50 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3309,6 +3540,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-i2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3322,6 +3554,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-j2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ys miaka 50 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3335,6 +3568,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-me-k2"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3350,6 +3584,7 @@ indicators:
 
   #  Female above 50 years
   - key: "ltfu-50-ke-ctc"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wasiofika kliniki ya CTC"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3365,6 +3600,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
     
   - key: "ltfu-50-ke-prep"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wasiofika kliniki ya PrEP"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3380,6 +3616,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-pmtct"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wasiofika wasiofika kliniki ya PMTCT"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3395,6 +3632,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-tb"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wasiofika kliniki ya wenye TB "
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3410,6 +3648,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-wajidunga"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wasiofika kliniki ya wanaojidunga"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3425,6 +3664,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-arv-yes"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wanaotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3440,6 +3680,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-arv-no"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wasiotumia ARV na hawajafika kliniki"
     indicatorQuery: "SELECT count(DISTINCT er.entity_id) as count
                           FROM ec_referral er
@@ -3455,6 +3696,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(er.referral_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-a1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 wanaohudhuria kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3468,6 +3710,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-b1"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 waliopatikana na wako tayari kurudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3481,6 +3724,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-c1"
+    grouping: "LTFU"
     description: "Wateja wanaume juu ya miaka 50 waliopatikana na wamerudi kliniki baada ya ufuatiliaji"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                       FROM ec_ltfu_feedback elf
@@ -3496,6 +3740,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-d1"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 waliohamia kituo kingine bila taarifa"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3509,6 +3754,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-e1"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 waliohama makazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3522,6 +3768,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-f1"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 waliopatikana lakini hayuko tayari kurudi kliniki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3535,6 +3782,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-g1"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao wamefariki"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3548,6 +3796,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-h1"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao hawajapatikana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3574,6 +3823,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-b2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao walikuwa wagonjwa sana"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3587,6 +3837,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-c2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao walishindwa kujiweka wazi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3600,6 +3851,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-d2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao walikosa nauli"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3613,6 +3865,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-e2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao umbali au usafiri mgumu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3626,6 +3879,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-f2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao wamepata nafuu"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3639,6 +3893,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-g2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao hawakupata ruhusa kazini"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3652,6 +3907,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-h2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu  ya miaka 50 ambao walisafiri"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3665,6 +3921,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-i2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 ambao wanatumia tiba mbadala"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3678,6 +3935,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-j2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ys miaka 50 ambao wameona huduma haziridhishi"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf
@@ -3691,6 +3949,7 @@ indicators:
                               '-' || substr(strftime('%Y-%m-%d', datetime(elf.feedback_date / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   - key: "ltfu-50-ke-k2"
+    grouping: "LTFU"
     description: "Wateja wanamke juu ya miaka 50 wenye sababu nyinginezo"
     indicatorQuery: "SELECT count(DISTINCT elf.entity_id) as count
                           FROM ec_ltfu_feedback elf

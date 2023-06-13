@@ -1,5 +1,6 @@
 indicators:
   - key: "cbhs-1a-jumla-me"
+    grouping: "CBHS"
     description: "Number of Male clients enrolled to HIV services until last month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -12,6 +13,7 @@ indicators:
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-1a-jumla-ke"
+    grouping: "CBHS"
     description: "Number of Female clients enrolled to HIV services until last month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -24,6 +26,7 @@ indicators:
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-1b-jumla-me"
+    grouping: "CBHS"
     description: "Total Male continuing with care this month"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -38,6 +41,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-1b-jumla-ke"
+    grouping: "CBHS"
     description: "Total Female continuing with care this month"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -52,6 +56,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-jumla-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -65,6 +70,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-jumla-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -78,6 +84,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-1-me"
+    grouping: "CBHS"
     description: "Total new male clients less than one year old registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -92,6 +99,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-1-ke"
+    grouping: "CBHS"
     description: "Total new female clients less than one year old registered this month"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -106,6 +114,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-1-5-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month for 1-5 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -121,6 +130,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-1-5-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month for 1-5 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -136,6 +146,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-6-9-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month for 6-9 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -151,6 +162,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-6-9-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month for 6-9 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -166,6 +178,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-10-14-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month for 10-14 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -181,6 +194,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-10-14-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month for 10-14 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -196,6 +210,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-15-19-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month for 15-19 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -211,6 +226,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-15-19-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month for 15-19 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -226,6 +242,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-20-24-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month for 20-24 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -241,6 +258,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-20-24-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month for 20-24 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -256,6 +274,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-25-49-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month for 25-49 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -271,6 +290,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-25-49-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month for 25-49 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -286,6 +306,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-50-59-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month for 50-59 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -301,6 +322,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-50-59-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month for 50-59 year olds"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -316,6 +338,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-60-me"
+    grouping: "CBHS"
     description: "Total new male clients registered this month above 60 years"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -330,6 +353,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2a-60-ke"
+    grouping: "CBHS"
     description: "Total new female clients registered this month above 60 years"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -344,6 +368,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-1-jumla-me"
+    grouping: "CBHS"
     description: "Total male with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -356,6 +381,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-1-jumla-ke"
+    grouping: "CBHS"
     description: "Total female with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -368,6 +394,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-2-jumla-me"
+    grouping: "CBHS"
     description: "Total male with Tuberculosis"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -380,6 +407,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-2-jumla-ke"
+    grouping: "CBHS"
     description: "Total male with Tuberculosis"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -392,6 +420,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-3-jumla-me"
+    grouping: "CBHS"
     description: "Total homosexuals"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -404,6 +433,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-4-jumla-ke"
+    grouping: "CBHS"
     description: "Total Sex workers"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -416,6 +446,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-5-jumla-me"
+    grouping: "CBHS"
     description: "Total male infants born with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -428,6 +459,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-5-jumla-ke"
+    grouping: "CBHS"
     description: "Total female infants born with HIV infections"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -440,6 +472,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-6-jumla-me"
+    grouping: "CBHS"
     description: "Total HIV  untested male infants"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -452,6 +485,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-6-jumla-ke"
+    grouping: "CBHS"
     description: "Total HIV untested female infants"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -464,6 +498,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-7-jumla-me"
+    grouping: "CBHS"
     description: "Total male children abused"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -476,6 +511,7 @@ indicators:
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-7-jumla-ke"
+    grouping: "CBHS"
     description: "Total Female children abused"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -488,6 +524,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-8-jumla-me"
+    grouping: "CBHS"
     description: "Total Male gender violence"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -500,6 +537,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-8-jumla-ke"
+    grouping: "CBHS"
     description: "Total Female gender violence"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -512,6 +550,7 @@ indicators:
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-9-jumla-me"
+    grouping: "CBHS"
     description: "Total Male drug addicts"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                         FROM ec_cbhs_register ecr
@@ -524,6 +563,7 @@ indicators:
                         date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-9-jumla-ke"
+    grouping: "CBHS"
     description: "Total Female drug addicts"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -536,6 +576,7 @@ indicators:
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-10-jumla-ke"
+    grouping: "CBHS"
     description: "Total pregnant women"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -548,6 +589,7 @@ indicators:
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2b-11-jumla-ke"
+    grouping: "CBHS"
     description: "Total breast feeding mothers"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                           FROM ec_cbhs_register ecr
@@ -560,6 +602,7 @@ indicators:
                           date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2c-2-jumla-me"
+    grouping: "CBHS"
     description: "Total male infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -583,6 +626,7 @@ indicators:
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
   - key: "cbhs-2c-2-jumla-ke"
+    grouping: "CBHS"
     description: "Total female infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -606,6 +650,7 @@ indicators:
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
   - key: "cbhs-2c-3-jumla-me"
+    grouping: "CBHS"
     description: "Total male not infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -629,6 +674,7 @@ indicators:
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
   - key: "cbhs-2c-3-jumla-ke"
+    grouping: "CBHS"
     description: "Total female not infected with HIV"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -652,6 +698,7 @@ indicators:
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
   - key: "cbhs-2c-4-jumla-me"
+    grouping: "CBHS"
     description: "Total male unknown HIV status"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -675,6 +722,7 @@ indicators:
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
   - key: "cbhs-2c-4-jumla-ke"
+    grouping: "CBHS"
     description: "Total female unknown HIV status"
     indicatorQuery: "SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -698,6 +746,7 @@ indicators:
                                   date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))))"
 
   - key: "cbhs-2d-1-jumla-me"
+    grouping: "CBHS"
     description: "Total male given HIV counselling and testing"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -712,6 +761,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-1-jumla-ke"
+    grouping: "CBHS"
     description: "Total female given HIV counselling and testing"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -726,6 +776,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-2-jumla-me"
+    grouping: "CBHS"
     description: "Total male given ARV medication"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -740,6 +791,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-2-jumla-ke"
+    grouping: "CBHS"
     description: "Total female given ARV medication"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -754,6 +806,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-3-jumla-me"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -768,6 +821,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-3-jumla-ke"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -782,6 +836,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-4-jumla-me"
+    grouping: "CBHS"
     description: "Total male given Collaborative HIV and TB Health services"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -796,6 +851,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-4-jumla-ke"
+    grouping: "CBHS"
     description: "Total female given Collaborative HIV and TB Health services"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -810,6 +866,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-5-jumla-me"
+    grouping: "CBHS"
     description: "Total male given services to reduce the spread of STDs"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -824,6 +881,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-5-jumla-ke"
+    grouping: "CBHS"
     description: "Total female given services to reduce the spread of STDs"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -838,6 +896,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-6-jumla-me"
+    grouping: "CBHS"
     description: "Total male given special group services"
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -852,6 +911,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-6-jumla-ke"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -866,6 +926,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-7-jumla-me"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -880,6 +941,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-7-jumla-ke"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -894,6 +956,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-8-jumla-me"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -908,6 +971,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-8-jumla-ke"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -922,6 +986,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-9-jumla-me"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -936,6 +1001,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-9-jumla-ke"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -950,6 +1016,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-10-jumla-me"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -964,6 +1031,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-10-jumla-ke"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -978,6 +1046,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-11-jumla-me"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -992,6 +1061,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-2d-11-jumla-ke"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -1006,6 +1076,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-5-jumla"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -1020,6 +1091,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-5-deseased"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -1034,6 +1106,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-5-continue-with-clinic-from-elsewhere"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -1048,6 +1121,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-5-moved"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -1062,6 +1136,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-5-absconded"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -1076,6 +1151,7 @@ indicators:
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
 
   - key: "cbhs-5-completed_and_qualified_from_the_services"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.base_entity_id) as count
                       FROM ec_cbhs_register ecr
@@ -1089,6 +1165,7 @@ indicators:
                                  '-' || '01') =
                             date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
   - key: "cbhs-6-kisheria"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
                       FROM ec_cbhs_followup ecf
@@ -1097,6 +1174,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
   - key: "cbhs-6-vikundi"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
                       FROM ec_cbhs_followup ecf
@@ -1105,6 +1183,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
   - key: "cbhs-6-huduma-zingine"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
                       FROM ec_cbhs_followup ecf
@@ -1113,6 +1192,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
   - key: "cbhs-7-kisheria"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
                       FROM ec_cbhs_followup ecf
@@ -1121,6 +1201,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
   - key: "cbhs-7-vikundi"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
                       FROM ec_cbhs_followup ecf
@@ -1129,6 +1210,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
   - key: "cbhs-7-huduma-zingine"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecf.entity_id) as count
                       FROM ec_cbhs_followup ecf
@@ -1137,6 +1219,7 @@ indicators:
                       substr(strftime('%Y-%m-%d', datetime(ecf.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01') =
                       date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'))"
   - key: "cbhs-8-jumla"
+    grouping: "CBHS"
     description: ""
     indicatorQuery: " SELECT count(DISTINCT ecr.provider_id) as count
                       FROM ec_cbhs_register ecr

@@ -202,4 +202,15 @@ public class ReportDao extends AbstractDao {
             return 0;
     }
 
+
+    public static String getLastMonthWithTallies(){
+        String sql = " SELECT month FROM monthly_tallies ORDER by month DESC LIMIT 1";
+        DataMap<String> map = cursor -> getCursorValue(cursor, "month");
+        List<String> res = readData(sql, map);
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            return res.get(0);
+        } else
+            return null;
+    }
+
 }

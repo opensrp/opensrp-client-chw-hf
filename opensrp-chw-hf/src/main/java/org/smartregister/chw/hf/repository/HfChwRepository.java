@@ -69,21 +69,32 @@ public class HfChwRepository extends CoreChwRepository {
                     break;
                 case 8:
                     upgradeToVersion8(db);
+                    break;
                 case 9:
                     upgradeToVersion9(db);
+                    break;
                 case 10:
                     upgradeToVersion10(db);
                     upgradeToVersion10ForBaSouth(db);
+                    break;
                 case 11:
                     upgradeToVersion11(db);
+                    break;
                 case 12:
                     upgradeToVersion12(db);
+                    break;
                 case 13:
                     upgradeToVersion14(db);
+                    break;
                 case 14:
                     upgradeToVersion15(db);
+                    break;
                 case 16:
                     upgradeToVersion16(db);
+                    break;
+                case 17:
+                    upgradeToVersion17(db);
+                    break;
                 default:
                     break;
             }
@@ -170,7 +181,7 @@ public class HfChwRepository extends CoreChwRepository {
             return true;
         } else {
             int savedVersion = Integer.parseInt(savedAppVersion);
-            return (org.smartregister.chw.core.BuildConfig.VERSION_CODE > savedVersion);
+            return (BuildConfig.VERSION_CODE > savedVersion);
         }
     }
 
@@ -323,6 +334,50 @@ public class HfChwRepository extends CoreChwRepository {
             Timber.e(e, "upgradeToVersion16");
         }
     }
+
+    private static void upgradeToVersion17(SQLiteDatabase db) {
+        try {
+
+            ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
+            String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
+
+            boolean indicatorDataInitialised = Boolean.parseBoolean(reportingLibraryInstance.getContext().allSharedPreferences().getPreference(indicatorDataInitialisedPref));
+            boolean isUpdated = checkIfAppUpdated();
+
+            //Refreshing all indicator queries adding grouping to all indicator queries which is going to be utilized in synchronization of monthly tallies to the server
+            if (!indicatorDataInitialised || isUpdated) {
+                db.execSQL("DELETE FROM indicator_queries");
+                db.execSQL("DELETE FROM indicators");
+
+                String indicatorsConfigFile = "config/indicator-definitions.yml";
+                String ancIndicatorConfigFile = "config/anc-reporting-indicator-definitions.yml";
+                String pmtctIndicatorConfigFile = "config/pmtct-reporting-indicator-definitions.yml";
+                String pncIndicatorConfigFile = "config/pnc-reporting-indicator-definitions.yml";
+                String cbhsReportingIndicatorConfigFile = "config/cbhs-reporting-indicator-definitions.yml";
+                String ldReportingIndicatorConfigFile = "config/ld-reporting-indicator-definitions.yml";
+                String motherChampionReportingIndicatorConfigFile = "config/mother_champion-reporting-indicator-definitions.yml";
+                String selfTestingIndicatorConfigFile = "config/self-testing-monthly-report.yml";
+                String kvpTestingIndicatorConfigFile = "config/kvp-monthly-report.yml";
+                String ltfuIndicatorConfigFile = "config/community-ltfu-summary.yml";
+
+                for (String configFile : Collections.unmodifiableList(
+                        Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
+                                pmtctIndicatorConfigFile, pncIndicatorConfigFile,
+                                cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
+                                motherChampionReportingIndicatorConfigFile,selfTestingIndicatorConfigFile,kvpTestingIndicatorConfigFile,ltfuIndicatorConfigFile))) {
+                    reportingLibraryInstance.readConfigFile(configFile, db);
+                }
+
+                reportingLibraryInstance.initIndicatorData(indicatorsConfigFile, db); // This will persist the data in the DB
+                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
+                reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(BuildConfig.VERSION_CODE));
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+
 
     private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
         try {

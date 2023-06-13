@@ -1,5 +1,6 @@
 indicators:
   - key: "pnc-1a-10-14"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: "SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -16,6 +17,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1a-15-19"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                        FROM ec_pregnancy_outcome epo
@@ -32,6 +34,7 @@ indicators:
                              date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1a-20-24"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -48,6 +51,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1a-25-29"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -64,6 +68,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1a-30-34"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -80,6 +85,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1a-35+"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -95,6 +101,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1b-10-14"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -114,6 +121,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1b-15-19"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -133,6 +141,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1b-20-24"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -152,6 +161,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1b-25-29"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -171,6 +181,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1b-30-34"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -190,6 +201,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-1b-35+"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -208,6 +220,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-2a-10-14"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -272,6 +285,7 @@ indicators:
                                                           substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
                                )"
   - key: "pnc-2a-15-19"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -336,6 +350,7 @@ indicators:
                                                           substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
                                )"
   - key: "pnc-2a-20-24"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -400,6 +415,7 @@ indicators:
                                                           substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
                                )"
   - key: "pnc-2a-25-29"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -464,6 +480,7 @@ indicators:
                                                           substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
                                )"
   - key: "pnc-2a-30-34"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -528,6 +545,7 @@ indicators:
                                                           substr(epf.followup_visit_date, 4, 2) || '-' || '01')) T4 using (base_entity_id)
                                )"
   - key: "pnc-2a-35+"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3-7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -592,6 +610,7 @@ indicators:
                                )"
   
   - key: "pnc-3-10-14"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -604,6 +623,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-3-15-19"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -616,6 +636,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-3-20-24"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -628,6 +649,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-3-25-29"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -640,6 +662,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-3-30-34"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -652,6 +675,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-3-35+"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 8.5 g/dl)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -663,6 +687,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-4-10-14"
+    grouping: "PNC"
     description: "Waliopata matatizo ya akili baada ya kujifungua"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -675,6 +700,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-4-15-19"
+    grouping: "PNC"
     description: "Waliopata matatizo ya akili baada ya kujifungua"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -687,6 +713,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-4-20-24"
+    grouping: "PNC"
     description: "Waliopata matatizo ya akili baada ya kujifungua"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -699,6 +726,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-4-25-29"
+    grouping: "PNC"
     description: "Waliopata matatizo ya akili baada ya kujifungua"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -711,6 +739,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-4-30-34"
+    grouping: "PNC"
     description: "Waliopata matatizo ya akili baada ya kujifungua"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -723,6 +752,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-4-35+"
+    grouping: "PNC"
     description: "Waliopata matatizo ya akili baada ya kujifungua"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -734,6 +764,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-5-10-14"
+    grouping: "PNC"
     description: "Waliopata Vit. A"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -746,6 +777,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-5-15-19"
+    grouping: "PNC"
     description: "Waliopata Vit. A"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -758,6 +790,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-5-20-24"
+    grouping: "PNC"
     description: "Waliopata Vit. A"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -770,6 +803,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-5-25-29"
+    grouping: "PNC"
     description: "Waliopata Vit. A"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -782,6 +816,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-5-30-34"
+    grouping: "PNC"
     description: "Waliopata Vit. A"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -794,6 +829,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-5-35+"
+    grouping: "PNC"
     description: "Waliopata Vit. A"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -805,6 +841,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-6-10-14"
+    grouping: "PNC"
     description: "Wenye msamba ulioambukizwa/Ulioachia"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -817,6 +854,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-6-15-19"
+    grouping: "PNC"
     description: "Wenye msamba ulioambukizwa/Ulioachia"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -829,6 +867,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-6-20-24"
+    grouping: "PNC"
     description: "Wenye msamba ulioambukizwa/Ulioachia"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -841,6 +880,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-6-25-29"
+    grouping: "PNC"
     description: "Wenye msamba ulioambukizwa/Ulioachia"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -853,6 +893,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-6-30-34"
+    grouping: "PNC"
     description: "Wenye msamba ulioambukizwa/Ulioachia"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -865,6 +906,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-6-35+"
+    grouping: "PNC"
     description: "Wenye msamba ulioambukizwa/Ulioachia"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -876,6 +918,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-7-10-14"
+    grouping: "PNC"
     description: "Wenye fistula"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -888,6 +931,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-7-15-19"
+    grouping: "PNC"
     description: "Wenye fistula"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -900,6 +944,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-7-20-24"
+    grouping: "PNC"
     description: "Wenye fistula"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -912,6 +957,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-7-25-29"
+    grouping: "PNC"
     description: "Wenye fistula"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -924,6 +970,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-7-30-34"
+    grouping: "PNC"
     description: "Wenye fistula"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -936,6 +983,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-7-35+"
+    grouping: "PNC"
     description: "Wenye fistula"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -947,6 +995,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-10-14"
+    grouping: "PNC"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -958,6 +1007,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-15-19"
+    grouping: "PNC"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -969,6 +1019,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-20-24"
+    grouping: "PNC"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -980,6 +1031,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-25-29"
+    grouping: "PNC"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -992,6 +1044,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-30-34"
+    grouping: "PNC"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1003,6 +1056,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8a-35+"
+    grouping: "PNC"
     description: "BBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1013,6 +1067,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-10-14"
+    grouping: "PNC"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1024,6 +1079,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-15-19"
+    grouping: "PNC"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1035,6 +1091,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-20-24"
+    grouping: "PNC"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1046,6 +1103,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-25-29"
+    grouping: "PNC"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1057,6 +1115,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-30-34"
+    grouping: "PNC"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1068,6 +1127,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8b-35+"
+    grouping: "PNC"
     description: "TBA"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1078,6 +1138,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-10-14"
+    grouping: "PNC"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1089,6 +1150,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-15-19"
+    grouping: "PNC"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1100,6 +1162,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-20-24"
+    grouping: "PNC"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1111,6 +1174,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-25-29"
+    grouping: "PNC"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1122,6 +1186,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-30-34"
+    grouping: "PNC"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1133,6 +1198,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-8c-35+"
+    grouping: "PNC"
     description: "Idadi ya waliojifungulia nyumbani"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1143,6 +1209,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-10-14"
+    grouping: "PNC"
     description: "Waliopata ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1155,6 +1222,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-15-19"
+    grouping: "PNC"
     description: "Waliopata ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1167,6 +1235,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-20-24"
+    grouping: "PNC"
     description: "Waliopata ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1179,6 +1248,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-25-29"
+    grouping: "PNC"
     description: "Waliopata ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1191,6 +1261,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-30-34"
+    grouping: "PNC"
     description: "Waliopata ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1203,6 +1274,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9a-35+"
+    grouping: "PNC"
     description: "Waliopata ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1214,6 +1286,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-10-14"
+    grouping: "PNC"
     description: "Waliopata kondomu"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1226,6 +1299,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-15-19"
+    grouping: "PNC"
     description: "Waliopata kondomu"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1238,6 +1312,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-20-24"
+    grouping: "PNC"
     description: "Waliopata kondomu"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1250,6 +1325,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-25-29"
+    grouping: "PNC"
     description: "Waliopata kondomu"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1262,6 +1338,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-30-34"
+    grouping: "PNC"
     description: "Waliopata kondomu"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1274,6 +1351,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9b-35+"
+    grouping: "PNC"
     description: "Waliopata kondomu"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1285,6 +1363,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-10-14"
+    grouping: "PNC"
     description: "Waliopata vidonge (POP)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1297,6 +1376,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-15-19"
+    grouping: "PNC"
     description: "Waliopata vidonge (POP)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1309,6 +1389,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-20-24"
+    grouping: "PNC"
     description: "Waliopata vidonge (POP)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1321,6 +1402,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-25-29"
+    grouping: "PNC"
     description: "Waliopata vidonge (POP)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1333,6 +1415,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-30-34"
+    grouping: "PNC"
     description: "Waliopata vidonge (POP)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1345,6 +1428,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9c-35+"
+    grouping: "PNC"
     description: "Waliopata vidonge (POP)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1356,6 +1440,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-10-14"
+    grouping: "PNC"
     description: "Waliopata vipandikizi (Implants)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1368,6 +1453,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-15-19"
+    grouping: "PNC"
     description: "Waliopata vipandikizi (Implants)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1380,6 +1466,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-20-24"
+    grouping: "PNC"
     description: "Waliopata vipandikizi (Implants)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1392,6 +1479,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-25-29"
+    grouping: "PNC"
     description: "Waliopata vipandikizi (Implants)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1404,6 +1492,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-30-34"
+    grouping: "PNC"
     description: "Waliopata vipandikizi (Implants)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1416,6 +1505,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d1-35+"
+    grouping: "PNC"
     description: "Waliopata vipandikizi (Implants)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1427,6 +1517,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-10-14"
+    grouping: "PNC"
     description: "Waliopata vipandikizi ( Jadelle)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1439,6 +1530,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-15-19"
+    grouping: "PNC"
     description: "Waliopata vipandikizi ( Jadelle)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1451,6 +1543,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-20-24"
+    grouping: "PNC"
     description: "Waliopata vipandikizi ( Jadelle)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1463,6 +1556,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-25-29"
+    grouping: "PNC"
     description: "Waliopata vipandikizi ( Jadelle)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1475,6 +1569,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-30-34"
+    grouping: "PNC"
     description: "Waliopata vipandikizi ( Jadelle)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1487,6 +1582,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9d2-35+"
+    grouping: "PNC"
     description: "Waliopata vipandikizi ( Jadelle)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1498,6 +1594,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-10-14"
+    grouping: "PNC"
     description: "Waliopata kitanzi"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1510,6 +1607,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-15-19"
+    grouping: "PNC"
     description: "Waliopata kitanzi"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1522,6 +1620,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-20-24"
+    grouping: "PNC"
     description: "Waliopata kitanzi"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1534,6 +1633,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-25-29"
+    grouping: "PNC"
     description: "Waliopata kitanzi"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1546,6 +1646,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-30-34"
+    grouping: "PNC"
     description: "Waliopata kitanzi"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1558,6 +1659,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9e-35+"
+    grouping: "PNC"
     description: "Waliopata kitanzi"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1569,6 +1671,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-10-14"
+    grouping: "PNC"
     description: "Kufunga uzazi (BTL)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1581,6 +1684,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-15-19"
+    grouping: "PNC"
     description: "Kufunga uzazi (BTL)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1593,6 +1697,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-20-24"
+    grouping: "PNC"
     description: "Kufunga uzazi (BTL)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1605,6 +1710,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-25-29"
+    grouping: "PNC"
     description: "Kufunga uzazi (BTL)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1617,6 +1723,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-30-34"
+    grouping: "PNC"
     description: "Kufunga uzazi (BTL)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1629,6 +1736,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9f-35+"
+    grouping: "PNC"
     description: "Kufunga uzazi (BTL)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1640,6 +1748,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
     
   - key: "pnc-9g-10-14"
+    grouping: "PNC"
     description: "Rufaa kupata njia ya uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1652,6 +1761,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9g-15-19"
+    grouping: "PNC"
     description: "Rufaa kupata njia ya uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1664,6 +1774,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9g-20-24"
+    grouping: "PNC"
     description: "Rufaa kupata njia ya uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1676,6 +1787,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9g-25-29"
+    grouping: "PNC"
     description: "Rufaa kupata njia ya uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1688,6 +1800,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9g-30-34"
+    grouping: "PNC"
     description: "Rufaa kupata njia ya uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1700,6 +1813,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-9g-35+"
+    grouping: "PNC"
     description: "Rufaa kupata njia ya uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1711,6 +1825,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10a-10-14"
+    grouping: "PNC"
     description: "Waliokuja postnatal wakiwa positive"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1726,6 +1841,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10a-15-19"
+    grouping: "PNC"
     description: "Waliokuja postnatal wakiwa positive"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1741,6 +1857,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10a-20-24"
+    grouping: "PNC"
     description: "Waliokuja postnatal wakiwa positive"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1756,6 +1873,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10a-25-29"
+    grouping: "PNC"
     description: "Waliokuja postnatal wakiwa positive"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1771,6 +1889,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10a-30-34"
+    grouping: "PNC"
     description: "Waliokuja postnatal wakiwa positive"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1786,6 +1905,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10a-35+"
+    grouping: "PNC"
     description: "Waliokuja postnatal wakiwa positive"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1800,6 +1920,7 @@ indicators:
                             date(substr(epo.delivery_date, 7, 4) || '-' || substr(epo.delivery_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10b-10-14"
+    grouping: "PNC"
     description: "Waliopima VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1812,6 +1933,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10b-15-19"
+    grouping: "PNC"
     description: "Waliopima VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1824,6 +1946,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10b-20-24"
+    grouping: "PNC"
     description: "Waliopima VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1836,6 +1959,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10b-25-29"
+    grouping: "PNC"
     description: "Waliopima VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1848,6 +1972,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10b-30-34"
+    grouping: "PNC"
     description: "Waliopima VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1860,6 +1985,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10b-35+"
+    grouping: "PNC"
     description: "Waliopima VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1871,6 +1997,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10c-10-14"
+    grouping: "PNC"
     description: "Waliogundulika wana VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1883,6 +2010,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10c-15-19"
+    grouping: "PNC"
     description: "Waliogundulika wana VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1895,6 +2023,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10c-20-24"
+    grouping: "PNC"
     description: "Waliogundulika wana VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1907,6 +2036,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10c-25-29"
+    grouping: "PNC"
     description: "Waliogundulika wana VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1919,6 +2049,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10c-30-34"
+    grouping: "PNC"
     description: "Waliogundulika wana VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1931,6 +2062,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10c-35+"
+    grouping: "PNC"
     description: "Waliogundulika wana VVU wakati wa postnatal (ndani ya siku 42 tangu ya kujifungua)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1942,6 +2074,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10d-10-14"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1957,6 +2090,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10d-15-19"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1972,6 +2106,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10d-20-24"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -1987,6 +2122,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10d-25-29"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2002,6 +2138,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10d-30-34"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2017,6 +2154,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10d-35+"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunyonyesha maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2031,6 +2169,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10e-10-14"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunywesha maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2046,6 +2185,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10e-15-19"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunywesha maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2061,6 +2201,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10e-20-24"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunywesha maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2076,6 +2217,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10e-25-29"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunywesha maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2091,6 +2233,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10e-30-34"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunywesha maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2106,6 +2249,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-10e-35+"
+    grouping: "PNC"
     description: "Wenye VVU waliochagua kunywesha maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT epo.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2120,6 +2264,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-11a-ME"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2137,6 +2282,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-11a-KE"
+    grouping: "PNC"
     description: "Waliohudhuria Ndani ya saa 48"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2154,6 +2300,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-11b-ME"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2174,6 +2321,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-11b-KE"
+    grouping: "PNC"
     description: "Waliohudhuria kati ya siku ya 3-7"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_pregnancy_outcome epo
@@ -2194,6 +2342,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-11c-ME"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3- 7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -2287,6 +2436,7 @@ indicators:
                                )"
     
   - key: "pnc-11c-KE"
+    grouping: "PNC"
     description: "Waliomaliza mahudhurio yote ( saa 48, siku 3- 7, siku 8-28, siku 29-42)"
     indicatorQuery: " SELECT count(DISTINCT base_entity_id) as count
                       FROM (
@@ -2381,6 +2531,7 @@ indicators:
     
   
   - key: "pnc-12a-ME"
+    grouping: "PNC"
     description: "Idadi ya watoto waliopewa BCG"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2394,6 +2545,7 @@ indicators:
   
   
   - key: "pnc-12a-KE"
+    grouping: "PNC"
     description: "Idadi ya watoto waliopewa BCG"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2406,6 +2558,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-12b-ME"
+    grouping: "PNC"
     description: "Idadi ya watoto waliopewa OPV 0"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2419,6 +2572,7 @@ indicators:
   
   
   - key: "pnc-12b-KE"
+    grouping: "PNC"
     description: "Idadi ya watoto waliopewa OPV 0"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2431,6 +2585,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-12c-ME"
+    grouping: "PNC"
     description: "Idadi ya watoto waliozaliwa na uzito wa < 2.5kg wakapatiwa KMC"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2444,6 +2599,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-12c-KE"
+    grouping: "PNC"
     description: "Idadi ya watoto waliozaliwa na uzito wa < 2.5kg wakapatiwa KMC"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2457,6 +2613,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-12d-ME"
+    grouping: "PNC"
     description: "Idadi ya watoto waliozaliwa nyumbani chini ya 2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2471,6 +2628,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-12d-KE"
+    grouping: "PNC"
     description: "Idadi ya watoto waliozaliwa nyumbani chini ya 2.5kg"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2484,6 +2642,7 @@ indicators:
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   - key: "pnc-12e-ME"
+    grouping: "PNC"
     description: "Idadi ya watoto waliozaliwa nyumbani walioanzishiwa huduma ya kangaroo (KMC)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2498,6 +2657,7 @@ indicators:
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   - key: "pnc-12e-KE"
+    grouping: "PNC"
     description: "Idadi ya watoto waliozaliwa nyumbani walioanzishiwa huduma ya kangaroo (KMC)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2513,6 +2673,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-12f-ME"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2526,6 +2687,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-12f-KE"
+    grouping: "PNC"
     description: "Wenye upungufu mkubwa wa damu (Hb < 10 g/dl au viganja vyeupe sana)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2539,6 +2701,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13a-ME"
+    grouping: "PNC"
     description: "Watoto wenye uambukizo mkali (septicaemia)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2552,6 +2715,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13a-KE"
+    grouping: "PNC"
     description: "Watoto wenye uambukizo mkali (septicaemia)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2565,6 +2729,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13b-ME"
+    grouping: "PNC"
     description: "Watoto wenye uambukizo kwenye kitovu"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2578,6 +2743,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13b-KE"
+    grouping: "PNC"
     description: "Watoto wenye uambukizo kwenye kitovu"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2591,6 +2757,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13c-ME"
+    grouping: "PNC"
     description: "Watoto wenye uambukizo kwenye ngozi"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2604,6 +2771,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13c-KE"
+    grouping: "PNC"
     description: "Watoto wenye uambukizo kwenye ngozi"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2617,6 +2785,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13d-ME"
+    grouping: "PNC"
     description: "Idadi ya watoto wenye jaundice"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2630,6 +2799,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-13d-KE"
+    grouping: "PNC"
     description: "Idadi ya watoto wenye jaundice"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2643,6 +2813,7 @@ indicators:
                             date(substr(epf.followup_visit_date, 7, 4) || '-' || substr(epf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-14-ME"
+    grouping: "PNC"
     description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
     indicatorQuery: " SELECT SUM(T1.count) as count
                       FROM (
@@ -2671,6 +2842,7 @@ indicators:
                       ) as T1"
   
   - key: "pnc-14-KE"
+    grouping: "PNC"
     description: "Vifo vya watoto wachanga waliozaliwa nyumbani (perinatal); neonatal"
     indicatorQuery: " SELECT SUM(T1.count) as count
                       FROM (
@@ -2699,6 +2871,7 @@ indicators:
                       ) as T1"
   
   - key: "pnc-15-ME"
+    grouping: "PNC"
     description: "Waliopewa dawa ya ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2710,6 +2883,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-15-KE"
+    grouping: "PNC"
     description: "Waliopewa dawa ya ARV"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2721,6 +2895,7 @@ indicators:
                             date(substr(ehf.followup_visit_date, 7, 4) || '-' || substr(ehf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-16a-ME"
+    grouping: "PNC"
     description: "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2731,6 +2906,7 @@ indicators:
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epcf.followup_visit_date, 7, 4) || '-' || substr(epcf.followup_visit_date, 4, 2) || '-' || '01')"
   - key: "pnc-16a-KE"
+    grouping: "PNC"
     description: "Watoto wachanga wanaonyonya maziwa ya mama pekee (EBF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2742,6 +2918,7 @@ indicators:
                             date(substr(epcf.followup_visit_date, 7, 4) || '-' || substr(epcf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-16b-ME"
+    grouping: "PNC"
     description: "Watoto wachanga wanaonyweshwa maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2752,6 +2929,7 @@ indicators:
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01'), '-0 months') =
                             date(substr(epcf.followup_visit_date, 7, 4) || '-' || substr(epcf.followup_visit_date, 4, 2) || '-' || '01')"
   - key: "pnc-16b-KE"
+    grouping: "PNC"
     description: "Watoto wachanga wanaonyweshwa maziwa mbadala (RF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2763,6 +2941,7 @@ indicators:
                             date(substr(epcf.followup_visit_date, 7, 4) || '-' || substr(epcf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-16c-ME"
+    grouping: "PNC"
     description: "Watoto wachanga wanaonyweshwa maziwa ya mama na kupatiwa chakula kingine (MF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec
@@ -2774,6 +2953,7 @@ indicators:
                             date(substr(epcf.followup_visit_date, 7, 4) || '-' || substr(epcf.followup_visit_date, 4, 2) || '-' || '01')"
   
   - key: "pnc-16c-KE"
+    grouping: "PNC"
     description: "Watoto wachanga wanaonyweshwa maziwa ya mama na kupatiwa chakula kingine (MF)"
     indicatorQuery: " SELECT count(DISTINCT ec.base_entity_id) as count
                       FROM ec_child ec

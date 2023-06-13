@@ -1,5 +1,6 @@
 indicators:
   - key: "2a-10-14"
+    grouping: "ANC"
     description: "Gestation age less than 12 weeks for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -13,6 +14,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2b-10-14"
+    grouping: "ANC"
     description: "Gestation age greater than or equals to 12 weeks for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -26,6 +28,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2c-10-14"
+    grouping: "ANC"
     description: "Followup visits for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -41,6 +44,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2d-10-14"
+    grouping: "ANC"
     description: "Followup visits for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -56,6 +60,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2e-10-14"
+    grouping: "ANC"
     description: "Clients Who Tested HB Levels on First Visit 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -73,6 +78,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4b-10-14"
+    grouping: "ANC"
     description: "Pregnant Clients 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -88,6 +94,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4d-10-14"
+    grouping: "ANC"
     description: "Clients with HB Level less than 8.5 for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -104,6 +111,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4e-10-14"
+    grouping: "ANC"
     description: "Clients with BP greater than or equalts to 140/90 mm/hg for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -120,6 +128,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4g-10-14"
+    grouping: "ANC"
     description: "Clients with glucose in urine for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -135,6 +144,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4h-10-14"
+    grouping: "ANC"
     description: "Clients with protein in urine for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -151,6 +161,7 @@ indicators:
   
   
   - key: "4i-10-14"
+    grouping: "ANC"
     description: "Clients tested syphilis for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -167,6 +178,7 @@ indicators:
   
   
   - key: "4j-10-14"
+    grouping: "ANC"
     description: "Clients tested syphilis for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -182,6 +194,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4l-10-14"
+    grouping: "ANC"
     description: "Partners tested syphilis for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -196,6 +209,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "5a-10-14"
+    grouping: "ANC"
     description: "Known on ART Clients for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -212,6 +226,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5c-10-14"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -229,6 +244,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5d-10-14"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit and found positive for 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -246,6 +262,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5e-10-14"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na VVU (positive) kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -263,6 +280,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5g-10-14"
+    grouping: "ANC"
     description: "Couple testing for clients who are 10 - 14 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -280,6 +298,7 @@ indicators:
   
   
   - key: "2a-15-19"
+    grouping: "ANC"
     description: "Gestation age less than 12 weeks for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -293,6 +312,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2b-15-19"
+    grouping: "ANC"
     description: "Gestation age greater than or equals to 12 weeks for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -306,6 +326,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2c-15-19"
+    grouping: "ANC"
     description: "Followup visits for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -321,6 +342,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2d-15-19"
+    grouping: "ANC"
     description: "Followup visits for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -336,6 +358,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2e-15-19"
+    grouping: "ANC"
     description: "Clients Who Tested HB Levels on First Visit For 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -354,6 +377,7 @@ indicators:
   
   
   - key: "4a-15-19"
+    grouping: "ANC"
     description: "Pregnant Clients with four or more pregnancies 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -370,6 +394,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4b-15-19"
+    grouping: "ANC"
     description: "Pregnant Clients 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -386,6 +411,7 @@ indicators:
   
   
   - key: "4d-15-19"
+    grouping: "ANC"
     description: "Clients with HB Level less than 8.5 for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -402,6 +428,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4e-15-19"
+    grouping: "ANC"
     description: "Clients with BP greater than or equalts to 140/90 mm/hg for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -417,6 +444,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "4g-15-19"
+    grouping: "ANC"
     description: "Clients with glucose in urine for 10 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -431,6 +459,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "4h-15-19"
+    grouping: "ANC"
     description: "Clients with protein in urine for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -446,6 +475,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4i-15-19"
+    grouping: "ANC"
     description: "Clients tested syphilis for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -461,6 +491,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4j-15-19"
+    grouping: "ANC"
     description: "Clients tested syphilis for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -476,6 +507,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4l-15-19"
+    grouping: "ANC"
     description: "Partners tested syphilis for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -491,6 +523,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5a-15-19"
+    grouping: "ANC"
     description: "Known on ART Clients for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -507,6 +540,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5c-15-19"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -524,6 +558,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5d-15-19"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit and found positive for 15 - 19 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -541,6 +576,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5e-15-19"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na VVU (positive) kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -558,6 +594,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2a-20-24"
+    grouping: "ANC"
     description: "Gestation age less than 12 weeks for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -571,6 +608,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2b-20-24"
+    grouping: "ANC"
     description: "Gestation age greater than or equals to 12 weeks for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -585,6 +623,7 @@ indicators:
   
   
   - key: "2c-20-24"
+    grouping: "ANC"
     description: "Followup visits for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -601,6 +640,7 @@ indicators:
   
   
   - key: "2d-20-24"
+    grouping: "ANC"
     description: "Followup visits for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -616,6 +656,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2e-20-24"
+    grouping: "ANC"
     description: "Clients Who Tested HB Levels on First Visit for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -633,6 +674,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4a-20-24"
+    grouping: "ANC"
     description: "Pregnant Clients with four or more pregnancies 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -650,6 +692,7 @@ indicators:
   
   
   - key: "4d-20-24"
+    grouping: "ANC"
     description: "Clients with HB Level less than 8.5 for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -666,6 +709,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4e-20-24"
+    grouping: "ANC"
     description: "Clients with BP greater than or equalts to 140/90 mm/hg for 20 - 25 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -682,6 +726,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4g-20-24"
+    grouping: "ANC"
     description: "Clients with glucose in urine for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -696,6 +741,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "4h-20-24"
+    grouping: "ANC"
     description: "Clients with protein in urine for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -711,6 +757,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4i-20-24"
+    grouping: "ANC"
     description: "Clients tested syphilis for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -726,6 +773,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4j-20-24"
+    grouping: "ANC"
     description: "Clients tested syphilis for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -741,6 +789,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4l-20-24"
+    grouping: "ANC"
     description: "Partners tested syphilis for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -756,6 +805,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5a-20-24"
+    grouping: "ANC"
     description: "Known on ART Clients for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -772,6 +822,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5c-20-24"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -789,6 +840,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5d-20-24"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit and found positive for 20 - 24 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -806,6 +858,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5e-20-24"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na VVU (positive) kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -823,6 +876,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2a-25-29"
+    grouping: "ANC"
     description: "Gestation age less than 12 weeks for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -836,6 +890,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2b-25-29"
+    grouping: "ANC"
     description: "Gestation age greater than or equals to 12 weeks for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -850,6 +905,7 @@ indicators:
   
   
   - key: "2c-25-29"
+    grouping: "ANC"
     description: "Followup visits for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -866,6 +922,7 @@ indicators:
   
   
   - key: "2d-25-29"
+    grouping: "ANC"
     description: "Followup visits for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -882,6 +939,7 @@ indicators:
   
   
   - key: "2e-25-29"
+    grouping: "ANC"
     description: "Clients Who Tested HB Levels on First Visit for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -899,6 +957,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4a-25-29"
+    grouping: "ANC"
     description: "Pregnant Clients with four or more pregnancies 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -916,6 +975,7 @@ indicators:
   
   
   - key: "4d-25-29"
+    grouping: "ANC"
     description: "Clients with HB Level less than 8.5 for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -932,6 +992,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4e-25-29"
+    grouping: "ANC"
     description: "Clients with BP greater than or equalts to 140/90 mm/hg for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -948,6 +1009,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4g-25-29"
+    grouping: "ANC"
     description: "Clients with glucose in urine for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -962,6 +1024,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "4h-25-29"
+    grouping: "ANC"
     description: "Clients with protein in urine for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -977,6 +1040,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4i-25-29"
+    grouping: "ANC"
     description: "Clients tested syphilis for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -992,6 +1056,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4j-25-29"
+    grouping: "ANC"
     description: "Clients tested syphilis for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1007,6 +1072,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4l-25-29"
+    grouping: "ANC"
     description: "Partners tested syphilis for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1022,6 +1088,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5a-25-29"
+    grouping: "ANC"
     description: "Known on ART Clients for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1038,6 +1105,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5c-25-29"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1055,6 +1123,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5d-25-29"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit and found positive for 25 - 29 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1072,6 +1141,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2a-30-34"
+    grouping: "ANC"
     description: "Gestation age less than 12 weeks for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1085,6 +1155,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2b-30-34"
+    grouping: "ANC"
     description: "Gestation age greater than or equals to 12 weeks for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1098,6 +1169,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2c-30-34"
+    grouping: "ANC"
     description: "Followup visits for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1113,6 +1185,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2d-30-34"
+    grouping: "ANC"
     description: "Followup visits for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1128,6 +1201,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2e-30-34"
+    grouping: "ANC"
     description: "Clients Who Tested HB Levels on First Visit for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1145,6 +1219,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4a-30-34"
+    grouping: "ANC"
     description: "Pregnant Clients with four or more pregnancies 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1161,6 +1236,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4d-30-34"
+    grouping: "ANC"
     description: "Clients with HB Level less than 8.5 for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1177,6 +1253,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4e-30-34"
+    grouping: "ANC"
     description: "Clients with BP greater than or equalts to 140/90 mm/hg for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1193,6 +1270,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4g-30-34"
+    grouping: "ANC"
     description: "Clients with glucose in urine for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1207,6 +1285,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "4h-30-34"
+    grouping: "ANC"
     description: "Clients with protein in urine for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1222,6 +1301,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4i-30-34"
+    grouping: "ANC"
     description: "Clients tested syphilis for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1237,6 +1317,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4j-30-34"
+    grouping: "ANC"
     description: "Clients tested syphilis for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1252,6 +1333,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4l-30-34"
+    grouping: "ANC"
     description: "Partners tested syphilis for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1267,6 +1349,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5a-30-34"
+    grouping: "ANC"
     description: "Known on ART Clients for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1283,6 +1366,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5c-30-34"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1300,6 +1384,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5d-30-34"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit and found positive for 30 - 34 year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1317,6 +1402,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2a-35+"
+    grouping: "ANC"
     description: "Gestation age less than 12 weeks for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1330,6 +1416,7 @@ indicators:
   
   
   - key: "2b-35+"
+    grouping: "ANC"
     description: "Gestation age greater than or equals to 12 weeks for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1342,6 +1429,7 @@ indicators:
                             date(substr(ear.confirmation_date, 7, 4) || '-' || substr(ear.confirmation_date, 4, 2) || '-' || '01')"
   
   - key: "2c-35+"
+    grouping: "ANC"
     description: "Followup visits for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1356,6 +1444,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2d-35+"
+    grouping: "ANC"
     description: "Followup visits for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1370,6 +1459,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "2e-35+"
+    grouping: "ANC"
     description: "Clients Who Tested HB Levels on First Visit for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1386,6 +1476,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4a-35+"
+    grouping: "ANC"
     description: "Pregnant Clients with four or more pregnancies 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1401,6 +1492,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4c-35+"
+    grouping: "ANC"
     description: "Pregnant Clients 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1416,6 +1508,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4d-35+"
+    grouping: "ANC"
     description: "Clients with HB Level less than 8.5 for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1431,6 +1524,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4e-35+"
+    grouping: "ANC"
     description: "Clients with BP greater than or equalts to 140/90 mm/hg for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1446,6 +1540,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4g-35+"
+    grouping: "ANC"
     description: "Clients with glucose in urine for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1459,6 +1554,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "4h-35+"
+    grouping: "ANC"
     description: "Clients with protein in urine for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1473,6 +1569,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4i-35+"
+    grouping: "ANC"
     description: "Clients tested syphilis for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1487,6 +1584,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4j-35+"
+    grouping: "ANC"
     description: "Clients tested syphilis for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1501,6 +1599,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4l-35+"
+    grouping: "ANC"
     description: "Partners tested syphilis for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1514,6 +1613,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "5a-35+"
+    grouping: "ANC"
     description: "Known on ART Clients for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1529,6 +1629,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5c-35+"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1545,6 +1646,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5d-35+"
+    grouping: "ANC"
     description: "Clients Tested for HIV on first visit and found positive for 35+ year olds"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1561,6 +1663,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "3-10-14"
+    grouping: "ANC"
     description: "Wajawazito waliopata Chanjo ya TT2+"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                     FROM ec_anc_register ear
@@ -1576,6 +1679,7 @@ indicators:
                                '-' || '01')"
   
   - key: "3-15-19"
+    grouping: "ANC"
     description: "Wajawazito waliopata Chanjo ya TT2+"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                     FROM ec_anc_register ear
@@ -1591,6 +1695,7 @@ indicators:
                                '-' || '01')"
   
   - key: "3-20-24"
+    grouping: "ANC"
     description: "Wajawazito waliopata Chanjo ya TT2+"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                     FROM ec_anc_register ear
@@ -1606,6 +1711,7 @@ indicators:
                                '-' || '01')"
   
   - key: "3-25-29"
+    grouping: "ANC"
     description: "Wajawazito waliopata Chanjo ya TT2+"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                     FROM ec_anc_register ear
@@ -1621,6 +1727,7 @@ indicators:
                                '-' || '01')"
   
   - key: "3-30-34"
+    grouping: "ANC"
     description: "Wajawazito waliopata Chanjo ya TT2+"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                     FROM ec_anc_register ear
@@ -1636,6 +1743,7 @@ indicators:
                                '-' || '01')"
   
   - key: "3-35+"
+    grouping: "ANC"
     description: "Wajawazito waliopata Chanjo ya TT2+"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                     FROM ec_anc_register ear
@@ -1650,6 +1758,7 @@ indicators:
                                '-' || '01')"
   
   - key: "4f-10-14"
+    grouping: "ANC"
     description: "Kifua Kikuu"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1665,6 +1774,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4f-15-19"
+    grouping: "ANC"
     description: "Kifua Kikuu"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1680,6 +1790,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4f-20-24"
+    grouping: "ANC"
     description: "Kifua Kikuu"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1695,6 +1806,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4f-25-29"
+    grouping: "ANC"
     description: "Kifua Kikuu"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1710,6 +1822,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4f-30-34"
+    grouping: "ANC"
     description: "Kifua Kikuu"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1725,6 +1838,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4f-35+"
+    grouping: "ANC"
     description: "Kifua Kikuu"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1739,6 +1853,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4k-10-14"
+    grouping: "ANC"
     description: "Waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1754,6 +1869,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4k-15-19"
+    grouping: "ANC"
     description: "Waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1769,6 +1885,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4k-20-24"
+    grouping: "ANC"
     description: "Waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1784,6 +1901,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4k-25-29"
+    grouping: "ANC"
     description: "Waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1799,6 +1917,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4k-30-34"
+    grouping: "ANC"
     description: "Waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1814,6 +1933,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "4k-35+"
+    grouping: "ANC"
     description: "Waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1829,6 +1949,7 @@ indicators:
   
   
   - key: "4m-10-14"
+    grouping: "ANC"
     description: "Wenza/Waume Waliogundulika na maambukizi ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1845,6 +1966,7 @@ indicators:
   
   
   - key: "4m-15-19"
+    grouping: "ANC"
     description: "Wenza/Waume Waliogundulika na maambukizi ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1861,6 +1983,7 @@ indicators:
   
   
   - key: "4m-20-24"
+    grouping: "ANC"
     description: "Wenza/Waume Waliogundulika na maambukizi ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1877,6 +2000,7 @@ indicators:
   
   
   - key: "4m-25-29"
+    grouping: "ANC"
     description: "Wenza/Waume Waliogundulika na maambukizi ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1893,6 +2017,7 @@ indicators:
   
   
   - key: "4m-30-34"
+    grouping: "ANC"
     description: "Wenza/Waume Waliogundulika na maambukizi ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1909,6 +2034,7 @@ indicators:
   
   
   - key: "4m-35+"
+    grouping: "ANC"
     description: "Wenza/Waume Waliogundulika na maambukizi ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1924,6 +2050,7 @@ indicators:
   
   
   - key: "4n-10-14"
+    grouping: "ANC"
     description: "Wenza/waume waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1940,6 +2067,7 @@ indicators:
   
   
   - key: "4n-15-19"
+    grouping: "ANC"
     description: "Wenza/waume waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1956,6 +2084,7 @@ indicators:
   
   
   - key: "4n-20-24"
+    grouping: "ANC"
     description: "Wenza/waume waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1972,6 +2101,7 @@ indicators:
   
   
   - key: "4n-25-29"
+    grouping: "ANC"
     description: "Wenza/waume waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -1988,6 +2118,7 @@ indicators:
   
   
   - key: "4n-30-34"
+    grouping: "ANC"
     description: "Wenza/waume waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2004,6 +2135,7 @@ indicators:
   
   
   - key: "4n-35+"
+    grouping: "ANC"
     description: "Wenza/waume waliopata matibabu ya Kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2019,6 +2151,7 @@ indicators:
   
   
   - key: "4o-10-14"
+    grouping: "ANC"
     description: "Wajawazito Waliopatikana na magonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2035,6 +2168,7 @@ indicators:
   
   
   - key: "4o-15-19"
+    grouping: "ANC"
     description: "Wajawazito Waliopatikana na magonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2051,6 +2185,7 @@ indicators:
   
   
   - key: "4o-20-24"
+    grouping: "ANC"
     description: "Wajawazito Waliopatikana na magonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2067,6 +2202,7 @@ indicators:
   
   
   - key: "4o-25-29"
+    grouping: "ANC"
     description: "Wajawazito Waliopatikana na magonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2083,6 +2219,7 @@ indicators:
   
   
   - key: "4o-30-34"
+    grouping: "ANC"
     description: "Wajawazito Waliopatikana na magonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2099,6 +2236,7 @@ indicators:
   
   
   - key: "4o-35+"
+    grouping: "ANC"
     description: "Wajawazito Waliopatikana na magonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2114,6 +2252,7 @@ indicators:
   
   
   - key: "4q-10-14"
+    grouping: "ANC"
     description: "Wenza/Waume waliopatikana na mgonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2130,6 +2269,7 @@ indicators:
   
   
   - key: "4q-15-19"
+    grouping: "ANC"
     description: "Wenza/Waume waliopatikana na mgonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2146,6 +2286,7 @@ indicators:
   
   
   - key: "4q-20-24"
+    grouping: "ANC"
     description: "Wenza/Waume waliopatikana na mgonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2162,6 +2303,7 @@ indicators:
   
   
   - key: "4q-25-29"
+    grouping: "ANC"
     description: "Wenza/Waume waliopatikana na mgonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2178,6 +2320,7 @@ indicators:
   
   
   - key: "4q-30-34"
+    grouping: "ANC"
     description: "Wenza/Waume waliopatikana na mgonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2194,6 +2337,7 @@ indicators:
   
   
   - key: "4q-35+"
+    grouping: "ANC"
     description: "Wenza/Waume waliopatikana na mgonjwa ya maambukizo ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2209,6 +2353,7 @@ indicators:
   
   
   - key: "4p-10-14"
+    grouping: "ANC"
     description: "Wajawazito Waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2225,6 +2370,7 @@ indicators:
   
   
   - key: "4p-15-19"
+    grouping: "ANC"
     description: "Wajawazito Waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2241,6 +2387,7 @@ indicators:
   
   
   - key: "4p-20-24"
+    grouping: "ANC"
     description: "Wajawazito Waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2257,6 +2404,7 @@ indicators:
   
   
   - key: "4p-25-29"
+    grouping: "ANC"
     description: "Wajawazito Waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2273,6 +2421,7 @@ indicators:
   
   
   - key: "4p-30-34"
+    grouping: "ANC"
     description: "Wajawazito Waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2289,6 +2438,7 @@ indicators:
   
   
   - key: "4p-35+"
+    grouping: "ANC"
     description: "Wajawazito Waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2304,6 +2454,7 @@ indicators:
   
   
   - key: "4r-10-14"
+    grouping: "ANC"
     description: "Wenzi/Waume waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2320,6 +2471,7 @@ indicators:
   
   
   - key: "4r-15-19"
+    grouping: "ANC"
     description: "Wenzi/Waume waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2336,6 +2488,7 @@ indicators:
   
   
   - key: "4r-20-24"
+    grouping: "ANC"
     description: "Wenzi/Waume waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2352,6 +2505,7 @@ indicators:
   
   
   - key: "4r-25-29"
+    grouping: "ANC"
     description: "Wenzi/Waume waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2368,6 +2522,7 @@ indicators:
   
   
   - key: "4r-30-34"
+    grouping: "ANC"
     description: "Wenzi/Waume waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2384,6 +2539,7 @@ indicators:
   
   
   - key: "4r-35+"
+    grouping: "ANC"
     description: "Wenzi/Waume waliopata tiba sahihi ya magonjwa ya ngono yasiyo kaswende"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2399,6 +2555,7 @@ indicators:
   
   
   - key: "5b-10-14"
+    grouping: "ANC"
     description: "Wajawazito wote Waliopata Ushauri nasaha kabla ya Kupima VVU kliniki"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2415,6 +2572,7 @@ indicators:
   
   
   - key: "5b-15-19"
+    grouping: "ANC"
     description: "Wajawazito wote Waliopata Ushauri nasaha kabla ya Kupima VVU kliniki"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2431,6 +2589,7 @@ indicators:
   
   
   - key: "5b-20-24"
+    grouping: "ANC"
     description: "Wajawazito wote Waliopata Ushauri nasaha kabla ya Kupima VVU kliniki"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2447,6 +2606,7 @@ indicators:
   
   
   - key: "5b-25-29"
+    grouping: "ANC"
     description: "Wajawazito wote Waliopata Ushauri nasaha kabla ya Kupima VVU kliniki"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2463,6 +2623,7 @@ indicators:
   
   
   - key: "5b-30-34"
+    grouping: "ANC"
     description: "Wajawazito wote Waliopata Ushauri nasaha kabla ya Kupima VVU kliniki"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2479,6 +2640,7 @@ indicators:
   
   
   - key: "5b-35+"
+    grouping: "ANC"
     description: "Wajawazito wote Waliopata Ushauri nasaha kabla ya Kupima VVU kliniki"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2494,6 +2656,7 @@ indicators:
   
   
   - key: "5f-10-14"
+    grouping: "ANC"
     description: "Wajawazito waliopata ushauri 0 baada ya kupima"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2510,6 +2673,7 @@ indicators:
   
   
   - key: "5f-15-19"
+    grouping: "ANC"
     description: "Wajawazito waliopata ushauri 0 baada ya kupima"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2526,6 +2690,7 @@ indicators:
   
   
   - key: "5f-20-24"
+    grouping: "ANC"
     description: "Wajawazito waliopata ushauri 0 baada ya kupima"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2542,6 +2707,7 @@ indicators:
   
   
   - key: "5f-25-29"
+    grouping: "ANC"
     description: "Wajawazito waliopata ushauri 0 baada ya kupima"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2558,6 +2724,7 @@ indicators:
   
   
   - key: "5f-30-34"
+    grouping: "ANC"
     description: "Wajawazito waliopata ushauri 0 baada ya kupima"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2574,6 +2741,7 @@ indicators:
   
   
   - key: "5f-35+"
+    grouping: "ANC"
     description: "Wajawazito waliopata ushauri 0 baada ya kupima"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2589,6 +2757,7 @@ indicators:
   
   
   - key: "5g-10-14"
+    grouping: "ANC"
     description: "Wajawazito waliopimwa VVU na wenza wao (Couple) kwa pamoja katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2605,6 +2774,7 @@ indicators:
   
   
   - key: "5g-15-19"
+    grouping: "ANC"
     description: "Wajawazito waliopimwa VVU na wenza wao (Couple) kwa pamoja katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2621,6 +2791,7 @@ indicators:
   
   
   - key: "5g-20-24"
+    grouping: "ANC"
     description: "Wajawazito waliopimwa VVU na wenza wao (Couple) kwa pamoja katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2637,6 +2808,7 @@ indicators:
   
   
   - key: "5g-25-29"
+    grouping: "ANC"
     description: "Wajawazito waliopimwa VVU na wenza wao (Couple) kwa pamoja katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2653,6 +2825,7 @@ indicators:
   
   
   - key: "5g-30-34"
+    grouping: "ANC"
     description: "Wajawazito waliopimwa VVU na wenza wao (Couple) kwa pamoja katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2669,6 +2842,7 @@ indicators:
   
   
   - key: "5g-35+"
+    grouping: "ANC"
     description: "Wajawazito waliopimwa VVU na wenza wao (Couple) kwa pamoja katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2683,6 +2857,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5h-10-14"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2699,6 +2874,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5h-15-19"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2715,6 +2891,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5h-20-24"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2731,6 +2908,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5h-25-29"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2747,6 +2925,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5h-30-34"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2763,6 +2942,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5h-35+"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2778,6 +2958,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5i-10-14"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na maambukizi ya VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2794,6 +2975,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5i-15-19"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na maambukizi ya VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2810,6 +2992,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5i-20-24"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na maambukizi ya VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2826,6 +3009,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5i-25-29"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na maambukizi ya VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2842,6 +3026,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5i-30-34"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na maambukizi ya VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2858,6 +3043,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5i-35+"
+    grouping: "ANC"
     description: "Wajawazito waliokutwa na maambukizi ya VVU kipimo cha pili"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2873,6 +3059,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5j-10-14"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha kwanza Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2889,6 +3076,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5j-15-19"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha kwanza Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2905,6 +3093,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5j-20-24"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha kwanza Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2921,6 +3110,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5j-25-29"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha kwanza Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2937,6 +3127,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5j-30-34"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha kwanza Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2953,6 +3144,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5j-35+"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha kwanza Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2968,6 +3160,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5k-10-14"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha kwanza katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -2984,6 +3177,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5k-15-19"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha kwanza katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3000,6 +3194,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5k-20-24"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha kwanza katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3016,6 +3211,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5k-25-29"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha kwanza katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3032,6 +3228,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5k-30-34"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha kwanza katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3048,6 +3245,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5k-35+"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha kwanza katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3063,6 +3261,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5l-10-14"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha 0 pili Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3079,6 +3278,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5l-15-19"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha 0 pili Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3095,6 +3295,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5l-20-24"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha 0 pili Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3111,6 +3312,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5l-25-29"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha 0 pili Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3127,6 +3329,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5l-30-34"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha 0 pili Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3143,6 +3346,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5l-35+"
+    grouping: "ANC"
     description: "Wenza waliopima VVU kipimo cha 0 pili Kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3158,6 +3362,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5m-10-14"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha pili katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3174,6 +3379,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5m-15-19"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha pili katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3190,6 +3396,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5m-20-24"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha pili katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3206,6 +3413,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5m-25-29"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha pili katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3222,6 +3430,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5m-30-34"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha pili katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3238,6 +3447,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5m-35+"
+    grouping: "ANC"
     description: "Wenza waliogundulika kuwa na maambukizi ya VVU kipimo cha pili katika kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3253,6 +3463,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5n-10-14"
+    grouping: "ANC"
     description: "Wajawazito na wenza waliopata majibu tofauti(discordant) baada ya kupima VVU kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3268,6 +3479,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5n-15-19"
+    grouping: "ANC"
     description: "Wajawazito na wenza waliopata majibu tofauti(discordant) baada ya kupima VVU kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3283,6 +3495,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5n-20-24"
+    grouping: "ANC"
     description: "Wajawazito na wenza waliopata majibu tofauti(discordant) baada ya kupima VVU kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3298,6 +3511,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5n-25-29"
+    grouping: "ANC"
     description: "Wajawazito na wenza waliopata majibu tofauti(discordant) baada ya kupima VVU kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3313,6 +3527,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5n-30-34"
+    grouping: "ANC"
     description: "Wajawazito na wenza waliopata majibu tofauti(discordant) baada ya kupima VVU kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3328,6 +3543,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5n-35+"
+    grouping: "ANC"
     description: "Wajawazito na wenza waliopata majibu tofauti(discordant) baada ya kupima VVU kliniki ya wajawazito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3342,6 +3558,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5o-10-14"
+    grouping: "ANC"
     description: "Waliopata ushauri juu ya ulishaji wa mtoto"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3357,6 +3574,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5o-15-19"
+    grouping: "ANC"
     description: "Waliopata ushauri juu ya ulishaji wa mtoto"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3372,6 +3590,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5o-20-24"
+    grouping: "ANC"
     description: "Waliopata ushauri juu ya ulishaji wa mtoto"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3387,6 +3606,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5o-25-29"
+    grouping: "ANC"
     description: "Waliopata ushauri juu ya ulishaji wa mtoto"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3402,6 +3622,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5o-30-34"
+    grouping: "ANC"
     description: "Waliopata ushauri juu ya ulishaji wa mtoto"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3417,6 +3638,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5o-35+"
+    grouping: "ANC"
     description: "Waliopata ushauri juu ya ulishaji wa mtoto"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3431,6 +3653,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "5p-10-14"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                           FROM ec_anc_register ear
@@ -3447,6 +3670,7 @@ indicators:
                                      '-' || '01')"
   
   - key: "5p-15-19"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                           FROM ec_anc_register ear
@@ -3463,6 +3687,7 @@ indicators:
                                      '-' || '01')"
   
   - key: "5p-20-24"
+    grouping: "ANC"
     description: "Wajawazito waliopima VVU kipimo cha kwanza walio chini ya umri wa miaka 25"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                           FROM ec_anc_register ear
@@ -3479,6 +3704,7 @@ indicators:
                                      '-' || '01')"
   
   - key: "6a-10-14"
+    grouping: "ANC"
     description: "Waliopewa LLIN"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3493,6 +3719,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "6a-15-19"
+    grouping: "ANC"
     description: "Waliopewa LLIN"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3508,6 +3735,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6a-20-24"
+    grouping: "ANC"
     description: "Waliopewa LLIN"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3523,6 +3751,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6a-25-29"
+    grouping: "ANC"
     description: "Waliopewa LLIN"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3538,6 +3767,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6a-30-34"
+    grouping: "ANC"
     description: "Waliopewa LLIN"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3553,6 +3783,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6a-35+"
+    grouping: "ANC"
     description: "Waliopewa LLIN"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3567,6 +3798,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6b-10-14"
+    grouping: "ANC"
     description: "Waliopimwa Malaria kutumia mRDT/BS"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3582,6 +3814,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6b-15-19"
+    grouping: "ANC"
     description: "Waliopimwa Malaria kutumia mRDT/BS"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3597,6 +3830,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6b-20-24"
+    grouping: "ANC"
     description: "Waliopimwa Malaria kutumia mRDT/BS"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3612,6 +3846,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6b-25-29"
+    grouping: "ANC"
     description: "Waliopimwa Malaria kutumia mRDT/BS"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3627,6 +3862,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6b-30-34"
+    grouping: "ANC"
     description: "Waliopimwa Malaria kutumia mRDT/BS"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3642,6 +3878,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6b-35+"
+    grouping: "ANC"
     description: "Waliopimwa Malaria kutumia mRDT/BS"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3656,6 +3893,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6c-10-14"
+    grouping: "ANC"
     description: "Waliogundulika Malaria positive"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3671,6 +3909,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6c-15-19"
+    grouping: "ANC"
     description: "Waliogundulika Malaria positive"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3686,6 +3925,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6c-20-24"
+    grouping: "ANC"
     description: "Waliogundulika Malaria positive"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3701,6 +3941,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6c-25-29"
+    grouping: "ANC"
     description: "Waliogundulika Malaria positive"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3716,6 +3957,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6c-30-34"
+    grouping: "ANC"
     description: "Waliogundulika Malaria positive"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3731,6 +3973,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6c-35+"
+    grouping: "ANC"
     description: "Waliogundulika Malaria positive"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3745,6 +3988,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6d-10-14"
+    grouping: "ANC"
     description: "Waliopewa IPT2"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3760,6 +4004,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6d-15-19"
+    grouping: "ANC"
     description: "Waliopewa IPT2"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3775,6 +4020,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6d-20-24"
+    grouping: "ANC"
     description: "Waliopewa IPT2"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3790,6 +4036,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6d-25-29"
+    grouping: "ANC"
     description: "Waliopewa IPT2"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3805,6 +4052,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6d-30-34"
+    grouping: "ANC"
     description: "Waliopewa IPT2"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3820,6 +4068,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6d-35+"
+    grouping: "ANC"
     description: "Waliopewa IPT2"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3834,6 +4083,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6e-10-14"
+    grouping: "ANC"
     description: "Waliopewa IPT3"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3849,6 +4099,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6e-15-19"
+    grouping: "ANC"
     description: "Waliopewa IPT3"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3864,6 +4115,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6e-20-24"
+    grouping: "ANC"
     description: "Waliopewa IPT3"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3879,6 +4131,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6e-25-29"
+    grouping: "ANC"
     description: "Waliopewa IPT3"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3894,6 +4147,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6e-30-34"
+    grouping: "ANC"
     description: "Waliopewa IPT3"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3909,6 +4163,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6e-35+"
+    grouping: "ANC"
     description: "Waliopewa IPT3"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3922,6 +4177,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "6f-10-14"
+    grouping: "ANC"
     description: "Waliopewa IPT4"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3937,6 +4193,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6f-15-19"
+    grouping: "ANC"
     description: "Waliopewa IPT4"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3952,6 +4209,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6f-20-24"
+    grouping: "ANC"
     description: "Waliopewa IPT4"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3967,6 +4225,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6f-25-29"
+    grouping: "ANC"
     description: "Waliopewa IPT4"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3982,6 +4241,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6f-30-34"
+    grouping: "ANC"
     description: "Waliopewa IPT4"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -3997,6 +4257,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "6f-35+"
+    grouping: "ANC"
     description: "Waliopewa IPT4"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4010,6 +4271,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "7-10-14"
+    grouping: "ANC"
     description: "Waliopewa Iron/Folic Acid (I,F,IFA) vidonge vya kutosha mpaka hudhurio linalofuata"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4025,6 +4287,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "7-15-19"
+    grouping: "ANC"
     description: "Waliopewa Iron/Folic Acid (I,F,IFA) vidonge vya kutosha mpaka hudhurio linalofuata"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4040,6 +4303,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "7-20-24"
+    grouping: "ANC"
     description: "Waliopewa Iron/Folic Acid (I,F,IFA) vidonge vya kutosha mpaka hudhurio linalofuata"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4055,6 +4319,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "7-25-29"
+    grouping: "ANC"
     description: "Waliopewa Iron/Folic Acid (I,F,IFA) vidonge vya kutosha mpaka hudhurio linalofuata"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4070,6 +4335,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "7-30-34"
+    grouping: "ANC"
     description: "Waliopewa Iron/Folic Acid (I,F,IFA) vidonge vya kutosha mpaka hudhurio linalofuata"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4085,6 +4351,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "7-35+"
+    grouping: "ANC"
     description: "Waliopewa Iron/Folic Acid (I,F,IFA) vidonge vya kutosha mpaka hudhurio linalofuata"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4098,6 +4365,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "8-10-14"
+    grouping: "ANC"
     description: "Waliopewa Dawa za minyoo(Mebendazole/Albendazole)"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4114,6 +4382,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "8-15-19"
+    grouping: "ANC"
     description: "Waliopewa Dawa za minyoo(Mebendazole/Albendazole)"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4130,6 +4399,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "8-20-24"
+    grouping: "ANC"
     description: "Waliopewa Dawa za minyoo(Mebendazole/Albendazole)"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4146,6 +4416,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "8-25-29"
+    grouping: "ANC"
     description: "Waliopewa Dawa za minyoo(Mebendazole/Albendazole)"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4162,6 +4433,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "8-30-34"
+    grouping: "ANC"
     description: "Waliopewa Dawa za minyoo(Mebendazole/Albendazole)"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4178,6 +4450,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "8-35+"
+    grouping: "ANC"
     description: "Waliopewa Dawa za minyoo(Mebendazole/Albendazole)"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4192,6 +4465,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "9-10-14"
+    grouping: "ANC"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4207,6 +4481,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "9-15-19"
+    grouping: "ANC"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4222,6 +4497,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "9-20-24"
+    grouping: "ANC"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4237,6 +4513,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "9-25-29"
+    grouping: "ANC"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4252,6 +4529,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "9-30-34"
+    grouping: "ANC"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4267,6 +4545,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "9-35+"
+    grouping: "ANC"
     description: "Waliopewa ushauri wa uzazi wa mpango"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4280,6 +4559,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "10-10-14"
+    grouping: "ANC"
     description: "Waliopewa Rufaa wakati wa ujauzito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4302,6 +4582,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "10-15-19"
+    grouping: "ANC"
     description: "Waliopewa Rufaa wakati wa ujauzito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4324,6 +4605,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "10-20-24"
+    grouping: "ANC"
     description: "Waliopewa Rufaa wakati wa ujauzito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4346,6 +4628,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "10-25-29"
+    grouping: "ANC"
     description: "Waliopewa Rufaa wakati wa ujauzito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4368,6 +4651,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "10-30-34"
+    grouping: "ANC"
     description: "Waliopewa Rufaa wakati wa ujauzito"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4390,7 +4674,9 @@ indicators:
                                  '-' || '01')"
   
   - key: "10-35+"
+    grouping: "ANC"
     description: "Waliopewa Rufaa wakati wa ujauzito"
+    
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
@@ -4410,6 +4696,7 @@ indicators:
                                  substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 6, 2) ||
                                  '-' || '01')"
   - key: "11-10-14"
+    grouping: "ANC"
     description: "Waliopewa Rufaa kwenda CTC"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4427,6 +4714,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "11-15-19"
+    grouping: "ANC"
     description: "Waliopewa Rufaa kwenda CTC"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4444,6 +4732,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "11-20-24"
+    grouping: "ANC"
     description: "Waliopewa Rufaa kwenda CTC"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4461,6 +4750,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "11-25-29"
+    grouping: "ANC"
     description: "Waliopewa Rufaa kwenda CTC"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4478,6 +4768,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "11-30-34"
+    grouping: "ANC"
     description: "Waliopewa Rufaa kwenda CTC"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear
@@ -4495,6 +4786,7 @@ indicators:
                                  '-' || '01')"
   
   - key: "11-35+"
+    grouping: "ANC"
     description: "Waliopewa Rufaa kwenda CTC"
     indicatorQuery: " SELECT count(DISTINCT ear.base_entity_id) as count
                       FROM ec_anc_register ear

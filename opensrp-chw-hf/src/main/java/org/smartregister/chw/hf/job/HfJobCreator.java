@@ -71,6 +71,8 @@ public class HfJobCreator implements JobCreator {
                 return new PncCloseDateServiceJob();
             case P2pServiceJob.TAG:
                 return new P2pServiceJob();
+            case GenerateMonthlyTalliesJob.TAG:
+                return new GenerateMonthlyTalliesJob();
             default:
                 Timber.d("Please create job and specify the right job tag");
                 return null;
