@@ -15,6 +15,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.job.GenerateMonthlyTalliesJob;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -35,6 +36,7 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
     @Override
     protected void onCreation() {
         ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
+        GenerateMonthlyTalliesJob.scheduleJobImmediately(GenerateMonthlyTalliesJob.TAG);
         setContentView(R.layout.activity_reports);
         setUpToolbar();
         setUpViews();
@@ -128,12 +130,10 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         } else if (id == R.id.self_testing_reports) {
             Intent intent = new Intent(this, SelfTestingReportsActivity.class);
             startActivity(intent);
-        }
-        else if (id==R.id.cdp_reports){
+        } else if (id == R.id.cdp_reports) {
             Intent intent = new Intent(this, CdpReportsActivity.class);
             startActivity(intent);
-        }
-        else if (id==R.id.kvp_reports){
+        } else if (id == R.id.kvp_reports) {
             Intent intent = new Intent(this, KvpReportsActivity.class);
             startActivity(intent);
         }

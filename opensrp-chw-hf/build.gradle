@@ -27,7 +27,7 @@ allprojects {
 
             name = "GitHubPackages"
 
-            url = uri("https://maven.pkg.github.com/SoftmedTanzania/opensrp-client-chw-core")
+            url = uri("https://maven.pkg.github.com/Digital-Square-Tanzania/opensrp-client-chw-core")
             credentials {
                 username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
                 password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
@@ -39,7 +39,7 @@ allprojects {
 
             name = "GitHubPackages"
 
-            url = uri("https://maven.pkg.github.com/SoftmedTanzania/opensrp-client-chw-ld")
+            url = uri("https://maven.pkg.github.com/Digital-Square-Tanzania/opensrp-client-chw-ld")
             credentials {
                 username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
                 password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
@@ -201,8 +201,8 @@ android {
             applicationId "org.smartregister.chw.moh.hf"
             minSdkVersion 21
             targetSdkVersion 31
-            versionCode 20
-            versionName "1.1.12"
+            versionCode 21
+            versionName "1.1.13"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
             buildConfigField "String", 'opensrp_url', '"https://ucs.nacp.go.tz/opensrp/"'
