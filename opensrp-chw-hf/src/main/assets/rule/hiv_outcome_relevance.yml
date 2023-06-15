@@ -1,0 +1,8 @@
+---
+name: step_reason_client_not_tested_other
+description: reason_client_not_tested_other relevance
+priority: 1
+condition: "!step_reason_no_action_was_taken.equals('') && step_reason_no_action_was_taken.equals('other')"
+actions:
+  - "isRelevant = true"
+---
