@@ -289,11 +289,11 @@
           "name": "prompt_for_hiv_inconclusive",
           "type": "toast_notification",
           "properties": {
-            "notification_type": "info",
+            "notification_type": "warning",
             "dismissible": "no",
             "text": "Counsel the client to re-test after 2 weeks",
-            "background_color": "#218CC5",
-            "text_color": "#FFFFFF"
+            "background_color": "#ffc107",
+            "text_color": "#000000"
           },
           "subjects": "test_results:map, action_taken_hiv_problems:map"
         },
