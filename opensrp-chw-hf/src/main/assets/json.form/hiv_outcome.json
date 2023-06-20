@@ -107,7 +107,7 @@
           },
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_no_action_was_taken",
+            "openmrs_entity_id": "where_was_test_conducted",
             "openmrs_entity_parent": ""
           },
           "options": [
@@ -169,8 +169,21 @@
               }
             }
           ],
-          "required_status": "yes:Please select action taken",
-          "subjects": "action_taken_hiv_problems:map"
+          "required_status": "yes:Please select where the test was conducted"
+        },
+        {
+          "name": "other_where_was_test_conducted",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Others (Specify)"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "where_was_test_conducted",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Please specity where was the test conducted",
+          "subjects": "where_was_test_conducted:map"
         },
         {
           "name": "reason_no_action_was_taken",

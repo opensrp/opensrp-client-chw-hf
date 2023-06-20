@@ -27,6 +27,13 @@ condition: "reason_no_action_was_taken.containsKey('other') && action_taken_hiv_
 actions:
   - "other_reason_no_action_was_taken_visibility =  true"
 ---
+name: "other_where_was_test_conducted_visibility"
+description: "other_where_was_test_conducted visibility"
+priority: 1
+condition: "where_was_test_conducted.containsKey('other')"
+actions:
+  - "other_where_was_test_conducted_visibility =  true"
+---
 name: "enrolled_to_clinic_visibility"
 description: "enrolled_to_clinic visibility"
 priority: 1
