@@ -179,7 +179,7 @@
           },
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "where_was_test_conducted",
+            "openmrs_entity_id": "other_where_was_test_conducted",
             "openmrs_entity_parent": ""
           },
           "required_status": "true:Please specity where was the test conducted",
@@ -230,7 +230,7 @@
               "text": "Other",
               "meta_data": {
                 "openmrs_entity": "concept",
-                "openmrs_entity_id": "reason_no_action_was_taken",
+                "openmrs_entity_id": "other",
                 "openmrs_entity_parent": ""
               }
             }
@@ -249,7 +249,7 @@
           },
           "meta_data": {
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "reason_no_action_was_taken",
+            "openmrs_entity_id": "other_reason_no_action_was_taken",
             "openmrs_entity_parent": ""
           },
           "required_status": "true:Please specity other reason",
