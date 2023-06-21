@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.smartregister.chw.core.activity.CoreKvpProfileActivity;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
@@ -32,6 +34,24 @@ public class PrEPProfileActivity extends CoreKvpProfileActivity {
         activity.startActivity(intent);
     }
 
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        if (evaluateProvisionOfPrepService()) {
+            textViewRecordKvp.setVisibility(View.GONE);
+        }
+    }
+
+    private boolean evaluateProvisionOfPrepService() {
+        Visit lastVisit = getVisit(Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT);
+        if (lastVisit != null && lastVisit.getProcessed()) {
+            DateTime time = new DateTime(lastVisit.getUpdatedAt());
+            DateTime now = new DateTime();
+            int diffDays = Days.daysBetween(time, now).getDays();
+            return diffDays < 1;
+        }
+        return false;
+    }
 
     @Override
     public void openFollowupVisit() {
@@ -50,8 +70,8 @@ public class PrEPProfileActivity extends CoreKvpProfileActivity {
 
     @Override
     public void refreshMedicalHistory(boolean hasHistory) {
-        Visit kvpBehavioralServices = getVisit(Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT);
-        if (kvpBehavioralServices != null) {
+        Visit lastVisit = getVisit(Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT);
+        if (lastVisit != null) {
             rlLastVisit.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
             ((TextView) findViewById(R.id.vViewHistory)).setText(R.string.visits_history);
