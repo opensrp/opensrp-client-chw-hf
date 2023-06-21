@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.ENABLE_HIV_STATUS_FILTER;
 import static org.smartregister.chw.hf.utils.Constants.FILTERS_ENABLED;
 import static org.smartregister.chw.hf.utils.Constants.FILTER_APPOINTMENT_DATE;
 import static org.smartregister.chw.hf.utils.Constants.FILTER_HIV_STATUS;
@@ -40,6 +41,7 @@ public class AncFilterActivity extends AppCompatActivity {
     private SwitchCompat referredFromCommunityFilter;
     private Spinner hivStatusFilter;
     private List<String> hivFilterOptions;
+    private boolean enableHivStatusFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class AncFilterActivity extends AppCompatActivity {
         }
         toolbar.setNavigationOnClickListener(v -> finish());
         hivFilterOptions = Arrays.asList(getResources().getStringArray(R.array.hiv_status_filter_options));
+        enableHivStatusFilter = getIntent().getBooleanExtra(ENABLE_HIV_STATUS_FILTER, true);
 
         setupViews();
         boolean filterEnabled = getIntent().getBooleanExtra(FILTERS_ENABLED, false);
@@ -110,6 +113,12 @@ public class AncFilterActivity extends AppCompatActivity {
                 referredFromCommunityFilter.setChecked(false);
             }
         });
+
+        if (enableHivStatusFilter) {
+            findViewById(R.id.hiv_status_filter_rl).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.hiv_status_filter_rl).setVisibility(View.GONE);
+        }
 
         DatePickerDialog.OnDateSetListener datePickerListener = (mView, year, monthOfYear, dayOfMonth) -> {
             mCalendar.set(Calendar.YEAR, year);

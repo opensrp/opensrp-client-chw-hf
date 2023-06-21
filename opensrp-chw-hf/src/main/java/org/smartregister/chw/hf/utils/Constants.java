@@ -16,6 +16,7 @@ public class Constants extends CoreConstants {
     public static String FILTER_IS_REFERRED = "FILTER_IS_REFERRED";
     public static String FILTER_HIV_STATUS = "FILTER_HIV_STATUS";
     public static String FILTERS_ENABLED = "FILTERS_ENABLED";
+    public static String ENABLE_HIV_STATUS_FILTER = "ENABLE_HIV_STATUS_FILTER";
 
     public static int REQUEST_FILTERS = 2004;
 

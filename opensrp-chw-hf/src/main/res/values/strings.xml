@@ -820,6 +820,7 @@
     <string name="prep_other_prep_side_effects">Other PrEP side effects:</string>
     <string name="prep_reasons_stopping_prep">Reason(s) for stopping PrEP medication:</string>
     <string name="prep_other_reason_stopping_prep">Other reason:</string>
+    <string name="prep_next_visit_date">Next Appointment Date:</string>
 
 
     <string name="facility">Health Facility</string>

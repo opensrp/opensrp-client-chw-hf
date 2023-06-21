@@ -95,6 +95,9 @@ public class HfChwRepository extends CoreChwRepository {
                 case 17:
                     upgradeToVersion17(db);
                     break;
+                case 18:
+                    upgradeToVersion18(db);
+                    break;
                 default:
                     break;
             }
@@ -373,6 +376,14 @@ public class HfChwRepository extends CoreChwRepository {
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(BuildConfig.VERSION_CODE));
             }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private static void upgradeToVersion18(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN next_visit_date TEXT NULL;");
         } catch (Exception e) {
             Timber.e(e);
         }
