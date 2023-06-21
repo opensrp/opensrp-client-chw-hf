@@ -720,11 +720,11 @@
         }
       },
       {
-        "key": "hepatitis_b",
+        "key": "hepatitis",
         "type": "native_radio",
         "label": "Client Hepatitis B Results from the previous clinic?",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "hepatitis_b",
+        "openmrs_entity_id": "hepatitis",
         "openmrs_entity_parent": "",
         "options": [
           {
