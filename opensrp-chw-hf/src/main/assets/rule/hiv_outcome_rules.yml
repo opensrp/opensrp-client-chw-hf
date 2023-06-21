@@ -6,12 +6,33 @@ condition: "action_taken_hiv_problems.containsKey('tested')"
 actions:
   - "test_results_visibility =  true"
 ---
+name: "where_was_test_conducted_visibility"
+description: "where_was_test_conducted visibility"
+priority: 1
+condition: "action_taken_hiv_problems.containsKey('tested')"
+actions:
+  - "where_was_test_conducted_visibility =  true"
+---
 name: "reason_no_action_was_taken_visibility"
 description: "reason_no_action_was_taken visibility"
 priority: 1
 condition: "action_taken_hiv_problems.containsKey('no_action_taken')"
 actions:
   - "reason_no_action_was_taken_visibility =  true"
+---
+name: "other_reason_no_action_was_taken_visibility"
+description: "other_reason_no_action_was_taken visibility"
+priority: 1
+condition: "reason_no_action_was_taken.containsKey('other') && action_taken_hiv_problems.containsKey('no_action_taken')"
+actions:
+  - "other_reason_no_action_was_taken_visibility =  true"
+---
+name: "other_where_was_test_conducted_visibility"
+description: "other_where_was_test_conducted visibility"
+priority: 1
+condition: "where_was_test_conducted.containsKey('other')"
+actions:
+  - "other_where_was_test_conducted_visibility =  true"
 ---
 name: "enrolled_to_clinic_visibility"
 description: "enrolled_to_clinic visibility"
@@ -33,6 +54,13 @@ priority: 1
 condition: "test_results.containsKey('positive') && enrolled_to_clinic.containsKey('no') && action_taken_hiv_problems.containsKey('tested')"
 actions:
   - "prompt_for_ctc_enrollment_visibility =  true"
+---
+name: "prompt_for_hiv_inconclusive_visibility"
+description: "prompt_for_inconclusive visibility"
+priority: 1
+condition: "test_results.containsKey('inconclusive') && action_taken_hiv_problems.containsKey('tested')"
+actions:
+  - "prompt_for_hiv_inconclusive_visibility =  true"
 ---
 name: "test_results_calculation"
 description: "test_results calculation"

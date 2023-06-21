@@ -447,6 +447,12 @@
             "text": "Client is allergic to TPT",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_allergic_to_tpt"
+          },
+          {
+            "key": "not_eligible",
+            "text": "Not eligible",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_eligible"
           }
         ],
         "v_required": {

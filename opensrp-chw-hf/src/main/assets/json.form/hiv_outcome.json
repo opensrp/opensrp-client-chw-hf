@@ -100,10 +100,96 @@
           ]
         },
         {
+          "name": "where_was_test_conducted",
+          "type": "radio_group",
+          "properties": {
+            "text": "Where was the test conducted?"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "where_was_test_conducted",
+            "openmrs_entity_parent": ""
+          },
+          "options": [
+            {
+              "name": "outpatient_department",
+              "text": "Outpatient department",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "outpatient_department",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "inpatient_department",
+              "text": "Inpatient department",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "inpatient_department",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "community_based_hiv_testing_services",
+              "text": "Community Based HIV Testing Services",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "community_based_hiv_testing_services",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "ctc",
+              "text": "CTC",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "ctc",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "outreach_services",
+              "text": "Outreach Services",
+              "is_exclusive": true,
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "outreach_services",
+                "openmrs_entity_parent": ""
+              }
+            },
+            {
+              "name": "other",
+              "text": "Other",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
+            }
+          ],
+          "required_status": "yes:Please select where the test was conducted"
+        },
+        {
+          "name": "other_where_was_test_conducted",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Others (Specify)"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_where_was_test_conducted",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Please specity where was the test conducted",
+          "subjects": "where_was_test_conducted:map"
+        },
+        {
           "name": "reason_no_action_was_taken",
           "type": "radio_group",
           "properties": {
-            "text": "Reasons actions was not taken"
+            "text": "Reasons client was not tested"
           },
           "meta_data": {
             "openmrs_entity": "concept",
@@ -138,6 +224,15 @@
                 "openmrs_entity_id": "test_not_required_based_on_risk_assessment",
                 "openmrs_entity_parent": ""
               }
+            },
+            {
+              "name": "other",
+              "text": "Other",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "other",
+                "openmrs_entity_parent": ""
+              }
             }
           ],
           "required_status": "yes:Please select action taken",
@@ -145,6 +240,20 @@
           "dependent_calculations": [
             "test_results_calculation"
           ]
+        },
+        {
+          "name": "other_reason_no_action_was_taken",
+          "type": "text_input_edit_text",
+          "properties": {
+            "hint": "Others (Specify)"
+          },
+          "meta_data": {
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other_reason_no_action_was_taken",
+            "openmrs_entity_parent": ""
+          },
+          "required_status": "true:Please specity other reason",
+          "subjects": "reason_no_action_was_taken:map, action_taken_hiv_problems:map"
         },
         {
           "name": "test_results",
@@ -175,10 +284,31 @@
                 "openmrs_entity_id": "negative",
                 "openmrs_entity_parent": ""
               }
+            },
+            {
+              "name": "inconclusive",
+              "text": "Inconclusive",
+              "meta_data": {
+                "openmrs_entity": "concept",
+                "openmrs_entity_id": "inconclusive",
+                "openmrs_entity_parent": ""
+              }
             }
           ],
           "required_status": "yes:Please select the test results",
           "subjects": "action_taken_hiv_problems:map"
+        },
+        {
+          "name": "prompt_for_hiv_inconclusive",
+          "type": "toast_notification",
+          "properties": {
+            "notification_type": "warning",
+            "dismissible": "no",
+            "text": "Counsel the client to re-test after 2 weeks",
+            "background_color": "#ffc107",
+            "text_color": "#000000"
+          },
+          "subjects": "test_results:map, action_taken_hiv_problems:map"
         },
         {
           "name": "enrolled_to_clinic",

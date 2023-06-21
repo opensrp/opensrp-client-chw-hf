@@ -720,6 +720,70 @@
         }
       },
       {
+        "key": "hepatitis_b",
+        "type": "native_radio",
+        "label": "Client Hepatitis B Results from the previous clinic?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hepatitis_b",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "The Client was not tested for Hepatitis B in the previous clinic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "syphilis",
+        "type": "native_radio",
+        "label": "Client Syphilis Results from the previous clinic?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "The Client was not tested for Syphilis in the previous clinic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
         "key": "is_test_at_32",
         "type": "native_radio",
         "label": "Was this the second HIV test?",
