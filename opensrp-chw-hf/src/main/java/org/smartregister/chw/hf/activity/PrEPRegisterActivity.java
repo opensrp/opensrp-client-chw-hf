@@ -1,5 +1,8 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.hf.utils.Constants.REQUEST_FILTERS;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -34,6 +37,15 @@ public class PrEPRegisterActivity extends CoreKvpRegisterActivity {
         NavigationMenu menu = NavigationMenu.getInstance(this, null, null);
         if (menu != null) {
             menu.getNavigationAdapter().setSelectedView(CoreConstants.DrawerMenu.PrEP);
+        }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResultExtended(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_FILTERS) {
+            ((PrEPRegisterFragment) mBaseFragment).onFiltersUpdated(requestCode, data);
         }
     }
 }

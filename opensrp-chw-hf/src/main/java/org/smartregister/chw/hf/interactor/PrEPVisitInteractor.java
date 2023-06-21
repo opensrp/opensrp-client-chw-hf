@@ -95,13 +95,17 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
         actionList.put(context.getString(R.string.prep_screening), action);
     }
 
-    private void evaluatePrEPInitiation(Map<String, List<VisitDetail>> details) throws BaseKvpVisitAction.ValidationException {
+    private void evaluatePrEPInitiation(Map<String, List<VisitDetail>> details, String prepVisitType) throws BaseKvpVisitAction.ValidationException {
         JSONObject prepInitiation = FormUtils.getFormUtils().getFormJson(Constants.PrEP_FOLLOWUP_FORMS.INITIATION);
 
         try {
-            if (HfKvpDao.isPrEPInitiated(memberObject.getBaseEntityId())) {
-                JSONArray fields = prepInitiation.getJSONObject(STEP1).getJSONArray(FIELDS);
-                JSONObject prepStatus = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "prep_status");
+            JSONArray fields = prepInitiation.getJSONObject(STEP1).getJSONArray(FIELDS);
+            JSONObject prepStatus = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "prep_status");
+            if (prepVisitType != null && prepVisitType.equalsIgnoreCase("new_client")) {
+                prepStatus.getJSONArray("options").remove(4);
+                prepStatus.getJSONArray("options").remove(2);
+                prepStatus.getJSONArray("options").remove(1);
+            } else if (HfKvpDao.isPrEPInitiated(memberObject.getBaseEntityId())) {
                 prepStatus.getJSONArray("options").remove(3);
                 prepStatus.getJSONArray("options").remove(0);
             }
@@ -150,6 +154,7 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
             if (StringUtils.isNotBlank(visit_type)) {
                 try {
                     evaluatePrEPScreening(details);
+                    evaluatePrEPInitiation(details, visit_type);
                 } catch (BaseKvpVisitAction.ValidationException e) {
                     e.printStackTrace();
                 }
@@ -173,7 +178,8 @@ public class PrEPVisitInteractor extends BaseKvpVisitInteractor {
         public String postProcess(String s) {
             if (should_initiate.equalsIgnoreCase("yes")) {
                 try {
-                    evaluatePrEPInitiation(details);
+                    if (!actionList.containsKey(context.getString(R.string.prep_initiation)))
+                        evaluatePrEPInitiation(details, null);
                     evaluateOtherServices(details);
                 } catch (BaseKvpVisitAction.ValidationException e) {
                     e.printStackTrace();

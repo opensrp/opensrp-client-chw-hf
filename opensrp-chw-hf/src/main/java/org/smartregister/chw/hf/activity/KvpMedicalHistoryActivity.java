@@ -191,9 +191,26 @@ public class KvpMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
                 for (LinkedHashMap<String, String> vals : community_visits) {
                     View view = inflater.inflate(R.layout.medical_history_visit, null);
                     TextView tvTitle = view.findViewById(R.id.title);
+                    View edit = view.findViewById(R.id.textview_edit);
                     LinearLayout visitDetailsLayout = view.findViewById(R.id.visit_details_layout);
 
                     tvTitle.setText(visits.get(x).getVisitType() + " " + visits.get(x).getDate());
+
+                    if (x == visits.size() - 1) {
+                        edit.setVisibility(View.VISIBLE);
+                        int position = x;
+                        edit.setOnClickListener(view1 -> {
+                            if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Bio Medical Service Visit")) {
+                                KvpBioMedicalServiceActivity.startKvpBioMedicalServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            } else if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Structural Service Visit")) {
+                                KvpStructuralServiceActivity.startKvpStructuralServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            } else if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Other Service Visit")) {
+                                KvpOtherServiceActivity.startKvpOtherServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            } else if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Behavioral Service Visit")) {
+                                KvpBehavioralServiceActivity.startKvpBehavioralServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            }
+                        });
+                    }
 
 
                     for (LinkedHashMap.Entry<String, String> entry : vals.entrySet()) {

@@ -6,18 +6,24 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.smartregister.chw.core.activity.CoreKvpProfileActivity;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.LFTUFormUtils;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.kvp.KvpLibrary;
 import org.smartregister.chw.kvp.domain.Visit;
+import org.smartregister.chw.kvp.listener.OnClickFloatingMenu;
 import org.smartregister.chw.kvp.util.Constants;
 import org.smartregister.chw.kvp.util.DBConstants;
 import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.family.util.Utils;
+
+import timber.log.Timber;
 
 public class PrEPProfileActivity extends CoreKvpProfileActivity {
 
@@ -28,6 +34,24 @@ public class PrEPProfileActivity extends CoreKvpProfileActivity {
         activity.startActivity(intent);
     }
 
+    @Override
+    protected void setupViews() {
+        super.setupViews();
+        if (evaluateProvisionOfPrepService()) {
+            textViewRecordKvp.setVisibility(View.GONE);
+        }
+    }
+
+    private boolean evaluateProvisionOfPrepService() {
+        Visit lastVisit = getVisit(Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT);
+        if (lastVisit != null && lastVisit.getProcessed()) {
+            DateTime time = new DateTime(lastVisit.getUpdatedAt());
+            DateTime now = new DateTime();
+            int diffDays = Days.daysBetween(time, now).getDays();
+            return diffDays < 1;
+        }
+        return false;
+    }
 
     @Override
     public void openFollowupVisit() {
@@ -46,8 +70,8 @@ public class PrEPProfileActivity extends CoreKvpProfileActivity {
 
     @Override
     public void refreshMedicalHistory(boolean hasHistory) {
-        Visit kvpBehavioralServices = getVisit(Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT);
-        if (kvpBehavioralServices != null) {
+        Visit lastVisit = getVisit(Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT);
+        if (lastVisit != null) {
             rlLastVisit.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
             ((TextView) findViewById(R.id.vViewHistory)).setText(R.string.visits_history);
@@ -83,10 +107,37 @@ public class PrEPProfileActivity extends CoreKvpProfileActivity {
         CommonRepository commonRepository = Utils.context().commonrepository(Utils.metadata().familyMemberRegister.tableName);
 
         final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(memberObject.getBaseEntityId());
-        final CommonPersonObjectClient client =
-                new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+        final CommonPersonObjectClient client = new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
         client.setColumnmaps(commonPersonObject.getColumnmaps());
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         HivstRegisterActivity.startHivstRegistrationActivity(this, memberObject.getBaseEntityId(), gender);
+    }
+
+    @Override
+    public void initializeFloatingMenu() {
+        super.initializeFloatingMenu();
+        CommonRepository commonRepository = Utils.context().commonrepository(Utils.metadata().familyMemberRegister.tableName);
+        final CommonPersonObject commonPersonObject = commonRepository.findByBaseEntityId(memberObject.getBaseEntityId());
+        final CommonPersonObjectClient client = new CommonPersonObjectClient(commonPersonObject.getCaseId(), commonPersonObject.getDetails(), "");
+
+        baseKvpFloatingMenu.findViewById(org.smartregister.kvp.R.id.refer_to_facility_layout).setVisibility(View.VISIBLE);
+        ((TextView) baseKvpFloatingMenu.findViewById(org.smartregister.kvp.R.id.refer_to_facility_text)).setText(R.string.lost_to_followup_referral);
+
+        OnClickFloatingMenu onClickFloatingMenu = viewId -> {
+            if (viewId == org.smartregister.kvp.R.id.kvp_fab) {
+                baseKvpFloatingMenu.animateFAB();
+            } else if (viewId == org.smartregister.kvp.R.id.call_layout) {
+                baseKvpFloatingMenu.launchCallWidget();
+                baseKvpFloatingMenu.animateFAB();
+            } else if (viewId == org.smartregister.kvp.R.id.refer_to_facility_layout) {
+                String gender = org.smartregister.chw.core.utils.Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.GENDER, false);
+                String dob = org.smartregister.chw.core.utils.Utils.getValue(commonPersonObject.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false);
+                LFTUFormUtils.startLTFUReferral(this, memberObject.getBaseEntityId(), gender, org.smartregister.chw.core.utils.Utils.getAgeFromDate(dob));
+            } else {
+                Timber.d("Unknown FAB action");
+            }
+        };
+
+        baseKvpFloatingMenu.setFloatMenuClickListener(onClickFloatingMenu);
     }
 }
