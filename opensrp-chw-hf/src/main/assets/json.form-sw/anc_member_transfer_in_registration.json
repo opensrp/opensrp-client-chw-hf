@@ -626,6 +626,70 @@
         }
       },
       {
+        "key": "hepatitis",
+        "type": "native_radio",
+        "label": "Matokeo ya kipimo cha homa ya ini kutoka katika kituo alichotoka?",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hepatitis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Chanya",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Hasi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "The Client was not tested for Hepatitis B in the previous clinic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
+        "key": "syphilis",
+        "type": "native_radio",
+        "label": "Matokeo ya kipimo cha Kaswende kutoka katika kituo alichotoka",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "syphilis",
+        "openmrs_entity_parent": "",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Chanya",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Hasi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "test_not_conducted",
+            "text": "The Client was not tested for Syphilis in the previous clinic",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "test_not_conducted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please answer this question"
+        }
+      },
+      {
         "key": "is_test_at_32",
         "type": "native_radio",
         "label": "Je, hichi ni kipimo cha pili cha maambukizi ya virusi vya ukimwi?",
