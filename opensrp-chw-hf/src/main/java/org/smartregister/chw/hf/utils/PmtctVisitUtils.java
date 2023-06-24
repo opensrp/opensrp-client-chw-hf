@@ -45,60 +45,81 @@ public class PmtctVisitUtils extends VisitUtils {
     }
 
     public static void processVisits(VisitRepository visitRepository, VisitDetailsRepository visitDetailsRepository) throws Exception {
-
         List<Visit> visits = visitRepository.getAllUnSynced();
         List<Visit> pmtctFollowupVisits = new ArrayList<>();
-
 
         for (Visit v : visits) {
             Date visitDate = new Date(v.getDate().getTime());
             int daysDiff = TimeUtils.getElapsedDays(visitDate);
-            if (daysDiff >= 1 && v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP)) {
-                try {
-                    JSONObject jsonObject = new JSONObject(v.getJson());
-                    String baseEntityId = jsonObject.getString("baseEntityId");
-                    JSONArray obs = jsonObject.getJSONArray("obs");
-                    List<Boolean> checks = new ArrayList<Boolean>();
-
-                    boolean isFollowupStatusDone = computeCompletionStatus(obs, "followup_status");
-
-                    boolean isCounsellingDone = computeCompletionStatus(obs, "is_client_counselled");
-                    boolean isClinicalStagingDone = computeCompletionStatus(obs, "clinical_staging_disease");
-                    boolean isTbScreeningDone = computeCompletionStatus(obs, "on_tb_treatment");
-                    boolean isArvPrescriptionDone = computeCompletionStatus(obs, "prescribed_regimes");
-                    boolean isNextVisitSet = computeCompletionStatus(obs, "next_facility_visit_date");
-
-                    boolean isBaselineInvestigationComplete = computeCompletionStatus(obs, "liver_function_test_conducted") && computeCompletionStatus(obs, "renal_function_test_conducted");
-
-
-                    checks.add(isFollowupStatusDone);
-
-                    if (isContinuingWithServices(v)) {
-                        checks.add(isCounsellingDone);
-                        checks.add(isClinicalStagingDone);
-                        checks.add(isTbScreeningDone);
-                        checks.add(isArvPrescriptionDone);
-                        checks.add(isNextVisitSet);
-
-                        if (HfPmtctDao.isEligibleForBaselineInvestigation(baseEntityId) || HfPmtctDao.isEligibleForBaselineInvestigationOnFollowupVisit(baseEntityId)) {
-                            checks.add(isBaselineInvestigationComplete);
-                        }
-                    }
-
-
-                    if (!checks.contains(false)) {
-                        pmtctFollowupVisits.add(v);
-                    }
-                } catch (Exception e) {
-                    Timber.e(e);
-                }
-
+            if (daysDiff >= 1 && v.getVisitType().equalsIgnoreCase(org.smartregister.chw.pmtct.util.Constants.EVENT_TYPE.PMTCT_FOLLOWUP) && isVisitComplete(v)) {
+                pmtctFollowupVisits.add(v);
             }
         }
 
         if (pmtctFollowupVisits.size() > 0) {
             processVisits(pmtctFollowupVisits, visitRepository, visitDetailsRepository);
             for (Visit v : pmtctFollowupVisits) {
+                if (isWomanTransferOut(v)) {
+                    createHeiTransferOutUpdate(v.getJson());
+                }
+            }
+        }
+    }
+
+    public static boolean isVisitComplete(Visit v) {
+        try {
+            JSONObject jsonObject = new JSONObject(v.getJson());
+            String baseEntityId = jsonObject.getString("baseEntityId");
+            JSONArray obs = jsonObject.getJSONArray("obs");
+            List<Boolean> checks = new ArrayList<Boolean>();
+
+            boolean isFollowupStatusDone = computeCompletionStatus(obs, "followup_status");
+
+            boolean isCounsellingDone = computeCompletionStatus(obs, "is_client_counselled");
+            boolean isClinicalStagingDone = computeCompletionStatus(obs, "clinical_staging_disease");
+            boolean isTbScreeningDone = computeCompletionStatus(obs, "on_tb_treatment");
+            boolean isArvPrescriptionDone = computeCompletionStatus(obs, "prescribed_regimes");
+            boolean isNextVisitSet = computeCompletionStatus(obs, "next_facility_visit_date");
+
+            boolean isBaselineInvestigationComplete = computeCompletionStatus(obs, "liver_function_test_conducted") && computeCompletionStatus(obs, "renal_function_test_conducted");
+
+
+            checks.add(isFollowupStatusDone);
+
+            if (isContinuingWithServices(v)) {
+                checks.add(isCounsellingDone);
+                checks.add(isClinicalStagingDone);
+                checks.add(isTbScreeningDone);
+                checks.add(isArvPrescriptionDone);
+                checks.add(isNextVisitSet);
+
+                if (HfPmtctDao.isEligibleForBaselineInvestigation(baseEntityId) || HfPmtctDao.isEligibleForBaselineInvestigationOnFollowupVisit(baseEntityId)) {
+                    checks.add(isBaselineInvestigationComplete);
+                }
+            }
+
+            if (!checks.contains(false)) {
+                return true;
+            }
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+        return false;
+    }
+
+
+    public static void manualProcessVisit(Visit visit) throws Exception {
+        List<Visit> manualProcessedVisits = new ArrayList<>();
+        VisitDetailsRepository visitDetailsRepository = PmtctLibrary.getInstance().visitDetailsRepository();
+        VisitRepository visitRepository = PmtctLibrary.getInstance().visitRepository();
+
+        if (isVisitComplete(visit)) {
+            manualProcessedVisits.add(visit);
+        }
+
+        if (manualProcessedVisits.size() > 0) {
+            processVisits(manualProcessedVisits, visitRepository, visitDetailsRepository);
+            for (Visit v : manualProcessedVisits) {
                 if (isWomanTransferOut(v)) {
                     createHeiTransferOutUpdate(v.getJson());
                 }

@@ -98,11 +98,17 @@ public class PmtctFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         //====================End of Necessary evil ====================================
 
         for (Map.Entry<String, BasePmtctHomeVisitAction> entry : concurrentHashMap.entrySet()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                actionList.putIfAbsent(entry.getKey(), entry.getValue());
-            } else {
-                actionList.put(entry.getKey(), entry.getValue());
+            if (!entry.getKey().equalsIgnoreCase(getString(R.string.next_visit))) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    actionList.putIfAbsent(entry.getKey(), entry.getValue());
+                } else {
+                    actionList.put(entry.getKey(), entry.getValue());
+                }
             }
+        }
+
+        if (map.containsKey(getString(R.string.next_visit))) {
+            actionList.put(getString(R.string.next_visit), map.get(getString(R.string.next_visit)));
         }
 
         if (mAdapter != null) {

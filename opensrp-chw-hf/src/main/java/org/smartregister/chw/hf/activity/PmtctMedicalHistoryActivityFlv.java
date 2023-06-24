@@ -211,7 +211,7 @@ public class PmtctMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActi
                 evaluateView(context, vals, tvNumberOfArvRegimesDaysDispensed, "other_reason_for_not_conducting_tb_test", R.string.pmtct_number_of_arv_regimes_days_dispensed, "");
 
 
-                evaluateView(context, vals, tvNextFacilityVisitDate, "pmtctc_next_facility_visit_date", R.string.next_facility_visit_date, "");
+                evaluateView(context, vals, tvNextFacilityVisitDate, "next_facility_visit_date", R.string.pmtct_next_facility_visit_date, "");
 
 
                 linearLayoutHealthFacilityVisitDetails.addView(view, 0);

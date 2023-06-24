@@ -60,6 +60,22 @@ public class HeiVisitUtils extends VisitUtils {
         }
     }
 
+    public static void manualProcessVisit(Visit visit) throws Exception {
+        List<Visit> manualProcessedVisits = new ArrayList<>();
+        VisitDetailsRepository visitDetailsRepository = PmtctLibrary.getInstance().visitDetailsRepository();
+        VisitRepository visitRepository = PmtctLibrary.getInstance().visitRepository();
+        manualProcessedVisits.add(visit);
+
+        processVisits(manualProcessedVisits, visitRepository, visitDetailsRepository);
+        for (Visit v : manualProcessedVisits) {
+            boolean confirmedNegative = isClientConfirmedNegative(v);
+            boolean confirmedPositive = isClientConfirmedPositive(v);
+            if (confirmedPositive || confirmedNegative) {
+                createCancelledEvent(v, confirmedPositive);
+            }
+        }
+    }
+
     public static boolean isClientConfirmedPositive(Visit visit) {
         try {
             JSONObject jsonObject = new JSONObject(visit.getJson());

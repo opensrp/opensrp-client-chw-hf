@@ -109,7 +109,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
     protected void onResumption() {
         super.onResumption();
         setupViews();
-        showHeiNumberOrRegistration(baseEntityId);
     }
 
     @Override
@@ -136,8 +135,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(R.string.hei_toolbar_title);
 
-        showHeiNumberOrRegistration(baseEntityId);
-
         textViewRecordPmtct.setText(R.string.record_followup);
         textViewRecordPmtct.setOnClickListener(this);
 
@@ -160,24 +157,35 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             showStatusLabel(R.string.lost_to_followup, org.smartregister.pmtct.R.drawable.high_risk_label, org.smartregister.pmtct.R.color.high_risk_text_red);
         }
 
-        if (shouldShowRecordFollowupVisitButton()) {
-            textViewRecordPmtct.setVisibility(View.VISIBLE);
-            visitDone.setVisibility(View.GONE);
-        } else {
-            textViewRecordPmtct.setVisibility(View.GONE);
-            visitDone.setVisibility(View.VISIBLE);
-        }
-
         Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP);
         if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
+            manualProcessVisit.setVisibility(View.VISIBLE);
+            manualProcessVisit.setOnClickListener(view -> {
+                try {
+                    HeiVisitUtils.manualProcessVisit(lastFollowupVisit);
+                    onResume();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
             showVisitInProgress();
             setUpEditButton();
+        } else {
+            if (shouldShowRecordFollowupVisitButton()) {
+                textViewRecordPmtct.setVisibility(View.VISIBLE);
+                visitDone.setVisibility(View.GONE);
+            } else {
+                textViewRecordPmtct.setVisibility(View.GONE);
+                visitDone.setVisibility(View.VISIBLE);
+            }
+            manualProcessVisit.setVisibility(View.GONE);
         }
 
         Map<String, String> motherDetails = getMotherDetails();
         if (motherDetails != null) {
             showMotherDetails(motherDetails);
         }
+        showHeiNumberOrRegistration(baseEntityId);
     }
 
     private void showMotherDetails(Map<String, String> motherDetails) {
@@ -212,7 +220,6 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         } else {
             String heiNumber = HeiDao.getHeiNumber(baseEntityId);
             textViewRecordHeiNumber.setVisibility(View.GONE);
-            textViewRecordPmtct.setVisibility(View.VISIBLE);
             if (heiNumber != null) {
                 textViewClientRegNumber.setVisibility(View.VISIBLE);
                 textViewClientRegNumber.setText(this.getString(R.string.hei_number, heiNumber));
@@ -254,6 +261,13 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
 
             startFormActivity(jsonForm);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshMedicalHistory(true);
+        setupViews();
     }
 
     public @Nullable

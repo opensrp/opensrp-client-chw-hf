@@ -13,7 +13,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vijay.jsonwizard.utils.FormUtils;
@@ -109,6 +107,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshMedicalHistory(true);
         setupViews();
         org.smartregister.util.Utils.startAsyncTask(new UpdateVisitDueTask(), null);
         ((PmtctProfilePresenter) profilePresenter).updateFollowupFeedback(baseEntityId);
@@ -307,8 +306,28 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
         }
         Visit lastFollowupVisit = getVisit(Constants.EVENT_TYPE.PMTCT_FOLLOWUP);
         if (lastFollowupVisit != null && !lastFollowupVisit.getProcessed()) {
+            if (PmtctVisitUtils.isVisitComplete(lastFollowupVisit)) {
+                manualProcessVisit.setVisibility(View.VISIBLE);
+                manualProcessVisit.setOnClickListener(view -> {
+                    try {
+                        PmtctVisitUtils.manualProcessVisit(lastFollowupVisit);
+                        onResume();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            } else {
+                manualProcessVisit.setVisibility(View.GONE);
+            }
             showVisitInProgress(org.smartregister.chw.hf.utils.Constants.Visits.PMTCT_VISIT);
             setUpEditButton();
+        } else {
+            manualProcessVisit.setVisibility(View.GONE);
+            textViewVisitDoneEdit.setVisibility(View.GONE);
+            visitDone.setVisibility(View.GONE);
+
+            textViewRecordPmtct.setVisibility(View.VISIBLE);
+            recordVisits.setVisibility(View.VISIBLE);
         }
 
         if (HfPmtctDao.hasTheClientTransferedOut(baseEntityId)) {
@@ -395,7 +414,7 @@ public class PmtctProfileActivity extends CorePmtctProfileActivity {
             if (textView.getText().equals(getResources().getString(R.string.record_ctc_number))) {
                 try {
                     startUpdateCtcNumber(PmtctProfileActivity.this, baseEntityId);
-                }catch (Exception e){
+                } catch (Exception e) {
                     Timber.e(e);
                 }
             } else {

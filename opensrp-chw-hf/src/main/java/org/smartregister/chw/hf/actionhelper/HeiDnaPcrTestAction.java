@@ -19,9 +19,15 @@ import timber.log.Timber;
 public class HeiDnaPcrTestAction implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper {
     protected MemberObject memberObject;
     private String jsonPayload;
+
     private String sample_id;
+
+    private String clinician_name;
+
     private Context context;
+
     private String subTitle;
+
     private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
 
     public HeiDnaPcrTestAction(MemberObject memberObject) {
@@ -50,6 +56,7 @@ public class HeiDnaPcrTestAction implements BasePmtctHomeVisitAction.PmtctHomeVi
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
             sample_id = CoreJsonFormUtils.getValue(jsonObject, "sample_id");
+            clinician_name = CoreJsonFormUtils.getValue(jsonObject, "clinician_name");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -72,7 +79,7 @@ public class HeiDnaPcrTestAction implements BasePmtctHomeVisitAction.PmtctHomeVi
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(sample_id))
+        if (StringUtils.isBlank(sample_id) || StringUtils.isBlank(clinician_name))
             return null;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -83,7 +90,7 @@ public class HeiDnaPcrTestAction implements BasePmtctHomeVisitAction.PmtctHomeVi
 
     @Override
     public BasePmtctHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(sample_id))
+        if (StringUtils.isBlank(sample_id) || StringUtils.isBlank(clinician_name) )
             return BasePmtctHomeVisitAction.Status.PENDING;
         else {
             return BasePmtctHomeVisitAction.Status.COMPLETED;
