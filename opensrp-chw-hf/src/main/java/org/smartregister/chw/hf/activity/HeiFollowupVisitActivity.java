@@ -52,7 +52,7 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         try {
             Runnable runnable = () -> HfScheduleTaskExecutor.getInstance().execute(memberObject.getBaseEntityId(), org.smartregister.chw.hf.utils.Constants.Events.HEI_FOLLOWUP, new Date());
             Utils.startAsyncTask(new RunnableTask(runnable), null);
-        }catch (Exception e){
+        } catch (Exception e) {
             Timber.e(e);
         }
         super.submittedAndClose();
@@ -114,7 +114,7 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         for (Map.Entry<String, BasePmtctHomeVisitAction> entry : actionList.entrySet()) {
             BasePmtctHomeVisitAction action = entry.getValue();
             if (
-                //Updated the condition to only allow submission if the action is not completed in the L&D Registration
+                    //Updated the condition to only allow submission if the action is not completed in the L&D Registration
                     (!action.isOptional() && (action.getActionStatus() != BasePmtctHomeVisitAction.Status.COMPLETED && action.isValid()))
                             || !action.isEnabled()
             ) {

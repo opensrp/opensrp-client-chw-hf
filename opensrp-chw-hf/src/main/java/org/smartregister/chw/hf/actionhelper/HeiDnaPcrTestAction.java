@@ -19,10 +19,15 @@ import timber.log.Timber;
 public class HeiDnaPcrTestAction implements BasePmtctHomeVisitAction.PmtctHomeVisitActionHelper {
     protected MemberObject memberObject;
     private String jsonPayload;
+
     private String sample_id;
+
     private String clinician_name;
+
     private Context context;
+
     private String subTitle;
+
     private BasePmtctHomeVisitAction.ScheduleStatus scheduleStatus;
 
     public HeiDnaPcrTestAction(MemberObject memberObject) {

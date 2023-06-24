@@ -47,7 +47,6 @@ import org.smartregister.chw.hf.presenter.HeiProfilePresenter;
 import org.smartregister.chw.hf.rule.HfHeiFollowupRule;
 import org.smartregister.chw.hf.utils.HeiVisitUtils;
 import org.smartregister.chw.hf.utils.HfChildUtils;
-import org.smartregister.chw.hf.utils.PmtctVisitUtils;
 import org.smartregister.chw.hiv.dao.HivDao;
 import org.smartregister.chw.hiv.domain.HivMemberObject;
 import org.smartregister.chw.pmtct.PmtctLibrary;
