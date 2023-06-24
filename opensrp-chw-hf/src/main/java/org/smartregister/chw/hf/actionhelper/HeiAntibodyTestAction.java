@@ -53,11 +53,6 @@ public class HeiAntibodyTestAction implements BasePmtctHomeVisitAction.PmtctHome
             JSONObject testAtAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "test_at_age");
             testAtAge.put(JsonFormUtils.VALUE, HeiDao.getNextHivTestAge(memberObject.getBaseEntityId()));
 
-            JSONObject actualAge = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "actual_age");
-            CommonPersonObjectClient client = getCommonPersonObjectClient(memberObject.getBaseEntityId());
-            actualAge.put(JsonFormUtils.VALUE, getDuration(org.smartregister.family.util.Utils.getValue(client.getColumnmaps(), org.smartregister.family.util.DBConstants.KEY.DOB, false)));
-
-
             return jsonObject.toString();
         } catch (JSONException e) {
             e.printStackTrace();

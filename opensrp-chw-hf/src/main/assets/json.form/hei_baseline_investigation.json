@@ -275,6 +275,13 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "visit_number",
         "type": "hidden"
+      },
+      {
+        "key": "actual_age",
+        "type": "hidden",
+        "openmrs_entity_id": "actual_age",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": ""
       }
     ]
   }

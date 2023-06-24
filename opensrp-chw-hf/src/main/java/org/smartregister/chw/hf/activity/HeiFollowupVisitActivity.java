@@ -11,9 +11,11 @@ import android.os.Bundle;
 import com.vijay.jsonwizard.constants.JsonFormConstants;
 import com.vijay.jsonwizard.domain.Form;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.task.RunnableTask;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.domain.JSONObjectHolder;
 import org.smartregister.chw.hf.interactor.HeiFollowupVisitInteractor;
 import org.smartregister.chw.hf.schedulers.HfScheduleTaskExecutor;
 import org.smartregister.chw.pmtct.activity.BasePmtctHomeVisitActivity;
@@ -35,6 +37,9 @@ import java.util.Map;
 import timber.log.Timber;
 
 public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
+    private long mLastExecutionTime = 0;
+    private static final long MINIMUM_INTERVAL_MS = 3000;
+
     public static void startHeiFollowUpActivity(Activity activity, String baseEntityID, Boolean editMode) {
         Intent intent = new Intent(activity, HeiFollowupVisitActivity.class);
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
@@ -70,10 +75,36 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         form.setActionBarBackground(org.smartregister.chw.core.R.color.family_actionbar);
         form.setWizard(false);
 
-        Intent intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
-        intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+
+        Intent intent;
+        try {
+            if (jsonForm.getString("encounter_type").equals("HEI Baseline Investigation")) {
+                // Set the large JSONObject in JSONObjectHolder
+                JSONObjectHolder.getInstance().setLargeJSONObject(jsonForm);
+                intent = new Intent(this, HfJsonWizardFormActivity.class);
+            } else {
+                intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
+                intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            intent = new Intent(this, Utils.metadata().familyMemberFormActivity);
+            intent.putExtra(org.smartregister.family.util.Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+        }
+
         intent.putExtra(org.smartregister.family.util.Constants.WizardFormActivity.EnableOnCloseDialog, false);
         intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, form);
+
+
+        //Necessary evil to disable multiple sequential clicks of actions that do sometimes cause app crushes
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - mLastExecutionTime < MINIMUM_INTERVAL_MS) {
+            // too soon to execute the function again, ignore this call
+            return;
+        }
+
+        // record the current time as the last execution time
+        mLastExecutionTime = currentTime;
         startActivityForResult(intent, JsonFormUtils.REQUEST_CODE_GET_JSON);
     }
 
@@ -114,7 +145,7 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         for (Map.Entry<String, BasePmtctHomeVisitAction> entry : actionList.entrySet()) {
             BasePmtctHomeVisitAction action = entry.getValue();
             if (
-                    //Updated the condition to only allow submission if the action is not completed in the L&D Registration
+                //Updated the condition to only allow submission if the action is not completed in the L&D Registration
                     (!action.isOptional() && (action.getActionStatus() != BasePmtctHomeVisitAction.Status.COMPLETED && action.isValid()))
                             || !action.isEnabled()
             ) {
