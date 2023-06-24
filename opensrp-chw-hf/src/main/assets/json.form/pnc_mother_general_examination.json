@@ -694,7 +694,7 @@
           "err": "Please enter why the client is in Lochia Rubra"
         },
         "v_regex": {
-          "value": "[A-Za-z\\s\.\-]*",
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
           "err": "Please enter valid reason why the client is in Lochia Rubra"
         },
         "relevance": {
@@ -716,7 +716,7 @@
           "err": "Please enter why the client is in Lochia Serosa "
         },
         "v_regex": {
-          "value": "[A-Za-z\\s\.\-]*",
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
           "err": "Please enter valid reason why the client is in Lochia Serosa"
         },
         "relevance": {
