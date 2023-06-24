@@ -628,7 +628,7 @@
     <string name="pmtct_reason_for_not_prescribing_arv">Reason for not prescribing ARVs:</string>
     <string name="pmtct_other_reason_for_not_prescribing_arv">Other reason for not prescribing ARVs:</string>
     <string name="pmtct_number_of_arv_regimes_days_dispensed">Number of ARVs days dispensed:</string>
-    <string name="pmtctc_next_facility_visit_date">Next Facility Visit Date:</string>
+    <string name="pmtct_next_facility_visit_date">Next Facility Visit Date:</string>
 
     <!-- PNC Medical History -->
     <string name="pnc_key_education_counselling_given">Education/counselling given</string>
