@@ -38,6 +38,7 @@ import timber.log.Timber;
 
 public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
     private long mLastExecutionTime = 0;
+
     private static final long MINIMUM_INTERVAL_MS = 3000;
 
     public static void startHeiFollowUpActivity(Activity activity, String baseEntityID, Boolean editMode) {
@@ -145,7 +146,7 @@ public class HeiFollowupVisitActivity extends BasePmtctHomeVisitActivity {
         for (Map.Entry<String, BasePmtctHomeVisitAction> entry : actionList.entrySet()) {
             BasePmtctHomeVisitAction action = entry.getValue();
             if (
-                //Updated the condition to only allow submission if the action is not completed in the L&D Registration
+                    //Updated the condition to only allow submission if the action is not completed in the L&D Registration
                     (!action.isOptional() && (action.getActionStatus() != BasePmtctHomeVisitAction.Status.COMPLETED && action.isValid()))
                             || !action.isEnabled()
             ) {
