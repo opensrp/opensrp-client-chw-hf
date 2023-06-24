@@ -683,6 +683,72 @@
         }
       },
       {
+        "key": "why_the_client_is_in_lochia_rubra",
+        "type": "edit_text",
+        "hint": "Uliza kwa nini mteja yuko na Ute mwekundu ukeni (lokia)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "why_the_client_is_in_lochia_rubra",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:lochia_assessment": {
+            "type": "string",
+            "ex": "equalTo(., \"lochia_rubra\")"
+          }
+        }
+      },
+      {
+        "key": "why_the_client_is_in_lochia_serosa",
+        "type": "edit_text",
+        "hint": "Uliza kwa nini mteja yuko na Ute wa pinki au kahawia ukeni (lokia)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "why_the_client_is_in_lochia_serosa",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:lochia_assessment": {
+            "type": "string",
+            "ex": "equalTo(., \"lochia_serosa\")"
+          }
+        }
+      },
+      {
+        "key": "why_the_client_is_in_lochia_alba",
+        "type": "edit_text",
+        "hint": "Uliza kwa nini mteja yuko na Ute mweupe ukeni",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "why_the_client_is_in_lochia_alba",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jibu swali hili"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Tafadhali jibu swali hili"
+        },
+        "relevance": {
+          "step1:lochia_assessment": {
+            "type": "string",
+            "ex": "equalTo(., \"lochia_alba\")"
+          }
+        }
+      },
+      {
         "key": "vaginal_assessment",
         "type": "native_radio",
         "label": "Tathmini ya uke",

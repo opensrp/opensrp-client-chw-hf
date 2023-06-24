@@ -533,6 +533,28 @@
         }
       },
       {
+        "key": "why_the_mother_decided_to_use_mixed_feeding",
+        "type": "edit_text",
+        "hint": "Ask why the Mother decided to use Mixed Feeding (MF)",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "why_the_mother_decided_to_use_mixed_feeding",
+        "openmrs_entity_parent": "",
+        "v_required": {
+          "value": true,
+          "err": "Please enter why the Mother decided to use Mixed Feeding (MF)"
+        },
+        "v_regex": {
+          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
+          "err": "Please enter valid reason why the Mother decided to use Mixed Feeding (MF)"
+        },
+        "relevance": {
+          "step1:feeding_options": {
+            "type": "string",
+            "ex": "equalTo(., \"mf\")"
+          }
+        }
+      },
+      {
         "key": "septicaemia",
         "type": "native_radio",
         "label": "Child has high risk of infection (Septicaemia)",
