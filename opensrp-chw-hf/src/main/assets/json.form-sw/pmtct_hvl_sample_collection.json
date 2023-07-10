@@ -72,19 +72,22 @@
           "Afisa Matibabu",
           "Afisa Matibabu msaidizi",
           "Afisa wa Kliniki ",
-          "Afisa wa Kliniki msaidizi"
+          "Afisa wa Kliniki msaidizi",
+          "Mfanyakazi wa Maabara"
         ],
         "keys": [
           "medical_officer",
           "assistant_medical_officer",
           "clinical_officer",
-          "assistant_clinical_officer"
+          "assistant_clinical_officer",
+          "laboratory_personnel"
         ],
         "openmrs_choice_ids": {
           "medical_officer": "medical_officer",
           "assistant_medical_officer": "assistant_medical_officer",
           "clinical_officer": "clinical_officer",
-          "assistant_clinical_officer": "assistant_clinical_officer"
+          "assistant_clinical_officer": "assistant_clinical_officer",
+          "laboratory_personnel": "laboratory_personnel"
         },
         "v_required": {
           "value": true,
