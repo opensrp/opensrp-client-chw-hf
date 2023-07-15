@@ -3,7 +3,6 @@ package org.smartregister.chw.hf.activity;
 import static org.smartregister.chw.core.utils.Utils.getDuration;
 import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
-import static org.smartregister.chw.hf.utils.JsonFormUtils.SYNC_LOCATION_ID;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.STEP1;
 import static org.smartregister.util.JsonFormUtils.VALUE;
@@ -28,34 +27,28 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.domain.MemberObject;
+import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.util.Constants;
 import org.smartregister.chw.anc.util.DBConstants;
 import org.smartregister.chw.core.domain.Child;
 import org.smartregister.chw.core.interactor.CoreChildProfileInteractor;
-import org.smartregister.chw.core.model.CoreAllClientsMemberModel;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.CoreJsonFormUtils;
-import org.smartregister.chw.core.utils.UpdateDetailsUtil;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.custom_view.PncNoMotherFloatingMenu;
 import org.smartregister.chw.hf.dao.HfChildDao;
 import org.smartregister.chw.hf.dao.HfPncDao;
-import org.smartregister.chw.hf.model.FamilyProfileModel;
 import org.smartregister.chw.hf.utils.HfChildUtils;
 import org.smartregister.chw.hf.utils.PncVisitUtils;
-import org.smartregister.chw.pmtct.util.NCUtils;
 import org.smartregister.chw.pnc.PncLibrary;
 import org.smartregister.chw.pnc.util.PncUtil;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.clientandeventmodel.Obs;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.family.contract.FamilyProfileContract;
-import org.smartregister.family.domain.FamilyEventClient;
-import org.smartregister.family.interactor.FamilyProfileInteractor;
 import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.Utils;
 
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -236,14 +229,7 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
                 String encounterType = form.getString(JsonFormUtils.ENCOUNTER_TYPE);
                 if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.PNC_CHILD_FOLLOWUP)) {
                     try {
-                        AllSharedPreferences allSharedPreferences = Utils.getAllSharedPreferences();
-                        Event baseEvent = org.smartregister.chw.anc.util.JsonFormUtils.processJsonForm(allSharedPreferences, jsonString, org.smartregister.chw.hf.utils.Constants.TableName.PNC_FOLLOWUP);
-                        org.smartregister.chw.pmtct.util.JsonFormUtils.tagEvent(allSharedPreferences, baseEvent);
                         JSONObject global = form.getJSONObject("global");
-                        baseEvent.setBaseEntityId(global.getString("baseEntityId"));
-
-                        NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.pmtct.util.JsonFormUtils.gson.toJson(baseEvent)));
-
                         JSONArray fields = form.getJSONObject(STEP1).getJSONArray(FIELDS);
                         JSONObject hivAntibodyTest = JsonFormUtils.getFieldJSONObject(fields, "hiv_antibody_test");
                         if (hivAntibodyTest != null && hivAntibodyTest.has(VALUE) && hivAntibodyTest.getString(VALUE).equalsIgnoreCase("positive")) {
@@ -253,18 +239,6 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
                     } catch (Exception ex) {
                         Timber.e(ex);
                     }
-                } else if (encounterType.equalsIgnoreCase(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION)) {
-                    String childBaseEntityId = form.getString(JsonFormUtils.ENTITY_ID);
-                    FamilyEventClient familyEventClient =
-                            new FamilyProfileModel(memberObject.getFamilyName()).processUpdateMemberRegistration(jsonString, childBaseEntityId);
-                    familyEventClient.getEvent().setEventType(CoreConstants.EventType.UPDATE_CHILD_REGISTRATION);
-                    new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
-                } else if (form.getString(JsonFormUtils.ENCOUNTER_TYPE).equals(org.smartregister.chw.core.utils.Utils.metadata().familyRegister.updateEventType)) {
-                    FamilyEventClient familyEventClient = new CoreAllClientsMemberModel().processJsonForm(jsonString, UpdateDetailsUtil.getFamilyBaseEntityId(getCommonPersonObjectClient()));
-                    JSONObject syncLocationField = CoreJsonFormUtils.getJsonField(new JSONObject(jsonString), STEP1, SYNC_LOCATION_ID);
-                    familyEventClient.getEvent().setLocationId(CoreJsonFormUtils.getSyncLocationUUIDFromDropdown(syncLocationField));
-                    familyEventClient.getEvent().setEntityType(CoreConstants.TABLE_NAME.INDEPENDENT_CLIENT);
-                    new FamilyProfileInteractor().saveRegistration(familyEventClient, jsonString, true, (FamilyProfileContract.InteractorCallBack) pncMemberProfilePresenter());
                 }
             } catch (JSONException jsonException) {
                 Timber.e(jsonException);
@@ -298,5 +272,22 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
         org.smartregister.chw.anc.util.NCUtils.addEvent(allSharedPreferences, baseEvent);
         org.smartregister.chw.anc.util.NCUtils.startClientProcessing();
 
+    }
+
+    @Override
+    public void setLastVisit(Date lastVisitDate) {
+        Visit lastFollowupVisit = getVisit(org.smartregister.chw.hf.utils.Constants.Events.PNC_CHILD_FOLLOWUP);
+
+        if (lastFollowupVisit != null) {
+            rlLastVisit.setVisibility(View.VISIBLE);
+            view_last_visit_row.setVisibility(View.VISIBLE);
+            String x = lastFollowupVisit.getDate().toString();
+            tvLastVisitDate.setText(MessageFormat.format(getString(org.smartregister.chw.pnc.R.string.pnc_last_visit_text), x));
+        }
+    }
+
+    @Override
+    public void openMedicalHistory() {
+        PncNoMotherChildMedicalHistoryActivity.startMe(this, memberObject);
     }
 }
