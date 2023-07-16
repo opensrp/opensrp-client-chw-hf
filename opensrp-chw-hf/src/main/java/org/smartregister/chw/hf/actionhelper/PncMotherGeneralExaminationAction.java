@@ -3,6 +3,8 @@ package org.smartregister.chw.hf.actionhelper;
 import android.content.Context;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.MemberObject;
@@ -10,6 +12,7 @@ import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.model.BaseAncHomeVisitAction;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.dao.HfPncDao;
 
 import java.util.List;
 import java.util.Map;
@@ -40,6 +43,8 @@ public class PncMotherGeneralExaminationAction implements BaseAncHomeVisitAction
 
         try {
             JSONObject jsonObject = new JSONObject(jsonPayload);
+            int period = Days.daysBetween(new DateTime(HfPncDao.getPNCDeliveryDate(memberObject.getBaseEntityId())), new DateTime()).getDays();
+            jsonObject.getJSONObject("global").put("pnc_day", period);
             return jsonObject.toString();
         } catch (Exception e) {
             Timber.e(e);
@@ -74,8 +79,7 @@ public class PncMotherGeneralExaminationAction implements BaseAncHomeVisitAction
 
     @Override
     public String evaluateSubTitle() {
-        if (StringUtils.isBlank(systolic))
-            return null;
+        if (StringUtils.isBlank(systolic)) return null;
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(context.getString(R.string.mother_general_examination_complete));
@@ -85,8 +89,7 @@ public class PncMotherGeneralExaminationAction implements BaseAncHomeVisitAction
 
     @Override
     public BaseAncHomeVisitAction.Status evaluateStatusOnPayload() {
-        if (StringUtils.isBlank(systolic))
-            return BaseAncHomeVisitAction.Status.PENDING;
+        if (StringUtils.isBlank(systolic)) return BaseAncHomeVisitAction.Status.PENDING;
         else {
             return BaseAncHomeVisitAction.Status.COMPLETED;
         }
