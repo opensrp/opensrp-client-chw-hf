@@ -75,6 +75,11 @@
                     "value": "0",
                     "err": "Tarakimu ulioingiza inatakiwa iwe sawa au kubuwa kuliko 0"
                 },
+                "v_max_length": {
+                "value": "3",
+                "is_fixed_size": "true",
+                "err": "Idadi ya wateja wa kike waliofikiwa haitakiwi kuzidi 999"
+            },
                 "v_required": {
                     "value": true,
                     "err": "Tafadhali ingiza nambar"
@@ -94,6 +99,11 @@
                 "v_min": {
                     "value": "0",
                     "err": "Tarakimu ulioingiza inatakiwa iwe sawa au kubuwa kuliko 0"
+                },
+                "v_max_length": {
+                    "value": "3",
+                    "is_fixed_size": "true",
+                    "err": "Idadi ya wateja wa kike waliofikiwa haitakiwi kuzidi 999"
                 },
                 "v_required": {
                     "value": true,
@@ -123,6 +133,11 @@
                     "value": "0",
                     "err": "Tarakimu ulioingiza inatakiwa iwe sawa au kubuwa kuliko 0"
                 },
+                "v_max_length": {
+                    "value": "4",
+                    "is_fixed_size": "true",
+                    "err": "Idadi ya kondomu za kike zilizotolewa haitakiwi kuzidi 9999"
+                },
                 "v_required": {
                     "value": true,
                     "err": "Tafadhali ingiza nambar"
@@ -142,6 +157,11 @@
                 "v_min": {
                     "value": "0",
                     "err": "Tarakimu ulioingiza inatakiwa iwe sawa au kubuwa kuliko 0"
+                },
+                "v_max_length": {
+                    "value": "4",
+                    "is_fixed_size": "true",
+                    "err": "Idadi ya kondomu za kike zilizotolewa haitakiwi kuzidi 9999"
                 },
                 "v_required": {
                     "value": true,
