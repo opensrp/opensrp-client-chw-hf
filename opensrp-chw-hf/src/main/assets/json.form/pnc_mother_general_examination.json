@@ -41,6 +41,7 @@
     },
     "encounter_location": ""
   },
+  "global": {},
   "step1": {
     "title": "Mother's General Examination",
     "fields": [
@@ -683,6 +684,22 @@
         }
       },
       {
+        "key": "prompt_for_lochia_assessment",
+        "type": "toaster_notes",
+        "text": " Manage according to SOP and guideline",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "why_the_client_is_in_lochia_rubra",
         "type": "edit_text",
         "hint": "Ask why the client is in Lochia Rubra",
@@ -698,9 +715,10 @@
           "err": "Please enter valid reason why the client is in Lochia Rubra"
         },
         "relevance": {
-          "step1:lochia_assessment": {
-            "type": "string",
-            "ex": "equalTo(., \"lochia_rubra\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
           }
         }
       },
@@ -720,9 +738,10 @@
           "err": "Please enter valid reason why the client is in Lochia Serosa"
         },
         "relevance": {
-          "step1:lochia_assessment": {
-            "type": "string",
-            "ex": "equalTo(., \"lochia_serosa\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
           }
         }
       },
@@ -742,9 +761,10 @@
           "err": "Please enter valid reason why the client is in Lochia Alba"
         },
         "relevance": {
-          "step1:lochia_assessment": {
-            "type": "string",
-            "ex": "equalTo(., \"lochia_alba\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
           }
         }
       },

@@ -33,3 +33,33 @@ priority: 1
 condition: "!global_anti_body_test_conducted && global_is_a_child_without_mother"
 actions:
   - "isRelevant = true"
+---
+name: step1_why_the_client_is_in_lochia_rubra
+description: why_the_client_is_in_lochia_rubra
+priority: 1
+condition: "step1_lochia_assessment == 'lochia_rubra' && global_pnc_day > 4"
+actions:
+  - "isRelevant = true"
+---
+name: step1_why_the_client_is_in_lochia_serosa
+description: why_the_client_is_in_lochia_serosa
+priority: 1
+condition: "step1_lochia_assessment == 'lochia_serosa' && (global_pnc_day < 4  || global_pnc_day > 10 )"
+actions:
+  - "isRelevant = true"
+---
+name: step1_why_the_client_is_in_lochia_alba
+description: why_the_client_is_in_lochia_alba
+priority: 1
+condition: "step1_lochia_assessment == 'lochia_alba'  && (global_pnc_day < 10  || global_pnc_day > 28 )"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_lochia_assessment
+description: prompt_for_lochia_assessment
+priority: 1
+condition: "(step1_lochia_assessment == 'lochia_rubra' && global_pnc_day > 4) ||
+            (step1_lochia_assessment == 'lochia_serosa' && (global_pnc_day < 4  || global_pnc_day > 10 )) ||
+            (step1_lochia_assessment == 'lochia_alba'  && (global_pnc_day < 10  || global_pnc_day > 28 ))"
+actions:
+  - "isRelevant = true"

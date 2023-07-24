@@ -324,6 +324,9 @@
             android:name=".activity.PncMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name=".activity.PncNoMotherChildMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.AllClientsRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />

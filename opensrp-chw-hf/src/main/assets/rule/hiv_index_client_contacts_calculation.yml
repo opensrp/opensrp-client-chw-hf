@@ -25,11 +25,20 @@ description: set relationship
 priority: 1
 condition: "true"
 actions:
-  - "calculation = step2_age_calculated < 15 ? (step2_age_calculated < (global_index_client_age - 15) && global_index_client_age > 15) ? step2_relationship_under_15_for_possible_children : step2_relationship_under_15
-                  : (step2_age_calculated >= 15 && step2_age_calculated < 19) ? (step2_age_calculated < (global_index_client_age - 15)) ? step2_relationship_above_15_to_18_possible_children : step2_relationship_above_15_to_18
-                  : (step2_age_calculated >= 19 && step2_sex.equals('Female') && (step2_age_calculated > (global_index_client_age + 15) && global_index_client_age < 19)) ? step2_relationship_above_18_possible_parents_female
-                  : (step2_age_calculated >= 19 && step2_sex.equals('Male') && (step2_age_calculated > (global_index_client_age + 15) && global_index_client_age < 19)) ? step2_relationship_above_18_possible_parents_male
-                  : step2_relationship_above_18;"
+  - "calculation =
+                  step2_age_calculated < 15 ?
+                    (
+                      (step2_age_calculated < (global_index_client_age - 15) && global_index_client_age > 15) ? step2_relationship_under_15_for_possible_children
+                      : step2_relationship_under_15
+                    )
+                  : (step2_age_calculated >= 15 && step2_age_calculated < 19) ?
+                    (
+                      (step2_age_calculated < (global_index_client_age - 15)) ? step2_relationship_above_15_to_18_possible_children
+                      : step2_relationship_above_15_to_18
+                    )
+                  : (step2_age_calculated >= 19 && step2_sex.equalsIgnoreCase('Female') && (step2_age_calculated > (global_index_client_age + 15) && global_index_client_age < 19)) ? step2_relationship_above_18_possible_parents_female
+                  : (step2_age_calculated >= 19 && step2_sex.equalsIgnoreCase('Male') && (step2_age_calculated > (global_index_client_age + 15) && global_index_client_age < 19)) ? step2_relationship_above_18_possible_parents_male
+                  : step2_relationship_above_18"
 ---
 name: step2_first_name
 description: set first name as the one added in step one
