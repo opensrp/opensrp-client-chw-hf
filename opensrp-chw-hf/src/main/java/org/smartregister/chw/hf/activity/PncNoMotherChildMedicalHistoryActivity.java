@@ -64,8 +64,10 @@ public class PncNoMotherChildMedicalHistoryActivity extends CorePncMedicalHistor
     }
 
     private class HfMedicalHistoryFlavor extends BaMedicalHistoryActivityHelper {
-        private final StyleSpan boldSpan = new StyleSpan(android.graphics.Typeface.BOLD);
+        private final StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+
         private final StyleSpan italicSpan = new StyleSpan(Typeface.ITALIC);
+
         private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
         public void processViewData(List<GroupedVisit> groupedVisits, Context context, MemberObject memberObject) {
@@ -195,7 +197,7 @@ public class PncNoMotherChildMedicalHistoryActivity extends CorePncMedicalHistor
                     nutritionDetails.add(spannableStringBuilder);
                 }
                 MedicalHistory medicalHistory = new MedicalHistory();
-                medicalHistory.setTitle(context.getString(titleStringResourceId) + " " + ++visitNumber + " : " + simpleDateFormat.format(date));
+                medicalHistory.setTitle(context.getString(titleStringResourceId) + " " + (visitNumber + 1) + " : " + simpleDateFormat.format(date));
                 medicalHistory.setSpannableStringBuilders(nutritionDetails);
 
                 if (medicalHistories == null) {
