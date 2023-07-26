@@ -1271,6 +1271,22 @@
           }
         },
         {
+          "column_name": "child_hepatitis_b_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "child_hepatitis_b_vaccination"
+          }
+        },
+        {
+          "column_name": "child_vitamin_k_injection",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "child_vitamin_k_injection"
+          }
+        },
+        {
           "column_name": "weight",
           "type": "Event",
           "json_mapping": {

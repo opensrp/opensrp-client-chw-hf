@@ -34,6 +34,13 @@ condition: "!global_anti_body_test_conducted && global_is_a_child_without_mother
 actions:
   - "isRelevant = true"
 ---
+name: step1_prompt_for_collecting_dbs
+description: prompt_for_collecting_dbs
+priority: 1
+condition: "!global_anti_body_test_conducted && global_is_a_child_without_mother && step1_hiv_antibody_test == 'positive'"
+actions:
+  - "isRelevant = true"
+---
 name: step1_why_the_client_is_in_lochia_rubra
 description: why_the_client_is_in_lochia_rubra
 priority: 1

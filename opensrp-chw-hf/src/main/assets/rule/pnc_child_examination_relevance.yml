@@ -2,14 +2,14 @@
 name: step1_child_bcg_vaccination
 description: child_bcg_vaccination relevance
 priority: 1
-condition: "!global_is_eligible_for_bcg"
+condition: "global_is_eligible_for_bcg"
 actions:
   - "isRelevant = true"
 ---
 name: step1_child_opv0_vaccination
 description: child_opv0_vaccination relevance
 priority: 1
-condition: "!global_is_eligible_for_opv0"
+condition: "global_is_eligible_for_opv0"
 actions:
   - "isRelevant = true"
 ---
@@ -17,5 +17,61 @@ name: step1_kangaroo_enrollment
 description: kangaroo_enrollment relevance
 priority: 1
 condition: "global_is_eligible_for_kangaroo"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_hepatitis_b_vaccination
+description: child_hepatitis_b_vaccination relevance
+priority: 1
+condition: "global_is_eligible_for_hepatitis_b"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_hepatitis_b_not_provided
+description: prompt_for_hepatitis_b_not_provided relevance
+priority: 1
+condition: "step1_child_hepatitis_b_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_hepatitis_b_vacc
+description: reason_for_not_providing_hepatitis_b_vacc relevance
+priority: 1
+condition: "step1_child_hepatitis_b_vaccination.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_providing_hepatitis_b_injection
+description: other_reason_for_not_providing_hepatitis_b_injection relevance
+priority: 1
+condition: "step1_reason_for_not_providing_hepatitis_b_vacc.contains('others')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_child_vitamin_k_injection
+description: child_vitamin_k_injection relevance
+priority: 1
+condition: "global_is_eligible_for_vitamin_k_injection"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_vitamin_k_not_provided
+description: prompt_for_vitamin_k_not_provided relevance
+priority: 1
+condition: "step1_child_vitamin_k_injection.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_not_providing_vitamin_k_injection
+description: reason_for_not_providing_vitamin_k_injection relevance
+priority: 1
+condition: "step1_child_vitamin_k_injection.contains('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_other_reason_for_not_providing_vitamin_k_injection
+description: other_reason_for_not_providing_vitamin_k_injection relevance
+priority: 1
+condition: "step1_reason_for_not_providing_vitamin_k_injection.contains('others')"
 actions:
   - "isRelevant = true"

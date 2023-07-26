@@ -98,6 +98,9 @@ public class HfChwRepository extends CoreChwRepository {
                 case 18:
                     upgradeToVersion18(db);
                     break;
+                case 19:
+                    upgradeToVersion19(db);
+                    break;
                 default:
                     break;
             }
@@ -384,6 +387,15 @@ public class HfChwRepository extends CoreChwRepository {
     private static void upgradeToVersion18(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN next_visit_date TEXT NULL;");
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private static void upgradeToVersion19(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_child ADD COLUMN child_hepatitis_b_vaccination TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_child ADD COLUMN child_vitamin_k_injection TEXT NULL;");
         } catch (Exception e) {
             Timber.e(e);
         }

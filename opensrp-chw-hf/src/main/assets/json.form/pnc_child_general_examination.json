@@ -324,6 +324,22 @@
         }
       },
       {
+        "key": "prompt_for_collecting_dbs",
+        "type": "toaster_notes",
+        "text": "Collect the child's Dbs sample",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_mother_general_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "reason_for_not_conducting_hiv_antibody_test",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -911,6 +927,192 @@
           "step1:child_opv0_vaccination": {
             "type": "string",
             "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "child_hepatitis_b_vaccination",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_hepatitis_b_vaccination",
+        "type": "native_radio",
+        "label": "Was Hepatitis B vaccination administered?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_hepatitis_b_not_provided",
+        "type": "toaster_notes",
+        "text": "The client should be given Hepatitis B Vaccine",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_hepatitis_b_vacc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_hepatitis_b_vacc",
+        "type": "spinner",
+        "hint": "Reason as to why the Hepatitis B vaccine was not administered",
+        "values": [
+          "Out of stock vaccine",
+          "Others (Specify)"
+        ],
+        "keys": [
+          "out_of_stock_vaccine",
+          "others"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock_vaccine": "out_of_stock_vaccine",
+          "others": "others"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_hepatitis_b_injection",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_hepatitis_b_injection",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "child_vitamin_k_injection",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "child_vitamin_k_injection",
+        "type": "native_radio",
+        "label": "Was Vitamin K Injection administered?",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_vitamin_k_not_provided",
+        "type": "toaster_notes",
+        "text": "The client should be given Vitamin K",
+        "openmrs_entity_id": "",
+        "openmrs_entity": "",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reason_for_not_providing_vitamin_k_injection",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_not_providing_vitamin_k_injection",
+        "type": "spinner",
+        "hint": "Reason as to why the Vitamin K Injection was not administered",
+        "values": [
+          "Out of stock",
+          "Others (Specify)"
+        ],
+        "keys": [
+          "out_of_stock_vaccine",
+          "others"
+        ],
+        "openmrs_choice_ids": {
+          "out_of_stock": "out_of_stock",
+          "others": "others"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please select a reason"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_reason_for_not_providing_vitamin_k_injection",
+        "type": "edit_text",
+        "hint": "Please specify the other reason(s)",
+        "openmrs_entity_id": "other_reason_for_not_providing_vitamin_k_injection",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "pnc_child_examination_relevance.yml"
+            }
           }
         }
       },
