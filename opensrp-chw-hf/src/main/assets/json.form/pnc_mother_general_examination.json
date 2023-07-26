@@ -710,10 +710,6 @@
           "value": true,
           "err": "Please enter why the client is in Lochia Rubra"
         },
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter valid reason why the client is in Lochia Rubra"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -733,10 +729,6 @@
           "value": true,
           "err": "Please enter why the client is in Lochia Serosa "
         },
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter valid reason why the client is in Lochia Serosa"
-        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -755,10 +747,6 @@
         "v_required": {
           "value": true,
           "err": "Please enter why the client is in Lochia Alba "
-        },
-        "v_regex": {
-          "value": "[A-Za-z\\u00C0-\\u017F\\s\\u00C0-\\u017F\\.\\-\\']*",
-          "err": "Please enter valid reason why the client is in Lochia Alba"
         },
         "relevance": {
           "rules-engine": {
