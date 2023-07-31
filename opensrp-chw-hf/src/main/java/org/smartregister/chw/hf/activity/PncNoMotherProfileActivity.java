@@ -93,6 +93,11 @@ public class PncNoMotherProfileActivity extends PncMemberProfileActivity {
             jsonForm.getJSONObject("global").put("is_eligible_for_opv0", ageInDays <= 14 && HfPncDao.isChildEligibleForOpv0(childBaseEntityId));
             jsonForm.getJSONObject("global").put("anti_body_test_conducted", HfPncDao.hasHivAntibodyTestBeenConducted(childBaseEntityId));
             jsonForm.getJSONObject("global").put("is_a_child_without_mother", HfPncDao.isAChildWithoutMother(childBaseEntityId));
+
+
+            jsonForm.getJSONObject("global").put("is_eligible_for_hepatitis_b", HfPncDao.isChildEligibleForHepatitisB(childBaseEntityId));
+            jsonForm.getJSONObject("global").put("is_eligible_for_vitamin_k_injection", HfPncDao.isChildEligibleForVitaminK(childBaseEntityId));
+
             activity.startActivityForResult(org.smartregister.chw.core.utils.FormUtils.getStartFormActivity(jsonForm, activity.getString(R.string.record_child_followup), activity), JsonFormUtils.REQUEST_CODE_GET_JSON);
         } catch (JSONException e) {
             Timber.e(e);

@@ -23,7 +23,7 @@ actions:
 name: step1_prompt_for_moulding
 description: prompt for moulding
 priority: 1
-condition: "step1_moulding_options == 'sutures_overlapped_reducible' ||  step1_moulding_options == 'sutures_overlapped_not_reducible'"
+condition: "(step1_moulding.contains('yes') || global_moulding.contains('yes')) && (step1_moulding_options == 'sutures_overlapped_reducible' ||  step1_moulding_options == 'sutures_overlapped_not_reducible')"
 actions:
   - "isRelevant = true"
 ---

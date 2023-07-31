@@ -13,7 +13,7 @@ public class HfPncDao extends PNCDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_bcg_vaccination");
         List<String> res = readData(sql, dataMap);
 
-        return res != null && res.size() > 0 && res.get(0) != null;
+        return res == null || res.size() == 0 || res.get(0) == null;
     }
 
     public static boolean isChildEligibleForOpv0(String baseEntityId) {
@@ -22,7 +22,25 @@ public class HfPncDao extends PNCDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_opv0_vaccination");
         List<String> res = readData(sql, dataMap);
 
-        return res != null && res.size() > 0 && res.get(0) != null;
+        return res == null || res.size() == 0 || res.get(0) == null;
+    }
+
+    public static boolean isChildEligibleForHepatitisB(String baseEntityId) {
+        String sql = "SELECT child_hepatitis_b_vaccination FROM ec_child WHERE child_hepatitis_b_vaccination = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_hepatitis_b_vaccination");
+        List<String> res = readData(sql, dataMap);
+
+        return res == null || res.size() == 0 || res.get(0) == null;
+    }
+
+    public static boolean isChildEligibleForVitaminK(String baseEntityId) {
+        String sql = "SELECT child_vitamin_k_injection FROM ec_child WHERE child_vitamin_k_injection = 'yes' AND base_entity_id = '" + baseEntityId + "'";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "child_vitamin_k_injection");
+        List<String> res = readData(sql, dataMap);
+
+        return res == null || res.size() == 0 || res.get(0) == null;
     }
 
     public static boolean isMotherEligibleForHepB(String baseEntityId) {
