@@ -470,6 +470,7 @@ public class HfPmtctDao extends CorePmtctDao {
             date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(res.get(0));
         } catch (ParseException e) {
             e.printStackTrace();
+            date = new Date();
         }
 
         return date;

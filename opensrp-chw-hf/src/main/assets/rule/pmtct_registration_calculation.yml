@@ -26,3 +26,10 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = !step1_first_line.equals('') ? step1_first_line : (!step1_second_line.equals('') ? step1_second_line : (!step1_third_line.equals('') ? step1_third_line : ''))"
+---
+name: step1_next_facility_visit_date
+description: next facility visit date is date today if the client is transfer in else the next facility visit date is null
+priority: 1
+condition: "step1_is_transfer_in_client.equals('yes')"
+actions:
+  - "calculation = step1_is_transfer_in_client.contains('yes') ? helper.getDateToday() : '' "
