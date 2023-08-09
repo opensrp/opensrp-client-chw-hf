@@ -109,30 +109,6 @@ public class HeiFollowupVisitInteractorFlv implements PmtctFollowupVisitInteract
             //update visit number
             JSONObject visitNumber = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "visit_number");
             visitNumber.put(JsonFormUtils.VALUE, HeiDao.getVisitNumber(memberObject.getBaseEntityId()));
-
-            int age = getAgeInMonthsFromDate(memberObject.getDob());
-            JSONObject infantFeedingPractice = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "infant_feeding_practice");
-            JSONArray values = infantFeedingPractice.getJSONArray("values");
-            JSONArray keys = infantFeedingPractice.getJSONArray("keys");
-            if (age < 7) {
-                values.remove(5);
-                values.remove(4);
-                values.remove(3);
-
-                keys.remove(5);
-                keys.remove(4);
-                keys.remove(3);
-
-            } else {
-                values.remove(2);
-                values.remove(1);
-                values.remove(0);
-
-                keys.remove(2);
-                keys.remove(1);
-                keys.remove(0);
-            }
-
         } catch (JSONException e) {
             Timber.e(e);
         }
