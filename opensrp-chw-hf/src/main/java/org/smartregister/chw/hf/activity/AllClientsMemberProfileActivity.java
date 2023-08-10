@@ -1,5 +1,6 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.core.utils.CoreReferralUtils.getCommonRepository;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonEditFormString;
 import static org.smartregister.util.Utils.getName;
@@ -42,7 +43,9 @@ import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.kvp.dao.KvpDao;
 import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.family.adapter.ViewPagerAdapter;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
@@ -59,6 +62,13 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        CommonRepository commonRepository = org.smartregister.family.util.Utils.context().commonrepository(org.smartregister.family.util.Utils.metadata().familyMemberRegister.tableName);
+
+        // show profile view
+        CommonPersonObject personObject = commonRepository.findByBaseEntityId(baseEntityId);
+        commonPersonObject = new CommonPersonObjectClient(personObject.getCaseId(), personObject.getDetails(), "");
+        commonPersonObject.setColumnmaps(personObject.getColumnmaps());
+
         String gender = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
         menu.findItem(R.id.action_location_info).setVisible(true);
         menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
@@ -73,8 +83,13 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
             menu.findItem(R.id.action_anc_registration).setVisible(true);
             menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
             menu.findItem(R.id.action_pmtct_register).setVisible(true);
-        } else
+        } else {
             menu.findItem(R.id.action_anc_registration).setVisible(false);
+            menu.findItem(R.id.action_pregnancy_confirmation).setVisible(false);
+            menu.findItem(R.id.action_anc_registration).setVisible(false);
+            menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
+            menu.findItem(R.id.action_pmtct_register).setVisible(false);
+        }
 
         if (HealthFacilityApplication.getApplicationFlavor().hasLD()) {
             menu.findItem(R.id.action_ld_registration).setVisible(isOfReproductiveAge(commonPersonObject, gender) && gender.equalsIgnoreCase("female") && !LDDao.isRegisteredForLD(baseEntityId));
@@ -389,4 +404,9 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
                 Constants.JSON_FORM.ANC_TRANSFER_IN_REGISTRATION, null, familyBaseEntityId, familyName);
     }
 
+    @Override
+    protected void onResumption() {
+        super.onResumption();
+        invalidateOptionsMenu();
+    }
 }

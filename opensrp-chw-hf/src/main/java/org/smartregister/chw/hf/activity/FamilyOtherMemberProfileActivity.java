@@ -39,7 +39,9 @@ import org.smartregister.chw.hiv.dao.HivIndexDao;
 import org.smartregister.chw.hivst.dao.HivstDao;
 import org.smartregister.chw.kvp.dao.KvpDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
+import org.smartregister.commonregistry.CommonPersonObject;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
+import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
 import org.smartregister.family.model.BaseFamilyOtherMemberProfileActivityModel;
 import org.smartregister.family.util.DBConstants;
@@ -73,6 +75,10 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        CommonRepository commonRepository = org.smartregister.family.util.Utils.context().commonrepository(org.smartregister.family.util.Utils.metadata().familyMemberRegister.tableName);
+        CommonPersonObject personObject = commonRepository.findByBaseEntityId(baseEntityId);
+        commonPersonObject = new CommonPersonObjectClient(personObject.getCaseId(), personObject.getDetails(), "");
+        commonPersonObject.setColumnmaps(personObject.getColumnmaps());
         setupMenuOptions(menu);
         return true;
     }
@@ -294,6 +300,10 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
                 menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
                 menu.findItem(R.id.action_pmtct_register).setVisible(true);
+            }else{
+                menu.findItem(R.id.action_pregnancy_confirmation).setVisible(false);
+                menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
+                menu.findItem(R.id.action_pmtct_register).setVisible(false);
             }
             menu.findItem(R.id.action_fp_change).setVisible(false);
             menu.findItem(R.id.action_fp_initiation).setVisible(false);
@@ -343,5 +353,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
         } else {
             return false;
         }
+    }
+
+    @Override
+    protected void onResumption() {
+        super.onResumption();
+        invalidateOptionsMenu();
     }
 }
