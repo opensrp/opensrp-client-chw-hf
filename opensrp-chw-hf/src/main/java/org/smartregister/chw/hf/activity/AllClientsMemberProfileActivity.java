@@ -6,6 +6,7 @@ import static org.smartregister.chw.hf.utils.JsonFormUtils.getAutoPopulatedJsonE
 import static org.smartregister.util.Utils.getName;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -407,6 +408,12 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     @Override
     protected void onResumption() {
         super.onResumption();
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         invalidateOptionsMenu();
     }
 }

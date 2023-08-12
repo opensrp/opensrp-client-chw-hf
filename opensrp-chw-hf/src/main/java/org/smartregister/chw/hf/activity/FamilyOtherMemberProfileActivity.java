@@ -4,6 +4,7 @@ import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -358,6 +359,12 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void onResumption() {
         super.onResumption();
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         invalidateOptionsMenu();
     }
 }
