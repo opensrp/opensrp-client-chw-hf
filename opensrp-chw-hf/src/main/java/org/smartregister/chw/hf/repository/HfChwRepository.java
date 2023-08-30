@@ -403,6 +403,7 @@ public class HfChwRepository extends CoreChwRepository {
             Timber.e(e);
         }
     }
+
     private static void upgradeToVersion20(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
