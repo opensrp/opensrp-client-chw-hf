@@ -6,6 +6,8 @@ import static org.smartregister.chw.hf.utils.Constants.JsonForm.HIV_REGISTRATION
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -91,8 +93,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startPncRegister() {
-        PncRegisterActivity.startPncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName, null, false);
+        PncRegisterActivity.startPncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber, CoreConstants.JSON_FORM.getPregnancyOutcome(), null, familyBaseEntityId, familyName, null, false);
     }
 
     @Override
@@ -215,11 +216,9 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     protected void startEditMemberJsonForm(Integer title_resource, CommonPersonObjectClient client) {
         JSONObject form;
         if (title_resource != null) {
-            form = baJsonFormUtils.getAutoJsonEditMemberFormString(getResources().getString(title_resource), CoreConstants.JSON_FORM.getFamilyMemberRegister(),
-                    this, client, Utils.metadata().familyMemberRegister.updateEventType, familyName, commonPersonObject.getCaseId().equalsIgnoreCase(primaryCaregiver));
+            form = baJsonFormUtils.getAutoJsonEditMemberFormString(getResources().getString(title_resource), CoreConstants.JSON_FORM.getFamilyMemberRegister(), this, client, Utils.metadata().familyMemberRegister.updateEventType, familyName, commonPersonObject.getCaseId().equalsIgnoreCase(primaryCaregiver));
         } else {
-            form = baJsonFormUtils.getAutoJsonEditMemberFormString(null, CoreConstants.JSON_FORM.getFamilyMemberRegister(),
-                    this, client, Utils.metadata().familyMemberRegister.updateEventType, familyName, commonPersonObject.getCaseId().equalsIgnoreCase(primaryCaregiver));
+            form = baJsonFormUtils.getAutoJsonEditMemberFormString(null, CoreConstants.JSON_FORM.getFamilyMemberRegister(), this, client, Utils.metadata().familyMemberRegister.updateEventType, familyName, commonPersonObject.getCaseId().equalsIgnoreCase(primaryCaregiver));
         }
         try {
             startFormActivity(form);
@@ -229,10 +228,8 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
-    protected BaseProfileContract.Presenter getFamilyOtherMemberActivityPresenter(
-            String familyBaseEntityId, String baseEntityId, String familyHead, String primaryCaregiver, String villageTown, String familyName) {
-        return new FamilyOtherMemberActivityPresenter(this, new BaseFamilyOtherMemberProfileActivityModel(),
-                null, familyBaseEntityId, baseEntityId, familyHead, primaryCaregiver, villageTown, familyName);
+    protected BaseProfileContract.Presenter getFamilyOtherMemberActivityPresenter(String familyBaseEntityId, String baseEntityId, String familyHead, String primaryCaregiver, String villageTown, String familyName) {
+        return new FamilyOtherMemberActivityPresenter(this, new BaseFamilyOtherMemberProfileActivityModel(), null, familyBaseEntityId, baseEntityId, familyHead, primaryCaregiver, villageTown, familyName);
     }
 
     @Override
@@ -301,7 +298,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(true);
                 menu.findItem(R.id.action_pregnancy_out_come).setVisible(true);
                 menu.findItem(R.id.action_pmtct_register).setVisible(true);
-            }else{
+            } else {
                 menu.findItem(R.id.action_pregnancy_confirmation).setVisible(false);
                 menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
                 menu.findItem(R.id.action_pmtct_register).setVisible(false);
@@ -342,8 +339,7 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
 
     protected void startPregnancyConfirmation() {
-        AncRegisterActivity.startAncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber,
-                CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION, null, familyBaseEntityId, familyName);
+        AncRegisterActivity.startAncRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId, PhoneNumber, CoreConstants.JSON_FORM.ANC_PREGNANCY_CONFIRMATION, null, familyBaseEntityId, familyName);
     }
 
     private boolean isOfReproductiveAge(CommonPersonObjectClient commonPersonObject, String gender) {
@@ -359,12 +355,20 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     @Override
     protected void onResumption() {
         super.onResumption();
-        invalidateOptionsMenu();
+        delayInvalidateOptionsMenu();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        invalidateOptionsMenu();
+        delayInvalidateOptionsMenu();
+    }
+
+    private void delayInvalidateOptionsMenu() {
+        try {
+            new Handler(Looper.getMainLooper()).postDelayed(this::invalidateOptionsMenu, 2000);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
     }
 }
