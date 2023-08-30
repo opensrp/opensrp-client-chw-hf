@@ -384,7 +384,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE eaf.visit_number = 1
-                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (medical_surgical_history LIKE '%pregnant_more_than_four%' OR parity >= 4)
                         AND (date(fm.dob, '+15 years') <= date('now'))
                         AND (date(fm.dob, '+20 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -681,7 +681,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE eaf.visit_number = 1
-                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (medical_surgical_history LIKE '%pregnant_more_than_four%' OR parity >= 4)
                         AND (date(fm.dob, '+20 years') <= date('now'))
                         AND (date(fm.dob, '+25 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -964,7 +964,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE eaf.visit_number = 1
-                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (medical_surgical_history LIKE '%pregnant_more_than_four%' OR parity >= 4)
                         AND (date(fm.dob, '+25 years') <= date('now'))
                         AND (date(fm.dob, '+30 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1226,7 +1226,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE eaf.visit_number = 1
-                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (medical_surgical_history LIKE '%pregnant_more_than_four%' OR parity >= 4)
                         AND (date(fm.dob, '+30 years') <= date('now'))
                         AND (date(fm.dob, '+35 years') > date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
@@ -1483,7 +1483,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE eaf.visit_number = 1
-                        AND medical_surgical_history LIKE '%pregnant_more_than_four%'
+                        AND (medical_surgical_history LIKE '%pregnant_more_than_four%' OR parity >= 4)
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
@@ -1499,7 +1499,7 @@ indicators:
                                INNER JOIN ec_family_member fm on fm.base_entity_id = ear.base_entity_id
                                INNER JOIN ec_anc_followup eaf on fm.base_entity_id = eaf.entity_id
                       WHERE eaf.visit_number = 1
-                        AND medical_surgical_history LIKE '%first_pregnancy_at_or_above_thirty_five%'
+                        AND (medical_surgical_history LIKE '%first_pregnancy_at_or_above_thirty_five%' or gravida = '1')
                         AND (date(fm.dob, '+35 years') <= date('now'))
                         AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
                             date(substr(strftime('%Y-%m-%d', datetime(eaf.visit_date / 1000, 'unixepoch', 'localtime')), 1, 4) ||
