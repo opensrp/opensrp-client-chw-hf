@@ -3680,6 +3680,14 @@
           }
         },
         {
+          "column_name": "last_appointment_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "last_appointment_date"
+          }
+        },
+        {
           "column_name": "date_of_death",
           "type": "Event",
           "json_mapping": {
