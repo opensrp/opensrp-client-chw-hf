@@ -94,6 +94,32 @@ public class LTFUFeedbackDao extends AbstractDao {
         return null;
     }
 
+    public static Date getLastAppointmentDate(String taskId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "last_appointment_date");
+
+        String sql = "SELECT last_appointment_date  from " + TABLE_NAME +
+                " WHERE referral_task_id = '" + taskId + "' ";
+        List<String> res = readData(sql, dataMap);
+
+        if (res != null && res.size() > 0 && res.get(0) != null) {
+            Calendar cal = Calendar.getInstance();
+            try {
+                cal.setTimeInMillis(new BigDecimal(res.get(0)).longValue());
+            } catch (Exception e) {
+                //NEEDED FOR THE ISSUE IN SOME TABLETS FAILING TO CREATE A TIMESTAMP
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                try {
+                    cal.setTime(sdf.parse(res.get(0)));
+                } catch (ParseException parseException) {
+                    Timber.e(parseException);
+                    return null;
+                }
+            }
+            return new Date(cal.getTimeInMillis());
+        }
+        return null;
+    }
+
     public static String getReasonClientNotFound(String taskId) {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "reason_client_not_found");
 

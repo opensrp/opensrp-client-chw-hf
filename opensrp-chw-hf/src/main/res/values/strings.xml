@@ -381,6 +381,7 @@
     <string name="obstetric_history_title">Obstetric History</string>
     <string name="para_obstretric_history">Para {0}: Obstetric History</string>
     <string name="promised_return_date">Promised Return Date</string>
+    <string name="last_visit_date">Last Visit Date</string>
     <string name="date_of_death">Date of Death</string>
     <string name="reasons">Reason</string>
     <string name="followup_status">Followup Status</string>
@@ -1253,6 +1254,7 @@
     <string name="referral_submitted_successfully">Referral sent successfully</string>
     <string name="referral_submitted">Referral sent successfully</string>
     <string name="ltfu_title">LTFU</string>
+    <string name="successful_ltfu_title">Successful LTFU Referrals</string>
     <string name="hts_return_to_previous_page">Return to all hts clients</string>
 
 </resources>

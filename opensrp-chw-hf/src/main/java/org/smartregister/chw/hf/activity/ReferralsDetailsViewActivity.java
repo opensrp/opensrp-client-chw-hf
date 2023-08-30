@@ -52,6 +52,9 @@ public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
     private CustomFontTextView dateOfDeath;
     private LinearLayout returnDateLayout;
     private CustomFontTextView returnDate;
+
+    private CustomFontTextView returnDateLabel;
+
     private CustomFontTextView feedBackDate;
     private CustomFontTextView feedBackFollowupStatus;
     private CustomFontTextView referralType;
@@ -118,6 +121,7 @@ public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
         dateOfDeath = findViewById(R.id.date_of_death);
         returnDateLayout = findViewById(R.id.return_date_layout);
         returnDate = findViewById(R.id.return_date);
+        returnDateLabel = findViewById(R.id.return_date_label);
 
         ViewGroup problemLayout = findViewById(R.id.client_referral_problem_layout);
         ViewGroup preManagementServicesServices = findViewById(R.id.client_pre_referral_management_layout);
@@ -162,20 +166,30 @@ public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
             if (reasons != null) {
                 feedBackReasons.setText(getTranslatedReasonsForMissedAppointment(reasons, this));
             }
-            returnDateLayout.setVisibility(View.VISIBLE);
-            returnDate.setText(dateFormatter.format(LTFUFeedbackDao.getReferralAppointmentDate(task.getIdentifier())));
-        }
-
-        if (followupStatus != null && followupStatus.equalsIgnoreCase("deceased")) {
-            dateOfDeathLayout.setVisibility(View.VISIBLE);
-            dateOfDeath.setText(dateFormatter.format(LTFUFeedbackDao.getDateOfDeath(task.getIdentifier())));
-        }
-
-        if (followupStatus != null && followupStatus.equalsIgnoreCase("client_not_found")) {
+            Date dateOfReturn = LTFUFeedbackDao.getReferralAppointmentDate(task.getIdentifier());
+            if (dateOfReturn != null) {
+                returnDateLayout.setVisibility(View.VISIBLE);
+                returnDateLabel.setText(R.string.promised_return_date);
+                returnDate.setText(dateFormatter.format(dateOfReturn));
+            }
+        } else if (followupStatus != null && followupStatus.equalsIgnoreCase("deceased")) {
+            Date deathDate = LTFUFeedbackDao.getDateOfDeath(task.getIdentifier());
+            if (deathDate != null) {
+                dateOfDeathLayout.setVisibility(View.VISIBLE);
+                dateOfDeath.setText(dateFormatter.format(deathDate));
+            }
+        } else if (followupStatus != null && followupStatus.equalsIgnoreCase("client_not_found")) {
             feedBackReasonsLayout.setVisibility(View.VISIBLE);
             String reasons = LTFUFeedbackDao.getReasonClientNotFound(task.getIdentifier());
             if (reasons != null) {
                 feedBackReasons.setText(getTranslatedReasonClientNotFound(reasons, this));
+            }
+        } else if (followupStatus != null && followupStatus.equalsIgnoreCase("continuing_with_services")) {
+            Date lastVisitDate = LTFUFeedbackDao.getLastAppointmentDate(task.getIdentifier());
+            if (lastVisitDate != null) {
+                returnDateLayout.setVisibility(View.VISIBLE);
+                returnDate.setText(dateFormatter.format(lastVisitDate));
+                returnDateLabel.setText(R.string.last_visit_date);
             }
         }
 
@@ -242,14 +256,14 @@ public class ReferralsDetailsViewActivity extends ReferralDetailsViewActivity {
                 default:
                     return removeSquareBrackets(key);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Timber.e(e);
         }
         return "";
     }
 
-    private String removeSquareBrackets(String text){
-        if(text.startsWith("[") && text.endsWith("]")){
+    private String removeSquareBrackets(String text) {
+        if (text.startsWith("[") && text.endsWith("]")) {
             return text.substring(1, text.length() - 1).toUpperCase();
         }
         return text.toUpperCase();

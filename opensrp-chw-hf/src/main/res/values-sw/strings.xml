@@ -298,6 +298,7 @@
     <string name="ltfu_clinic_pmtct">PMTCT</string>
     <string name="ltfu_clinic_tb">TB</string>
     <string name="promised_return_date">Tarehe aliyoahidi kurudi</string>
+    <string name="last_visit_date">Tarehe ya hudhurio la mwisho</string>
     <string name="date_of_death">Tarehe ya kifo</string>
     <string name="reasons">Sababu</string>
     <string name="followup_status">Matokeo ya Ufuatiliaji</string>
