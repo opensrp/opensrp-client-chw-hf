@@ -293,6 +293,36 @@
         }
       },
       {
+        "key": "medication_purchased_externally_and_used_under_clinician_supervision",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "medication_purchased_externally_and_used_under_clinician_supervision",
+        "label": "Did the client purchase the Medication/Supplements outside of the facility and take it?",
+        "text_color": "#000000",
+        "type": "native_radio",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes"
+          },
+          {
+            "key": "no",
+            "text": "No"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an answer"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "anc_rv_pharmacy_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "pharmacy_completion_status",
         "type": "hidden",
         "openmrs_entity": "concept",
