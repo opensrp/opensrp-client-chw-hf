@@ -169,7 +169,8 @@
               }
             }
           ],
-          "required_status": "yes:Please select where the test was conducted"
+          "required_status": "yes:Please select where the test was conducted",
+          "subjects": "action_taken_hiv_problems:map"
         },
         {
           "name": "other_where_was_test_conducted",

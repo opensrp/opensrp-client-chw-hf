@@ -5,3 +5,12 @@ priority: 1
 condition: "global_gestational_age >= 13 && !global_deworming_given"
 actions:
   - "isRelevant = true"
+---
+name: step1_medication_purchased_externally_and_used_under_clinician_supervision
+description: medication_purchased_externally_and_used_under_clinician_supervision relevance
+priority: 1
+condition: "step1_reason_for_giving_folic_acid.contains('out_of_stock') ||
+            step1_reason_for_not_giving_iron_folate_supplements.contains('out_of_stock') ||
+            step1_reason_for_not_giving_deworming_medication.contains('out_of_stock')"
+actions:
+  - "isRelevant = true"
