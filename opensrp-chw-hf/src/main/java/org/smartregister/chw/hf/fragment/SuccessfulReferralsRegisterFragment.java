@@ -50,7 +50,7 @@ public class SuccessfulReferralsRegisterFragment extends BaseReferralRegisterFra
 
     @Override
     protected int getToolBarTitle() {
-        return R.string.issued_referrals;
+        return R.string.successful_ltfu_title;
     }
 
     @Override

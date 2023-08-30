@@ -39,8 +39,7 @@ public class LTFURegisterActivity extends BaseReferralRegister implements Bottom
         bottomNavigationView = findViewById(org.smartregister.R.id.bottom_navigation);
         bottomNavigationView.getMenu().clear();
 
-        bottomNavigationView.inflateMenu(R.menu.referrals_bottom_nav_menu);
-        bottomNavigationView.getMenu().removeItem(R.id.action_issued_referrals);
+        bottomNavigationView.inflateMenu(R.menu.ltfu_bottom_nav_menu);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
@@ -49,7 +48,7 @@ public class LTFURegisterActivity extends BaseReferralRegister implements Bottom
         if (menuItem.getItemId() == R.id.action_home) {
             switchToFragment(0);
             return true;
-        } else if (menuItem.getItemId() == R.id.action_completed_referrals) {
+        } else if (menuItem.getItemId() == R.id.action_completed_ltfu) {
             switchToFragment(1);
             return true;
         } else
