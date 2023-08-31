@@ -347,7 +347,7 @@ public class HfChwRepository extends CoreChwRepository {
     private static void upgradeToVersion17(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
-            RefreshIndicatorQueries(db);
+            refreshIndicatorQueries(db);
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -373,7 +373,7 @@ public class HfChwRepository extends CoreChwRepository {
     private static void upgradeToVersion20(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
-            RefreshIndicatorQueries(db);
+            refreshIndicatorQueries(db);
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -395,7 +395,7 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
-    private static void RefreshIndicatorQueries(SQLiteDatabase db){
+    private static void refreshIndicatorQueries(SQLiteDatabase db){
         try {
             ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
             String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
