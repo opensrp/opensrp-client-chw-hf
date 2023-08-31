@@ -67,6 +67,7 @@ public class Constants extends CoreConstants {
         public static final String MARK_HEI_CLIENT_AS_LTF = "Mark HEI Client As LTF";
         public static final String HEI_COMMUNITY_FOLLOWUP = "HEI Community Followup";
         public static final String HEI_NUMBER_REGISTRATION = "HEI Number Registration";
+        public static final String EDIT_HEI_NUMBER = "Edit HEI Number";
         public static final String LD_REGISTRATION = "LD Registration";
         public static final String LD_PARTOGRAPHY = "LD Partograph";
         public static final String LD_GENERAL_EXAMINATION = "LD General Examination";

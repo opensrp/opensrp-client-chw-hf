@@ -470,7 +470,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     ((HeiProfilePresenter) profilePresenter).createHeiCommunityFollowupReferralEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), HeiDao.getMotherBaseEntityId(baseEntityId));
                 }
-                if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.HEI_NUMBER_REGISTRATION)) {
+                if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.HEI_NUMBER_REGISTRATION) ||
+                        encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.EDIT_HEI_NUMBER)) {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     ((HeiProfilePresenter) profilePresenter).createHeiNumberRegistrationEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), baseEntityId);
                 }
