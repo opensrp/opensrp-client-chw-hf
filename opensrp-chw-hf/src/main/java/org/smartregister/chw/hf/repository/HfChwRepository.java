@@ -347,7 +347,56 @@ public class HfChwRepository extends CoreChwRepository {
     private static void upgradeToVersion17(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
+            refreshIndicatorQueries(db);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
 
+    private static void upgradeToVersion18(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN next_visit_date TEXT NULL;");
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private static void upgradeToVersion19(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_child ADD COLUMN child_hepatitis_b_vaccination TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_child ADD COLUMN child_vitamin_k_injection TEXT NULL;");
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private static void upgradeToVersion20(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
+            refreshIndicatorQueries(db);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+
+
+    private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;");
+            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN has_primary_caregiver VARCHAR;");
+            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN primary_caregiver_name VARCHAR;");
+
+            DatabaseMigrationUtils.createAddedECTables(db,
+                    new HashSet<>(Arrays.asList("ec_hiv_register", "ec_hiv_outcome", "ec_hiv_community_followup", "ec_tb_register", "ec_tb_outcome", "ec_tb_community_followup", "ec_hiv_community_feedback", "ec_tb_community_feedback")),
+                    HealthFacilityApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion10");
+        }
+    }
+
+    private static void refreshIndicatorQueries(SQLiteDatabase db){
+        try {
             ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
             String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
 
@@ -374,7 +423,7 @@ public class HfChwRepository extends CoreChwRepository {
                         Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
                                 pmtctIndicatorConfigFile, pncIndicatorConfigFile,
                                 cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
-                                motherChampionReportingIndicatorConfigFile,selfTestingIndicatorConfigFile,kvpTestingIndicatorConfigFile,ltfuIndicatorConfigFile))) {
+                                motherChampionReportingIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile))) {
                     reportingLibraryInstance.readConfigFile(configFile, db);
                 }
 
@@ -382,49 +431,8 @@ public class HfChwRepository extends CoreChwRepository {
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(BuildConfig.VERSION_CODE));
             }
-        } catch (Exception e) {
+        }catch (Exception e){
             Timber.e(e);
-        }
-    }
-
-    private static void upgradeToVersion18(SQLiteDatabase db) {
-        try {
-            db.execSQL("ALTER TABLE ec_prep_register ADD COLUMN next_visit_date TEXT NULL;");
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-    }
-
-    private static void upgradeToVersion19(SQLiteDatabase db) {
-        try {
-            db.execSQL("ALTER TABLE ec_child ADD COLUMN child_hepatitis_b_vaccination TEXT NULL;");
-            db.execSQL("ALTER TABLE ec_child ADD COLUMN child_vitamin_k_injection TEXT NULL;");
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-    }
-
-    private static void upgradeToVersion20(SQLiteDatabase db) {
-        try {
-            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-    }
-
-
-
-    private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
-        try {
-            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;");
-            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN has_primary_caregiver VARCHAR;");
-            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN primary_caregiver_name VARCHAR;");
-
-            DatabaseMigrationUtils.createAddedECTables(db,
-                    new HashSet<>(Arrays.asList("ec_hiv_register", "ec_hiv_outcome", "ec_hiv_community_followup", "ec_tb_register", "ec_tb_outcome", "ec_tb_community_followup", "ec_hiv_community_feedback", "ec_tb_community_feedback")),
-                    HealthFacilityApplication.createCommonFtsObject());
-        } catch (Exception e) {
-            Timber.e(e, "upgradeToVersion10");
         }
     }
 }

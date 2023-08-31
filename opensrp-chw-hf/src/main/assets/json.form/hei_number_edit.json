@@ -1,0 +1,81 @@
+{
+  "count": "1",
+  "encounter_type": "Edit HEI Number",
+  "entity_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "163149AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "163150AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "163151AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "163152AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": ""
+  },
+  "step1": {
+    "title": "HEI Number Registration",
+    "fields": [
+      {
+        "key": "hei_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "hei_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######-C##",
+        "mask_hint": "1234567891234567",
+        "allowed_chars": "0123456789",
+        "hint": "HEI Number",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6}-C\\d{2})?",
+          "err": "HEI number should be of the format (XX-XX-XXXX-XXXXXX-CXX)"
+        },
+        "v_max_length": {
+          "value": "21",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid HEI Number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid HEI Number"
+        }
+      },
+      {
+        "key": "previous_hei_number",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "previous_hei_number",
+        "openmrs_entity_parent": "",
+        "type": "hidden"
+      }
+    ]
+  }
+}

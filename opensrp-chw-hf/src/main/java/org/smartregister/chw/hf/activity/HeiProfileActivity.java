@@ -5,6 +5,7 @@ import static org.smartregister.AllConstants.LocationConstants.SPECIAL_TAG_FOR_O
 import static org.smartregister.chw.core.utils.Utils.getCommonPersonObjectClient;
 import static org.smartregister.chw.core.utils.Utils.getDuration;
 import static org.smartregister.chw.core.utils.Utils.updateToolbarTitle;
+import static org.smartregister.chw.hf.utils.Constants.JsonForm.getEditHeiNumber;
 import static org.smartregister.chw.hf.utils.Constants.JsonForm.getHeiNumberRegistration;
 import static org.smartregister.client.utils.constants.JsonFormConstants.FIELDS;
 import static org.smartregister.client.utils.constants.JsonFormConstants.STEP1;
@@ -263,6 +264,31 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
         }
     }
 
+    private void editHeiNumber() {
+        JSONObject jsonForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(getEditHeiNumber());
+        try {
+            JSONArray fields = jsonForm.getJSONObject(STEP1).getJSONArray(FIELDS);
+            JSONObject heiNumberJsonField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hei_number");
+
+            String motherBaseEntityId = HeiDao.getMotherBaseEntityId(baseEntityId);
+            HivMemberObject hivMemberObject = HivDao.getMember(motherBaseEntityId);
+            if (hivMemberObject != null && StringUtils.isNotBlank(hivMemberObject.getCtcNumber()) && heiNumberJsonField != null) {
+                String motherCtcNumber = hivMemberObject.getCtcNumber();
+                String heiNumberMask = motherCtcNumber + "-C##";
+                heiNumberJsonField.put("mask", heiNumberMask);
+            }
+
+            JSONObject previousHeiNumberJsonField = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "previous_hei_number");
+            String heiNumber = HeiDao.getHeiNumber(baseEntityId);
+            if (previousHeiNumberJsonField != null) {
+                previousHeiNumberJsonField.put(VALUE, heiNumber);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        startFormActivity(jsonForm);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -405,6 +431,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                 Timber.e(e);
             }
             return true;
+        } else if (itemId == R.id.action_edit_hei_number) {
+            editHeiNumber();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -417,6 +445,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
             menu.findItem(R.id.action_issue_pmtct_followup_referral).setVisible(true);
             menu.findItem(R.id.action_issue_pmtct_followup_referral).setTitle(R.string.issue_hei_community_referal);
         }
+
+        menu.findItem(R.id.action_edit_hei_number).setVisible(HeiDao.hasHeiNumber(baseEntityId));
 
         menu.findItem(R.id.action_remove_member).setVisible(true);
         return true;
@@ -440,7 +470,8 @@ public class HeiProfileActivity extends BasePmtctProfileActivity {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     ((HeiProfilePresenter) profilePresenter).createHeiCommunityFollowupReferralEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), HeiDao.getMotherBaseEntityId(baseEntityId));
                 }
-                if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.HEI_NUMBER_REGISTRATION)) {
+                if (encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.HEI_NUMBER_REGISTRATION) ||
+                        encounterType.equals(org.smartregister.chw.hf.utils.Constants.Events.EDIT_HEI_NUMBER)) {
                     AllSharedPreferences allSharedPreferences = org.smartregister.util.Utils.getAllSharedPreferences();
                     ((HeiProfilePresenter) profilePresenter).createHeiNumberRegistrationEvent(allSharedPreferences, data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON), baseEntityId);
                 }
