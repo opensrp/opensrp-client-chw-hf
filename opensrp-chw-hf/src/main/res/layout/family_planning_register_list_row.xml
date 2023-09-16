@@ -133,7 +133,7 @@
             android:textAllCaps="false"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/vaccine_blue_bg_st"
-            android:textSize="@dimen/fp_register_list_due_size"
+            android:textSize="@dimen/register_list_due_size"
             android:typeface="normal" />
 
     </LinearLayout>

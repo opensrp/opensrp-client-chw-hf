@@ -34,11 +34,6 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
     }
 
     @Override
-    protected void openProfile(CommonPersonObjectClient client) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(client.getCaseId()));
-    }
-
-    @Override
     public String getDueCondition() {
         return " " + CoreConstants.TABLE_NAME.FP_MEMBER + ".base_entity_id in ("
                 + HfReferralUtils.getReferralDueFilter(CoreConstants.TABLE_NAME.FP_MEMBER, CoreConstants.TASKS_FOCUS.FP_SIDE_EFFECTS)
@@ -46,7 +41,12 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
     }
 
     @Override
-    protected void openFollowUpVisit(CommonPersonObjectClient client) {
-        //Do nothing - no Family Planning Followup visits for Health Facility
+    protected void openProfile(String baseEntityId) {
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(baseEntityId));
+    }
+
+    @Override
+    protected void openFollowUpVisit(String baseEntityId) {
+        super.openFollowUpVisit(baseEntityId);
     }
 }

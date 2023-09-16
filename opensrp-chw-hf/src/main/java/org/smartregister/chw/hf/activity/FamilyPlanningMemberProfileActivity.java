@@ -9,13 +9,11 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
-import org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.core.utils.FpUtil;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
+import org.smartregister.chw.fp.domain.Visit;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
@@ -28,8 +26,6 @@ import org.smartregister.domain.Task;
 
 import java.util.Set;
 
-import timber.log.Timber;
-
 public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 
     private CommonPersonObjectClient commonPersonObjectClient;
@@ -37,7 +33,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     public static void startFpMemberProfileActivity(Activity activity, FpMemberObject memberObject) {
         Intent intent = new Intent(activity, FamilyPlanningMemberProfileActivity.class);
         passToolbarTitle(activity, intent);
-        intent.putExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT, memberObject);
+        intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.MEMBER_OBJECT, memberObject);
         activity.startActivity(intent);
     }
 
@@ -91,50 +87,62 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     @Override
     protected void initializePresenter() {
         showProgressBar(true);
-        fpProfilePresenter = new HfFamilyPlanningMemberProfilePresenter(this, new HfFamilyPlanningProfileInteractor(this), fpMemberObject);
-    }
-
-    @Override
-    public void openFamilyPlanningRegistration() {
-        FpRegisterActivity.startFpRegistrationActivity(this, fpMemberObject.getBaseEntityId(), fpMemberObject.getAge(), CoreConstants.JSON_FORM.getFpRegistrationForm(fpMemberObject.getGender()), FamilyPlanningConstants.ActivityPayload.UPDATE_REGISTRATION_PAYLOAD_TYPE);
-    }
-
-    @Override
-    public void openUpcomingServices() {
-        CoreFpUpcomingServicesActivity.startMe(this, FpUtil.toMember(fpMemberObject));
+        fpProfilePresenter = new HfFamilyPlanningMemberProfilePresenter(this, new HfFamilyPlanningProfileInteractor(), fpMemberObject);
     }
 
     @Override
     public void openMedicalHistory() {
-        OnMemberTypeLoadedListener onMemberTypeLoadedListener = memberType -> {
 
-            switch (memberType.getMemberType()) {
-                case CoreConstants.TABLE_NAME.ANC_MEMBER:
-                    AncMedicalHistoryActivity.startMe(FamilyPlanningMemberProfileActivity.this, memberType.getMemberObject());
-                    break;
-                case CoreConstants.TABLE_NAME.PNC_MEMBER:
-                    PncMedicalHistoryActivity.startMe(FamilyPlanningMemberProfileActivity.this, memberType.getMemberObject());
-                    break;
-                case CoreConstants.TABLE_NAME.CHILD:
-                    ChildMedicalHistoryActivity.startMe(FamilyPlanningMemberProfileActivity.this, memberType.getMemberObject());
-                    break;
-                default:
-                    Timber.v("Member info undefined");
-                    break;
-            }
-        };
-        executeOnLoaded(onMemberTypeLoadedListener);
     }
 
     @Override
-    public void updateFollowUpVisitStatusRow(Visit lastVisit) {
-        setupFollowupVisitEditViews(false);
-        hideFollowUpVisitButton();
+    public Visit getLastVisit() {
+        return null;
     }
 
     @Override
-    protected void startMalariaRegister() {
-        //Implements from Super
+    public boolean getIsClientUsingFpMethod() {
+        return false;
+    }
+
+    @Override
+    public boolean isFirstVisit() {
+        return false;
+    }
+
+    @Override
+    public void startPointOfServiceDeliveryForm() {
+
+    }
+
+    @Override
+    public void startFpCounselingForm() {
+
+    }
+
+    @Override
+    public void startFpScreeningForm() {
+
+    }
+
+    @Override
+    public void startProvideFpMethod() {
+
+    }
+
+    @Override
+    public void startProvideOtherServices() {
+
+    }
+
+    @Override
+    public void startFpFollowupVisit() {
+
+    }
+
+    @Override
+    public void showFollowUpVisitButton() {
+
     }
 
     @Override
@@ -144,7 +152,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     @Override
     protected void startFamilyPlanningRegistrationActivity() {
-        FpRegisterActivity.startFpRegistrationActivity(this, fpMemberObject.getBaseEntityId(), fpMemberObject.getAge(), CoreConstants.JSON_FORM.getFpChangeMethodForm(fpMemberObject.getGender()), FamilyPlanningConstants.ActivityPayload.CHANGE_METHOD_PAYLOAD_TYPE);
+        FpRegisterActivity.startFpRegistrationActivity(this, fpMemberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getFpChangeMethodForm(fpMemberObject.getGender()));
     }
 
     @Override
@@ -155,17 +163,6 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     @Override
     public void notifyHasPhone(boolean b) {
         // TODO -> Implement for HF
-    }
-
-
-    @Override
-    protected void startMalariaFollowUpVisit() {
-        // TODO -> Implement for HF
-    }
-
-    @Override
-    protected void startHfMalariaFollowupForm() {
-        MalariaFollowUpVisitActivityHelper.startMalariaFollowUpActivity(this, fpMemberObject.getBaseEntityId());
     }
 
 }
