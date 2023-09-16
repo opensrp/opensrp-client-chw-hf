@@ -112,6 +112,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
+    protected void startIntegratedCommunityCaseManagementEnrollment() {
+        //Not Required
+    }
+
+    @Override
     protected void startHivRegister() {
         try {
             HivRegisterActivity.startHIVFormActivity(this, baseEntityId, HIV_REGISTRATION, (new FormUtils()).getFormJsonFromRepositoryOrAssets(this, HIV_REGISTRATION).toString());
