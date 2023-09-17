@@ -42,7 +42,7 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
 
     @Override
     protected void openProfile(String baseEntityId) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), FpDao.getMember(baseEntityId));
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(getActivity(), baseEntityId);
     }
 
     @Override

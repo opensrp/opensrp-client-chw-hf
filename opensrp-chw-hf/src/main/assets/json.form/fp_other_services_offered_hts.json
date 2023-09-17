@@ -1,0 +1,216 @@
+{
+  "count": "1",
+  "encounter_type": "HTS",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "HTS",
+    "fields": [
+      {
+        "key": "client_hiv_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_hiv_test_results",
+        "type": "native_radio",
+        "label": "Client HIV test results",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "client_referred_to_ctc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_referred_to_ctc",
+        "type": "native_radio",
+        "label": "Has the client been referred to CTC?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_hts_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "partner_tested_for_hiv",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_tested_for_hiv",
+        "type": "native_radio",
+        "label": "Was partner tested for HIV?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "partner_hiv_test_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_hiv_test_results",
+        "type": "native_radio",
+        "label": "Partner HIV test results",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_hts_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "partner_referred_to_ctc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "partner_referred_to_ctc",
+        "type": "native_radio",
+        "label": "Has the partner been referred to CTC?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_hts_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

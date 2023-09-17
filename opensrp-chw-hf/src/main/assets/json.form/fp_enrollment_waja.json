@@ -1,0 +1,173 @@
+
+{
+  "count": "1",
+  "encounter_type": "FP Enrollment",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "FP Enrollment",
+    "fields": [
+      {
+        "key": "client_registration_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_registration_number",
+        "type": "mask_edit_text",
+        "mask": "####/###",
+        "mask_hint": "1234567",
+        "allowed_chars": "0123456789",
+        "hint": "Family planning registration number?",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{4}/\\d{3})?",
+          "err": "Family planning registration number should be of the format (XXXX/XXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Please enter a valid family planning  registration number"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Please enter a valid family planning  registration number"
+        }
+      },
+      {
+        "key": "client_fp_method_used",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_fp_method_used",
+        "type": "native_radio",
+        "label": "Client family planning method used",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "pop",
+            "text": "POP",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pop"
+          },
+          {
+            "key": "coc",
+            "text": "COC",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "coc"
+          },
+          {
+            "key": "ecp",
+            "text": "ECP",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ecp"
+          },
+          {
+            "key": "injectable",
+            "text": "Injectable",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "injectable"
+          },
+          {
+            "key": "condom",
+            "text": "Condom",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "condom"
+          },
+          {
+            "key": "jadelle",
+            "text": "Jadelle",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "jadelle"
+          },
+          {
+            "key": "implanon",
+            "text": "Implanon",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "implanon"
+          },
+          {
+            "key": "iucd",
+            "text": "IUCD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "iucd"
+          },
+          {
+            "key": "sdm",
+            "text": "SDM",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sdm"
+          },
+          {
+            "key": "lam",
+            "text": "LAM",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lam"
+          },
+          {
+            "key": "vasectomy",
+            "text": "Vasectomy",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "vasectomy"
+          },
+          {
+            "key": "btl",
+            "text": "BTL",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "btl"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      }
+    ]
+  }
+}

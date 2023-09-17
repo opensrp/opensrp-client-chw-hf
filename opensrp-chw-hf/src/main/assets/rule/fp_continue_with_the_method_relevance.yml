@@ -1,0 +1,7 @@
+---
+name: step1_method_expired_prompt
+description: method_expired_prompt relevance
+priority: 1
+condition: "step1_method_expired.equalsIgnoreCase('yes') || step1_client_want_continue_fp.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"

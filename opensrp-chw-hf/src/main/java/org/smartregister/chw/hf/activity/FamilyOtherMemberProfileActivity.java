@@ -307,8 +307,8 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
                 menu.findItem(R.id.action_pregnancy_out_come).setVisible(false);
                 menu.findItem(R.id.action_pmtct_register).setVisible(false);
             }
-            menu.findItem(R.id.action_fp_change).setVisible(false);
-            menu.findItem(R.id.action_fp_initiation).setVisible(false);
+
+            menu.findItem(R.id.action_fp_initiation).setVisible(HealthFacilityApplication.getApplicationFlavor().hasFp());
         }
 
         if (HealthFacilityApplication.getApplicationFlavor().hasHivst()) {

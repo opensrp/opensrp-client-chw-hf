@@ -133,7 +133,7 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
 
     @Override
     protected void goToFpProfile(String baseEntityId, Activity activity) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(baseEntityId));
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, baseEntityId);
     }
 
     @Override

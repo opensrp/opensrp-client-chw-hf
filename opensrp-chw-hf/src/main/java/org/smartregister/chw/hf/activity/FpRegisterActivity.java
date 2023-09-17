@@ -3,18 +3,12 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.smartregister.chw.core.activity.CoreFpRegisterActivity;
-import org.smartregister.chw.core.dataloader.FPDataLoader;
-import org.smartregister.chw.core.form_data.NativeFormsDataBinder;
 import org.smartregister.chw.fp.model.BaseFpRegisterModel;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
-import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FpRegisterFragment;
 import org.smartregister.chw.hf.interactor.HFFamilyPlanningRegisterInteractor;
 import org.smartregister.chw.hf.presenter.FpRegisterPresenter;
-import org.smartregister.family.util.JsonFormUtils;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
@@ -27,6 +21,7 @@ public class FpRegisterActivity extends CoreFpRegisterActivity {
         Intent intent = new Intent(activity, FpRegisterActivity.class);
         intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityID);
         intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.FP_FORM_NAME, formName);
+        intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.ACTION, FamilyPlanningConstants.ACTIVITY_PAYLOAD_TYPE.REGISTRATION);
         baseEntityId = baseEntityID;
         fpFormName = formName;
         activity.startActivity(intent);

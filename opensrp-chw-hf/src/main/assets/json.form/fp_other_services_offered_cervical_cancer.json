@@ -1,0 +1,184 @@
+{
+  "count": "1",
+  "encounter_type": "Cervical Cancer",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Cervical Cancer",
+    "fields": [
+      {
+        "key": "counseling_cervical_cancer_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "counseling_cervical_cancer_provided",
+        "type": "native_radio",
+        "label": "Was counseling on cervical cancer provided?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "client_eligible_for_via",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_eligible_for_via",
+        "type": "native_radio",
+        "label": "Is the client eligible for VIA?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "via_results",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "via_results",
+        "type": "native_radio",
+        "label": "VIA results",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "positive",
+            "text": "Positive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "positive"
+          },
+          {
+            "key": "negative",
+            "text": "Negative",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "negative"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_cervical_cancer_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_eligible_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_eligible_prompt",
+        "type": "toaster_notes",
+        "text": "Refer client for further management",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_cervical_cancer_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "via_results_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "via_results_prompt",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_cervical_cancer_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

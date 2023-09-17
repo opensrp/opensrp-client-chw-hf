@@ -1,0 +1,7 @@
+---
+name: step1_specify_other_complain
+description: specify_other_complain relevance
+priority: 1
+condition: "step1_client_have_any_complain.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"

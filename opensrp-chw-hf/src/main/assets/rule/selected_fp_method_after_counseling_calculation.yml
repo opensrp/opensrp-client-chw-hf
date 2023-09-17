@@ -1,0 +1,7 @@
+---
+name: step1_selected_fp_method_after_counseling
+description: set selected_fp_method_after_counseling
+priority: 1
+condition: "true"
+actions:
+  - "calculation = global_sex.equalsIgnoreCase('Female')? selected_fp_method_after_counseling_female : selected_fp_method_after_counseling_male"

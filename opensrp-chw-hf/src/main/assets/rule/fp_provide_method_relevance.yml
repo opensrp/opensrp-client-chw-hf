@@ -1,0 +1,149 @@
+---
+name: step1_pop
+description: Check if the client selected pop method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('pop')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_coc
+description: Check if the client selected coc method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('coc')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_ecp
+description: Check if the client selected ecp method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('ecp')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_injection_administered
+description: Check if the client selected injection method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('injectable')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_implanon_inserted
+description: Check if the client selected implanon method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('implanon')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_injection_administered
+description: Check if the client selected injection method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('injectable')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_number_male_condoms_collected
+description: number_male_condoms_collected relevance
+priority: 1
+condition: "step1_type_of_condom_collected.contains('male')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_number_female_condoms_collected
+description: number_female_condoms_collected relevance
+priority: 1
+condition: "step1_type_of_condom_collected.contains('female')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_jadelle_inserted
+description: Check if the client selected jadelle method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('jadelle')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_iucd_inserted
+description: Check if the client selected iucd method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('iucd')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_cycle_beads_provided
+description: Check if the client selected SDM method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('sdm')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_client_counseled_on_lam
+description: Check if the client selected LAM method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('lam')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_vasectomy
+description: Check if the client selected vasectomy method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('vasectomy')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_btl
+description: Check if the client selected btl method relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('btl')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_type_of_condom_collected
+description: type_of_condom_collected relevance
+priority: 1
+condition: "step1_client_provided_condom.equals('yes')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_reasons_not_providing_method
+description: type_of_condom_collected relevance
+priority: 1
+condition: "step1_client_provided_condom.equals('no') || step1_injection_administered.equals('no')
+            || step1_jadelle_inserted.equals('no') || step1_implanon_inserted.equals('no') || step1_iucd_inserted.equals('no')
+            || step1_cycle_beads_provided.equals('no') || step1_client_counseled_on_lam.equals('no') || step1_vasectomy.equals('no')
+            || step1_btl.equals('no') "
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_counsel_for_other_methods
+description: counsel_for_other_methods relevance
+priority: 1
+condition: "step1_client_provided_condom.equals('no') || step1_injection_administered.equals('no')
+            || step1_jadelle_inserted.equals('no') || step1_implanon_inserted.equals('no') || step1_iucd_inserted.equals('no')
+            || step1_cycle_beads_provided.equals('no') || step1_client_counseled_on_lam.equals('no') || step1_vasectomy.equals('no')
+            || step1_btl.equals('no') "
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_specify_other_method
+description: specify_other_method relevance
+priority: 1
+condition: "step1_reasons_not_providing_method.contains('other')"
+actions:
+  - "isRelevant = true"

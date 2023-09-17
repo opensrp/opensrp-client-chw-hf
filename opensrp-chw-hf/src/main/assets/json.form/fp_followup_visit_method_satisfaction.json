@@ -1,0 +1,313 @@
+{
+  "count": "1",
+  "encounter_type": "Satisfaction of FP Method",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Satisfaction of FP Method",
+    "fields": [
+      {
+        "key": "client_satisfied_with_fp_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_satisfied_with_fp_method",
+        "type": "native_radio",
+        "label": "Is the client satisfied with the family planning method?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "reason_for_dissatisfaction",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_for_dissatisfaction",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Reason for dissatisfaction",
+        "hint": "Reason for dissatisfaction",
+        "options": [
+          {
+            "key": "side_effects",
+            "text": "Side effects",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "side_effects"
+          },
+          {
+            "key": "complication",
+            "text": "Complication",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "complication"
+          },
+          {
+            "key": "other",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please choose reasons for dissatisfaction"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "specify_other_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "specify_other_method",
+        "type": "edit_text",
+        "hint": "Specify other condition",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "dissatisfaction_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dissatisfaction_prompt",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_want_to_switch_stop",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_want_to_switch_stop",
+        "type": "native_radio",
+        "label": "Does the client want to switch or stop",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "switch",
+            "text": "Switch",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "switch"
+          },
+          {
+            "key": "stop",
+            "text": "Stop",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "stop"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "client_want_to_switch_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_want_to_switch_prompt",
+        "type": "toaster_notes",
+        "text": "Provide FP counseling for informed choice",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "jadelle_removed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "jadelle_removed",
+        "type": "native_radio",
+        "label": "Jadelle removed?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "implanon_removed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "implanon_removed",
+        "type": "native_radio",
+        "label": "Implanon removed?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "iud_removed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iud_removed",
+        "type": "native_radio",
+        "label": "IUD removed?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

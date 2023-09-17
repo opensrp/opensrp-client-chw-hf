@@ -1,0 +1,14 @@
+---
+name: step1_breast_condition_prompt
+description: breast_condition_prompt relevance
+priority: 1
+condition: "step1_breast_condition.contains('lamp') || step1_breast_condition.contains('sore') || step1_breast_condition.contains('discoloration') || step1_breast_condition.contains('blood_discharge') || step1_breast_condition.contains('absess') || step1_breast_condition.contains('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_specify_other_condition
+description: specify_other_condition relevance
+priority: 1
+condition: "step1_breast_condition.contains('other')"
+actions:
+  - "isRelevant = true"

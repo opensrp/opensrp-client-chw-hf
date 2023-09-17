@@ -138,7 +138,7 @@ public class AllClientsUtils {
     }
 
     public static void goToFamilyPlanningProfile(Activity activity, CommonPersonObjectClient patient) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(patient.getCaseId()));
+        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, patient.getCaseId());
     }
 
     public static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {

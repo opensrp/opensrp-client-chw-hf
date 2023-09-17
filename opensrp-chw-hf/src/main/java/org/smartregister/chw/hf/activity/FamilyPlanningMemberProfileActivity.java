@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.smartregister.chw.core.activity.CoreFamilyPlanningMemberProfileActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.dao.FpDao;
-import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.domain.Visit;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
@@ -23,6 +22,7 @@ import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
+import org.smartregister.family.util.Utils;
 
 import java.util.Set;
 
@@ -30,10 +30,10 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     private CommonPersonObjectClient commonPersonObjectClient;
 
-    public static void startFpMemberProfileActivity(Activity activity, FpMemberObject memberObject) {
+    public static void startFpMemberProfileActivity(Activity activity, String baseEntityId) {
         Intent intent = new Intent(activity, FamilyPlanningMemberProfileActivity.class);
         passToolbarTitle(activity, intent);
-        intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.MEMBER_OBJECT, memberObject);
+        intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
         activity.startActivity(intent);
     }
 
@@ -67,6 +67,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     @Override
     protected void onResume() {
         super.onResume();
+        getLastVisit();
         if (fpMemberObject == null && commonPersonObjectClient != null) {
             fpMemberObject = FpDao.getMember(commonPersonObjectClient.getCaseId());
         }
@@ -88,6 +89,7 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
     protected void initializePresenter() {
         showProgressBar(true);
         fpProfilePresenter = new HfFamilyPlanningMemberProfilePresenter(this, new HfFamilyPlanningProfileInteractor(), fpMemberObject);
+        fpProfilePresenter.refreshProfileBottom();
     }
 
     @Override
@@ -97,42 +99,37 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
 
     @Override
     public Visit getLastVisit() {
-        return null;
-    }
-
-    @Override
-    public boolean getIsClientUsingFpMethod() {
-        return false;
+        return FpDao.getLatestVisit(fpMemberObject.getFamilyBaseEntityId());
     }
 
     @Override
     public boolean isFirstVisit() {
-        return false;
+        return FpDao.getLatestVisit(fpMemberObject.getFamilyBaseEntityId(), FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES) == null;
     }
 
     @Override
     public void startPointOfServiceDeliveryForm() {
-
+        startFormActivity(FamilyPlanningConstants.FORMS.FP_POINT_OF_SERVICE_DELIVERY, fpMemberObject.getBaseEntityId(), null);
     }
 
     @Override
     public void startFpCounselingForm() {
-
+        startFormActivity(FamilyPlanningConstants.FORMS.FP_COUNSELING, fpMemberObject.getBaseEntityId(), null);
     }
 
     @Override
     public void startFpScreeningForm() {
-
+        FpScreeningActivity.startMe(this, fpMemberObject.getBaseEntityId(), false);
     }
 
     @Override
     public void startProvideFpMethod() {
-
+        startFormActivity(FamilyPlanningConstants.FORMS.FP_PROVISION_OF_FP_METHOD, fpMemberObject.getBaseEntityId(), null);
     }
 
     @Override
     public void startProvideOtherServices() {
-
+        FpOtherServicesActivity.startMe(this, fpMemberObject.getBaseEntityId(), false);
     }
 
     @Override
@@ -165,4 +162,8 @@ public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMembe
         // TODO -> Implement for HF
     }
 
+    @Override
+    public Class getFormActivity() {
+        return Utils.metadata().familyMemberFormActivity;
+    }
 }

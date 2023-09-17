@@ -1,0 +1,182 @@
+{
+  "count": "1",
+  "encounter_type": "Point of Service Delivery",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Record Point of Service Delivery",
+    "fields": [
+      {
+        "key": "point_of_service_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "point_of_service_delivery",
+        "type": "native_radio",
+        "label": "Point of service delivery?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "facility",
+            "text": "Facility",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "facility"
+          },
+          {
+            "key": "outreach",
+            "text": "Outreach",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "outreach"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "service_delivery_point_facility",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "service_delivery_point_facility",
+        "type": "native_radio",
+        "label": "Choose service delivery point",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "rch",
+            "text": "RCH",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "rch"
+          },
+          {
+            "key": "ctc",
+            "text": "CTC",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ctc"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_point_of_service_delivery_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "service_delivery_point_outreach",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "service_delivery_point_outreach",
+        "type": "native_radio",
+        "label": "Choose service delivery point",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "static",
+            "text": "Static based",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "static"
+          },
+          {
+            "key": "community",
+            "text": "Community",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "community"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_point_of_service_delivery_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "family_planning_education_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "family_planning_education_provided",
+        "type": "native_radio",
+        "label": "Was family planning health education provided?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      }
+    ]
+  }
+}

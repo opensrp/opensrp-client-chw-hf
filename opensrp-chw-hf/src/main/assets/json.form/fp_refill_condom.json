@@ -1,0 +1,129 @@
+{
+  "count": "1",
+  "encounter_type": "Refill pills/condom",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Refill pills/condom",
+    "fields": [
+      {
+        "key": "condom_refilled",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "condom_refilled",
+        "openmrs_data_type": "select one",
+        "combine_checkbox_option_values": "true",
+        "type": "check_box",
+        "label": "Condom",
+        "hint": "Condom",
+        "options": [
+          {
+            "key": "male",
+            "text": "Male",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "male"
+          },
+          {
+            "key": "female",
+            "text": "Female",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "female"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please choose type of condom refilled"
+        }
+      },
+      {
+        "key": "number_male_condoms_refilled",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_male_condoms_refilled",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Specify quantity (Male)",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_refill_condom_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_female_condoms_refilled",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_female_condoms_refilled",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Specify quantity (Female)",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_refill_condom_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

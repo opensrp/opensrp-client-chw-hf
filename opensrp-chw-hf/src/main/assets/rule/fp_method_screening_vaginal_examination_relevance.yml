@@ -1,0 +1,14 @@
+---
+name: step1_uterine_size_prompt
+description: uterine_size_prompt relevance
+priority: 1
+condition: "step1_adnexa.equals('painful') || step1_uterine_size.equals('abnormal')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_cervix_prompt
+description: cervix_prompt relevance
+priority: 1
+condition: "step1_cervix.equals('abnormal')"
+actions:
+  - "isRelevant = true"

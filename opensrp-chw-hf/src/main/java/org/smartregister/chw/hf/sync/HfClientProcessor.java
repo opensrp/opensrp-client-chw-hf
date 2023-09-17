@@ -27,6 +27,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.core.dao.EventDao;
 import org.smartregister.chw.core.sync.CoreClientProcessor;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.dao.HeiDao;
 import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.pmtct.util.Constants;
@@ -89,6 +90,10 @@ public class HfClientProcessor extends CoreClientProcessor {
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_OTHER_SERVICE_VISIT:
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT:
             case Constants.EVENT_TYPE.PMTCT_FOLLOWUP:
+            case FamilyPlanningConstants.EVENT_TYPE.FP_POINT_OF_SERVICE_DELIVERY:
+            case FamilyPlanningConstants.EVENT_TYPE.FP_COUNSELING:
+            case FamilyPlanningConstants.EVENT_TYPE.FP_PROVIDE_METHOD:
+            case FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES:
                 if (eventClient.getEvent() == null) {
                     return;
                 }
