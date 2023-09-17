@@ -8275,6 +8275,30 @@
           "json_mapping": {
             "field": "formSubmissionId"
           }
+        },
+        {
+          "column_name": "point_of_service_delivery",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "point_of_service_delivery"
+          }
+        },
+        {
+          "column_name": "service_delivery_point_facility",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "service_delivery_point_facility"
+          }
+        },
+        {
+          "column_name": "service_delivery_point_outreach",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "service_delivery_point_outreach"
+          }
         }
       ]
     },
@@ -8293,6 +8317,22 @@
           "type": "Event",
           "json_mapping": {
             "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "client_counseled_with_her_partner",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "client_counseled_with_her_partner"
+          }
+        },
+        {
+          "column_name": "selected_fp_method_after_counseling",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "selected_fp_method_after_counseling"
           }
         }
       ]
@@ -8331,6 +8371,38 @@
           "type": "Event",
           "json_mapping": {
             "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "type_of_condom_collected",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_condom_collected"
+          }
+        },
+        {
+          "column_name": "pop",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pop"
+          }
+        },
+        {
+          "column_name": "coc",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "coc"
+          }
+        },
+        {
+          "column_name": "injection_administered",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "injection_administered"
           }
         }
       ]
