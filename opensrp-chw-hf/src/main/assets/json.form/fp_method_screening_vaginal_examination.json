@@ -62,33 +62,6 @@
         "text_size": "7sp"
       },
       {
-        "key": "discharge",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "discharge",
-        "type": "native_radio",
-        "label": "Discharge",
-        "text_color": "#000000",
-        "options": [
-          {
-            "key": "yes",
-            "text": "Yes",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "yes"
-          },
-          {
-            "key": "no",
-            "text": "No",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
-      },
-      {
         "key": "cervix",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -108,6 +81,33 @@
             "text": "Abnormal",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "discharge",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "discharge",
+        "type": "native_radio",
+        "label": "Discharge",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
@@ -143,10 +143,10 @@
         }
       },
       {
-        "key": "cervix_prompt",
+        "key": "speculum_exam_prompt",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "cervix_prompt",
+        "openmrs_entity_id": "speculum_exam_prompt",
         "type": "toaster_notes",
         "text": "Manage according to SOP",
         "toaster_type": "info",
@@ -220,10 +220,10 @@
             "openmrs_entity_id": "retroverted"
           },
           {
-            "key": "antiverted",
-            "text": "Antiverted",
+            "key": "anteverted",
+            "text": "Anteverted",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "antiverted"
+            "openmrs_entity_id": "anteverted"
           }
         ],
         "v_required": {
@@ -259,10 +259,10 @@
         }
       },
       {
-        "key": "uterine_size_prompt",
+        "key": "digital_exam_prompt",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "uterine_size_prompt",
+        "openmrs_entity_id": "digital_exam_prompt",
         "type": "toaster_notes",
         "text": "Manage according to SOP",
         "toaster_type": "info",
