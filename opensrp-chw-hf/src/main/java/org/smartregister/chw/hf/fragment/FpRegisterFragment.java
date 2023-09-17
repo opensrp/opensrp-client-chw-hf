@@ -17,7 +17,7 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
 
     @Override
     public void initializeAdapter(Set<View> visibleColumns) {
-        CoreFpProvider fpRegisterProvider = new HfFpRegisterProvider(getActivity(), visibleColumns, registerActionHandler, paginationViewHandler);
+        HfFpRegisterProvider fpRegisterProvider = new HfFpRegisterProvider(getActivity(), visibleColumns, registerActionHandler, paginationViewHandler);
         clientAdapter = new RecyclerViewPaginatedAdapter(null, fpRegisterProvider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);
         clientsView.setAdapter(clientAdapter);
@@ -46,5 +46,14 @@ public class FpRegisterFragment extends CoreFpRegisterFragment {
     @Override
     protected void openFollowUpVisit(String baseEntityId) {
         super.openFollowUpVisit(baseEntityId);
+    }
+
+    @Override
+    protected void onViewClicked(android.view.View view) {
+        super.onViewClicked(view);
+
+        if (view.getId() == org.smartregister.chw.core.R.id.due_only_layout) {
+            toggleFilterSelection(view);
+        }
     }
 }
