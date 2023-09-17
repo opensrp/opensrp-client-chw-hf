@@ -134,6 +134,9 @@
             "openmrs_entity_id": "none"
           }
         ],
+        "exclusive": [
+          "none"
+        ],
         "v_required": {
           "value": "true",
           "err": "Please choose client medical history"

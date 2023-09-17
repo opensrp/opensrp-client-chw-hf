@@ -80,6 +80,9 @@
             "openmrs_entity_id": "no"
           }
         ],
+        "exclusive": [
+          "no"
+        ],
         "v_required": {
           "value": "true",
           "err": "Required"
