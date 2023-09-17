@@ -2465,6 +2465,22 @@
           }
         },
         {
+          "column_name": "client_category_after_screening",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "client_category_after_screening"
+          }
+        },
+        {
+          "column_name": "selected_fp_method_after_counseling",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "selected_fp_method_after_counseling"
+          }
+        },
+        {
           "column_name": "provided_fp_method",
           "type": "Event",
           "json_mapping": {

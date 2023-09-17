@@ -260,7 +260,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
-            android:name=".activity.FPMemberProfileActivity"
+            android:name=".activity.FpMemberProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity

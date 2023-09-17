@@ -17,7 +17,7 @@ import org.smartregister.chw.hf.activity.AllClientsMemberProfileActivity;
 import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
-import org.smartregister.chw.hf.activity.FPMemberProfileActivity;
+import org.smartregister.chw.hf.activity.FpMemberProfileActivity;
 import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.activity.KvpProfileActivity;
 import org.smartregister.chw.hf.activity.LDProfileActivity;
@@ -137,7 +137,7 @@ public class AllClientsUtils {
     }
 
     public static void goToFamilyPlanningProfile(Activity activity, CommonPersonObjectClient patient) {
-        FPMemberProfileActivity.startFpMemberProfileActivity(activity, patient.getCaseId());
+        FpMemberProfileActivity.startFpMemberProfileActivity(activity, patient.getCaseId());
     }
 
     public static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {

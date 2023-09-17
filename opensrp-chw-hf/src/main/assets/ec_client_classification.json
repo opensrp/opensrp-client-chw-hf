@@ -984,21 +984,24 @@
             "field": "eventType",
             "field_value": "FP Screening",
             "creates_case": [
-              "ec_fp_screening"
+              "ec_fp_screening",
+              "ec_family_planning"
             ]
           },
           {
             "field": "eventType",
             "field_value": "Provide FP Counseling",
             "creates_case": [
-              "ec_fp_counseling"
+              "ec_fp_counseling",
+              "ec_family_planning"
             ]
           },
           {
             "field": "eventType",
             "field_value": "Provide FP method",
             "creates_case": [
-              "ec_fp_provision_of_method"
+              "ec_fp_provision_of_method",
+              "ec_family_planning"
             ]
           },
           {

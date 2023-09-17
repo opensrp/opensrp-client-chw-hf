@@ -4,6 +4,8 @@ import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.View;
 
@@ -26,12 +28,14 @@ import org.smartregister.family.util.Utils;
 
 import java.util.Set;
 
-public class FPMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
+import timber.log.Timber;
+
+public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 
     private CommonPersonObjectClient commonPersonObjectClient;
 
     public static void startFpMemberProfileActivity(Activity activity, String baseEntityId) {
-        Intent intent = new Intent(activity, FPMemberProfileActivity.class);
+        Intent intent = new Intent(activity, FpMemberProfileActivity.class);
         passToolbarTitle(activity, intent);
         intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
         activity.startActivity(intent);
@@ -67,13 +71,22 @@ public class FPMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
     @Override
     protected void onResume() {
         super.onResume();
-        getLastVisit();
-        if (fpMemberObject == null && commonPersonObjectClient != null) {
-            fpMemberObject = FpDao.getMember(commonPersonObjectClient.getCaseId());
-        }
         ((FamilyPlanningMemberProfileContract.Presenter) fpProfilePresenter).fetchReferralTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
+        }
+        delayRefreshSetupViews();
+    }
+
+    private void delayRefreshSetupViews() {
+        try {
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                fpMemberObject = FpDao.getMember(commonPersonObjectClient.getCaseId());
+                getLastVisit();
+                setupViews();
+            }, 300);
+        } catch (Exception e) {
+            Timber.e(e);
         }
     }
 
