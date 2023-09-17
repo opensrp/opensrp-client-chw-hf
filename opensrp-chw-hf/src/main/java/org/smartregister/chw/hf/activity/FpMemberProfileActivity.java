@@ -118,7 +118,12 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public Visit getLastVisit() {
-        return FpDao.getLatestVisit(fpMemberObject.getBaseEntityId());
+        Visit lastVisit = FpDao.getLatestVisit(fpMemberObject.getBaseEntityId());
+        if (lastVisit.getParentVisitID() != null) {
+            Visit parentVisit = FpDao.getLatestVisitById(lastVisit.getParentVisitID());
+            if (parentVisit != null) return parentVisit;
+        }
+        return lastVisit;
     }
 
     @Override
@@ -153,7 +158,7 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public void startFpFollowupVisit() {
-
+        FpFollowupVisitProvisionOfServicesActivity.startMe(this, fpMemberObject.getBaseEntityId(), false);
     }
 
     @Override

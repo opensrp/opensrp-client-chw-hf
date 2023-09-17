@@ -83,10 +83,28 @@
         }
       },
       {
-        "key": "client_want_continue_fp",
+        "key": "method_expired_prompt",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "client_want_continue_fp",
+        "openmrs_entity_id": "method_expired_prompt",
+        "type": "toaster_notes",
+        "text": "Remove the FP Method",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_continue_with_the_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_wants_continue_with_fp_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_wants_continue_with_fp_method",
         "type": "native_radio",
         "label": "Does the client want to continue with the family planning method?",
         "text_color": "#000000",
@@ -110,13 +128,47 @@
         }
       },
       {
-        "key": "method_expired_prompt",
+        "key": "client_want_to_switch_stop",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "method_expired_prompt",
+        "openmrs_entity_id": "client_want_to_switch_stop",
+        "type": "native_radio",
+        "label": "Does the client want to switch or stop",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "switch",
+            "text": "Switch",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "switch"
+          },
+          {
+            "key": "stop",
+            "text": "Stop",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "stop"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_continue_with_the_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_want_to_switch_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_want_to_switch_prompt",
         "type": "toaster_notes",
-        "text": "Remove the FP Method",
-        "toaster_type": "warning",
+        "text": "Provide FP counseling for informed choice",
+        "toaster_type": "info",
         "toaster_info_text": "",
         "toaster_info_title": "",
         "relevance": {
@@ -126,6 +178,115 @@
             }
           }
         }
+      },
+      {
+        "key": "jadelle_removed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "jadelle_removed",
+        "type": "native_radio",
+        "label": "Jadelle removed?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_continue_with_the_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "implanon_removed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "implanon_removed",
+        "type": "native_radio",
+        "label": "Implanon removed?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_continue_with_the_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "iud_removed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iud_removed",
+        "type": "native_radio",
+        "label": "IUD removed?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_continue_with_the_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "followup_outcome",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "followup_outcome",
+        "openmrs_entity_parent": ""
       }
     ]
   }

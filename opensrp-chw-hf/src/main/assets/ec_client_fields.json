@@ -2489,6 +2489,14 @@
           }
         },
         {
+          "column_name": "followup_outcome",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_outcome"
+          }
+        },
+        {
           "column_name": "next_appointment_date",
           "type": "Event",
           "json_mapping": {

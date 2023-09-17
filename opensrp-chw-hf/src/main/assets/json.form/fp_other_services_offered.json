@@ -60,6 +60,9 @@
         "type": "check_box",
         "label": "Other services offered",
         "hint": "Other services offered",
+        "exclusive": [
+          "none"
+        ],
         "options": [
           {
             "key": "hts",
@@ -74,10 +77,10 @@
             "openmrs_entity_id": "cervical_cancer"
           },
           {
-            "key": "no",
-            "text": "No",
+            "key": "none",
+            "text": "None",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "no"
+            "openmrs_entity_id": "none"
           }
         ],
         "v_required": {
