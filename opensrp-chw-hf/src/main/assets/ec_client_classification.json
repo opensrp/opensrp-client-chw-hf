@@ -192,7 +192,7 @@
           },
           {
             "field": "eventType",
-            "field_value": "Family Planning Change Method",
+            "field_value": "Provide FP method",
             "creates_case": [
               "ec_family_planning"
             ]
