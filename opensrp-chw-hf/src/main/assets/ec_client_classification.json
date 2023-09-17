@@ -972,6 +972,48 @@
               "ec_prep_register",
               "ec_prep_followup"
             ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Point of Service Delivery",
+            "creates_case": [
+              "ec_fp_point_of_service_delivery"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Screening",
+            "creates_case": [
+              "ec_fp_screening"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Provide FP Counseling",
+            "creates_case": [
+              "ec_fp_counseling"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Provide FP method",
+            "creates_case": [
+              "ec_fp_provision_of_method"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Other Services",
+            "creates_case": [
+              "ec_fp_other_services"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Follow-up Visit",
+            "creates_case": [
+              "ec_fp_follow_up_visit"
+            ]
           }
         ]
       }
