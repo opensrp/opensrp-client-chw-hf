@@ -99,12 +99,12 @@ public class FPMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public Visit getLastVisit() {
-        return FpDao.getLatestVisit(fpMemberObject.getFamilyBaseEntityId());
+        return FpDao.getLatestVisit(fpMemberObject.getBaseEntityId());
     }
 
     @Override
     public boolean isFirstVisit() {
-        return FpDao.getLatestVisit(fpMemberObject.getFamilyBaseEntityId(), FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES) == null;
+        return FpDao.getLatestVisit(fpMemberObject.getBaseEntityId(), FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES) == null;
     }
 
     @Override
