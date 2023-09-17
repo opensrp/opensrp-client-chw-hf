@@ -11,14 +11,13 @@ import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.core.application.CoreChwApplication;
 import org.smartregister.chw.core.utils.CoreChildUtils;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.AboveFiveChildProfileActivity;
 import org.smartregister.chw.hf.activity.AllClientsMemberProfileActivity;
 import org.smartregister.chw.hf.activity.AncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.ChildProfileActivity;
 import org.smartregister.chw.hf.activity.FamilyOtherMemberProfileActivity;
-import org.smartregister.chw.hf.activity.FamilyPlanningMemberProfileActivity;
+import org.smartregister.chw.hf.activity.FPMemberProfileActivity;
 import org.smartregister.chw.hf.activity.HivProfileActivity;
 import org.smartregister.chw.hf.activity.KvpProfileActivity;
 import org.smartregister.chw.hf.activity.LDProfileActivity;
@@ -138,7 +137,7 @@ public class AllClientsUtils {
     }
 
     public static void goToFamilyPlanningProfile(Activity activity, CommonPersonObjectClient patient) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, patient.getCaseId());
+        FPMemberProfileActivity.startFpMemberProfileActivity(activity, patient.getCaseId());
     }
 
     public static void goToLDProfile(Activity activity, CommonPersonObjectClient patient) {

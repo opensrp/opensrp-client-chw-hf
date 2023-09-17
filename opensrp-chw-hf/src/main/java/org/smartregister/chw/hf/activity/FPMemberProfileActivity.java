@@ -26,12 +26,12 @@ import org.smartregister.family.util.Utils;
 
 import java.util.Set;
 
-public class FamilyPlanningMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
+public class FPMemberProfileActivity extends CoreFamilyPlanningMemberProfileActivity implements FamilyPlanningMemberProfileContract.View {
 
     private CommonPersonObjectClient commonPersonObjectClient;
 
     public static void startFpMemberProfileActivity(Activity activity, String baseEntityId) {
-        Intent intent = new Intent(activity, FamilyPlanningMemberProfileActivity.class);
+        Intent intent = new Intent(activity, FPMemberProfileActivity.class);
         passToolbarTitle(activity, intent);
         intent.putExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID, baseEntityId);
         activity.startActivity(intent);
