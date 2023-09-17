@@ -1257,4 +1257,7 @@
     <string name="successful_ltfu_title">Successful LTFU Referrals</string>
     <string name="hts_return_to_previous_page">Return to all hts clients</string>
 
+    <string name="fp_reports_title">Family Planning Reports</string>
+    <string name="view_reports_for_fp_clients">View Reports for FP Clients</string>
+
 </resources>
