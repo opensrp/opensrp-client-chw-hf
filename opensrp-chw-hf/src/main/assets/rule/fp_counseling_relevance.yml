@@ -15,10 +15,10 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step1_client_agreed_on_fp_choice
-description: client_agreed_on_fp_choice relevance
+name: step1_client_counseled_with_her_partner
+description: client_counseled_with_her_partner relevance
 priority: 1
-condition: "step1_client_counseled_with_her_partner.equalsIgnoreCase('yes')"
+condition: "global_sex.equalsIgnoreCase('Female')"
 actions:
   - "isRelevant = true"
 
