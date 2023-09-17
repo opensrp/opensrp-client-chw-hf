@@ -4,6 +4,7 @@
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
+  "global": {},
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",
@@ -142,6 +143,13 @@
         "v_required": {
           "value": "true",
           "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_vitals_relevance.yml"
+            }
+          }
         }
       },
       {
