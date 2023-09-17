@@ -487,10 +487,10 @@
         }
       },
       {
-        "key": "was_family_planning_method_provided",
+        "key": "post_instruction_fp_method_provided",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "was_family_planning_method_provided",
+        "openmrs_entity_id": "post_instruction_fp_method_provided",
         "type": "native_radio",
         "label": "Was post instruction given on the family planning method provided?",
         "text_color": "#000000",

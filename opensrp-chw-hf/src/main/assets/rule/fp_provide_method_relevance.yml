@@ -125,7 +125,7 @@ priority: 1
 condition: "step1_client_provided_condom.equals('no') || step1_injection_administered.equals('no')
             || step1_jadelle_inserted.equals('no') || step1_implanon_inserted.equals('no') || step1_iucd_inserted.equals('no')
             || step1_cycle_beads_provided.equals('no') || step1_client_counseled_on_lam.equals('no') || step1_vasectomy.equals('no')
-            || step1_btl.equals('no') "
+            || step1_btl.equals('no') || step1_pop.equals('0') || step1_coc.equals('0') || step1_epc.equals('0')"
 actions:
   - "isRelevant = true"
 
