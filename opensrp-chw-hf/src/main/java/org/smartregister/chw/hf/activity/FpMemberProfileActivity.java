@@ -16,6 +16,7 @@ import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.Visit;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.fp.util.VisitUtils;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
@@ -71,6 +72,11 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
     @Override
     protected void onResume() {
         super.onResume();
+        try {
+            VisitUtils.processVisits(fpMemberObject.getBaseEntityId());
+        } catch (Exception e) {
+            Timber.e(e);
+        }
         ((FamilyPlanningMemberProfileContract.Presenter) fpProfilePresenter).fetchReferralTasks();
         if (notificationAndReferralRecyclerView != null && notificationAndReferralRecyclerView.getAdapter() != null) {
             notificationAndReferralRecyclerView.getAdapter().notifyDataSetChanged();
