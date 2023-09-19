@@ -113,7 +113,7 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public void openMedicalHistory() {
-
+        //TOBE Implemented
     }
 
     @Override
@@ -168,7 +168,7 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public void showFollowUpVisitButton() {
-
+        //Not Required
     }
 
     @Override
