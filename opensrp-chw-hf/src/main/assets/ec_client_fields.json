@@ -8334,6 +8334,13 @@
             "field": "obs.fieldCode",
             "concept": "selected_fp_method_after_counseling"
           }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
         }
       ]
     },
