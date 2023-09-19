@@ -138,11 +138,6 @@ public class PncMemberProfileActivity extends CorePncMemberProfileActivity imple
     }
 
     @Override
-    protected void startFpChangeMethod() {
-        FpRegisterActivity.startFpRegistrationActivity(this, memberObject.getBaseEntityId(), CoreConstants.JSON_FORM.getFpChangeMethodForm("female"));
-    }
-
-    @Override
     protected void startMalariaFollowUpVisit() {
         // TODO -> Implement for HF
     }

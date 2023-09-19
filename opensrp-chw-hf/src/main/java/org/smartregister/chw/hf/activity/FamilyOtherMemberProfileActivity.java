@@ -101,11 +101,6 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
-    protected void startFpChangeMethod() {
-        FpRegisterActivity.startFpRegistrationActivity(this, baseEntityId, CoreConstants.JSON_FORM.getFpChangeMethodForm(gender));
-    }
-
-    @Override
     protected void startMalariaRegister() {
         //TODO implement start malaria register for HF
     }
@@ -191,6 +186,11 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
 
     @Override
     protected void startAgywScreening() {
+        //do nothing
+    }
+
+    @Override
+    protected void startSbcRegistration() {
         //do nothing
     }
 

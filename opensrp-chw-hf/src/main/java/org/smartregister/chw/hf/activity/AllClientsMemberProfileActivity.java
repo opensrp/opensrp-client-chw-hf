@@ -208,14 +208,6 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
 
     @Override
-    protected void startFpChangeMethod() {
-        String dob = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
-        String gender = org.smartregister.family.util.Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.GENDER, false);
-
-        FpRegisterActivity.startFpRegistrationActivity(this, baseEntityId, CoreConstants.JSON_FORM.getFpChangeMethodForm(gender));
-    }
-
-    @Override
     protected void removeIndividualProfile() {
         IndividualProfileRemoveActivity.startIndividualProfileActivity(AllClientsMemberProfileActivity.this, commonPersonObject, familyBaseEntityId, familyHead, primaryCaregiver, AllClientsRegisterActivity.class.getCanonicalName());
     }
@@ -355,6 +347,11 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
 
     @Override
     protected void startAgywScreening() {
+        //do nothing
+    }
+
+    @Override
+    protected void startSbcRegistration() {
         //do nothing
     }
 

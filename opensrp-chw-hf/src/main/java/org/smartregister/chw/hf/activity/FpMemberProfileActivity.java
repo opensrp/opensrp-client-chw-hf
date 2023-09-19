@@ -118,12 +118,17 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public Visit getLastVisit() {
-        Visit lastVisit = FpDao.getLatestVisit(fpMemberObject.getBaseEntityId());
-        if (lastVisit.getParentVisitID() != null) {
-            Visit parentVisit = FpDao.getLatestVisitById(lastVisit.getParentVisitID());
-            if (parentVisit != null) return parentVisit;
+        try {
+            Visit lastVisit = FpDao.getLatestVisit(fpMemberObject.getBaseEntityId());
+            if (lastVisit.getParentVisitID() != null) {
+                Visit parentVisit = FpDao.getLatestVisitById(lastVisit.getParentVisitID());
+                if (parentVisit != null) return parentVisit;
+            }
+            return lastVisit;
+        } catch (Exception e) {
+            Timber.e(e);
+            return null;
         }
-        return lastVisit;
     }
 
     @Override
