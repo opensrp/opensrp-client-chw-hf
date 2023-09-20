@@ -109,7 +109,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_level_education",
         "type": "native_radio",
-        "label": "Client’s Level of Education",
+        "label": "Kiwango cha Elimu ya Mteja",
         "text_color": "#000000",
         "options": [
           {
@@ -139,7 +139,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         }
       }
     ]
