@@ -1,7 +1,7 @@
 
 {
   "count": "1",
-  "encounter_type": "Family Planning Registration",
+  "encounter_type": "Usajili wa Uzazi wa Mpango",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -49,7 +49,7 @@
     }
   },
   "step1": {
-    "title": "FP Enrollment",
+    "title": "Usajili wa Uzazi wa Mpango",
     "fields": [
       {
         "key": "client_used_fp_before",
@@ -57,25 +57,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_used_fp_before",
         "type": "native_radio",
-        "label": "Has the client ever used any family planning method?",
+        "label": "Je, mteja amewahi kutumia njia yoyote ya uzazi wa mpango?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         }
       },
       {
@@ -87,20 +87,20 @@
         "mask": "####/###",
         "mask_hint": "1234567",
         "allowed_chars": "0123456789",
-        "hint": "Client Registration Number",
+        "hint": "Nambari ya Usajili wa Mteja",
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{4}/\\d{3})?",
-          "err": "CTC number should be of the format (XXXX/XXX)"
+          "err": "Nambari ya usajili wa mteja inapaswa kuwa ya muundo wa (XXXX/XXX)"
         },
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err": "Please enter a valid Client Registration Number"
+          "err": "Tafadhali ingiza Nambari ya Usajili wa Mteja iliyo sahihi"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter a valid Client Registration Number"
+          "err": "Tafadhali ingiza Nambari ya Usajili wa Mteja iliyo sahihi"
         }
       },
       {
@@ -114,25 +114,25 @@
         "options": [
           {
             "key": "primary",
-            "text": "Primary",
+            "text": "Shule ya msingi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "primary"
           },
           {
             "key": "secondary",
-            "text": "Secondary",
+            "text": "Shule ya sekondari",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "secondary"
           },
           {
             "key": "college_university",
-            "text": "College/University",
+            "text": "Chuo Kikuu",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "college_university"
           },
           {
             "key": "no_any",
-            "text": "None",
+            "text": "Hakuna",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no_any"
           }

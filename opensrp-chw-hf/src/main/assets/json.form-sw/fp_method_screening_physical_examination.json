@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Physical examination",
+  "encounter_type": "Uchunguzi wa kimwili",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -48,7 +48,7 @@
     }
   },
   "step1": {
-    "title": "Physical examination",
+    "title": "Uchunguzi wa kimwili",
     "fields": [
       {
         "key": "weight",
@@ -57,74 +57,78 @@
         "openmrs_entity_id": "weight",
         "entity_id": "",
         "type": "edit_text",
-        "hint": "Weight (KG)",
+        "hint": "Uzito (KG)",
         "edit_type": "number",
         "look_up": "true",
         "v_min": {
           "value": "20",
-          "err": "client weight must be equal or greater than 20kg"
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Uzito lazima uwe sawasawa au chini ya 300 (KG)"
         },
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the weight"
+          "err": "Tafadhali ingiza uzito"
         },
         "v_required": {
           "value": "true",
-          "err": "Please enter the Client’s Weight (KG)"
+          "err": "Tafadhali ingiza uzito (KG)"
         }
       },
       {
         "key": "systolic",
         "type": "edit_text",
-        "hint": "Systolic (Blood Pressure)",
+        "hint": "Systolic (Shinikizo la Damu)",
         "openmrs_entity_id": "systolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the systolic value"
+          "err": "Tafadhali ingiza thamani ya systolic"
         },
         "v_min": {
           "value": "0",
-          "err": "Systolic value must be equal or greater than 0"
+          "err": "Thamani ya systolic lazima iwe sawasawa au zaidi ya 0"
         },
         "v_max": {
           "value": "320",
-          "err": "Systolic value must be equal or less than 320"
+          "err": "Thamani ya systolic lazima iwe sawasawa au chini ya 320"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the systolic value"
+          "err": "Tafadhali ingiza thamani ya systolic"
         }
       },
       {
         "key": "diastolic",
         "type": "edit_text",
-        "hint": "Diastolic (Blood Pressure)",
+        "hint": "Diastolic (Shinikizo la Damu)",
         "openmrs_entity_id": "diastolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the diastolic value"
+          "err": "Tafadhali ingiza thamani ya diastolic"
         },
         "v_min": {
           "value": "0",
-          "err": "Diastolic value must be equal or greater than 0"
+          "err": "Thamani ya diastolic lazima iwe sawasawa au zaidi ya 0"
         },
         "v_max": {
           "value": "200",
-          "err": "Diastolic value must be equal or less than 200"
+          "err": "Thamani ya diastolic lazima iwe sawasawa au chini ya 200"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter the diastolic value"
+          "err": "Tafadhali ingiza thamani ya diastolic"
         },
         "constraints": [
           {
             "type": "numeric",
             "ex": "lessThan(., step1:systolic)",
-            "err": "The diastolic value must be less than the systolic value"
+            "err": "Thamani ya diastolic lazima iwe chini ya thamani ya systolic"
           }
         ]
       },
@@ -139,20 +143,20 @@
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       },
       {
@@ -161,25 +165,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "jaundice",
         "type": "native_radio",
-        "label": "Jaundice",
+        "label": "Homa ya manjano",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       },
       {
@@ -188,25 +192,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "thyroid_enlarged",
         "type": "native_radio",
-        "label": "Thyroid enlarged",
+        "label": "Tezi kuongezeka",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       },
       {
@@ -215,25 +219,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "chest_movement",
         "type": "native_radio",
-        "label": "Chest movement",
+        "label": "Mwenendo wa Kifua",
         "text_color": "#000000",
         "options": [
           {
             "key": "symmetrical",
-            "text": "Symmetrical",
+            "text": "Simetrikali",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "symmetrical"
           },
           {
             "key": "asymmetric",
-            "text": "Asymmetric",
+            "text": "Isiyo simetriki",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "asymmetric"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       },
       {
@@ -244,42 +248,42 @@
         "openmrs_data_type": "select one",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label": "Breast condition",
-        "hint": "Breast condition",
+        "label": "Hali ya Matiti",
+        "hint": "Hali ya Matiti",
         "options": [
           {
             "key": "lamp",
-            "text": "Lamp",
+            "text": "Buje",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "lamp"
           },
           {
             "key": "sore",
-            "text": "Sore",
+            "text": "Kidonda",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sore"
           },
           {
             "key": "discoloration",
-            "text": "Discoloration of the skin",
+            "text": "Kubadilika rangi ya ngozi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "discoloration"
           },
           {
             "key": "blood_discharge",
-            "text": "Blood/pus discharge",
+            "text": "Chuchu kutokwa damu/usaha",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "blood_discharge"
           },
           {
             "key": "absess",
-            "text": "Absess",
+            "text": "Jipu katika chuchu",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "absess"
           },
           {
             "key": "other",
-            "text": "Others (Specify)",
+            "text": "Mengineyo (Taja)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           },
@@ -295,7 +299,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please choose breast condition"
+          "err": "Tafadhali chagua hali ya matiti"
         }
       },
       {
@@ -304,10 +308,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "specify_other_condition",
         "type": "edit_text",
-        "hint": "Specify other",
+        "hint": "Taja sababu nyingine",
         "v_required": {
           "value": "true",
-          "err": "Please specify condition"
+          "err": "Tafadhali Taja"
         },
         "relevance": {
           "rules-engine": {
@@ -323,7 +327,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "breast_condition_prompt",
         "type": "toaster_notes",
-        "text": "Refer client for further management",
+        "text": "Rejelea mteja kwa usimamizi zaidi",
         "toaster_type": "info",
         "toaster_info_text": "",
         "toaster_info_title": "",

@@ -135,7 +135,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -169,7 +169,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         }
       },
       {
@@ -272,7 +272,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -306,7 +306,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -340,7 +340,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -374,7 +374,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -408,7 +408,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -442,7 +442,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -476,7 +476,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -510,7 +510,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali Chagua"
         }
       },
       {
@@ -525,7 +525,7 @@
         "hint": "Chagua tarehe ya miadi",
         "v_required": {
           "value": "true",
-          "err": "Tafadhali jaza"
+          "err": "Tafadhali Chagua"
         }
       },
       {
