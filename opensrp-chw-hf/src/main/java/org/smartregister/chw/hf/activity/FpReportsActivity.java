@@ -29,8 +29,11 @@ import timber.log.Timber;
 
 public class FpReportsActivity extends SecuredActivity implements View.OnClickListener {
     protected ConstraintLayout fpServicesMonthlyReport;
+
     protected AppBarLayout appBarLayout;
+
     Menu menu;
+
     private String reportPeriod = ReportUtils.getDefaultReportPeriod();
 
     @Override

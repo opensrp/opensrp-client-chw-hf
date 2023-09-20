@@ -113,12 +113,22 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public void openMedicalHistory() {
-
+        //TOBE Implemented
     }
 
     @Override
     public Visit getLastVisit() {
-        return FpDao.getLatestVisit(fpMemberObject.getBaseEntityId());
+        try {
+            Visit lastVisit = FpDao.getLatestVisit(fpMemberObject.getBaseEntityId());
+            if (lastVisit.getParentVisitID() != null) {
+                Visit parentVisit = FpDao.getLatestVisitById(lastVisit.getParentVisitID());
+                if (parentVisit != null) return parentVisit;
+            }
+            return lastVisit;
+        } catch (Exception e) {
+            Timber.e(e);
+            return null;
+        }
     }
 
     @Override
@@ -153,12 +163,12 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public void startFpFollowupVisit() {
-
+        FpFollowupVisitProvisionOfServicesActivity.startMe(this, fpMemberObject.getBaseEntityId(), false);
     }
 
     @Override
     public void showFollowUpVisitButton() {
-
+        //Not Required
     }
 
     @Override
