@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Provide FP method",
+  "encounter_type": "Toa njia ya FP",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -49,7 +49,7 @@
     }
   },
   "step1": {
-    "title": "Provide FP method",
+    "title": "Toa njia ya FP",
     "fields": [
       {
         "key": "pop",
@@ -58,10 +58,10 @@
         "openmrs_entity_id": "pop",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number cycles dispensed (POP)",
+        "hint": "Idadi ya mizunguko ya Vidonge vya Uzazi wa Mpango (POP)",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -78,10 +78,10 @@
         "openmrs_entity_id": "coc",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number cycles dispensed (COC)",
+        "hint": "Idadi ya mizunguko ya Vidonge vya Uzazi wa Mpango (COC)",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -98,10 +98,10 @@
         "openmrs_entity_id": "ecp",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Number tablets dispensed (ECP)",
+        "hint": "Idadi ya mizunguko ya Vidonge vya Uzazi wa Mpango (ECP)",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -117,25 +117,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "injection_administered",
         "type": "native_radio",
-        "label": "Injection administered?",
+        "label": "Sindano imetolewa?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -151,25 +151,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_provided_condom",
         "type": "native_radio",
-        "label": "Was the client provided condom?",
+        "label": "Je, mteja alipewa kondomu?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       },
       {
@@ -180,25 +180,25 @@
         "openmrs_data_type": "select one",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label": "Select the type of condom collected",
-        "hint": "Select the type of condom collected",
+        "label": "Chagua aina ya kondomu iliyotolewa",
+        "hint": "Chagua aina ya kondomu iliyotolewa",
         "options": [
           {
             "key": "male",
-            "text": "Male",
+            "text": "Mwanaume",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "male"
           },
           {
             "key": "female",
-            "text": "Female",
+            "text": "Mwanamke",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "female"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please choose type of condom collected"
+          "err": "Tafadhali chagua aina ya kondomu iliyotolewa"
         },
         "relevance": {
           "rules-engine": {
@@ -215,10 +215,10 @@
         "openmrs_entity_id": "number_male_condoms_collected",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Specify quantity (Male)",
+        "hint": "Taja idadi (Mwanaume)",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -235,10 +235,10 @@
         "openmrs_entity_id": "number_female_condoms_collected",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Specify quantity (Female)",
+        "hint": "Taja idadi (Mwanamke)",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -254,18 +254,18 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "jadelle_inserted",
         "type": "native_radio",
-        "label": "Jadelle inserted?",
+        "label": "Jadelle imepandikizwa?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
@@ -288,25 +288,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "implanon_inserted",
         "type": "native_radio",
-        "label": "Implanon inserted?",
+        "label": "Implanon imepandikizwa?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -322,25 +322,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "iucd_inserted",
         "type": "native_radio",
-        "label": "IUCD inserted?",
+        "label": "IUCD imepandikizwa?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -356,25 +356,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "cycle_beads_provided",
         "type": "native_radio",
-        "label": "Cycle beads provided (SDM)?",
+        "label": "Mzunguko wa shanga umetolewa (SDM)?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -390,25 +390,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_counseled_on_lam",
         "type": "native_radio",
-        "label": "Has the client been counseled on the LAM criteria?",
+        "label": "Je, mteja amefundishwa kuhusu vigezo vya LAM?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -424,25 +424,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "vasectomy",
         "type": "native_radio",
-        "label": "Has Vasectomy procedure been conducted?",
+        "label": "Je, utaratibu wa Vasectomy umefanyika?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -458,25 +458,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "btl",
         "type": "native_radio",
-        "label": "Has BTL procedure been conducted?",
+        "label": "Je, utaratibu wa BTL umefanyika?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         },
         "relevance": {
           "rules-engine": {
@@ -492,25 +492,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "post_instruction_fp_method_provided",
         "type": "native_radio",
-        "label": "Was post instruction given on the family planning method provided?",
+        "label": "Je, maelekezo ya baada ya utoaji yalitolewa kuhusu njia ya uzazi wa mpango iliyotolewa?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       },
       {
@@ -522,10 +522,10 @@
         "min_date": "today",
         "max_date": "today+5y",
         "expanded": false,
-        "hint": "Select next appointment date",
+        "hint": "Chagua tarehe ya miadi",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       },
       {
@@ -536,31 +536,31 @@
         "openmrs_data_type": "select one",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label": "Reasons for not providing method",
-        "hint": "Reasons for not providing method ",
+        "label": "Sababu za kutokutoa njia",
+        "hint": "Sababu za kutokutoa njia",
         "options": [
           {
             "key": "out_of_stock",
-            "text": "Out of stock",
+            "text": "Hakuna bidhaa",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "out_of_stock"
           },
           {
             "key": "client_changed_mind",
-            "text": "Client changed mind",
+            "text": "Mteja alibadilisha mawazo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "client_changed_mind"
           },
           {
             "key": "other",
-            "text": "Others (Specify)",
+            "text": "Nyinginezo (Taja)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please choose reasons for not providing method "
+          "err": "Tafadhali chagua sababu za kutokutoa njia"
         },
         "relevance": {
           "rules-engine": {
@@ -576,10 +576,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "specify_other_method",
         "type": "edit_text",
-        "hint": "Specify other condition",
+        "hint": "Taja sababu nyingine",
         "v_required": {
           "value": "true",
-          "err": "Please specify"
+          "err": "Tafadhali Taja"
         },
         "relevance": {
           "rules-engine": {
@@ -595,7 +595,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "counsel_for_other_methods",
         "type": "toaster_notes",
-        "text": "Counsel for other family planning methods",
+        "text": "Toa ushauri kwa njia nyingine za uzazi wa mpango",
         "toaster_type": "warning",
         "toaster_info_text": "",
         "toaster_info_title": "",
