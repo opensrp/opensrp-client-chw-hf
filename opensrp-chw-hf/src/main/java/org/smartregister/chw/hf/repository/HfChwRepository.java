@@ -254,8 +254,8 @@ public class HfChwRepository extends CoreChwRepository {
 
     private static void upgradeToVersion17(SQLiteDatabase db) {
         try {
-            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
             refreshIndicatorQueries(db);
+            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -280,8 +280,8 @@ public class HfChwRepository extends CoreChwRepository {
 
     private static void upgradeToVersion20(SQLiteDatabase db) {
         try {
-            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
             refreshIndicatorQueries(db);
+            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -289,8 +289,8 @@ public class HfChwRepository extends CoreChwRepository {
 
     private static void upgradeToVersion21(SQLiteDatabase db) {
         try {
-            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
             refreshIndicatorQueries(db);
+            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN IF NOT EXISTS last_appointment_date TEXT NULL;");
         } catch (Exception e) {
             Timber.e(e);
         }
