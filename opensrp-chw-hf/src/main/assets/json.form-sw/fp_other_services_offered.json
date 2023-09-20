@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Other services offered",
+  "encounter_type": "Huduma zingine zilizotolewa",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -48,7 +48,7 @@
     }
   },
   "step1": {
-    "title": "Other services offered",
+    "title": "Huduma zingine zilizotolewa",
     "fields": [
       {
         "key": "other_services_offered",
@@ -58,11 +58,8 @@
         "openmrs_data_type": "select one",
         "combine_checkbox_option_values": "true",
         "type": "check_box",
-        "label": "Other services offered",
-        "hint": "Other services offered",
-        "exclusive": [
-          "none"
-        ],
+        "label": "Huduma zingine zilizotolewa",
+        "hint": "Huduma zingine zilizotolewa",
         "options": [
           {
             "key": "hts",
@@ -72,15 +69,15 @@
           },
           {
             "key": "cervical_cancer",
-            "text": "Cervical Cancer",
+            "text": "Saratani ya mlango wa kizazi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "cervical_cancer"
           },
           {
-            "key": "none",
-            "text": "None",
+            "key": "no",
+            "text": "Hapana",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
+            "openmrs_entity_id": "no"
           }
         ],
         "exclusive": [
@@ -88,7 +85,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       }
 

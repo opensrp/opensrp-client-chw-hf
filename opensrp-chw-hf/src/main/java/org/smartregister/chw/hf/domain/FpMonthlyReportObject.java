@@ -15,7 +15,7 @@ public class FpMonthlyReportObject extends ReportObject {
     private final List<String> indicatorCodesWithAgeGroups = new ArrayList<>();
 
     private final String[] indicatorCodes = new String[]{
-            "fp-1", "fp-1a", "fp-1b", "fp-1c",
+            "fp-1","fp-1a", "fp-1b", "fp-1c",
             "fp-2a", "fp-2b", "fp-2c", "fp-2d",
             "fp-3a", "fp-3b",
             "fp-4a", "fp-4b", "fp-4c", "fp-4d", "fp-4e", "fp-4f",

@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Other services offered",
+  "encounter_type": "Past Obstetric History",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -48,50 +48,18 @@
     }
   },
   "step1": {
-    "title": "Other services offered",
+    "title": "Past Obstetric History",
     "fields": [
       {
-        "key": "other_services_offered",
+        "key": "past_obstetric_history",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_services_offered",
-        "openmrs_data_type": "select one",
-        "combine_checkbox_option_values": "true",
-        "type": "check_box",
-        "label": "Other services offered",
-        "hint": "Other services offered",
-        "exclusive": [
-          "none"
-        ],
-        "options": [
-          {
-            "key": "hts",
-            "text": "HTS",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "hts"
-          },
-          {
-            "key": "cervical_cancer",
-            "text": "Cervical Cancer",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "cervical_cancer"
-          },
-          {
-            "key": "none",
-            "text": "None",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
-          }
-        ],
-        "exclusive": [
-          "no"
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
+        "openmrs_entity_id": "past_obstetric_history",
+        "text": "Past Obstetric History",
+        "type": "expansion_panel",
+        "content_form": "fp_method_screening_past_obstetric_history_sub_form",
+        "container": "anc_test"
       }
-
     ]
   }
 }

@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Other services offered",
+  "encounter_type": "Weka tarehe ya miadi",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -48,50 +48,23 @@
     }
   },
   "step1": {
-    "title": "Other services offered",
+    "title": "Weka tarehe ya miadi",
     "fields": [
       {
-        "key": "other_services_offered",
+        "key": "next_appointment_date",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "other_services_offered",
-        "openmrs_data_type": "select one",
-        "combine_checkbox_option_values": "true",
-        "type": "check_box",
-        "label": "Other services offered",
-        "hint": "Other services offered",
-        "exclusive": [
-          "none"
-        ],
-        "options": [
-          {
-            "key": "hts",
-            "text": "HTS",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "hts"
-          },
-          {
-            "key": "cervical_cancer",
-            "text": "Cervical Cancer",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "cervical_cancer"
-          },
-          {
-            "key": "none",
-            "text": "None",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "none"
-          }
-        ],
-        "exclusive": [
-          "no"
-        ],
+        "openmrs_entity_id": "next_appointment_date",
+        "type": "date_picker",
+        "min_date": "today",
+        "max_date": "today+5y",
+        "expanded": false,
+        "hint": "Chagua tarehe ya miadi",
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali jaza"
         }
       }
-
     ]
   }
 }
