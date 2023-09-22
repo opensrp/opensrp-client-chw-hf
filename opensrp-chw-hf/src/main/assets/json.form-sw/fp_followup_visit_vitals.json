@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Vitals",
+  "encounter_type": "Vipimo muhimu",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -53,7 +53,7 @@
     }
   },
   "step1": {
-    "title": "Vitals",
+    "title": "Vipimo muhimu",
     "fields": [
       {
         "key": "weight",
@@ -62,70 +62,78 @@
         "openmrs_entity_id": "weight",
         "entity_id": "",
         "type": "edit_text",
-        "hint": "Weight (KG)",
+        "hint": "Uzito (KG)",
         "edit_type": "number",
         "look_up": "true",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza uzito"
+        },
         "v_required": {
           "value": "true",
-          "err": "Please enter the Client’s Weight (KG)"
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 20 (KG)"
         },
         "v_min": {
           "value": "20",
-          "err": "client weight must be equal or greater than 20kg"
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 20kg (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Uzito lazima uwe sawasawa au chini ya 300 (KG)"
         }
       },
       {
         "key": "systolic",
         "type": "edit_text",
-        "hint": "Systolic (Blood Pressure)",
+        "hint": "Systolic (Shinikizo la Damu)",
         "openmrs_entity_id": "systolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the systolic value"
+          "err": "Tafadhali ingiza thamani ya systolic"
         },
         "v_min": {
           "value": "0",
-          "err": "Systolic value must be equal or greater than 0"
+          "err": "Namba ya systolic lazima iwe sawasawa au zaidi ya 0"
         },
         "v_max": {
           "value": "320",
-          "err": "Systolic value must be equal or less than 320"
+          "err": "Namba ya systolic lazima iwe sawasawa au chini ya 320"
         },
         "v_required": {
           "value": "true",
-          "err": "Please enter the Systolic (Blood Pressure)"
+          "err": "Tafadhali ingiza namba ya systolic (Shinikizo la Damu)"
         }
       },
       {
         "key": "diastolic",
         "type": "edit_text",
-        "hint": "Diastolic (Blood Pressure)",
+        "hint": "Diastolic (Shinikizo la Damu)",
         "openmrs_entity_id": "diastolic",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "v_numeric": {
           "value": "true",
-          "err": "Please enter the diastolic value"
+          "err": "Tafadhali ingiza namba ya diastolic"
         },
         "v_min": {
           "value": "0",
-          "err": "Diastolic value must be equal or greater than 0"
+          "err": "Namba ya diastolic lazima iwe sawasawa au zaidi ya 0"
         },
         "v_max": {
           "value": "200",
-          "err": "Diastolic value must be equal or less than 200"
+          "err": "Namba ya diastolic lazima iwe sawasawa au chini ya 200"
         },
         "v_required": {
           "value": "true",
-          "err": "Please enter the Diastolic (Blood Pressure)"
+          "err": "Tafadhali ingiza namba ya diastolic (Shinikizo la Damu)"
         },
         "constraints": [
           {
             "type": "numeric",
             "ex": "lessThan(., step1:systolic)",
-            "err": "The diastolic value must be less than the systolic value"
+            "err": "Namba ya diastolic lazima iwe chini ya namba ya systolic"
           }
         ]
       },
@@ -138,7 +146,7 @@
         "min_date": "today-5y",
         "max_date": "today",
         "expanded": false,
-        "hint": "Last Normal Menstrual Period (LNMP) ",
+        "hint": "Tarehe ya Mwisho ya Hedhi ya Kawaida (LNMP)",
         "v_required": {
           "value": "true",
           "err": "Required"
@@ -150,25 +158,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_have_any_complain",
         "type": "native_radio",
-        "label": "Does the client have any complain?",
+        "label": "Je, mteja ana malalamiko yoyote?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         }
       },
       {
@@ -177,10 +185,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "specify_other_complain",
         "type": "edit_text",
-        "hint": "Specify other clients complains",
+        "hint": "Taja malalamiko mengine ya wateja",
         "v_required": {
           "value": "true",
-          "err": "Please specify"
+          "err": "Tafadhali (Taja)"
         },
         "relevance": {
           "rules-engine": {

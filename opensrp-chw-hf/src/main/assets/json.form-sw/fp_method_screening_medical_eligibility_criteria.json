@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Medical eligibility criteria",
+  "encounter_type": "Vigezo vya kustahiki matibabu",
   "entity_id": "",
   "relational_id": "",
   "metadata": {
@@ -52,7 +52,7 @@
     }
   },
   "step1": {
-    "title": "Medical eligibility criteria",
+    "title": "Vigezo vya kustahiki matibabu",
     "fields": [
       {
         "key": "client_category_after_screening",
@@ -60,37 +60,37 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_category_after_screening",
         "type": "native_radio",
-        "label": "Select client category after screening",
+        "label": "Chagua kategoria ya mteja baada ya kukagua",
         "text_color": "#000000",
         "options": [
           {
             "key": "category_1",
-            "text": "Category 1",
+            "text": "Kategoria 1",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "category_1"
           },
           {
             "key": "category_2",
-            "text": "Category 2",
+            "text": "Kategoria 2",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "category_2"
           },
           {
             "key": "category_3",
-            "text": "Category 3",
+            "text": "Kategoria 3",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "category_3"
           },
           {
             "key": "category_4",
-            "text": "Category 4",
+            "text": "Kategoria 4",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "category_4"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         }
       },
       {
@@ -99,7 +99,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "category_1_notes",
         "type": "toaster_notes",
-        "text": "Give the method in any circumstance",
+        "text": "Toa njia katika hali yoyote",
         "toaster_type": "info",
         "toaster_info_text": "",
         "toaster_info_title": "",
@@ -117,7 +117,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "category_2_notes",
         "type": "toaster_notes",
-        "text": "Generally use; advantages outweigh risks",
+        "text": "Kwa ujumla kutumia; faida ni kubwa kuliko hatari",
         "toaster_type": "info",
         "toaster_info_text": "",
         "toaster_info_title": "",
@@ -135,7 +135,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "category_3_notes_first",
         "type": "toaster_notes",
-        "text": "Generally do not use; risks outweigh the benefit",
+        "text": "Kwa ujumla usitumie; hatari ni kubwa kuliko faida",
         "toaster_type": "warning",
         "toaster_info_text": "",
         "toaster_info_title": "",
@@ -153,7 +153,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "category_3_notes_second",
         "type": "toaster_notes",
-        "text": "The Client is not eligible for the family planning method counsel for other methods",
+        "text": "Mteja hafai kwa njia ya uzazi wa mpango, toa ushauri kuhusu njia nyingine",
         "toaster_type": "warning",
         "toaster_info_text": "",
         "toaster_info_title": "",
@@ -171,7 +171,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "category_4_notes_first",
         "type": "toaster_notes",
-        "text": "Method not to be used",
+        "text": "Njia haipaswi kutumika",
         "toaster_type": "warning",
         "toaster_info_text": "",
         "toaster_info_title": "",
@@ -189,7 +189,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "category_4_notes_second",
         "type": "toaster_notes",
-        "text": "The Client is not eligible for the family planning method counsel for other methods",
+        "text": "Mteja hafai kwa njia ya uzazi wa mpango, toa ushauri kuhusu njia nyingine",
         "toaster_type": "warning",
         "toaster_info_text": "",
         "toaster_info_title": "",

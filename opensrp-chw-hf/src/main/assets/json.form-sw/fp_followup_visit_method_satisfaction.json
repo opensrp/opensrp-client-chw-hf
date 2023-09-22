@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Satisfaction of FP Method",
+  "encounter_type": "Kuridhika na Njia ya Uzazi wa Mpango",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -53,7 +53,7 @@
     }
   },
   "step1": {
-    "title": "Satisfaction of FP Method",
+    "title": "Kuridhika na Njia ya Uzazi wa Mpango",
     "fields": [
       {
         "key": "client_satisfied_with_fp_method",
@@ -61,25 +61,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_satisfied_with_fp_method",
         "type": "native_radio",
-        "label": "Is the client satisfied with the family planning method?",
+        "label": "Je, mteja ameridhika na njia ya uzazi wa mpango?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         }
       },
       {
@@ -90,31 +90,159 @@
         "openmrs_data_type": "select one",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
-        "label": "Reason for dissatisfaction",
-        "hint": "Reason for dissatisfaction",
+        "label": "Sababu ya kutokuridhika",
+        "hint": "Sababu ya kutokuridhika",
         "options": [
           {
             "key": "side_effects",
-            "text": "Side effects",
+            "text": "Maudhi madogo madogo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "side_effects"
           },
           {
             "key": "complication",
-            "text": "Complication",
+            "text": "Matatizo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "complication"
           },
           {
             "key": "other",
-            "text": "Others (Specify)",
+            "text": "Nyinginezo (Taja)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Please choose reasons for dissatisfaction"
+          "err": "Tafadhali chagua sababu za kutokuridhika"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "side_effects",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "side_effects",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Maudhi madogo madogo",
+        "hint": "Maudhi madogo madogo",
+        "options": [
+          {
+            "key": "heavy_bleeding",
+            "text": "Kutokwa damu kwa wingi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "heavy_bleeding"
+          },
+          {
+            "key": "severe_headache",
+            "text": "Maumivu makali ya kichwa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_headache"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (Taja)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "side_effects_specify_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "side_effects_specify_other",
+        "type": "edit_text",
+        "hint": "Taja Maudhi madogo madogo",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali (Taja)"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "complication",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "complication",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Madhara",
+        "hint": "Madhara",
+        "options": [
+          {
+            "key": "severe_lower",
+            "text": "Maumivu makali ya Tumbo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_lower"
+          },
+          {
+            "key": "severe_chest",
+            "text": "Maumivu makali ya kifua",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_chest"
+          },
+          {
+            "key": "pregnancy",
+            "text": "Ujauzito",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pregnancy"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (Taja)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua madhara"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "complication_specify_other",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "complication_specify_other",
+        "type": "edit_text",
+        "hint": "Taja madhara",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
         },
         "relevance": {
           "rules-engine": {
@@ -130,10 +258,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "specify_other_method",
         "type": "edit_text",
-        "hint": "Specify other condition",
+        "hint": "Taja hali nyingine",
         "v_required": {
           "value": "true",
-          "err": "Please specify"
+          "err": "Tafadhali Taja"
         },
         "relevance": {
           "rules-engine": {
@@ -149,7 +277,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "dissatisfaction_prompt",
         "type": "toaster_notes",
-        "text": "Manage according to SOP",
+        "text": "Tenda kulingana na Mwongozo wa Uendeshaji (SOP)",
         "toaster_type": "info",
         "toaster_info_text": "",
         "toaster_info_title": "",
@@ -167,25 +295,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_want_to_switch_stop",
         "type": "native_radio",
-        "label": "Does the client want to switch or stop",
+        "label": "Je, mteja anataka kubadilisha au kuacha",
         "text_color": "#000000",
         "options": [
           {
             "key": "switch",
-            "text": "Switch",
+            "text": "Kubadilisha",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "switch"
           },
           {
             "key": "stop",
-            "text": "Stop",
+            "text": "Kusitisha",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "stop"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali Taja"
         }
       },
       {
@@ -194,7 +322,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_want_to_switch_prompt",
         "type": "toaster_notes",
-        "text": "Provide FP counseling for informed choice",
+        "text": "Toa ushauri wa uzazi wa mpango kwa ajili ya chaguo lililobainika",
         "toaster_type": "info",
         "toaster_info_text": "",
         "toaster_info_title": "",
@@ -212,25 +340,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "jadelle_removed",
         "type": "native_radio",
-        "label": "Jadelle removed?",
+        "label": "Kipandikizi(Jadelle) imeondolewa?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -246,25 +374,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "implanon_removed",
         "type": "native_radio",
-        "label": "Implanon removed?",
+        "label": "Kipandikizi(Implanon) imeondolewa?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {
@@ -285,20 +413,20 @@
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         },
         "relevance": {
           "rules-engine": {

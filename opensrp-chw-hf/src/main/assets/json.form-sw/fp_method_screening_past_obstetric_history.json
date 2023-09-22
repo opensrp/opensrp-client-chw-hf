@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Past Obstetric History",
+  "encounter_type": "Historia ya Ujauzito wa Zamani",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -48,14 +48,14 @@
     }
   },
   "step1": {
-    "title": "Past Obstetric History",
+    "title": "Historia ya Ujauzito wa Zamani",
     "fields": [
       {
         "key": "past_obstetric_history",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "past_obstetric_history",
-        "text": "Past Obstetric History",
+        "text": "Historia ya Ujauzito wa Zamani",
         "type": "expansion_panel",
         "content_form": "fp_method_screening_past_obstetric_history_sub_form",
         "container": "anc_test"

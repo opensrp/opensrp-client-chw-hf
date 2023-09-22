@@ -47,6 +47,7 @@
       "value": ""
     }
   },
+  "global": {},
   "step1": {
     "title": "HTS",
     "fields": [
@@ -136,6 +137,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jaza"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_hts_relevance.yml"
+            }
+          }
         }
       },
       {

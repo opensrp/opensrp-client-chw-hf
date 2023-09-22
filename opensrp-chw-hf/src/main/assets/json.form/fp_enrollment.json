@@ -91,7 +91,7 @@
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{4}/\\d{3})?",
-          "err": "CTC number should be of the format (XXXX/XXX)"
+          "err": "Client registration number should be of the format (XXXX/XXX)"
         },
         "v_max_length": {
           "value": "17",

@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Continue with the method",
+  "encounter_type": "Endelea na njia",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -53,7 +53,7 @@
     }
   },
   "step1": {
-    "title": "Continue with the method",
+    "title": "Endelea na njia",
     "fields": [
       {
         "key": "method_expired",
@@ -61,25 +61,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "method_expired",
         "type": "native_radio",
-        "label": "Has the FP method expired?",
+        "label": "Je, njia ya uzazi wa mpango imeisha muda wake?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         }
       },
       {
@@ -88,25 +88,25 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "client_want_continue_fp",
         "type": "native_radio",
-        "label": "Does the client want to continue with the family planning method?",
+        "label": "Je, mteja anataka kuendelea na njia ya uzazi wa mpango?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
+          "err": "Tafadhali chagua"
         }
       },
       {
@@ -115,7 +115,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "method_expired_prompt",
         "type": "toaster_notes",
-        "text": "Remove the FP Method",
+        "text": "Ondoa njia ya uzazi wa mpango",
         "toaster_type": "warning",
         "toaster_info_text": "",
         "toaster_info_title": "",
