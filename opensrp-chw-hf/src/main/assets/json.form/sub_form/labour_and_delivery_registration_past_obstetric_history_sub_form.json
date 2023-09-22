@@ -18,6 +18,33 @@
       }
     },
     {
+      "key": "did_the_client_have_maternal_complications",
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_entity_id": "did_the_client_have_maternal_complications",
+      "label": "Did the client get any Complications?",
+      "text_color": "#000000",
+      "type": "native_radio",
+      "options": [
+        {
+          "key": "yes",
+          "text": "Yes",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "yes"
+        },
+        {
+          "key": "no",
+          "text": "No",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "no"
+        }
+      ],
+      "v_required": {
+        "value": "true",
+        "err": "Please select if the child was born alive"
+      }
+    },
+    {
       "key": "maternal_complications_during_labour",
       "openmrs_entity_parent": "",
       "openmrs_entity": "concept",
@@ -27,9 +54,6 @@
       "combine_checkbox_option_values": "true",
       "label_text_style": "normal",
       "text_color": "#C0C0C0",
-      "exclusive": [
-        "chk_none"
-      ],
       "options": [
         {
           "key": "chk_aph",
@@ -149,18 +173,17 @@
           "value": false,
           "openmrs_entity": "concept",
           "openmrs_entity_id": "chk_others"
-        },
-        {
-          "key": "chk_none",
-          "text": "None",
-          "value": false,
-          "openmrs_entity": "concept",
-          "openmrs_entity_id": "chk_none"
         }
       ],
       "v_required": {
         "value": "true",
         "err": "Please pick at least one"
+      },
+      "relevance": {
+        "step1:did_the_client_have_maternal_complications": {
+          "type": "string",
+          "ex": "equalTo(., \"yes\")"
+        }
       }
     },
     {
