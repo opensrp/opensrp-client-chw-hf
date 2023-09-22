@@ -289,7 +289,7 @@
           },
           {
             "key": "none",
-            "text": "None",
+            "text": "Hakuna",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
