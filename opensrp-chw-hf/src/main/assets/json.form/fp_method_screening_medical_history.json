@@ -117,7 +117,7 @@
           },
           {
             "key": "on_art",
-            "text": "On ART ",
+            "text": "On ART",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "on_art"
           },

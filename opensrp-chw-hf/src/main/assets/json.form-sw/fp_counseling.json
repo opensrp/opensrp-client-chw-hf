@@ -87,6 +87,13 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali chagua"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_counseling_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -216,7 +223,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "selected_fp_method_after_counseling_male",
         "type": "native_radio",
-        "label": "Selected family planning method after counseling",
+        "label": "Mteja Amechagua njia gani ya uzazi wa mpango baada ya ushauri",
         "text_color": "#000000",
         "options": [
           {
