@@ -35,7 +35,7 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
 
     @Override
     protected void registerPresenter() {
-        presenter = new BaseLDVisitPresenter(memberObject, this,new LDPostDeliveryManagementMotherActivityInteractor());
+        presenter = new BaseLDVisitPresenter(memberObject, this, new LDPostDeliveryManagementMotherActivityInteractor());
     }
 
     @Override
@@ -57,6 +57,22 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
         actionList.clear();
 
         //Rearranging the actions according to a specific arrangement
+        if (map.containsKey(getString(R.string.ld_registration_admission_information_title))) {
+            BaseLDVisitAction ldAdmissionAction = map.get(getString(R.string.ld_registration_admission_information_title));
+            actionList.put(getString(R.string.ld_registration_admission_information_title), ldAdmissionAction);
+        }
+        if (map.containsKey(getString(R.string.ld_registration_obstetric_history_title))) {
+            BaseLDVisitAction obstetricHistoryAction = map.get(getString(R.string.ld_registration_obstetric_history_title));
+            actionList.put(getString(R.string.ld_registration_obstetric_history_title), obstetricHistoryAction);
+        }
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_past_obstetric_history_title))) {
+            BaseLDVisitAction labourAndDeliveryPastObstetricHistory = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_past_obstetric_history_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_past_obstetric_history_title), labourAndDeliveryPastObstetricHistory);
+        }
+        if (map.containsKey(getString(R.string.ld_registration_anc_clinic_findings_title))) {
+            BaseLDVisitAction ancClinicFindingsAction = map.get(getString(R.string.ld_registration_anc_clinic_findings_title));
+            actionList.put(getString(R.string.ld_registration_anc_clinic_findings_title), ancClinicFindingsAction);
+        }
         if (map.containsKey(getString(R.string.ld_mother_status_action_title))) {
             BaseLDVisitAction mothersStatusAction = map.get(getString(R.string.ld_mother_status_action_title));
             actionList.put(getString(R.string.ld_mother_status_action_title), mothersStatusAction);
@@ -65,7 +81,7 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
             BaseLDVisitAction postDeliveryObservationsAction = map.get(getString(R.string.ld_post_delivery_observation_action_title));
             actionList.put(getString(R.string.ld_post_delivery_observation_action_title), postDeliveryObservationsAction);
         }
-        
+
         if (map.containsKey(getString(R.string.ld_maternal_complication_action_title))) {
             BaseLDVisitAction martenalComplicationsAction = map.get(getString(R.string.ld_maternal_complication_action_title));
             actionList.put(getString(R.string.ld_maternal_complication_action_title), martenalComplicationsAction);
@@ -89,8 +105,8 @@ public class LDPostDeliveryManagementMotherActivity extends BaseLDVisitActivity 
             mAdapter.notifyDataSetChanged();
         }
         displayProgressBar(false);
-        
-        
+
+
         super.initializeActions(map);
     }
 }

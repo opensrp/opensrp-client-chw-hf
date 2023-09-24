@@ -88,7 +88,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         otherPastMedicalSurgicalHistory.put(org.smartregister.family.util.JsonFormUtils.VALUE, otherPastMedicalAndSurgicalHistory);
     }
 
-    private void setCheckBoxValues(JSONArray options, String value) {
+    public static void setCheckBoxValues(JSONArray options, String value) {
         for (int j = 0; j < options.length(); j++) {
             JSONObject option = null;
             try {

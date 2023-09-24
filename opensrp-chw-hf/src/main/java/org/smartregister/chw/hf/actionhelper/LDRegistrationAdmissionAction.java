@@ -98,7 +98,7 @@ public class LDRegistrationAdmissionAction implements BaseLDVisitAction.LDVisitA
     /**
      * evaluate if all fields are completed
      **/
-    private boolean isAllFieldsCompleted() {
+    protected boolean isAllFieldsCompleted() {
         return !StringUtils.isBlank(admissionDate) &&
                 !StringUtils.isBlank(admissionTime) &&
                 !StringUtils.isBlank(admittingPersonName) &&
@@ -108,7 +108,7 @@ public class LDRegistrationAdmissionAction implements BaseLDVisitAction.LDVisitA
     /**
      * evaluate if any field has been completed
      **/
-    private boolean isAnyFieldCompleted() {
+    protected boolean isAnyFieldCompleted() {
         return !StringUtils.isBlank(admissionDate) ||
                 !StringUtils.isBlank(admissionTime) ||
                 !StringUtils.isBlank(admittingPersonName) ||
