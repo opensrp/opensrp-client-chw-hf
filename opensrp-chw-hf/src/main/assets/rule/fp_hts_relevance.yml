@@ -1,0 +1,21 @@
+---
+name: step1_client_referred_to_ctc
+description: client_referred_to_ctc relevance
+priority: 1
+condition: "step1_client_hiv_test_results.equalsIgnoreCase('positive')"
+actions:
+    - "isRelevant = true"
+---
+name: step1_partner_referred_to_ctc
+description: partner_referred_to_ctc relevance
+priority: 1
+condition: "step1_partner_hiv_test_results.equalsIgnoreCase('positive')"
+actions:
+    - "isRelevant = true"
+---
+name: step1_partner_hiv_test_results
+description: partner_hiv_test_results relevance
+priority: 1
+condition: "step1_partner_tested_for_hiv.equalsIgnoreCase('yes')"
+actions:
+    - "isRelevant = true"

@@ -131,25 +131,21 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REFERRALS_REGISTER_ACTIVITY, ReferralRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.ALL_CLIENTS_REGISTERED_ACTIVITY, AllClientsRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.MALARIA_REGISTER_ACTIVITY, MalariaRegisterActivity.class);
-
-        if (!BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
-        } else {
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_REGISTER_ACTIVITY, HivRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HTS_REGISTER_ACTIVITY, HtsRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY, HivIndexContactsContactsRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY, PmtctRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HEI, HeiRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REPORTS, ReportsActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LD, LDRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LTFU_REFERRALS_REGISTER_ACTIVITY, LTFURegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_SELF_TESTING_REGISTER_ACTIVITY, HivstRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.KVP_REGISTER_ACTIVITY, KvpRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PrEP_REGISTER_ACTIVITY, PrEPRegisterActivity.class);
-            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CDP_REGISTER_ACTIVITY, CdpRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_REGISTER_ACTIVITY, HivRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HTS_REGISTER_ACTIVITY, HtsRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_INDEX_REGISTER_ACTIVITY, HivIndexContactsContactsRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PMTCT_REGISTER_ACTIVITY, PmtctRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HEI, HeiRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.REPORTS, ReportsActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LD, LDRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.LTFU_REFERRALS_REGISTER_ACTIVITY, LTFURegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.HIV_SELF_TESTING_REGISTER_ACTIVITY, HivstRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.KVP_REGISTER_ACTIVITY, KvpRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PrEP_REGISTER_ACTIVITY, PrEPRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CDP_REGISTER_ACTIVITY, CdpRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
 //          TODO uncomment these when NACP is ready to test these modules
-            //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
-        }
+        //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
         return registeredActivities;
     }
 
@@ -385,6 +381,8 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         boolean hasKvpPrEP();
 
         boolean hasMalaria();
+
+        boolean hasFp();
 
         boolean hasLD();
 

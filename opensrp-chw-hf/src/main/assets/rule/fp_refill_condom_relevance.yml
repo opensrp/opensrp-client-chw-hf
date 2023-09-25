@@ -1,0 +1,15 @@
+---
+name: step1_number_male_condoms_refilled
+description: number_male_condoms_refilled relevance
+priority: 1
+condition: "step1_condom_refilled.contains('male')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_number_female_condoms_refilled
+description: number_female_condoms_refilled relevance
+priority: 1
+condition: "step1_condom_refilled.contains('female')"
+actions:
+  - "isRelevant = true"

@@ -693,6 +693,8 @@ public class Constants extends CoreConstants {
             String SELF_TESTING_REPORT = "self_testing_report";
             String CONDOM_DISTRIBUTION_REPORT = "condom_distribution_report";
             String KVP_REPORT = "kvp_report";
+
+            String FP_REPORT = "fp_report";
         }
 
         public interface ReportPaths {
@@ -711,6 +713,7 @@ public class Constants extends CoreConstants {
             String CONDOM_DISTRIBUTION_ISSUING_FROM_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-from-the-facility";
             String CONDOM_DISTRIBUTION_RECEIVING_REPORT_PATH = "condom-distribution-receiving-report";
             String KVP_REPORT_PATH = "kvp-report";
+            String FP_REPORT_PATH = "fp-report";
         }
     }
 

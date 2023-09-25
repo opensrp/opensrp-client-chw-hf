@@ -209,7 +209,7 @@ android {
 //            buildConfigField "String", 'opensrp_url_debug', '"http://50.116.15.4:8082/opensrp/"'
             buildConfigField "String", 'opensrp_url_debug', '"http://170.187.199.69:8082/opensrp/"'
             buildConfigField "boolean", 'SUPPORT_QR', 'true'
-            buildConfigField "int", "DATABASE_VERSION", '20'
+            buildConfigField "int", "DATABASE_VERSION", '21'
             buildConfigField "int", "DATA_SYNC_DURATION_MINUTES", '15'
             buildConfigField "long", "MAX_SERVER_TIME_DIFFERENCE", "1800000l"
             buildConfigField "boolean", "TIME_CHECK", "false"
@@ -283,7 +283,7 @@ flavors.each { productFlavorName ->
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation('org.smartregister:opensrp-client-chw-core:1.5.37.0-NACP-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-chw-core:1.5.37.0-NACP-ALPHA-SNAPSHOT@aar') {
 //    implementation(project(":opensrp-chw-core")) {
         transitive = true
         exclude group: 'com.android.support', module: 'appcompat-v7'
@@ -293,6 +293,7 @@ dependencies {
         exclude group: 'com.google.guava', module: 'guava'
         exclude group: 'org.smartregister', module: 'opensrp-client-materialedittext'
         exclude group: 'org.smartregister', module: 'opensrp-client-chw-ld'
+        exclude group: 'com.mcxiaoke.volley', module: 'library'
     }
 
     implementation('org.smartregister:opensrp-client-chw-ld:1.0.31-NACP-SNAPSHOT@aar') {

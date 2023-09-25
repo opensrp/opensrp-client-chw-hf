@@ -1,0 +1,57 @@
+---
+name: step1_reason_for_dissatisfaction
+description: reason_for_dissatisfaction relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_dissatisfaction_prompt
+description: dissatisfaction_prompt relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_specify_other
+description: specify_other relevance
+priority: 1
+condition: "step1_reason_for_dissatisfaction.contains('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_client_want_to_continue_prompt
+description: client_want_to_continue_prompt relevance
+priority: 1
+condition: "step1_client_want_to_continue.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_discontinue
+description: reason_for_discontinue relevance
+priority: 1
+condition: "step1_client_want_to_continue.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_reason_for_discontinue_prompt
+description: reason_for_discontinue_prompt relevance
+priority: 1
+condition: "step1_reason_for_discontinue.contains('need_to_conceive') || step1_reason_for_discontinue.contains('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_specify_other_discontinue_reason
+description: specify_other_discontinue_reason relevance
+priority: 1
+condition: "step1_reason_for_discontinue.contains('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_continue_same_method_prompt
+description: continue_same_method_prompt relevance
+priority: 1
+condition: "step1_client_want_to_continue_same_method.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"
