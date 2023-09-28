@@ -423,6 +423,24 @@
         }
       },
       {
+        "key": "post_instruction_fp_method_provided_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "post_instruction_fp_method_provided_prompt",
+        "type": "toaster_notes",
+        "text": "Please provide post family planning instruction to the client",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "reasons_for_not_providing_method",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -578,6 +596,10 @@
           "value": "1",
           "err": "Number of condoms should be greater than 0"
         },
+        "v_max": {
+          "value": "144",
+          "err": "Number of condoms shouldn't be greater than 144"
+        },
         "hint": "Specify quantity (Male)",
         "v_required": {
           "value": "true",
@@ -602,6 +624,10 @@
         "v_required": {
           "value": "true",
           "err": "Required"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Number of condoms shouldn't be greater than 50"
         },
         "v_numeric": {
           "value": "true",

@@ -168,3 +168,11 @@ priority: 1
 condition: "!step1_reasons_for_not_providing_method.isEmpty() && step1_reasons_for_not_providing_method.contains('other')"
 actions:
   - "isRelevant = true"
+
+---
+name: step1_post_instruction_fp_method_provided_prompt
+description: Post instruction
+priority: 1
+condition: "step1_post_instruction_fp_method_provided.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"

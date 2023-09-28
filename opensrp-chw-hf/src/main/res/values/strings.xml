@@ -1283,7 +1283,6 @@
     <string name="fp_side_effects_specify_other">side_effects_specify_other:</string>
     <string name="fp_complication">What are the complications:</string>
     <string name="fp_complication_specify_other">Specify complication:</string>
-    <string name="fp_specify_other_reasons_for_dissatisfaction">Specify other reason for dissatisfaction:</string>
     <string name="fp_client_want_to_switch_stop">Does the client want to switch or stop:</string>
     <string name="fp_last_normal_menstruation_period">Last Normal Menstrual Period (LNMP):</string>
     <string name="fp_specify_other_complain">Specify other clients complains:</string>

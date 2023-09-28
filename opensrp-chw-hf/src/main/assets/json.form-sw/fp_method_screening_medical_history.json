@@ -155,7 +155,7 @@
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
-          "err": "nambari ya CTC inapaswa kuwa ya muundo (XX-XX-XXXX-XXXXXX)"
+          "err": "Nambari ya CTC inapaswa kuwa ya muundo (XX-XX-XXXX-XXXXXX)"
         },
         "v_max_length": {
           "value": "17",

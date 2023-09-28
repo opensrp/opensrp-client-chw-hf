@@ -149,7 +149,7 @@
         "openmrs_entity_id": "cycle_length",
         "type": "edit_text",
         "edit_type": "number",
-        "hint": "Cycle length",
+        "hint": "Urefu wa mzunguko",
         "v_min": {
           "value": "23",
           "err": "Urefu wa mzunguko lazima uwe sawa au zaidi ya siku 23"
