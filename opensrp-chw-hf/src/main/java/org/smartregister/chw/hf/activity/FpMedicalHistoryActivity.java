@@ -1,5 +1,7 @@
 package org.smartregister.chw.hf.activity;
 
+import static org.smartregister.chw.pmtct.util.DBConstants.KEY.FORM_SUBMISSION_ID;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.vijay.jsonwizard.utils.FormUtils;
+
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import org.json.JSONObject;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
 import org.smartregister.chw.anc.presenter.BaseAncMedicalHistoryPresenter;
@@ -25,6 +30,8 @@ import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.FpMedicalHistoryInteractor;
+import org.smartregister.chw.hf.utils.HfAncJsonFormUtils;
+import org.smartregister.family.util.Utils;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -78,7 +85,7 @@ public class FpMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
         progressBar.setVisibility(state ? View.VISIBLE : View.GONE);
     }
 
-    private static class FpMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivityFlv {
+    private class FpMedicalHistoryActivityFlv extends DefaultAncMedicalHistoryActivityFlv {
         private final StyleSpan boldSpan = new StyleSpan(android.graphics.Typeface.BOLD);
 
         @Override
@@ -223,6 +230,13 @@ public class FpMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
             }
         }
 
+        public void startFormActivity(JSONObject jsonForm, Context context) {
+            Intent intent = new Intent(context, Utils.metadata().familyMemberFormActivity);
+            intent.putExtra(FamilyPlanningConstants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+
+            startActivityForResult(intent, FamilyPlanningConstants.REQUEST_CODE_GET_JSON);
+        }
+
 
         protected void processVisit(List<LinkedHashMap<String, String>> community_visits, Context context, List<Visit> visits) {
             if (community_visits != null && community_visits.size() > 0) {
@@ -239,16 +253,33 @@ public class FpMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
 
                     if (x == visits.size() - 1) {
                         int position = x;
+                        edit.setVisibility(View.VISIBLE);
                         edit.setOnClickListener(view1 -> {
-                            if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_SCREENING)) {
-                                edit.setVisibility(View.VISIBLE);
-                                FpScreeningActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
-                            } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES)) {
-                                edit.setVisibility(View.VISIBLE);
-                                FpOtherServicesActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
-                            } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_FOLLOW_UP_VISIT)) {
-                                edit.setVisibility(View.VISIBLE);
-                                FpFollowupVisitProvisionOfServicesActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            try {
+                                if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_POINT_OF_SERVICE_DELIVERY)) {
+                                    JSONObject jsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, FamilyPlanningConstants.FORMS.FP_POINT_OF_SERVICE_DELIVERY);
+                                    jsonObject.put(FORM_SUBMISSION_ID, visits.get(position).getFormSubmissionId());
+                                    HfAncJsonFormUtils.populateForm(jsonObject, visits.get(position).getVisitDetails());
+                                    startFormActivity(jsonObject, context);
+                                } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_PROVIDE_METHOD)) {
+                                    JSONObject jsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, FamilyPlanningConstants.FORMS.FP_PROVISION_OF_FP_METHOD);
+                                    jsonObject.put(FORM_SUBMISSION_ID, visits.get(position).getFormSubmissionId());
+                                    HfAncJsonFormUtils.populateForm(jsonObject, visits.get(position).getVisitDetails());
+                                    startFormActivity(jsonObject, context);
+                                } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_COUNSELING)) {
+                                    JSONObject jsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, FamilyPlanningConstants.FORMS.FP_COUNSELING);
+                                    jsonObject.put(FORM_SUBMISSION_ID, visits.get(position).getFormSubmissionId());
+                                    HfAncJsonFormUtils.populateForm(jsonObject, visits.get(position).getVisitDetails());
+                                    startFormActivity(jsonObject, context);
+                                } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_SCREENING)) {
+                                    FpScreeningActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
+                                } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES)) {
+                                    FpOtherServicesActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
+                                } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_FOLLOW_UP_VISIT)) {
+                                    FpFollowupVisitProvisionOfServicesActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
+                                }
+                            } catch (Exception e) {
+                                Timber.e(e);
                             }
                         });
                     }
