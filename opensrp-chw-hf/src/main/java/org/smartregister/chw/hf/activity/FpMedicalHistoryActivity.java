@@ -315,7 +315,7 @@ public class FpMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
                 return context.getString(resourceId);
             } catch (Exception e) {
                 Timber.e(e);
-                return prefix + resourceName;
+                return resourceName;
             }
         }
     }
