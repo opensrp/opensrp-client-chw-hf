@@ -22,7 +22,6 @@ import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
 import org.smartregister.chw.hf.interactor.HfFamilyPlanningProfileInteractor;
 import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter;
-import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.Utils;
@@ -110,7 +109,7 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
 
     @Override
     public void openMedicalHistory() {
-        //TOBE Implemented
+        FpMedicalHistoryActivity.startMe(FpMemberProfileActivity.this, fpMemberObject);
     }
 
     @Override

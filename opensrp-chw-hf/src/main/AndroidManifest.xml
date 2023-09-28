@@ -178,6 +178,9 @@
             android:name=".activity.HeiMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name=".activity.FpMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name="org.smartregister.family.activity.FamilyWizardFormActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
