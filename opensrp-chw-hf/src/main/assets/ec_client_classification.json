@@ -1017,6 +1017,13 @@
             "creates_case": [
               "ec_fp_follow_up_visit"
             ]
+          },
+          {
+            "field":"eventType",
+            "field_value": "ANC Partner Community Followup Referral",
+            "creates_case": [
+              "ec_anc_partner_community_followup"
+            ]
           }
         ]
       }

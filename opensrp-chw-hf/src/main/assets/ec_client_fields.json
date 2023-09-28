@@ -8459,6 +8459,389 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_anc_partner_community_followup",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "comment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "anc_partner_followup_comment"
+          }
+        },
+        {
+          "column_name": "anc_partner_community_referral_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.formSubmissionField",
+            "concept": "anc_partner_community_referral_date"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_sbc_register",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "hiv_status",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_status"
+          }
+        },
+        {
+          "column_name": "ctc_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "ctc_number"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_sbc_visit",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "activity_type",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "activity_type"
+          }
+        },
+        {
+          "column_name": "received_art_counseling",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "received_art_counseling"
+          }
+        },
+        {
+          "column_name": "received_condom_education",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "received_condom_education"
+          }
+        },
+        {
+          "column_name": "health_education_received",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "health_education_received"
+          }
+        },
+        {
+          "column_name": "health_education_hiv_intervention",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "health_education_hiv_intervention"
+          }
+        },
+        {
+          "column_name": "distributed_any_hiv_materials",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "distributed_any_hiv_materials"
+          }
+        },
+        {
+          "column_name": "type_of_materials_content_distributed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_materials_content_distributed"
+          }
+        },
+        {
+          "column_name": "health_education_hiv_intervention",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "health_education_hiv_intervention"
+          }
+        },
+        {
+          "column_name": "received_any_hiv_sms",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "received_any_hiv_sms"
+          }
+        },
+        {
+          "column_name": "received_message",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "received_message"
+          }
+        },
+        {
+          "column_name": "reason_not_receiving_hiv_sms",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "reason_not_receiving_hiv_sms"
+          }
+        },
+        {
+          "column_name": "used_toll_free",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "used_toll_free"
+          }
+        },
+        {
+          "column_name": "sbc_comments",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "sbc_comments"
+          }
+        },
+        {
+          "column_name": "toll_free_service_accessed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "toll_free_service_accessed"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_sbc_mobilization_session",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        },
+        {
+          "column_name": "mobilization_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mobilization_date"
+          }
+        },
+        {
+          "column_name": "community_sbc_activity_provided",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "community_sbc_activity_provided"
+          }
+        },
+        {
+          "column_name": "other_interventions_iec_materials_distributed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_interventions_iec_materials_distributed"
+          }
+        },
+        {
+          "column_name": "number_audio_visuals_distributed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_audio_visuals_distributed"
+          }
+        },
+        {
+          "column_name": "number_audio_distributed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_audio_distributed"
+          }
+        },
+        {
+          "column_name": "number_print_materials_distributed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_print_materials_distributed"
+          }
+        },
+        {
+          "column_name": "pmtct_iec_materials_distributed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pmtct_iec_materials_distributed"
+          }
+        },
+        {
+          "column_name": "number_pmtct_audio_visuals_distributed_male",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_pmtct_audio_visuals_distributed_male"
+          }
+        },
+        {
+          "column_name": "number_pmtct_audio_visuals_distributed_female",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_pmtct_audio_visuals_distributed_female"
+          }
+        },
+        {
+          "column_name": "number_pmtct_audio_distributed_male",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_pmtct_audio_distributed_male"
+          }
+        },
+        {
+          "column_name": "number_pmtct_audio_distributed_female",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_pmtct_audio_distributed_female"
+          }
+        },
+        {
+          "column_name": "number_pmtct_print_materials_distributed_male",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_pmtct_print_materials_distributed_male"
+          }
+        },
+        {
+          "column_name": "number_pmtct_print_materials_distributed_female",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "number_pmtct_print_materials_distributed_female"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_kvp_prep_register",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        }
+      ]
     }
+
   ]
 }
