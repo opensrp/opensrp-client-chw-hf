@@ -76,6 +76,13 @@
         "v_required": {
           "value": "true",
           "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_continue_with_the_method_relevance.yml"
+            }
+          }
         }
       },
       {
