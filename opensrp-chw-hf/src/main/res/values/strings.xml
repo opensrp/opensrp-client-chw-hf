@@ -1260,4 +1260,96 @@
     <string name="fp_reports_title">Family Planning Reports</string>
     <string name="view_reports_for_fp_clients">View Reports for FP Clients</string>
 
+
+    <!-- FP  -->
+    <string name="fp_yes">Yes</string>
+    <string name="fp_no">No</string>
+    <string name="fp_pop">POP</string>
+    <string name="fp_coc">COC</string>
+    <string name="fp_injectable">Injectable</string>
+    <string name="fp_condom">Condom</string>
+    <string name="fp_jadelle">Jadelle</string>
+    <string name="fp_implanon">Implanon</string>
+    <string name="fp_iucd">IUCD</string>
+    <string name="fp_sdm">SDM</string>
+    <string name="fp_lam">LAM</string>
+    <string name="fp_vasectomy">Vasectomy</string>
+    <string name="fp_btl">BTL</string>
+    <string name="fp_primary">Primary</string>
+    <string name="fp_secondary">Secondary</string>
+    <string name="fp_college_university">College/University</string>
+    <string name="fp_no_any">None</string>
+    <string name="fp_switch">Switch</string>
+    <string name="fp_stop">Stop</string>
+    <string name="fp_side_effects">Side effects</string>
+    <string name="fp_complication">Complication</string>
+    <string name="fp_heavy_bleeding">Heavy bleeding</string>
+    <string name="fp_severe_headache">Severe Headache</string>
+    <string name="fp_severe_lower">Severe Lower Abdominal pain</string>
+    <string name="fp_severe_chest">Severe Chest pain</string>
+    <string name="fp_pregnancy">Pregnancy</string>
+    <string name="fp_menarche">Menarche</string>
+    <string name="fp_lnmp">L.N.M.P</string>
+    <string name="fp_mp_duration">MP Duration</string>
+    <string name="fp_normal">Normal</string>
+    <string name="fp_heavy">Heavy</string>
+    <string name="fp_category_1">Category 1</string>
+    <string name="fp_category_2">Category 2</string>
+    <string name="fp_category_3">Category 3</string>
+    <string name="fp_category_4">Category 4</string>
+    <string name="fp_headache">Headache</string>
+    <string name="fp_jaundice">Jaundice</string>
+    <string name="fp_heart_disease">Heart disease</string>
+    <string name="fp_high_blood_pressure">High blood pressure</string>
+    <string name="fp_diabetes">Diabetes</string>
+    <string name="fp_breast_lump">Breast lump</string>
+    <string name="fp_severe_varicose_veins">Severe varicose veins</string>
+    <string name="fp_anti_conversant">Anti- conversant</string>
+    <string name="fp_ant_tb_drugs">Ant TB drugs</string>
+    <string name="fp_on_art">On ART</string>
+    <string name="fp_weight">Weight</string>
+    <string name="fp_systolic">Systolic</string>
+    <string name="fp_diastolic">Diastolic</string>
+    <string name="fp_anaemia">Anaemia</string>
+    <string name="fp_thyroid_enlarged">Thyroid enlarged</string>
+    <string name="fp_chest_movement">Chest movement</string>
+    <string name="fp_symmetrical">Symmetrical</string>
+    <string name="fp_asymmetric">Asymmetric</string>
+    <string name="fp_breast_condition">Breast condition</string>
+    <string name="fp_lamp">Lamp</string>
+    <string name="fp_sore">Sore</string>
+    <string name="fp_discoloration">Discoloration</string>
+    <string name="fp_blood_discharge">Blood/pus discharge</string>
+    <string name="fp_absess">Absess</string>
+    <string name="fp_cervix">Cervix</string>
+    <string name="fp_abnormal">Abnormal</string>
+    <string name="fp_discharge">Discharge</string>
+    <string name="fp_growth">Growth</string>
+    <string name="fp_digital_exam">Digital exam</string>
+    <string name="fp_uterine_size">Uterine size</string>
+    <string name="fp_midline">Midline</string>
+    <string name="fp_retroverted">Retroverted</string>
+    <string name="fp_anteverted">Anteverted</string>
+    <string name="fp_painful">Painful</string>
+    <string name="fp_painless">Painless</string>
+    <string name="fp_hts">HTS</string>
+    <string name="fp_cervical_cancer">Cervical Cancer</string>
+    <string name="fp_positive">Positive</string>
+    <string name="fp_negative">Negative</string>
+    <string name="fp_facility">Facility</string>
+    <string name="fp_outreach">Outreach</string>
+    <string name="fp_rch">RCH</string>
+    <string name="fp_ctc">CTC</string>
+    <string name="fp_static">Static based</string>
+    <string name="fp_community">Community</string>
+    <string name="fp_male">Male</string>
+    <string name="fp_female">Female</string>
+
+
+
+
+
+
+    <!-- FP  -->
+
 </resources>

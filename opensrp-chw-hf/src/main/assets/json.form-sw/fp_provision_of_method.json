@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Toa njia ya FP",
+  "encounter_type": "Provide FP method",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -63,6 +63,10 @@
           "value": "true",
           "err": "Tafadhali jaza"
         },
+        "v_max": {
+          "value": "50",
+          "err": "Namba ya POP lazima iwe sawasawa au chini ya 50"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -83,6 +87,10 @@
           "value": "true",
           "err": "Tafadhali jaza"
         },
+        "v_max": {
+          "value": "50",
+          "err": "Namba ya COC lazima iwe sawasawa au chini ya 50"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {
@@ -102,6 +110,10 @@
         "v_required": {
           "value": "true",
           "err": "Tafadhali jaza"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Namba ya ECP lazima iwe sawasawa au chini ya 50"
         },
         "relevance": {
           "rules-engine": {

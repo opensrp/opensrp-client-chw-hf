@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Weka tarehe ya miadi",
+  "encounter_type": "Set appointment date",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
