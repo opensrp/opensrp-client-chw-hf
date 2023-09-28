@@ -411,10 +411,10 @@
         }
       },
       {
-        "key": "reasons_not_providing_method",
+        "key": "reasons_for_not_providing_method",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "reasons_not_providing_method",
+        "openmrs_entity_id": "reasons_for_not_providing_method",
         "openmrs_data_type": "select one",
         "type": "check_box",
         "combine_checkbox_option_values": "true",

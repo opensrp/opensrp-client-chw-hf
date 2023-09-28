@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Medical History",
+  "encounter_type": "Historia ya Matibabu",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -48,7 +48,7 @@
     }
   },
   "step1": {
-    "title": "Medical History",
+    "title": "Historia ya Matibabu",
     "fields": [
       {
         "key": "client_medical_history",
@@ -58,78 +58,78 @@
         "openmrs_data_type": "select one",
         "combine_checkbox_option_values": "true",
         "type": "check_box",
-        "label": "Does the client have any of the following medical history?",
-        "hint": "Does the client have any of the following medical history?",
+        "label": "Je, mteja ana historia ya matibabu yoyote kati ya yafuatayo?",
+        "hint": "Je, mteja ana historia ya matibabu yoyote kati ya yafuatayo?",
         "options": [
           {
             "key": "headache",
-            "text": "Headache",
+            "text": "Maumivu ya Kichwa",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "headache"
           },
           {
             "key": "jaundice",
-            "text": "Jaundice",
+            "text": "Ngozi ya Manjano (Jaundice)",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "jaundice"
           },
           {
             "key": "heart_disease",
-            "text": "Heart disease",
+            "text": "Ugonjwa wa Moyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "heart_disease"
           },
           {
             "key": "high_blood_pressure",
-            "text": "High blood pressure",
+            "text": "Shinikizo la Damu Kubwa",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "high_blood_pressure"
           },
           {
             "key": "diabetes",
-            "text": "Diabetes",
+            "text": "Kisukari",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "diabetes"
           },
           {
             "key": "breast_lump",
-            "text": "Breast lump",
+            "text": "Buje la matiti",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "breast_lump"
           },
           {
             "key": "severe_varicose_veins",
-            "text": "Severe varicose veins",
+            "text": "Mshipa wa Varicose Ulivyozorota",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "severe_varicose_veins"
           },
           {
             "key": "anti_conversant",
-            "text": "Anti- conversant",
+            "text": "Madhara kwa conversant",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "anti_conversant"
           },
           {
             "key": "ant_tb_drugs",
-            "text": "Ant TB drugs",
+            "text": "Madhara kwa dawa za TB",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "ant_tb_drugs"
           },
           {
             "key": "on_art",
-            "text": "On ART ",
+            "text": "Anatumia ARV",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "on_art"
           },
           {
             "key": "other",
-            "text": "Any other serious condition",
+            "text": "Hali nyingine yoyote mbaya",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "other"
           },
           {
             "key": "none",
-            "text": "None",
+            "text": "Hakuna",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "none"
           }
@@ -139,7 +139,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Please choose client medical history"
+          "err": "Tafadhali chagua historia ya matibabu ya mteja"
         }
       },
       {
@@ -151,20 +151,20 @@
         "mask": "##-##-####-######",
         "mask_hint": "12345678912345",
         "allowed_chars": "0123456789",
-        "hint": "Specify CTC ID",
+        "hint": "Weka CTC ID",
         "edit_type": "number",
         "v_regex": {
           "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
-          "err": "CTC number should be of the format (XX-XX-XXXX-XXXXXX)"
+          "err": "nambari ya CTC inapaswa kuwa ya muundo (XX-XX-XXXX-XXXXXX)"
         },
         "v_max_length": {
           "value": "17",
           "is_fixed_size": "true",
-          "err": "Please enter a valid CTC Number"
+          "err": "Tafadhali weka Nambari sahihi ya CTC"
         },
         "v_required": {
           "value": true,
-          "err": "Please enter a valid CTC Number"
+          "err": "Tafadhali weka Nambari sahihi ya CTC"
         },
         "relevance": {
           "rules-engine": {
@@ -180,10 +180,10 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "specify_other_condition",
         "type": "edit_text",
-        "hint": "Specify other condition",
+        "hint": "Bainisha hali nyingine",
         "v_required": {
           "value": "true",
-          "err": "Please specify"
+          "err": "Tafadhali taja"
         },
         "relevance": {
           "rules-engine": {
