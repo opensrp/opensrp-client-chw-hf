@@ -1268,6 +1268,60 @@
     <string name="fp_family_planning_education_provided">Was family planning health education provided:</string>
     <string name="fp_client_counseled_with_her_partner">Was the client counseled with her partner:</string>
     <string name="fp_client_agreed_on_fp_choice">Has the client agreed on the family planning of choice:</string>
+    <string name="fp_selected_fp_method_after_counseling">Selected family planning method after counseling:</string>
+    <string name="fp_client_used_fp_before">Has the client ever used any family planning method:</string>
+    <string name="fp_fp_registration_number">Client registration number should be of the format (XXXX/XXX):</string>
+    <string name="fp_client_level_education">Client’s Level of Education:</string>
+    <string name="fp_method_expired">Has the FP method expired:</string>
+    <string name="fp_client_wants_continue_with_fp_method">Does the client want to continue with the family planning method:</string>
+    <string name="fp_jadelle_removed">Jadelle removed:</string>
+    <string name="fp_implanon_removed">Implanon removed:</string>
+    <string name="fp_iud_removed">IUD removed:</string>
+    <string name="fp_client_satisfied_with_fp_method">Is the client satisfied with the family planning method:</string>
+    <string name="fp_reason_for_dissatisfaction">Reason for dissatisfaction:</string>
+    <string name="fp_side_effects">What are the side effects:</string>
+    <string name="fp_side_effects_specify_other">side_effects_specify_other:</string>
+    <string name="fp_complication">What are the complications:</string>
+    <string name="fp_complication_specify_other">Specify complication:</string>
+    <string name="fp_specify_other_reasons_for_dissatisfaction">Specify other reason for dissatisfaction:</string>
+    <string name="fp_client_want_to_switch_stop">Does the client want to switch or stop:</string>
+    <string name="fp_last_normal_menstruation_period">Last Normal Menstrual Period (LNMP):</string>
+    <string name="fp_specify_other_complain">Specify other clients complains:</string>
+    <string name="fp_blood_loss">Blood Loss:</string>
+    <string name="fp_cycle_length">Cycle length:</string>
+    <string name="fp_dysmenorrhoea">Dysmenorrhoea:</string>
+    <string name="fp_client_category_after_screening">Select client category after screening:</string>
+    <string name="fp_client_medical_history">Does the client have any of the following medical history:</string>
+    <string name="fp_ctc_number">CTC number should be of the format (XX-XX-XXXX-XXXXXX):</string>
+    <string name="fp_specify_other_condition">Specify other condition:</string>
+    <string name="fp_number_of_pregnancies">Total number of Pregnancies:</string>
+    <string name="fp_number_of_miscarriages">Number of Miscarriages:</string>
+
+    <string name="fp_number_still_births">Number of Still Births:</string>
+    <string name="fp_number_live_births">Number of Live Births:</string>
+    <string name="fp_number_children_alive">Number of children Alive:</string>
+    <string name="fp_date_last_delivery">Date of Last Delivery:</string>
+    <string name="fp_is_client_breastfeeding">Is the client breastfeeding:</string>
+    <string name="fp_year_of_delivery">Year of Delivery:</string>
+    <string name="fp_mode_of_delivery">Mode of delivery:</string>
+    <string name="fp_place_of_delivery">Place of delivery:</string>
+    <string name="fp_outcome">Outcome:</string>
+    <string name="fp_adnexa">Adnexa:</string>
+    <string name="fp_other_services_offered">Other services offered:</string>
+    <string name="fp_counseling_cervical_cancer_provided">Was counseling on cervical cancer provided:</string>
+    <string name="fp_client_eligible_for_via">Is the client eligible for VIA:</string>
+    <string name="fp_via_results">VIA results:</string>
+    <string name="fp_client_hiv_test_results">Client HIV test results:</string>
+    <string name="fp_client_referred_to_ctc">Has the client been referred to CTC:</string>
+    <string name="fp_client_ctc_number">CTC number should be of the format (XX-XX-XXXX-XXXXXX):</string>
+    <string name="fp_partner_tested_for_hiv">Was partner tested for HIV:</string>
+
+
+
+
+
+
+
 
 
 
@@ -1290,8 +1344,6 @@
     <string name="fp_no_any">None</string>
     <string name="fp_switch">Switch</string>
     <string name="fp_stop">Stop</string>
-    <string name="fp_side_effects">Side effects</string>
-    <string name="fp_complication">Complication</string>
     <string name="fp_heavy_bleeding">Heavy bleeding</string>
     <string name="fp_severe_headache">Severe Headache</string>
     <string name="fp_severe_lower">Severe Lower Abdominal pain</string>

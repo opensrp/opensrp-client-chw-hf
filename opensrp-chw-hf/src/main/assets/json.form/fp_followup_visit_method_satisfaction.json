@@ -254,7 +254,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "specify_other_reasons_for_dissatisfaction",
         "type": "edit_text",
-        "hint": "Specify other condition",
+        "hint": "reason for dissatisfaction",
         "v_required": {
           "value": "true",
           "err": "Please specify"
