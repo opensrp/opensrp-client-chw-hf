@@ -22,6 +22,7 @@ import org.smartregister.chw.anc.presenter.BaseAncMedicalHistoryPresenter;
 import org.smartregister.chw.core.activity.CoreAncMedicalHistoryActivity;
 import org.smartregister.chw.core.activity.DefaultAncMedicalHistoryActivityFlv;
 import org.smartregister.chw.fp.domain.FpMemberObject;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.interactor.FpMedicalHistoryInteractor;
 
@@ -237,19 +238,19 @@ public class FpMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
                     tvTitle.setText(visits.get(x).getVisitType() + " " + visits.get(x).getDate());
 
                     if (x == visits.size() - 1) {
-                        edit.setVisibility(View.VISIBLE);
                         int position = x;
-//                        edit.setOnClickListener(view1 -> {
-//                            if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Bio Medical Service Visit")) {
-//                                KvpBioMedicalServiceActivity.startKvpBioMedicalServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
-//                            } else if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Structural Service Visit")) {
-//                                KvpStructuralServiceActivity.startKvpStructuralServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
-//                            } else if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Other Service Visit")) {
-//                                KvpOtherServiceActivity.startKvpOtherServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
-//                            } else if (visits.get(position).getVisitType().equalsIgnoreCase("KVP Behavioral Service Visit")) {
-//                                KvpBehavioralServiceActivity.startKvpBehavioralServiceActivity((Activity) context, visits.get(position).getBaseEntityId(), true);
-//                            }
-//                        });
+                        edit.setOnClickListener(view1 -> {
+                            if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_SCREENING)) {
+                                edit.setVisibility(View.VISIBLE);
+                                FpScreeningActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES)) {
+                                edit.setVisibility(View.VISIBLE);
+                                FpOtherServicesActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            } else if (visits.get(position).getVisitType().equalsIgnoreCase(FamilyPlanningConstants.EVENT_TYPE.FP_FOLLOW_UP_VISIT)) {
+                                edit.setVisibility(View.VISIBLE);
+                                FpFollowupVisitProvisionOfServicesActivity.startMe((Activity) context, visits.get(position).getBaseEntityId(), true);
+                            }
+                        });
                     }
 
 
