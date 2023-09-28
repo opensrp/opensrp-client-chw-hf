@@ -60,12 +60,9 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(org.smartregister.chw.core.R.menu.family_planning_member_profile_menu, menu);
-        if (MalariaDao.isRegisteredForMalaria(fpMemberObject.getBaseEntityId())) {
-            menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        } else {
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
-        }
+        menu.findItem(R.id.action_malaria_followup_visit).setVisible(false);
+        menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
+        menu.findItem(R.id.action_fp_change).setVisible(false);
         return true;
     }
 
@@ -194,5 +191,11 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
     @Override
     public Class getFormActivity() {
         return Utils.metadata().familyMemberFormActivity;
+    }
+
+    @Override
+    public void setFollowUpButtonOverdue() {
+        showFollowUpVisitButton();
+        textViewRecordFp.setBackground(getResources().getDrawable(org.smartregister.chw.fp.R.drawable.record_btn_selector));
     }
 }
