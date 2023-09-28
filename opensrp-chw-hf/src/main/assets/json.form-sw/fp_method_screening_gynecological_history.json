@@ -121,7 +121,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "blood_loss",
         "type": "native_radio",
-        "label": "Blood Loss",
+        "label": "Upotevu wa damu",
         "text_color": "#000000",
         "options": [
           {

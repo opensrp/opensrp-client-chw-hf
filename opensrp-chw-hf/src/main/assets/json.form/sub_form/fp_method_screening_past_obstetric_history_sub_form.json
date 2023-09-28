@@ -55,7 +55,7 @@
       "options": [
         {
           "key": "facility",
-          "text": "Facility",
+          "text": "Health Facility",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "facility"
         },
@@ -70,6 +70,12 @@
           "text": "Birth before arrival",
           "openmrs_entity": "concept",
           "openmrs_entity_id": "birth_before_arrival"
+        },
+        {
+          "key": "tba",
+          "text": "TBA",
+          "openmrs_entity": "concept",
+          "openmrs_entity_id": "tba"
         }
       ],
       "v_required": {

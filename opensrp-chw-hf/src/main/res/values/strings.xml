@@ -1296,7 +1296,6 @@
     <string name="fp_specify_other_condition">Specify other condition:</string>
     <string name="fp_number_of_pregnancies">Total number of Pregnancies:</string>
     <string name="fp_number_of_miscarriages">Number of Miscarriages:</string>
-
     <string name="fp_number_still_births">Number of Still Births:</string>
     <string name="fp_number_live_births">Number of Live Births:</string>
     <string name="fp_number_children_alive">Number of children Alive:</string>
@@ -1315,6 +1314,25 @@
     <string name="fp_client_referred_to_ctc">Has the client been referred to CTC:</string>
     <string name="fp_client_ctc_number">CTC number should be of the format (XX-XX-XXXX-XXXXXX):</string>
     <string name="fp_partner_tested_for_hiv">Was partner tested for HIV:</string>
+    <string name="fp_partner_hiv_test_results">Partner HIV test results:</string>
+    <string name="fp_partner_referred_to_ctc">Has the partner been referred to CTC:</string>
+    <string name="fp_partner_ctc_number">CTC number should be of the format (XX-XX-XXXX-XXXXXX):</string>
+    <string name="fp_injection_administered">Injection administered:</string>
+    <string name="fp_jadelle_inserted">Jadelle inserted:</string>
+    <string name="fp_implanon_inserted">Implanon inserted:</string>
+    <string name="fp_iucd_inserted">IUCD inserted:</string>
+    <string name="fp_cycle_beads_provided">Cycle beads provided (SDM):</string>
+    <string name="fp_client_counseled_on_lam">Has the client been counseled on the LAM criteria:</string>
+    <string name="fp_post_instruction_fp_method_provided">Was post instruction given on the family planning method provided:</string>
+    <string name="fp_reasons_for_not_providing_method">Reasons for not providing method:</string>
+    <string name="fp_client_provided_condom">Was the client provided condom:</string>
+    <string name="fp_type_of_condom_collected">Select the type of condom collected:</string>
+    <string name="fp_number_male_condoms_collected">Specify quantity (Male):</string>
+    <string name="fp_number_female_condoms_collected">Specify quantity (Female):</string>
+    <string name="fp_next_appointment_date">Select next appointment date:</string>
+    <string name="fp_condom_refilled">Condom:</string>
+    <string name="fp_number_male_condoms_refilled">Specify quantity (Male):</string>
+    <string name="fp_number_female_condoms_refilled">Specify quantity (Female):</string>
 
 
 

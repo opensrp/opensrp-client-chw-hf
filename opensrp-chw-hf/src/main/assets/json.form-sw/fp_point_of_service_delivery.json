@@ -151,7 +151,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "family_planning_education_provided",
         "type": "native_radio",
-        "label": "Was family planning health education provided?",
+        "label": "Je, elimu ya afya ya uzazi wa mpango ilitolewa?",
         "text_color": "#000000",
         "options": [
           {

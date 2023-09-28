@@ -242,13 +242,13 @@
         "options": [
           {
             "key": "painful",
-            "text": "Painful",
+            "text": "Painful/Fixed",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "painful"
           },
           {
             "key": "painless",
-            "text": "Painless",
+            "text": "Painless/Free",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "painless"
           }

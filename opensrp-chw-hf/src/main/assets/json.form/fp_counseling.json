@@ -57,7 +57,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "provide_counseling_notes",
         "type": "toaster_notes",
-        "text": "Provide counseling on informed family  planning choice",
+        "text": "Provide counseling for informed family  planning choice",
         "toaster_type": "info",
         "toaster_info_text": "",
         "toaster_info_title": ""
@@ -191,12 +191,6 @@
             "text": "LAM",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "lam"
-          },
-          {
-            "key": "vasectomy",
-            "text": "Vasectomy",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "vasectomy"
           },
           {
             "key": "btl",

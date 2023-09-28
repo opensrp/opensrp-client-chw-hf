@@ -403,7 +403,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "iud_removed",
         "type": "native_radio",
-        "label": "IUD removed?",
+        "label": "IUD imeondolewa?",
         "text_color": "#000000",
         "options": [
           {

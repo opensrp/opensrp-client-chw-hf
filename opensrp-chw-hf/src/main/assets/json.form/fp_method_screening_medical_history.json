@@ -105,7 +105,7 @@
           },
           {
             "key": "anti_conversant",
-            "text": "Anti- conversant",
+            "text": "Anti- convulsant",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "anti_conversant"
           },

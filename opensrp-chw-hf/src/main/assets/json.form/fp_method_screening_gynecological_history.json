@@ -151,12 +151,12 @@
         "edit_type": "number",
         "hint": "Cycle length",
         "v_min": {
-          "value": "23",
-          "err": "Cycle length must be equal or greater than 23 days"
+          "value": "21",
+          "err": "Cycle length must be equal or greater than 21 days"
         },
         "v_max": {
-          "value": "35",
-          "err": "Cycle length must be equal or less than 35 days"
+          "value": "31",
+          "err": "Cycle length must be equal or less than 31 days"
         },
         "v_numeric": {
           "value": "true",
