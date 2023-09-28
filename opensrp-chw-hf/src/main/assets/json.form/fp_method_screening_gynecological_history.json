@@ -87,7 +87,7 @@
         "openmrs_entity_id": "lnmp",
         "type": "date_picker",
         "expanded": false,
-        "hint": "L.N.M.P.",
+        "hint": "L.N.M.P",
         "max_date": "today",
         "min_date": "today-50w",
         "v_required": {
