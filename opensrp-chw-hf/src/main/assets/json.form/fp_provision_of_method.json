@@ -411,21 +411,6 @@
         }
       },
       {
-        "key": "next_appointment_date",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept", 
-        "openmrs_entity_id": "next_appointment_date",
-        "type": "date_picker",
-        "min_date": "today",
-        "max_date": "today+5y",
-        "expanded": false,
-        "hint": "Select next appointment date",
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        }
-      },
-      {
         "key": "reasons_not_providing_method",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
