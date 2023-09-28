@@ -1262,6 +1262,15 @@
 
 
     <!-- FP  -->
+    <string name="fp_point_of_service_delivery">Point of service delivery:</string>
+    <string name="fp_service_delivery_point_facility">Facility Service Delivery Point:</string>
+    <string name="fp_service_delivery_point_outreach">Outreach Service Delivery Point:</string>
+    <string name="fp_family_planning_education_provided">Was family planning health education provided:</string>
+    <string name="fp_client_counseled_with_her_partner">Was the client counseled with her partner:</string>
+    <string name="fp_client_agreed_on_fp_choice">Has the client agreed on the family planning of choice:</string>
+
+
+
     <string name="fp_yes">Yes</string>
     <string name="fp_no">No</string>
     <string name="fp_pop">POP</string>
