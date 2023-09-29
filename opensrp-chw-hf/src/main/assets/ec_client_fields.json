@@ -8595,6 +8595,22 @@
           }
         },
         {
+          "column_name": "btl",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "btl"
+          }
+        },
+        {
+          "column_name": "vasectomy",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "vasectomy"
+          }
+        },
+        {
           "column_name": "last_interacted_with",
           "type": "Event",
           "json_mapping": {

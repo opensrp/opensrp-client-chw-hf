@@ -4005,7 +4005,1271 @@ indicators:
                      date(substr(strftime('%Y-%m-%d', datetime(efp.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
                      '-' || substr(strftime('%Y-%m-%d', datetime(efp.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
-  #Question6 Pending
+  #Question 6a
+  #NEW CLIENT
+  - key: "fp-6a-nc-10-14"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for New clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6a-nc-15-19"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for New clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6a-nc-20-24"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for New clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6a-nc-25-29"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for New clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6a-nc-30-34"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6a-nc-35+"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for New clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Revisit CLIENT
+  - key: "fp-6a-rc-10-14"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for Re-visit clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6a-rc-15-19"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for Re-visit clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6a-rc-20-24"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for Re-visit clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6a-rc-25-29"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for Re-visit clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6a-rc-30-34"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for Re-visit clients from 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6a-rc-35+"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility for Re-visit clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Question 6b
+  #NEW CLIENT
+  - key: "fp-6b-nc-10-14"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for New clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6b-nc-15-19"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for New clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6b-nc-20-24"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for New clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6b-nc-25-29"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for New clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6b-nc-30-34"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6b-nc-35+"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for New clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Revisit CLIENT
+  - key: "fp-6b-rc-10-14"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for Re-visit clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6b-rc-15-19"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for Re-visit clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6b-rc-20-24"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for Re-visit clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6b-rc-25-29"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for Re-visit clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6b-rc-30-34"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for Re-visit clients from 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6b-rc-35+"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from outreach for Re-visit clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Question 6c
+  #NEW CLIENT
+  - key: "fp-6c-nc-10-14"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for New clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6c-nc-15-19"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for New clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6c-nc-20-24"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for New clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6c-nc-25-29"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for New clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6c-nc-30-34"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6c-nc-35+"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for New clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Revisit CLIENT
+  - key: "fp-6c-rc-10-14"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for Re-visit clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6c-rc-15-19"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for Re-visit clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6c-rc-20-24"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for Re-visit clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6c-rc-25-29"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for Re-visit clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6c-rc-30-34"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for Re-visit clients from 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35 
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6c-rc-35+"
+    grouping: "FP"
+    description: "Number of women who have undergone sterilization at facility referred from community for Re-visit clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Female') 
+                     AND (efpm.btl = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Question 6d
+  #NEW CLIENT
+  - key: "fp-6d-nc-10-14"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for New clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6d-nc-15-19"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for New clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6d-nc-20-24"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for New clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6d-nc-25-29"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for New clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6d-nc-30-34"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6d-nc-35+"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for New clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Revisit CLIENT
+  - key: "fp-6d-rc-10-14"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for Re-visit clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6d-rc-15-19"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for Re-visit clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6d-rc-20-24"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for Re-visit clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6d-rc-25-29"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for Re-visit clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6d-rc-30-34"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for Re-visit clients from 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6d-rc-35+"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility for Re-visit clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='facility')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Question 6e
+  #NEW CLIENT
+  - key: "fp-6e-nc-10-14"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for New clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6e-nc-15-19"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for New clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6e-nc-20-24"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for New clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6e-nc-25-29"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for New clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6e-nc-30-34"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6e-nc-35+"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for New clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Revisit CLIENT
+  - key: "fp-6e-rc-10-14"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for Re-visit clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6e-rc-15-19"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for Re-visit clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6e-rc-20-24"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for Re-visit clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6e-rc-25-29"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for Re-visit clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6e-rc-30-34"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for Re-visit clients from 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6e-rc-35+"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from outreach for Re-visit clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.point_of_service_delivery='outreach')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Question 6f
+  #NEW CLIENT
+  - key: "fp-6f-nc-10-14"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for New clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6f-nc-15-19"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for New clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6f-nc-20-24"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for New clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6f-nc-25-29"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for New clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6f-nc-30-34"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6f-nc-35+"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for New clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'no')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  #Revisit CLIENT
+  - key: "fp-6f-rc-10-14"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for Re-visit clients from 10-14 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 10 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=14  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6f-rc-15-19"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for Re-visit clients from 15-19 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 15 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<=19 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6f-rc-20-24"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for Re-visit clients from 20-24 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 20 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 24  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6f-rc-25-29"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for Re-visit clients from 25-29 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 25 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 29  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+  - key: "fp-6f-rc-30-34"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for Re-visit clients from 30-34 years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE 30 <= (date('Now') - date(efm.dob))  AND (date('Now')-date(efm.dob))<= 35 
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community') 
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
+
+
+  - key: "fp-6f-rc-35+"
+    grouping: "FP"
+    description: "Number of male who have undergone sterilization at facility referred from community for Re-visit clients above 35+ years"
+    indicatorQuery: "SELECT count(DISTINCT efpm.entity_id) as count
+                     FROM ec_fp_point_of_service_delivery efp
+                     INNER JOIN ec_family_member efm ON efm.base_entity_id = efp.entity_id
+                     INNER JOIN ec_fp_provision_of_method efpm ON efpm.entity_id = efp.entity_id 
+                     INNER JOIN ec_family_planning efl ON efp.entity_id = efl.base_entity_id
+                     WHERE (date('Now')-date(efm.dob))>=35  
+                     AND (efm.gender='Male') 
+                     AND (efpm.vasectomy = 'yes')
+                     AND (efp.service_delivery_point_outreach='community')
+                     AND (efl.client_used_fp_before = 'yes')
+                     AND date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =
+                     date(substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 1, 4) ||
+                     '-' || substr(strftime('%Y-%m-%d', datetime(efpm.last_interacted_with / 1000, 'unixepoch', 'localtime')), 6, 2) || '-' || '01')"
 
   #Question 7a
   #NEW CLIENT
