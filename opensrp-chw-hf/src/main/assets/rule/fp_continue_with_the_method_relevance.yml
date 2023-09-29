@@ -42,3 +42,11 @@ priority: 1
 condition: "step1_client_want_to_switch_stop.equalsIgnoreCase('switch')"
 actions:
   - "isRelevant = true"
+
+---
+name: step1_method_expired
+description: method_expired relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('jadelle')"
+actions:
+  - "isRelevant = true"

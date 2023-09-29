@@ -121,6 +121,42 @@
         }
       },
       {
+        "key": "client_has_side_effects_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_has_side_effects_prompt",
+        "type": "toaster_notes",
+        "text": "Provide FP counseling and manage",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_has_complications_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_has_complications_prompt",
+        "type": "toaster_notes",
+        "text": "Manage with SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "side_effects",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -305,6 +341,46 @@
             "text": "Stop",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "stop"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_satisfaction_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_want_to_switch_stop_continue",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_want_to_switch_stop_continue",
+        "type": "native_radio",
+        "label": "Does the client want to switch, stop or continue",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "switch",
+            "text": "Switch",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "switch"
+          },
+          {
+            "key": "stop",
+            "text": "Stop",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "stop"
+          },
+          {
+            "key": "continue",
+            "text": "Continue",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "continue"
           }
         ],
         "v_required": {
