@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class FpMedicalHistoryInteractor extends CoreBaseAncMedicalHistoryInteractor {
+public class
+
+FpMedicalHistoryInteractor extends CoreBaseAncMedicalHistoryInteractor {
     public static List<SortableVisit> getVisits(String memberID, String... eventTypes) {
 
         List<Visit> visits = new ArrayList<>();

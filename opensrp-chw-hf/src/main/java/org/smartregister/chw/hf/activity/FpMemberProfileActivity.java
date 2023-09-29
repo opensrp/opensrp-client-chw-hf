@@ -54,6 +54,7 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
     protected void onCreation() {
         super.onCreation();
         setCommonPersonObjectClient(getClientDetailsByBaseEntityID(fpMemberObject.getBaseEntityId()));
+        delayRefreshSetupViews();
     }
 
     @Override
@@ -86,6 +87,9 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
                 fpMemberObject = FpDao.getMember(commonPersonObjectClient.getCaseId());
                 getLastVisit();
                 setupViews();
+                Visit lastVisit = FpDao.getLatestVisit(fpMemberObject.getBaseEntityId(), FamilyPlanningConstants.EVENT_TYPE.FP_POINT_OF_SERVICE_DELIVERY);
+                if (lastVisit != null)
+                    refreshMedicalHistory(true);
             }, 300);
         } catch (Exception e) {
             Timber.e(e);

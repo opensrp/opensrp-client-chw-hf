@@ -2473,6 +2473,14 @@
           }
         },
         {
+          "column_name": "client_agreed_on_fp_choice",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "client_agreed_on_fp_choice"
+          }
+        },
+        {
           "column_name": "selected_fp_method_after_counseling",
           "type": "Event",
           "json_mapping": {

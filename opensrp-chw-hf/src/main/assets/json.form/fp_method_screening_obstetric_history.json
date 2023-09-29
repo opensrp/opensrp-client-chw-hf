@@ -50,7 +50,6 @@
   "step1": {
     "title": "Obstestric History",
     "fields": [
-
       {
         "key": "number_of_pregnancies",
         "openmrs_entity_parent": "",
@@ -104,7 +103,14 @@
             "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
             "err": "Total miscarriages value must be less than total pregnancies value"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "number_still_births",
@@ -129,8 +135,14 @@
             "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
             "err": "Total still birth value must be less or equal to total pregnancies value"
           }
-        ]
-
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "number_live_births",
@@ -167,7 +179,14 @@
             "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
             "err": "Total live birth value must be less or equal to total pregnancies value"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "number_children_alive",
@@ -204,7 +223,14 @@
             "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
             "err": "Total alive children value must be less or equal to total pregnancies value"
           }
-        ]
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
       },
       {
         "key": "date_last_delivery",
@@ -218,6 +244,127 @@
         "v_required": {
           "value": "true",
           "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "mode_of_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mode_of_delivery",
+        "type": "native_radio",
+        "label": "Mode of delivery",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "svd",
+            "text": "SVD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "svd"
+          },
+          {
+            "key": "cs",
+            "text": "CS",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cs"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "place_of_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "place_of_delivery",
+        "type": "native_radio",
+        "label": "Place of delivery",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "facility",
+            "text": "Health Facility",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "facility"
+          },
+          {
+            "key": "home_delivery",
+            "text": "Home delivery",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "home_delivery"
+          },
+          {
+            "key": "birth_before_arrival",
+            "text": "Birth before arrival",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "birth_before_arrival"
+          },
+          {
+            "key": "tba",
+            "text": "TBA",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tba"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "outcome",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "outcome",
+        "type": "native_radio",
+        "label": "Outcome",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "alive",
+            "text": "Alive",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "alive"
+          },
+          {
+            "key": "death",
+            "text": "Death",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "death"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
         }
       },
       {
@@ -245,6 +392,13 @@
         "v_required": {
           "value": "true",
           "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
         }
       }
     ]
