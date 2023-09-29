@@ -61,3 +61,10 @@ priority: 1
 condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
 actions:
   - "isRelevant = true"
+---
+name: step1_type_of_child_death
+description: type_of_child_death relevance
+priority: 1
+condition: "step1_outcome.equals('death')"
+actions:
+  - "isRelevant = true"

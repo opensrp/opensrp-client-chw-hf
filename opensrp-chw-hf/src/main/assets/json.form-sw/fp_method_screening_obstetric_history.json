@@ -370,6 +370,52 @@
         }
       },
       {
+        "key": "type_of_child_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_child_death",
+        "type": "native_radio",
+        "label": "Type of death",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "fsb",
+            "text": "FSB",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fsb"
+          },
+          {
+            "key": "msb",
+            "text": "MSB",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "msb"
+          },
+          {
+            "key": "early_neonatal_death",
+            "text": "Early neonatal death",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "early_neonatal_death"
+          },
+          {
+            "key": "late_neonatal_death",
+            "text": "Late neonatal death",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "late_neonatal_death"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "is_client_breastfeeding",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
