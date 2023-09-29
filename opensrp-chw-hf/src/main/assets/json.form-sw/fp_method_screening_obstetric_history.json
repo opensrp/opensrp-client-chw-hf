@@ -261,7 +261,7 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "mode_of_delivery",
         "type": "native_radio",
-        "label": "Mode of delivery",
+        "label": "Njia ya Kujifungua",
         "text_color": "#000000",
         "options": [
           {
@@ -295,24 +295,24 @@
         "openmrs_entity": "concept",
         "openmrs_entity_id": "place_of_delivery",
         "type": "native_radio",
-        "label": "Place of delivery",
+        "label": "Mahali pa kujifungulia",
         "text_color": "#000000",
         "options": [
           {
             "key": "facility",
-            "text": "Health Facility",
+            "text": "Kituoni",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "facility"
           },
           {
             "key": "home_delivery",
-            "text": "Home delivery",
+            "text": "Kujifungulia Nyumbani",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "home_delivery"
           },
           {
             "key": "birth_before_arrival",
-            "text": "Birth before arrival",
+            "text": "Kujifungua Kabla ya Kufika Huduma ya Matibabu",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "birth_before_arrival"
           },
@@ -346,13 +346,13 @@
         "options": [
           {
             "key": "alive",
-            "text": "Alive",
+            "text": "Hai",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "alive"
           },
           {
             "key": "death",
-            "text": "Death",
+            "text": "Kifo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "death"
           }

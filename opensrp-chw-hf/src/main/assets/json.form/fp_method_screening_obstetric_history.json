@@ -48,7 +48,7 @@
     }
   },
   "step1": {
-    "title": "Obstestric History",
+    "title": "Obstetric History",
     "fields": [
       {
         "key": "number_of_pregnancies",
