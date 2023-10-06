@@ -380,19 +380,6 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
-//    private static void upgradeToVersion21(SQLiteDatabase db) {
-//        try {
-//
-//            DatabaseMigrationUtils.createAddedECTables(db,
-//                    new HashSet<>(Arrays.asList("ec_vmmc_enrollment","ec_vmmc_services","ec_vmmc_procedure","ec_vmmc_post_op_and_discharge","ec_vmmc_follow_up_visit","ec_vmmc_notifiable_ae")),
-//                    HealthFacilityApplication.createCommonFtsObject());
-//            refreshIndicatorQueries(db);
-//        } catch (Exception e) {
-//            Timber.e(e, "upgradeToVersion21");
-//        }
-//    }
-
-
     private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;");

@@ -24,8 +24,8 @@ import timber.log.Timber;
 public class CloseVmmcMembershipIntentService extends IntentService {
 
     private static final String TAG = CloseVmmcMembershipIntentService.class.getSimpleName();
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
     public CloseVmmcMembershipIntentService() {
         super(TAG);

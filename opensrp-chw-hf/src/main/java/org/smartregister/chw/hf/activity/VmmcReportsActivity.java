@@ -33,10 +33,15 @@ import timber.log.Timber;
 public class VmmcReportsActivity extends SecuredActivity implements View.OnClickListener{
 
     protected ConstraintLayout vmmc_monthly_report;
+
     protected ConstraintLayout vmmc_register_report;
+
     protected ConstraintLayout vmmc_theatre_register_report;
+
     protected AppBarLayout appBarLayout;
+
     Menu menu;
+
     private String reportPeriod = ReportUtils.getDefaultReportPeriod();
 
     @SuppressLint("NonConstantResourceId")
@@ -63,7 +68,7 @@ public class VmmcReportsActivity extends SecuredActivity implements View.OnClick
 
     @Override
     protected void onResumption() {
-
+       // implement later
     }
 
     public void setupViews() {

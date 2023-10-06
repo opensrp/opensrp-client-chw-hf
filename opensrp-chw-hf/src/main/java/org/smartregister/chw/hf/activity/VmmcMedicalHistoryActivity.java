@@ -190,10 +190,10 @@ public class VmmcMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
                     LinearLayout visitDetailsLayout = view.findViewById(R.id.visit_details_layout);
 
                     // Updating visibility of EDIT button if the visit is the last visit
-                    if (x == visits.size() - 1) {
-                        // tvEdit.setVisibility(View.VISIBLE);
-                    } else
-                        tvEdit.setVisibility(View.GONE);
+                    // if (x == visits.size() - 1) {
+                    // tvEdit.setVisibility(View.VISIBLE);
+                    // } else
+                    //    tvEdit.setVisibility(View.GONE);
 
                     tvTitle.setText(visits.get(x).getVisitType() + " " + visits.get(x).getDate());
 

@@ -39,7 +39,7 @@ public interface HfQueryConstant {
             "    SELECT ec_malaria_confirmation.base_entity_id AS base_entity_id\n" +
             "    FROM ec_malaria_confirmation\n" +
             "    UNION ALL\n" +
-            "    SELECT  ec_vmmc_enrollment.base_entity_id AS base_entity_id\n" +
+            "    SELECT ec_vmmc_enrollment.base_entity_id AS base_entity_id\n" +
             "    FROM  ec_vmmc_enrollment\n" +
             "    UNION ALL\n" +
             "    SELECT ec_family_planning.base_entity_id AS base_entity_id\n" +
