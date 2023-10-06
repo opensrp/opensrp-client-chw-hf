@@ -33,7 +33,9 @@ import java.util.List;
 import timber.log.Timber;
 
 public class HfChwRepository extends CoreChwRepository {
+
     private static String appVersionCodePref = "APP_VERSION_CODE";
+
     private Context context;
 
     public HfChwRepository(Context context, org.smartregister.Context openSRPContext) {

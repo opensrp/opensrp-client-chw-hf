@@ -16,7 +16,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.snackbar.Snackbar;
-import com.rey.material.widget.SnackBar;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.hf.R;
@@ -24,21 +23,32 @@ import org.smartregister.chw.hf.utils.ReportUtils;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
 public class HfReportsViewActivity extends AppCompatActivity {
-    protected static final String ARG_REPORT_PATH = "ARG_REPORT_PATH";
-    protected static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
-    protected static final String ARG_REPORT_DATE = "ARG_REPORT_DATE";
-    protected static final String ARG_REPORT_TYPE = "ARG_REPORT_TYPE";
-    public static WebView printWebView;
-    protected CustomFontTextView toolBarTextView;
-    protected AppBarLayout appBarLayout;
-    private ProgressBar progressBar;
-    String reportPath;
-    String reportDate;
-    String reportType;
-    int reportTitle;
-    WebView webView;
-    WebSettings webSettings;
 
+    protected static final String ARG_REPORT_PATH = "ARG_REPORT_PATH";
+
+    protected static final String ARG_REPORT_TITLE = "ARG_REPORT_TITLE";
+
+    protected static final String ARG_REPORT_DATE = "ARG_REPORT_DATE";
+
+    protected static final String ARG_REPORT_TYPE = "ARG_REPORT_TYPE";
+
+    public static WebView printWebView;
+
+    protected CustomFontTextView toolBarTextView;
+
+    protected AppBarLayout appBarLayout;
+
+    String reportPath;
+
+    String reportDate;
+
+    String reportType;
+
+    int reportTitle;
+
+    WebView webView;
+
+    WebSettings webSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +60,12 @@ public class HfReportsViewActivity extends AppCompatActivity {
         reportTitle = getIntent().getIntExtra(ARG_REPORT_TITLE, 0);
         setUpToolbar(reportTitle);
         webView = findViewById(R.id.webview);
-        progressBar = findViewById(R.id.progress_bar);
+        ProgressBar progressBar = findViewById(R.id.progress_bar);
 
         webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         ReportUtils.setReportPeriod(reportDate);
-        ReportUtils.loadReportView(reportPath, webView,progressBar, this, reportType);
+        ReportUtils.loadReportView(reportPath, webView, progressBar, this, reportType);
     }
 
     public void setUpToolbar(int reportTitle) {
@@ -106,7 +116,7 @@ public class HfReportsViewActivity extends AppCompatActivity {
         }
         if (itemId == R.id.action_refresh) {
             ReportUtils.loadReportView(webView);
-            Snackbar.make(getWindow().getDecorView(),"please wait while refreshing data..",Snackbar.LENGTH_LONG).show();
+            Snackbar.make(getWindow().getDecorView(), "please wait while refreshing data..", Snackbar.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
     }

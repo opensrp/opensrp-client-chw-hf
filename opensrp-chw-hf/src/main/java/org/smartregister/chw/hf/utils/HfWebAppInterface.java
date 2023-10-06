@@ -60,31 +60,31 @@ public class HfWebAppInterface {
             ReportUtils.setPrintJobName("anc_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.ANCReports.computeAncReport(ReportUtils.getReportDate());
         }
-        if( reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CBHS_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CBHS_REPORT)) {
             ReportUtils.setPrintJobName("cbhs_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.CBHSReports.computeCbhsReport(ReportUtils.getReportDate());
         }
-        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.LTFU_SUMMARY)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.LTFU_SUMMARY)) {
             ReportUtils.setPrintJobName("ltfu_summary_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.LTFUReports.computeLTFUReport(ReportUtils.getReportDate());
         }
-        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.LD_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.LD_REPORT)) {
             ReportUtils.setPrintJobName("wodi_ya_wazazi_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.LDReports.computeLdReport(ReportUtils.getReportDate());
         }
-        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.MOTHER_CHAMPION_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.MOTHER_CHAMPION_REPORT)) {
             ReportUtils.setPrintJobName("mother_champion_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.MotherChampionReports.computeMotherChampionReport(ReportUtils.getReportDate());
         }
-        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.SELF_TESTING_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.SELF_TESTING_REPORT)) {
             ReportUtils.setPrintJobName("self_testing_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.SelfTestingReport.computeSelfTestingReportReport(ReportUtils.getReportDate());
         }
-        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.KVP_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.KVP_REPORT)) {
             ReportUtils.setPrintJobName("kvp_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.KvpReport.computeReport(ReportUtils.getReportDate());
         }
-        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.VMMC_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.VMMC_REPORT)) {
             switch (key) {
                 case VMMC_REPORT:
                     ReportUtils.setPrintJobName("vmmc_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
@@ -95,19 +95,21 @@ public class HfWebAppInterface {
                 case VMMC_THEATRE_REGISTER:
                     ReportUtils.setPrintJobName("vmmc_theatre_register_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
                     return ReportUtils.VmmcTheatreRegister.computeReport(ReportUtils.getReportDate());
+                default:
+                    return "";
             }
         }
-        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
-              switch (key) {
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)) {
+            switch (key) {
                 case ISSUING_AT_THE_FACILITY_REPORTS:
                     ReportUtils.setPrintJobName("CDP_issuing_at_the_facility_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
                     return ReportUtils.CDPReports.computeIssuingAtFacilityReports(ReportUtils.getReportDate());
-                  case ISSUING_FROM_THE_FACILITY_REPORTS:
-                      ReportUtils.setPrintJobName("CDP_issuing_from_the_facility_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
-                      return ReportUtils.CDPReports.computeIssuingFromFacilityReports(ReportUtils.getReportDate());
-                  case RECEIVING_REPORTS:
-                      ReportUtils.setPrintJobName("CDP_receiving_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
-                      return ReportUtils.CBHSReport.computeReport(ReportUtils.getReportDate());
+                case ISSUING_FROM_THE_FACILITY_REPORTS:
+                    ReportUtils.setPrintJobName("CDP_issuing_from_the_facility_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.CDPReports.computeIssuingFromFacilityReports(ReportUtils.getReportDate());
+                case RECEIVING_REPORTS:
+                    ReportUtils.setPrintJobName("CDP_receiving_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.CBHSReport.computeReport(ReportUtils.getReportDate());
 
                 default:
                     return "";
@@ -123,14 +125,14 @@ public class HfWebAppInterface {
 
     @JavascriptInterface
     public String getDataPeriod(String reportKey) {
-        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.PMTCT_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.PMTCT_REPORT)) {
             return ReportUtils.getReportPeriodForCohortReport(reportKey);
         }
-        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)) {
             return ReportUtils.getReportPeriodForCohortReport(reportKey);
         }
 
-        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.VMMC_REPORT)){
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.VMMC_REPORT)) {
             return ReportUtils.getReportPeriodForCohortReport(reportKey);
         }
 

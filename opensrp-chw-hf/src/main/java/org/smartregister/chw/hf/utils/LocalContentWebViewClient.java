@@ -16,8 +16,11 @@ import androidx.webkit.WebViewClientCompat;
 import org.smartregister.chw.hf.activity.PmtctReportsViewActivity;
 
 public class LocalContentWebViewClient extends WebViewClientCompat {
+
     private final WebViewAssetLoader mAssetLoader;
+
     private WebView mWebView;
+
     private ProgressBar progressBar;
 
     public LocalContentWebViewClient(WebViewAssetLoader assetLoader,WebView mWebView,ProgressBar progressBar) {
