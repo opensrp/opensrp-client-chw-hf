@@ -1,9 +1,17 @@
 package org.smartregister.chw.hf.utils;
 
+import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
+import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
+import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
+import static org.smartregister.util.Utils.showShortToast;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +33,7 @@ import org.smartregister.chw.hf.activity.LDProfileActivity;
 import org.smartregister.chw.hf.activity.MalariaProfileActivity;
 import org.smartregister.chw.hf.activity.PncMemberProfileActivity;
 import org.smartregister.chw.hf.activity.TbProfileActivity;
+import org.smartregister.chw.hf.activity.VmmcProfileActivity;
 import org.smartregister.chw.hf.dao.FamilyDao;
 import org.smartregister.chw.hf.dao.HfHivDao;
 import org.smartregister.chw.hf.dao.HfHtsDao;
@@ -46,14 +55,6 @@ import org.smartregister.opd.utils.OpdDbConstants;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-
-import static org.smartregister.chw.core.utils.CoreConstants.INTENT_KEY.CLIENT;
-import static org.smartregister.chw.core.utils.Utils.passToolbarTitle;
-import static org.smartregister.opd.utils.OpdDbConstants.KEY.REGISTER_TYPE;
-import static org.smartregister.util.Utils.showShortToast;
-
 public class AllClientsUtils {
 
     public static void goToClientProfile(Activity activity, @NonNull CommonPersonObjectClient commonPersonObjectClient) {
@@ -63,10 +64,10 @@ public class AllClientsUtils {
         FamilyDetailsModel familyDetailsModel = FamilyDao.getFamilyDetail(commonPersonObjectClient.entityId());
 
         if (familyDetailsModel != null) {
-            bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_BASE_ENTITY_ID, familyDetailsModel.getBaseEntityId());
-            bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_HEAD, familyDetailsModel.getFamilyHead());
-            bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.PRIMARY_CAREGIVER, familyDetailsModel.getPrimaryCareGiver());
-            bundle.putString(org.smartregister.family.util.Constants.INTENT_KEY.FAMILY_NAME, familyDetailsModel.getFamilyName());
+            bundle.putString(Constants.INTENT_KEY.FAMILY_BASE_ENTITY_ID, familyDetailsModel.getBaseEntityId());
+            bundle.putString(Constants.INTENT_KEY.FAMILY_HEAD, familyDetailsModel.getFamilyHead());
+            bundle.putString(Constants.INTENT_KEY.PRIMARY_CAREGIVER, familyDetailsModel.getPrimaryCareGiver());
+            bundle.putString(Constants.INTENT_KEY.FAMILY_NAME, familyDetailsModel.getFamilyName());
             bundle.putString(Constants.INTENT_KEY.VILLAGE_TOWN, commonPersonObjectClient.getDetails().get(OpdDbConstants.KEY.HOME_ADDRESS));
         }
 
@@ -92,6 +93,9 @@ public class AllClientsUtils {
                     break;
                 case CoreConstants.REGISTER_TYPE.KVP:
                     AllClientsUtils.goToKVPProfile(activity, commonPersonObjectClient);
+                    break;
+                case CoreConstants.REGISTER_TYPE.VMMC:
+                    AllClientsUtils.goToVmmcProfile(activity, commonPersonObjectClient);
                     break;
                 default:
                     AllClientsUtils.goToOtherMemberProfile(activity, commonPersonObjectClient, bundle,
@@ -147,6 +151,10 @@ public class AllClientsUtils {
 
     public static void goToKVPProfile(Activity activity, CommonPersonObjectClient patient) {
         KvpProfileActivity.startProfile(activity, patient.getCaseId());
+    }
+
+    public static void goToVmmcProfile(Activity activity, CommonPersonObjectClient patient) {
+        VmmcProfileActivity.startVmmcActivity(activity, patient.getCaseId());
     }
 
     private static Intent initProfileActivityIntent(Activity activity, CommonPersonObjectClient patient, Bundle bundle, Class clazz) {

@@ -7,6 +7,9 @@ import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTRepo
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.THREE_MONTHS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWELVE_MONTHS;
 import static org.smartregister.chw.hf.utils.Constants.ReportConstants.PMTCTReportKeys.TWENTY_FOUR_MONTHS;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.VmmcKeys.VMMC_REPORT;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.VmmcKeys.VMMC_SERVICE_REGISTER;
+import static org.smartregister.chw.hf.utils.Constants.ReportConstants.VmmcKeys.VMMC_THEATRE_REGISTER;
 import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 import android.content.Context;
@@ -15,6 +18,7 @@ import android.webkit.JavascriptInterface;
 
 public class HfWebAppInterface {
     private static final String DEFAULT_LOCALITY_NAME = "dfltLocName";
+    private static final String HFR_CODE = "userLocAttribute";
     Context mContext;
 
     String reportType;
@@ -77,6 +81,19 @@ public class HfWebAppInterface {
             ReportUtils.setPrintJobName("kvp_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
             return ReportUtils.KvpReport.computeReport(ReportUtils.getReportDate());
         }
+        if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.VMMC_REPORT)){
+            switch (key) {
+                case VMMC_REPORT:
+                    ReportUtils.setPrintJobName("vmmc_report_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.VmmcReport.computeReport(ReportUtils.getReportDate());
+                case VMMC_SERVICE_REGISTER:
+                    ReportUtils.setPrintJobName("vmmc_register_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.VmmcServiceRegister.computeReport(ReportUtils.getReportDate());
+                case VMMC_THEATRE_REGISTER:
+                    ReportUtils.setPrintJobName("vmmc_theatre_register_ya_mwezi-" + ReportUtils.getReportPeriod() + ".pdf");
+                    return ReportUtils.VmmcTheatreRegister.computeReport(ReportUtils.getReportDate());
+            }
+        }
         if (reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
               switch (key) {
                 case ISSUING_AT_THE_FACILITY_REPORTS:
@@ -110,11 +127,20 @@ public class HfWebAppInterface {
             return ReportUtils.getReportPeriodForCohortReport(reportKey);
         }
 
+        if(reportType.equalsIgnoreCase(Constants.ReportConstants.ReportTypes.VMMC_REPORT)){
+            return ReportUtils.getReportPeriodForCohortReport(reportKey);
+        }
+
         return ReportUtils.getReportPeriod();
     }
 
     @JavascriptInterface
     public String getReportingFacility() {
         return getAllSharedPreferences().getPreference(DEFAULT_LOCALITY_NAME);
+    }
+
+    @JavascriptInterface
+    public String getReportingHFRCODE() {
+        return getAllSharedPreferences().getPreference(HFR_CODE);
     }
 }

@@ -39,6 +39,7 @@ public class Constants extends CoreConstants {
 
     public static final class FOCUS {
         public static final String LOST_TO_FOLLOWUP_FOCUS = "LTFU";
+        public static final String REFERRALS = "REFERRALS";
         public static final String LD_EMERGENCY = "Labour And Delivery Emergency";
         public static final String LD_CHILD_EMERGENCY = "Labour And Delivery Child Emergency";
     }
@@ -120,6 +121,8 @@ public class Constants extends CoreConstants {
         private static final String NEXT_FACILITY_VISIT_FORM = "next_facility_visit_date_form";
         private static final String PMTCT_REGISTRATION = "pmtct_registration";
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM = "pmtct_registration_for_clients_known_on_art";
+        private static final String VMMC_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM = "vmmc_registration_for_clients_known_on_art";
+
         private static final String COUNSELLING = "anc_counselling";
         private static final String HIV_INDEX_CONTACT_CTC_ENROLLMENT = "hiv_index_contact_ctc_enrollment";
         private static final String PARTNER_REGISTRATION_FORM = "male_partner_registration_form";
@@ -152,6 +155,8 @@ public class Constants extends CoreConstants {
         private static final String LD_EMERGENCY_REFERRAL_FORM = "referrals/labour_and_delivery_emergency_referral";
         private static final String LD_CHILD_EMERGENCY_REFERRAL_FORM = "referrals/labour_and_delivery_child_emergency_referral";
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_POST_PNC = "pmtct_registration_for_clients_post_pnc";
+        private static final String VMMC_REFERRAL= "referrals/vmmc_referral_form";
+
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -163,6 +168,10 @@ public class Constants extends CoreConstants {
 
         public static String getLtfuReferralForm() {
             return LTFU_REFERRAL_FORM;
+        }
+
+        public static String getVmmcReferralForm() {
+            return VMMC_REFERRAL;
         }
 
         public static String getLdEmergencyReferralForm() {
@@ -275,6 +284,10 @@ public class Constants extends CoreConstants {
 
         public static String getPmtctRegistrationForClientsKnownOnArtForm() {
             return PMTCT_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM;
+        }
+
+        public static String getVmmcRegistrationForClientsKnownOnArtForm() {
+            return VMMC_REGISTRATION_FOR_CLIENTS_KNOWN_ON_ART_FORM;
         }
 
         public static String getHvlTestResultsForm() {
@@ -591,6 +604,16 @@ public class Constants extends CoreConstants {
 
         }
 
+        public static class VmmcVisit {
+
+            public static final String FOLLOWUPVISIT = "vmmc_followup_visit";
+
+            public static String getFollowupvisit() {
+                return Utils.getLocalForm(FOLLOWUPVISIT, locale, assetManager);
+            }
+
+        }
+
     }
 
     public static final class JsonFormConstants {
@@ -682,6 +705,12 @@ public class Constants extends CoreConstants {
             String RECEIVING_REPORTS = "receiving_reports";
         }
 
+        public interface VmmcKeys {
+            String VMMC_REPORT = "vmmc_reports";
+            String VMMC_SERVICE_REGISTER = "vmmc_service_register";
+            String VMMC_THEATRE_REGISTER = "vmmc_theatre_register";
+        }
+
         public interface ReportTypes {
             String PMTCT_REPORT = "pmtct_report";
             String ANC_REPORT = "anc_report";
@@ -693,6 +722,7 @@ public class Constants extends CoreConstants {
             String SELF_TESTING_REPORT = "self_testing_report";
             String CONDOM_DISTRIBUTION_REPORT = "condom_distribution_report";
             String KVP_REPORT = "kvp_report";
+            String VMMC_REPORT = "vmmc_report";
         }
 
         public interface ReportPaths {
@@ -711,6 +741,10 @@ public class Constants extends CoreConstants {
             String CONDOM_DISTRIBUTION_ISSUING_FROM_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-from-the-facility";
             String CONDOM_DISTRIBUTION_RECEIVING_REPORT_PATH = "condom-distribution-receiving-report";
             String KVP_REPORT_PATH = "kvp-report";
+            String VMMC_REPORT_PATH = "vmmc-report";
+            String VMMC_REGISTER_PATH = "vmmc-service-register";
+            String VMMC_THEATRE_REGISTER_PATH = "vmmc-theatre-register";
+
         }
     }
 

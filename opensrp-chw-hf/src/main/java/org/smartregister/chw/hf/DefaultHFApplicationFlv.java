@@ -22,6 +22,11 @@ public class DefaultHFApplicationFlv implements HealthFacilityApplication.Flavor
     }
 
     @Override
+    public boolean hasVmmc() {
+        return true;
+    }
+
+    @Override
     public boolean hasLD() {
         return true;
     }

@@ -35,6 +35,9 @@ import org.smartregister.chw.hf.domain.pmtct_reports.Pmtct3MonthsReportObject;
 import org.smartregister.chw.hf.domain.pmtct_reports.PmtctEIDMonthlyReportObject;
 import org.smartregister.chw.hf.domain.pnc_reports.PncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.self_testing_reports.SelfTestingMonthlyReportObject;
+import org.smartregister.chw.hf.domain.vmmc_reports.VmmcMonthlyReportObject;
+import org.smartregister.chw.hf.domain.vmmc_reports.VmmcServiceRegisterObject;
+import org.smartregister.chw.hf.domain.vmmc_reports.VmmcTheatreRegisterObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -164,7 +167,10 @@ public class ReportUtils {
 
         if (reportType.equals(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
             mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/cdp_reports/" + reportPath + ".html");
-        }else {
+        } else if(reportType.equals(Constants.ReportConstants.ReportTypes.VMMC_REPORT)){
+            mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/vmmc_reports/" + reportPath + ".html");
+        }
+        else {
             mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportPath + ".html");
         }
 
@@ -316,6 +322,45 @@ public class ReportUtils {
         }
     }
 
+    public static class VmmcReport {
+        public static String computeReport(Date now) {
+            String report = "";
+            VmmcMonthlyReportObject vmmcMonthlyReportObject = new VmmcMonthlyReportObject(now);
+            try {
+                report = vmmcMonthlyReportObject.getIndicatorDataAsGson(vmmcMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class VmmcServiceRegister {
+        public static String computeReport(Date now) {
+            String report = "";
+            VmmcServiceRegisterObject vmmcServiceRegisterObject = new VmmcServiceRegisterObject(now);
+            try {
+                report = vmmcServiceRegisterObject.getIndicatorDataAsGson(vmmcServiceRegisterObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
+    public static class VmmcTheatreRegister {
+        public static String computeReport(Date now) {
+            String report = "";
+            VmmcTheatreRegisterObject vmmcTheatreRegisterObject = new VmmcTheatreRegisterObject(now);
+            try {
+                report = vmmcTheatreRegisterObject.getIndicatorDataAsGson(vmmcTheatreRegisterObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
+
     public static class CDPReports {
         public static String computeIssuingAtFacilityReports(Date startDate) {
             CdpIssuingAtFacilityReportObject cdpIssuingAtFacilityReportObject = new CdpIssuingAtFacilityReportObject(startDate);
@@ -336,16 +381,6 @@ public class ReportUtils {
             }
             return "";
         }
-
-//        public static String computeReceivingReports(Date startDate, Context context) {
-//            CdpReceivingReportObject cdpReceivingReportObject = new CdpReceivingReportObject(startDate,context);
-//            try {
-//                return cdpReceivingReportObject.getIndicatorDataAsGson(cdpReceivingReportObject.getIndicatorData());
-//            } catch (JSONException e) {
-//                Timber.e(e);
-//            }
-//            return "";
-//        }
     }
 
     public static class CBHSReport {

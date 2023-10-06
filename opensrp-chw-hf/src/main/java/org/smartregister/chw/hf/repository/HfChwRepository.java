@@ -211,6 +211,7 @@ public class HfChwRepository extends CoreChwRepository {
                 String ldReportingIndicatorConfigFile = "config/ld-reporting-indicator-definitions.yml";
                 String motherChampionReportingIndicatorConfigFile = "config/mother_champion-reporting-indicator-definitions.yml";
                 String selfTestingIndicatorConfigFile = "config/self-testing-monthly-report.yml";
+                String vmmcIndicatorConfigFile = "config/vmmc-monthly-report.yml";
                 String kvpTestingIndicatorConfigFile = "config/kvp-monthly-report.yml";
                 String ltfuIndicatorConfigFile = "config/community-ltfu-summary.yml";
 
@@ -218,7 +219,7 @@ public class HfChwRepository extends CoreChwRepository {
                         Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
                                 pmtctIndicatorConfigFile, pncIndicatorConfigFile,
                                 cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
-                                motherChampionReportingIndicatorConfigFile,selfTestingIndicatorConfigFile,kvpTestingIndicatorConfigFile,ltfuIndicatorConfigFile))) {
+                                motherChampionReportingIndicatorConfigFile,vmmcIndicatorConfigFile,selfTestingIndicatorConfigFile,kvpTestingIndicatorConfigFile,ltfuIndicatorConfigFile))) {
                     reportingLibraryInstance.readConfigFile(configFile, db);
                 }
 
@@ -379,6 +380,17 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
+//    private static void upgradeToVersion21(SQLiteDatabase db) {
+//        try {
+//
+//            DatabaseMigrationUtils.createAddedECTables(db,
+//                    new HashSet<>(Arrays.asList("ec_vmmc_enrollment","ec_vmmc_services","ec_vmmc_procedure","ec_vmmc_post_op_and_discharge","ec_vmmc_follow_up_visit","ec_vmmc_notifiable_ae")),
+//                    HealthFacilityApplication.createCommonFtsObject());
+//            refreshIndicatorQueries(db);
+//        } catch (Exception e) {
+//            Timber.e(e, "upgradeToVersion21");
+//        }
+//    }
 
 
     private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
@@ -418,12 +430,14 @@ public class HfChwRepository extends CoreChwRepository {
                 String selfTestingIndicatorConfigFile = "config/self-testing-monthly-report.yml";
                 String kvpTestingIndicatorConfigFile = "config/kvp-monthly-report.yml";
                 String ltfuIndicatorConfigFile = "config/community-ltfu-summary.yml";
+                String vmmcIndicatorConfigFile = "config/vmmc-monthly-report.yml";
+
 
                 for (String configFile : Collections.unmodifiableList(
                         Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
                                 pmtctIndicatorConfigFile, pncIndicatorConfigFile,
                                 cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
-                                motherChampionReportingIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile))) {
+                                motherChampionReportingIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile,vmmcIndicatorConfigFile))) {
                     reportingLibraryInstance.readConfigFile(configFile, db);
                 }
 

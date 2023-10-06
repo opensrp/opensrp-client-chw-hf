@@ -470,6 +470,19 @@
     <string name="prep_initiation">PrEP Initiation</string>
     <string name="prep_screening">PrEP Screening</string>
 
+    <string name="vmmc_medical_history">Medical History</string>
+    <string name="vmmc_followup_visit">Follow Up Visit</string>
+    <string name="vmmc_notifiable_adverse">Notifiable Adverse Event</string>
+    <string name="consent_form">Consent for Male Circumcision procedure</string>
+    <string name="vmmc_mc_procedure">Male Circumcision procedure</string>
+    <string name="vmmc_physical_examination">Physical Examination</string>
+    <string name="vmmc_hts">HTS</string>
+    <string name="vmmc_post">Post-OP</string>
+    <string name="vmmc_first_vital">First vital signs</string>
+    <string name="vmmc_second_vital">Second vital signs</string>
+    <string name="vmmc_post_discharge">Discharge</string>
+
+
     <string name="amtsl_uterotonic_title">Uterotonic</string>
     <string name="amtsl_placenta_and_membranes">Placenta and Membrane</string>
     <string name="amtsl_method_used_to_remove_the_placenta">The method used to remove/deliver the placenta</string>
@@ -722,6 +735,13 @@
     <string name="cdp_receiving_report">CDP Receiving Report</string>
     <string name="kvp_reports">KVP REPORTS</string>
     <string name="kvp_reports_subtitle">View Reports For KVP</string>
+    <string name="vmmc_reports">VMMC REPORTS</string>
+    <string name="vmmc_service_register">VMMC Monthly Service Register</string>
+    <string name="vmmc_theatre_register">VMMC Monthly Theatre Register</string>
+    <string name="vmmc_reports_subtitle">View Reports For VMMC</string>
+    <string name="vmmc_register_subtitle">View Service Register For VMMC</string>
+    <string name="vmmc_theatre_register_subtitle">View Theatre Register For VMMC</string>
+
 
 
     <string name="view_visits_history">View Visits History</string>
@@ -823,6 +843,238 @@
     <string name="prep_other_reason_stopping_prep">Other reason:</string>
     <string name="prep_next_visit_date">Next Appointment Date:</string>
 
+    <string name="device">Device</string>
+    <string name="convectional_surgical_procedure">Convectional surgical procedure</string>
+
+    <string name="adverse_event_completely_resolved">Adverse event completely resolved</string>
+    <string name="adverse_event_partially_resolved">Adverse event partially resolved</string>
+    <string name="adverse_event_unchanged">Adverse event unchanged</string>
+
+    <string name="surgical_intervention">Displacement of the device, including intentional movement of device by the client and/or self-removal, that requires surgical intervention, hospitalization, or transfer to another facility to clinically manage.</string>
+    <string name="penis_severed">Part or all of the glans or shaft of the penis severed</string>
+
+    <string name="transient_complaint">Transient complaint that resolves without treatment</string>
+    <string name="return_cinic">Requires a special return to the cinic, but no additional treatment required</string>
+    <string name="requires_referral">Requires referral to another facility for management</string>
+
+    <string name="healing_takes_longer_than_usual">Healing takes longer than usual, but no extra treatment necessary</string>
+    <string name="additional_non_operative_treatment">Additional non-operative treatment required</string>
+    <string name="requires_re_operation">Requires re-operation</string>
+
+    <string name="client_concerned_but_no_discernible_abnormality">Client concerned, but no discernible abnormality</string>
+    <string name="significant_wound_disruption_or_scarring_but_does_not_require_re_operation">Significant wound disruption or scarring, but does not require re-operation</string>
+
+    <string name="adds_time">Adds time or material needs to the procedure, but does not result in any discernible adverse condition</string>
+    <string name="additional_operative">Skin is tight, but additional operative work not necessary</string>
+    <string name="operation_or_transfer_to_another_facility">Requires re-operation or transfer to another facility to correct the problem</string>
+
+    <string name="complete_or_partial_amputation_of_glans_or_shaft_of_penis">Complete or partial amputation of the glans or shaft of the penis</string>
+    <string name="tetanus_including_non_fatal_cases">Tetanus including non-fatal cases</string>
+    <string name="ae_results_in_disbility_permanent">AE that results in disability that is likely permanent ( e.g glans numbness)</string>
+
+    <string name="ae_results_in_anatomic_deformity_permanent">AE that results in anatomic deformity that is likely permanent ( e.g keloid,scaring,penile torsion etc)</string>
+    <string name="hospital_admission">Any hospital admission for >= 3 days</string>
+    <string name="moderate_severe_device_displacement">Moderate or severe device displacement AE</string>
+    <string name="admission_to_icu_within_30_days_post_mc">Any admission to ICU within 30 days post Male Circumcision</string>
+    <string name="client_deaths_within_30days_post_mc">Client deaths within 30days post Male Circumcision</string>
+
+    <string name="no_other_treatment_needed_beyond_routine">Displacement of the device after which no other treatment needed beyond routine post-removal wound care.</string>
+    <string name="requires_any_treatment_more_than_routine">Displacement of the device that requires any treatment more than routine post-operative wound care but does not meet severe criteria.</string>
+    <string name="intentional_movement_of_device_by_client">Displacement of the device, including intentional movement of device by the client and/or self-removal, that requires surgical intervention, hospitalization, or transfer to another facility to clinically manage.</string>
+
+    <string name="meet_severe_criteria">Detachment of the device that requires any treatment more than routine post-operative wound care but does not meet severe criteria.</string>
+    <string name="post_removal">Detachment of the device after which no other treatment needed beyond routine post-removal wound care.</string>
+    <string name="blood_transfusion">Blood transfusion or transfer to another facility required</string>
+    <string name="pressure_dressing">Bleeding that requires pressure dressing to control</string>
+    <string name="more_bleeding">More bleeding than usual, but easily controlled</string>
+    <string name="palpitations">Palpitations, vaso-vagal reaction or emesis</string>
+    <string name="reaction_to_anaesthetic">Reaction to anaesthetic requiring medical treatment in clinic, but not transfer to another facility</string>
+    <string name="anaphylaxis">Anaphylaxis or other reaction requiring transfer to another facility</string>
+    <string name="mild_bruising">Mild bruising or abrasion, not requiring treatment</string>
+    <string name="bruising">Bruising or abrasion of the glans or shaft of the penis requiring pressure dressing or additional surgery to control</string>
+    <string name="glans_or_shaft">Part or all of the glans or shaft of the penis severed</string>
+    <string name="adds_time_or_material_needs_to_the_procedure">Adds time or material needs to the procedure, but does not result in any discernible adverse condition</string>
+    <string name="skin_tight">Skin is tight, but additional operative work not necessary</string>
+    <string name="requires_reoperation">Requires re-operation or transfer to another facility to correct the problem</string>
+    <string name="more_bleed_than_usual_but_easily_controlled">More Bleeding than usual but easily controlled</string>
+    <string name="bleed_require_pressure_dressing">Bleed Requires pressure dressing to control</string>
+    <string name="blood_transfussion_or_transfered_another_facility">Blood transfussion/transffered to another facility required</string>
+
+    <string name="surgeon_medical_officer">Medical officer</string>
+    <string name="surgeon_assistant_medical_officer">Assistant medical officer</string>
+    <string name="surgeon_clinical_officer_or_assistant">Clinical officer/Assistant clinical officer</string>
+    <string name="surgeon_enrolled_nurse">Enrolled nurse</string>
+    <string name="surgeon_assistant_nursing_officer">Assistant nursing officer</string>
+
+    <string name="medical_officer">Medical officer</string>
+    <string name="assistant_medical_officer">Assistant medical officer</string>
+    <string name="clinical_officer_or_assistant_clinical">Clinical officer/Assistant clinical officer</string>
+    <string name="enrolled_nurse">Enrolled nurse</string>
+    <string name="assistant_nursing_officer">Assistant nursing officer</string>
+    <string name="nursing_officer">Nursing officer</string>
+
+    <string name="injectables_lignocaine">Injectables-Lignocaine</string>
+
+    <string name="from_client">Client</string>
+    <string name="from_parent">Parent</string>
+    <string name="from_guardian">Guardian</string>
+
+    <string name="dorsal_slit">Dorsal slit</string>
+    <string name="sleeve_resection">Sleeve resection</string>
+
+    <string name="injectables">Injectables</string>
+    <string name="topical_cream">Topical Cream</string>
+
+    <string name="excessive_skin_removed">Excessive skin removed</string>
+    <string name="excessive_bleeding">Excessive bleeding</string>
+    <string name="damage_to_penis">Injury to the penis</string>
+    <string name="anesthetic_related_events">Anesthetic related events</string>
+    <string name="device_displacement">Device displacement</string>
+
+    <string name="the_ring">The ring in place</string>
+    <string name="bleeding">Bleeding</string>
+    <string name="dressing_clear">Dressing clear</string>
+    <string name="blood_spots_on_dressing">Blood spots on dressing</string>
+    <string name="dressing_soaked">Dressing soaked</string>
+
+    <string name="satisfactory">Satisfactory</string>
+    <string name="needs_followup">Needs follow-up</string>
+    <string name="not_discharged">Not Discharged</string>
+
+    <!--    Vmmc Medical History-->
+    <string name="vmmc_consent_from">Consent from:</string>
+    <string name="vmmc_has_client_had_any_sti">STI:</string>
+    <string name="vmmc_any_complaints">Complaints:</string>
+    <string name="vmmc_is_client_diagnosed_with_any">Client Diagnosed:</string>
+    <string name="vmmc_diabetes_treatment">Diabetes treatment:</string>
+    <string name="vmmc_surgical_procedure">Surgical procedure:</string>
+    <string name="vmmc_type_complication">Type complication:</string>
+    <string name="vmmc_any_hematological_disease_symptoms">Hematological disease:</string>
+    <string name="vmmc_known_allergies">Known allergies:</string>
+    <string name="vmmc_tetanus_vaccination">Tetanus vaccination:</string>
+    <string name="vmmc_physical_abnormality">Physical abnormality:</string>
+    <string name="vmmc_client_weight">client weight:</string>
+    <string name="vmmc_pulse_rate">pulse rate:</string>
+    <string name="vmmc_systolic">systolic:</string>
+    <string name="vmmc_diastolic">diastolic:</string>
+    <string name="vmmc_temperature">temperature:</string>
+    <string name="vmmc_respiration_rate">respiration rate:</string>
+    <string name="vmmc_genital_examination">genital examination:</string>
+    <string name="vmmc_preferred_client_mc_method">Preferred client’s Male Circumcision method:</string>
+    <string name="vmmc_penile_size">penile size:</string>
+    <string name="vmmc_tested_hiv">tested hiv:</string>
+    <string name="vmmc_hiv_result">hiv result:</string>
+    <string name="vmmc_hiv_not_tested_reasons">hiv not tested reasons:</string>
+    <string name="vmmc_hiv_viral_load_text">hiv viral load text:</string>
+    <string name="vmmc_self_test_kits">self test kits:</string>
+    <string name="vmmc_client_referred_to">client referred to:</string>
+    <string name="vmmc_client_medically_cleared">client medically cleared:</string>
+    <string name="vmmc_mc_reasons">mc reasons:</string>
+    <string name="vmmc_uds_managed">uds managed:</string>
+    <string name="vmmc_smegma_managed">smegma managed:</string>
+    <string name="vmmc_gud_managed">gud managed:</string>
+    <string name="vmmc_phimosis_managed">phimosis managed:</string>
+    <string name="vmmc_paraphimosis_managed">paraphimosis managed:</string>
+    <string name="vmmc_underscended_managed">underscended managed:</string>
+    <string name="vmmc_condylomata_managed">condylomata managed:</string>
+    <string name="vmmc_adhesion_managed">adhesion managed:</string>
+    <string name="vmmc_balanitis_managed">balanitis managed:</string>
+    <string name="vmmc_urethral_managed">urethral managed:</string>
+    <string name="vmmc_chordae_managed">chordae managed:</string>
+    <string name="vmmc_hydrocele_managed">hydrocele managed:</string>
+    <string name="vmmc_client_consent_for_mc_procedure">client consent for male circumcision procedure:</string>
+    <string name="vmmc_health_care_provider">health care provider:</string>
+
+    <string name="vmmc_is_male_procedure_circumcision_conducted">Male circumcision procedure conducted:</string>
+    <string name="vmmc_start_time">start time:</string>
+    <string name="vmmc_end_time">end time:</string>
+    <string name="vmmc_aneathesia_administered">aneathesia administered:</string>
+    <string name="vmmc_other_aneathesia_administered">other aneathesia administered:</string>
+    <string name="vmmc_lignocaine_dosage">lignocaine dosage:</string>
+    <string name="vmmc_bupivacaine_dosage">bupivacaine dosage:</string>
+    <string name="vmmc_dosage">dosage:</string>
+    <string name="vmmc_male_circumcision_method">male circumcision method:</string>
+    <string name="vmmc_device_name">device name:</string>
+    <string name="vmmc_lot_number">lot number:</string>
+    <string name="vmmc_size_place">size place:</string>
+    <string name="vmmc_surgeon_name">surgeon name:</string>
+    <string name="vmmc_surgeons_cadre">surgeons cadre:</string>
+    <string name="vmmc_assistant_name">assistant name:</string>
+    <string name="vmmc_assistant_cadre">assistant cadre:</string>
+    <string name="vmmc_intraoperative_adverse_event_occured">intraoperative adverse event occured:</string>
+    <string name="vmmc_type_of_adverse_event_others">type of adverse event others:</string>
+    <string name="vmmc_desc_intraoperative_ae_bleed_excessive_bleeding">Description of intraoperative adverse events (Excessive bleeding):</string>
+    <string name="vmmc_desc_intraoperative_ae_skin_removal">Description of intraoperative adverse events (Excessive skin removal):</string>
+    <string name="vmmc_desc_intraoperative_ae_injury_to_penis">Description of intraoperative adverse events (Injury to penis):</string>
+    <string name="vmmc_desc_intraoperative_ae_anaesthetic_related_event">Description of intraoperative adverse events (Anaesthetic-related event):</string>
+    <string name="vmmc_nature_of_ae">nature of ae:</string>
+    <string name="vmmc_what_done">what done:</string>
+    <string name="vmmc_treatment_outcome">Treatment outcome:</string>
+
+    <string name="vmmc_dressing_condition_in_relation_to_bleeding">Describe the condition of the dressing in relation to bleeding(For conventional surgery):</string>
+    <string name="vmmc_device_mc">Device Male Circumcision Observe the following:</string>
+    <string name="vmmc_discharge_condition">discharge condition:</string>
+    <string name="vmmc_discharged_reasons">discharged reasons:</string>
+    <string name="vmmc_analgesics_given">analgesics given:</string>
+    <string name="vmmc_analgenics_type">analgenics type:</string>
+    <string name="vmmc_analgenics_dosage">analgenics dosage:</string>
+    <string name="vmmc_analgenics_reasons">analgenics reasons:</string>
+    <string name="vmmc_discharge_time">discharge time:</string>
+    <string name="vmmc_discharging_provider_name">discharging provider name:</string>
+    <string name="vmmc_provider_cadre">Providers cadre:</string>
+
+    <string name="vmmc_first_vital_sign_pulse_rate">First Vital Sign Pulse Rate (Beats per minute):</string>
+    <string name="vmmc_first_vital_sign_systolic">First Vital Sign Systolic (Blood Pressure):</string>
+    <string name="vmmc_first_vital_sign_diastolic">First Vital Sign Diastolic (Blood Pressure):</string>
+    <string name="vmmc_first_vital_sign_temperature">First Vital Sign Temperature :</string>
+    <string name="vmmc_first_vital_sign_respiration_rate">First Vital Sign Respiration rate (Breath per minute) :</string>
+    <string name="vmmc_first_vital_sign_time_taken">First Vital Sign Time taken :</string>
+
+    <string name="vmmc_second_vital_sign_pulse_rate">Second Vital Sign Pulse Rate (Beats per minute):</string>
+    <string name="vmmc_second_vital_sign_systolic">Second Vital Sign Systolic (Blood Pressure):</string>
+    <string name="vmmc_second_vital_sign_diastolic">Second Vital Sign Diastolic (Blood Pressure):</string>
+    <string name="vmmc_second_vital_sign_temperature">Second Vital Sign Temperature :</string>
+    <string name="vmmc_second_vital_sign_respiration_rate">Second Vital Sign Respiration rate (Breath per minute) :</string>
+    <string name="vmmc_second_vital_sign_time_taken">Second Vital Sign Time taken :</string>
+
+    <string name="vmmc_choose_analgenics_dose_unit">Choose Analgesics Dose Unit :</string>
+    <string name="vmmc_analgenics_dose">Analgesics Dose :</string>
+    <string name="vmmc_analgenics_dose_duration">Analgesics Dose Duration :</string>
+
+    <string name="vmmc_visit_type">Follow up visit type:</string>
+    <string name="vmmc_comment_vmmc_followup">comment vmmc followup:</string>
+    <string name="vmmc_post_op_adverse_event_occur">post-operative adverse event occur:</string>
+    <string name="vmmc_time_of_adverse_event_occured">Time The adverse event occured:</string>
+    <string name="vmmc_time_of_adverse_event_attended">Time The adverse event was attended:</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_infection">Description of post-operative adverse events(Infection):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_persistent_pain">Description of post-operative adverse events(Persistent pain):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_bleeding">Description of post-operative adverse events(Bleeding):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_device_displacement">Description of post-operative adverse events(device displacement):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_swelling">Description of post-operative adverse events(swelling):</string>
+    <string name="vmmc_desc_of_post_op_adverse_pass_urine">Description of post-operative adverse events(Failure to pass urine):</string>
+    <string name="vmmc_type_of_adverse_event_without_device">Type of adverse event:</string>
+    <string name="vmmc_type_of_adverse_event_others_without_device">type of others adverse event:</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_infection_without_device">Description of post-operative adverse events(Infection):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_persistent_pain_without_device">Description of post-operative adverse events(Persistent pain):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_bleeding_without_device">Description of post-operative adverse events(Bleeding):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_swelling_without_device">Description of post-operative adverse events(swelling):</string>
+    <string name="vmmc_desc_of_post_op_adverse_pass_urine_without_device">Description of post-operative adverse events(Failure to pass urine):</string>
+    <string name="vmmc_was_condom_provided">Was condom provided:</string>
+    <string name="vmmc_condoms_issued">Type of the condoms issued:</string>
+    <string name="vmmc_number_of_male_condoms_issued">Number of male condoms issued:</string>
+    <string name="vmmc_number_of_female_condoms_issued">Number of female condoms issued:</string>
+    <string name="vmmc_was_bandage_given">Was bandage given:</string>
+    <string name="vmmc_number_of_bandage_given">Number of bandage given:</string>
+    <string name="vmmc_provider_name">Providers name:</string>
+
+    <string name="vmmc_was_adverse_events_notifiable">Was adverse events notifiable :</string>
+    <string name="vmmc_did_client_experience_nae">Did the client experience a Notifiable Adverse Event:</string>
+    <string name="vmmc_did_client_experience_nae_without_device">Did the client experience a Notifiable Adverse Event:</string>
+    <string name="vmmc_date_nae_occured">Date NAE occured:</string>
+    <string name="vmmc_date_nae_notified">Date NAE was notified:</string>
+    <string name="vmmc_time_nae_started">Time NAE started:</string>
+    <string name="vmmc_was_nae_attended">Was NAE attended:</string>
+    <string name="vmmc_time_nae_was_attended">Time Nae was attended :</string>
 
     <string name="facility">Health Facility</string>
     <string name="community_outreach">Community/Outreach</string>
