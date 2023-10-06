@@ -11,8 +11,10 @@ import android.os.Build;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.RequiresApi;
 import androidx.webkit.WebViewAssetLoader;
@@ -155,14 +157,15 @@ public class ReportUtils {
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    public static void loadReportView(String reportPath, WebView mWebView, Context context, String reportType) {
-
+    public static void loadReportView(String reportPath, WebView mWebView, ProgressBar progressBar, Context context, String reportType) {
+        progressBar.setVisibility(View.VISIBLE);
+        mWebView.setVisibility(View.GONE);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         final WebViewAssetLoader assetLoader = new WebViewAssetLoader.Builder()
                 .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(context))
                 .build();
-        mWebView.setWebViewClient(new LocalContentWebViewClient(assetLoader));
+        mWebView.setWebViewClient(new LocalContentWebViewClient(assetLoader,mWebView,progressBar));
         mWebView.addJavascriptInterface(new HfWebAppInterface(context, reportType), "Android");
 
         if (reportType.equals(Constants.ReportConstants.ReportTypes.CONDOM_DISTRIBUTION_REPORT)){
@@ -174,6 +177,14 @@ public class ReportUtils {
             mWebView.loadUrl("https://appassets.androidplatform.net/assets/reports/" + reportPath + ".html");
         }
 
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")  //overloaded
+    public static void loadReportView(WebView mWebView) {
+        mWebView.clearCache(true);
+        mWebView.clearMatches();
+        mWebView.reload();
+        mWebView.refreshDrawableState();
     }
 
     public static class PMTCTReports {

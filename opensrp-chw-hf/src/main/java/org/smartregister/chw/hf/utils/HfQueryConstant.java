@@ -41,6 +41,7 @@ public interface HfQueryConstant {
             "    UNION ALL\n" +
             "    SELECT ec_vmmc_enrollment.base_entity_id AS base_entity_id\n" +
             "    FROM  ec_vmmc_enrollment\n" +
+            "    WHERE ec_vmmc_enrollment.is_closed is 0\n" +
             "    UNION ALL\n" +
             "    SELECT ec_family_planning.base_entity_id AS base_entity_id\n" +
             "    FROM ec_family_planning\n" +

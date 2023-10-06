@@ -340,7 +340,7 @@ public class ReportDao extends AbstractDao {
                 "    vmmc_client_id,\n" +
                 "    names,\n" +
                 "    dob\n" +
-                "ORDER BY enrollment_date  DESC;\n";
+                "ORDER BY enrollment_date  ASC;\n";
 
         String queryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(reportDate);
 
