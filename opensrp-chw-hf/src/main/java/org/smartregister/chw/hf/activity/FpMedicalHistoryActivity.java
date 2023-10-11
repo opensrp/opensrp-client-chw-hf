@@ -43,7 +43,9 @@ import timber.log.Timber;
 
 public class FpMedicalHistoryActivity extends CoreAncMedicalHistoryActivity {
     private static FpMemberObject fpMemberObject;
+
     private final Flavor flavor = new FpMedicalHistoryActivityFlv();
+
     private ProgressBar progressBar;
 
     public static void startMe(Activity activity, FpMemberObject memberObject) {
