@@ -5,15 +5,15 @@ name: Android CI with Gradle
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, tanzania-ministry-of-health-nacp ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, tanzania-ministry-of-health-nacp ]
 
 jobs:
   unit_tests:
-
+    
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
