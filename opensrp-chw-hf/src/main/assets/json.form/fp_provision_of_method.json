@@ -501,24 +501,6 @@
         }
       },
       {
-        "key": "counsel_for_other_methods",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "counsel_for_other_methods",
-        "type": "toaster_notes",
-        "text": "Counsel for other family planning methods",
-        "toaster_type": "warning",
-        "toaster_info_text": "",
-        "toaster_info_title": "",
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "fp_provide_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "client_provided_condom",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -637,6 +619,24 @@
           "value": "1",
           "err": "Number of condoms should be greater than 0"
         },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "counsel_for_other_methods",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "counsel_for_other_methods",
+        "type": "toaster_notes",
+        "text": "Counsel for other family planning methods",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
         "relevance": {
           "rules-engine": {
             "ex-rules": {
