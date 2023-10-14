@@ -9350,19 +9350,11 @@
           }
         },
         {
-          "column_name": "did_client_experience_nae",
+          "column_name": "notifiable_adverse_event_occured",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "did_client_experience_nae"
-          }
-        },
-        {
-          "column_name": "date_nae_occured",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "date_nae_occured"
+            "concept": "notifiable_adverse_event_occured"
           }
         },
         {

@@ -41,6 +41,7 @@ public class Constants extends CoreConstants {
         public static final String LOST_TO_FOLLOWUP_FOCUS = "LTFU";
         public static final String REFERRALS = "REFERRALS";
         public static final String LD_EMERGENCY = "Labour And Delivery Emergency";
+        public static final String VMMC_REFERRALS = "Vmmc Referral";
         public static final String LD_CHILD_EMERGENCY = "Labour And Delivery Child Emergency";
     }
 

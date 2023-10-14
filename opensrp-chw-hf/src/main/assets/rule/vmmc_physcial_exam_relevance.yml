@@ -23,7 +23,14 @@ actions:
 name: step1_preferred_client_mc_method_without_chordae
 description: preferred_client_mc_method_without_chordae
 priority: 1
-condition: "!step1_genital_examination.contains('chordae')"
+condition: "!step1_genital_examination.contains('chordae') && !global_known_allergies.contains('silicon_or_lexan')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_toaster_use_conventional_method
+description: toaster_use_conventional_method
+priority: 1
+condition: "step1_genital_examination.contains('chordae') || global_known_allergies.contains('silicon_or_lexan')"
 actions:
   - "isRelevant = true"
 ---

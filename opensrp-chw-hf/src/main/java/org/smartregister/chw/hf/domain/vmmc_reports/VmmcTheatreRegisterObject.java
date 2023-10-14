@@ -32,7 +32,7 @@ public class VmmcTheatreRegisterObject extends ReportObject {
             JSONObject reportJsonObject = new JSONObject();
             reportJsonObject.put("id", ++i);
 
-            reportJsonObject.put("enrollment_date", getVmmcClientDetails(getVmmcRegister, "enrollment_date"));
+            reportJsonObject.put("mc_procedure_date", getVmmcClientDetails(getVmmcRegister, "mc_procedure_date"));
             reportJsonObject.put("vmmc_client_id", getVmmcClientDetails(getVmmcRegister, "vmmc_client_id"));
             reportJsonObject.put("names", getVmmcClientDetails(getVmmcRegister, "names"));
             reportJsonObject.put("age", getVmmcClientDetails(getVmmcRegister, "age"));

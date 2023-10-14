@@ -696,6 +696,12 @@
             "openmrs_entity_id": "severe_swelling"
           },
           {
+            "key": "joint_deformity",
+            "text": "Joint deformity (Joint swelling or Pain)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "joint_deformity"
+          },
+          {
             "key": "bleeding_tendencies_history",
             "text": "Any family history of bleeding tendencies",
             "openmrs_entity": "concept",
@@ -730,7 +736,8 @@
                   "spontaneous_bleeding",
                   "abnormal_bleeding_sites",
                   "severe_swelling",
-                  "bleeding_tendencies_history"
+                  "bleeding_tendencies_history",
+                  "joint_deformity"
                 ]
               }
             ]

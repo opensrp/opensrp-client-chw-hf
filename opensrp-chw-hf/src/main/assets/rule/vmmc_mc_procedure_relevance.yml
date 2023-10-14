@@ -149,56 +149,56 @@ actions:
 name: step1_lignocaine_dosage_ml
 description: lignocaine_dosage relevance
 priority: 1
-condition: "step1_aneathesia_administered.equalsIgnoreCase('injectables') || step1_aneathesia_administered.contains('injectables')"
+condition: "step1_aneathesia_administered_conventional.equalsIgnoreCase('injectables') || step1_aneathesia_administered_device.contains('injectables')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_lignocaine_dosage_percent
 description: lignocaine_dosage relevance
 priority: 1
-condition: "step1_aneathesia_administered.equalsIgnoreCase('injectables') || step1_aneathesia_administered.contains('injectables')"
+condition: "step1_aneathesia_administered_conventional.equalsIgnoreCase('injectables') || step1_aneathesia_administered_device.contains('injectables')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_bupivacaine_dosage_ml
 description: bupivacaine_dosage relevance
 priority: 1
-condition: "step1_aneathesia_administered.equalsIgnoreCase('injectables') || step1_aneathesia_administered.contains('injectables')"
+condition: "step1_aneathesia_administered_conventional.equalsIgnoreCase('injectables') || step1_aneathesia_administered_device.contains('injectables')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_bupivacaine_dosage_percent
 description: bupivacaine_dosage relevance
 priority: 1
-condition: "step1_aneathesia_administered.equalsIgnoreCase('injectables') || step1_aneathesia_administered.contains('injectables')"
+condition: "step1_aneathesia_administered_conventional.equalsIgnoreCase('injectables') || step1_aneathesia_administered_device.contains('injectables')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_dosage_g
 description: dosage relevance
 priority: 1
-condition: "step1_aneathesia_administered.contains('topical_cream')"
+condition: "step1_aneathesia_administered_device.contains('topical_cream')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_dosage_percent
 description: dosage relevance
 priority: 1
-condition: "step1_aneathesia_administered.contains('topical_cream')"
+condition: "step1_aneathesia_administered_device.contains('topical_cream')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_start_time_topical_cream_application
 description: start_time_topical_cream_application relevance
 priority: 1
-condition: "step1_aneathesia_administered.contains('topical_cream')"
+condition: "step1_aneathesia_administered_device.contains('topical_cream')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_end_time_topical_cream_application
 description: end_time_topical_cream_application relevance
 priority: 1
-condition: "step1_aneathesia_administered.contains('topical_cream')"
+condition: "step1_aneathesia_administered_device.contains('topical_cream')"
 actions:
   - "isRelevant = true"
 ---

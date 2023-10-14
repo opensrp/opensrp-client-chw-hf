@@ -155,12 +155,33 @@
         }
       },
       {
+        "key": "date_ae_occured",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_ae_occured",
+        "type": "date_picker",
+        "hint": "Date adverse event occured",
+        "expanded": false,
+        "min_date": "today-1y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date"
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "time_adverse_event_occured",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "time_adverse_event_occured",
         "type": "time_picker",
-        "hint": "Time the adverse event occured ",
+        "hint": "Time the adverse event occured",
         "expanded": false,
         "v_required": {
           "value": "true",
@@ -193,10 +214,31 @@
         }
       },
       {
+        "key": "date_adverse_event_was_attended",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_adverse_event_was_attended",
+        "type": "date_picker",
+        "hint": "Date adverse event was attended ",
+        "expanded": false,
+        "min_date": "today-1y",
+        "max_date": "today",
+        "v_required": {
+          "value": "true",
+          "err": "Please enter the date"
+        },
+        "relevance": {
+          "step1:post_op_adverse_event_occur": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "type_of_adverse_event_with_device",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "type_of_adverse_event_with_device",
+        "openmrs_entity_id": "type_of_adverse_event",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
         "label": "Type of adverse event",
@@ -296,7 +338,7 @@
         "key": "type_of_adverse_event_without_device",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "type_of_adverse_event_without_device",
+        "openmrs_entity_id": "type_of_adverse_event",
         "type": "check_box",
         "combine_checkbox_option_values": "true",
         "label": "Type of adverse event",
@@ -383,14 +425,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_adverse_event",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "vmmc_followup_calculation.yml"
-            }
-          }
-        }
+        "type": "hidden"
       },
       {
         "key": "type_of_adverse_event_others",
@@ -1462,7 +1497,7 @@
           {
             "key": "male_condoms",
             "text": "Male condoms",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "male_condoms",
             "openmrs_entity_parent": ""
@@ -1470,7 +1505,7 @@
           {
             "key": "female_condoms",
             "text": "Female condoms",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "female_condoms",
             "openmrs_entity_parent": ""
@@ -1730,7 +1765,7 @@
           {
             "key": "medical_officer",
             "text": "Medical officer",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medical_officer",
             "openmrs_entity_parent": ""
@@ -1738,7 +1773,7 @@
           {
             "key": "assistant_medical_officer",
             "text": "Assistant medical officer",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "assistant_medical_officer",
             "openmrs_entity_parent": ""
@@ -1746,7 +1781,7 @@
           {
             "key": "clinical_officer_or_assistant_clinical",
             "text": "Clinical officer/Assistant clinical officer",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "clinical_officer_or_assistant_clinical",
             "openmrs_entity_parent": ""
@@ -1754,7 +1789,7 @@
           {
             "key": "enrolled_nurse",
             "text": "Enrolled nurse",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "enrolled_nurse",
             "openmrs_entity_parent": ""
@@ -1762,7 +1797,7 @@
           {
             "key": "assistant_nursing_officer",
             "text": "Assistant nursing officer",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "assistant_nursing_officer",
             "openmrs_entity_parent": ""
@@ -1770,7 +1805,7 @@
           {
             "key": "nursing_officer",
             "text": "Nursing officer",
- 
+
             "openmrs_entity": "concept",
             "openmrs_entity_id": "nursing_officer",
             "openmrs_entity_parent": ""
@@ -1859,7 +1894,7 @@
         "key": "notifiable_adverse_event_occured",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "intraoperative_adverse_event_occured",
+        "openmrs_entity_id": "notifiable_adverse_event_occured",
         "label": "Did Notifiable adverse event occur ?",
         "text_color": "#000000",
         "type": "native_radio",

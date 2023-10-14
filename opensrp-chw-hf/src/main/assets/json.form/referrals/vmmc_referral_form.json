@@ -3,7 +3,7 @@
   "encounter_type": "Referral Registration",
   "entity_id": "",
   "relational_id": "",
-  "rules_file": "rule/general_neat_referral_form_rules.yml",
+  "rules_file": "rule/labour_and_delivery_emergency_neat_referral_form_rules.yml",
   "metadata": {
     "start": {
       "openmrs_entity_parent": "",

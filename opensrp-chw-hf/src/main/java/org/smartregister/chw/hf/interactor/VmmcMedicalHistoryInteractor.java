@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import org.smartregister.chw.anc.contract.BaseAncMedicalHistoryContract;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.anc.domain.VisitDetail;
-import org.smartregister.chw.anc.util.VisitUtils;
 import org.smartregister.chw.core.CoreBaseAncMedicalHistoryInteractor;
 import org.smartregister.chw.hf.domain.SortableVisit;
 import org.smartregister.chw.vmmc.util.Constants;
@@ -60,16 +59,11 @@ public class VmmcMedicalHistoryInteractor extends CoreBaseAncMedicalHistoryInter
                     Constants.EVENT_TYPE.VMMC_PROCEDURE,
                     Constants.EVENT_TYPE.VMMC_DISCHARGE,
                     Constants.EVENT_TYPE.VMMC_FOLLOW_UP_VISIT,
-                    Constants.EVENT_TYPE.VMMC_NOTIFIABLE_EVENTS,
-
+                    Constants.EVENT_TYPE.VMMC_NOTIFIABLE_EVENTS
             };
             List<SortableVisit> visits = getVisits(memberID, eventTypes);
             final List<Visit> all_visits = new ArrayList<>(visits);
 
-            for (Visit visit : visits) {
-                List<Visit> child_visits = VisitUtils.getChildVisits(visit.getVisitId());
-                all_visits.addAll(child_visits);
-            }
             appExecutors.mainThread().execute(() -> callBack.onDataFetched(all_visits));
         };
 

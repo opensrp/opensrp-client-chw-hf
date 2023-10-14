@@ -49,7 +49,7 @@
         "key": "did_client_experience_nae_with_device",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "did_client_experience_nae_with_device",
+        "openmrs_entity_id": "did_client_experience_nae",
         "type": "check_box",
         "label": "Select notifiable adverse event the client experienced",
         "combine_checkbox_option_values": "true",
@@ -175,10 +175,10 @@
             "openmrs_entity_parent": ""
           },
           {
-            "key": "client_deaths_within_30days_post",
+            "key": "client_deaths_within_30days_post_mc",
             "text": "Client deaths within 30days post Male Circumcision",
              "openmrs_entity": "concept",
-            "openmrs_entity_id": "client_deaths_within_30days_post",
+            "openmrs_entity_id": "client_deaths_within_30days_post_mc",
             "openmrs_entity_parent": ""
           }
         ],
@@ -199,14 +199,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "did_client_experience_nae",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "vmmc_notifiable_adverse_event_calculation.yml"
-            }
-          }
-        }
+        "type": "hidden"
       },
       {
         "key": "date_nae_occured",
@@ -414,7 +407,6 @@
           {
             "key": "medical_officer",
             "text": "Medical officer",
-
             "openmrs_entity": "concept",
             "openmrs_entity_id": "medical_officer",
             "openmrs_entity_parent": ""
@@ -422,7 +414,6 @@
           {
             "key": "assistant_medical_officer",
             "text": "Assistant medical officer",
-
             "openmrs_entity": "concept",
             "openmrs_entity_id": "assistant_medical_officer",
             "openmrs_entity_parent": ""
@@ -430,7 +421,6 @@
           {
             "key": "clinical_officer_or_assistant_clinical",
             "text": "Clinical officer/Assistant clinical officer",
-
             "openmrs_entity": "concept",
             "openmrs_entity_id": "clinical_officer_or_assistant_clinical",
             "openmrs_entity_parent": ""
@@ -438,7 +428,6 @@
           {
             "key": "enrolled_nurse",
             "text": "Enrolled nurse",
-
             "openmrs_entity": "concept",
             "openmrs_entity_id": "enrolled_nurse",
             "openmrs_entity_parent": ""
@@ -446,7 +435,6 @@
           {
             "key": "assistant_nursing_officer",
             "text": "Assistant nursing officer",
-
             "openmrs_entity": "concept",
             "openmrs_entity_id": "assistant_nursing_officer",
             "openmrs_entity_parent": ""
@@ -454,7 +442,6 @@
           {
             "key": "nursing_officer",
             "text": "Nursing officer",
-
             "openmrs_entity": "concept",
             "openmrs_entity_id": "nursing_officer",
             "openmrs_entity_parent": ""
@@ -553,6 +540,13 @@
         "v_required": {
           "value": "true",
           "err": "Please fill next followup date"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_notifiable_adverse_event_relevance.yml"
+            }
+          }
         }
       }
     ]

@@ -81,10 +81,9 @@ public class VmmcProfileActivity extends CoreVmmcProfileActivity {
         Visit vmmcProcedure = getVisit(Constants.EVENT_TYPE.VMMC_PROCEDURE);
         Visit vmmcDischarge = getVisit(Constants.EVENT_TYPE.VMMC_DISCHARGE);
         Visit vmmcFollowUp = getVisit(Constants.EVENT_TYPE.VMMC_FOLLOW_UP_VISIT);
-        Visit vmmcNotifiableAdverse = getVisit(Constants.EVENT_TYPE.VMMC_NOTIFIABLE_EVENTS);
 
 
-        if (vmmcServices != null || vmmcProcedure != null || vmmcDischarge != null || vmmcFollowUp != null || vmmcNotifiableAdverse != null) {
+        if (vmmcServices != null || vmmcProcedure != null || vmmcDischarge != null || vmmcFollowUp != null) {
             rlLastVisit.setVisibility(View.VISIBLE);
             findViewById(R.id.view_notification_and_referral_row).setVisibility(View.VISIBLE);
         } else {
@@ -99,7 +98,7 @@ public class VmmcProfileActivity extends CoreVmmcProfileActivity {
 
     @Override
     public void startNotifiableForm() {
-        VmmcNotifiableAdverseActivity.startVmmcVisitActivity(this, baseEntityId, false);
+        //VmmcNotifiableAdverseActivity.startVmmcVisitActivity(this, baseEntityId, false);
     }
 
     @Override

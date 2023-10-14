@@ -2,7 +2,7 @@
 name: step1_next_followup_date
 description: if next_followup_date
 priority: 1
-condition: "(!(global_last_follow_up_date.equals(global_today_date)) || (global_last_follow_up_date == null)) && step1_notifiable_adverse_event_occured.equalsIgnoreCase('no')"
+condition: "(!(global_last_follow_up_date.equals(global_today_date)) || (global_last_follow_up_date == null)) && (step1_notifiable_adverse_event_occured.equalsIgnoreCase('no') || step1_post_op_adverse_event_occur.equalsIgnoreCase('no'))"
 actions:
   - "isRelevant = true "
 ---

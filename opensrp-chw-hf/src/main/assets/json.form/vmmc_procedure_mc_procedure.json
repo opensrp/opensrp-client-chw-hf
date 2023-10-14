@@ -430,7 +430,7 @@
         "key": "aneathesia_administered_conventional",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "aneathesia_administered_conventional",
+        "openmrs_entity_id": "aneathesia_administered",
         "label": "Aneathesia administered",
         "text_color": "#000000",
         "type": "native_radio",
@@ -462,7 +462,7 @@
         "key": "aneathesia_administered_device",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "aneathesia_administered_device",
+        "openmrs_entity_id": "aneathesia_administered",
         "label": "Aneathesia administered",
         "type": "check_box",
         "text_color": "#000000",
@@ -494,20 +494,6 @@
           "rules-engine": {
             "ex-rules": {
               "rules-file": "vmmc_mc_procedure_relevance.yml"
-            }
-          }
-        }
-      },
-      {
-        "key": "aneathesia_administered",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "aneathesia_administered",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "vmmc_mc_procedure_calculation.yml"
             }
           }
         }
@@ -680,6 +666,10 @@
         "v_required": {
           "value": "true",
           "err": "Please specify"
+        },
+        "v_max": {
+          "value": "100",
+          "err": "Dosage (percent) value must be equal or less than 100"
         },
         "relevance": {
           "rules-engine": {
@@ -1083,7 +1073,7 @@
         "key": "type_of_adverse_event_with_device",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "type_of_adverse_event_with_device",
+        "openmrs_entity_id": "type_of_adverse_event",
         "type": "check_box",
         "label": "Type of adverse event",
         "combine_checkbox_option_values": "true",
@@ -1105,7 +1095,8 @@
             "key": "damage_to_penis",
             "text": "Injury to the penis",
             "openmrs_entity": "concept",
-            "openmrs_entity_id": "damage_to_penis"
+            "openmrs_entity_id": "damage_to_penis",
+            "openmrs_entity_parent": ""
           },
           {
             "key": "anesthetic_related_events",
@@ -1145,7 +1136,7 @@
         "key": "type_of_adverse_event_without_device",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "type_of_adverse_event_without_device",
+        "openmrs_entity_id": "type_of_adverse_event",
         "type": "check_box",
         "label": "Type of adverse event",
         "combine_checkbox_option_values": "true",
@@ -1203,14 +1194,7 @@
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
         "openmrs_entity_id": "type_of_adverse_event",
-        "type": "hidden",
-        "calculation": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "vmmc_mc_procedure_calculation.yml"
-            }
-          }
-        }
+        "type": "hidden"
       },
       {
         "key": "type_of_adverse_event_others",

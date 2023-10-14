@@ -1021,41 +1021,6 @@
               "ec_prep_register",
               "ec_prep_followup"
             ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "VMMC Medical History",
-            "creates_case": [
-              "ec_vmmc_medical_history"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "VMMC Physical Examination",
-            "creates_case": [
-              "ec_vmmc_physical_examination"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "VMMC HTS",
-            "creates_case": [
-              "ec_vmmc_hts"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "VMMC Consent Form",
-            "creates_case": [
-              "ec_vmmc_consent_form"
-            ]
-          },
-          {
-            "field": "eventType",
-            "field_value": "VMMC Procedure",
-            "creates_case": [
-              "ec_vmmc_procedure"
-            ]
           }
         ]
       }

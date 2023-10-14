@@ -931,6 +931,13 @@
     <string name="anesthetic_related_events">Anesthetic related events</string>
     <string name="device_displacement">Device displacement</string>
 
+    <string name="bleeding_or_blood_soiling_of_dressing">Bleeding or blood soiling of dressing</string>
+    <string name="swelling_of_penis_or_scrotum">Swelling of the penis or scrotum</string>
+    <string name="persistent_pain">Persistent pain</string>
+    <string name="failure_pass_urine">Failure to pass urine</string>
+    <string name="delayed_wound_healing">Delayed wound healing</string>
+
+
     <string name="the_ring">The ring in place</string>
     <string name="bleeding">Bleeding</string>
     <string name="dressing_clear">Dressing clear</string>
@@ -1068,7 +1075,7 @@
     <string name="vmmc_provider_name">Providers name:</string>
 
     <string name="vmmc_was_adverse_events_notifiable">Was adverse events notifiable :</string>
-    <string name="vmmc_did_client_experience_nae">Did the client experience a Notifiable Adverse Event:</string>
+    <string name="vmmc_did_client_experience_nae_with_device">Did the client experience a Notifiable Adverse Event:</string>
     <string name="vmmc_did_client_experience_nae_without_device">Did the client experience a Notifiable Adverse Event:</string>
     <string name="vmmc_date_nae_occured">Date NAE occured:</string>
     <string name="vmmc_date_nae_notified">Date NAE was notified:</string>

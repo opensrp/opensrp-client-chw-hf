@@ -10,6 +10,7 @@ import android.widget.TextView;
 import org.smartregister.chw.core.provider.ChwVmmcRegisterProvider;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.view.contract.SmartRegisterClient;
@@ -31,7 +32,7 @@ public class HfVmmcRegisterProvider extends ChwVmmcRegisterProvider {
     }
 
     private void showLatestVmmcReferralDay(CommonPersonObjectClient client, HfVmmcRegisterViewHolder viewHolder) {
-        HfReferralUtils.displayReferralDay(client, CoreConstants.TASKS_FOCUS.VMMC, viewHolder.textViewReferralDay);
+        HfReferralUtils.displayReferralDay(client, Constants.FOCUS.VMMC_REFERRALS, viewHolder.textViewReferralDay);
     }
 
     public class HfVmmcRegisterViewHolder extends RegisterViewHolder {

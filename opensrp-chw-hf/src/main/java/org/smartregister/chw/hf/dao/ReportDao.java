@@ -287,7 +287,7 @@ public class ReportDao extends AbstractDao {
     {
         String sql = "WITH VMMC_CTE AS (\n" +
                 "    SELECT\n" +
-                "        ec_vmmc_enrollment.enrollment_date,\n" +
+                "        ec_vmmc_procedure.mc_procedure_date,\n" +
                 "        ec_family_member.first_name,\n" +
                 "        ec_family_member.middle_name,\n" +
                 "        ec_family_member.last_name,\n" +
@@ -317,11 +317,11 @@ public class ReportDao extends AbstractDao {
                 "        ec_vmmc_notifiable_ae ON ec_vmmc_notifiable_ae.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
                 "\tWHERE \n" +
                 "    date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =\n" +
-                "   date(substr(ec_vmmc_enrollment.enrollment_date, 7, 4) || '-' || substr(ec_vmmc_enrollment.enrollment_date, 4, 2) || '-' || '01')\t\n" +
+                "   date(substr(ec_vmmc_procedure.mc_procedure_date, 7, 4) || '-' || substr(ec_vmmc_procedure.mc_procedure_date, 4, 2) || '-' || '01')\t\n" +
                 ")\n" +
                 "\n" +
                 "SELECT\n" +
-                "    enrollment_date,\n" +
+                "    mc_procedure_date,\n" +
                 "    vmmc_client_id,\n" +
                 "    surgeon_name,\n" +
                 "    assistant_name,\n" +
@@ -336,11 +336,11 @@ public class ReportDao extends AbstractDao {
                 "        \n" +
                 "FROM VMMC_CTE\n" +
                 "GROUP BY\n" +
-                "    enrollment_date,\n" +
+                "    mc_procedure_date,\n" +
                 "    vmmc_client_id,\n" +
                 "    names,\n" +
                 "    dob\n" +
-                "ORDER BY enrollment_date  ASC;\n";
+                "ORDER BY mc_procedure_date  ASC;\n";
 
         String queryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(reportDate);
 
@@ -348,7 +348,7 @@ public class ReportDao extends AbstractDao {
 
         DataMap<Map<String, String>> map = cursor -> {
             Map<String, String> data = new HashMap<>();
-            data.put("enrollment_date", cursor.getString(cursor.getColumnIndex("enrollment_date")));
+            data.put("mc_procedure_date", cursor.getString(cursor.getColumnIndex("mc_procedure_date")));
             data.put("names", cursor.getString(cursor.getColumnIndex("names")));
             data.put("vmmc_client_id", cursor.getString(cursor.getColumnIndex("vmmc_client_id")));
             data.put("age", cursor.getString(cursor.getColumnIndex("age")));

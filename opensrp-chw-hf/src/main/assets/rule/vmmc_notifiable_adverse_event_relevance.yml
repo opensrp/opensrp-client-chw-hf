@@ -6,6 +6,13 @@ condition: "global_method_used.contains('device')"
 actions:
   - "isRelevant = true"
 ---
+name: step1_next_followup_date
+description: next_followup_date relevance
+priority: 1
+condition: "!global_discharge_date.contains('')"
+actions:
+  - "isRelevant = true"
+---
 name: step1_did_client_experience_nae_without_device
 description: did_client_experience_nae_without_device relevance
 priority: 1
