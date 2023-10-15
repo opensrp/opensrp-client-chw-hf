@@ -8462,6 +8462,14 @@
           }
         },
         {
+          "column_name": "next_followup_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_followup_date"
+          }
+        },
+        {
           "column_name": "enrollment_date",
           "type": "Event",
           "json_mapping": {
@@ -8883,6 +8891,14 @@
           }
         },
         {
+          "column_name": "type_of_adverse_event_others",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_adverse_event_others"
+          }
+        },
+        {
           "column_name": "desc_intraoperative_ae_bleed_excessive_bleeding",
           "type": "Event",
           "json_mapping": {
@@ -9153,6 +9169,14 @@
           "json_mapping": {
             "field": "obs.fieldCode",
             "concept": "date_nae_occured"
+          }
+        },
+        {
+          "column_name": "next_followup_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_followup_date"
           }
         },
         {

@@ -1190,13 +1190,6 @@
         }
       },
       {
-        "key": "type_of_adverse_event",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "type_of_adverse_event",
-        "type": "hidden"
-      },
-      {
         "key": "type_of_adverse_event_others",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

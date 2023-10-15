@@ -1,10 +1,12 @@
 package org.smartregister.chw.hf.activity;
 
 import static org.smartregister.chw.core.utils.CoreConstants.JSON_FORM.getVmmcEnrollment;
+import static org.smartregister.chw.hf.utils.Constants.REQUEST_FILTERS;
 import static org.smartregister.chw.hf.utils.JsonFormUtils.ENCOUNTER_TYPE;
 import static org.smartregister.util.JsonFormUtils.FIELDS;
 import static org.smartregister.util.JsonFormUtils.STEP1;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -74,4 +76,14 @@ public class VmmcRegisterActivity extends CoreVmmcRegisterActivity {
         startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
     }
 
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_FILTERS) {
+            ((VmmcRegisterFragment) mBaseFragment).onFiltersUpdated(requestCode, data);
+        }
+    }
+
 }
+

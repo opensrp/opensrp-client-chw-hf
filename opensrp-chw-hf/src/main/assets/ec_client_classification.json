@@ -215,14 +215,16 @@
             "field": "eventType",
             "field_value": "Vmmc Discharge",
             "creates_case": [
-              "ec_vmmc_post_op_and_discharge"
+              "ec_vmmc_post_op_and_discharge",
+              "ec_vmmc_enrollment"
             ]
           },
           {
             "field": "eventType",
             "field_value": "Vmmc Follow-up Visit",
             "creates_case": [
-              "ec_vmmc_follow_up_visit"
+              "ec_vmmc_follow_up_visit",
+              "ec_vmmc_enrollment"
             ]
           },
           {

@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.dao;
 
+import android.database.Cursor;
+
+import androidx.annotation.NonNull;
+
 import org.smartregister.dao.AbstractDao;
 
 import java.text.SimpleDateFormat;
@@ -359,7 +363,10 @@ public class ReportDao extends AbstractDao {
             data.put("end_time", cursor.getString(cursor.getColumnIndex("end_time")));
             data.put("surgeon_name", cursor.getString(cursor.getColumnIndex("surgeon_name")));
             data.put("assistant_name", cursor.getString(cursor.getColumnIndex("assistant_name")));
-            data.put("type_of_adverse_event", cursor.getString(cursor.getColumnIndex("type_of_adverse_event")));
+
+
+            String type_of_adverse_event = getTypeOfAdverseEvent(cursor);
+            data.put("type_of_adverse_event", type_of_adverse_event);
 
             return data;
         };
@@ -371,6 +378,40 @@ public class ReportDao extends AbstractDao {
             return res;
         } else
             return new ArrayList<>();
+    }
+
+    @NonNull
+    private static String getTypeOfAdverseEvent(Cursor cursor) {
+
+        List<String> type_of_adverse_event = new ArrayList<>();
+
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_skin_removed")){
+            type_of_adverse_event.add("Excessive skin removed");
+        }
+
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_bleeding")){
+            type_of_adverse_event.add("Excessive bleeding");
+        }
+
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("damage_to_penis")){
+            type_of_adverse_event.add("Injury to the penis");
+        }
+
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("anesthetic_related_events")){
+            type_of_adverse_event.add("Anesthetic related events");
+        }
+
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("device_displacement")){
+            type_of_adverse_event.add("Device displacement");
+        }
+
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event_others")) != null){
+             type_of_adverse_event.add(cursor.getString(cursor.getColumnIndex("type_of_adverse_event_others")));
+        }
+
+        String result = String.join(" ,", type_of_adverse_event);
+
+        return result;
     }
 
 
