@@ -101,9 +101,10 @@ public class VmmcRegisterFragment extends CoreVmmcRegisterFragment implements an
     public void onFiltersUpdated(int requestCode, @Nullable Intent data) {
         if (requestCode == REQUEST_FILTERS) {
 
-            if (data != null) {
-                filterEnabled = data.getBooleanExtra(FILTERS_ENABLED, false);
-                if (filterEnabled) {
+                if (filterEnabled && data != null) {
+
+                    filterEnabled = data.getBooleanExtra(FILTERS_ENABLED, false);
+
                     setTextViewDrawableColor(filterSortTextView, R.color.hf_accent_yellow);
                     filterSortTextView.setText(R.string.filter_applied);
                     filterHivStatus = data.getStringExtra(FILTER_HIV_STATUS);
@@ -114,7 +115,6 @@ public class VmmcRegisterFragment extends CoreVmmcRegisterFragment implements an
                     setTextViewDrawableColor(filterSortTextView, R.color.grey);
                     filterSortTextView.setText(R.string.filter);
                 }
-            }
         }
     }
 
