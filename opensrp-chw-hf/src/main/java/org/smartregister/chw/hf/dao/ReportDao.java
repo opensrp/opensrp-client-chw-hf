@@ -385,29 +385,37 @@ public class ReportDao extends AbstractDao {
 
         List<String> type_of_adverse_event = new ArrayList<>();
 
-        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_skin_removed")){
-            type_of_adverse_event.add("Excessive skin removed");
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")) != null) {
+            if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_skin_removed")){
+                type_of_adverse_event.add("Excessive skin removed");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_bleeding")){
+                type_of_adverse_event.add("Excessive bleeding");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("damage_to_penis")){
+                type_of_adverse_event.add("Injury to the penis");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("anesthetic_related_events")){
+                type_of_adverse_event.add("Anesthetic related events");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("device_displacement")){
+                type_of_adverse_event.add("Device displacement");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("others")){
+                type_of_adverse_event.add(cursor.getString(cursor.getColumnIndex("type_of_adverse_event_others")));
+            }
+
+            else {
+                type_of_adverse_event.add(" ");
+            }
+
         }
 
-        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_bleeding")){
-            type_of_adverse_event.add("Excessive bleeding");
-        }
-
-        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("damage_to_penis")){
-            type_of_adverse_event.add("Injury to the penis");
-        }
-
-        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("anesthetic_related_events")){
-            type_of_adverse_event.add("Anesthetic related events");
-        }
-
-        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("device_displacement")){
-            type_of_adverse_event.add("Device displacement");
-        }
-
-        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event_others")) != null){
-             type_of_adverse_event.add(cursor.getString(cursor.getColumnIndex("type_of_adverse_event_others")));
-        }
 
         String result = String.join(" ,", type_of_adverse_event);
 
