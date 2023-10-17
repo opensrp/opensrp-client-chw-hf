@@ -17,15 +17,15 @@ import java.util.Locale;
 import timber.log.Timber;
 
 /**
- * Created by cozej4 on 2020-02-08.
+ * Created by chriss on 2023-10-05.
  *
- * @author cozej4 https://github.com/cozej4
+ * @author chrissdisigale https://github.com/ChrissDisigale
  */
 public class CloseVmmcMembershipIntentService extends IntentService {
 
     private static final String TAG = CloseVmmcMembershipIntentService.class.getSimpleName();
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
 
     public CloseVmmcMembershipIntentService() {
         super(TAG);

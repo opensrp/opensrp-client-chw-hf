@@ -7,7 +7,6 @@ import com.vijay.jsonwizard.utils.FormUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.core.utils.Utils;
-import org.smartregister.chw.hf.activity.LdEmergencyReferralRegistrationActivity;
 import org.smartregister.chw.hf.activity.VmmcReferralRegistrationActivity;
 
 public class VmmcReferralFormUtils {

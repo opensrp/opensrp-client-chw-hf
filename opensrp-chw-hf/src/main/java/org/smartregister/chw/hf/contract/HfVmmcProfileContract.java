@@ -6,7 +6,7 @@ import org.smartregister.domain.Task;
 
 import java.util.Set;
 
-public interface HfVmmcProfileContract extends org.smartregister.chw.vmmc.contract.VmmcProfileContract{
+public interface HfVmmcProfileContract extends VmmcProfileContract{
 
     interface View extends LDProfileContract.View {
         void setClientTasks(Set<Task> taskList);

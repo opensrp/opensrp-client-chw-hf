@@ -41,10 +41,15 @@ import java.util.List;
 import timber.log.Timber;
 
 public class VmmcRegisterFragment extends CoreVmmcRegisterFragment implements android.view.View.OnClickListener {
+
     private String appointmentDate;
+
     private String filterHivStatus;
+
     private boolean filterIsReferred = false;
+
     private boolean filterEnabled = false;
+
     private TextView filterSortTextView;
 
     @Override
@@ -95,6 +100,7 @@ public class VmmcRegisterFragment extends CoreVmmcRegisterFragment implements an
 
     public void onFiltersUpdated(int requestCode, @Nullable Intent data) {
         if (requestCode == REQUEST_FILTERS) {
+
             if (data != null) {
                 filterEnabled = data.getBooleanExtra(FILTERS_ENABLED, false);
                 if (filterEnabled) {

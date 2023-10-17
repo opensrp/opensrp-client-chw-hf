@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.smartregister.chw.core.provider.ChwVmmcRegisterProvider;
-import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
@@ -35,6 +34,12 @@ public class HfVmmcRegisterProvider extends ChwVmmcRegisterProvider {
         HfReferralUtils.displayReferralDay(client, Constants.FOCUS.VMMC_REFERRALS, viewHolder.textViewReferralDay);
     }
 
+    @Override
+    public RegisterViewHolder createViewHolder(ViewGroup parent) {
+        View view = inflater.inflate(R.layout.malaria_register_list_row, parent, false);
+        return new HfVmmcRegisterViewHolder(view);
+    }
+
     public class HfVmmcRegisterViewHolder extends RegisterViewHolder {
 
         public TextView textViewReferralDay;
@@ -43,11 +48,5 @@ public class HfVmmcRegisterProvider extends ChwVmmcRegisterProvider {
             super(itemView);
             textViewReferralDay = itemView.findViewById(R.id.text_view_referral_day);
         }
-    }
-
-    @Override
-    public RegisterViewHolder createViewHolder(ViewGroup parent) {
-        View view = inflater.inflate(R.layout.malaria_register_list_row, parent, false);
-        return new HfVmmcRegisterViewHolder(view);
     }
 }
