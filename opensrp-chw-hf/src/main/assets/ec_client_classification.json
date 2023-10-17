@@ -231,7 +231,8 @@
             "field": "eventType",
             "field_value": "VMMC Notifiable Adverse Events",
             "creates_case": [
-              "ec_vmmc_notifiable_ae"
+              "ec_vmmc_notifiable_ae",
+              "ec_vmmc_enrollment"
             ]
           },
           {

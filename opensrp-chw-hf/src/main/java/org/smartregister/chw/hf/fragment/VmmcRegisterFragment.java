@@ -16,6 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.loader.content.CursorLoader;
@@ -129,6 +130,7 @@ public class VmmcRegisterFragment extends CoreVmmcRegisterFragment implements an
         }
     }
 
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, final Bundle args) {
         if (id == LOADER_ID) {
