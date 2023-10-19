@@ -684,36 +684,64 @@ public class Constants extends CoreConstants {
 
         public interface ReportTypes {
             String PMTCT_REPORT = "pmtct_report";
+
             String ANC_REPORT = "anc_report";
+
             String PNC_REPORT = "pnc_report";
+
             String CBHS_REPORT = "cbhs_report";
+
             String LTFU_SUMMARY = "ltfu_report";
+
             String LD_REPORT = "ld_report";
+
             String MOTHER_CHAMPION_REPORT = "mother_champion_report";
+
             String SELF_TESTING_REPORT = "self_testing_report";
+
             String CONDOM_DISTRIBUTION_REPORT = "condom_distribution_report";
+
             String KVP_REPORT = "kvp_report";
 
             String FP_REPORT = "fp_report";
+
+            String SBC_REPORT = "sbc_report";
         }
 
         public interface ReportPaths {
             String ANC_REPORT_PATH = "anc-taarifa-ya-mwezi";
+
             String PMTCT_3_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-3";
+
             String PMTCT_12_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-12";
+
             String PMTCT_24_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-24";
+
             String PMTCT_EID_MONTHLY_REPORT_PATH = "pmtct-reports/taarifa-cross-sectional";
+
             String PNC_REPORT_PATH = "pnc-taarifa-ya-mwezi";
+
             String CBHS_REPORT_PATH = "cbhs-taarifa-ya-mwezi";
+
             String LTFU_REPORT_PATH = "ltfu-summary-report";
+
             String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
+
             String MOTHER_CHAMPION_REPORT_PATH = "mother-champion-report";
+
             String SELF_TESTING_REPORT_PATH = "self-testing-report";
+
             String CONDOM_DISTRIBUTION_ISSUING_AT_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-at-the-facility";
+
             String CONDOM_DISTRIBUTION_ISSUING_FROM_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-from-the-facility";
+
             String CONDOM_DISTRIBUTION_RECEIVING_REPORT_PATH = "condom-distribution-receiving-report";
+
             String KVP_REPORT_PATH = "kvp-report";
+
             String FP_REPORT_PATH = "fp-report";
+
+            String SBC_REPORT_PATH = "sbc-report";
         }
     }
 

@@ -610,6 +610,5 @@
     <string name="fp_community">Jumuiya</string>
     <string name="fp_male">Mwanaume</string>
     <string name="fp_female">Mwanamke</string>
-
-
+    <string name="sbc_reports_title">Ripoti ya SBC</string>
 </resources>
