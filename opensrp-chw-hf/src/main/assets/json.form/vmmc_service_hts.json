@@ -47,6 +47,40 @@
     "title": "HIV testing service",
     "fields": [
       {
+        "key": "diagnosed_with_hiv_six_month_ago",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "diagnosed_with_hiv_six_month_ago",
+        "type": "native_radio",
+        "label": "Was the client diagnosed with HIV more than 6 month ago?",
+        "label_text_size": "18px",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_hts_relevance.yml"
+            }
+          }
+        }
+      },
+      {
         "key": "hiv_viral_load_text",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
@@ -58,10 +92,9 @@
           "err": "Please specify"
         },
         "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "vmmc_hts_relevance.yml"
-            }
+          "step1:diagnosed_with_hiv_six_month_ago": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
           }
         }
       },
@@ -172,23 +205,6 @@
           }
         }
       },
-      {
-        "key": "toaster_notes_indeterminate",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "toaster_notes_indeterminate",
-        "type": "toaster_notes",
-        "text": "Defer the procedure for one month & follow HTS Guideline",
-        "text_color": "#CF0800",
-        "toaster_type": "problem",
-        "relevance": {
-          "step1:hiv_result": {
-            "type": "string",
-            "ex": "equalTo(., \"indeterminate\")"
-          }
-        }
-      },
-
       {
         "key": "hiv_not_tested_reasons",
         "openmrs_entity_parent": "",
@@ -394,6 +410,22 @@
                 ]
               }
             ]
+          }
+        }
+      },
+      {
+        "key": "toaster_viral_load_result",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "toaster_viral_load_result",
+        "type": "toaster_notes",
+        "text": "Defer procedure until client has viral load result less than 1000 copies/ml",
+        "text_color": "#CF0800",
+        "toaster_type": "problem",
+        "relevance": {
+          "step1:diagnosed_with_hiv_six_month_ago": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
           }
         }
       },

@@ -6,8 +6,8 @@ condition: "!global_is_client_diagnosed_with_any.contains('hiv')"
 actions:
   - "isRelevant = true "
 ---
-name: step1_hiv_viral_load_text
-description: if step1_hiv_viral_load_text
+name: step1_diagnosed_with_hiv_six_month_ago
+description: if diagnosed_with_hiv_six_month_ago
 priority: 1
 condition: "global_is_client_diagnosed_with_any.contains('hiv')"
 actions:

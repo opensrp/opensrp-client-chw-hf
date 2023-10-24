@@ -347,6 +347,10 @@
           "value": "45",
           "err": "Blood for glucose must be equal or less than 45 (mmol/L)"
         },
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
         "relevance": {
           "rules-engine": {
             "ex-rules": {

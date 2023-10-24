@@ -8720,6 +8720,14 @@
           }
         },
         {
+          "column_name": "diagnosed_with_hiv_six_month_ago",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diagnosed_with_hiv_six_month_ago"
+          }
+        },
+        {
           "column_name": "hiv_viral_load_text",
           "type": "Event",
           "json_mapping": {
@@ -8727,7 +8735,6 @@
             "concept": "hiv_viral_load_text"
           }
         },
-
         {
           "column_name": "last_interacted_with",
           "type": "Event",
