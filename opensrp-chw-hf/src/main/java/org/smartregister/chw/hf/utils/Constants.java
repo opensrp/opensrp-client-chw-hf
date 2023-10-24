@@ -87,6 +87,7 @@ public class Constants extends CoreConstants {
         public static final String PNC_FOLLOWUP = "ec_pnc_followup";
         public static final String PMTCT_FOLLOWUP = "ec_pmtct_followup";
         public static final String NO_MOTHER_PNC = "ec_no_mother_pnc";
+        public static final String FP_ECP_REGISTER = "ec_fp_ecp_register";
     }
 
     public static final class Visits {
