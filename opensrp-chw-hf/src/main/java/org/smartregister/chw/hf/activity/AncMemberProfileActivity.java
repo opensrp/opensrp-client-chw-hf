@@ -166,9 +166,14 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
         if (HealthFacilityApplication.getApplicationFlavor().hasLD()) {
             menu.findItem(R.id.action_ld_registration).setVisible(memberObject.getGestationAge() >= 28 && !LDDao.isRegisteredForLD(baseEntityID));
         }
-        partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
-        if (StringUtils.isBlank(partnerBaseEntityId)) {
-            menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(true);
+
+        if (!HfAncDao.hasReferredForPartnerCommunityFollowup(baseEntityID)) {
+            partnerBaseEntityId = HfAncDao.getPartnerBaseEntityId(memberObject.getBaseEntityId());
+            if (StringUtils.isBlank(partnerBaseEntityId)) {
+                menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(true);
+            }
+        } else {
+            menu.findItem(R.id.action_anc_partner_followup_referral).setVisible(false);
         }
         menu.findItem(R.id.action_pmtct_register).setVisible(!PmtctDao.isRegisteredForPmtct(baseEntityID) && (hivPositive || HivDao.isRegisteredForHiv(baseEntityID) || HfAncDao.getHivStatus(baseEntityID).equalsIgnoreCase("positive")));
         return true;

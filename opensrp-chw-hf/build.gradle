@@ -305,6 +305,7 @@ dependencies {
         exclude group: 'id.zelory', module: 'compressor'
     }
 
+
     //Do not upgrade to 1.1.0 due to compatibility issues
     implementation 'com.github.rey5137:material:1.2.5'
     implementation 'androidx.appcompat:appcompat:1.0.2'
