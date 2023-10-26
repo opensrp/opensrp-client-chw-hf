@@ -202,7 +202,7 @@ android {
             minSdkVersion 21
             targetSdkVersion 31
             versionCode 22
-            versionName "1.1.14"
+            versionName "1.2.0"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
             buildConfigField "String", 'opensrp_url', '"https://ucs.nacp.go.tz/opensrp/"'
