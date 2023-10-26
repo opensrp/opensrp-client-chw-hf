@@ -9222,18 +9222,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "ec_kvp_prep_register",
-      "columns": [
-        {
-          "column_name": "base_entity_id",
-          "type": "Event",
-          "json_mapping": {
-            "field": "baseEntityId"
-          }
-        }
-      ]
     }
 
   ]
