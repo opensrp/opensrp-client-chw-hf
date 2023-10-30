@@ -88,7 +88,7 @@ public class FpEcpMemberProfileActivity extends CoreFamilyPlanningMemberProfileA
     private void delayRefreshSetupViews() {
         try {
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                fpMemberObject = FpDao.getMember(commonPersonObjectClient.getCaseId());
+                fpMemberObject = HfFpDao.getEcpMember(commonPersonObjectClient.getCaseId());
                 getLastVisit();
                 setupViews();
                 Visit lastVisit = FpDao.getLatestVisit(fpMemberObject.getBaseEntityId(), FamilyPlanningConstants.EVENT_TYPE.FP_POINT_OF_SERVICE_DELIVERY);
@@ -140,7 +140,7 @@ public class FpEcpMemberProfileActivity extends CoreFamilyPlanningMemberProfileA
 
     @Override
     public Visit getLastVisit() {
-       return null;
+        return null;
     }
 
     @Override
@@ -222,6 +222,6 @@ public class FpEcpMemberProfileActivity extends CoreFamilyPlanningMemberProfileA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        new Handler(Looper.getMainLooper()).postDelayed(this::finish, 300);
+        new Handler(Looper.getMainLooper()).postDelayed(this::finish, 3000);
     }
 }
