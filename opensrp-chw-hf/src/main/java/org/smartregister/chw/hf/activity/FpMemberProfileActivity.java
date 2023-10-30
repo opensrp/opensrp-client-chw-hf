@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,7 @@ import org.smartregister.chw.hf.adapter.ReferralCardViewAdapter;
 import org.smartregister.chw.hf.contract.FamilyPlanningMemberProfileContract;
 import org.smartregister.chw.hf.interactor.HfFamilyPlanningProfileInteractor;
 import org.smartregister.chw.hf.presenter.HfFamilyPlanningMemberProfilePresenter;
+import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.domain.Task;
 import org.smartregister.family.util.Utils;
@@ -63,7 +65,18 @@ public class FpMemberProfileActivity extends CoreFamilyPlanningMemberProfileActi
         menu.findItem(R.id.action_malaria_followup_visit).setVisible(false);
         menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         menu.findItem(R.id.action_fp_change).setVisible(false);
+        menu.findItem(R.id.action_fp_ecp_provision).setVisible(true);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_fp_ecp_provision) {
+            FpRegisterActivity.startFpRegistrationActivity(this, fpMemberObject.getBaseEntityId(), Constants.JsonForm.getFPEcpScreening());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
