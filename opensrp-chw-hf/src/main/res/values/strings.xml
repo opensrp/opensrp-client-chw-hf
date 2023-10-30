@@ -58,7 +58,8 @@
     <string name="pmtct_followup_form_title">PMTCT Followup</string>
     <string name="record_first_pmtct">Record PMTCT Visit</string>
     <string name="record_pmtct_visit">Record PMTCT Visit</string>
-    <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>git p
+    <string name="action_pregnancy_confirmation_referrals">Pregnancy Confirmation</string>
+    <string name="action_fp_ecp">ECP</string>
     <string name="pmtct_pending_registration">PMTCT Pending Registration</string>
     <string name="register_button_text">REGISTER</string>
     <string name="anc_pregnacy_status">Pregnancy Status: </string>
@@ -1423,4 +1424,5 @@
     <string name="fp_male">Male</string>
     <string name="fp_female">Female</string>
     <string name="sbc_reports_title">SBC Report</string>
+    <string name="ecp_provision">ECP Provision</string>
 </resources>

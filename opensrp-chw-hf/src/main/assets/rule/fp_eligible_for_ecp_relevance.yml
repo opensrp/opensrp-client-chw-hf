@@ -16,6 +16,14 @@ actions:
   - "isRelevant = true"
 
 ---
+name: step1_ecp_eligibility
+description: ecp_eligibility calculation
+priority: 1
+condition: "!step1_when_did_incidence_occur.isEmpty()"
+actions:
+  - "calculation = step1_when_did_incidence_occur.equalsIgnoreCase('1_3_days') || step1_when_did_incidence_occur.equalsIgnoreCase('4_5_days')"
+
+---
 name: step1_client_to_prompt
 description: client_to_prompt relevance
 priority: 1

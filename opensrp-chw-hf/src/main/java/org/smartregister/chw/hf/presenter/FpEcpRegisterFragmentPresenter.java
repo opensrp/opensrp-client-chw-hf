@@ -15,4 +15,8 @@ public class FpEcpRegisterFragmentPresenter extends BaseFpRegisterFragmentPresen
     public String getMainTable() {
         return Constants.TableName.FP_ECP_REGISTER;
     }
+
+    public String getMainCondition() {
+        return  getMainTable() + ".is_closed is 0 AND ecp_eligibility = 'true' ";
+    }
 }

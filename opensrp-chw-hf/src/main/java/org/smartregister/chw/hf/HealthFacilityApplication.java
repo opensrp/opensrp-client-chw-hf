@@ -47,6 +47,7 @@ import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.PrEPRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
 import org.smartregister.chw.hf.activity.ReportsActivity;
+import org.smartregister.chw.hf.activity.SbcRegisterActivity;
 import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
 import org.smartregister.chw.hf.custom_view.FacilityMenu;
 import org.smartregister.chw.hf.custom_view.HfNavigationMenu;
@@ -65,6 +66,7 @@ import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pnc.PncLibrary;
 import org.smartregister.chw.referral.ReferralLibrary;
+import org.smartregister.chw.sbc.SbcLibrary;
 import org.smartregister.chw.tb.TbLibrary;
 import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
@@ -144,6 +146,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PrEP_REGISTER_ACTIVITY, PrEPRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CDP_REGISTER_ACTIVITY, CdpRegisterActivity.class);
         registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
+        registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.SBC_REGISTER_ACTIVITY, SbcRegisterActivity.class);
 //          TODO uncomment these when NACP is ready to test these modules
         //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
         return registeredActivities;
@@ -283,6 +286,10 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             LDLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         }
 
+        if (flavor.hasSbc()) {
+            SbcLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        }
+
         //Needed for all clients register
         OpdLibrary.init(context, getRepository(),
                 new OpdConfiguration.Builder(HfAllClientsRegisterQueryProvider.class)
@@ -387,5 +394,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         boolean hasLD();
 
         boolean hasChildModule();
+
+        boolean hasSbc();
     }
 }

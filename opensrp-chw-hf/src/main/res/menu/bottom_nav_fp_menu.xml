@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_anc"
+        android:id="@+id/action_fp"
         android:enabled="true"
         android:icon="@mipmap/ic_home"
         android:title="@string/home"
@@ -11,7 +11,7 @@
         android:id="@+id/action_view_ecp_clients"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_event_available_24"
-        android:title="@string/action_pregnancy_confirmation_referrals"
+        android:title="@string/action_fp_ecp"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_scan_qr"

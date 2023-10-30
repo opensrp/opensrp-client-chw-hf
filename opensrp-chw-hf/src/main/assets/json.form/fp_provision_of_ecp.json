@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Provide ECP Counseling",
+  "encounter_type": "FP ECP Provision",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -53,26 +53,15 @@
     }
   },
   "step1": {
-    "title": "Provide ECP Counseling",
+    "title": "Provide ECP",
     "fields": [
       {
-        "key": "provide_counseling_notes",
+        "key": "was_ecp_provided",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "provide_counseling_notes",
-        "type": "toaster_notes",
-        "text": "Provide ECP counseling to the client",
-        "toaster_type": "info",
-        "toaster_info_text": "",
-        "toaster_info_title": ""
-      },
-      {
-        "key": "ecp_counseling_provided",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "ecp_counseling_provided",
+        "openmrs_entity_id": "was_ecp_provided",
         "type": "native_radio",
-        "label": "Was ECP counseling provided?",
+        "label": "Was the ECP provided?",
         "text_color": "#000000",
         "options": [
           {
@@ -91,6 +80,46 @@
         "v_required": {
           "value": "true",
           "err": "Required"
+        }
+      },
+      {
+        "key": "type_of_ecp_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_ecp_provided",
+        "type": "native_radio",
+        "label": "What type of ECP was provided?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "coc",
+            "text": "COC",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "coc"
+          },
+          {
+            "key": "pop",
+            "text": "POP",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pop"
+          },
+          {
+            "key": "postinor",
+            "text": "Postinor 2",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "postinor"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_ecp_relevance.yml"
+            }
+          }
         }
       }
     ]

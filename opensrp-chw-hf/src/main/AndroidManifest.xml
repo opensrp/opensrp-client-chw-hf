@@ -267,6 +267,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name=".activity.FpEcpMemberProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.FpScreeningActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
@@ -519,6 +523,21 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.FpReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.SbcRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.SbcMemberProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.SbcVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.SbcMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <meta-data

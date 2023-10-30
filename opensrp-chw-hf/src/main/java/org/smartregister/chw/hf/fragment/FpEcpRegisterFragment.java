@@ -2,6 +2,7 @@ package org.smartregister.chw.hf.fragment;
 
 import org.smartregister.chw.core.fragment.CoreFpRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.activity.FpEcpMemberProfileActivity;
 import org.smartregister.chw.hf.activity.FpMemberProfileActivity;
 import org.smartregister.chw.hf.model.FpEcpRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.FpEcpRegisterFragmentPresenter;
@@ -10,6 +11,7 @@ import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.HfReferralUtils;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
+import org.smartregister.view.customcontrols.CustomFontTextView;
 
 import java.util.Set;
 
@@ -40,7 +42,7 @@ public class FpEcpRegisterFragment extends CoreFpRegisterFragment {
 
     @Override
     protected void openProfile(String baseEntityId) {
-        FpMemberProfileActivity.startFpMemberProfileActivity(getActivity(), baseEntityId);
+        FpEcpMemberProfileActivity.startFpEcpMemberProfileActivity(getActivity(), baseEntityId);
     }
 
     @Override
@@ -55,5 +57,12 @@ public class FpEcpRegisterFragment extends CoreFpRegisterFragment {
         if (view.getId() == org.smartregister.chw.core.R.id.due_only_layout) {
             toggleFilterSelection(view);
         }
+    }
+
+    @Override
+    public void setupViews(android.view.View view) {
+        super.setupViews(view);
+
+        ((CustomFontTextView)view.findViewById(org.smartregister.chw.fp.R.id.txt_title_label)).setText("ECP");
     }
 }

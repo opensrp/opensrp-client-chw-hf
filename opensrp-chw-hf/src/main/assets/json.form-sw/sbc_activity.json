@@ -1,0 +1,265 @@
+{
+  "count": "1",
+  "encounter_type": "SBC Activity",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "(SBC) Uliyoshiriki",
+    "fields": [
+      {
+        "key": "point_of_service_provision",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "point_of_service_provision",
+        "type": "native_radio",
+        "label": "Mahali pa utoaji wa huduma",
+        "options": [
+          {
+            "key": "community",
+            "text": "Jumuiya",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "community"
+          },
+          {
+            "key": "facility",
+            "text": "Kituoni",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "facility"
+          },
+          {
+            "key": "workplace",
+            "text": "Mahali pa Kazi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "workplace"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        }
+      },
+      {
+        "key": "activity_type_workplace",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "activity_type",
+        "type": "native_radio",
+        "label": "Aina ya uelimishaji kuhusu mabadiliko ya tabia (SBC) uliyoshiriki",
+        "options": [
+
+          {
+            "key": "advocacy",
+            "text": "Mikutano ya uraghibishi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "advocacy"
+          },
+          {
+            "key": "workplace",
+            "text": "Uelimishaji wa maswala ya VVU na Ukimwi mahala pa kazi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "workplace"
+          },
+          {
+            "key": "edutainment",
+            "text": "Uelimishaji maeneo ya burudani",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "edutainment"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (Taja)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
+            "key": "none",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please choose SBC activity"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sbc_activity_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "activity_type_community",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "activity_type_community",
+        "type": "native_radio",
+        "label": "Aina ya uelimishaji kuhusu mabadiliko ya tabia (SBC) uliyoshiriki",
+        "options": [
+          {
+            "key": "campaign",
+            "text": "Kampeni",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "campaign"
+          },
+          {
+            "key": "religious",
+            "text": "Uelimishaji katika nyumba za ibada",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "religious"
+          },
+          {
+            "key": "meetings",
+            "text": "Mikutano ya kijamii",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "meetings"
+          },
+          {
+            "key": "theater",
+            "text": "Kuonesha filamu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "theater"
+          },
+          {
+            "key": "drama",
+            "text": "Uelimishaji kwa njia ya sanaa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "drama"
+          },
+          {
+            "key": "tales",
+            "text": "Hadithi na majadiliano",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tales"
+          },
+          {
+            "key": "institution",
+            "text": "Uelimishaji katika taasisi za elimu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "institution"
+          },
+          {
+            "key": "income_generating_activity",
+            "text": "Elimu ya uwezeshaji kiuchumi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "income_generating_activity"
+          },
+          {
+            "key": "edutainment",
+            "text": "Uelimishaji maeneo ya burudani",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "edutainment"
+          },
+          {
+            "key": "outreach",
+            "text": "Kuwafikia",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "outreach"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (Taja)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
+            "key": "none",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please choose SBC activity"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sbc_activity_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "activity_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "activity_type",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sbc_activity_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "other_activity_type",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_activity_type",
+        "type": "edit_text",
+        "hint": "Nyinginezo (Taja)",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "sbc_activity_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

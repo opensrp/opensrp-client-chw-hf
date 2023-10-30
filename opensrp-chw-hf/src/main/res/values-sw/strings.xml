@@ -38,6 +38,7 @@
     <string name="record_pmtct_visit">Rekodi ufuatiliaji wa pmtct</string>
     <string name="optional"></string>
     <string name="action_pregnancy_confirmation_referrals">Kuhakikisha Ujauzito</string>
+    <string name="action_fp_ecp">ECP</string>
     <string name="anc_pregnacy_status">Hali ya ujauzito: "</string>
     <string name="anc_pregnacy_status_viable">Bado ana ujauzito</string>
     <string name="anc_pregnacy_status_fetal_death">Mtoto amefia tumboni</string>

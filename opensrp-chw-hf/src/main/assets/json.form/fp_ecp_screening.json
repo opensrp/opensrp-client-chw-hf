@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Eligible for ECP",
+  "encounter_type": "FP ECP Screening",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -55,6 +55,44 @@
   "step1": {
     "title": "Eligible for ECP",
     "fields": [
+      {
+        "key": "provide_counseling_notes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provide_counseling_notes",
+        "type": "toaster_notes",
+        "text": "Provide ECP counseling to the client",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": ""
+      },
+      {
+        "key": "ecp_counseling_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ecp_counseling_provided",
+        "type": "native_radio",
+        "label": "Was ECP counseling provided?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
       {
         "key": "type_of_incident",
         "openmrs_entity_parent": "",
@@ -187,6 +225,20 @@
         "toaster_info_text": "",
         "toaster_info_title": "",
         "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_eligible_for_ecp_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ecp_eligibility",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ecp_eligibility",
+        "openmrs_entity_parent": "",
+        "calculation": {
           "rules-engine": {
             "ex-rules": {
               "rules-file": "fp_eligible_for_ecp_relevance.yml"

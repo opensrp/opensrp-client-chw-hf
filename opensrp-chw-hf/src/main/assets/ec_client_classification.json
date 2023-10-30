@@ -1027,9 +1027,37 @@
           },
           {
             "field": "eventType",
-            "field_value": "Eligible for ECP",
+            "field_value": "FP ECP Screening",
             "creates_case": [
               "ec_fp_ecp_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP ECP Provision",
+            "creates_case": [
+              "ec_fp_ecp_provision"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP ECP Provision",
+            "closes_case": [
+              "ec_fp_ecp_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "SBC Enrollment",
+            "creates_case": [
+              "ec_sbc_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "SBC Follow-up Visit",
+            "creates_case": [
+              "ec_sbc_visit"
             ]
           }
         ]

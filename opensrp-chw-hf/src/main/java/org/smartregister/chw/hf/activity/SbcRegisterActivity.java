@@ -3,6 +3,7 @@ package org.smartregister.chw.hf.activity;
 import android.app.Activity;
 import android.content.Intent;
 
+import androidx.annotation.MenuRes;
 import androidx.fragment.app.Fragment;
 
 import com.vijay.jsonwizard.domain.Form;
@@ -46,4 +47,10 @@ public class SbcRegisterActivity extends CoreSbcRegisterActivity {
     protected Fragment[] getOtherFragments() {
         return new Fragment[]{};
     }
+
+    @MenuRes
+    public int getMenuResource() {
+        return org.smartregister.chw.sbc.R.menu.bottom_nav_sbc_menu;
+    }
+
 }

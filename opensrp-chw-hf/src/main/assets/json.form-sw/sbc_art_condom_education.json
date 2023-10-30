@@ -1,6 +1,6 @@
 {
   "count": "1",
-  "encounter_type": "Provide ECP",
+  "encounter_type": "ART Adherence Counselling",
   "validate_on_submit": true,
   "entity_id": "",
   "relational_id": "",
@@ -16,11 +16,6 @@
       "openmrs_entity": "concept",
       "openmrs_data_type": "end",
       "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    },
-    "today": {
-      "openmrs_entity_parent": "",
-      "openmrs_entity": "encounter",
-      "openmrs_entity_id": "encounter_date"
     },
     "deviceid": {
       "openmrs_entity_parent": "",
@@ -53,73 +48,33 @@
     }
   },
   "step1": {
-    "title": "Provide ECP",
+    "title": "Elimu ya Ufuasi mzuri wa ARV",
     "fields": [
       {
-        "key": "was_ecp_provided",
+        "key": "received_art_counseling",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
-        "openmrs_entity_id": "was_ecp_provided",
+        "openmrs_entity_id": "received_art_counseling",
         "type": "native_radio",
-        "label": "Was the ECP provided?",
+        "label": "Je, umempatia mteja elimu ya ufuasi mzuri wa ARV?",
         "text_color": "#000000",
         "options": [
           {
             "key": "yes",
-            "text": "Yes",
+            "text": "Ndiyo",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "yes"
           },
           {
             "key": "no",
-            "text": "No",
+            "text": "Hapana",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "no"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Required"
-        }
-      },
-      {
-        "key": "type_of_ecp_provided",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "type_of_ecp_provided",
-        "type": "native_radio",
-        "label": "What type of ECP was provided?",
-        "text_color": "#000000",
-        "options": [
-          {
-            "key": "coc",
-            "text": "COC",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "coc"
-          },
-          {
-            "key": "pop",
-            "text": "POP",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "pop"
-          },
-          {
-            "key": "postinor",
-            "text": "Postinor 2",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "postinor"
-          }
-        ],
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "fp_provide_ecp_relevance.yml"
-            }
-          }
+          "err": "Tafadhali chagua angalau moja"
         }
       }
     ]

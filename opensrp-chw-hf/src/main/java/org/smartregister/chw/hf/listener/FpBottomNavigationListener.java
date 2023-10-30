@@ -20,10 +20,10 @@ public class FpBottomNavigationListener extends BaseAncBottomNavigationListener 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_anc) {
+        if (item.getItemId() == R.id.action_fp) {
             baseRegisterActivity.switchToFragment(0);
             return true;
-        } else if (item.getItemId() == R.id.action_view_pregnancy_confirmation_referrals) {
+        } else if (item.getItemId() == R.id.action_view_ecp_clients) {
             baseRegisterActivity.switchToFragment(1);
             return true;
         } else

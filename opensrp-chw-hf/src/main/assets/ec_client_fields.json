@@ -8770,11 +8770,69 @@
           }
         },
         {
-          "column_name": "enroll_into_ecp_services",
+          "column_name": "type_of_incident",
           "type": "Event",
           "json_mapping": {
             "field": "obs.fieldCode",
-            "concept": "enroll_into_ecp_services"
+            "concept": "type_of_incident"
+          }
+        },
+        {
+          "column_name": "when_did_incidence_occur",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "when_did_incidence_occur"
+          }
+        },
+        {
+          "column_name": "ecp_eligibility",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "ecp_eligibility"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_fp_ecp_provision",
+      "columns": [
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "was_ecp_provided",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "was_ecp_provided"
+          }
+        },
+        {
+          "column_name": "type_of_ecp_provided",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_ecp_provided"
           }
         },
         {
@@ -9088,137 +9146,6 @@
           "type": "Event",
           "json_mapping": {
             "field": "version"
-          }
-        }
-      ]
-    },
-    {
-      "name": "ec_sbc_mobilization_session",
-      "columns": [
-        {
-          "column_name": "base_entity_id",
-          "type": "Event",
-          "json_mapping": {
-            "field": "baseEntityId"
-          }
-        },
-        {
-          "column_name": "relational_id",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "relational_id"
-          }
-        },
-        {
-          "column_name": "last_interacted_with",
-          "type": "Event",
-          "json_mapping": {
-            "field": "version"
-          }
-        },
-        {
-          "column_name": "mobilization_date",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "mobilization_date"
-          }
-        },
-        {
-          "column_name": "community_sbc_activity_provided",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "community_sbc_activity_provided"
-          }
-        },
-        {
-          "column_name": "other_interventions_iec_materials_distributed",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "other_interventions_iec_materials_distributed"
-          }
-        },
-        {
-          "column_name": "number_audio_visuals_distributed",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_audio_visuals_distributed"
-          }
-        },
-        {
-          "column_name": "number_audio_distributed",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_audio_distributed"
-          }
-        },
-        {
-          "column_name": "number_print_materials_distributed",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_print_materials_distributed"
-          }
-        },
-        {
-          "column_name": "pmtct_iec_materials_distributed",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "pmtct_iec_materials_distributed"
-          }
-        },
-        {
-          "column_name": "number_pmtct_audio_visuals_distributed_male",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_pmtct_audio_visuals_distributed_male"
-          }
-        },
-        {
-          "column_name": "number_pmtct_audio_visuals_distributed_female",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_pmtct_audio_visuals_distributed_female"
-          }
-        },
-        {
-          "column_name": "number_pmtct_audio_distributed_male",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_pmtct_audio_distributed_male"
-          }
-        },
-        {
-          "column_name": "number_pmtct_audio_distributed_female",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_pmtct_audio_distributed_female"
-          }
-        },
-        {
-          "column_name": "number_pmtct_print_materials_distributed_male",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_pmtct_print_materials_distributed_male"
-          }
-        },
-        {
-          "column_name": "number_pmtct_print_materials_distributed_female",
-          "type": "Event",
-          "json_mapping": {
-            "field": "obs.fieldCode",
-            "concept": "number_pmtct_print_materials_distributed_female"
           }
         }
       ]
