@@ -94,6 +94,7 @@ public class HfClientProcessor extends CoreClientProcessor {
             case FamilyPlanningConstants.EVENT_TYPE.FP_COUNSELING:
             case FamilyPlanningConstants.EVENT_TYPE.FP_PROVIDE_METHOD:
             case FamilyPlanningConstants.EVENT_TYPE.FP_OTHER_SERVICES:
+            case org.smartregister.chw.sbc.util.Constants.EVENT_TYPE.SBC_FOLLOW_UP_VISIT:
                 if (eventClient.getEvent() == null) {
                     return;
                 }
