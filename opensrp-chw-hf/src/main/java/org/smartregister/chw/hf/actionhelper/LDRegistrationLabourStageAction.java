@@ -21,8 +21,8 @@ import timber.log.Timber;
  */
 public class LDRegistrationLabourStageAction implements BaseLDVisitAction.LDVisitActionHelper {
     protected MemberObject memberObject;
+
     protected String labourStage;
-    private Context context;
 
     public LDRegistrationLabourStageAction(MemberObject memberObject) {
         this.memberObject = memberObject;
@@ -30,7 +30,6 @@ public class LDRegistrationLabourStageAction implements BaseLDVisitAction.LDVisi
 
     @Override
     public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
-        this.context = context;
     }
 
     @Override

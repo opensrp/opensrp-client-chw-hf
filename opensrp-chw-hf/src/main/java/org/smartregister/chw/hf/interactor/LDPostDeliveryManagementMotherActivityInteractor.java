@@ -42,7 +42,6 @@ import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAdmissionAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAncClinicFindingsAction;
-import org.smartregister.chw.hf.actionhelper.LDRegistrationCurrentLabourAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationObstetricHistoryAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationPastObstetricHistoryAction;
 import org.smartregister.chw.hf.actionhelper.MaternalComplicationLabourActionHelper;
@@ -315,17 +314,17 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
     }
 
     private void populateObstetricForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {
-        JSONObject gravida = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "gravida");
-        JSONObject childrenAlive = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "children_alive");
-        JSONObject parity = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "para");
-        JSONObject lastMenstrualPeriod = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "last_menstrual_period");
-        JSONObject pastMedicalSurgicalHistory = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "past_medical_surgical_history");
-        JSONObject otherPastMedicalSurgicalHistory = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "other_past_medical_surgical_history");
+        JSONObject gravida = JsonFormUtils.getFieldJSONObject(fields, "gravida");
+        JSONObject childrenAlive = JsonFormUtils.getFieldJSONObject(fields, "children_alive");
+        JSONObject parity = JsonFormUtils.getFieldJSONObject(fields, "para");
+        JSONObject lastMenstrualPeriod = JsonFormUtils.getFieldJSONObject(fields, "last_menstrual_period");
+        JSONObject pastMedicalSurgicalHistory = JsonFormUtils.getFieldJSONObject(fields, "past_medical_surgical_history");
+        JSONObject otherPastMedicalSurgicalHistory = JsonFormUtils.getFieldJSONObject(fields, "other_past_medical_surgical_history");
 
-        gravida.put(org.smartregister.family.util.JsonFormUtils.VALUE, memberObject.getGravida());
-        parity.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
-        childrenAlive.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
-        lastMenstrualPeriod.put(org.smartregister.family.util.JsonFormUtils.VALUE, memberObject.getLastMenstrualPeriod());
+        gravida.put(JsonFormUtils.VALUE, memberObject.getGravida());
+        parity.put(JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
+        childrenAlive.put(JsonFormUtils.VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
+        lastMenstrualPeriod.put(JsonFormUtils.VALUE, memberObject.getLastMenstrualPeriod());
         JSONArray historyValues;
 
         String pastMedicalAndSurgicalHistory = HfAncDao.getMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
@@ -343,52 +342,52 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), pastMedicalAndSurgicalHistory);
         }
         String otherPastMedicalAndSurgicalHistory = HfAncDao.getOtherMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
-        otherPastMedicalSurgicalHistory.put(org.smartregister.family.util.JsonFormUtils.VALUE, otherPastMedicalAndSurgicalHistory);
+        otherPastMedicalSurgicalHistory.put(JsonFormUtils.VALUE, otherPastMedicalAndSurgicalHistory);
     }
 
     private void populateAncFindingsForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {
-        JSONObject numberOfVisits = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "number_of_visits");
-        JSONObject iptDoses = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "ipt_doses");
-        JSONObject malaria = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "malaria");
-        JSONObject TTDoses = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "tt_doses");
-        JSONObject LLINUsed = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "llin_used");
-        JSONObject hbTestConducted = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_test");
-        JSONObject lastMeasuredHB = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_level");
-        JSONObject lastMeasuredHBDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "hb_test_date");
-        JSONObject syphilis = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "syphilis");
-        JSONObject managementProvidedForSyphilis = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_syphilis");
-        JSONObject bloodGroup = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "blood_group");
-        JSONObject rhFactor = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "rh_factor");
-        JSONObject pmtct = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "anc_hiv_status");
-        JSONObject pmtctTestDate = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "pmtct_test_date");
-        JSONObject artPrescription = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "art_prescription");
-        JSONObject managementProvidedForPmtct = org.smartregister.util.JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_pmtct");
+        JSONObject numberOfVisits = JsonFormUtils.getFieldJSONObject(fields, "number_of_visits");
+        JSONObject iptDoses = JsonFormUtils.getFieldJSONObject(fields, "ipt_doses");
+        JSONObject malaria = JsonFormUtils.getFieldJSONObject(fields, "malaria");
+        JSONObject TTDoses = JsonFormUtils.getFieldJSONObject(fields, "tt_doses");
+        JSONObject LLINUsed = JsonFormUtils.getFieldJSONObject(fields, "llin_used");
+        JSONObject hbTestConducted = JsonFormUtils.getFieldJSONObject(fields, "hb_test");
+        JSONObject lastMeasuredHB = JsonFormUtils.getFieldJSONObject(fields, "hb_level");
+        JSONObject lastMeasuredHBDate = JsonFormUtils.getFieldJSONObject(fields, "hb_test_date");
+        JSONObject syphilis = JsonFormUtils.getFieldJSONObject(fields, "syphilis");
+        JSONObject managementProvidedForSyphilis = JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_syphilis");
+        JSONObject bloodGroup = JsonFormUtils.getFieldJSONObject(fields, "blood_group");
+        JSONObject rhFactor = JsonFormUtils.getFieldJSONObject(fields, "rh_factor");
+        JSONObject pmtct = JsonFormUtils.getFieldJSONObject(fields, "anc_hiv_status");
+        JSONObject pmtctTestDate = JsonFormUtils.getFieldJSONObject(fields, "pmtct_test_date");
+        JSONObject artPrescription = JsonFormUtils.getFieldJSONObject(fields, "art_prescription");
+        JSONObject managementProvidedForPmtct = JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_pmtct");
 
-        numberOfVisits.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getVisitNumber(memberObject.getBaseEntityId()));
-        iptDoses.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getIptDoses(memberObject.getBaseEntityId()));
-        malaria.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getMalariaTestResults(memberObject.getBaseEntityId()));
-        TTDoses.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getTTDoses(memberObject.getBaseEntityId()));
-        LLINUsed.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
+        numberOfVisits.put(JsonFormUtils.VALUE, HfAncDao.getVisitNumber(memberObject.getBaseEntityId()));
+        iptDoses.put(JsonFormUtils.VALUE, HfAncDao.getIptDoses(memberObject.getBaseEntityId()));
+        malaria.put(JsonFormUtils.VALUE, HfAncDao.getMalariaTestResults(memberObject.getBaseEntityId()));
+        TTDoses.put(JsonFormUtils.VALUE, HfAncDao.getTTDoses(memberObject.getBaseEntityId()));
+        LLINUsed.put(JsonFormUtils.VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
 
         String lastMeasuredHb = HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId());
-        hbTestConducted.put(org.smartregister.family.util.JsonFormUtils.VALUE, lastMeasuredHb.equals("") ? "no" : "yes");
+        hbTestConducted.put(JsonFormUtils.VALUE, lastMeasuredHb.equals("") ? "no" : "yes");
         if (!lastMeasuredHB.equals("")) {
-            lastMeasuredHB.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
-            lastMeasuredHBDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
+            lastMeasuredHB.put(JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
+            lastMeasuredHBDate.put(JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
         }
-        syphilis.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
-        managementProvidedForSyphilis.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getSyphilisTreatment(memberObject.getBaseEntityId()) ? "yes" : "no");
+        syphilis.put(JsonFormUtils.VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
+        managementProvidedForSyphilis.put(JsonFormUtils.VALUE, HfAncDao.getSyphilisTreatment(memberObject.getBaseEntityId()) ? "yes" : "no");
 
-        bloodGroup.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
-        rhFactor.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
+        bloodGroup.put(JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
+        rhFactor.put(JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
         if (HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) {
-            pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, "known_on_art_before_this_pregnancy");
+            pmtct.put(JsonFormUtils.VALUE, "known_on_art_before_this_pregnancy");
         } else if (HfAncDao.getHivStatus(memberObject.getBaseEntityId()) != null && !HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null")) {
-            pmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
+            pmtct.put(JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
         }
-        pmtctTestDate.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
-        artPrescription.put(org.smartregister.family.util.JsonFormUtils.VALUE, (HfPmtctDao.isPrescribedArtRegimes(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) ? "yes" : "no");
-        managementProvidedForPmtct.put(org.smartregister.family.util.JsonFormUtils.VALUE, HfPmtctDao.isRegisteredForPmtct(memberObject.getBaseEntityId()) ? "yes" : "no");
+        pmtctTestDate.put(JsonFormUtils.VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
+        artPrescription.put(JsonFormUtils.VALUE, (HfPmtctDao.isPrescribedArtRegimes(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) ? "yes" : "no");
+        managementProvidedForPmtct.put(JsonFormUtils.VALUE, HfPmtctDao.isRegisteredForPmtct(memberObject.getBaseEntityId()) ? "yes" : "no");
     }
 
     private void evaluateMotherStatus(BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
@@ -818,8 +817,11 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private static class ObstetricHistoryAction extends LDRegistrationObstetricHistoryAction {
         private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+
         private final Context context;
+
         private final Map<String, List<VisitDetail>> details;
+
         private final BaseLDVisitContract.InteractorCallBack callBack;
 
         public ObstetricHistoryAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack, Context context) {

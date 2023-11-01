@@ -111,14 +111,23 @@ public class Constants extends CoreConstants {
 
     public static final class TableName {
         public static final String ANC_FIRST_FACILITY_VISIT = "ec_anc_first_facility_visit";
+
         public static final String ANC_RECURRING_FACILITY_VISIT = "ec_anc_recurring_facility_visit";
+
         public static final String PMTCT_EAC_VISIT = "ec_pmtct_eac_visit";
+
         public static final String HEI = "ec_hei";
+
         public static final String HEI_HIV_RESULTS = "ec_hei_hiv_results";
+
         public static final String HEI_FOLLOWUP = "ec_hei_followup";
+
         public static final String PNC_FOLLOWUP = "ec_pnc_followup";
+
         public static final String PMTCT_FOLLOWUP = "ec_pmtct_followup";
+
         public static final String NO_MOTHER_PNC = "ec_no_mother_pnc";
+
         public static final String FP_ECP_REGISTER = "ec_fp_ecp_register";
     }
 

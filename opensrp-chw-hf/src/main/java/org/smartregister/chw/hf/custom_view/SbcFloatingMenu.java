@@ -41,7 +41,7 @@ public class SbcFloatingMenu extends BaseSbcFloatingMenu {
 
     private OnClickFloatingMenu onClickFloatingMenu;
 
-    private MemberObject MEMBER_OBJECT;
+    private final MemberObject MEMBER_OBJECT;
 
 
     public SbcFloatingMenu(Context context, MemberObject MEMBER_OBJECT) {
@@ -92,7 +92,7 @@ public class SbcFloatingMenu extends BaseSbcFloatingMenu {
 
         if (isFabMenuOpen) {
             activityMain.setBackgroundResource(R.color.transparent);
-
+            fab.startAnimation(rotateBack);
             fab.setImageResource(R.drawable.ic_edit_white);
 
             callLayout.startAnimation(fabClose);

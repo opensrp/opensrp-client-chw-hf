@@ -1,6 +1,5 @@
 package org.smartregister.chw.hf.dao;
 
-import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.hf.utils.Constants;

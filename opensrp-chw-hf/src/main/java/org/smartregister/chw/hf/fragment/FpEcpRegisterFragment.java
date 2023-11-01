@@ -2,8 +2,8 @@ package org.smartregister.chw.hf.fragment;
 
 import org.smartregister.chw.core.fragment.CoreFpRegisterFragment;
 import org.smartregister.chw.core.utils.CoreConstants;
+import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.activity.FpEcpMemberProfileActivity;
-import org.smartregister.chw.hf.activity.FpMemberProfileActivity;
 import org.smartregister.chw.hf.model.FpEcpRegisterFragmentModel;
 import org.smartregister.chw.hf.presenter.FpEcpRegisterFragmentPresenter;
 import org.smartregister.chw.hf.provider.HfFpRegisterProvider;
@@ -63,6 +63,6 @@ public class FpEcpRegisterFragment extends CoreFpRegisterFragment {
     public void setupViews(android.view.View view) {
         super.setupViews(view);
 
-        ((CustomFontTextView)view.findViewById(org.smartregister.chw.fp.R.id.txt_title_label)).setText("ECP");
+        ((CustomFontTextView) view.findViewById(org.smartregister.chw.fp.R.id.txt_title_label)).setText(R.string.ecp_provision);
     }
 }

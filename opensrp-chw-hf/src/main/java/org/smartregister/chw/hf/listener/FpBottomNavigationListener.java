@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 
 import org.smartregister.chw.anc.listener.BaseAncBottomNavigationListener;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.activity.AncRegisterActivity;
 import org.smartregister.chw.hf.activity.FpRegisterActivity;
 
 public class FpBottomNavigationListener extends BaseAncBottomNavigationListener {
