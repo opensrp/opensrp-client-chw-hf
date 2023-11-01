@@ -30,6 +30,7 @@ public class LDRegistrationLabourStageAction implements BaseLDVisitAction.LDVisi
 
     @Override
     public void onJsonFormLoaded(String s, Context context, Map<String, List<VisitDetail>> map) {
+        //Do nothing
     }
 
     @Override

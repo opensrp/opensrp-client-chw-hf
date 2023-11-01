@@ -321,10 +321,10 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         JSONObject pastMedicalSurgicalHistory = JsonFormUtils.getFieldJSONObject(fields, "past_medical_surgical_history");
         JSONObject otherPastMedicalSurgicalHistory = JsonFormUtils.getFieldJSONObject(fields, "other_past_medical_surgical_history");
 
-        gravida.put(JsonFormUtils.VALUE, memberObject.getGravida());
-        parity.put(JsonFormUtils.VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
-        childrenAlive.put(JsonFormUtils.VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
-        lastMenstrualPeriod.put(JsonFormUtils.VALUE, memberObject.getLastMenstrualPeriod());
+        gravida.put(VALUE, memberObject.getGravida());
+        parity.put(VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
+        childrenAlive.put(VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
+        lastMenstrualPeriod.put(VALUE, memberObject.getLastMenstrualPeriod());
         JSONArray historyValues;
 
         String pastMedicalAndSurgicalHistory = HfAncDao.getMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
@@ -342,7 +342,7 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), pastMedicalAndSurgicalHistory);
         }
         String otherPastMedicalAndSurgicalHistory = HfAncDao.getOtherMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
-        otherPastMedicalSurgicalHistory.put(JsonFormUtils.VALUE, otherPastMedicalAndSurgicalHistory);
+        otherPastMedicalSurgicalHistory.put(VALUE, otherPastMedicalAndSurgicalHistory);
     }
 
     private void populateAncFindingsForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {
@@ -363,31 +363,31 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         JSONObject artPrescription = JsonFormUtils.getFieldJSONObject(fields, "art_prescription");
         JSONObject managementProvidedForPmtct = JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_pmtct");
 
-        numberOfVisits.put(JsonFormUtils.VALUE, HfAncDao.getVisitNumber(memberObject.getBaseEntityId()));
-        iptDoses.put(JsonFormUtils.VALUE, HfAncDao.getIptDoses(memberObject.getBaseEntityId()));
-        malaria.put(JsonFormUtils.VALUE, HfAncDao.getMalariaTestResults(memberObject.getBaseEntityId()));
-        TTDoses.put(JsonFormUtils.VALUE, HfAncDao.getTTDoses(memberObject.getBaseEntityId()));
-        LLINUsed.put(JsonFormUtils.VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
+        numberOfVisits.put(VALUE, HfAncDao.getVisitNumber(memberObject.getBaseEntityId()));
+        iptDoses.put(VALUE, HfAncDao.getIptDoses(memberObject.getBaseEntityId()));
+        malaria.put(VALUE, HfAncDao.getMalariaTestResults(memberObject.getBaseEntityId()));
+        TTDoses.put(VALUE, HfAncDao.getTTDoses(memberObject.getBaseEntityId()));
+        LLINUsed.put(VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
 
         String lastMeasuredHb = HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId());
-        hbTestConducted.put(JsonFormUtils.VALUE, lastMeasuredHb.equals("") ? "no" : "yes");
+        hbTestConducted.put(VALUE, lastMeasuredHb.equals("") ? "no" : "yes");
         if (!lastMeasuredHB.equals("")) {
-            lastMeasuredHB.put(JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
-            lastMeasuredHBDate.put(JsonFormUtils.VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
+            lastMeasuredHB.put(VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
+            lastMeasuredHBDate.put(VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
         }
-        syphilis.put(JsonFormUtils.VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
-        managementProvidedForSyphilis.put(JsonFormUtils.VALUE, HfAncDao.getSyphilisTreatment(memberObject.getBaseEntityId()) ? "yes" : "no");
+        syphilis.put(VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
+        managementProvidedForSyphilis.put(VALUE, HfAncDao.getSyphilisTreatment(memberObject.getBaseEntityId()) ? "yes" : "no");
 
-        bloodGroup.put(JsonFormUtils.VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
-        rhFactor.put(JsonFormUtils.VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
+        bloodGroup.put(VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
+        rhFactor.put(VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
         if (HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) {
-            pmtct.put(JsonFormUtils.VALUE, "known_on_art_before_this_pregnancy");
+            pmtct.put(VALUE, "known_on_art_before_this_pregnancy");
         } else if (HfAncDao.getHivStatus(memberObject.getBaseEntityId()) != null && !HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null")) {
-            pmtct.put(JsonFormUtils.VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
+            pmtct.put(VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
         }
-        pmtctTestDate.put(JsonFormUtils.VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
-        artPrescription.put(JsonFormUtils.VALUE, (HfPmtctDao.isPrescribedArtRegimes(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) ? "yes" : "no");
-        managementProvidedForPmtct.put(JsonFormUtils.VALUE, HfPmtctDao.isRegisteredForPmtct(memberObject.getBaseEntityId()) ? "yes" : "no");
+        pmtctTestDate.put(VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
+        artPrescription.put(VALUE, (HfPmtctDao.isPrescribedArtRegimes(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) ? "yes" : "no");
+        managementProvidedForPmtct.put(VALUE, HfPmtctDao.isRegisteredForPmtct(memberObject.getBaseEntityId()) ? "yes" : "no");
     }
 
     private void evaluateMotherStatus(BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
@@ -862,7 +862,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
 
     private static class RegistrationAdmissionAction extends LDRegistrationAdmissionAction {
         private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+
         private Context context;
+
 
         public RegistrationAdmissionAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Context context) {
             super(memberObject);
@@ -870,17 +872,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             this.context = context;
         }
 
-        @Override
-        public void onPayloadReceived(String jsonPayload) {
-            super.onPayloadReceived(jsonPayload);
-            String reasonForAdmission = null;
-            try {
-                JSONObject jsonObject = new JSONObject(jsonPayload);
-                reasonForAdmission = CoreJsonFormUtils.getValue(jsonObject, "reasons_for_admission");
-            } catch (Exception e) {
-                Timber.e(e);
-            }
-        }
     }
 
     private class MotherStatusActionHelper extends org.smartregister.chw.hf.actionhelper.MotherStatusActionHelper {
