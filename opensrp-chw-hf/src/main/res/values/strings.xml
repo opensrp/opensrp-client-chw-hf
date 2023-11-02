@@ -1423,7 +1423,14 @@
     <string name="fp_community">Community</string>
     <string name="fp_male">Male</string>
     <string name="fp_female">Female</string>
+
     <string name="ecp_provision">ECP Provision</string>
+    <string name="ecp_was_ecp_provided">Was the ECP provided</string>
+    <string name="ecp_type_of_ecp_provided">What type of ECP was provided</string>
+    <string name="ecp_ecp_counseling_provided">Was ECP counseling provided</string>
+    <string name="ecp_type_of_incident">Type of the incidence</string>
+    <string name="ecp_when_did_incidence_occur">When did the incidence occur</string>
+    <string name="ecp_specify_other_incident">Specify other incident</string>
 
     <!--    SBC -->
     <string name="sbc_mobilization_session_details">SBC Mobilization Session Details</string>
@@ -1538,5 +1545,6 @@
     <string name="sbc_print_materials">Print Materials</string>
     <string name="sbc_other_hiv_interventions">Other HIV Interventions</string>
     <string name="sbc_income_generating_activity">Income Generating Activity (IGA)</string>
+
 
 </resources>

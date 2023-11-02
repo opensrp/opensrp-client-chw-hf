@@ -100,30 +100,6 @@
         }
       },
       {
-        "key": "ecp",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "ecp",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Idadi ya mizunguko ya Vidonge vya Uzazi wa Mpango (ECP)",
-        "v_required": {
-          "value": "true",
-          "err": "Tafadhali jaza"
-        },
-        "v_max": {
-          "value": "50",
-          "err": "Namba ya ECP lazima iwe sawasawa au chini ya 50"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "fp_provide_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "injection_administered",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",
