@@ -33,82 +33,14 @@ import java.util.List;
 import timber.log.Timber;
 
 public class HfChwRepository extends CoreChwRepository {
-    private Context context;
+
     private static String appVersionCodePref = "APP_VERSION_CODE";
+
+    private Context context;
 
     public HfChwRepository(Context context, org.smartregister.Context openSRPContext) {
         super(context, AllConstants.DATABASE_NAME, BuildConfig.DATABASE_VERSION, openSRPContext.session(), CoreChwApplication.createCommonFtsObject(), openSRPContext.sharedRepositoriesArray());
         this.context = context;
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Timber.w(HfChwRepository.class.getName(),
-                "Upgrading database from version " + oldVersion + " to "
-                        + newVersion + ", which will destroy all old data");
-        int upgradeTo = oldVersion + 1;
-        while (upgradeTo <= newVersion) {
-            switch (upgradeTo) {
-                case 2:
-                    upgradeToVersion2(context, db);
-                    break;
-                case 3:
-                    upgradeToVersion3(db);
-                    break;
-                case 4:
-                    upgradeToVersion4(db);
-                    break;
-                case 5:
-                    upgradeToVersion5(db);
-                    break;
-                case 6:
-                    upgradeToVersion6(db);
-                    break;
-                case 7:
-                    upgradeToVersion7(db);
-                    break;
-                case 8:
-                    upgradeToVersion8(db);
-                    break;
-                case 9:
-                    upgradeToVersion9(db);
-                    break;
-                case 10:
-                    upgradeToVersion10(db);
-                    upgradeToVersion10ForBaSouth(db);
-                    break;
-                case 11:
-                    upgradeToVersion11(db);
-                    break;
-                case 12:
-                    upgradeToVersion12(db);
-                    break;
-                case 13:
-                    upgradeToVersion14(db);
-                    break;
-                case 14:
-                    upgradeToVersion15(db);
-                    break;
-                case 16:
-                    upgradeToVersion16(db);
-                    break;
-                case 17:
-                    upgradeToVersion17(db);
-                    break;
-                case 18:
-                    upgradeToVersion18(db);
-                    break;
-                case 19:
-                    upgradeToVersion19(db);
-                    break;
-                case 20:
-                    upgradeToVersion20(db);
-                    break;
-                default:
-                    break;
-            }
-            upgradeTo++;
-        }
     }
 
     private static void upgradeToVersion2(Context context, SQLiteDatabase db) {
@@ -211,6 +143,7 @@ public class HfChwRepository extends CoreChwRepository {
                 String ldReportingIndicatorConfigFile = "config/ld-reporting-indicator-definitions.yml";
                 String motherChampionReportingIndicatorConfigFile = "config/mother_champion-reporting-indicator-definitions.yml";
                 String selfTestingIndicatorConfigFile = "config/self-testing-monthly-report.yml";
+                String vmmcIndicatorConfigFile = "config/vmmc-monthly-report.yml";
                 String kvpTestingIndicatorConfigFile = "config/kvp-monthly-report.yml";
                 String ltfuIndicatorConfigFile = "config/community-ltfu-summary.yml";
 
@@ -218,7 +151,7 @@ public class HfChwRepository extends CoreChwRepository {
                         Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
                                 pmtctIndicatorConfigFile, pncIndicatorConfigFile,
                                 cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
-                                motherChampionReportingIndicatorConfigFile,selfTestingIndicatorConfigFile,kvpTestingIndicatorConfigFile,ltfuIndicatorConfigFile))) {
+                                motherChampionReportingIndicatorConfigFile, vmmcIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile))) {
                     reportingLibraryInstance.readConfigFile(configFile, db);
                 }
 
@@ -228,30 +161,6 @@ public class HfChwRepository extends CoreChwRepository {
             }
         } catch (Exception e) {
             Timber.e(e);
-        }
-    }
-
-    private void upgradeToVersion8(SQLiteDatabase db) {
-        try {
-            db.execSQL("ALTER TABLE ec_family ADD COLUMN entity_type VARCHAR; " +
-                    "UPDATE ec_family SET entity_type = 'ec_family' WHERE id is not null;");
-
-            List<String> columns = new ArrayList<>();
-            columns.add(CoreConstants.DB_CONSTANTS.DETAILS);
-            columns.add(DBConstants.KEY.ENTITY_TYPE);
-            DatabaseMigrationUtils.addFieldsToFTSTable(db, CoreChwApplication.createCommonFtsObject(), CoreConstants.TABLE_NAME.FAMILY, columns);
-
-        } catch (Exception e) {
-            Timber.e(e, "commonUpgrade -> Failed to add column 'entity_type' and 'details' to ec_family_search ");
-        }
-    }
-
-    private void upgradeToVersion9(SQLiteDatabase db) {
-        try {
-            FamilyDao.migrateAddLocationIdColSQLString(db);
-            FamilyDao.migrateInsertLocationIDs(db);
-        } catch (Exception ex) {
-            Timber.e(ex, "Problems adding sync location ids");
         }
     }
 
@@ -327,12 +236,13 @@ public class HfChwRepository extends CoreChwRepository {
 
 
             DatabaseMigrationUtils.createAddedECTables(db,
-                    new HashSet<>(Arrays.asList("ec_cdp_issuing_hf","ec_kvp_bio_medical_services","ec_kvp_behavioral_services","ec_kvp_structural_services","ec_kvp_other_services","ec_prep_followup")),
+                    new HashSet<>(Arrays.asList("ec_cdp_issuing_hf", "ec_kvp_bio_medical_services", "ec_kvp_behavioral_services", "ec_kvp_structural_services", "ec_kvp_other_services", "ec_prep_followup")),
                     HealthFacilityApplication.createCommonFtsObject());
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion15");
         }
     }
+
     private static void upgradeToVersion16(SQLiteDatabase db) {
         try {
             // add missing columns
@@ -379,7 +289,16 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
-
+    private static void upgradeToVersion21(SQLiteDatabase db) {
+        try {
+            DatabaseMigrationUtils.createAddedECTables(db,
+                    new HashSet<>(Arrays.asList("ec_vmmc_enrollment", "ec_vmmc_services", "ec_vmmc_procedure", "ec_vmmc_post_op_and_discharge", "ec_vmmc_follow_up_visit", "ec_vmmc_notifiable_ae")),
+                    HealthFacilityApplication.createCommonFtsObject());
+            refreshIndicatorQueries(db);
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion21");
+        }
+    }
 
     private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
         try {
@@ -395,7 +314,7 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
-    private static void refreshIndicatorQueries(SQLiteDatabase db){
+    private static void refreshIndicatorQueries(SQLiteDatabase db) {
         try {
             ReportingLibrary reportingLibraryInstance = ReportingLibrary.getInstance();
             String indicatorDataInitialisedPref = "INDICATOR_DATA_INITIALISED";
@@ -418,12 +337,14 @@ public class HfChwRepository extends CoreChwRepository {
                 String selfTestingIndicatorConfigFile = "config/self-testing-monthly-report.yml";
                 String kvpTestingIndicatorConfigFile = "config/kvp-monthly-report.yml";
                 String ltfuIndicatorConfigFile = "config/community-ltfu-summary.yml";
+                String vmmcIndicatorConfigFile = "config/vmmc-monthly-report.yml";
+
 
                 for (String configFile : Collections.unmodifiableList(
                         Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
                                 pmtctIndicatorConfigFile, pncIndicatorConfigFile,
                                 cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
-                                motherChampionReportingIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile))) {
+                                motherChampionReportingIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile, vmmcIndicatorConfigFile))) {
                     reportingLibraryInstance.readConfigFile(configFile, db);
                 }
 
@@ -431,8 +352,105 @@ public class HfChwRepository extends CoreChwRepository {
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(indicatorDataInitialisedPref, "true");
                 reportingLibraryInstance.getContext().allSharedPreferences().savePreference(appVersionCodePref, String.valueOf(BuildConfig.VERSION_CODE));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Timber.e(e);
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Timber.w(HfChwRepository.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
+        int upgradeTo = oldVersion + 1;
+        while (upgradeTo <= newVersion) {
+            switch (upgradeTo) {
+                case 2:
+                    upgradeToVersion2(context, db);
+                    break;
+                case 3:
+                    upgradeToVersion3(db);
+                    break;
+                case 4:
+                    upgradeToVersion4(db);
+                    break;
+                case 5:
+                    upgradeToVersion5(db);
+                    break;
+                case 6:
+                    upgradeToVersion6(db);
+                    break;
+                case 7:
+                    upgradeToVersion7(db);
+                    break;
+                case 8:
+                    upgradeToVersion8(db);
+                    break;
+                case 9:
+                    upgradeToVersion9(db);
+                    break;
+                case 10:
+                    upgradeToVersion10(db);
+                    upgradeToVersion10ForBaSouth(db);
+                    break;
+                case 11:
+                    upgradeToVersion11(db);
+                    break;
+                case 12:
+                    upgradeToVersion12(db);
+                    break;
+                case 13:
+                    upgradeToVersion14(db);
+                    break;
+                case 14:
+                    upgradeToVersion15(db);
+                    break;
+                case 16:
+                    upgradeToVersion16(db);
+                    break;
+                case 17:
+                    upgradeToVersion17(db);
+                    break;
+                case 18:
+                    upgradeToVersion18(db);
+                    break;
+                case 19:
+                    upgradeToVersion19(db);
+                    break;
+                case 20:
+                    upgradeToVersion20(db);
+                    break;
+                case 21:
+                    upgradeToVersion21(db);
+                    break;
+                default:
+                    break;
+            }
+            upgradeTo++;
+        }
+    }
+
+    private void upgradeToVersion8(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_family ADD COLUMN entity_type VARCHAR; " +
+                    "UPDATE ec_family SET entity_type = 'ec_family' WHERE id is not null;");
+
+            List<String> columns = new ArrayList<>();
+            columns.add(CoreConstants.DB_CONSTANTS.DETAILS);
+            columns.add(DBConstants.KEY.ENTITY_TYPE);
+            DatabaseMigrationUtils.addFieldsToFTSTable(db, CoreChwApplication.createCommonFtsObject(), CoreConstants.TABLE_NAME.FAMILY, columns);
+
+        } catch (Exception e) {
+            Timber.e(e, "commonUpgrade -> Failed to add column 'entity_type' and 'details' to ec_family_search ");
+        }
+    }
+
+    private void upgradeToVersion9(SQLiteDatabase db) {
+        try {
+            FamilyDao.migrateAddLocationIdColSQLString(db);
+            FamilyDao.migrateInsertLocationIDs(db);
+        } catch (Exception ex) {
+            Timber.e(ex, "Problems adding sync location ids");
         }
     }
 }

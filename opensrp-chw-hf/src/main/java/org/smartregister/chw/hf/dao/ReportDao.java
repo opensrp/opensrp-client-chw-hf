@@ -1,5 +1,9 @@
 package org.smartregister.chw.hf.dao;
 
+import android.database.Cursor;
+
+import androidx.annotation.NonNull;
+
 import org.smartregister.dao.AbstractDao;
 
 import java.text.SimpleDateFormat;
@@ -182,6 +186,242 @@ public class ReportDao extends AbstractDao {
         } else
             return new ArrayList<>();
     }
+
+    public static List<Map<String, String>> getVmmcServiceRegister(Date reportDate)
+    {
+        String sql = "WITH VMMC_CTE AS (\n" +
+                "    SELECT\n" +
+                "        ec_vmmc_enrollment.enrollment_date,\n" +
+                "        ec_family_member.first_name,\n" +
+                "        ec_family_member.middle_name,\n" +
+                "        ec_family_member.last_name,\n" +
+                "        ec_vmmc_enrollment.vmmc_client_id,\n" +
+                "        ec_vmmc_enrollment.reffered_from,\n" +
+                "        ec_vmmc_services.tested_hiv,\n" +
+                "        ec_vmmc_services.hiv_result,\n" +
+                "        ec_vmmc_services.client_referred_to,\n" +
+                "        ec_vmmc_procedure.mc_procedure_date,\n" +
+                "        ec_vmmc_procedure.male_circumcision_method,\n" +
+                "        ec_vmmc_procedure.health_care_provider,\n" +
+                "        ec_vmmc_procedure.intraoperative_adverse_event_occured,\n" +
+                "        ec_vmmc_follow_up_visit.visit_number,\n" +
+                "        ec_vmmc_follow_up_visit.followup_visit_date AS visit_date,\n" +
+                "        ec_vmmc_follow_up_visit.post_op_adverse_event_occur AS post_op_adverse,\n" +
+                "        ec_vmmc_notifiable_ae.did_client_experience_nae AS NAE,\n" +
+                "        ec_family_member.dob\n" +
+                "    FROM\n" +
+                "        ec_vmmc_enrollment\n" +
+                "    LEFT JOIN\n" +
+                "        ec_family_member ON ec_family_member.base_entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_services ON ec_vmmc_services.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_procedure ON ec_vmmc_procedure.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_follow_up_visit ON ec_vmmc_follow_up_visit.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "        AND ec_vmmc_follow_up_visit.follow_up_visit_type = 'routine'\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_notifiable_ae ON ec_vmmc_notifiable_ae.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "\tWHERE \n" +
+                "    date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =\n" +
+                "   date(substr(ec_vmmc_enrollment.enrollment_date, 7, 4) || '-' || substr(ec_vmmc_enrollment.enrollment_date, 4, 2) || '-' || '01')\t\n" +
+                ")\n" +
+                "\n" +
+                "SELECT\n" +
+                "    enrollment_date,\n" +
+                "    first_name || ' ' || middle_name || ' ' || last_name AS names,\n" +
+                "    vmmc_client_id,\n" +
+                "    (strftime('%Y', 'now') - strftime('%Y', dob)) - (strftime('%m-%d', 'now') < strftime('%m-%d', dob)) AS age,\n" +
+                "    reffered_from,\n" +
+                "    MAX(tested_hiv) AS tested_hiv,\n" +
+                "    MAX(hiv_result) AS hiv_result,\n" +
+                "    MAX(client_referred_to) AS client_referred_to,\n" +
+                "    MAX(mc_procedure_date) AS mc_procedure_date,\n" +
+                "    MAX(male_circumcision_method) AS male_circumcision_method,\n" +
+                "    MAX(intraoperative_adverse_event_occured) AS intraoperative_adverse_event_occured,\n" +
+                "    MAX(CASE WHEN visit_number = 1 THEN visit_date END) AS first_visit,\n" +
+                "    MAX(CASE WHEN visit_number = 2 THEN visit_date END) AS sec_visit,\n" +
+                "    MAX(post_op_adverse) AS post_op_adverse,\n" +
+                "    MAX(NAE) AS NAE,\n" +
+                "    MAX(health_care_provider) AS health_care_provider\n" +
+                "FROM VMMC_CTE\n" +
+                "GROUP BY\n" +
+                "    enrollment_date,\n" +
+                "    vmmc_client_id,\n" +
+                "    names,\n" +
+                "    dob\n" +
+                "ORDER BY enrollment_date ASC;\n";
+
+        String queryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(reportDate);
+
+        sql = sql.contains("%s") ? sql.replaceAll("%s", queryDate) : sql;
+
+        DataMap<Map<String, String>> map = cursor -> {
+            Map<String, String> data = new HashMap<>();
+            data.put("enrollment_date", cursor.getString(cursor.getColumnIndex("enrollment_date")));
+            data.put("names", cursor.getString(cursor.getColumnIndex("names")));
+            data.put("vmmc_client_id", cursor.getString(cursor.getColumnIndex("vmmc_client_id")));
+            data.put("age", cursor.getString(cursor.getColumnIndex("age")));
+            data.put("reffered_from", cursor.getString(cursor.getColumnIndex("reffered_from")));
+            data.put("tested_hiv", cursor.getString(cursor.getColumnIndex("tested_hiv")));
+            data.put("hiv_result", cursor.getString(cursor.getColumnIndex("hiv_result")));
+            data.put("client_referred_to", cursor.getString(cursor.getColumnIndex("client_referred_to")));
+            data.put("mc_procedure_date", cursor.getString(cursor.getColumnIndex("mc_procedure_date")));
+            data.put("male_circumcision_method", cursor.getString(cursor.getColumnIndex("male_circumcision_method")));
+            data.put("intraoperative_adverse_event_occured", cursor.getString(cursor.getColumnIndex("intraoperative_adverse_event_occured")));
+            data.put("first_visit", cursor.getString(cursor.getColumnIndex("first_visit")));
+            data.put("sec_visit", cursor.getString(cursor.getColumnIndex("sec_visit")));
+            data.put("post_op_adverse", cursor.getString(cursor.getColumnIndex("post_op_adverse")));
+            data.put("NAE", cursor.getString(cursor.getColumnIndex("NAE")));
+            data.put("health_care_provider", cursor.getString(cursor.getColumnIndex("health_care_provider")));
+
+            return data;
+        };
+
+        List<Map<String, String>> res = readData(sql, map);
+
+
+        if (res != null && res.size() > 0) {
+            return res;
+        } else
+            return new ArrayList<>();
+    }
+
+    public static List<Map<String, String>> getVmmcTheatreRegister(Date reportDate)
+    {
+        String sql = "WITH VMMC_CTE AS (\n" +
+                "    SELECT\n" +
+                "        ec_vmmc_procedure.mc_procedure_date,\n" +
+                "        ec_family_member.first_name,\n" +
+                "        ec_family_member.middle_name,\n" +
+                "        ec_family_member.last_name,\n" +
+                "        ec_vmmc_enrollment.vmmc_client_id,\n" +
+                "        ec_vmmc_procedure.surgeon_name,\n" +
+                "        ec_vmmc_procedure.assistant_name,\n" +
+                "        ec_vmmc_procedure.size_place,\n" +
+                "        ec_vmmc_procedure.start_time,\n" +
+                "        ec_vmmc_procedure.end_time,\n" +
+                "        ec_vmmc_procedure.aneathesia_administered,\n" +
+                "        ec_vmmc_procedure.type_of_adverse_event,\n" +
+                "\t\tec_vmmc_procedure.male_circumcision_method,\n" +
+                "        \n" +
+                "        ec_family_member.dob\n" +
+                "    FROM\n" +
+                "        ec_vmmc_enrollment\n" +
+                "    LEFT JOIN\n" +
+                "        ec_family_member ON ec_family_member.base_entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_services ON ec_vmmc_services.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_procedure ON ec_vmmc_procedure.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_follow_up_visit ON ec_vmmc_follow_up_visit.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "        AND ec_vmmc_follow_up_visit.follow_up_visit_type = 'routine'\n" +
+                "    LEFT JOIN\n" +
+                "        ec_vmmc_notifiable_ae ON ec_vmmc_notifiable_ae.entity_id = ec_vmmc_enrollment.base_entity_id\n" +
+                "\tWHERE \n" +
+                "    date((substr('%s', 1, 4) || '-' || substr('%s', 6, 2) || '-' || '01')) =\n" +
+                "   date(substr(ec_vmmc_procedure.mc_procedure_date, 7, 4) || '-' || substr(ec_vmmc_procedure.mc_procedure_date, 4, 2) || '-' || '01')\t\n" +
+                ")\n" +
+                "\n" +
+                "SELECT\n" +
+                "    mc_procedure_date,\n" +
+                "    vmmc_client_id,\n" +
+                "    surgeon_name,\n" +
+                "    assistant_name,\n" +
+                "    size_place,\n" +
+                "    type_of_adverse_event,\n" +
+                "    first_name || ' ' || middle_name || ' ' || last_name AS names,\n" +
+                "    (strftime('%Y', 'now') - strftime('%Y', dob)) - (strftime('%m-%d', 'now') < strftime('%m-%d', dob)) AS age,\n" +
+                "\tMAX(male_circumcision_method) AS male_circumcision_method,\n" +
+                "    MAX(aneathesia_administered) AS aneathesia_administered,\n" +
+                "    MAX(start_time) AS start_time,\n" +
+                "    MAX(end_time) AS end_time\n" +
+                "        \n" +
+                "FROM VMMC_CTE\n" +
+                "GROUP BY\n" +
+                "    mc_procedure_date,\n" +
+                "    vmmc_client_id,\n" +
+                "    names,\n" +
+                "    dob\n" +
+                "ORDER BY mc_procedure_date  ASC;\n";
+
+        String queryDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(reportDate);
+
+        sql = sql.contains("%s") ? sql.replaceAll("%s", queryDate) : sql;
+
+        DataMap<Map<String, String>> map = cursor -> {
+            Map<String, String> data = new HashMap<>();
+            data.put("mc_procedure_date", cursor.getString(cursor.getColumnIndex("mc_procedure_date")));
+            data.put("names", cursor.getString(cursor.getColumnIndex("names")));
+            data.put("vmmc_client_id", cursor.getString(cursor.getColumnIndex("vmmc_client_id")));
+            data.put("age", cursor.getString(cursor.getColumnIndex("age")));
+            data.put("male_circumcision_method", cursor.getString(cursor.getColumnIndex("male_circumcision_method")));
+            data.put("size_place", cursor.getString(cursor.getColumnIndex("size_place")));
+            data.put("aneathesia_administered", cursor.getString(cursor.getColumnIndex("aneathesia_administered")));
+            data.put("start_time", cursor.getString(cursor.getColumnIndex("start_time")));
+            data.put("end_time", cursor.getString(cursor.getColumnIndex("end_time")));
+            data.put("surgeon_name", cursor.getString(cursor.getColumnIndex("surgeon_name")));
+            data.put("assistant_name", cursor.getString(cursor.getColumnIndex("assistant_name")));
+
+
+            String type_of_adverse_event = getTypeOfAdverseEvent(cursor);
+            data.put("type_of_adverse_event", type_of_adverse_event);
+
+            return data;
+        };
+
+        List<Map<String, String>> res = readData(sql, map);
+
+
+        if (res != null && res.size() > 0) {
+            return res;
+        } else
+            return new ArrayList<>();
+    }
+
+    @NonNull
+    private static String getTypeOfAdverseEvent(Cursor cursor) {
+
+        List<String> type_of_adverse_event = new ArrayList<>();
+
+        if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")) != null) {
+            if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_skin_removed")){
+                type_of_adverse_event.add("Excessive skin removed");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_bleeding")){
+                type_of_adverse_event.add("Excessive bleeding");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("damage_to_penis")){
+                type_of_adverse_event.add("Injury to the penis");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("anesthetic_related_events")){
+                type_of_adverse_event.add("Anesthetic related events");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("device_displacement")){
+                type_of_adverse_event.add("Device displacement");
+            }
+
+            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("others")){
+                type_of_adverse_event.add(cursor.getString(cursor.getColumnIndex("type_of_adverse_event_others")));
+            }
+
+            else {
+                type_of_adverse_event.add(" ");
+            }
+
+        }
+
+
+        String result = String.join(" ,", type_of_adverse_event);
+
+        return result;
+    }
+
 
     public static int getReportPerIndicatorCode(String indicatorCode, Date reportDate) {
         String reportDateString = simpleDateFormat.format(reportDate);

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Service Register</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .show-on-print {
+            display: none;
+        }
+
+        body{
+            font-family: Helvetica;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .table-wrapper{
+            margin: 10px;
+            margin-right: 10px;
+        }
+
+        .t{
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: normal;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .t td, .t th {
+            padding: 5px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .number{
+            background-color: white;
+        }
+
+        /* Add vertical line */
+        .divide {
+            border-right: 1px solid black;
+        }
+
+        @media print {
+       .show-on-print {
+          display: block;
+       }
+
+       .child-table {
+        width: 50%;
+        }
+}
+
+    </style>
+    <script src="../report-script.js"></script>
+
+</head>
+<body onload="loadData('vmmc_service_register')">
+<div class="show-on-print" style="font-size:12px;">
+    <h1>Male Circumcision Service Register</h1>
+    <div class="container">
+        <h2 class="h2">Reporting month: <span id="report_period"></span></h2>
+        <h2 class="h2">Facility name: <span id="reporting_facility"></span></h2>
+    </div>
+    <h2><span id="reporting_hfrcode"></span></h2>
+</div>
+<div class="table-wrapper">
+    <table class="t">
+        <thead>
+        <tr>
+            <th>S/N</th>
+            <th>Date (dd/mm/yyyy)</th>
+            <th>CLIENT'S NAME First Middle Last</th>
+            <th>ID NO. (4 Digits) Year</th>
+            <th>Age in Year</th>
+            <th class="up">Referred From</th>
+            <th class="up">Counselled and Tested for HIV This visit (Y/N)</th>
+            <th class="up">Today’s HIV Test Result</th>
+            <th class="up">Referred To</th>
+            <th class="up">Date of MC</th>
+            <th class="up">MC Method</th>
+            <th class="up">Intra-Operative AE Occurred</th>
+            <th class="divide">First follow up visit</th>
+            <th class="divide">Second follow up visit</th>
+            <th class="divide">Post-Operative AE Occurred</th>
+            <th>Notifiable adverse event (NAE) Referred</th>
+            <th>NAME OF COUNSELOR First Middle</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -376,6 +376,8 @@
     <string name="referral_submitted">Rufaa imetumwa</string>
     <string name="ltfu_title">LTFU</string>
 
+    <string name="vmmc_reports">Ripoti za VMMC</string>
+    <string name="vmmc_reports_subtitle">Tazama Ripoti za VMMC</string>
 
     <!--    CDP-->
     <string name="add_outlet">Ongeza kituo</string>
@@ -457,5 +459,8 @@
     <string name="facility_response_label">Majibu Kutoka Kituoni</string>
     <string name="hts_return_to_previous_page">Rudi kwenye wateja wa HTS</string>
 
+
+    <!--    VMMC-->
+    <string name="vmmc">VMMC</string>
 
 </resources>

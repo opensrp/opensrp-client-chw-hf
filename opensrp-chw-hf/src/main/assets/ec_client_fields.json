@@ -8418,6 +8418,1114 @@
           }
         }
       ]
+    },
+    {
+      "name": "ec_vmmc_enrollment",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "relational_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "relational_id"
+          }
+        },
+        {
+          "column_name": "service_delivery_approach",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "service_delivery_approach"
+          }
+        },
+        {
+          "column_name": "vmmc_client_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "vmmc_client_id"
+          }
+        },
+        {
+          "column_name": "reffered_from",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "reffered_from"
+          }
+        },
+        {
+          "column_name": "next_followup_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_followup_date"
+          }
+        },
+        {
+          "column_name": "enrollment_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "enrollment_date"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_vmmc_services",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "has_client_had_any_sti",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "has_client_had_any_sti"
+          }
+        },
+        {
+          "column_name": "any_complaints",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "any_complaints"
+          }
+        },
+        {
+          "column_name": "is_client_diagnosed_with_any",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "is_client_diagnosed_with_any"
+          }
+        },
+        {
+          "column_name": "diabetes_treatment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diabetes_treatment"
+          }
+        },
+        {
+          "column_name": "type_of_blood_for_glucose_test",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_blood_for_glucose_test"
+          }
+        },
+        {
+          "column_name": "blood_for_glucose",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "blood_for_glucose"
+          }
+        },
+        {
+          "column_name": "surgical_procedure",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "surgical_procedure"
+          }
+        },
+        {
+          "column_name": "complications_previous_surgical",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "complications_previous_surgical"
+          }
+        },
+        {
+          "column_name": "type_complication",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_complication"
+          }
+        },
+        {
+          "column_name": "any_hematological_disease_symptoms",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "any_hematological_disease_symptoms"
+          }
+        },
+        {
+          "column_name": "known_allergies",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "known_allergies"
+          }
+        },
+        {
+          "column_name": "tetanus_vaccination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tetanus_vaccination"
+          }
+        },
+        {
+          "column_name": "tetanus_booster_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tetanus_booster_date"
+          }
+        },
+        {
+          "column_name": "physical_abnormality",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "physical_abnormality"
+          }
+        },
+        {
+          "column_name": "client_weight",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "client_weight"
+          }
+        },
+        {
+          "column_name": "pulse_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "pulse_rate"
+          }
+        },
+        {
+          "column_name": "systolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "systolic"
+          }
+        },
+        {
+          "column_name": "diastolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diastolic"
+          }
+        },
+        {
+          "column_name": "temperature",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "temperature"
+          }
+        },
+        {
+          "column_name": "respiration_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "respiration_rate"
+          }
+        },
+        {
+          "column_name": "genital_examination",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "genital_examination"
+          }
+        },
+        {
+          "column_name": "preferred_client_mc_method",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "preferred_client_mc_method"
+          }
+        },
+        {
+          "column_name": "tested_hiv",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "tested_hiv"
+          }
+        },
+        {
+          "column_name": "hiv_result",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_result"
+          }
+        },
+        {
+          "column_name": "reasons",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "reasons"
+          }
+        },
+        {
+          "column_name": "self_test_kits_offered",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "self_test_kits_offered"
+          }
+        },
+        {
+          "column_name": "client_referred_to",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "client_referred_to"
+          }
+        },
+        {
+          "column_name": "diagnosed_with_hiv_six_month_ago",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "diagnosed_with_hiv_six_month_ago"
+          }
+        },
+        {
+          "column_name": "hiv_viral_load_text",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "hiv_viral_load_text"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_vmmc_procedure",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "client_consent_for_mc_procedure",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "client_consent_for_mc_procedure"
+          }
+        },
+        {
+          "column_name": "consent_from",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "consent_from"
+          }
+        },
+        {
+          "column_name": "health_care_provider",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "health_care_provider"
+          }
+        },
+        {
+          "column_name": "is_male_procedure_circumcision_conducted",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "is_male_procedure_circumcision_conducted"
+          }
+        },
+        {
+          "column_name": "reason",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "reason"
+          }
+        },
+        {
+          "column_name": "surgeon_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "surgeon_name"
+          }
+        },
+        {
+          "column_name": "assistant_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "assistant_name"
+          }
+        },
+        {
+          "column_name": "start_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "start_time"
+          }
+        },
+        {
+          "column_name": "end_time",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "end_time"
+          }
+        },
+        {
+          "column_name": "aneathesia_administered",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "aneathesia_administered"
+          }
+        },
+        {
+          "column_name": "other_aneathesia_administered",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "other_aneathesia_administered"
+          }
+        },
+        {
+          "column_name": "lignocaine_dosage",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "lignocaine_dosage"
+          }
+        },
+        {
+          "column_name": "bupivacaine_dosage",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "bupivacaine_dosage"
+          }
+        },
+        {
+          "column_name": "dosage",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "dosage"
+          }
+        },
+        {
+          "column_name": "male_circumcision_method",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "male_circumcision_method"
+          }
+        },
+        {
+          "column_name": "intraoperative_adverse_event_occured",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "intraoperative_adverse_event_occured"
+          }
+        },
+        {
+          "column_name": "type_of_adverse_event",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_adverse_event"
+          }
+        },
+        {
+          "column_name": "type_of_adverse_event_others",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_adverse_event_others"
+          }
+        },
+        {
+          "column_name": "desc_intraoperative_ae_bleed_excessive_bleeding",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_intraoperative_ae_bleed_excessive_bleeding"
+          }
+        },
+        {
+          "column_name": "desc_intraoperative_ae_skin_removal",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_intraoperative_ae_skin_removal"
+          }
+        },
+        {
+          "column_name": "desc_intraoperative_ae_injury_to_penis",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_intraoperative_ae_injury_to_penis"
+          }
+        },
+        {
+          "column_name": "desc_intraoperative_ae_anaesthetic_related_event",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_intraoperative_ae_anaesthetic_related_event"
+          }
+        },
+        {
+          "column_name": "desc_of_adverse_event_device_displacement",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_adverse_event_device_displacement"
+          }
+        },
+        {
+          "column_name": "device_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "device_name"
+          }
+        },
+        {
+          "column_name": "size_place",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "size_place"
+          }
+        },
+        {
+          "column_name": "mc_procedure_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "mc_procedure_date"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_vmmc_post_op_and_discharge",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "discharge_condition",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "discharge_condition"
+          }
+        },
+        {
+          "column_name": "name_of_hf",
+          "type": "Event",
+          "json_mapping": {
+            "field": "name_of_hf"
+          }
+        },
+        {
+          "column_name": "discharged_reasons",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "discharged_reasons"
+          }
+        },
+        {
+          "column_name": "analgesics_given",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "analgesics_given"
+          }
+        },
+        {
+          "column_name": "analgenics_type",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "analgenics_type"
+          }
+        },
+        {
+          "column_name": "discharging_name",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "discharging_name"
+          }
+        },
+        {
+          "column_name": "provider_cadre",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "provider_cadre"
+          }
+        },
+        {
+          "column_name": "first_vital_sign_pulse_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "first_vital_sign_pulse_rate"
+          }
+        },
+        {
+          "column_name": "first_vital_sign_systolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "first_vital_sign_systolic"
+          }
+        },
+        {
+          "column_name": "first_vital_sign_diastolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "first_vital_sign_diastolic"
+          }
+        },
+        {
+          "column_name": "first_vital_sign_temperature",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "first_vital_sign_temperature"
+          }
+        },
+        {
+          "column_name": "first_vital_sign_time_taken",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "first_vital_sign_time_taken"
+          }
+        },
+        {
+          "column_name": "second_vital_sign_pulse_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "second_vital_sign_pulse_rate"
+          }
+        },
+        {
+          "column_name": "second_vital_sign_systolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "second_vital_sign_systolic"
+          }
+        },
+        {
+          "column_name": "second_vital_sign_diastolic",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "second_vital_sign_diastolic"
+          }
+        },
+        {
+          "column_name": "second_vital_sign_temperature",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "second_vital_sign_temperature"
+          }
+        },
+        {
+          "column_name": "second_vital_sign_time_taken",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "second_vital_sign_time_taken"
+          }
+        },
+        {
+          "column_name": "notify_client_has_fever",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "notify_client_has_fever"
+          }
+        },
+        {
+          "column_name": "respiration_rate",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "respiration_rate"
+          }
+        },
+        {
+          "column_name": "dressing_condition_in_relation_to_bleeding",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "dressing_condition_in_relation_to_bleeding"
+          }
+        },
+        {
+          "column_name": "discharge_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "discharge_date"
+          }
+        },
+        {
+          "column_name": "did_client_experience_nae",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "did_client_experience_nae"
+          }
+        },
+        {
+          "column_name": "date_nae_occured",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_nae_occured"
+          }
+        },
+        {
+          "column_name": "next_followup_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_followup_date"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_vmmc_follow_up_visit",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "follow_up_visit_type",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "follow_up_visit_type"
+          }
+        },
+        {
+          "column_name": "comment_vmmc_followup",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "comment_vmmc_followup"
+          }
+        },
+        {
+          "column_name": "post_op_adverse_event_occur",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "post_op_adverse_event_occur"
+          }
+        },
+        {
+          "column_name": "time_of_adverse_event_occured",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "time_of_adverse_event_occured"
+          }
+        },
+        {
+          "column_name": "type_of_adverse_event",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_adverse_event"
+          }
+        },
+        {
+          "column_name": "type_of_adverse_event_others",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "type_of_adverse_event_others"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_event_infection",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_event_infection"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_event_persistent_pain",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_event_persistent_pain"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_pass_urine",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_pass_urine"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_event_bleeding",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_event_bleeding"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_event_swelling",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_event_swelling"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_event_device_displacement",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_event_device_displacement"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_event_device_detachment",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_event_device_detachment"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_delayed_wound_healing",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_delayed_wound_healing"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_appearance",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_appearance"
+          }
+        },
+        {
+          "column_name": "desc_of_post_op_adverse_excessive_skin_removed",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "desc_of_post_op_adverse_excessive_skin_removed"
+          }
+        },
+        {
+          "column_name": "what_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "what_done"
+          }
+        },
+        {
+          "column_name": "treatment_outcome",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "treatment_outcome"
+          }
+        },
+        {
+          "column_name": "treatment_outcome_note",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "treatment_outcome_note"
+          }
+        },
+        {
+          "column_name": "was_condom_provided",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "was_condom_provided"
+          }
+        },
+        {
+          "column_name": "condoms_issued",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "condoms_issued"
+          }
+        },
+        {
+          "column_name": "notifiable_adverse_event_occured",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "notifiable_adverse_event_occured"
+          }
+        },
+        {
+          "column_name": "followup_visit_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "followup_visit_date"
+          }
+        },
+        {
+          "column_name": "next_followup_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_followup_date"
+          }
+        },
+        {
+          "column_name": "visit_number",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "visit_number"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ec_vmmc_notifiable_ae",
+      "columns": [
+        {
+          "column_name": "base_entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "formSubmissionId"
+          }
+        },
+        {
+          "column_name": "entity_id",
+          "type": "Event",
+          "json_mapping": {
+            "field": "baseEntityId"
+          }
+        },
+        {
+          "column_name": "was_adverse_events_notifiable",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "was_adverse_events_notifiable"
+          }
+        },
+        {
+          "column_name": "did_client_experience_nae",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "did_client_experience_nae"
+          }
+        },
+        {
+          "column_name": "date_nae_occured",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "date_nae_occured"
+          }
+        },
+        {
+          "column_name": "nature_of_ae",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "nature_of_ae"
+          }
+        },
+        {
+          "column_name": "what_done",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "what_done"
+          }
+        },
+        {
+          "column_name": "was_nae_attended",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "was_nae_attended"
+          }
+        },
+        {
+          "column_name": "treatment_outcome",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "treatment_outcome"
+          }
+        },
+        {
+          "column_name": "treatment_outcome_note",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "treatment_outcome_note"
+          }
+        },
+        {
+          "column_name": "treatment_outcome_unchanged_note",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "treatment_outcome_unchanged_note"
+          }
+        },
+        {
+          "column_name": "next_followup_date",
+          "type": "Event",
+          "json_mapping": {
+            "field": "obs.fieldCode",
+            "concept": "next_followup_date"
+          }
+        },
+        {
+          "column_name": "last_interacted_with",
+          "type": "Event",
+          "json_mapping": {
+            "field": "version"
+          }
+        }
+      ]
     }
   ]
 }

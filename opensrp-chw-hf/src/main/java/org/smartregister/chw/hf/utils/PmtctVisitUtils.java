@@ -228,7 +228,7 @@ public class PmtctVisitUtils extends VisitUtils {
                                 .withParentCode("")
                                 .withHumanReadableValues(new ArrayList<>()));
                 // tag docs
-                org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(sharedPreferences, baseEvent);
+                JsonFormUtils.tagSyncMetadata(sharedPreferences, baseEvent);
                 NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
             }
         }
