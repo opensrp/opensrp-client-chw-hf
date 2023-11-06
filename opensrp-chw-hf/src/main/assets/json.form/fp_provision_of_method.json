@@ -100,30 +100,6 @@
         }
       },
       {
-        "key": "ecp",
-        "openmrs_entity_parent": "",
-        "openmrs_entity": "concept",
-        "openmrs_entity_id": "ecp",
-        "type": "edit_text",
-        "edit_type": "number",
-        "hint": "Number tablets dispensed (ECP)",
-        "v_required": {
-          "value": "true",
-          "err": "Required"
-        },
-        "v_max": {
-          "value": "3",
-          "err": "ECP value must be equal or less than 3"
-        },
-        "relevance": {
-          "rules-engine": {
-            "ex-rules": {
-              "rules-file": "fp_provide_method_relevance.yml"
-            }
-          }
-        }
-      },
-      {
         "key": "injection_administered",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

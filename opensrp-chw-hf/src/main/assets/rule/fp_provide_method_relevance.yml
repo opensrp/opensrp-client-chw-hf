@@ -15,14 +15,6 @@ actions:
   - "isRelevant = true"
 
 ---
-name: step1_ecp
-description: Check if the client selected ecp method relevance
-priority: 1
-condition: "global_fp_method_selected.equalsIgnoreCase('ecp')"
-actions:
-  - "isRelevant = true"
-
----
 name: step1_injection_administered
 description: Check if the client selected injection method relevance
 priority: 1

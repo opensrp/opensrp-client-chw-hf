@@ -5,8 +5,7 @@ priority: 1
 condition: "true"
 actions:
   - "calculation = step1_pop != 0 ? 'pop' :
-                   step1_coc != 0 ? 'coc' :
-                   step1_ecp != 0 ? 'ecp' :
+                   step1_coc != 0 ? 'coc' : 
                    (step1_injection_administered.equals('yes')) ? 'injectable' :
                    (step1_jadelle_inserted.equals('yes')) ? 'jadelle' :
                    (step1_implanon_inserted.equals('yes')) ? 'implanon' :

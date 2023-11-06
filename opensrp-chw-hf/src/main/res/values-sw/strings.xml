@@ -613,6 +613,12 @@
     <string name="fp_female">Mwanamke</string>
 
     <string name="ecp_provision">Ugawaji wa Vidonge vya Uzazi wa Mpango (ECP)</string>
+    <string name="ecp_was_ecp_provided">Je, ECP ilikutolewa</string>
+    <string name="ecp_type_of_ecp_provided">Aina gani ya ECP iliyotolewa</string>
+    <string name="ecp_ecp_counseling_provided">Je, ushauri wa ECP ulitolewa</string>
+    <string name="ecp_type_of_incident">Aina ya tukio</string>
+    <string name="ecp_when_did_incidence_occur">Tukio hilo lilitokea lini</string>
+    <string name="ecp_specify_other_incident">Taja tukio lingine</string>
 
     <!--    SBC -->
     <string name="sbc_mobilization_session_details">Taarifa za Kikao cha mobilizesheni SBC</string>
