@@ -315,7 +315,9 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         FamilyLibrary.getInstance().setClientProcessorForJava(HfClientProcessor.getInstance(getApplicationContext()));
 
         //initialize Map
-        initializeMapBox();
+        if (getApplicationFlavor().hasMap()) {
+            initializeMapBox();
+        }
     }
 
     protected void initializeMapBox() {
@@ -396,5 +398,7 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         boolean hasChildModule();
 
         boolean hasSbc();
+
+        boolean hasMap();
     }
 }

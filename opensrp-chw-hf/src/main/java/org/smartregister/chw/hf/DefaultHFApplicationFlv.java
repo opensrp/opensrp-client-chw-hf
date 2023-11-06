@@ -40,4 +40,9 @@ public class DefaultHFApplicationFlv implements HealthFacilityApplication.Flavor
     public boolean hasSbc() {
         return true;
     }
+
+    @Override
+    public boolean hasMap() {
+        return false;
+    }
 }
