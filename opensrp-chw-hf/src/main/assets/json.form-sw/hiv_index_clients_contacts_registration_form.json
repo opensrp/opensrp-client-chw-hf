@@ -165,7 +165,7 @@
     ]
   },
   "step2": {
-    "title": "Client details",
+    "title": "Taarifa za Mteja",
     "fields": [
       {
         "key": "unique_id",
@@ -432,19 +432,19 @@
         "options": [
           {
             "key": "biological_child",
-            "text": "Biological child",
+            "text": "Mtoto wa kumzaa",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_child"
           },
           {
             "key": "non_biological_child",
-            "text": "Non-Biological child living in the same household",
+            "text": "Mtoto asiye wa kumzaa anayeishi nyumbani",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "non_biological_child"
           },
           {
             "key": "siblings",
-            "text": "Siblings",
+            "text": "Ndugu wa kuzaliwa",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "siblings"
           }
