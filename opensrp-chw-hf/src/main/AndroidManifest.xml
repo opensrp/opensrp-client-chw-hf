@@ -206,6 +206,9 @@
             android:name=".activity.HeiMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name=".activity.FpMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name="org.smartregister.family.activity.FamilyWizardFormActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -296,7 +299,23 @@
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
-            android:name=".activity.FamilyPlanningMemberProfileActivity"
+            android:name=".activity.FpMemberProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FpEcpMemberProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FpScreeningActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FpOtherServicesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FpFollowupVisitProvisionOfServicesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
@@ -308,10 +327,6 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name="org.smartregister.chw.core.activity.CoreChildMedicalHistoryActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/HFTheme.NoActionBar" />
-        <activity
-            android:name="org.smartregister.chw.core.activity.CoreFpUpcomingServicesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
@@ -538,6 +553,27 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.KvpReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FpReportsViewActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.FpReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.SbcRegisterActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.SbcMemberProfileActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.SbcVisitActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+
+        <activity
+            android:name=".activity.SbcMedicalHistoryActivity"
             android:theme="@style/HFTheme.NoActionBar" />
 
         <meta-data

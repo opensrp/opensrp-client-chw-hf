@@ -17,7 +17,6 @@ import org.smartregister.chw.core.activity.CoreFamilyProfileActivity;
 import org.smartregister.chw.core.activity.CoreFamilyProfileMenuActivity;
 import org.smartregister.chw.core.activity.CoreFamilyRemoveMemberActivity;
 import org.smartregister.chw.core.utils.CoreConstants;
-import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.fragment.FamilyProfileMemberFragment;
 import org.smartregister.chw.hf.model.FamilyProfileModel;
@@ -133,7 +132,7 @@ public class FamilyProfileActivity extends CoreFamilyProfileActivity {
 
     @Override
     protected void goToFpProfile(String baseEntityId, Activity activity) {
-        FamilyPlanningMemberProfileActivity.startFpMemberProfileActivity(activity, FpDao.getMember(baseEntityId));
+        FpMemberProfileActivity.startFpMemberProfileActivity(activity, baseEntityId);
     }
 
     @Override

@@ -111,7 +111,6 @@ public class LDRegistrationTriageAction implements BaseLDVisitAction.LDVisitActi
                 !StringUtils.isBlank(diastolic) &&
                 !StringUtils.isBlank(pulseRate) &&
                 !StringUtils.isBlank(respiratoryRate) &&
-                !StringUtils.isBlank(fetalHeartRate) &&
                 !StringUtils.isBlank(temperature) &&
                 !StringUtils.isBlank(weight) &&
                 !StringUtils.isBlank(dangerSigns);

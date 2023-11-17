@@ -1,0 +1,24 @@
+---
+name: step1_activity_type_community
+description: Check if user selects community
+priority: 1
+condition: "step1_point_of_service_provision.equalsIgnoreCase('community')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_activity_type_workplace
+description: Check if user selects workplace
+priority: 1
+condition: "step1_point_of_service_provision.equalsIgnoreCase('workplace')"
+actions:
+  - "isRelevant = true"
+
+
+---
+name: step1_other_activity_type
+description: Show other activity other
+priority: 1
+condition: "step1_activity_type_community.equalsIgnoreCase('other') || step1_activity_type_workplace.equalsIgnoreCase('other')"
+actions:
+  - "isRelevant = true"

@@ -1,0 +1,130 @@
+---
+name: step1_reason_for_dissatisfaction
+description: reason_for_dissatisfaction relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equals('no')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_client_want_to_switch_prompt
+description: client_want_to_switch_prompt relevance
+priority: 1
+condition: "step1_client_want_to_switch_stop.equalsIgnoreCase('switch')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_specify_other_reasons_for_dissatisfaction
+description: specify_other_reasons_for_dissatisfaction relevance
+priority: 1
+condition: "step1_reason_for_dissatisfaction.contains('other')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_jadelle_removed
+description: Check if the client removed jadelle method relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equals('no') && global_fp_method_selected.equalsIgnoreCase('jadelle')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_implanon_removed
+description: Check if the client removed implanon method relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equals('no') && global_fp_method_selected.equalsIgnoreCase('implanon')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_iud_removed
+description: Check if the client removed iud method relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equals('no') && global_fp_method_selected.equalsIgnoreCase('iud')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_side_effects
+description: side_effects relevance
+priority: 1
+condition: "step1_reason_for_dissatisfaction.contains('side_effects')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_complication
+description: complication relevance
+priority: 1
+condition: "step1_reason_for_dissatisfaction.contains('complication')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_side_effects_specify_other
+description: side_effects_specify_other relevance
+priority: 1
+condition: "step1_side_effects.contains('other')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_complication_specify_other
+description: complication_specify_other relevance
+priority: 1
+condition: "step1_complication.contains('other')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_complication_male
+description: complication_male relevance
+priority: 1
+condition: "global_sex.equalsIgnoreCase('Male')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_complication_female
+description: complication_female relevance
+priority: 1
+condition: "global_sex.equalsIgnoreCase('Female')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_client_has_side_effects_prompt
+description: client_has_side_effects_prompt relevance
+priority: 1
+condition: "(step1_reason_for_dissatisfaction.contains('side_effects') || step1_reason_for_dissatisfaction.contains('other'))
+            && !step1_reason_for_dissatisfaction.contains('complication')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_client_has_complications_prompt
+description: client_has_complications_prompt relevance
+priority: 1
+condition: "step1_reason_for_dissatisfaction.contains('complication') 
+            || (step1_reason_for_dissatisfaction.contains('side_effects') && step1_reason_for_dissatisfaction.contains('complication')) && step1_reason_for_dissatisfaction.contains('other'))"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_client_want_to_switch_stop_continue
+description: client_want_to_switch_stop_continue relevance
+priority: 1
+condition: "(step1_reason_for_dissatisfaction.contains('side_effects') || step1_reason_for_dissatisfaction.contains('other'))
+            && !step1_reason_for_dissatisfaction.contains('complication')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_client_want_to_switch_stop
+description: client_want_to_switch_stop relevance
+priority: 1
+condition: "step1_reason_for_dissatisfaction.contains('complication') 
+            || (step1_reason_for_dissatisfaction.contains('side_effects') && step1_reason_for_dissatisfaction.contains('complication')) && step1_reason_for_dissatisfaction.contains('other'))"
+actions:
+  - "isRelevant = true"

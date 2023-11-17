@@ -22,6 +22,7 @@ import androidx.webkit.WebViewAssetLoader;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.json.JSONException;
+import org.smartregister.chw.hf.domain.FpMonthlyReportObject;
 import org.smartregister.chw.hf.domain.anc_reports.AncMonthlyReportObject;
 import org.smartregister.chw.hf.domain.cbhs_reports.CbhsMonthlyReportObject;
 import org.smartregister.chw.hf.domain.cdp_reports.CdpIssuingAtFacilityReportObject;
@@ -407,4 +408,16 @@ public class ReportUtils {
         }
     }
 
+    public static class FpReport {
+        public static String computeReport(Date now) {
+            String report = "";
+            FpMonthlyReportObject fpMonthlyReportObject = new FpMonthlyReportObject(now);
+            try {
+                report = fpMonthlyReportObject.getIndicatorDataAsGson(fpMonthlyReportObject.getIndicatorData());
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+            return report;
+        }
+    }
 }

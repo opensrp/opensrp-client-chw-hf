@@ -1,0 +1,203 @@
+{
+  "count": "1",
+  "encounter_type": "SBC Health Education Related to HIV Intervention",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Elimu ya afya katika afua za VVU na UKIMWI?",
+    "fields": [
+      {
+        "key": "health_education_hiv_intervention",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_education_hiv_intervention",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Elimu ya afya katika afua za VVU na UKIMWI?",
+        "hint": "Elimu ya afya katika afua za VVU na UKIMWI?",
+        "options": [
+          {
+            "key": "hts",
+            "text": "Upimaji wa VVU",
+            "value": false,
+            "openmrs_choice_id": "hts"
+          },
+          {
+            "key": "vmmc",
+            "text": "Tohara ya kitabibu",
+            "value": false,
+            "openmrs_choice_id": "vmmc"
+          },
+          {
+            "key": "pmtct",
+            "text": "Kuzuia maambukizi kutoka kwa mama kwenda kwa mtoto",
+            "value": false,
+            "openmrs_choice_id": "pmtct"
+          },
+          {
+            "key": "treatment",
+            "text": "Huduma za tiba na matunzo",
+            "value": false,
+            "openmrs_choice_id": "treatment"
+          },
+          {
+            "key": "cervical",
+            "text": "Uchunguzi wa saratani ya shingo ya kizazi",
+            "value": false,
+            "openmrs_choice_id": "cervical"
+          },
+          {
+            "key": "stigma",
+            "text": "Unyanyapaa",
+            "value": false,
+            "openmrs_choice_id": "stigma"
+          },
+          {
+            "key": "prep",
+            "text": "Dawa kinga (PrEP)",
+            "value": false,
+            "openmrs_choice_id": "prep"
+          },
+          {
+            "key": "gbv",
+            "text": "Ukatili wa kijinsia",
+            "value": false,
+            "openmrs_choice_id": "gbv"
+          },
+          {
+            "key": "agyw",
+            "text": "Wasichana rika balehe na wanawake vijana (AGYW)",
+            "value": false,
+            "openmrs_choice_id": "agyw"
+          },
+          {
+            "key": "abym",
+            "text": "Wavulana rika balehe na wanaume vijana (ABYM)",
+            "value": false,
+            "openmrs_choice_id": "abym"
+          },
+          {
+            "key": "tb",
+            "text": "Kifua kikuu na VVU",
+            "value": false,
+            "openmrs_choice_id": "tb"
+          },
+          {
+            "key": "hepatitis",
+            "text": "Homa ya ini",
+            "value": false,
+            "openmrs_choice_id": "hepatitis"
+          },
+          {
+            "key": "sti",
+            "text": "Magonjwa ya ngono",
+            "value": false,
+            "openmrs_choice_id": "sti"
+          },
+          {
+            "key": "injection",
+            "text": "Vifaa kinga vya kujidunga",
+            "value": false,
+            "openmrs_choice_id": "injection"
+          },
+          {
+            "key": "mat",
+            "text": "Huduma ya kliniki za methadoni",
+            "value": false,
+            "openmrs_choice_id": "mat"
+          },
+          {
+            "key": "overdose",
+            "text": "Elimu ya kudhibiti matumizi ya dawa za kulevya kwa waraibu",
+            "value": false,
+            "openmrs_choice_id": "overdose"
+          },
+          {
+            "key": "condom_use",
+            "text": "Matumizi kamili ya kondomu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "condom_use"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (taja)",
+            "value": false,
+            "openmrs_choice_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        }
+      },
+      {
+        "key": "other_health_education_hiv_intervention",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_health_education_hiv_intervention",
+        "type": "edit_text",
+        "hint": "Nyinginezo (taja)",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza"
+        },
+        "relevance": {
+          "step1:health_education_hiv_intervention": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

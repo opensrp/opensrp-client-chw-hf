@@ -1,0 +1,251 @@
+{
+  "count": "1",
+  "encounter_type": "FP ECP Screening",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "today": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "encounter",
+      "openmrs_entity_id": "encounter_date"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Eligible for ECP",
+    "fields": [
+      {
+        "key": "provide_counseling_notes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provide_counseling_notes",
+        "type": "toaster_notes",
+        "text": "Provide ECP counseling to the client",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": ""
+      },
+      {
+        "key": "ecp_counseling_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ecp_counseling_provided",
+        "type": "native_radio",
+        "label": "Was ECP counseling provided?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "type_of_incident",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_incident",
+        "type": "native_radio",
+        "label": "Type of the incidence",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "raped",
+            "text": "Raped",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "raped"
+          },
+          {
+            "key": "incorrect",
+            "text": "Incorrect use/breakage/slip of Condom",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "incorrect"
+          },
+          {
+            "key": "missed_days",
+            "text": "3 or more missed days of COC dose/3 or more missed hours of POP dose",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "missed_days"
+          },
+          {
+            "key": "iucd_expelled",
+            "text": "IUCD expelled",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "iucd_expelled"
+          },
+          {
+            "key": "missed_weeks",
+            "text": "4 weeks or more missed on depo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "missed_weeks"
+          },
+          {
+            "key": "other",
+            "text": "Others (specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "specify_other_incident",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "specify_other_incident",
+        "type": "edit_text",
+        "hint": "Specify other incident",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_eligible_for_ecp_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "when_did_incidence_occur",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "when_did_incidence_occur",
+        "type": "native_radio",
+        "label": "When did the incidence occur?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "1_3_days",
+            "text": "1-3 days",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "1_3_days"
+          },
+          {
+            "key": "4_5_days",
+            "text": "4-5 days",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "4_5_days"
+          },
+          {
+            "key": "more_than_5_days",
+            "text": "More than 5 days",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "more_than_5_days"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "provide_ecp_incidence_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provide_ecp_incidence_prompt",
+        "type": "toaster_notes",
+        "text": "Provide ECP to the client",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_eligible_for_ecp_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_to_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_to_prompt",
+        "type": "toaster_notes",
+        "text": "Ask the client to return after 14 days",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_eligible_for_ecp_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "ecp_eligibility",
+        "type": "hidden",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ecp_eligibility",
+        "openmrs_entity_parent": "",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_eligible_for_ecp_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

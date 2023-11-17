@@ -1,0 +1,198 @@
+{
+  "count": "1",
+  "encounter_type": "Medical History",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Historia ya Matibabu",
+    "fields": [
+      {
+        "key": "client_medical_history",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_medical_history",
+        "openmrs_data_type": "select one",
+        "combine_checkbox_option_values": "true",
+        "type": "check_box",
+        "label": "Je, mteja ana historia ya matibabu yoyote kati ya yafuatayo?",
+        "hint": "Je, mteja ana historia ya matibabu yoyote kati ya yafuatayo?",
+        "options": [
+          {
+            "key": "headache",
+            "text": "Maumivu ya Kichwa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "headache"
+          },
+          {
+            "key": "jaundice",
+            "text": "Ngozi ya Manjano (Jaundice)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "jaundice"
+          },
+          {
+            "key": "heart_disease",
+            "text": "Ugonjwa wa Moyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "heart_disease"
+          },
+          {
+            "key": "high_blood_pressure",
+            "text": "Shinikizo la Damu Kubwa",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "high_blood_pressure"
+          },
+          {
+            "key": "diabetes",
+            "text": "Kisukari",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "diabetes"
+          },
+          {
+            "key": "breast_lump",
+            "text": "Buje la matiti",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "breast_lump"
+          },
+          {
+            "key": "severe_varicose_veins",
+            "text": "Mshipa wa Varicose Ulivyozorota",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "severe_varicose_veins"
+          },
+          {
+            "key": "anti_conversant",
+            "text": "Madhara kwa conversant",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anti_conversant"
+          },
+          {
+            "key": "ant_tb_drugs",
+            "text": "Madhara kwa dawa za TB",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "ant_tb_drugs"
+          },
+          {
+            "key": "on_art",
+            "text": "Anatumia ARV",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "on_art"
+          },
+          {
+            "key": "other",
+            "text": "Hali nyingine yoyote mbaya",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
+            "key": "none",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "exclusive": [
+          "none"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua historia ya matibabu ya mteja"
+        }
+      },
+      {
+        "key": "ctc_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "ctc_number",
+        "type": "mask_edit_text",
+        "mask": "##-##-####-######",
+        "mask_hint": "12345678912345",
+        "allowed_chars": "0123456789",
+        "hint": "Weka CTC ID",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{2}-\\d{2}-\\d{4}-\\d{6})?",
+          "err": "Nambari ya CTC inapaswa kuwa ya muundo (XX-XX-XXXX-XXXXXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Tafadhali weka Nambari sahihi ya CTC"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali weka Nambari sahihi ya CTC"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "specify_other_condition",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "specify_other_condition",
+        "type": "edit_text",
+        "hint": "Bainisha hali nyingine",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali taja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_history_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

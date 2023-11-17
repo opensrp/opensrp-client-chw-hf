@@ -1,0 +1,28 @@
+---
+name: step1_specify_other_complain
+description: specify_other_complain relevance
+priority: 1
+condition: "step1_client_have_any_complain.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_last_normal_menstruation_period
+description: last_normal_menstruation_period relevance
+priority: 1
+condition: "global_sex.equalsIgnoreCase('female')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_management_of_hypertension
+description: prompt_for_management_of_hypertension
+priority: 1
+condition: "(!step1_systolic.equals('') && step1_systolic >= 140) || (!step1_diastolic.equals('') && step1_diastolic >= 90)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_management_of_hypotension
+description: prompt_for_management_of_hypotension
+priority: 1
+condition: "(!step1_systolic.equals('') && step1_systolic < 90) || (!step1_diastolic.equals('') && step1_diastolic < 60)"
+actions:
+  - "isRelevant = true"

@@ -1,0 +1,380 @@
+{
+  "count": "1",
+  "encounter_type": "Uchunguzi wa Huduma",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Uchunguzi wa Huduma",
+    "fields": [
+      {
+        "key": "received_any_hiv_sms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "received_any_hiv_sms",
+        "type": "native_radio",
+        "label": "Je, umepokea ujumbe mfupi wa simu kuhusu VVU na UKIMWI?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        }
+      },
+      {
+        "key": "received_message",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "received_message",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Aina ya ujumbe uliopokelewa",
+        "hint": "Aina ya ujumbe uliopokelewa",
+        "options": [
+          {
+            "key": "hts",
+            "text": "Upimaji wa VVU",
+            "value": false,
+            "openmrs_choice_id": "hts"
+          },
+          {
+            "key": "vmmc",
+            "text": "Tohara ya kitabibu",
+            "value": false,
+            "openmrs_choice_id": "vmmc"
+          },
+          {
+            "key": "pmtct",
+            "text": "Kuzuia maambukizi kutoka kwa mama kwenda kwa mtoto",
+            "value": false,
+            "openmrs_choice_id": "pmtct"
+          },
+          {
+            "key": "treatment",
+            "text": "Huduma za tiba na matunzo",
+            "value": false,
+            "openmrs_choice_id": "treatment"
+          },
+          {
+            "key": "cervical",
+            "text": "Uchunguzi wa saratani ya shingo ya kizazi ",
+            "value": false,
+            "openmrs_choice_id": "cervical"
+          },
+          {
+            "key": "stigma",
+            "text": "Unyanyapaa",
+            "value": false,
+            "openmrs_choice_id": "stigma"
+          },
+          {
+            "key": "prep",
+            "text": "Dawa kinga (PrEP)",
+            "value": false,
+            "openmrs_choice_id": "prep"
+          },
+          {
+            "key": "gbv",
+            "text": "Ukatili wa kijinsia",
+            "value": false,
+            "openmrs_choice_id": "gbv"
+          },
+          {
+            "key": "agyw",
+            "text": "Wasichana rika balehe na wanawake vijana (AGYW)",
+            "value": false,
+            "openmrs_choice_id": "agyw"
+          },
+          {
+            "key": "abym",
+            "text": "Wavulana rika balehe na wanaume vijana (ABYM)",
+            "value": false,
+            "openmrs_choice_id": "abym"
+          },
+          {
+            "key": "tb",
+            "text": "Kifua kikuu na VVU",
+            "value": false,
+            "openmrs_choice_id": "tb"
+          },
+          {
+            "key": "hepatitis",
+            "text": "Homa ya ini",
+            "value": false,
+            "openmrs_choice_id": "hepatitis"
+          },
+          {
+            "key": "sti",
+            "text": "Magonjwa ya ngono",
+            "value": false,
+            "openmrs_choice_id": "sti"
+          },
+          {
+            "key": "injection",
+            "text": "Vifaa kinga vya kujidunga",
+            "value": false,
+            "openmrs_choice_id": "injection"
+          },
+          {
+            "key": "mat",
+            "text": "Huduma ya kliniki za methadoni",
+            "value": false,
+            "openmrs_choice_id": "mat"
+          },
+          {
+            "key": "overdose",
+            "text": "Elimu ya kudhibiti matumizi ya dawa za kulevya kwa waraibu",
+            "value": false,
+            "openmrs_choice_id": "overdose"
+          },
+          {
+            "key": "condom_use",
+            "text": "Matumizi kamili ya kondomu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "condom_use"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (taja)",
+            "value": false,
+            "openmrs_choice_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        },
+        "relevance": {
+          "step1:received_any_hiv_sms": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
+        "key": "other_received_message",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_received_message",
+        "type": "edit_text",
+        "hint": "Nyinginezo (taja)",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza"
+        },
+        "relevance": {
+          "step1:received_message": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "reason_not_receiving_hiv_sms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reason_not_receiving_hiv_sms",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Sababu ya kutokupata ujumbe mfupi wa simu kuhusu VVU na UKIMWI",
+        "hint": "Sababu ya kutokupata ujumbe mfupi wa simu kuhusu VVU na UKIMWI",
+        "options": [
+          {
+            "key": "not_subscribed",
+            "text": "Haja sabskraibu",
+            "value": false,
+            "openmrs_choice_id": "not_subscribed"
+          },
+          {
+            "key": "lost_phone",
+            "text": "Amepoteza simu",
+            "value": false,
+            "openmrs_choice_id": "lost_phone"
+          },
+          {
+            "key": "changed_phone_number",
+            "text": "Amebadili namba ya simu",
+            "value": false,
+            "openmrs_choice_id": "changed_phone_number"
+          },
+          {
+            "key": "no_phone",
+            "text": "Hana simu",
+            "value": false,
+            "openmrs_choice_id": "no_phone"
+          },
+          {
+            "key": "network_access",
+            "text": "Hakuna mtandao",
+            "value": false,
+            "openmrs_choice_id": "network_access"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (taja)",
+            "value": false,
+            "openmrs_choice_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        },
+        "relevance": {
+          "step1:received_any_hiv_sms": {
+            "type": "string",
+            "ex": "equalTo(., \"no\")"
+          }
+        }
+      },
+      {
+        "key": "other_reason_not_receiving_hiv_sms",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_reason_not_receiving_hiv_sms",
+        "type": "edit_text",
+        "hint": "Nyinginezo (taja)",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza"
+        },
+        "relevance": {
+          "step1:reason_not_receiving_hiv_sms": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "used_toll_free",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "used_toll_free",
+        "type": "native_radio",
+        "label": "Je umetumia huduma ya Toll free?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        }
+      },
+      {
+        "key": "toll_free_service_accessed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "toll_free_service_accessed",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Je ni huduma ipi ya Toll free ulitumia?",
+        "hint": "Je ni huduma ipi ya Toll free ulitumia?",
+        "options": [
+          {
+            "key": "toll_free_ivr",
+            "text": "Mawasiliano kwa sauti iliyonakiliwa (IVR)",
+            "value": false,
+            "openmrs_choice_id": "sbc_toll_free_ivr"
+          },
+          {
+            "key": "toll_free_provider",
+            "text": "Kuongea na mshauri",
+            "value": false,
+            "openmrs_choice_id": "sbc_toll_free_provider"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        },
+        "relevance": {
+          "step1:used_toll_free": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      }
+    ]
+  }
+}

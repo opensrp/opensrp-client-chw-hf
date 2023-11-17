@@ -3,7 +3,9 @@ package org.smartregister.chw.hf.interactor;
 import static org.smartregister.chw.anc.util.Constants.TABLES.EC_CHILD;
 import static org.smartregister.chw.anc.util.DBConstants.KEY.RELATIONAL_ID;
 import static org.smartregister.chw.anc.util.JsonFormUtils.updateFormField;
+import static org.smartregister.chw.hf.interactor.AncFirstFacilityVisitInteractorFlv.initializeHealthFacilitiesList;
 import static org.smartregister.chw.hf.interactor.AncRegisterInteractor.populatePNCForm;
+import static org.smartregister.chw.hf.interactor.LDRegistrationInteractorFlv.setCheckBoxValues;
 import static org.smartregister.chw.hf.utils.Constants.Events.HEI_REGISTRATION;
 import static org.smartregister.chw.hf.utils.Constants.Events.LD_POST_DELIVERY_MOTHER_MANAGEMENT;
 import static org.smartregister.chw.hf.utils.Constants.Events.PNC_NO_MOTHER_REGISTRATION;
@@ -32,14 +34,21 @@ import org.smartregister.chw.anc.AncLibrary;
 import org.smartregister.chw.anc.util.AppExecutors;
 import org.smartregister.chw.anc.util.NCUtils;
 import org.smartregister.chw.anc.util.VisitUtils;
+import org.smartregister.chw.core.dao.AncDao;
 import org.smartregister.chw.core.dao.ChwNotificationDao;
 import org.smartregister.chw.core.utils.CoreConstants;
 import org.smartregister.chw.core.utils.CoreJsonFormUtils;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationAdmissionAction;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationAncClinicFindingsAction;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationObstetricHistoryAction;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationPastObstetricHistoryAction;
 import org.smartregister.chw.hf.actionhelper.MaternalComplicationLabourActionHelper;
 import org.smartregister.chw.hf.actionhelper.PostDeliveryFamilyPlanningActionHelper;
 import org.smartregister.chw.hf.actionhelper.PostDeliveryObservationActionHelper;
+import org.smartregister.chw.hf.dao.HfAncDao;
+import org.smartregister.chw.hf.dao.HfPmtctDao;
 import org.smartregister.chw.hf.utils.Constants;
 import org.smartregister.chw.hf.utils.LDVisitUtils;
 import org.smartregister.chw.ld.LDLibrary;
@@ -80,9 +89,16 @@ import timber.log.Timber;
  * Created by Kassim Sheghembe on 2022-05-16
  */
 public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisitInteractor {
+    static JSONObject obstetricForm = null;
+
+    static JSONObject ancClinicForm = null;
+
+    private static JSONObject admissionInformationForm;
 
     private static MemberObject memberObject;
+
     private static boolean isEdit = false;
+
     final LinkedHashMap<String, BaseLDVisitAction> actionList = new LinkedHashMap<>();
     protected Context context;
     Map<String, List<VisitDetail>> details = null;
@@ -162,6 +178,17 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         }
     }
 
+    public static JSONObject getFormAsJson(String formName, String entityId, String currentLocationId) throws Exception {
+        JSONObject jsonObject = getJsonForm(formName);
+        org.smartregister.chw.anc.util.JsonFormUtils.getRegistrationForm(jsonObject, entityId, currentLocationId);
+
+        return jsonObject;
+    }
+
+    public static JSONObject getJsonForm(String formName) throws Exception {
+        return FormUtils.getInstance(HealthFacilityApplication.getInstance().getApplicationContext().getApplicationContext()).getFormJson(formName);
+    }
+
     @Override
     public MemberObject getMemberClient(String memberID) {
 
@@ -191,7 +218,9 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             }
 
             try {
-
+                if (LDDao.getModeOfDelivery(memberObject.getBaseEntityId()) == null) {
+                    evaluateLdRegistration(callBack, view.getEditMode());
+                }
                 evaluateMotherStatus(callBack);
                 evaluatePostDeliveryObservation();
                 evaluateMaternalComplicationLabour();
@@ -205,6 +234,160 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         };
 
         appExecutors.diskIO().execute(runnable);
+    }
+
+    private void evaluateLdRegistration(BaseLDVisitContract.InteractorCallBack callBack, boolean editMode) throws BaseLDVisitAction.ValidationException {
+        obstetricForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryObstetricHistory());
+        ancClinicForm = org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAncClinicFindings());
+        admissionInformationForm = initializeHealthFacilitiesList(org.smartregister.chw.core.utils.FormUtils.getFormUtils().getFormJson(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation()));
+
+        if (editMode) {
+            Visit lastVisit = LDLibrary.getInstance().visitRepository().getLatestVisit(memberObject.getBaseEntityId(), Constants.Events.LD_REGISTRATION);
+            if (lastVisit != null) {
+                details = org.smartregister.chw.ld.util.VisitUtils.getVisitGroups(LDLibrary.getInstance().visitDetailsRepository().getVisits(lastVisit.getVisitId()));
+
+                if (!details.isEmpty()) {
+                    org.smartregister.chw.ld.util.JsonFormUtils.populateForm(obstetricForm, details);
+                    org.smartregister.chw.ld.util.JsonFormUtils.populateForm(ancClinicForm, details);
+                    org.smartregister.chw.ld.util.JsonFormUtils.populateForm(admissionInformationForm, details);
+                }
+            }
+        } else {
+            // get the preloaded data
+            if (AncDao.isANCMember(memberObject.getBaseEntityId())) {
+                if (obstetricForm != null) {
+                    try {
+                        JSONArray fields = obstetricForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        populateObstetricForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (ancClinicForm != null) {
+                    try {
+                        JSONArray fields = ancClinicForm.getJSONObject(Constants.JsonFormConstants.STEP1).getJSONArray(JsonFormConstants.FIELDS);
+                        populateAncFindingsForm(fields, AncDao.getMember(memberObject.getBaseEntityId()));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        try {
+
+            BaseLDVisitAction ldRegistrationAdmissionInformation = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_admission_information_title))
+                    .withOptional(false)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAdmissionInformation())
+                    .withJsonPayload(admissionInformationForm.toString())
+                    .withHelper(new RegistrationAdmissionAction(memberObject, actionList, context))
+                    .build();
+
+            actionList.put(context.getString(R.string.ld_registration_admission_information_title), ldRegistrationAdmissionInformation);
+            ldRegistrationAdmissionInformation.evaluateStatus();
+
+
+            BaseLDVisitAction ldRegistrationObstetricHistory = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_obstetric_history_title))
+                    .withOptional(false)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryObstetricHistory())
+                    .withJsonPayload(obstetricForm.toString())
+                    .withHelper(new ObstetricHistoryAction(memberObject, actionList, details, callBack, context))
+                    .build();
+
+            actionList.put(context.getString(R.string.ld_registration_obstetric_history_title), ldRegistrationObstetricHistory);
+
+            BaseLDVisitAction ldRegistrationAncClinicFindings = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_anc_clinic_findings_title))
+                    .withOptional(false)
+                    .withDetails(details)
+                    .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryAncClinicFindings())
+                    .withJsonPayload(ancClinicForm.toString())
+                    .withHelper(new LDRegistrationAncClinicFindingsAction(memberObject))
+                    .build();
+
+            actionList.put(context.getString(R.string.ld_registration_anc_clinic_findings_title), ldRegistrationAncClinicFindings);
+
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+    }
+
+    private void populateObstetricForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {
+        JSONObject gravida = JsonFormUtils.getFieldJSONObject(fields, "gravida");
+        JSONObject childrenAlive = JsonFormUtils.getFieldJSONObject(fields, "children_alive");
+        JSONObject parity = JsonFormUtils.getFieldJSONObject(fields, "para");
+        JSONObject lastMenstrualPeriod = JsonFormUtils.getFieldJSONObject(fields, "last_menstrual_period");
+        JSONObject pastMedicalSurgicalHistory = JsonFormUtils.getFieldJSONObject(fields, "past_medical_surgical_history");
+        JSONObject otherPastMedicalSurgicalHistory = JsonFormUtils.getFieldJSONObject(fields, "other_past_medical_surgical_history");
+
+        gravida.put(VALUE, memberObject.getGravida());
+        parity.put(VALUE, HfAncDao.getParity(memberObject.getBaseEntityId()));
+        childrenAlive.put(VALUE, HfAncDao.getNumberOfSurvivingChildren(memberObject.getBaseEntityId()));
+        lastMenstrualPeriod.put(VALUE, memberObject.getLastMenstrualPeriod());
+        JSONArray historyValues;
+
+        String pastMedicalAndSurgicalHistory = HfAncDao.getMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
+        if (pastMedicalAndSurgicalHistory.startsWith("[")) {
+            try {
+                historyValues = new JSONArray(pastMedicalAndSurgicalHistory);
+                for (int i = 0; i < historyValues.length(); i++) {
+                    String value = historyValues.getString(i);
+                    setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), value);
+                }
+            } catch (Exception e) {
+                Timber.e(e);
+            }
+        } else {
+            setCheckBoxValues(pastMedicalSurgicalHistory.getJSONArray("options"), pastMedicalAndSurgicalHistory);
+        }
+        String otherPastMedicalAndSurgicalHistory = HfAncDao.getOtherMedicalAndSurgicalHistory(memberObject.getBaseEntityId());
+        otherPastMedicalSurgicalHistory.put(VALUE, otherPastMedicalAndSurgicalHistory);
+    }
+
+    private void populateAncFindingsForm(JSONArray fields, org.smartregister.chw.anc.domain.MemberObject memberObject) throws JSONException {
+        JSONObject numberOfVisits = JsonFormUtils.getFieldJSONObject(fields, "number_of_visits");
+        JSONObject iptDoses = JsonFormUtils.getFieldJSONObject(fields, "ipt_doses");
+        JSONObject malaria = JsonFormUtils.getFieldJSONObject(fields, "malaria");
+        JSONObject TTDoses = JsonFormUtils.getFieldJSONObject(fields, "tt_doses");
+        JSONObject LLINUsed = JsonFormUtils.getFieldJSONObject(fields, "llin_used");
+        JSONObject hbTestConducted = JsonFormUtils.getFieldJSONObject(fields, "hb_test");
+        JSONObject lastMeasuredHB = JsonFormUtils.getFieldJSONObject(fields, "hb_level");
+        JSONObject lastMeasuredHBDate = JsonFormUtils.getFieldJSONObject(fields, "hb_test_date");
+        JSONObject syphilis = JsonFormUtils.getFieldJSONObject(fields, "syphilis");
+        JSONObject managementProvidedForSyphilis = JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_syphilis");
+        JSONObject bloodGroup = JsonFormUtils.getFieldJSONObject(fields, "blood_group");
+        JSONObject rhFactor = JsonFormUtils.getFieldJSONObject(fields, "rh_factor");
+        JSONObject pmtct = JsonFormUtils.getFieldJSONObject(fields, "anc_hiv_status");
+        JSONObject pmtctTestDate = JsonFormUtils.getFieldJSONObject(fields, "pmtct_test_date");
+        JSONObject artPrescription = JsonFormUtils.getFieldJSONObject(fields, "art_prescription");
+        JSONObject managementProvidedForPmtct = JsonFormUtils.getFieldJSONObject(fields, "management_provided_for_pmtct");
+
+        numberOfVisits.put(VALUE, HfAncDao.getVisitNumber(memberObject.getBaseEntityId()));
+        iptDoses.put(VALUE, HfAncDao.getIptDoses(memberObject.getBaseEntityId()));
+        malaria.put(VALUE, HfAncDao.getMalariaTestResults(memberObject.getBaseEntityId()));
+        TTDoses.put(VALUE, HfAncDao.getTTDoses(memberObject.getBaseEntityId()));
+        LLINUsed.put(VALUE, HfAncDao.isLLINProvided(memberObject.getBaseEntityId()) ? "Yes" : "No");
+
+        String lastMeasuredHb = HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId());
+        hbTestConducted.put(VALUE, lastMeasuredHb.equals("") ? "no" : "yes");
+        if (!lastMeasuredHB.equals("")) {
+            lastMeasuredHB.put(VALUE, HfAncDao.getLastMeasuredHB(memberObject.getBaseEntityId()));
+            lastMeasuredHBDate.put(VALUE, HfAncDao.getLastMeasuredHBDate(memberObject.getBaseEntityId()));
+        }
+        syphilis.put(VALUE, HfAncDao.getSyphilisTestResult(memberObject.getBaseEntityId()));
+        managementProvidedForSyphilis.put(VALUE, HfAncDao.getSyphilisTreatment(memberObject.getBaseEntityId()) ? "yes" : "no");
+
+        bloodGroup.put(VALUE, HfAncDao.getBloodGroup(memberObject.getBaseEntityId()));
+        rhFactor.put(VALUE, HfAncDao.getRhFactor(memberObject.getBaseEntityId()));
+        if (HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) {
+            pmtct.put(VALUE, "known_on_art_before_this_pregnancy");
+        } else if (HfAncDao.getHivStatus(memberObject.getBaseEntityId()) != null && !HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("null")) {
+            pmtct.put(VALUE, HfAncDao.getHivStatus(memberObject.getBaseEntityId()).equalsIgnoreCase("positive") ? "positive" : "negative");
+        }
+        pmtctTestDate.put(VALUE, HfAncDao.getHivTestDate(memberObject.getBaseEntityId()));
+        artPrescription.put(VALUE, (HfPmtctDao.isPrescribedArtRegimes(memberObject.getBaseEntityId()) || HfAncDao.isClientKnownOnArt(memberObject.getBaseEntityId())) ? "yes" : "no");
+        managementProvidedForPmtct.put(VALUE, HfPmtctDao.isRegisteredForPmtct(memberObject.getBaseEntityId()) ? "yes" : "no");
     }
 
     private void evaluateMotherStatus(BaseLDVisitContract.InteractorCallBack callBack) throws BaseLDVisitAction.ValidationException {
@@ -561,17 +744,6 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return new SimpleDateFormat("yyyy-MM-dd").format(date);
     }
 
-    public static JSONObject getFormAsJson(String formName, String entityId, String currentLocationId) throws Exception {
-        JSONObject jsonObject = getJsonForm(formName);
-        org.smartregister.chw.anc.util.JsonFormUtils.getRegistrationForm(jsonObject, entityId, currentLocationId);
-
-        return jsonObject;
-    }
-
-    public static JSONObject getJsonForm(String formName) throws Exception {
-        return FormUtils.getInstance(HealthFacilityApplication.getInstance().getApplicationContext().getApplicationContext()).getFormJson(formName);
-    }
-
     protected String getLocationID() {
         return org.smartregister.Context.getInstance().allSharedPreferences().getPreference(AllConstants.CURRENT_LOCATION_ID);
     }
@@ -636,6 +808,72 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
         return gender;
     }
 
+    protected String getParentVisitEventID(Visit visit, String parentEventType) {
+        if (visit.getVisitType().contains("Newborn"))
+            return visitRepository().getParentVisitEventID(memberObject.getBaseEntityId(), parentEventType, visit.getDate());
+        else
+            return super.getParentVisitEventID(visit, parentEventType);
+    }
+
+    private static class ObstetricHistoryAction extends LDRegistrationObstetricHistoryAction {
+        private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+
+        private final Context context;
+
+        private final Map<String, List<VisitDetail>> details;
+
+        private final BaseLDVisitContract.InteractorCallBack callBack;
+
+        public ObstetricHistoryAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack, Context context) {
+            super(memberObject);
+            this.actionList = actionList;
+            this.details = details;
+            this.callBack = callBack;
+            this.context = context;
+        }
+
+        @Override
+        public String postProcess(String s) {
+            if (!StringUtils.isBlank(para) && Integer.parseInt(para) > 0) {
+                //Adding the actions for capturing previous para obstetric  history when para is greater than 0 .
+                try {
+                    BaseLDVisitAction labourAndDeliveryPastObstetricHistory = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_past_obstetric_history_title))
+                            .withOptional(false)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryPastObstetricHistory())
+                            .withHelper(new LDRegistrationPastObstetricHistoryAction(memberObject, Integer.parseInt(para)))
+                            .build();
+
+                    actionList.put(context.getString(R.string.ld_registration_past_obstetric_history_title), labourAndDeliveryPastObstetricHistory);
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
+            } else if (actionList.containsKey(context.getString(R.string.ld_registration_past_obstetric_history_title))) {
+                actionList.remove(context.getString(R.string.ld_registration_past_obstetric_history_title));
+            }
+
+
+            //Calling the callback method to preload the actions in the actionns list.
+            new org.smartregister.chw.ld.util.AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+
+            return super.postProcess(s);
+        }
+    }
+
+    private static class RegistrationAdmissionAction extends LDRegistrationAdmissionAction {
+        private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+
+        private Context context;
+
+
+        public RegistrationAdmissionAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Context context) {
+            super(memberObject);
+            this.actionList = actionList;
+            this.context = context;
+        }
+
+    }
+
     private class MotherStatusActionHelper extends org.smartregister.chw.hf.actionhelper.MotherStatusActionHelper {
         private final BaseLDVisitContract.InteractorCallBack callBack;
 
@@ -668,12 +906,5 @@ public class LDPostDeliveryManagementMotherActivityInteractor extends BaseLDVisi
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
             return super.postProcess(jsonPayload);
         }
-    }
-
-    protected String getParentVisitEventID(Visit visit, String parentEventType) {
-        if (visit.getVisitType().contains("Newborn"))
-            return visitRepository().getParentVisitEventID(memberObject.getBaseEntityId(), parentEventType, visit.getDate());
-        else
-            return super.getParentVisitEventID(visit, parentEventType);
     }
 }

@@ -1,0 +1,47 @@
+---
+name: step1_category_1_notes
+description: category_1_notes relevance
+priority: 1
+condition: "step1_client_category_after_screening.equals('category_1')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_category_2_notes
+description: category_2_notes relevance
+priority: 1
+condition: "step1_client_category_after_screening.equals('category_2')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_category_3_notes_first
+description: category_3_notes_first relevance
+priority: 1
+condition: "step1_client_category_after_screening.equals('category_3')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_category_3_notes_second
+description: category_3_notes_second relevance
+priority: 1
+condition: "step1_client_category_after_screening.equals('category_3')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_category_4_notes_first
+description: category_4_notes_first relevance
+priority: 1
+condition: "step1_client_category_after_screening.equals('category_4')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_category_4_notes_second
+description: category_4_notes_second relevance
+priority: 1
+condition: "step1_client_category_after_screening.equals('category_4')"
+actions:
+  - "isRelevant = true"

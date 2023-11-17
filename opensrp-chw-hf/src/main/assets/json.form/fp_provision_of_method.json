@@ -1,0 +1,662 @@
+{
+  "count": "1",
+  "encounter_type": "Provide FP method",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "global": {},
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Provide FP method",
+    "fields": [
+      {
+        "key": "pop",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "pop",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number cycles dispensed (POP)",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "v_max": {
+          "value": "3",
+          "err": "POP value must be equal or less than 3"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "coc",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "coc",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Number cycles dispensed (COC)",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "v_max": {
+          "value": "3",
+          "err": "COC value must be equal or less than 3"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "injection_administered",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "injection_administered",
+        "type": "native_radio",
+        "label": "Injection administered?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "jadelle_inserted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "jadelle_inserted",
+        "type": "native_radio",
+        "label": "Jadelle inserted?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "implanon_inserted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "implanon_inserted",
+        "type": "native_radio",
+        "label": "Implanon inserted?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "iucd_inserted",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "iucd_inserted",
+        "type": "native_radio",
+        "label": "IUCD inserted?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "cycle_beads_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cycle_beads_provided",
+        "type": "native_radio",
+        "label": "Cycle beads provided (SDM)?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_counseled_on_lam",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_counseled_on_lam",
+        "type": "native_radio",
+        "label": "Has the client been counseled on the LAM criteria?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "vasectomy",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "vasectomy",
+        "type": "native_radio",
+        "label": "Has Vasectomy procedure been conducted?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "btl",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "btl",
+        "type": "native_radio",
+        "label": "Has BTL procedure been conducted?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "post_instruction_fp_method_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "post_instruction_fp_method_provided",
+        "type": "native_radio",
+        "label": "Was post instruction given on the family planning method provided?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "post_instruction_fp_method_provided_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "post_instruction_fp_method_provided_prompt",
+        "type": "toaster_notes",
+        "text": "Please provide post family planning instruction to the client",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "reasons_for_not_providing_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "reasons_for_not_providing_method",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Reasons for not providing method",
+        "options": [
+          {
+            "key": "out_of_stock",
+            "text": "Out of stock",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "out_of_stock"
+          },
+          {
+            "key": "client_changed_mind",
+            "text": "Client changed mind",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "client_changed_mind"
+          },
+          {
+            "key": "other",
+            "text": "Others (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please choose reasons for not providing method "
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "specify_other_reasons",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "specify_other_reasons",
+        "type": "edit_text",
+        "hint": "Specify other condition",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_provided_condom",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_provided_condom",
+        "type": "native_radio",
+        "label": "Was the client provided condom?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "type_of_condom_collected",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_condom_collected",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Select the type of condom collected",
+        "hint": "Select the type of condom collected",
+        "options": [
+          {
+            "key": "male",
+            "text": "Male",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "male"
+          },
+          {
+            "key": "female",
+            "text": "Female",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "female"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please choose type of condom collected"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_male_condoms_collected",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_male_condoms_collected",
+        "type": "edit_text",
+        "edit_type": "number",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number of condoms"
+        },
+        "v_min": {
+          "value": "1",
+          "err": "Number of condoms should be greater than 0"
+        },
+        "v_max": {
+          "value": "144",
+          "err": "Number of condoms shouldn't be greater than 144"
+        },
+        "hint": "Specify quantity (Male)",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_female_condoms_collected",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_female_condoms_collected",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Specify quantity (Female)",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "v_max": {
+          "value": "50",
+          "err": "Number of condoms shouldn't be greater than 50"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the number of condoms"
+        },
+        "v_min": {
+          "value": "1",
+          "err": "Number of condoms should be greater than 0"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "counsel_for_other_methods",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "counsel_for_other_methods",
+        "type": "toaster_notes",
+        "text": "Counsel for other family planning methods",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "provided_fp_method",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provided_fp_method",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_calculation.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "next_appointment_date",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "next_appointment_date",
+        "type": "date_picker",
+        "min_date": "today",
+        "max_date": "today+5y",
+        "expanded": false,
+        "hint": "Select next appointment date",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_provide_method_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
