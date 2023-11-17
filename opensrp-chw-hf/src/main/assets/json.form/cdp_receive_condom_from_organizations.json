@@ -100,7 +100,7 @@
         "options": [
           {
             "key": "public_sc",
-            "text": "Public sector condom",
+            "text": "Zana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "public_sc"
@@ -207,7 +207,7 @@
         "options": [
           {
             "key": "public_sc",
-            "text": "Public sector condom",
+            "text": "Zana",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "public_sc"

@@ -377,6 +377,8 @@
     <string name="referral_submitted">Rufaa imetumwa</string>
     <string name="ltfu_title">LTFU</string>
 
+    <string name="vmmc_reports">Ripoti za VMMC</string>
+    <string name="vmmc_reports_subtitle">Tazama Ripoti za VMMC</string>
 
     <!--    CDP-->
     <string name="add_outlet">Ongeza kituo</string>
@@ -530,6 +532,9 @@
     <string name="fp_condom_refilled">Kondomu:</string>
     <string name="fp_number_male_condoms_refilled">Taja idadi (Mwanaume):</string>
     <string name="fp_number_female_condoms_refilled">Taja idadi (Mwanamke):</string>
+
+    <!--    VMMC-->
+    <string name="vmmc">VMMC</string>
 
     <string name="fp_yes">Ndiyo</string>
     <string name="fp_no">Hapana</string>

@@ -84,6 +84,9 @@ public class HfReferralUtils extends CoreReferralUtils {
                 case CoreConstants.REGISTER_TYPE.LD:
                     focus = Constants.FOCUS.LD_EMERGENCY;
                     break;
+                case CoreConstants.REGISTER_TYPE.VMMC:
+                    focus = Constants.FOCUS.VMMC_REFERRALS;
+                    break;
                 default:
                     focus = CoreConstants.REGISTER_TYPE.OTHER;
                     break;

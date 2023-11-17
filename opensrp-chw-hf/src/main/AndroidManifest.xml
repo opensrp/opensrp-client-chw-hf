@@ -78,6 +78,31 @@
             android:name=".activity.PrEPVisitActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
+            android:name=".activity.VmmcServiceActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcProcedureActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcDischargeActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcReportsActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcReportsViewActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcMedicalHistoryActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcFollowUpActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcNotifiableAdverseActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
             android:name=".activity.CdpRegisterActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
@@ -104,6 +129,9 @@
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LdEmergencyReferralRegistrationActivity"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcReferralRegistrationActivity"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
             android:name=".activity.LTFURegisterActivity"
@@ -211,6 +239,14 @@
         </activity>
         <activity
             android:name=".activity.PmtctRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/HFTheme.NoActionBar" />
+        <activity
+            android:name=".activity.VmmcProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/HFTheme.NoActionBar" />
         <activity
@@ -574,6 +610,7 @@
         <service android:name=".sync.intent.ProcessVisitsIntentService" />
         <service android:name=".sync.intent.PncCloseDateIntentService" />
         <service android:name=".sync.intent.GenerateMonthlyTalliesIntentService" />
+        <service android:name=".sync.intent.CloseVmmcMembershipIntentService" />
 
         <receiver
             android:name="org.smartregister.view.receiver.ConnectivityChangeReceiver"

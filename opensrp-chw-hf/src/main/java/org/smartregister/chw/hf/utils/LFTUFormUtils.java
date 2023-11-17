@@ -8,9 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.hf.activity.ReferralRegistrationActivity;
-import org.smartregister.chw.hf.dao.HfHivDao;
-import org.smartregister.chw.hf.dao.HfKvpDao;
-import org.smartregister.chw.hf.dao.HfPmtctDao;
 
 import timber.log.Timber;
 

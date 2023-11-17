@@ -44,6 +44,7 @@ import org.smartregister.chw.ld.dao.LDDao;
 import org.smartregister.chw.malaria.dao.MalariaDao;
 import org.smartregister.chw.sbc.dao.SbcDao;
 import org.smartregister.commonregistry.CommonPersonObject;
+import org.smartregister.chw.vmmc.dao.VmmcDao;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.commonregistry.CommonRepository;
 import org.smartregister.family.fragment.BaseFamilyOtherMemberProfileFragment;
@@ -113,8 +114,14 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
     }
 
     @Override
+    protected void startVmmcRegister() {
+        VmmcRegisterActivity.startVmmcRegistrationActivity(FamilyOtherMemberProfileActivity.this, baseEntityId);
+
+    }
+
+    @Override
     protected void startIntegratedCommunityCaseManagementEnrollment() {
-        //Not Required
+        //TODO implement startIntegratedCommunityCaseManagementEnrollment for HF
     }
 
     @Override
@@ -347,6 +354,16 @@ public class FamilyOtherMemberProfileActivity extends CoreFamilyOtherMemberProfi
             int age = Utils.getAgeFromDate(dob);
             menu.findItem(R.id.action_kvp_registration).setVisible(!KvpDao.isRegisteredForKvp(baseEntityId) && age >= 15);
         }
+
+        //TODO ChrissDisigale: vmmc-menu-option
+        if (gender.equalsIgnoreCase("male") && HealthFacilityApplication.getApplicationFlavor().hasVmmc()){
+            menu.findItem(R.id.action_vmmc_registration).setVisible(!VmmcDao.isRegisteredForVmmc(baseEntityId));
+        }
+
+        if (BuildConfig.BUILD_FOR_BORESHA_AFYA_SOUTH) {
+            menu.findItem(R.id.action_hiv_registration).setVisible(!(HfHivDao.isHivMember(baseEntityId) || HivIndexDao.isRegisteredIndex(baseEntityId)));
+        }
+
         if (HealthFacilityApplication.getApplicationFlavor().hasSbc()) {
             String dob = Utils.getValue(commonPersonObject.getColumnmaps(), DBConstants.KEY.DOB, false);
             int age = Utils.getAgeFromDate(dob);

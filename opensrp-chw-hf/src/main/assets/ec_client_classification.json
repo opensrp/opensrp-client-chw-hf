@@ -185,6 +185,58 @@
           },
           {
             "field": "eventType",
+            "field_value": "Vmmc Enrollment",
+            "creates_case": [
+              "ec_vmmc_enrollment"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Close Vmmc Service",
+            "closes_case": [
+              "ec_vmmc_enrollment"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Vmmc Services",
+            "creates_case": [
+              "ec_vmmc_services"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Vmmc Procedure",
+            "creates_case": [
+              "ec_vmmc_procedure"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Vmmc Discharge",
+            "creates_case": [
+              "ec_vmmc_post_op_and_discharge",
+              "ec_vmmc_enrollment"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Vmmc Follow-up Visit",
+            "creates_case": [
+              "ec_vmmc_follow_up_visit",
+              "ec_vmmc_enrollment"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "VMMC Notifiable Adverse Events",
+            "creates_case": [
+              "ec_vmmc_notifiable_ae",
+              "ec_vmmc_enrollment"
+            ]
+          },
+          {
+            "field": "eventType",
             "field_value": "Family Planning Registration",
             "creates_case": [
               "ec_family_planning"

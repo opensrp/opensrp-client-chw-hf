@@ -89,6 +89,12 @@ public class HfClientProcessor extends CoreClientProcessor {
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_STRUCTURAL_SERVICE_VISIT:
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.KVP_OTHER_SERVICE_VISIT:
             case org.smartregister.chw.kvp.util.Constants.EVENT_TYPE.PrEP_FOLLOWUP_VISIT:
+            case org.smartregister.chw.vmmc.util.Constants.EVENT_TYPE.VMMC_SERVICES:
+            case org.smartregister.chw.vmmc.util.Constants.EVENT_TYPE.VMMC_PROCEDURE:
+            case org.smartregister.chw.vmmc.util.Constants.EVENT_TYPE.VMMC_DISCHARGE:
+            case org.smartregister.chw.vmmc.util.Constants.EVENT_TYPE.VMMC_FOLLOW_UP_VISIT:
+            case org.smartregister.chw.vmmc.util.Constants.EVENT_TYPE.VMMC_NOTIFIABLE_EVENTS:
+
             case Constants.EVENT_TYPE.PMTCT_FOLLOWUP:
             case FamilyPlanningConstants.EVENT_TYPE.FP_POINT_OF_SERVICE_DELIVERY:
             case FamilyPlanningConstants.EVENT_TYPE.FP_COUNSELING:

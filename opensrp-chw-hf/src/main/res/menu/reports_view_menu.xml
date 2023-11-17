@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_refresh"
+        android:enabled="true"
+        android:orderInCategory="100"
+        android:title="@string/syncing"
+        android:icon="@drawable/ic_icon_synchronize"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_print"
         android:enabled="true"
         android:orderInCategory="100"

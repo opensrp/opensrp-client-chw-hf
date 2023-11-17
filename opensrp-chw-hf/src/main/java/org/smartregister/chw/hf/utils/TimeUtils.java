@@ -3,8 +3,8 @@ package org.smartregister.chw.hf.utils;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
-import java.util.Date;
 import java.util.Calendar;
+import java.util.Date;
 
 public class TimeUtils {
 
