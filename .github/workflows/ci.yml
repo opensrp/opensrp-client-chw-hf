@@ -26,6 +26,8 @@ jobs:
         run: chmod +x gradlew
       - name: Run unit tests with Gradle
         run: ./gradlew :opensrp-chw-hf:clean :opensrp-chw-hf:jacocoTestReport  --stacktrace
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Upload coverage to Coveralls with Gradle
         run: ./gradlew coveralls --stacktrace
         env:
