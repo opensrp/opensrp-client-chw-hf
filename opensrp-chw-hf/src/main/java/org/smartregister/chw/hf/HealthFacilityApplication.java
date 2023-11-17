@@ -267,15 +267,23 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             CdpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         }
 
-        //setup referral library
-        ReferralLibrary.init(this);
-        ReferralLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
-        ReferralLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        try {
+            //setup referral library
+            ReferralLibrary.init(this);
+            ReferralLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+            ReferralLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
-        //Setup hiv library
-        HivLibrary.init(this);
-        HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
-        HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        try {
+            //Setup hiv library
+            HivLibrary.init(this);
+            HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+            HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         //Setup hivst library
         if (flavor.hasHivst()) {
@@ -286,10 +294,14 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             KvpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         }
 
-        //Setup tb library
-        TbLibrary.init(this);
-        TbLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
-        TbLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        try {
+            //Setup tb library
+            TbLibrary.init(this);
+            TbLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+            TbLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         //Setup pmtct library
         PmtctLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
