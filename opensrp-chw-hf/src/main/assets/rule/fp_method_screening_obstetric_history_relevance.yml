@@ -1,0 +1,70 @@
+---
+name: step1_number_of_miscarriages
+description: number_of_miscarriages relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0"
+actions:
+  - "isRelevant = true"
+---
+name: step1_number_still_births
+description: number_still_births relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_number_live_births
+description: number_live_births relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_number_children_alive
+description: number_children_alive relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_date_last_delivery
+description: date_last_delivery relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_mode_of_delivery
+description: mode_of_delivery relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_place_of_delivery
+description: place_of_delivery relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_outcome
+description: outcome relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_is_client_breastfeeding
+description: is_client_breastfeeding relevance
+priority: 1
+condition: "step1_number_of_pregnancies > 0 && ((step1_number_of_pregnancies - step1_number_of_miscarriages) > 0)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_type_of_child_death
+description: type_of_child_death relevance
+priority: 1
+condition: "step1_outcome.equals('death')"
+actions:
+  - "isRelevant = true"

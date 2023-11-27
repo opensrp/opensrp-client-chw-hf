@@ -1,0 +1,454 @@
+{
+  "count": "1",
+  "encounter_type": "Obstestric History",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Historia ya Ujauzito",
+    "fields": [
+      {
+        "key": "number_of_pregnancies",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_pregnancies",
+        "hint": "Idadi jumla ya Ujauzito",
+        "type": "edit_text",
+        "v_min": {
+          "value": "0",
+          "err": "Namba ya Ujauzito lazima iwe sawa au kubwa kuliko 0"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "Namba ya Ujauzito lazima iwe sawa au chini ya 20"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya ujauzito"
+        }
+      },
+      {
+        "key": "number_of_miscarriages",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_of_miscarriages",
+        "hint": "Idadi ya Mimba Zilizoharibika",
+        "type": "edit_text",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Namba ya Mimba Zilizoharibika lazima iwe sawa au kubwa kuliko 0"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "Namba ya Mimba Zilizoharibika lazima iwe sawa au chini ya 20"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya mimba zilizoharibika"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
+            "err": "Jumla ya thamani ya mimba zilizoharibika lazima iwe chini ya jumla ya thamani ya ujauzito"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_still_births",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_still_births",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Idadi ya Watoto Waliokufa Kabla ya Kuzaliwa",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
+        },
+        "v_max_length": {
+          "value": "2",
+          "is_fixed_size": "true",
+          "err": "Tafadhali ingiza idadi sahihi ya watoto waliofariki kabla ya kuzaliwa"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
+            "err": "Idadi jumla ya watoto waliokufa kabla ya kuzaliwa lazima iwe chini au sawa na idadi jumla ya ujauzito"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+
+      },
+      {
+        "key": "number_live_births",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_live_births",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Idadi ya Watoto Walioko Hai Waliozaliwa",
+        "v_min": {
+          "value": "0",
+          "err": "Namba ya Watoto Waliozaliwa Hai lazima iwe sawa au kubwa kuliko 0"
+        },
+        "v_max": {
+          "value": "20",
+          "err": "Namba ya Watoto Waliozaliwa Hai lazima iwe sawa au chini ya 20"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza namba ya watoto waliozaliwa hai"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
+        },
+        "v_max_length": {
+          "value": "2",
+          "is_fixed_size": "true",
+          "err": "Tafadhali ingiza idadi sahihi ya watoto waliozaliwa hai"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
+            "err": "Namba jumla ya watoto waliozaliwa hai lazima iwe chini au sawa na namba jumla ya ujauzito"
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "number_children_alive",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "number_children_alive",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Idadi ya Watoto Wanaoishi",
+        "v_min": {
+          "value": "0",
+          "err": "Namba ya watoto walio hai lazima iwe sawa au kubwa kuliko 0."
+        },
+        "v_max": {
+          "value": "20",
+          "err": "Namba ya watoto walio hai lazima iwe sawa au chini ya 20.\""
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya watoto walio hai"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
+        },
+        "v_max_length": {
+          "value": "2",
+          "is_fixed_size": "true",
+          "err": "Tafadhali ingiza idadi sahihi ya watoto walio hai"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThanEqualTo(., step1:number_of_pregnancies)",
+            "err": "Idai jumla ya watoto walio hai lazima iwe chini au sawa na idadi jumla ya ujauzito."
+          }
+        ],
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "date_last_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "date_last_delivery",
+        "type": "date_picker",
+        "expanded": false,
+        "max_date": "today",
+        "hint": "Tarehe ya Kujifungua Mara ya mwisho",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Chagua"
+        },
+
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "mode_of_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mode_of_delivery",
+        "type": "native_radio",
+        "label": "Njia ya Kujifungua",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "svd",
+            "text": "SVD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "svd"
+          },
+          {
+            "key": "cs",
+            "text": "CS",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cs"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "place_of_delivery",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "place_of_delivery",
+        "type": "native_radio",
+        "label": "Mahali pa kujifungulia",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "facility",
+            "text": "Kituoni",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "facility"
+          },
+          {
+            "key": "home_delivery",
+            "text": "Kujifungulia Nyumbani",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "home_delivery"
+          },
+          {
+            "key": "birth_before_arrival",
+            "text": "Kujifungua Kabla ya Kufika Huduma ya Matibabu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "birth_before_arrival"
+          },
+          {
+            "key": "tba",
+            "text": "TBA",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tba"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "outcome",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "outcome",
+        "type": "native_radio",
+        "label": "Outcome",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "alive",
+            "text": "Hai",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "alive"
+          },
+          {
+            "key": "death",
+            "text": "Kifo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "death"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "type_of_child_death",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "type_of_child_death",
+        "type": "native_radio",
+        "label": "Type of death",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "fsb",
+            "text": "FSB",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "fsb"
+          },
+          {
+            "key": "msb",
+            "text": "MSB",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "msb"
+          },
+          {
+            "key": "early_neonatal_death",
+            "text": "Early neonatal death",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "early_neonatal_death"
+          },
+          {
+            "key": "late_neonatal_death",
+            "text": "Late neonatal death",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "late_neonatal_death"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "is_client_breastfeeding",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "is_client_breastfeeding",
+        "type": "native_radio",
+        "label": "Je, mteja ananyonyesha?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Chagua"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_obstetric_history_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+
+---
+name: step1_ctc_number
+description: ctc_number relevance
+priority: 1
+condition: "step1_client_medical_history.contains('on_art')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_specify_other_condition
+description: specify_other_condition relevance
+priority: 1
+condition: "step1_client_medical_history.contains('other')"
+actions:
+  - "isRelevant = true"

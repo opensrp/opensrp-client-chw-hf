@@ -244,7 +244,7 @@
           },
           {
             "field": "eventType",
-            "field_value": "Family Planning Change Method",
+            "field_value": "Provide FP method",
             "creates_case": [
               "ec_family_planning"
             ]
@@ -877,6 +877,13 @@
             ]
           },
           {
+            "field":"eventType",
+            "field_value": "ANC Partner Community Followup Referral",
+            "creates_case": [
+              "ec_anc_partner_community_followup"
+            ]
+          },
+          {
             "field": "eventType",
             "field_value": "ANC Partner Community Followup Feedback",
             "creates_case": [
@@ -1023,6 +1030,86 @@
             "creates_case": [
               "ec_prep_register",
               "ec_prep_followup"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Point of Service Delivery",
+            "creates_case": [
+              "ec_fp_point_of_service_delivery"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Screening",
+            "creates_case": [
+              "ec_fp_screening",
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Provide FP Counseling",
+            "creates_case": [
+              "ec_fp_counseling",
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "Provide FP method",
+            "creates_case": [
+              "ec_fp_provision_of_method",
+              "ec_family_planning"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Other Services",
+            "creates_case": [
+              "ec_fp_other_services"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP Follow-up Visit",
+            "creates_case": [
+              "ec_fp_follow_up_visit"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP ECP Screening",
+            "creates_case": [
+              "ec_fp_ecp_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP ECP Provision",
+            "creates_case": [
+              "ec_fp_ecp_provision"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "FP ECP Provision",
+            "closes_case": [
+              "ec_fp_ecp_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "SBC Enrollment",
+            "creates_case": [
+              "ec_sbc_register"
+            ]
+          },
+          {
+            "field": "eventType",
+            "field_value": "SBC Follow-up Visit",
+            "creates_case": [
+              "ec_sbc_visit"
             ]
           }
         ]

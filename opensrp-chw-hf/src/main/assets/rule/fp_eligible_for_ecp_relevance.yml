@@ -1,0 +1,32 @@
+---
+name: step1_specify_other_incident
+description: specify_other_incident relevance
+priority: 1
+condition: "step1_type_of_incident.equalsIgnoreCase('other')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_provide_ecp_incidence_prompt
+description: provide_ecp_incidence_prompt relevance
+priority: 1
+condition: "step1_when_did_incidence_occur.equalsIgnoreCase('1_3_days') ||
+            step1_when_did_incidence_occur.equalsIgnoreCase('4_5_days')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_ecp_eligibility
+description: ecp_eligibility calculation
+priority: 1
+condition: "!step1_when_did_incidence_occur.isEmpty()"
+actions:
+  - "calculation = step1_when_did_incidence_occur.equalsIgnoreCase('1_3_days') || step1_when_did_incidence_occur.equalsIgnoreCase('4_5_days')"
+
+---
+name: step1_client_to_prompt
+description: client_to_prompt relevance
+priority: 1
+condition: "step1_when_did_incidence_occur.equalsIgnoreCase('more_than_5_days')"
+actions:
+  - "isRelevant = true"

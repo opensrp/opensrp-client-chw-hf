@@ -215,14 +215,14 @@ public class LoginActivityTest extends BaseActivityUnitTest {
     public void testGoToHomeRegisterWithRemoteTrue() {
         LoginActivity spyActivity = Mockito.spy(loginActivity);
         spyActivity.goToHome(true);
-        assertActivityStarted(spyActivity, new FamilyRegisterActivity());
+        assertActivityStarted(spyActivity, new AllClientsRegisterActivity());
     }
 
     @Test
     public void testGoToHomeRegisterWithRemote() {
         LoginActivity spyActivity = Mockito.spy(loginActivity);
         spyActivity.goToHome(false);
-        assertActivityStarted(spyActivity, new FamilyRegisterActivity());
+        assertActivityStarted(spyActivity, new AllClientsRegisterActivity());
     }
 
 }

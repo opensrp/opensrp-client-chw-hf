@@ -1,0 +1,29 @@
+---
+name: step1_breast_condition_prompt
+description: breast_condition_prompt relevance
+priority: 1
+condition: "step1_breast_condition.contains('lamp') || step1_breast_condition.contains('sore') || step1_breast_condition.contains('discoloration') || step1_breast_condition.contains('blood_discharge') || step1_breast_condition.contains('absess') || step1_breast_condition.contains('other')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_specify_other_condition
+description: specify_other_condition relevance
+priority: 1
+condition: "step1_breast_condition.contains('other')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_prompt_for_management_of_hypertension
+description: prompt_for_management_of_hypertension
+priority: 1
+condition: "(!step1_systolic.equals('') && step1_systolic >= 140) || (!step1_diastolic.equals('') && step1_diastolic >= 90)"
+actions:
+  - "isRelevant = true"
+---
+name: step1_prompt_for_management_of_hypotension
+description: prompt_for_management_of_hypotension
+priority: 1
+condition: "(!step1_systolic.equals('') && step1_systolic < 90) || (!step1_diastolic.equals('') && step1_diastolic < 60)"
+actions:
+  - "isRelevant = true"

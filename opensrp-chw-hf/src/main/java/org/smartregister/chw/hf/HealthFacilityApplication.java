@@ -47,6 +47,7 @@ import org.smartregister.chw.hf.activity.PncRegisterActivity;
 import org.smartregister.chw.hf.activity.PrEPRegisterActivity;
 import org.smartregister.chw.hf.activity.ReferralRegisterActivity;
 import org.smartregister.chw.hf.activity.ReportsActivity;
+import org.smartregister.chw.hf.activity.SbcRegisterActivity;
 import org.smartregister.chw.hf.activity.VmmcRegisterActivity;
 import org.smartregister.chw.hf.configs.AllClientsRegisterRowOptions;
 import org.smartregister.chw.hf.custom_view.FacilityMenu;
@@ -66,6 +67,7 @@ import org.smartregister.chw.malaria.MalariaLibrary;
 import org.smartregister.chw.pmtct.PmtctLibrary;
 import org.smartregister.chw.pnc.PncLibrary;
 import org.smartregister.chw.referral.ReferralLibrary;
+import org.smartregister.chw.sbc.SbcLibrary;
 import org.smartregister.chw.tb.TbLibrary;
 import org.smartregister.chw.vmmc.VmmcLibrary;
 import org.smartregister.commonregistry.CommonFtsObject;
@@ -150,9 +152,11 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.KVP_REGISTER_ACTIVITY, KvpRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.PrEP_REGISTER_ACTIVITY, PrEPRegisterActivity.class);
             registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.CDP_REGISTER_ACTIVITY, CdpRegisterActivity.class);
-//          TODO uncomment these when NACP is ready to test these modules
-            //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.FP_REGISTER_ACTIVITY, FpRegisterActivity.class);
+            registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.SBC_REGISTER_ACTIVITY, SbcRegisterActivity.class);
         }
+//          TODO uncomment these when NACP is ready to test these modules
+        //registeredActivities.put(CoreConstants.REGISTERED_ACTIVITIES.TB_REGISTER_ACTIVITY, TbRegisterActivity.class);
         return registeredActivities;
     }
 
@@ -263,15 +267,23 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             CdpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         }
 
-        //setup referral library
-        ReferralLibrary.init(this);
-        ReferralLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
-        ReferralLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        try {
+            //setup referral library
+            ReferralLibrary.init(this);
+            ReferralLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+            ReferralLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
-        //Setup hiv library
-        HivLibrary.init(this);
-        HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
-        HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        try {
+            //Setup hiv library
+            HivLibrary.init(this);
+            HivLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+            HivLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         //Setup hivst library
         if (flavor.hasHivst()) {
@@ -282,10 +294,14 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
             KvpLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         }
 
-        //Setup tb library
-        TbLibrary.init(this);
-        TbLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
-        TbLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        try {
+            //Setup tb library
+            TbLibrary.init(this);
+            TbLibrary.getInstance().setAppVersion(BuildConfig.VERSION_CODE);
+            TbLibrary.getInstance().setDatabaseVersion(BuildConfig.DATABASE_VERSION);
+        } catch (Exception e) {
+            Timber.e(e);
+        }
 
         //Setup pmtct library
         PmtctLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
@@ -293,6 +309,10 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         //Setup L&D library
         if (flavor.hasLD()) {
             LDLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
+        }
+
+        if (flavor.hasSbc()) {
+            SbcLibrary.init(context, getRepository(), BuildConfig.VERSION_CODE, BuildConfig.DATABASE_VERSION);
         }
 
         //Needed for all clients register
@@ -320,7 +340,9 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
         FamilyLibrary.getInstance().setClientProcessorForJava(HfClientProcessor.getInstance(getApplicationContext()));
 
         //initialize Map
-        initializeMapBox();
+        if (getApplicationFlavor().hasMap()) {
+            initializeMapBox();
+        }
     }
 
     protected void initializeMapBox() {
@@ -396,9 +418,14 @@ public class HealthFacilityApplication extends CoreChwApplication implements Cor
 
         boolean hasVmmc();
 
+        boolean hasFp();
 
         boolean hasLD();
 
         boolean hasChildModule();
+
+        boolean hasSbc();
+
+        boolean hasMap();
     }
 }

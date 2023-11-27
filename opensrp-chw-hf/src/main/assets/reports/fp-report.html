@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.show-on-print {
+  display: none;
+}
+body{
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10px;
+    margin-right: 10px;
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: normal;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    padding: 5px;
+}
+
+.table-th-color {
+    background-color: #55efc4;
+}
+
+.table-total-color {
+    background-color: #74b9ff;
+}
+
+.category-color {
+    background-color: #74b65f;
+}
+
+.table-category-color {
+    background-color: #f39c12;
+}
+
+
+ul {
+    width: 100%;
+}
+ul li {
+    width: 49%;
+    display: inline-block;
+}
+
+ul li > * {
+    width: 30%;
+    margin-bottom: 5px;
+}
+
+.no-data {
+  background: #ccc;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+#reporting_facility {
+  font-weight: 700;
+}
+#report_period {
+  font-weight: 700;
+}
+
+@media print {
+  .show-on-print {
+    display: block;
+  }
+
+  .child-table {
+    width: 50%;
+  }
+}
+</style>
+</head>
+
+<body onload="loadData(&#39;monthly&#39;, &#39;anc&#39;)">
+<div class="show-on-print" style="font-size:12px;">
+    <h1> FAMILY PLANNING MONTHLY REPORT FORM</h1>
+    <h2>REPORT OF [MONTH/YEAR]: <span id="report_period"></span></h2>
+    <h2>CENTER: <span id="reporting_facility"></span></h2>
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>SN</th>
+            <th rowspan="1" colspan="3">INDICATORS</th>
+            <td colspan="14" align="center" class="table-th-color bold-text">CLIENT CATEGORY</td>
+            <th rowspan="1" colspan="2">GRAND TOTAL</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th rowspan="1" colspan="3"></th>
+            <td colspan="7" align="center" class="table-category-color bold-text" >New client</td>
+            <td colspan="7" align="center" class="table-category-color bold-text">Re-visit client</td>
+            <th rowspan="1" colspan="2"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <tr>
+            <th rowspan="2"></th>
+            <th rowspan="2" colspan="3"></th>
+        </tr>
+        <th>10-14 Years</th>
+        <th>15-19 Years</th>
+        <th>20-24 Years</th>
+        <th>25-25 Years</th>
+        <th>30-34 Years</th>
+        <th>35+ Years</th>
+        <th class="table-total-color">TOTAL New client</th>
+        <th>10-14 Years</th>
+        <th>15-19 Years</th>
+        <th>20-24 Years</th>
+        <th>25-29 Years</th>
+        <th>30-34 Years</th>
+        <th>35+ Years</th>
+        <th class="table-total-color">TOTAL Re-visit client</th>
+        <td align="center" colspan="2"></td>
+        </tr>
+        <tr>
+            <th class="bold-text no-data">1</th>
+            <td colspan="3" class="no-data">Number of clients counselled on family planning services</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>1a</th>
+            <td colspan="3">Male</td>
+            <td align="center" id="fp-1a-nc-10-14"></td>
+            <td align="center" id="fp-1a-nc-15-19"></td>
+            <td align="center" id="fp-1a-nc-20-24"></td>
+            <td align="center" id="fp-1a-nc-25-29"></td>
+            <td align="center" id="fp-1a-nc-30-34"></td>
+            <td align="center" id="fp-1a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-1a-nc-total"></td>
+            <td align="center" id="fp-1a-rc-10-14"></td>
+            <td align="center" id="fp-1a-rc-15-19"></td>
+            <td align="center" id="fp-1a-rc-20-24"></td>
+            <td align="center" id="fp-1a-rc-25-29"></td>
+            <td align="center" id="fp-1a-rc-30-34"></td>
+            <td align="center" id="fp-1a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-1a-rc-total"></td>
+            <td align="center" id="fp-1a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>1b</th>
+            <td colspan="3">Female</td>
+            <td align="center" id="fp-1b-nc-10-14"></td>
+            <td align="center" id="fp-1b-nc-15-19"></td>
+            <td align="center" id="fp-1b-nc-20-24"></td>
+            <td align="center" id="fp-1b-nc-25-29"></td>
+            <td align="center" id="fp-1b-nc-30-34"></td>
+            <td align="center" id="fp-1b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-1b-nc-total"></td>
+            <td align="center" id="fp-1b-rc-10-14"></td>
+            <td align="center" id="fp-1b-rc-15-19"></td>
+            <td align="center" id="fp-1b-rc-20-24"></td>
+            <td align="center" id="fp-1b-rc-25-29"></td>
+            <td align="center" id="fp-1b-rc-30-34"></td>
+            <td align="center" id="fp-1b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-1b-rc-total"></td>
+            <td align="center" id="fp-1b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>1c</th>
+            <td colspan="3">Number of couples counselled on family planning services</td>
+            <td align="center" id="fp-1c-nc-10-14"></td>
+            <td align="center" id="fp-1c-nc-15-19"></td>
+            <td align="center" id="fp-1c-nc-20-24"></td>
+            <td align="center" id="fp-1c-nc-25-29"></td>
+            <td align="center" id="fp-1c-nc-30-34"></td>
+            <td align="center" id="fp-1c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-1c-nc-total"></td>
+            <td align="center" id="fp-1c-rc-10-14"></td>
+            <td align="center" id="fp-1c-rc-15-19"></td>
+            <td align="center" id="fp-1c-rc-20-24"></td>
+            <td align="center" id="fp-1c-rc-25-29"></td>
+            <td align="center" id="fp-1c-rc-30-34"></td>
+            <td align="center" id="fp-1c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-1c-rc-total"></td>
+            <td align="center" id="fp-1c-grand-total"></td>
+        </tr>
+        <tr>
+            <th class="no-data bold-text">2</th>
+            <td colspan="3" class="no-data bold-text">Number of clients received family planning methods</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>2a</th>
+            <td colspan="3">Number of clients received family planning methods at RCH</td>
+            <td align="center" id="fp-2a-nc-10-14"></td>
+            <td align="center" id="fp-2a-nc-15-19"></td>
+            <td align="center" id="fp-2a-nc-20-24"></td>
+            <td align="center" id="fp-2a-nc-25-29"></td>
+            <td align="center" id="fp-2a-nc-30-34"></td>
+            <td align="center" id="fp-2a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2a-nc-total"></td>
+            <td align="center" id="fp-2a-rc-10-14"></td>
+            <td align="center" id="fp-2a-rc-15-19"></td>
+            <td align="center" id="fp-2a-rc-20-24"></td>
+            <td align="center" id="fp-2a-rc-25-29"></td>
+            <td align="center" id="fp-2a-rc-30-34"></td>
+            <td align="center" id="fp-2a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2a-rc-total"></td>
+            <td align="center" id="fp-2a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>2b</th>
+            <td colspan="3">Number of clients received family planning methods at CTC</td>
+            <td align="center" id="fp-2b-nc-10-14"></td>
+            <td align="center" id="fp-2b-nc-15-19"></td>
+            <td align="center" id="fp-2b-nc-20-24"></td>
+            <td align="center" id="fp-2b-nc-25-29"></td>
+            <td align="center" id="fp-2b-nc-30-34"></td>
+            <td align="center" id="fp-2b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2b-nc-total"></td>
+            <td align="center" id="fp-2b-rc-10-14"></td>
+            <td align="center" id="fp-2b-rc-15-19"></td>
+            <td align="center" id="fp-2b-rc-20-24"></td>
+            <td align="center" id="fp-2b-rc-25-29"></td>
+            <td align="center" id="fp-2b-rc-30-34"></td>
+            <td align="center" id="fp-2b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2b-rc-total"></td>
+            <td align="center" id="fp-2b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>2c</th>
+            <td colspan="3">The number of clients who received FP services through outreach</td>
+            <td align="center" id="fp-2c-nc-10-14"></td>
+            <td align="center" id="fp-2c-nc-15-19"></td>
+            <td align="center" id="fp-2c-nc-20-24"></td>
+            <td align="center" id="fp-2c-nc-25-29"></td>
+            <td align="center" id="fp-2c-nc-30-34"></td>
+            <td align="center" id="fp-2c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2c-nc-total"></td>
+            <td align="center" id="fp-2c-rc-10-14"></td>
+            <td align="center" id="fp-2c-rc-15-19"></td>
+            <td align="center" id="fp-2c-rc-20-24"></td>
+            <td align="center" id="fp-2c-rc-25-29"></td>
+            <td align="center" id="fp-2c-rc-30-34"></td>
+            <td align="center" id="fp-2c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2c-rc-total"></td>
+            <td align="center" id="fp-2c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>2d</th>
+            <td colspan="3">The number of clients who received services through community-based services (CBD)</td>
+            <td align="center" id="fp-2d-nc-10-14"></td>
+            <td align="center" id="fp-2d-nc-15-19"></td>
+            <td align="center" id="fp-2d-nc-20-24"></td>
+            <td align="center" id="fp-2d-nc-25-29"></td>
+            <td align="center" id="fp-2d-nc-30-34"></td>
+            <td align="center" id="fp-2d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2d-nc-total"></td>
+            <td align="center" id="fp-2d-rc-10-14"></td>
+            <td align="center" id="fp-2d-rc-15-19"></td>
+            <td align="center" id="fp-2d-rc-20-24"></td>
+            <td align="center" id="fp-2d-rc-25-29"></td>
+            <td align="center" id="fp-2d-rc-30-34"></td>
+            <td align="center" id="fp-2d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-2d-rc-total"></td>
+            <td align="center" id="fp-2d-grand-total"></td>
+        </tr>
+        <tr>
+            <th class="no-data bold-text">3</th>
+            <td colspan="3" class="no-data bold-text">Injection</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>3a</th>
+            <td colspan="3">Number of clients who received an injectable contraceptive at facility</td>
+            <td align="center" id="fp-3a-nc-10-14"></td>
+            <td align="center" id="fp-3a-nc-15-19"></td>
+            <td align="center" id="fp-3a-nc-20-24"></td>
+            <td align="center" id="fp-3a-nc-25-29"></td>
+            <td align="center" id="fp-3a-nc-30-34"></td>
+            <td align="center" id="fp-3a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-3a-nc-total"></td>
+            <td align="center" id="fp-3a-rc-10-14"></td>
+            <td align="center" id="fp-3a-rc-15-19"></td>
+            <td align="center" id="fp-3a-rc-20-24"></td>
+            <td align="center" id="fp-3a-rc-25-29"></td>
+            <td align="center" id="fp-3a-rc-30-34"></td>
+            <td align="center" id="fp-3a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-3a-rc-total"></td>
+            <td align="center" id="fp-3a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>3b</th>
+            <td colspan="3">Number of clients who received an injectable contraceptive- outreach</td>
+            <td align="center" id="fp-3b-nc-10-14"></td>
+            <td align="center" id="fp-3b-nc-15-19"></td>
+            <td align="center" id="fp-3b-nc-20-24"></td>
+            <td align="center" id="fp-3b-nc-25-29"></td>
+            <td align="center" id="fp-3b-nc-30-34"></td>
+            <td align="center" id="fp-3b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-3b-nc-total"></td>
+            <td align="center" id="fp-3b-rc-10-14"></td>
+            <td align="center" id="fp-3b-rc-15-19"></td>
+            <td align="center" id="fp-3b-rc-20-24"></td>
+            <td align="center" id="fp-3b-rc-25-29"></td>
+            <td align="center" id="fp-3b-rc-30-34"></td>
+            <td align="center" id="fp-3b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-3b-rc-total"></td>
+            <td align="center" id="fp-3b-grand-total"></td>
+        </tr>
+        <tr>
+            <th class="no-data bold-text">4</th>
+            <td colspan="3" class="no-data bold-text">Combined Oral Contraceptive </td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>4a</th>
+            <td colspan="3">Number of clients provided with combined oral contraceptive methods at facility (COC)</td>
+            <td align="center" id="fp-4a-nc-10-14"></td>
+            <td align="center" id="fp-4a-nc-15-19"></td>
+            <td align="center" id="fp-4a-nc-20-24"></td>
+            <td align="center" id="fp-4a-nc-25-29"></td>
+            <td align="center" id="fp-4a-nc-30-34"></td>
+            <td align="center" id="fp-4a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4a-nc-total"></td>
+            <td align="center" id="fp-4a-rc-10-14"></td>
+            <td align="center" id="fp-4a-rc-15-19"></td>
+            <td align="center" id="fp-4a-rc-20-24"></td>
+            <td align="center" id="fp-4a-rc-25-29"></td>
+            <td align="center" id="fp-4a-rc-30-34"></td>
+            <td align="center" id="fp-4a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4a-rc-total"></td>
+            <td align="center" id="fp-4a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>4b</th>
+            <td colspan="3">Number of clients provided with oral contraceptive methods at facility (POP)</td>
+            <td align="center" id="fp-4b-nc-10-14"></td>
+            <td align="center" id="fp-4b-nc-15-19"></td>
+            <td align="center" id="fp-4b-nc-20-24"></td>
+            <td align="center" id="fp-4b-nc-25-29"></td>
+            <td align="center" id="fp-4b-nc-30-34"></td>
+            <td align="center" id="fp-4b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4b-nc-total"></td>
+            <td align="center" id="fp-4b-rc-10-14"></td>
+            <td align="center" id="fp-4b-rc-15-19"></td>
+            <td align="center" id="fp-4b-rc-20-24"></td>
+            <td align="center" id="fp-4b-rc-25-29"></td>
+            <td align="center" id="fp-4b-rc-30-34"></td>
+            <td align="center" id="fp-4b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4b-rc-total"></td>
+            <td align="center" id="fp-4b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>4c</th>
+            <td colspan="3">Number of clients provided with combined oral contraceptive methods-outreach</td>
+            <td align="center" id="fp-4c-nc-10-14"></td>
+            <td align="center" id="fp-4c-nc-15-19"></td>
+            <td align="center" id="fp-4c-nc-20-24"></td>
+            <td align="center" id="fp-4c-nc-25-29"></td>
+            <td align="center" id="fp-4c-nc-30-34"></td>
+            <td align="center" id="fp-4c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4c-nc-total"></td>
+            <td align="center" id="fp-4c-rc-10-14"></td>
+            <td align="center" id="fp-4c-rc-15-19"></td>
+            <td align="center" id="fp-4c-rc-20-24"></td>
+            <td align="center" id="fp-4c-rc-25-29"></td>
+            <td align="center" id="fp-4c-rc-30-34"></td>
+            <td align="center" id="fp-4c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4c-rc-total"></td>
+            <td align="center" id="fp-4c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>4d</th>
+            <td colspan="3">Number of clients provided with oral contraceptive methods-Outreach(POP)</td>
+            <td align="center" id="fp-4d-nc-10-14"></td>
+            <td align="center" id="fp-4d-nc-15-19"></td>
+            <td align="center" id="fp-4d-nc-20-24"></td>
+            <td align="center" id="fp-4d-nc-25-29"></td>
+            <td align="center" id="fp-4d-nc-30-34"></td>
+            <td align="center" id="fp-4d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4d-nc-total"></td>
+            <td align="center" id="fp-4d-rc-10-14"></td>
+            <td align="center" id="fp-4d-rc-15-19"></td>
+            <td align="center" id="fp-4d-rc-20-24"></td>
+            <td align="center" id="fp-4d-rc-25-29"></td>
+            <td align="center" id="fp-4d-rc-30-34"></td>
+            <td align="center" id="fp-4d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4d-rc-total"></td>
+            <td align="center" id="fp-4d-grand-total"></td>
+        </tr>
+        <tr>
+            <th>4e</th>
+            <td colspan="3">Number of clients provided with combined oral contraceptive methods at community (COC)</td>
+            <td align="center" id="fp-4e-nc-10-14"></td>
+            <td align="center" id="fp-4e-nc-15-19"></td>
+            <td align="center" id="fp-4e-nc-20-24"></td>
+            <td align="center" id="fp-4e-nc-25-29"></td>
+            <td align="center" id="fp-4e-nc-30-34"></td>
+            <td align="center" id="fp-4e-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4e-nc-total"></td>
+            <td align="center" id="fp-4e-rc-10-14"></td>
+            <td align="center" id="fp-4e-rc-15-19"></td>
+            <td align="center" id="fp-4e-rc-20-24"></td>
+            <td align="center" id="fp-4e-rc-25-29"></td>
+            <td align="center" id="fp-4e-rc-30-34"></td>
+            <td align="center" id="fp-4e-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4e-rc-total"></td>
+            <td align="center" id="fp-4e-grand-total"></td>
+        </tr>
+        <tr>
+            <th>4f</th>
+            <td colspan="3">Number of clients provided with oral contraceptive methods at community (POP)</td>
+            <td align="center" id="fp-4f-nc-10-14"></td>
+            <td align="center" id="fp-4f-nc-15-19"></td>
+            <td align="center" id="fp-4f-nc-20-24"></td>
+            <td align="center" id="fp-4f-nc-25-29"></td>
+            <td align="center" id="fp-4f-nc-30-34"></td>
+            <td align="center" id="fp-4f-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4f-nc-total"></td>
+            <td align="center" id="fp-4f-rc-10-14"></td>
+            <td align="center" id="fp-4f-rc-15-19"></td>
+            <td align="center" id="fp-4f-rc-20-24"></td>
+            <td align="center" id="fp-4f-rc-25-29"></td>
+            <td align="center" id="fp-4f-rc-30-34"></td>
+            <td align="center" id="fp-4f-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-4f-rc-total"></td>
+            <td align="center" id="fp-4f-grand-total"></td>
+        </tr>
+            <th class="no-data bold-text">5</th>
+            <td colspan="3" class="no-data bold-text">Condom</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>5a</th>
+            <td colspan="3">Number of clients distributed with male condoms at facility.</td>
+            <td align="center" id="fp-5a-nc-10-14"></td>
+            <td align="center" id="fp-5a-nc-15-19"></td>
+            <td align="center" id="fp-5a-nc-20-24"></td>
+            <td align="center" id="fp-5a-nc-25-29"></td>
+            <td align="center" id="fp-5a-nc-30-34"></td>
+            <td align="center" id="fp-5a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5a-nc-total"></td>
+            <td align="center" id="fp-5a-rc-10-14"></td>
+            <td align="center" id="fp-5a-rc-15-19"></td>
+            <td align="center" id="fp-5a-rc-20-24"></td>
+            <td align="center" id="fp-5a-rc-25-29"></td>
+            <td align="center" id="fp-5a-rc-30-34"></td>
+            <td align="center" id="fp-5a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5a-rc-total"></td>
+            <td align="center" id="fp-5a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>5b</th>
+            <td colspan="3">Number of clients distributed with female condoms at facility.</td>
+            <td align="center" id="fp-5b-nc-10-14"></td>
+            <td align="center" id="fp-5b-nc-15-19"></td>
+            <td align="center" id="fp-5b-nc-20-24"></td>
+            <td align="center" id="fp-5b-nc-25-29"></td>
+            <td align="center" id="fp-5b-nc-30-34"></td>
+            <td align="center" id="fp-5b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5b-nc-total"></td>
+            <td align="center" id="fp-5b-rc-10-14"></td>
+            <td align="center" id="fp-5b-rc-15-19"></td>
+            <td align="center" id="fp-5b-rc-20-24"></td>
+            <td align="center" id="fp-5b-rc-25-29"></td>
+            <td align="center" id="fp-5b-rc-30-34"></td>
+            <td align="center" id="fp-5b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5b-rc-total"></td>
+            <td align="center" id="fp-5b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>5c</th>
+            <td colspan="3">Number of clients distributed with male condoms-outreach.</td>
+            <td align="center" id="fp-5c-nc-10-14"></td>
+            <td align="center" id="fp-5c-nc-15-19"></td>
+            <td align="center" id="fp-5c-nc-20-24"></td>
+            <td align="center" id="fp-5c-nc-25-29"></td>
+            <td align="center" id="fp-5c-nc-30-34"></td>
+            <td align="center" id="fp-5c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5c-nc-total"></td>
+            <td align="center" id="fp-5c-rc-10-14"></td>
+            <td align="center" id="fp-5c-rc-15-19"></td>
+            <td align="center" id="fp-5c-rc-20-24"></td>
+            <td align="center" id="fp-5c-rc-25-29"></td>
+            <td align="center" id="fp-5c-rc-30-34"></td>
+            <td align="center" id="fp-5c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5c-rc-total"></td>
+            <td align="center" id="fp-5c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>5d</th>
+            <td colspan="3">Number of clients distributed with female condoms-outreach.</td>
+            <td align="center" id="fp-5d-nc-10-14"></td>
+            <td align="center" id="fp-5d-nc-15-19"></td>
+            <td align="center" id="fp-5d-nc-20-24"></td>
+            <td align="center" id="fp-5d-nc-25-29"></td>
+            <td align="center" id="fp-5d-nc-30-34"></td>
+            <td align="center" id="fp-5d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5d-nc-total"></td>
+            <td align="center" id="fp-5d-rc-10-14"></td>
+            <td align="center" id="fp-5d-rc-15-19"></td>
+            <td align="center" id="fp-5d-rc-20-24"></td>
+            <td align="center" id="fp-5d-rc-25-29"></td>
+            <td align="center" id="fp-5d-rc-30-34"></td>
+            <td align="center" id="fp-5d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5d-rc-total"></td>
+            <td align="center" id="fp-5d-grand-total"></td>
+        </tr>
+        <tr>
+            <th>5e</th>
+            <td colspan="3">Number of clients distributed with male condoms at community.</td>
+            <td align="center" id="fp-5e-nc-10-14"></td>
+            <td align="center" id="fp-5e-nc-15-19"></td>
+            <td align="center" id="fp-5e-nc-20-24"></td>
+            <td align="center" id="fp-5e-nc-25-29"></td>
+            <td align="center" id="fp-5e-nc-30-34"></td>
+            <td align="center" id="fp-5e-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5e-nc-total"></td>
+            <td align="center" id="fp-5e-rc-10-14"></td>
+            <td align="center" id="fp-5e-rc-15-19"></td>
+            <td align="center" id="fp-5e-rc-20-24"></td>
+            <td align="center" id="fp-5e-rc-25-29"></td>
+            <td align="center" id="fp-5e-rc-30-34"></td>
+            <td align="center" id="fp-5e-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5e-rc-total"></td>
+            <td align="center" id="fp-5e-grand-total"></td>
+        </tr>
+        <tr>
+            <th>5f</th>
+            <td colspan="3">Number of clients distributed with female condoms at community.</td>
+            <td align="center" id="fp-5f-nc-10-14"></td>
+            <td align="center" id="fp-5f-nc-15-19"></td>
+            <td align="center" id="fp-5f-nc-20-24"></td>
+            <td align="center" id="fp-5f-nc-25-29"></td>
+            <td align="center" id="fp-5f-nc-30-34"></td>
+            <td align="center" id="fp-5f-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5f-nc-total"></td>
+            <td align="center" id="fp-5f-rc-10-14"></td>
+            <td align="center" id="fp-5f-rc-15-19"></td>
+            <td align="center" id="fp-5f-rc-20-24"></td>
+            <td align="center" id="fp-5f-rc-25-29"></td>
+            <td align="center" id="fp-5f-rc-30-34"></td>
+            <td align="center" id="fp-5f-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-5f-rc-total"></td>
+            <td align="center" id="fp-5f-grand-total"></td>
+        </tr>
+        </tr>
+            <th class="no-data bold-text">6</th>
+            <td colspan="3" class="no-data bold-text">Permanent contraceptive methods</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>6a</th>
+            <td colspan="3">Number of women who have undergone sterilization at facility</td>
+            <td align="center" id="fp-6a-nc-10-14"></td>
+            <td align="center" id="fp-6a-nc-15-19"></td>
+            <td align="center" id="fp-6a-nc-20-24"></td>
+            <td align="center" id="fp-6a-nc-25-29"></td>
+            <td align="center" id="fp-6a-nc-30-34"></td>
+            <td align="center" id="fp-6a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6a-nc-total"></td>
+            <td align="center" id="fp-6a-rc-10-14"></td>
+            <td align="center" id="fp-6a-rc-15-19"></td>
+            <td align="center" id="fp-6a-rc-20-24"></td>
+            <td align="center" id="fp-6a-rc-25-29"></td>
+            <td align="center" id="fp-6a-rc-30-34"></td>
+            <td align="center" id="fp-6a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6a-rc-total"></td>
+            <td align="center" id="fp-6a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>6b</th>
+            <td colspan="3">Number of women who have undergone sterilization at facility referred from outreach</td>
+            <td align="center" id="fp-6b-nc-10-14"></td>
+            <td align="center" id="fp-6b-nc-15-19"></td>
+            <td align="center" id="fp-6b-nc-20-24"></td>
+            <td align="center" id="fp-6b-nc-25-29"></td>
+            <td align="center" id="fp-6b-nc-30-34"></td>
+            <td align="center" id="fp-6b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6b-nc-total"></td>
+            <td align="center" id="fp-6b-rc-10-14"></td>
+            <td align="center" id="fp-6b-rc-15-19"></td>
+            <td align="center" id="fp-6b-rc-20-24"></td>
+            <td align="center" id="fp-6b-rc-25-29"></td>
+            <td align="center" id="fp-6b-rc-30-34"></td>
+            <td align="center" id="fp-6b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6b-rc-total"></td>
+            <td align="center" id="fp-6b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>6c</th>
+            <td colspan="3">Number of women who have undergone sterilization at facility referred from community</td>
+            <td align="center" id="fp-6c-nc-10-14"></td>
+            <td align="center" id="fp-6c-nc-15-19"></td>
+            <td align="center" id="fp-6c-nc-20-24"></td>
+            <td align="center" id="fp-6c-nc-25-29"></td>
+            <td align="center" id="fp-6c-nc-30-34"></td>
+            <td align="center" id="fp-6c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6c-nc-total"></td>
+            <td align="center" id="fp-6c-rc-10-14"></td>
+            <td align="center" id="fp-6c-rc-15-19"></td>
+            <td align="center" id="fp-6c-rc-20-24"></td>
+            <td align="center" id="fp-6c-rc-25-29"></td>
+            <td align="center" id="fp-6c-rc-30-34"></td>
+            <td align="center" id="fp-6c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6c-rc-total"></td>
+            <td align="center" id="fp-6c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>6d</th>
+            <td colspan="3">Number of male who have undergone sterilization at facility</td>
+            <td align="center" id="fp-6d-nc-10-14"></td>
+            <td align="center" id="fp-6d-nc-15-19"></td>
+            <td align="center" id="fp-6d-nc-20-24"></td>
+            <td align="center" id="fp-6d-nc-25-29"></td>
+            <td align="center" id="fp-6d-nc-30-34"></td>
+            <td align="center" id="fp-6d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6d-nc-total"></td>
+            <td align="center" id="fp-6d-rc-10-14"></td>
+            <td align="center" id="fp-6d-rc-15-19"></td>
+            <td align="center" id="fp-6d-rc-20-24"></td>
+            <td align="center" id="fp-6d-rc-25-29"></td>
+            <td align="center" id="fp-6d-rc-30-34"></td>
+            <td align="center" id="fp-6d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6d-rc-total"></td>
+            <td align="center" id="fp-6d-grand-total"></td>
+        </tr>
+        <tr>
+            <th>6e</th>
+            <td colspan="3">Number of male who have undergone sterilization at facility referred from outreach</td>
+            <td align="center" id="fp-6e-nc-10-14"></td>
+            <td align="center" id="fp-6e-nc-15-19"></td>
+            <td align="center" id="fp-6e-nc-20-24"></td>
+            <td align="center" id="fp-6e-nc-25-29"></td>
+            <td align="center" id="fp-6e-nc-30-34"></td>
+            <td align="center" id="fp-6e-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6e-nc-total"></td>
+            <td align="center" id="fp-6e-rc-10-14"></td>
+            <td align="center" id="fp-6e-rc-15-19"></td>
+            <td align="center" id="fp-6e-rc-20-24"></td>
+            <td align="center" id="fp-6e-rc-25-29"></td>
+            <td align="center" id="fp-6e-rc-30-34"></td>
+            <td align="center" id="fp-6e-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6e-rc-total"></td>
+            <td align="center" id="fp-6e-grand-total"></td>
+        </tr>
+        <tr>
+            <th>6f</th>
+            <td colspan="3">Number of male who have undergone sterilization at facility referred from community</td>
+            <td align="center" id="fp-6f-nc-10-14"></td>
+            <td align="center" id="fp-6f-nc-15-19"></td>
+            <td align="center" id="fp-6f-nc-20-24"></td>
+            <td align="center" id="fp-6f-nc-25-29"></td>
+            <td align="center" id="fp-6f-nc-30-34"></td>
+            <td align="center" id="fp-6f-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6f-nc-total"></td>
+            <td align="center" id="fp-6f-rc-10-14"></td>
+            <td align="center" id="fp-6f-rc-15-19"></td>
+            <td align="center" id="fp-6f-rc-20-24"></td>
+            <td align="center" id="fp-6f-rc-25-29"></td>
+            <td align="center" id="fp-6f-rc-30-34"></td>
+            <td align="center" id="fp-6f-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-6f-rc-total"></td>
+            <td align="center" id="fp-6f-grand-total"></td>
+        </tr>
+        </tr>
+            <th class="no-data bold-text">7</th>
+            <td colspan="3" class="no-data bold-text">Long-term family planning methods</td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            <td align="center" class="no-data"></td>
+            </tr>
+        <tr>
+            <th>7a</th>
+            <td colspan="3">Number of clients who have been fitted with an IUD (Intrauterine Device) at facility</td>
+            <td align="center" id="fp-7a-nc-10-14"></td>
+            <td align="center" id="fp-7a-nc-15-19"></td>
+            <td align="center" id="fp-7a-nc-20-24"></td>
+            <td align="center" id="fp-7a-nc-25-29"></td>
+            <td align="center" id="fp-7a-nc-30-34"></td>
+            <td align="center" id="fp-7a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7a-nc-total"></td>
+            <td align="center" id="fp-7a-rc-10-14"></td>
+            <td align="center" id="fp-7a-rc-15-19"></td>
+            <td align="center" id="fp-7a-rc-20-24"></td>
+            <td align="center" id="fp-7a-rc-25-29"></td>
+            <td align="center" id="fp-7a-rc-30-34"></td>
+            <td align="center" id="fp-7a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7a-rc-total"></td>
+            <td align="center" id="fp-7a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7b</th>
+            <td colspan="3">Number of clients who have been fitted with an IUD (Intrauterine Device)- Outreach</td>
+            <td align="center" id="fp-7b-nc-10-14"></td>
+            <td align="center" id="fp-7b-nc-15-19"></td>
+            <td align="center" id="fp-7b-nc-20-24"></td>
+            <td align="center" id="fp-7b-nc-25-29"></td>
+            <td align="center" id="fp-7b-nc-30-34"></td>
+            <td align="center" id="fp-7b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7b-nc-total"></td>
+            <td align="center" id="fp-7b-rc-10-14"></td>
+            <td align="center" id="fp-7b-rc-15-19"></td>
+            <td align="center" id="fp-7b-rc-20-24"></td>
+            <td align="center" id="fp-7b-rc-25-29"></td>
+            <td align="center" id="fp-7b-rc-30-34"></td>
+            <td align="center" id="fp-7b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7b-rc-total"></td>
+            <td align="center" id="fp-7b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7c</th>
+            <td colspan="3">Number of clients who have had an IUD (Intrauterine Device) removed at facility.</td>
+            <td align="center" id="fp-7c-nc-10-14"></td>
+            <td align="center" id="fp-7c-nc-15-19"></td>
+            <td align="center" id="fp-7c-nc-20-24"></td>
+            <td align="center" id="fp-7c-nc-25-29"></td>
+            <td align="center" id="fp-7c-nc-30-34"></td>
+            <td align="center" id="fp-7c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7c-nc-total"></td>
+            <td align="center" id="fp-7c-rc-10-14"></td>
+            <td align="center" id="fp-7c-rc-15-19"></td>
+            <td align="center" id="fp-7c-rc-20-24"></td>
+            <td align="center" id="fp-7c-rc-25-29"></td>
+            <td align="center" id="fp-7c-rc-30-34"></td>
+            <td align="center" id="fp-7c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7c-rc-total"></td>
+            <td align="center" id="fp-7c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7d</th>
+            <td colspan="3">Number of clients who have had an IUD (Intrauterine Device) removed- Outreach.</td>
+            <td align="center" id="fp-7d-nc-10-14"></td>
+            <td align="center" id="fp-7d-nc-15-19"></td>
+            <td align="center" id="fp-7d-nc-20-24"></td>
+            <td align="center" id="fp-7d-nc-25-29"></td>
+            <td align="center" id="fp-7d-nc-30-34"></td>
+            <td align="center" id="fp-7d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7d-nc-total"></td>
+            <td align="center" id="fp-7d-rc-10-14"></td>
+            <td align="center" id="fp-7d-rc-15-19"></td>
+            <td align="center" id="fp-7d-rc-20-24"></td>
+            <td align="center" id="fp-7d-rc-25-29"></td>
+            <td align="center" id="fp-7d-rc-30-34"></td>
+            <td align="center" id="fp-7d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7d-rc-total"></td>
+            <td align="center" id="fp-7d-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7e</th>
+            <td colspan="3">Number of clients who have been implanted with contraceptive implants (Jadelle) at facility</td>
+            <td align="center" id="fp-7e-nc-10-14"></td>
+            <td align="center" id="fp-7e-nc-15-19"></td>
+            <td align="center" id="fp-7e-nc-20-24"></td>
+            <td align="center" id="fp-7e-nc-25-29"></td>
+            <td align="center" id="fp-7e-nc-30-34"></td>
+            <td align="center" id="fp-7e-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7e-nc-total"></td>
+            <td align="center" id="fp-7e-rc-10-14"></td>
+            <td align="center" id="fp-7e-rc-15-19"></td>
+            <td align="center" id="fp-7e-rc-20-24"></td>
+            <td align="center" id="fp-7e-rc-25-29"></td>
+            <td align="center" id="fp-7e-rc-30-34"></td>
+            <td align="center" id="fp-7e-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7e-rc-total"></td>
+            <td align="center" id="fp-7e-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7f</th>
+            <td colspan="3">Number of clients who have been implanted with contraceptive implants (Jadelle) at outreach</td>
+            <td align="center" id="fp-7f-nc-10-14"></td>
+            <td align="center" id="fp-7f-nc-15-19"></td>
+            <td align="center" id="fp-7f-nc-20-24"></td>
+            <td align="center" id="fp-7f-nc-25-29"></td>
+            <td align="center" id="fp-7f-nc-30-34"></td>
+            <td align="center" id="fp-7f-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7f-nc-total"></td>
+            <td align="center" id="fp-7f-rc-10-14"></td>
+            <td align="center" id="fp-7f-rc-15-19"></td>
+            <td align="center" id="fp-7f-rc-20-24"></td>
+            <td align="center" id="fp-7f-rc-25-29"></td>
+            <td align="center" id="fp-7f-rc-30-34"></td>
+            <td align="center" id="fp-7f-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7f-rc-total"></td>
+            <td align="center" id="fp-7f-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7g</th>
+            <td colspan="3">Number of clients who have been implanted with contraceptive implants (Implanon) at facility</td>
+            <td align="center" id="fp-7g-nc-10-14"></td>
+            <td align="center" id="fp-7g-nc-15-19"></td>
+            <td align="center" id="fp-7g-nc-20-24"></td>
+            <td align="center" id="fp-7g-nc-25-29"></td>
+            <td align="center" id="fp-7g-nc-30-34"></td>
+            <td align="center" id="fp-7g-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7g-nc-total"></td>
+            <td align="center" id="fp-7g-rc-10-14"></td>
+            <td align="center" id="fp-7g-rc-15-19"></td>
+            <td align="center" id="fp-7g-rc-20-24"></td>
+            <td align="center" id="fp-7g-rc-25-29"></td>
+            <td align="center" id="fp-7g-rc-30-34"></td>
+            <td align="center" id="fp-7g-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7g-rc-total"></td>
+            <td align="center" id="fp-7g-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7h</th>
+            <td colspan="3">Number of clients who have been implanted with contraceptive implants (Implanon) at outreach</td>
+            <td align="center" id="fp-7h-nc-10-14"></td>
+            <td align="center" id="fp-7h-nc-15-19"></td>
+            <td align="center" id="fp-7h-nc-20-24"></td>
+            <td align="center" id="fp-7h-nc-25-29"></td>
+            <td align="center" id="fp-7h-nc-30-34"></td>
+            <td align="center" id="fp-7h-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7h-nc-total"></td>
+            <td align="center" id="fp-7h-rc-10-14"></td>
+            <td align="center" id="fp-7h-rc-15-19"></td>
+            <td align="center" id="fp-7h-rc-20-24"></td>
+            <td align="center" id="fp-7h-rc-25-29"></td>
+            <td align="center" id="fp-7h-rc-30-34"></td>
+            <td align="center" id="fp-7h-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7h-rc-total"></td>
+            <td align="center" id="fp-7h-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7i</th>
+            <td colspan="3">Number of clients who have had contraceptive implants (Jadelle) removed</td>
+            <td align="center" id="fp-7i-nc-10-14"></td>
+            <td align="center" id="fp-7i-nc-15-19"></td>
+            <td align="center" id="fp-7i-nc-20-24"></td>
+            <td align="center" id="fp-7i-nc-25-29"></td>
+            <td align="center" id="fp-7i-nc-30-34"></td>
+            <td align="center" id="fp-7i-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7i-nc-total"></td>
+            <td align="center" id="fp-7i-rc-10-14"></td>
+            <td align="center" id="fp-7i-rc-15-19"></td>
+            <td align="center" id="fp-7i-rc-20-24"></td>
+            <td align="center" id="fp-7i-rc-25-29"></td>
+            <td align="center" id="fp-7i-rc-30-34"></td>
+            <td align="center" id="fp-7i-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7i-rc-total"></td>
+            <td align="center" id="fp-7i-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7j</th>
+            <td colspan="3"> Number of clients who have had contraceptive implants (Jadelle) removed-outreach</td>
+            <td align="center" id="fp-7j-nc-10-14"></td>
+            <td align="center" id="fp-7j-nc-15-19"></td>
+            <td align="center" id="fp-7j-nc-20-24"></td>
+            <td align="center" id="fp-7j-nc-25-29"></td>
+            <td align="center" id="fp-7j-nc-30-34"></td>
+            <td align="center" id="fp-7j-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7j-nc-total"></td>
+            <td align="center" id="fp-7j-rc-10-14"></td>
+            <td align="center" id="fp-7j-rc-15-19"></td>
+            <td align="center" id="fp-7j-rc-20-24"></td>
+            <td align="center" id="fp-7j-rc-25-29"></td>
+            <td align="center" id="fp-7j-rc-30-34"></td>
+            <td align="center" id="fp-7j-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7j-rc-total"></td>
+            <td align="center" id="fp-7j-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7k</th>
+            <td colspan="3">Number of clients who have had the contraceptive implant (Implanon) removed at the facility</td>
+            <td align="center" id="fp-7k-nc-10-14"></td>
+            <td align="center" id="fp-7k-nc-15-19"></td>
+            <td align="center" id="fp-7k-nc-20-24"></td>
+            <td align="center" id="fp-7k-nc-25-29"></td>
+            <td align="center" id="fp-7k-nc-30-34"></td>
+            <td align="center" id="fp-7k-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7k-nc-total"></td>
+            <td align="center" id="fp-7k-rc-10-14"></td>
+            <td align="center" id="fp-7k-rc-15-19"></td>
+            <td align="center" id="fp-7k-rc-20-24"></td>
+            <td align="center" id="fp-7k-rc-25-29"></td>
+            <td align="center" id="fp-7k-rc-30-34"></td>
+            <td align="center" id="fp-7k-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7k-rc-total"></td>
+            <td align="center" id="fp-7k-grand-total"></td>
+        </tr>
+        <tr>
+            <th>7l</th>
+            <td colspan="3">Number of clients who have had the contraceptive implant (Implanon) removed-outreach</td>
+            <td align="center" id="fp-7l-nc-10-14"></td>
+            <td align="center" id="fp-7l-nc-15-19"></td>
+            <td align="center" id="fp-7l-nc-20-24"></td>
+            <td align="center" id="fp-7l-nc-25-29"></td>
+            <td align="center" id="fp-7l-nc-30-34"></td>
+            <td align="center" id="fp-7l-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7l-nc-total"></td>
+            <td align="center" id="fp-7l-rc-10-14"></td>
+            <td align="center" id="fp-7l-rc-15-19"></td>
+            <td align="center" id="fp-7l-rc-20-24"></td>
+            <td align="center" id="fp-7l-rc-25-29"></td>
+            <td align="center" id="fp-7l-rc-30-34"></td>
+            <td align="center" id="fp-7l-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-7l-rc-total"></td>
+            <td align="center" id="fp-7l-grand-total"></td>
+        </tr>
+        </tr>
+        <th class="no-data bold-text">8</th>
+        <td colspan="3" class="no-data bold-text">Other Family Planning Methods</td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>8a</th>
+            <td colspan="3">Number of clients using the Lactational Amenorrhea Method (LAM) </td>
+            <td align="center" id="fp-8a-nc-10-14"></td>
+            <td align="center" id="fp-8a-nc-15-19"></td>
+            <td align="center" id="fp-8a-nc-20-24"></td>
+            <td align="center" id="fp-8a-nc-25-29"></td>
+            <td align="center" id="fp-8a-nc-30-34"></td>
+            <td align="center" id="fp-8a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-8a-nc-total"></td>
+            <td align="center" id="fp-8a-rc-10-14"></td>
+            <td align="center" id="fp-8a-rc-15-19"></td>
+            <td align="center" id="fp-8a-rc-20-24"></td>
+            <td align="center" id="fp-8a-rc-25-29"></td>
+            <td align="center" id="fp-8a-rc-30-34"></td>
+            <td align="center" id="fp-8a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-8a-rc-total"></td>
+            <td align="center" id="fp-8a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>8b</th>
+            <td colspan="3">Number of clients using the Standard Days Method (SDM)</td>
+            <td align="center" id="fp-8b-nc-10-14"></td>
+            <td align="center" id="fp-8b-nc-15-19"></td>
+            <td align="center" id="fp-8b-nc-20-24"></td>
+            <td align="center" id="fp-8b-nc-25-29"></td>
+            <td align="center" id="fp-8b-nc-30-34"></td>
+            <td align="center" id="fp-8b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-8b-nc-total"></td>
+            <td align="center" id="fp-8b-rc-10-14"></td>
+            <td align="center" id="fp-8b-rc-15-19"></td>
+            <td align="center" id="fp-8b-rc-20-24"></td>
+            <td align="center" id="fp-8b-rc-25-29"></td>
+            <td align="center" id="fp-8b-rc-30-34"></td>
+            <td align="center" id="fp-8b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-8b-rc-total"></td>
+            <td align="center" id="fp-8b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>8c</th>
+            <td colspan="3">Number of clients using emergency contraceptive methods</td>
+            <td align="center" id="fp-8c-nc-10-14"></td>
+            <td align="center" id="fp-8c-nc-15-19"></td>
+            <td align="center" id="fp-8c-nc-20-24"></td>
+            <td align="center" id="fp-8c-nc-25-29"></td>
+            <td align="center" id="fp-8c-nc-30-34"></td>
+            <td align="center" id="fp-8c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-8c-nc-total"></td>
+            <td align="center" id="fp-8c-rc-10-14"></td>
+            <td align="center" id="fp-8c-rc-15-19"></td>
+            <td align="center" id="fp-8c-rc-20-24"></td>
+            <td align="center" id="fp-8c-rc-25-29"></td>
+            <td align="center" id="fp-8c-rc-30-34"></td>
+            <td align="center" id="fp-8c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-8c-rc-total"></td>
+            <td align="center" id="fp-8c-grand-total"></td>
+        </tr>
+        </tr>
+        <th class="no-data bold-text">9</th>
+        <td colspan="3" class="no-data bold-text">Total number of pill cycles dispensed</td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>9a</th>
+            <td colspan="3">Number of POP cycles dispensed (Facility + Outreach + CBD)</td>
+            <td align="center" id="fp-9a-nc-10-14"></td>
+            <td align="center" id="fp-9a-nc-15-19"></td>
+            <td align="center" id="fp-9a-nc-20-24"></td>
+            <td align="center" id="fp-9a-nc-25-29"></td>
+            <td align="center" id="fp-9a-nc-30-34"></td>
+            <td align="center" id="fp-9a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-9a-nc-total"></td>
+            <td align="center" id="fp-9a-rc-10-14"></td>
+            <td align="center" id="fp-9a-rc-15-19"></td>
+            <td align="center" id="fp-9a-rc-20-24"></td>
+            <td align="center" id="fp-9a-rc-25-29"></td>
+            <td align="center" id="fp-9a-rc-30-34"></td>
+            <td align="center" id="fp-9a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-9a-rc-total"></td>
+            <td align="center" id="fp-9a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>9b</th>
+            <td colspan="3">Number of COC cycles dispensed (Facility + Outreach + CBD)</td>
+            <td align="center" id="fp-9b-nc-10-14"></td>
+            <td align="center" id="fp-9b-nc-15-19"></td>
+            <td align="center" id="fp-9b-nc-20-24"></td>
+            <td align="center" id="fp-9b-nc-25-29"></td>
+            <td align="center" id="fp-9b-nc-30-34"></td>
+            <td align="center" id="fp-9b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-9b-nc-total"></td>
+            <td align="center" id="fp-9b-rc-10-14"></td>
+            <td align="center" id="fp-9b-rc-15-19"></td>
+            <td align="center" id="fp-9b-rc-20-24"></td>
+            <td align="center" id="fp-9b-rc-25-29"></td>
+            <td align="center" id="fp-9b-rc-30-34"></td>
+            <td align="center" id="fp-9b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-9b-rc-total"></td>
+            <td align="center" id="fp-9b-grand-total"></td>
+        </tr>
+        </tr>
+        <th class="no-data bold-text">10</th>
+        <td colspan="3" class="no-data bold-text">Total number of condoms distributed</td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>10a</th>
+            <td colspan="3">Number of male condoms distributed</td>
+            <td align="center" id="fp-10a-nc-10-14"></td>
+            <td align="center" id="fp-10a-nc-15-19"></td>
+            <td align="center" id="fp-10a-nc-20-24"></td>
+            <td align="center" id="fp-10a-nc-25-29"></td>
+            <td align="center" id="fp-10a-nc-30-34"></td>
+            <td align="center" id="fp-10a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-10a-nc-total"></td>
+            <td align="center" id="fp-10a-rc-10-14"></td>
+            <td align="center" id="fp-10a-rc-15-19"></td>
+            <td align="center" id="fp-10a-rc-20-24"></td>
+            <td align="center" id="fp-10a-rc-25-29"></td>
+            <td align="center" id="fp-10a-rc-30-34"></td>
+            <td align="center" id="fp-10a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-10a-rc-total"></td>
+            <td align="center" id="fp-10a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>10b</th>
+            <td colspan="3">Number of female condoms distributed</td>
+            <td align="center" id="fp-10b-nc-10-14"></td>
+            <td align="center" id="fp-10b-nc-15-19"></td>
+            <td align="center" id="fp-10b-nc-20-24"></td>
+            <td align="center" id="fp-10b-nc-25-29"></td>
+            <td align="center" id="fp-10b-nc-30-34"></td>
+            <td align="center" id="fp-10b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-10b-nc-total"></td>
+            <td align="center" id="fp-10b-rc-10-14"></td>
+            <td align="center" id="fp-10b-rc-15-19"></td>
+            <td align="center" id="fp-10b-rc-20-24"></td>
+            <td align="center" id="fp-10b-rc-25-29"></td>
+            <td align="center" id="fp-10b-rc-30-34"></td>
+            <td align="center" id="fp-10b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-10b-rc-total"></td>
+            <td align="center" id="fp-10b-grand-total"></td>
+        </tr>
+        </tr>
+        <th class="no-data bold-text">11</th>
+        <td colspan="3" class="no-data bold-text">Clients screened for reproductive cancer.</td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>11a</th>
+            <td colspan="3">Number of women screened for breast cancer</td>
+            <td align="center" id="fp-11a-nc-10-14"></td>
+            <td align="center" id="fp-11a-nc-15-19"></td>
+            <td align="center" id="fp-11a-nc-20-24"></td>
+            <td align="center" id="fp-11a-nc-25-29"></td>
+            <td align="center" id="fp-11a-nc-30-34"></td>
+            <td align="center" id="fp-11a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11a-nc-total"></td>
+            <td align="center" id="fp-11a-rc-10-14"></td>
+            <td align="center" id="fp-11a-rc-15-19"></td>
+            <td align="center" id="fp-11a-rc-20-24"></td>
+            <td align="center" id="fp-11a-rc-25-29"></td>
+            <td align="center" id="fp-11a-rc-30-34"></td>
+            <td align="center" id="fp-11a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11a-rc-total"></td>
+            <td align="center" id="fp-11a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>11b</th>
+            <td colspan="3">Number of women diagnosed with breast problems</td>
+            <td align="center" id="fp-11b-nc-10-14"></td>
+            <td align="center" id="fp-11b-nc-15-19"></td>
+            <td align="center" id="fp-11b-nc-20-24"></td>
+            <td align="center" id="fp-11b-nc-25-29"></td>
+            <td align="center" id="fp-11b-nc-30-34"></td>
+            <td align="center" id="fp-11b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11b-nc-total"></td>
+            <td align="center" id="fp-11b-rc-10-14"></td>
+            <td align="center" id="fp-11b-rc-15-19"></td>
+            <td align="center" id="fp-11b-rc-20-24"></td>
+            <td align="center" id="fp-11b-rc-25-29"></td>
+            <td align="center" id="fp-11b-rc-30-34"></td>
+            <td align="center" id="fp-11b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11b-rc-total"></td>
+            <td align="center" id="fp-11b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>11c</th>
+            <td colspan="3">Number of women screened for cervical cancer using VIA</td>
+            <td align="center" id="fp-11c-nc-10-14"></td>
+            <td align="center" id="fp-11c-nc-15-19"></td>
+            <td align="center" id="fp-11c-nc-20-24"></td>
+            <td align="center" id="fp-11c-nc-25-29"></td>
+            <td align="center" id="fp-11c-nc-30-34"></td>
+            <td align="center" id="fp-11c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11c-nc-total"></td>
+            <td align="center" id="fp-11c-rc-10-14"></td>
+            <td align="center" id="fp-11c-rc-15-19"></td>
+            <td align="center" id="fp-11c-rc-20-24"></td>
+            <td align="center" id="fp-11c-rc-25-29"></td>
+            <td align="center" id="fp-11c-rc-30-34"></td>
+            <td align="center" id="fp-11c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11c-rc-total"></td>
+            <td align="center" id="fp-11c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>11d</th>
+            <td colspan="3">Number of women found 'POSITIVE' after screening using VIA</td>
+            <td align="center" id="fp-11d-nc-10-14"></td>
+            <td align="center" id="fp-11d-nc-15-19"></td>
+            <td align="center" id="fp-11d-nc-20-24"></td>
+            <td align="center" id="fp-11d-nc-25-29"></td>
+            <td align="center" id="fp-11d-nc-30-34"></td>
+            <td align="center" id="fp-11d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11d-nc-total"></td>
+            <td align="center" id="fp-11d-rc-10-14"></td>
+            <td align="center" id="fp-11d-rc-15-19"></td>
+            <td align="center" id="fp-11d-rc-20-24"></td>
+            <td align="center" id="fp-11d-rc-25-29"></td>
+            <td align="center" id="fp-11d-rc-30-34"></td>
+            <td align="center" id="fp-11d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11d-rc-total"></td>
+            <td align="center" id="fp-11d-grand-total"></td>
+        </tr>
+        <tr>
+            <th>11e</th>
+            <td colspan="3">Number of women suspected of having cervical cancer.</td>
+            <td align="center" id="fp-11e-nc-10-14"></td>
+            <td align="center" id="fp-11e-nc-15-19"></td>
+            <td align="center" id="fp-11e-nc-20-24"></td>
+            <td align="center" id="fp-11e-nc-25-29"></td>
+            <td align="center" id="fp-11e-nc-30-34"></td>
+            <td align="center" id="fp-11e-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11e-nc-total"></td>
+            <td align="center" id="fp-11e-rc-10-14"></td>
+            <td align="center" id="fp-11e-rc-15-19"></td>
+            <td align="center" id="fp-11e-rc-20-24"></td>
+            <td align="center" id="fp-11e-rc-25-29"></td>
+            <td align="center" id="fp-11e-rc-30-34"></td>
+            <td align="center" id="fp-11e-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-11e-rc-total"></td>
+            <td align="center" id="fp-11e-grand-total"></td>
+        </tr>
+        </tr>
+        <th class="no-data bold-text">12</th>
+        <td colspan="3" class="no-data bold-text">Information about HIV infections</td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>12a</th>
+            <td colspan="3">Number of known HIV positive clients </td>
+            <td align="center" id="fp-12a-nc-10-14"></td>
+            <td align="center" id="fp-12a-nc-15-19"></td>
+            <td align="center" id="fp-12a-nc-20-24"></td>
+            <td align="center" id="fp-12a-nc-25-29"></td>
+            <td align="center" id="fp-12a-nc-30-34"></td>
+            <td align="center" id="fp-12a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12a-nc-total"></td>
+            <td align="center" id="fp-12a-rc-10-14"></td>
+            <td align="center" id="fp-12a-rc-15-19"></td>
+            <td align="center" id="fp-12a-rc-20-24"></td>
+            <td align="center" id="fp-12a-rc-25-29"></td>
+            <td align="center" id="fp-12a-rc-30-34"></td>
+            <td align="center" id="fp-12a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12a-rc-total"></td>
+            <td align="center" id="fp-12a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12b</th>
+            <td colspan="3">Number of breastfeeding clients tested for HIV</td>
+            <td align="center" id="fp-12b-nc-10-14"></td>
+            <td align="center" id="fp-12b-nc-15-19"></td>
+            <td align="center" id="fp-12b-nc-20-24"></td>
+            <td align="center" id="fp-12b-nc-25-29"></td>
+            <td align="center" id="fp-12b-nc-30-34"></td>
+            <td align="center" id="fp-12b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12b-nc-total"></td>
+            <td align="center" id="fp-12b-rc-10-14"></td>
+            <td align="center" id="fp-12b-rc-15-19"></td>
+            <td align="center" id="fp-12b-rc-20-24"></td>
+            <td align="center" id="fp-12b-rc-25-29"></td>
+            <td align="center" id="fp-12b-rc-30-34"></td>
+            <td align="center" id="fp-12b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12b-rc-total"></td>
+            <td align="center" id="fp-12b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12c</th>
+            <td colspan="3">Number of breastfeeding clients tested positive for HIV</td>
+            <td align="center" id="fp-12c-nc-10-14"></td>
+            <td align="center" id="fp-12c-nc-15-19"></td>
+            <td align="center" id="fp-12c-nc-20-24"></td>
+            <td align="center" id="fp-12c-nc-25-29"></td>
+            <td align="center" id="fp-12c-nc-30-34"></td>
+            <td align="center" id="fp-12c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12c-nc-total"></td>
+            <td align="center" id="fp-12c-rc-10-14"></td>
+            <td align="center" id="fp-12c-rc-15-19"></td>
+            <td align="center" id="fp-12c-rc-20-24"></td>
+            <td align="center" id="fp-12c-rc-25-29"></td>
+            <td align="center" id="fp-12c-rc-30-34"></td>
+            <td align="center" id="fp-12c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12c-rc-total"></td>
+            <td align="center" id="fp-12c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12d</th>
+            <td colspan="3">Number of women tested for HIV</td>
+            <td align="center" id="fp-12d-nc-10-14"></td>
+            <td align="center" id="fp-12d-nc-15-19"></td>
+            <td align="center" id="fp-12d-nc-20-24"></td>
+            <td align="center" id="fp-12d-nc-25-29"></td>
+            <td align="center" id="fp-12d-nc-30-34"></td>
+            <td align="center" id="fp-12d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12d-nc-total"></td>
+            <td align="center" id="fp-12d-rc-10-14"></td>
+            <td align="center" id="fp-12d-rc-15-19"></td>
+            <td align="center" id="fp-12d-rc-20-24"></td>
+            <td align="center" id="fp-12d-rc-25-29"></td>
+            <td align="center" id="fp-12d-rc-30-34"></td>
+            <td align="center" id="fp-12d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12d-rc-total"></td>
+            <td align="center" id="fp-12d-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12e</th>
+            <td colspan="3">Number of women tested positive for HIV</td>
+            <td align="center" id="fp-12e-nc-10-14"></td>
+            <td align="center" id="fp-12e-nc-15-19"></td>
+            <td align="center" id="fp-12e-nc-20-24"></td>
+            <td align="center" id="fp-12e-nc-25-29"></td>
+            <td align="center" id="fp-12e-nc-30-34"></td>
+            <td align="center" id="fp-12e-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12e-nc-total"></td>
+            <td align="center" id="fp-12e-rc-10-14"></td>
+            <td align="center" id="fp-12e-rc-15-19"></td>
+            <td align="center" id="fp-12e-rc-20-24"></td>
+            <td align="center" id="fp-12e-rc-25-29"></td>
+            <td align="center" id="fp-12e-rc-30-34"></td>
+            <td align="center" id="fp-12e-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12e-rc-total"></td>
+            <td align="center" id="fp-12e-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12f</th>
+            <td colspan="3">Number of partners tested for HIV</td>
+            <td align="center" id="fp-12f-nc-10-14"></td>
+            <td align="center" id="fp-12f-nc-15-19"></td>
+            <td align="center" id="fp-12f-nc-20-24"></td>
+            <td align="center" id="fp-12f-nc-25-29"></td>
+            <td align="center" id="fp-12f-nc-30-34"></td>
+            <td align="center" id="fp-12f-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12f-nc-total"></td>
+            <td align="center" id="fp-12f-rc-10-14"></td>
+            <td align="center" id="fp-12f-rc-15-19"></td>
+            <td align="center" id="fp-12f-rc-20-24"></td>
+            <td align="center" id="fp-12f-rc-25-29"></td>
+            <td align="center" id="fp-12f-rc-30-34"></td>
+            <td align="center" id="fp-12f-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12f-rc-total"></td>
+            <td align="center" id="fp-12f-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12g</th>
+            <td colspan="3">Number of partners tested positive for HIV</td>
+            <td align="center" id="fp-12g-nc-10-14"></td>
+            <td align="center" id="fp-12g-nc-15-19"></td>
+            <td align="center" id="fp-12g-nc-20-24"></td>
+            <td align="center" id="fp-12g-nc-25-29"></td>
+            <td align="center" id="fp-12g-nc-30-34"></td>
+            <td align="center" id="fp-12g-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12g-nc-total"></td>
+            <td align="center" id="fp-12g-rc-10-14"></td>
+            <td align="center" id="fp-12g-rc-15-19"></td>
+            <td align="center" id="fp-12g-rc-20-24"></td>
+            <td align="center" id="fp-12g-rc-25-29"></td>
+            <td align="center" id="fp-12g-rc-30-34"></td>
+            <td align="center" id="fp-12g-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12g-rc-total"></td>
+            <td align="center" id="fp-12g-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12h</th>
+            <td colspan="3">Number of female clients referred to CTC</td>
+            <td align="center" id="fp-12h-nc-10-14"></td>
+            <td align="center" id="fp-12h-nc-15-19"></td>
+            <td align="center" id="fp-12h-nc-20-24"></td>
+            <td align="center" id="fp-12h-nc-25-29"></td>
+            <td align="center" id="fp-12h-nc-30-34"></td>
+            <td align="center" id="fp-12h-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12h-nc-total"></td>
+            <td align="center" id="fp-12h-rc-10-14"></td>
+            <td align="center" id="fp-12h-rc-15-19"></td>
+            <td align="center" id="fp-12h-rc-20-24"></td>
+            <td align="center" id="fp-12h-rc-25-29"></td>
+            <td align="center" id="fp-12h-rc-30-34"></td>
+            <td align="center" id="fp-12h-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12h-rc-total"></td>
+            <td align="center" id="fp-12h-grand-total"></td>
+        </tr>
+        <tr>
+            <th>12i</th>
+            <td colspan="3">Number of partners clients referred to CTC</td>
+            <td align="center" id="fp-12i-nc-10-14"></td>
+            <td align="center" id="fp-12i-nc-15-19"></td>
+            <td align="center" id="fp-12i-nc-20-24"></td>
+            <td align="center" id="fp-12i-nc-25-29"></td>
+            <td align="center" id="fp-12i-nc-30-34"></td>
+            <td align="center" id="fp-12i-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12i-nc-total"></td>
+            <td align="center" id="fp-12i-rc-10-14"></td>
+            <td align="center" id="fp-12i-rc-15-19"></td>
+            <td align="center" id="fp-12i-rc-20-24"></td>
+            <td align="center" id="fp-12i-rc-25-29"></td>
+            <td align="center" id="fp-12i-rc-30-34"></td>
+            <td align="center" id="fp-12i-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-12i-rc-total"></td>
+            <td align="center" id="fp-12i-grand-total"></td>
+        </tr>
+        </tr>
+        <th class="no-data bold-text">13</th>
+        <td colspan="3" class="no-data bold-text">Side effects and Complication of family planning methods.</td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        <td align="center" class="no-data"></td>
+        </tr>
+        <tr>
+            <th>13a</th>
+            <td colspan="3">Number of reported cases of heavy bleeding incidents</td>
+            <td align="center" id="fp-13a-nc-10-14"></td>
+            <td align="center" id="fp-13a-nc-15-19"></td>
+            <td align="center" id="fp-13a-nc-20-24"></td>
+            <td align="center" id="fp-13a-nc-25-29"></td>
+            <td align="center" id="fp-13a-nc-30-34"></td>
+            <td align="center" id="fp-13a-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13a-nc-total"></td>
+            <td align="center" id="fp-13a-rc-10-14"></td>
+            <td align="center" id="fp-13a-rc-15-19"></td>
+            <td align="center" id="fp-13a-rc-20-24"></td>
+            <td align="center" id="fp-13a-rc-25-29"></td>
+            <td align="center" id="fp-13a-rc-30-34"></td>
+            <td align="center" id="fp-13a-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13a-rc-total"></td>
+            <td align="center" id="fp-13a-grand-total"></td>
+        </tr>
+        <tr>
+            <th>13b</th>
+            <td colspan="3">Number of reported incidents of severe headaches</td>
+            <td align="center" id="fp-13b-nc-10-14"></td>
+            <td align="center" id="fp-13b-nc-15-19"></td>
+            <td align="center" id="fp-13b-nc-20-24"></td>
+            <td align="center" id="fp-13b-nc-25-29"></td>
+            <td align="center" id="fp-13b-nc-30-34"></td>
+            <td align="center" id="fp-13b-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13b-nc-total"></td>
+            <td align="center" id="fp-13b-rc-10-14"></td>
+            <td align="center" id="fp-13b-rc-15-19"></td>
+            <td align="center" id="fp-13b-rc-20-24"></td>
+            <td align="center" id="fp-13b-rc-25-29"></td>
+            <td align="center" id="fp-13b-rc-30-34"></td>
+            <td align="center" id="fp-13b-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13b-rc-total"></td>
+            <td align="center" id="fp-13b-grand-total"></td>
+        </tr>
+        <tr>
+            <th>13c</th>
+            <td colspan="3">Number of reported incidents of severe abdominal pain.</td>
+            <td align="center" id="fp-13c-nc-10-14"></td>
+            <td align="center" id="fp-13c-nc-15-19"></td>
+            <td align="center" id="fp-13c-nc-20-24"></td>
+            <td align="center" id="fp-13c-nc-25-29"></td>
+            <td align="center" id="fp-13c-nc-30-34"></td>
+            <td align="center" id="fp-13c-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13c-nc-total"></td>
+            <td align="center" id="fp-13c-rc-10-14"></td>
+            <td align="center" id="fp-13c-rc-15-19"></td>
+            <td align="center" id="fp-13c-rc-20-24"></td>
+            <td align="center" id="fp-13c-rc-25-29"></td>
+            <td align="center" id="fp-13c-rc-30-34"></td>
+            <td align="center" id="fp-13c-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13c-rc-total"></td>
+            <td align="center" id="fp-13c-grand-total"></td>
+        </tr>
+        <tr>
+            <th>13d</th>
+            <td colspan="3">Number of reported incidents of severe chest pain.</td>
+            <td align="center" id="fp-13d-nc-10-14"></td>
+            <td align="center" id="fp-13d-nc-15-19"></td>
+            <td align="center" id="fp-13d-nc-20-24"></td>
+            <td align="center" id="fp-13d-nc-25-29"></td>
+            <td align="center" id="fp-13d-nc-30-34"></td>
+            <td align="center" id="fp-13d-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13d-nc-total"></td>
+            <td align="center" id="fp-13d-rc-10-14"></td>
+            <td align="center" id="fp-13d-rc-15-19"></td>
+            <td align="center" id="fp-13d-rc-20-24"></td>
+            <td align="center" id="fp-13d-rc-25-29"></td>
+            <td align="center" id="fp-13d-rc-30-34"></td>
+            <td align="center" id="fp-13d-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13d-rc-total"></td>
+            <td align="center" id="fp-13d-grand-total"></td>
+        </tr>
+        <tr>
+            <th>13e</th>
+            <td colspan="3">Number of family planning clients who became pregnant.</td>
+            <td align="center" id="fp-13e-nc-10-14"></td>
+            <td align="center" id="fp-13e-nc-15-19"></td>
+            <td align="center" id="fp-13e-nc-20-24"></td>
+            <td align="center" id="fp-13e-nc-25-29"></td>
+            <td align="center" id="fp-13e-nc-30-34"></td>
+            <td align="center" id="fp-13e-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13e-nc-total"></td>
+            <td align="center" id="fp-13e-rc-10-14"></td>
+            <td align="center" id="fp-13e-rc-15-19"></td>
+            <td align="center" id="fp-13e-rc-20-24"></td>
+            <td align="center" id="fp-13e-rc-25-29"></td>
+            <td align="center" id="fp-13e-rc-30-34"></td>
+            <td align="center" id="fp-13e-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13e-rc-total"></td>
+            <td align="center" id="fp-13e-grand-total"></td>
+        </tr>
+        <tr>
+            <th>13f</th>
+            <td colspan="3">Number of family planning clients using ARV (Antiretroviral) medication who became pregnant</td>
+            <td align="center" id="fp-13f-nc-10-14"></td>
+            <td align="center" id="fp-13f-nc-15-19"></td>
+            <td align="center" id="fp-13f-nc-20-24"></td>
+            <td align="center" id="fp-13f-nc-25-29"></td>
+            <td align="center" id="fp-13f-nc-30-34"></td>
+            <td align="center" id="fp-13f-nc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13f-nc-total"></td>
+            <td align="center" id="fp-13f-rc-10-14"></td>
+            <td align="center" id="fp-13f-rc-15-19"></td>
+            <td align="center" id="fp-13f-rc-20-24"></td>
+            <td align="center" id="fp-13f-rc-25-29"></td>
+            <td align="center" id="fp-13f-rc-30-34"></td>
+            <td align="center" id="fp-13f-rc-35+"></td>
+            <td align="center" class="table-total-color" id="fp-13f-rc-total"></td>
+            <td align="center" id="fp-13f-grand-total"></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function loadData(reportKey, reportType) {
+  const data = JSON.parse(Android.getData(reportKey));
+  const keys = Object.keys(data.nameValuePairs);
+  const reportPeriod = document.getElementById("report_period");
+  const reportingFacility = document.getElementById("reporting_facility");
+  keys.forEach((key) => {
+    let element;
+    if(reportType!== null && reportType === "sbc"){
+      element = document.getElementById(key.replace("sbc-",""));
+    }else{
+      element = document.getElementById(key);
+    }
+    if (element !== null && typeof element !== "undefined") {
+      element.innerHTML = data.nameValuePairs[key];
+    }
+  });
+  reportPeriod.innerHTML = Android.getDataPeriod();
+  reportingFacility.innerHTML = Android.getReportingFacility();
+}
+</script>
+</body></html>

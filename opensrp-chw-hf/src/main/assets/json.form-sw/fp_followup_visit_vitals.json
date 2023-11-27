@@ -1,0 +1,230 @@
+{
+  "count": "1",
+  "encounter_type": "Vitals",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Vipimo muhimu",
+    "fields": [
+      {
+        "key": "weight",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Uzito (KG)",
+        "edit_type": "number",
+        "look_up": "true",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza uzito"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 20 (KG)"
+        },
+        "v_min": {
+          "value": "20",
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 20kg (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Uzito lazima uwe sawasawa au chini ya 300 (KG)"
+        }
+      },
+      {
+        "key": "systolic",
+        "type": "edit_text",
+        "hint": "Systolic (Shinikizo la Damu)",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya systolic"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Namba ya systolic lazima iwe sawasawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Namba ya systolic lazima iwe sawasawa au chini ya 320"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza namba ya systolic (Shinikizo la Damu)"
+        }
+      },
+      {
+        "key": "diastolic",
+        "type": "edit_text",
+        "hint": "Diastolic (Shinikizo la Damu)",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza namba ya diastolic"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Namba ya diastolic lazima iwe sawasawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Namba ya diastolic lazima iwe sawasawa au chini ya 200"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza namba ya diastolic (Shinikizo la Damu)"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:systolic)",
+            "err": "Namba ya diastolic lazima iwe chini ya namba ya systolic"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "Dhibiti hali hii ya Shinikizo la damu ya juu kulingana na muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_vitals_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "Bainisha sababu za Shinikizo la damu ya chini na udhibiti  kulingana na muongozo kutoka Wizara ya Afya",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_vitals_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "last_normal_menstruation_period",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "last_normal_menstruation_period",
+        "type": "date_picker",
+        "min_date": "today-5y",
+        "max_date": "today",
+        "expanded": false,
+        "hint": "Tarehe ya Mwisho ya Hedhi ya Kawaida (LNMP)",
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "client_have_any_complain",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_have_any_complain",
+        "type": "native_radio",
+        "label": "Je, mteja ana malalamiko yoyote?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        }
+      },
+      {
+        "key": "specify_other_complain",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "specify_other_complain",
+        "type": "edit_text",
+        "hint": "Taja malalamiko mengine ya wateja",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali (Taja)"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_vitals_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+
+{
+  "count": "1",
+  "encounter_type": "Family Planning Registration",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Usajili wa Uzazi wa Mpango",
+    "fields": [
+      {
+        "key": "client_used_fp_before",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_used_fp_before",
+        "type": "native_radio",
+        "label": "Je, mteja amewahi kutumia njia yoyote ya uzazi wa mpango?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        }
+      },
+      {
+        "key": "fp_registration_number",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_registration_number",
+        "type": "mask_edit_text",
+        "mask": "####/###",
+        "mask_hint": "1234567",
+        "allowed_chars": "0123456789",
+        "hint": "Nambari ya Usajili wa Mteja",
+        "edit_type": "number",
+        "v_regex": {
+          "value": "(\\d{4}/\\d{3})?",
+          "err": "Nambari ya usajili wa mteja inapaswa kuwa ya muundo wa (XXXX/XXX)"
+        },
+        "v_max_length": {
+          "value": "17",
+          "is_fixed_size": "true",
+          "err": "Tafadhali ingiza Nambari ya Usajili wa Mteja iliyo sahihi"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza Nambari ya Usajili wa Mteja iliyo sahihi"
+        }
+      },
+      {
+        "key": "client_level_education",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_level_education",
+        "type": "native_radio",
+        "label": "Kiwango cha Elimu ya Mteja",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "primary",
+            "text": "Shule ya msingi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "primary"
+          },
+          {
+            "key": "secondary",
+            "text": "Shule ya sekondari",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "secondary"
+          },
+          {
+            "key": "college_university",
+            "text": "Chuo Kikuu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "college_university"
+          },
+          {
+            "key": "no_any",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no_any"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        }
+      }
+    ]
+  }
+}

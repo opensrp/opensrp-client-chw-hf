@@ -88,9 +88,7 @@ public class HfReportsViewActivity extends AppCompatActivity {
         }
         toolBarTextView.setOnClickListener(v -> finish());
         appBarLayout = findViewById(org.smartregister.chw.core.R.id.app_bar);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            appBarLayout.setOutlineProvider(null);
-        }
+        appBarLayout.setOutlineProvider(null);
     }
 
     @Override
@@ -104,11 +102,7 @@ public class HfReportsViewActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.action_print) {
             if (printWebView != null) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    ReportUtils.printTheWebPage(printWebView, this);
-                } else {
-                    Toast.makeText(this, "Not available for device below Android LOLLIPOP", Toast.LENGTH_SHORT).show();
-                }
+                ReportUtils.printTheWebPage(printWebView, this);
             } else {
                 Toast.makeText(this, "WebPage not fully loaded", Toast.LENGTH_SHORT).show();
             }

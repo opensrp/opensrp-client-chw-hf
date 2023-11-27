@@ -1,0 +1,17 @@
+---
+name: step1_provided_fp_method
+description: provided_fp_method
+priority: 1
+condition: "true"
+actions:
+  - "calculation = step1_pop != 0 ? 'pop' :
+                   step1_coc != 0 ? 'coc' : 
+                   (step1_injection_administered.equals('yes')) ? 'injectable' :
+                   (step1_jadelle_inserted.equals('yes')) ? 'jadelle' :
+                   (step1_implanon_inserted.equals('yes')) ? 'implanon' :
+                   (step1_iucd_inserted.equals('yes')) ? 'iucd' :
+                   (step1_cycle_beads_provided.equals('yes')) ? 'sdm' :
+                   (step1_client_counseled_on_lam.equals('yes')) ? 'lam' :
+                   (step1_vasectomy.equals('yes')) ? 'vasectomy' :
+                   (step1_client_provided_condom.equals('yes')) ? 'condom' : 'method_not_provided'
+                   "

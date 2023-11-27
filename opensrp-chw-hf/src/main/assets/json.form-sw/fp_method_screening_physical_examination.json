@@ -1,0 +1,376 @@
+{
+  "count": "1",
+  "encounter_type": "Physical examination",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Uchunguzi wa kimwili",
+    "fields": [
+      {
+        "key": "weight",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "weight",
+        "entity_id": "",
+        "type": "edit_text",
+        "hint": "Uzito (KG)",
+        "edit_type": "number",
+        "look_up": "true",
+        "v_min": {
+          "value": "20",
+          "err": "Uzito lazima uwe sawasawa au zaidi ya 20 (KG)"
+        },
+        "v_max": {
+          "value": "300",
+          "err": "Uzito lazima uwe sawasawa au chini ya 300 (KG)"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza uzito"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali ingiza uzito (KG)"
+        }
+      },
+      {
+        "key": "systolic",
+        "type": "edit_text",
+        "hint": "Systolic (Shinikizo la Damu)",
+        "openmrs_entity_id": "systolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya systolic"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Thamani ya systolic lazima iwe sawasawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "320",
+          "err": "Thamani ya systolic lazima iwe sawasawa au chini ya 320"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza thamani ya systolic"
+        }
+      },
+      {
+        "key": "diastolic",
+        "type": "edit_text",
+        "hint": "Diastolic (Shinikizo la Damu)",
+        "openmrs_entity_id": "diastolic",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza thamani ya diastolic"
+        },
+        "v_min": {
+          "value": "0",
+          "err": "Thamani ya diastolic lazima iwe sawasawa au zaidi ya 0"
+        },
+        "v_max": {
+          "value": "200",
+          "err": "Thamani ya diastolic lazima iwe sawasawa au chini ya 200"
+        },
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali ingiza thamani ya diastolic"
+        },
+        "constraints": [
+          {
+            "type": "numeric",
+            "ex": "lessThan(., step1:systolic)",
+            "err": "Thamani ya diastolic lazima iwe chini ya thamani ya systolic"
+          }
+        ]
+      },
+      {
+        "key": "prompt_for_management_of_hypertension",
+        "type": "toaster_notes",
+        "text": "Dhibiti hali hii ya Shinikizo la damu ya juu kulingana na muongozo wa Wizara ya Afya",
+        "openmrs_entity_id": "prompt_for_management_of_hypertension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_physical_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "prompt_for_management_of_hypotension",
+        "type": "toaster_notes",
+        "text": "Bainisha sababu za Shinikizo la damu ya chini na udhibiti  kulingana na muongozo kutoka Wizara ya Afya",
+        "openmrs_entity_id": "prompt_for_management_of_hypotension",
+        "openmrs_entity": "concept",
+        "openmrs_entity_parent": "",
+        "toaster_type": "problem",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_physical_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "anaemia",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "anaemia",
+        "type": "native_radio",
+        "label": "Anaemia",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza"
+        }
+      },
+      {
+        "key": "jaundice",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "jaundice",
+        "type": "native_radio",
+        "label": "Homa ya manjano",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza"
+        }
+      },
+      {
+        "key": "thyroid_enlarged",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "thyroid_enlarged",
+        "type": "native_radio",
+        "label": "Tezi kuongezeka",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza"
+        }
+      },
+      {
+        "key": "chest_movement",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "chest_movement",
+        "type": "native_radio",
+        "label": "Mwenendo wa Kifua",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "symmetrical",
+            "text": "Simetrikali",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "symmetrical"
+          },
+          {
+            "key": "asymmetric",
+            "text": "Isiyo simetriki",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "asymmetric"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali jaza"
+        }
+      },
+      {
+        "key": "breast_condition",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "breast_condition",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Hali ya Matiti",
+        "hint": "Hali ya Matiti",
+        "options": [
+          {
+            "key": "lamp",
+            "text": "Buje",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lamp"
+          },
+          {
+            "key": "sore",
+            "text": "Kidonda",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sore"
+          },
+          {
+            "key": "discoloration",
+            "text": "Kubadilika rangi ya ngozi",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "discoloration"
+          },
+          {
+            "key": "blood_discharge",
+            "text": "Chuchu kutokwa damu/usaha",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "blood_discharge"
+          },
+          {
+            "key": "absess",
+            "text": "Jipu katika chuchu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "absess"
+          },
+          {
+            "key": "other",
+            "text": "Mengineyo (Taja)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          },
+          {
+            "key": "none",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "exclusive": [
+          "none"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua hali ya matiti"
+        }
+      },
+      {
+        "key": "specify_other_condition",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "specify_other_condition",
+        "type": "edit_text",
+        "hint": "Taja sababu nyingine",
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Taja"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_physical_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "breast_condition_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "breast_condition_prompt",
+        "type": "toaster_notes",
+        "text": "Rejelea mteja kwa usimamizi zaidi",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_physical_examination_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

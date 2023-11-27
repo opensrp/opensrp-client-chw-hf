@@ -1,0 +1,14 @@
+---
+name: step1_digital_exam_prompt
+description: digital_exam_prompt relevance
+priority: 1
+condition: "step1_adnexa.equals('painful') || step1_uterine_size.equals('abnormal') || step1_uterine_position.equals('retroverted') || step1_uterine_position.equals('anteverted')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_speculum_exam_prompt
+description: speculum_exam_prompt relevance
+priority: 1
+condition: "step1_cervix.equals('abnormal') || step1_growth.equals('yes') || step1_discharge.equals('yes')"
+actions:
+  - "isRelevant = true"

@@ -1,0 +1,7 @@
+---
+name: step1_activity_type
+description: set activity type
+priority: 1
+condition: "true"
+actions:
+  - "calculation = (step1_point_of_service_provision.equals('community')) ? step1_activity_type_community : step1_activity_type_workplace "

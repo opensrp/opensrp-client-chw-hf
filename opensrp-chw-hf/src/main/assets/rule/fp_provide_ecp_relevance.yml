@@ -1,0 +1,7 @@
+---
+name: step1_type_of_ecp_provided
+description: type_of_ecp_provided relevance
+priority: 1
+condition: "step1_was_ecp_provided.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"

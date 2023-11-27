@@ -1,0 +1,281 @@
+{
+  "count": "1",
+  "encounter_type": "Vaginal examination",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Vaginal examination",
+    "fields": [
+      {
+        "key": "speculum_exam_label",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "speculum_exam_label",
+        "type": "label",
+        "text": "Speculum Exam",
+        "hint_on_text": false,
+        "text_color": "#2980b9",
+        "text_size": "7sp"
+      },
+      {
+        "key": "cervix",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cervix",
+        "type": "native_radio",
+        "label": "Cervix",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "Abnormal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "discharge",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "discharge",
+        "type": "native_radio",
+        "label": "Discharge",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "growth",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "growth",
+        "type": "native_radio",
+        "label": "Growth",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "speculum_exam_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "speculum_exam_prompt",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "digital_exam",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "digital_exam",
+        "type": "label",
+        "text": "Digital exam",
+        "hint_on_text": false,
+        "text_color": "#2980b9",
+        "text_size": "7sp"
+      },
+      {
+        "key": "uterine_size",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "uterine_size",
+        "type": "native_radio",
+        "label": "Uterine size",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "abnormal",
+            "text": "Abnormal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abnormal"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "uterine_position",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "uterine_position",
+        "type": "native_radio",
+        "label": "Uterine position",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "midline",
+            "text": "Midline",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "midline"
+          },
+          {
+            "key": "retroverted",
+            "text": "Retroverted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "retroverted"
+          },
+          {
+            "key": "anteverted",
+            "text": "Anteverted",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "anteverted"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "adnexa",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "adnexa",
+        "type": "native_radio",
+        "label": "Adnexa",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "painful",
+            "text": "Painful/Fixed",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "painful"
+          },
+          {
+            "key": "painless",
+            "text": "Painless/Free",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "painless"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "digital_exam_prompt",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "digital_exam_prompt",
+        "type": "toaster_notes",
+        "text": "Manage according to SOP",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_vaginal_examination_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

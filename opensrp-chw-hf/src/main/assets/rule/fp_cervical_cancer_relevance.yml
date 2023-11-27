@@ -1,0 +1,21 @@
+---
+name: step1_client_eligible_prompt
+description: client_eligible_prompt relevance
+priority: 1
+condition: "step1_client_eligible_for_via.equalsIgnoreCase('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_via_results
+description: via_results relevance
+priority: 1
+condition: "step1_client_eligible_for_via.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_via_results_prompt
+description: via_results_prompt relevance
+priority: 1
+condition: "step1_via_results.equalsIgnoreCase('positive')"
+actions:
+  - "isRelevant = true"

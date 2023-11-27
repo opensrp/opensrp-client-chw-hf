@@ -1,0 +1,24 @@
+---
+name: step1_selected_fp_method_after_counseling_female
+description: relevance if global sex of the client is female
+priority: 1
+condition: "global_sex.equalsIgnoreCase('Female') && step1_client_agreed_on_fp_choice.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_selected_fp_method_after_counseling_male
+description: relevance if global sex of the client is male
+priority: 1
+condition: "global_sex.equalsIgnoreCase('Male') && step1_client_agreed_on_fp_choice.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_client_counseled_with_her_partner
+description: client_counseled_with_her_partner relevance
+priority: 1
+condition: "global_sex.equalsIgnoreCase('Female')"
+actions:
+  - "isRelevant = true"
+
