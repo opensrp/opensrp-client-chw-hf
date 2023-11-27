@@ -34,26 +34,6 @@ public class LFTUFormUtils {
             Timber.e(e);
         }
     }
-
-    public static void startTepiCommunityFollowup(Activity context, String baseEntityId, String gender) {
-        JSONObject formJsonObject;
-        try {
-            formJsonObject = (new FormUtils()).getFormJsonFromRepositoryOrAssets(context, Constants.JsonForm.getTepiCommunityFollowupForm());
-            if (formJsonObject != null) {
-                formJsonObject.put(Constants.REFERRAL_TASK_FOCUS, Constants.FOCUS.LOST_TO_FOLLOWUP_FOCUS);
-                JSONArray steps = formJsonObject.getJSONArray("steps");
-                JSONObject step = steps.getJSONObject(0);
-                JSONArray fields = step.getJSONArray("fields");
-                if ((gender.equalsIgnoreCase("Male"))) {
-                    removeFieldOption(fields, "problem", "PMTCT");
-                }
-                ReferralRegistrationActivity.startGeneralReferralFormActivityForResults(context, baseEntityId, formJsonObject, false);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void startLTFUReferral(Activity context, String baseEntityId, String gender, int age) {
         JSONObject formJsonObject;
         try {
