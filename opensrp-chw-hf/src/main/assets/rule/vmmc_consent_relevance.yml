@@ -30,13 +30,13 @@ actions:
 name: step1_health_care_provider_middle_name
 description: healthcare provider middle relevance
 priority: 1
-condition: "!step1_health_care_provider_first_name.equals('')"
+condition: "!step1_health_care_provider_first_name.equals('') && step1_client_consent_for_mc_procedure.equalsIgnoreCase('yes')"
 actions:
   - "isRelevant = true"
 ---
 name: step1_health_care_provider_last_name
 description: healthcare provider last relevance
 priority: 1
-condition: "!step1_health_care_provider_middle_name.equals('')"
+condition: "!step1_health_care_provider_middle_name.equals('') && step1_client_consent_for_mc_procedure.equalsIgnoreCase('yes')"
 actions:
   - "isRelevant = true"

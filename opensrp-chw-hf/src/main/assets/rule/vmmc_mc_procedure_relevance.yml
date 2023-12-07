@@ -271,3 +271,25 @@ priority: 1
 condition: "step1_type_of_adverse_event_with_device.contains('anesthetic_related_events') || step1_type_of_adverse_event_without_device.contains('anesthetic_related_events')"
 actions:
   - "isRelevant = true"
+---
+name: step1_ae_classified_as_severe_excessive_skin_removal
+description: ae_classified_as_severe_excessive_skin_removal relevance
+priority: 1
+condition: "step1_desc_intraoperative_ae_skin_removal.equalsIgnoreCase('requires_reoperation') && step1_intraoperative_adverse_event_occured.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_ae_classified_as_moderate_device_displacement
+description: ae_classified_as_moderate_device_displacement relevance
+priority: 1
+condition: "step1_desc_of_adverse_event_device_displacement.equalsIgnoreCase('requires_any_treatment_more_than_routine_post_operative_wound_care') && step1_intraoperative_adverse_event_occured.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_ae_classified_as_severe_device_displacement
+description: ae_classified_as_severe_device_displacement relevance
+priority: 1
+condition: "step1_desc_of_adverse_event_device_displacement.equalsIgnoreCase('intentional_movement_of_device_by_client_or_self_removal_that_requires_surgical_intervention_hospitalization_transfer') && step1_intraoperative_adverse_event_occured.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+
