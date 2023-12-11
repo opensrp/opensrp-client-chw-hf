@@ -34,7 +34,6 @@ public class LFTUFormUtils {
             Timber.e(e);
         }
     }
-
     public static void startLTFUReferral(Activity context, String baseEntityId, String gender, int age) {
         JSONObject formJsonObject;
         try {
