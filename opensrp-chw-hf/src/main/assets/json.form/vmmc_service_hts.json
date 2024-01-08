@@ -87,6 +87,10 @@
         "openmrs_entity_id": "hiv_viral_load_text",
         "type": "edit_text",
         "hint": "Viral load",
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the viral load"
+        },
         "v_required": {
           "value": "true",
           "err": "Please specify"
