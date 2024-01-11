@@ -1,0 +1,199 @@
+{
+  "count": "1",
+  "encounter_type": "Gynecological history",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Gynecological history",
+    "fields": [
+      {
+        "key": "menarche",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "menarche",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Menarche",
+        "v_min": {
+          "value": "9",
+          "err": "Menarche age must be equal or greater than 9"
+        },
+        "v_max": {
+          "value": "16",
+          "err": "Menarche age must be equal or less than 17"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the menarche age"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        }
+      },
+      {
+        "key": "lnmp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lnmp",
+        "type": "date_picker",
+        "expanded": false,
+        "hint": "L.N.M.P",
+        "max_date": "today",
+        "min_date": "today-50w",
+        "v_required": {
+          "value": "true",
+          "err": "Please select date"
+        }
+      },
+      {
+        "key": "mp_duration",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mp_duration",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "MP Duration",
+        "v_min": {
+          "value": "2",
+          "err": "MP Duration must be equal or greater than 2 days"
+        },
+        "v_max": {
+          "value": "7",
+          "err": "MP Duration must be equal or less than 7 days"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the MP Duration"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        }
+      },
+      {
+        "key": "blood_loss",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_loss",
+        "type": "native_radio",
+        "label": "Blood Loss",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Normal",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "heavy",
+            "text": "Heavy",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "heavy"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "cycle_length",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cycle_length",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Cycle length",
+        "v_min": {
+          "value": "21",
+          "err": "Cycle length must be equal or greater than 21 days"
+        },
+        "v_max": {
+          "value": "31",
+          "err": "Cycle length must be equal or less than 31 days"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Please enter the Cycle length"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        }
+      },
+      {
+        "key": "dysmenorrhoea",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dysmenorrhoea",
+        "type": "native_radio",
+        "label": "Dysmenorrhoea",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Yes",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "No",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      }
+    ]
+  }
+}

@@ -256,8 +256,8 @@ public class HfChwRepository extends CoreChwRepository {
 
     private static void upgradeToVersion17(SQLiteDatabase db) {
         try {
-            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
             refreshIndicatorQueries(db);
+            db.execSQL("ALTER TABLE ec_kvp_register ADD COLUMN enrollment_date TEXT NULL;");
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -282,8 +282,8 @@ public class HfChwRepository extends CoreChwRepository {
 
     private static void upgradeToVersion20(SQLiteDatabase db) {
         try {
-            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
             refreshIndicatorQueries(db);
+            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN last_appointment_date TEXT NULL;");
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -294,9 +294,20 @@ public class HfChwRepository extends CoreChwRepository {
             DatabaseMigrationUtils.createAddedECTables(db,
                     new HashSet<>(Arrays.asList("ec_vmmc_enrollment", "ec_vmmc_services", "ec_vmmc_procedure", "ec_vmmc_post_op_and_discharge", "ec_vmmc_follow_up_visit", "ec_vmmc_notifiable_ae")),
                     HealthFacilityApplication.createCommonFtsObject());
+
             refreshIndicatorQueries(db);
+            db.execSQL("ALTER TABLE ec_ltfu_feedback ADD COLUMN IF NOT EXISTS last_appointment_date TEXT NULL;");
+            DatabaseMigrationUtils.createAddedECTables(db, new HashSet<>(Arrays.asList("ec_anc_partner_community_followup", "ec_sbc_register", "ec_sbc_visit","ec_sbc_mobilization_session","ec_kvp_prep_register")), HealthFacilityApplication.createCommonFtsObject());
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion21");
+        }
+    }
+
+    private static void upgradeToVersion22(SQLiteDatabase db) {
+        try {
+            db.execSQL("ALTER TABLE ec_family_member ADD COLUMN IF NOT EXISTS data_source TEXT NULL;");
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion22");
         }
     }
 
@@ -337,6 +348,7 @@ public class HfChwRepository extends CoreChwRepository {
                 String selfTestingIndicatorConfigFile = "config/self-testing-monthly-report.yml";
                 String kvpTestingIndicatorConfigFile = "config/kvp-monthly-report.yml";
                 String ltfuIndicatorConfigFile = "config/community-ltfu-summary.yml";
+                String fpIndicatorConfigFile = "config/fp-reporting-indicator-definitions.yml";
                 String vmmcIndicatorConfigFile = "config/vmmc-monthly-report.yml";
 
 
@@ -344,7 +356,7 @@ public class HfChwRepository extends CoreChwRepository {
                         Arrays.asList(indicatorsConfigFile, ancIndicatorConfigFile,
                                 pmtctIndicatorConfigFile, pncIndicatorConfigFile,
                                 cbhsReportingIndicatorConfigFile, ldReportingIndicatorConfigFile,
-                                motherChampionReportingIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile, vmmcIndicatorConfigFile))) {
+                                motherChampionReportingIndicatorConfigFile, selfTestingIndicatorConfigFile, kvpTestingIndicatorConfigFile, ltfuIndicatorConfigFile, vmmcIndicatorConfigFile, fpIndicatorConfigFile))) {
                     reportingLibraryInstance.readConfigFile(configFile, db);
                 }
 
@@ -422,6 +434,9 @@ public class HfChwRepository extends CoreChwRepository {
                     break;
                 case 21:
                     upgradeToVersion21(db);
+                    break;
+                case 22:
+                    upgradeToVersion22(db);
                     break;
                 default:
                     break;

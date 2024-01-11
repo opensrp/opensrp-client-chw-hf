@@ -73,6 +73,40 @@
         }
       },
       {
+        "key": "form_of_ctx_prescribed",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "form_of_ctx_prescribed",
+        "type": "native_radio",
+        "label": "Select the form of CTX prescribed",
+        "label_text_style": "normal",
+        "text_color": "#C0C0C0",
+        "options": [
+          {
+            "key": "tabs",
+            "text": "tablets",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tabs"
+          },
+          {
+            "key": "syrup",
+            "text": "syrup",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "syrup"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Please select an option"
+        },
+        "relevance": {
+          "step1:prescribed_ctx": {
+            "type": "string",
+            "ex": "equalTo(., \"yes\")"
+          }
+        }
+      },
+      {
         "key": "number_of_ctx_days_dispensed",
         "openmrs_entity_parent": "",
         "openmrs_entity": "concept",

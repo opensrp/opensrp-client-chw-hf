@@ -1,0 +1,7 @@
+---
+name: step1_unknown_hiv_status_prompt
+description: Check if status is unknown_hiv_status_prompt
+priority: 1
+condition: "step1_hiv_status.equalsIgnoreCase('unknown')"
+actions:
+  - "isRelevant = true"

@@ -1,0 +1,146 @@
+{
+  "count": "1",
+  "encounter_type": "SBC Health Education",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Elimu ya afya (SBC)",
+    "fields": [
+      {
+        "key": "health_education_received",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_education_received",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Vipindi  vya elimu ya mabadiliko ya tabia vilivyo tolewa",
+        "hint": "Vipindi  vya elimu ya mabadiliko ya tabia vilivyo tolewa",
+        "options": [
+          {
+            "key": "condom_use",
+            "text": "Matumizi sahihi ya kondomu",
+            "value": false,
+            "openmrs_choice_id": "condom_use"
+          },
+          {
+            "key": "risk_behavior",
+            "text": "Tabia hatarishi kwa maambukizi ya VVU",
+            "value": false,
+            "openmrs_choice_id": "risk_behavior"
+          },
+          {
+            "key": "family_planning",
+            "text": "Uzazi wa mpango",
+            "value": false,
+            "openmrs_choice_id": "family_planning"
+          },
+          {
+            "key": "hepatitis",
+            "text": "Homa ya ini",
+            "value": false,
+            "openmrs_choice_id": "hepatitis"
+          },
+          {
+            "key": "gbv",
+            "text": "Ukatili wa kijinsia",
+            "value": false,
+            "openmrs_choice_id": "gbv"
+          },
+          {
+            "key": "cervical_cancer",
+            "text": "Saratani ya shingo ya kizazi",
+            "value": false,
+            "openmrs_choice_id": "cervical_cancer"
+          },
+          {
+            "key": "other",
+            "text": "Nyinginezo (Taja)",
+            "value": false,
+            "openmrs_choice_id": "other"
+          },
+          {
+            "key": "none",
+            "text": "Hakuna",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "none"
+          }
+        ],
+        "exclusive": [
+          "none"
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua angalau moja"
+        }
+      },
+      {
+        "key": "other_health_education_received",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_health_education_received",
+        "type": "edit_text",
+        "hint": "Nyinginezo (Taja)",
+        "v_required": {
+          "value": true,
+          "err": "Tafadhali jaza"
+        },
+        "relevance": {
+          "step1:health_education_received": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

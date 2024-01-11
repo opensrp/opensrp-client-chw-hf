@@ -1,0 +1,199 @@
+{
+  "count": "1",
+  "encounter_type": "Gynecological history",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Historia ya uzazi",
+    "fields": [
+      {
+        "key": "menarche",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "menarche",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Hedhi",
+        "v_min": {
+          "value": "9",
+          "err": "Umri wa kuanza kutokwa na damu ya hedhi lazima uwe sawa au zaidi ya miaka 9"
+        },
+        "v_max": {
+          "value": "16",
+          "err": "Umri wa kuanza kutokwa na damu ya hedhi lazima uwe sawa au chini ya miaka 17"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza umri wa kuanza kutokwa na damu ya hedhi"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali taja"
+        }
+      },
+      {
+        "key": "lnmp",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "lnmp",
+        "type": "date_picker",
+        "expanded": false,
+        "hint": "L.N.M.P",
+        "max_date": "today",
+        "min_date": "today-50w",
+        "v_required": {
+          "value": "true",
+          "err": "Please select date"
+        }
+      },
+      {
+        "key": "mp_duration",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "mp_duration",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Muda wa Hedhi",
+        "v_min": {
+          "value": "2",
+          "err": "Muda wa Mzunguko wa Hedhi lazima uwe sawa au zaidi ya siku 2"
+        },
+        "v_max": {
+          "value": "7",
+          "err": "Muda wa Mzunguko wa Hedhi lazima uwe sawa au chini ya siku 7"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza muda wa mzunguko wa hedhi"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali taja"
+        }
+      },
+      {
+        "key": "blood_loss",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "blood_loss",
+        "type": "native_radio",
+        "label": "Upotevu wa damu",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "normal",
+            "text": "Kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "normal"
+          },
+          {
+            "key": "heavy",
+            "text": "Sio Kawaida",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "heavy"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali taja"
+        }
+      },
+      {
+        "key": "cycle_length",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "cycle_length",
+        "type": "edit_text",
+        "edit_type": "number",
+        "hint": "Urefu wa mzunguko",
+        "v_min": {
+          "value": "23",
+          "err": "Urefu wa mzunguko lazima uwe sawa au zaidi ya siku 23"
+        },
+        "v_max": {
+          "value": "35",
+          "err": "Urefu wa mzunguko lazima uwe sawa au chini ya siku 35"
+        },
+        "v_numeric": {
+          "value": "true",
+          "err": "Tafadhali ingiza urefu wa mzunguko"
+        },
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali taja"
+        }
+      },
+      {
+        "key": "dysmenorrhoea",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "dysmenorrhoea",
+        "type": "native_radio",
+        "label": "Maumivu wakati wa Hedhi (Dysmenorrhoea)",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali Chagua"
+        }
+      }
+    ]
+  }
+}

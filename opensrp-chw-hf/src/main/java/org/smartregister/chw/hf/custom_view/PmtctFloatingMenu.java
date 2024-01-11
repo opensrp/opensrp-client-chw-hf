@@ -22,17 +22,29 @@ import org.smartregister.chw.pmtct.fragment.BasePmtctCallDialogFragment;
 
 public class PmtctFloatingMenu extends CorePmtctFloatingMenu {
     public FloatingActionButton fab;
+
     private Animation fabOpen;
+
     private Animation fabClose;
+
     private Animation rotateForward;
+
     private Animation rotateBack;
+
     private View callLayout;
+
     protected RelativeLayout referLayout;
+
     private RelativeLayout activityMain;
+
     private boolean isFabMenuOpen = false;
+
     private LinearLayout menuBar;
+
     private OnClickFloatingMenu onClickFloatingMenu;
-    private MemberObject MEMBER_OBJECT;
+
+    private final MemberObject MEMBER_OBJECT;
+
     public PmtctFloatingMenu(Context context, MemberObject MEMBER_OBJECT) {
         super(context, MEMBER_OBJECT);
         if(context instanceof HeiProfileActivity){

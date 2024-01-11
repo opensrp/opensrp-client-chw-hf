@@ -1,0 +1,52 @@
+---
+name: step1_method_expired_prompt
+description: method_expired_prompt relevance
+priority: 1
+condition: "step1_method_expired.equalsIgnoreCase('yes')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_client_want_to_switch_stop
+description: client_want_to_switch_stop relevance
+priority: 1
+condition: "step1_client_wants_continue_with_fp_method.equals('no')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_jadelle_removed
+description: Check if the client removed jadelle method relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equals('no') && global_fp_method_selected.equalsIgnoreCase('jadelle')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_implanon_removed
+description: Check if the client removed implanon method relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equals('no') && global_fp_method_selected.equalsIgnoreCase('implanon')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_iud_removed
+description: Check if the client removed iud method relevance
+priority: 1
+condition: "step1_client_satisfied_with_fp_method.equals('no') && global_fp_method_selected.equalsIgnoreCase('iud')"
+actions:
+  - "isRelevant = true"
+---
+name: step1_client_want_to_switch_prompt
+description: client_want_to_switch_prompt relevance
+priority: 1
+condition: "step1_client_want_to_switch_stop.equalsIgnoreCase('switch')"
+actions:
+  - "isRelevant = true"
+
+---
+name: step1_method_expired
+description: method_expired relevance
+priority: 1
+condition: "global_fp_method_selected.equalsIgnoreCase('jadelle')"
+actions:
+  - "isRelevant = true"

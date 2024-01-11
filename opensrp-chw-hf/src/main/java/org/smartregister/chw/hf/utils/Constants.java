@@ -47,48 +47,90 @@ public class Constants extends CoreConstants {
 
     public static final class Events {
         public static final String ANC_FIRST_FACILITY_VISIT = "ANC First Facility Visit";
+
         public static final String ANC_RECURRING_FACILITY_VISIT = "ANC Recurring Facility Visit";
+
         public static final String ANC_FACILITY_VISIT_NOT_DONE = "ANC Facility Visit Not Done";
+
         public static final String ANC_FACILITY_VISIT_NOT_DONE_UNDO = "ANC Facility Visit Not Done Undo";
+
         public static final String PMTCT_FIRST_EAC_VISIT = "PMTCT EAC First Visit";
+
         public static final String PMTCT_SECOND_EAC_VISIT = "PMTCT EAC Second Visit";
+
         public static final String PMTCT_EAC_VISIT = "PMTCT EAC Visit";
+
         public static final String UPDATE_HIV_INDEX_TESTING_FOLLOWUP = "Update HIV Index Contact Testing Followup";
+
         public static final String PARTNER_REGISTRATION_EVENT = "Partner Registration";
+
         public static final String HEI_REGISTRATION = "HEI Registration";
+
         public static final String HEI_FOLLOWUP = "HEI Followup";
+
         public static final String HEI_POSITIVE_INFANT = "HEI Positive Infant";
+
         public static final String HEI_NEGATIVE_INFANT = "HEI Negative Infant";
+
         public static final String PMTCT_CLOSE_VISITS = "PMTCT Close Visits";
+
         public static final String PNC_VISIT = "PNC VISIT";
+
         public static final String PNC_NO_MOTHER_REGISTRATION = "PNC No Mother Registration";
+
         public static final String CLOSE_PNC_VISITS = "Close PNC Visits";
+
         public static final String PNC_CHILD_FOLLOWUP = "PNC Child Followup";
+
         public static final String MOTHER_CHAMPION_COMMUNITY_SERVICES_REFERRAL = "Mother Champion Community Services Referral";
+
         public static final String MARK_PMTCT_CLIENT_AS_LTF = "Mark PMTCT Client As LTF";
+
         public static final String MARK_HEI_CLIENT_AS_LTF = "Mark HEI Client As LTF";
+
         public static final String HEI_COMMUNITY_FOLLOWUP = "HEI Community Followup";
+
         public static final String HEI_NUMBER_REGISTRATION = "HEI Number Registration";
+
         public static final String EDIT_HEI_NUMBER = "Edit HEI Number";
+
         public static final String LD_REGISTRATION = "LD Registration";
+
         public static final String LD_PARTOGRAPHY = "LD Partograph";
+
         public static final String LD_GENERAL_EXAMINATION = "LD General Examination";
+
         public static final String LD_ACTIVE_MANAGEMENT_OF_3RD_STAGE_OF_LABOUR = "LD Active Management of 3rd Stage Of Labour";
+
         public static final String LD_POST_DELIVERY_MOTHER_MANAGEMENT = "Post Delivery Mother Management";
+
         public static final String CLOSE_LD = "Close LD";
+
         public static final String PMTCT_POST_PNC_REGISTRATION = "PMTCT Post PNC Registration";
+
+        public static final String FP_ECP_SCREENING = "FP ECP Screening";
     }
 
     public static final class TableName {
         public static final String ANC_FIRST_FACILITY_VISIT = "ec_anc_first_facility_visit";
+
         public static final String ANC_RECURRING_FACILITY_VISIT = "ec_anc_recurring_facility_visit";
+
         public static final String PMTCT_EAC_VISIT = "ec_pmtct_eac_visit";
+
         public static final String HEI = "ec_hei";
+
         public static final String HEI_HIV_RESULTS = "ec_hei_hiv_results";
+
         public static final String HEI_FOLLOWUP = "ec_hei_followup";
+
         public static final String PNC_FOLLOWUP = "ec_pnc_followup";
+
         public static final String PMTCT_FOLLOWUP = "ec_pmtct_followup";
+
         public static final String NO_MOTHER_PNC = "ec_no_mother_pnc";
+
+        public static final String FP_ECP_REGISTER = "ec_fp_ecp_register";
     }
 
     public static final class Visits {
@@ -158,6 +200,10 @@ public class Constants extends CoreConstants {
         private static final String PMTCT_REGISTRATION_FOR_CLIENTS_POST_PNC = "pmtct_registration_for_clients_post_pnc";
         private static final String VMMC_REFERRAL= "referrals/vmmc_referral_form";
 
+
+        private static final String FP_ECP_SCREENING = "fp_ecp_screening";
+
+        private static final String FP_ECP_PROVISION = "fp_provision_of_ecp";
 
         public static String getNextFacilityVisitForm() {
             return NEXT_FACILITY_VISIT_FORM;
@@ -346,6 +392,16 @@ public class Constants extends CoreConstants {
         public static String getLdHeiFirstVisit() {
             return LD_HEI_FIRST_VISIT;
         }
+
+        public static String getFPEcpScreening(){
+            return FP_ECP_SCREENING;
+        }
+
+        public static String getFpEcpProvision(){
+            return FP_ECP_PROVISION;
+        }
+
+
 
         public static class EacVisits {
             public static final String PMTCT_EAC_VISIT = "pmtct_eac_visits";
@@ -708,44 +764,80 @@ public class Constants extends CoreConstants {
 
         public interface VmmcKeys {
             String VMMC_REPORT = "vmmc_reports";
+
             String VMMC_SERVICE_REGISTER = "vmmc_service_register";
+
             String VMMC_THEATRE_REGISTER = "vmmc_theatre_register";
         }
 
         public interface ReportTypes {
             String PMTCT_REPORT = "pmtct_report";
+
             String ANC_REPORT = "anc_report";
+
             String PNC_REPORT = "pnc_report";
+
             String CBHS_REPORT = "cbhs_report";
+
             String LTFU_SUMMARY = "ltfu_report";
+
             String LD_REPORT = "ld_report";
+
             String MOTHER_CHAMPION_REPORT = "mother_champion_report";
+
             String SELF_TESTING_REPORT = "self_testing_report";
+
             String CONDOM_DISTRIBUTION_REPORT = "condom_distribution_report";
+
             String KVP_REPORT = "kvp_report";
+
             String VMMC_REPORT = "vmmc_report";
+
+            String FP_REPORT = "fp_report";
+
+            String SBC_REPORT = "sbc_report";
         }
 
         public interface ReportPaths {
             String ANC_REPORT_PATH = "anc-taarifa-ya-mwezi";
+
             String PMTCT_3_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-3";
+
             String PMTCT_12_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-12";
+
             String PMTCT_24_MONTHS_REPORT_PATH = "pmtct-reports/taarifa-ya-miezi-24";
+
             String PMTCT_EID_MONTHLY_REPORT_PATH = "pmtct-reports/taarifa-cross-sectional";
+
             String PNC_REPORT_PATH = "pnc-taarifa-ya-mwezi";
+
             String CBHS_REPORT_PATH = "cbhs-taarifa-ya-mwezi";
+
             String LTFU_REPORT_PATH = "ltfu-summary-report";
+
             String LD_REPORT_PATH = "labour-delivery-taarifa-ya-mwezi";
+
             String MOTHER_CHAMPION_REPORT_PATH = "mother-champion-report";
+
             String SELF_TESTING_REPORT_PATH = "self-testing-report";
+
             String CONDOM_DISTRIBUTION_ISSUING_AT_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-at-the-facility";
+
             String CONDOM_DISTRIBUTION_ISSUING_FROM_THE_FACILITY_REPORT_PATH = "condom-distribution-issuing-report-from-the-facility";
+
             String CONDOM_DISTRIBUTION_RECEIVING_REPORT_PATH = "condom-distribution-receiving-report";
+
             String KVP_REPORT_PATH = "kvp-report";
+
             String VMMC_REPORT_PATH = "vmmc-report";
+
             String VMMC_REGISTER_PATH = "vmmc-service-register";
+
             String VMMC_THEATRE_REGISTER_PATH = "vmmc-theatre-register";
 
+            String FP_REPORT_PATH = "fp-report";
+
+            String SBC_REPORT_PATH = "sbc-report";
         }
     }
 

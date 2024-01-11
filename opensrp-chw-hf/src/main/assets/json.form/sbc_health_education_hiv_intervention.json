@@ -1,0 +1,209 @@
+{
+  "count": "1",
+  "encounter_type": "SBC Health Education Related to HIV Intervention",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "SBC Health Education Related to HIV Intervention",
+    "fields": [
+      {
+        "key": "health_education_hiv_intervention",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_education_hiv_intervention",
+        "openmrs_data_type": "select one",
+        "type": "check_box",
+        "combine_checkbox_option_values": "true",
+        "label": "Health Education on HIV Intervention provided",
+        "hint": "Health Education on HIV Intervention provided",
+        "options": [
+          {
+            "key": "hts",
+            "text": "HTS",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hts"
+          },
+          {
+            "key": "vmmc",
+            "text": "VMMC",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "vmmc"
+          },
+          {
+            "key": "pmtct",
+            "text": "PMTCT",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pmtct"
+          },
+          {
+            "key": "treatment",
+            "text": "Care and Treatment",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "treatment"
+          },
+          {
+            "key": "cervical",
+            "text": "Cervical Cancer Screening",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "cervical"
+          },
+          {
+            "key": "stigma",
+            "text": "Stigma",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "stigma"
+          },
+          {
+            "key": "prep",
+            "text": "PrEP",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "prep"
+          },
+          {
+            "key": "gbv",
+            "text": "GBV",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "gbv"
+          },
+          {
+            "key": "agyw",
+            "text": "AGYW",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "agyw"
+          },
+          {
+            "key": "abym",
+            "text": "ABYM",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "abym"
+          },
+          {
+            "key": "tb",
+            "text": "TB/HIV",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "tb"
+          },
+          {
+            "key": "hepatitis",
+            "text": "Hepatitis",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "hepatitis"
+          },
+          {
+            "key": "sti",
+            "text": "STI/RTI",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sti"
+          },
+          {
+            "key": "injection",
+            "text": "Injection safety",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "injection"
+          },
+          {
+            "key": "mat",
+            "text": "MAT",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "mat"
+          },
+          {
+            "key": "overdose",
+            "text": "Overdose Prevention and Management Education",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "overdose"
+          },
+          {
+            "key": "condom_use",
+            "text": "Comprehensive condom use",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "condom_use"
+          },
+          {
+            "key": "art_adherence",
+            "text": "ART Adherence",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "art_adherence"
+          },
+          {
+            "key": "other",
+            "text": "Other (Specify)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "other"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "other_health_education_hiv_intervention",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "other_health_education_hiv_intervention",
+        "type": "edit_text",
+        "hint": "Other (Specify)",
+        "v_required": {
+          "value": true,
+          "err": "Required"
+        },
+        "relevance": {
+          "step1:health_education_hiv_intervention": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

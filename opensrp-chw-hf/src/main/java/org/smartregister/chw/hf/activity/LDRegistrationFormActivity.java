@@ -128,6 +128,10 @@ public class LDRegistrationFormActivity extends BaseLDVisitActivity {
             BaseLDVisitAction ldRegistrationTrueLabourConfirmation = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title));
             actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_true_labour_title), ldRegistrationTrueLabourConfirmation);
         }
+        if (map.containsKey(getString(org.smartregister.chw.hf.R.string.labour_and_delivery_labour_stage_title))) {
+            BaseLDVisitAction ldRegistrationTrueLabourConfirmation = map.get(getString(org.smartregister.chw.hf.R.string.labour_and_delivery_labour_stage_title));
+            actionList.put(getString(org.smartregister.chw.hf.R.string.labour_and_delivery_labour_stage_title), ldRegistrationTrueLabourConfirmation);
+        }
         if (map.containsKey(getString(org.smartregister.chw.hf.R.string.ld_registration_admission_information_title))) {
             BaseLDVisitAction ldRegistrationAdmissionInformation = map.get(getString(org.smartregister.chw.hf.R.string.ld_registration_admission_information_title));
             actionList.put(getString(org.smartregister.chw.hf.R.string.ld_registration_admission_information_title), ldRegistrationAdmissionInformation);

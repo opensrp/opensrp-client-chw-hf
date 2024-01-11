@@ -1,0 +1,201 @@
+{
+  "count": "1",
+  "encounter_type": "Medical eligibility criteria",
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "step1": {
+    "title": "Medical eligibility criteria",
+    "fields": [
+      {
+        "key": "client_category_after_screening",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_category_after_screening",
+        "type": "native_radio",
+        "label": "Select client category after screening",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "category_1",
+            "text": "Category 1",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "category_1"
+          },
+          {
+            "key": "category_2",
+            "text": "Category 2",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "category_2"
+          },
+          {
+            "key": "category_3",
+            "text": "Category 3",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "category_3"
+          },
+          {
+            "key": "category_4",
+            "text": "Category 4",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "category_4"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Required"
+        }
+      },
+      {
+        "key": "category_1_notes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "category_1_notes",
+        "type": "toaster_notes",
+        "text": "Give the method in any circumstance",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_eligibility_criteria_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "category_2_notes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "category_2_notes",
+        "type": "toaster_notes",
+        "text": "Generally use; advantages outweigh risks",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_eligibility_criteria_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "category_3_notes_first",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "category_3_notes_first",
+        "type": "toaster_notes",
+        "text": "Generally do not use; risks outweigh the benefit",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_eligibility_criteria_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "category_3_notes_second",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "category_3_notes_second",
+        "type": "toaster_notes",
+        "text": "The Client is not eligible for the family planning method counsel for other methods",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_eligibility_criteria_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "category_4_notes_first",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "category_4_notes_first",
+        "type": "toaster_notes",
+        "text": "Method not to be used",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_eligibility_criteria_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "category_4_notes_second",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "category_4_notes_second",
+        "type": "toaster_notes",
+        "text": "The Client is not eligible for the family planning method counsel for other methods",
+        "toaster_type": "warning",
+        "toaster_info_text": "",
+        "toaster_info_title": "",
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_method_screening_medical_eligibility_criteria_relevance.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

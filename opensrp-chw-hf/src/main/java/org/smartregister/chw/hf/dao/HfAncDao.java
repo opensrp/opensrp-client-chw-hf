@@ -770,4 +770,18 @@ public class HfAncDao extends AncDao {
         }
         return false;
     }
+
+    public static boolean hasReferredForPartnerCommunityFollowup(String baseEntityId) {
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "base_entity_id");
+        String sql = String.format(
+                "SELECT base_entity_id FROM %s WHERE entity_id = '%s' " +
+                        "AND is_closed = 0 ",
+                "ec_anc_partner_community_followup",
+                baseEntityId);
+        List<String> res = readData(sql, dataMap);
+        if (res != null && res.size() > 0) {
+            return res.size() > 0;
+        }
+        return false;
+    }
 }

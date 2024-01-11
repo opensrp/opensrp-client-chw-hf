@@ -17,6 +17,7 @@ import org.smartregister.chw.hf.R;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAdmissionAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationAncClinicFindingsAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationCurrentLabourAction;
+import org.smartregister.chw.hf.actionhelper.LDRegistrationLabourStageAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationObstetricHistoryAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationPastObstetricHistoryAction;
 import org.smartregister.chw.hf.actionhelper.LDRegistrationTriageAction;
@@ -87,7 +88,7 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
         otherPastMedicalSurgicalHistory.put(org.smartregister.family.util.JsonFormUtils.VALUE, otherPastMedicalAndSurgicalHistory);
     }
 
-    private void setCheckBoxValues(JSONArray options, String value) {
+    public static void setCheckBoxValues(JSONArray options, String value) {
         for (int j = 0; j < options.length(); j++) {
             JSONObject option = null;
             try {
@@ -259,6 +260,51 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
             if (labourConfirmation.equalsIgnoreCase("true")) {
                 //Adding the next actions when true labour confirmation is completed and the client is confirmed with True Labour.
                 try {
+                    BaseLDVisitAction ldStage = new BaseLDVisitAction.Builder(context, context.getString(R.string.labour_and_delivery_labour_stage_title))
+                            .withOptional(false)
+                            .withDetails(details)
+                            .withFormName(Constants.JsonForm.LabourAndDeliveryRegistration.getLabourAndDeliveryLabourStage())
+                            .withHelper(new LabourStageAction(memberObject, actionList, details, callBack, context))
+                            .build();
+
+                    actionList.put(context.getString(R.string.labour_and_delivery_labour_stage_title), ldStage);
+                    ldStage.evaluateStatus();
+                } catch (Exception e) {
+                    Timber.e(e);
+                }
+            } else {
+                //Removing the next actions  the client is confirmed with False Labour.
+                actionList.remove(context.getString(R.string.labour_and_delivery_labour_stage_title));
+            }
+
+            //Calling the callback method to preload the actions in the actions list.
+            new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+            return super.postProcess(s);
+        }
+    }
+
+
+
+    private static class LabourStageAction extends LDRegistrationLabourStageAction {
+        private final LinkedHashMap<String, BaseLDVisitAction> actionList;
+        private final Context context;
+        private final Map<String, List<VisitDetail>> details;
+        private final BaseLDVisitContract.InteractorCallBack callBack;
+
+        public LabourStageAction(MemberObject memberObject, LinkedHashMap<String, BaseLDVisitAction> actionList, Map<String, List<VisitDetail>> details, BaseLDVisitContract.InteractorCallBack callBack, Context context) {
+            super(memberObject);
+            this.actionList = actionList;
+            this.details = details;
+            this.callBack = callBack;
+            this.context = context;
+        }
+
+        @Override
+        public String postProcess(String s) {
+
+            if (labourStage.equalsIgnoreCase("1") || labourStage.equalsIgnoreCase("2")) {
+                //Adding the next actions if the client is in stage 1 or stage 2 of labour.
+                try {
                     BaseLDVisitAction ldRegistrationAdmissionInformation = new BaseLDVisitAction.Builder(context, context.getString(R.string.ld_registration_admission_information_title))
                             .withOptional(false)
                             .withDetails(details)
@@ -334,8 +380,10 @@ public class LDRegistrationInteractorFlv implements LDRegistrationInteractor.Fla
 
             }
 
+
             //Calling the callback method to preload the actions in the actionns list.
             new AppExecutors().mainThread().execute(() -> callBack.preloadActions(actionList));
+
             return super.postProcess(s);
         }
     }

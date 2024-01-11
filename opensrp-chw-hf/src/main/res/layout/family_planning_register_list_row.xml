@@ -53,29 +53,47 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
 
+                <org.smartregister.view.customcontrols.CustomFontTextView
+                    android:id="@+id/text_view_village"
+                    style="@style/CustomFontTextViewStyle.ClientList.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/register_member_village_size" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/register_dot_separator_margin"
+                    android:text="@string/interpunct"
+                    android:textColor="@android:color/black" />
+
+                <org.smartregister.view.customcontrols.CustomFontTextView
+                    android:id="@+id/text_view_gender"
+                    style="@style/CustomFontTextViewStyle.ClientList.Light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/register_member_village_size"/>
+            </LinearLayout>
             <org.smartregister.view.customcontrols.CustomFontTextView
                 android:id="@+id/text_view_fp_method"
                 style="@style/CustomFontTextViewStyle.ClientList.Light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contraceptive"
+                android:visibility="gone"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/register_member_village_size" />
-
-            <org.smartregister.view.customcontrols.CustomFontTextView
-                android:id="@+id/text_view_village"
-                style="@style/CustomFontTextViewStyle.ClientList.Light"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lavingtone #445"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/register_member_village_size"
-                android:visibility="gone" />
-
             <TextView
                 android:id="@+id/text_view_referral_day"
                 style="@style/CustomFontTextViewStyle.ClientList.Light"
@@ -133,7 +151,7 @@
             android:textAllCaps="false"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/vaccine_blue_bg_st"
-            android:textSize="@dimen/fp_register_list_due_size"
+            android:textSize="@dimen/register_list_due_size"
             android:typeface="normal" />
 
     </LinearLayout>

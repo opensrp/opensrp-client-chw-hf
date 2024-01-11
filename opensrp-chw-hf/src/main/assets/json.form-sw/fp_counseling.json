@@ -1,0 +1,264 @@
+{
+  "count": "1",
+  "encounter_type": "Provide FP Counseling",
+  "validate_on_submit": true,
+  "entity_id": "",
+  "relational_id": "",
+  "metadata": {
+    "start": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "start",
+      "openmrs_entity_id": "165000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "end": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "end",
+      "openmrs_entity_id": "165001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "deviceid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "deviceid",
+      "openmrs_entity_id": "165003AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "subscriberid": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "subscriberid",
+      "openmrs_entity_id": "165004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "simserial": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "simserial",
+      "openmrs_entity_id": "165005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "phonenumber": {
+      "openmrs_entity_parent": "",
+      "openmrs_entity": "concept",
+      "openmrs_data_type": "phonenumber",
+      "openmrs_entity_id": "165006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "encounter_location": "",
+    "look_up": {
+      "entity_id": "",
+      "value": ""
+    }
+  },
+  "global": {},
+  "step1": {
+    "title": "Toa Ushauri wa Uzazi wa Mpango",
+    "fields": [
+      {
+        "key": "provide_counseling_notes",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "provide_counseling_notes",
+        "type": "toaster_notes",
+        "text": "Toa ushauri kuhusu chaguo la uzazi wa mpango kwa kuzingatia taarifa sahihi",
+        "toaster_type": "info",
+        "toaster_info_text": "",
+        "toaster_info_title": ""
+      },
+      {
+        "key": "client_counseled_with_her_partner",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_counseled_with_her_partner",
+        "type": "native_radio",
+        "label": "Je, mteja alipewa ushauri pamoja na mwenzi wake?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_counseling_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "client_agreed_on_fp_choice",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "client_agreed_on_fp_choice",
+        "type": "native_radio",
+        "label": "Je, mteja amekubaliana na chaguo la uzazi wa mpango?",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "yes",
+            "text": "Ndiyo",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "yes"
+          },
+          {
+            "key": "no",
+            "text": "Hapana",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "no"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        }
+      },
+      {
+        "key": "selected_fp_method_after_counseling_female",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "selected_fp_method_after_counseling_female",
+        "type": "native_radio",
+        "label": "Mteja Amechagua njia gani ya uzazi wa mpango baada ya ushauri",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "pop",
+            "text": "POP",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "pop"
+          },
+          {
+            "key": "coc",
+            "text": "COC",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "coc"
+          },
+          {
+            "key": "injectable",
+            "text": "Sindano",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "injectable"
+          },
+          {
+            "key": "condom",
+            "text": "Kondomu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "condom"
+          },
+          {
+            "key": "jadelle",
+            "text": "Kuweka Vipandikizi (Jadelle)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "jadelle"
+          },
+          {
+            "key": "implanon",
+            "text": "Kuweka Vipandikizi (Implanon)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "implanon"
+          },
+          {
+            "key": "iucd",
+            "text": "IUCD",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "iucd"
+          },
+          {
+            "key": "sdm",
+            "text": "SDM",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sdm"
+          },
+          {
+            "key": "lam",
+            "text": "LAM",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "lam"
+          },
+          {
+            "key": "vasectomy",
+            "text": "Kufunga mirija ya uzazi (Vasectomy)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "vasectomy"
+          },
+          {
+            "key": "btl",
+            "text": "BTL",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "btl"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_counseling_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "selected_fp_method_after_counseling_male",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "selected_fp_method_after_counseling_male",
+        "type": "native_radio",
+        "label": "Mteja Amechagua njia gani ya uzazi wa mpango baada ya ushauri",
+        "text_color": "#000000",
+        "options": [
+          {
+            "key": "condom",
+            "text": "Kondomu",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "condom"
+          },
+          {
+            "key": "vasectomy",
+            "text": "Kufunga mirija ya uzazi (Vasectomy)",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "vasectomy"
+          }
+        ],
+        "v_required": {
+          "value": "true",
+          "err": "Tafadhali chagua"
+        },
+        "relevance": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "fp_counseling_relevance.yml"
+            }
+          }
+        }
+      },
+      {
+        "key": "selected_fp_method_after_counseling",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "selected_fp_method_after_counseling",
+        "type": "hidden",
+        "calculation": {
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "selected_fp_method_after_counseling_calculation.yml"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
