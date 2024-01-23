@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Kituoni</string>
     <string name="logo">Nembo</string>
     <string name="login_title">Wizara ya Afya\nMfumo wa Kituo cha Afya</string>
@@ -535,7 +536,159 @@
     <string name="fp_number_female_condoms_refilled">Taja idadi (Mwanamke):</string>
 
     <!--    VMMC-->
-    <string name="vmmc">VMMC</string>
+    <string name="vmmc">Huduma ya Tohara</string>
+    <string name="vmmc_medical_history">Historia ya kitibabu</string>
+    <string name="past_medical_history">Historia ya kitibabu iliyopita :</string>
+    <string name="vmmc_followup_visit">Hudhurio la Marudio</string>
+    <string name="vmmc_notifiable_adverse">Madhara yanayotakiwa kutolewa taarifa maalum</string>
+    <string name="consent_form">Ridhaa ya huduma ya Tohara</string>
+    <string name="vmmc_mc_procedure">Huduma ya tohara</string>
+    <string name="vmmc_physical_examination">Uchunguzi wa kimwili</string>
+    <string name="vmmc_hts">Huduma za upimaji wa VVU</string>
+    <string name="vmmc_post">Huduma baada ya tohara</string>
+    <string name="vmmc_first_vital">Vipimo vya kwanza vya msingi </string>
+    <string name="vmmc_second_vital">Vipimo vya pili vya msingi</string>
+    <string name="vmmc_post_discharge">Ruhusa</string>
+    <string name="vmmc_service_register">Rejesta ya mwezi ya huduma za tohara </string>
+    <string name="vmmc_theatre_register">Rejesta ya mwezi ya theatre </string>
+    <string name="vmmc_register_subtitle">Kutazama rejesta ya huduma za tohara</string>
+    <string name="vmmc_theatre_register_subtitle">Kutazama rejesta ya theatre</string>
+    <string name="kvp_vmcc_provided">Huduma za tohara zilizotolewa:</string>
+
+    <!--    Vmmc Medical History-->
+    <string name="vmmc_consent_from">Ridhaa toka kwa:</string>
+    <string name="vmmc_has_client_had_any_sti">Magonjwa ya ngono:</string>
+    <string name="vmmc_any_complaints">Malalamiko:</string>
+    <string name="vmmc_is_client_diagnosed_with_any">Mteja ametambuliwa na:</string>
+    <string name="vmmc_diabetes_treatment">Matibabu ya kisukari:</string>
+    <string name="vmmc_surgical_procedure">Upasuaji:</string>
+    <string name="vmmc_type_complication">Aina ya madhara:</string>
+    <string name="vmmc_any_hematological_disease_symptoms">Matatizo ya damu:</string>
+    <string name="vmmc_known_allergies">Mzio unaojulikana:</string>
+    <string name="vmmc_tetanus_vaccination">Chanjo ya pepopunda:</string>
+    <string name="vmmc_physical_abnormality">Ulemavu wowote wa kimwili:</string>
+    <string name="vmmc_client_weight">Uzito wa mteja:</string>
+    <string name="vmmc_pulse_rate">Mapigo ya moyo:</string>
+    <string name="vmmc_systolic">systolic:</string>
+    <string name="vmmc_diastolic">diastolic:</string>
+    <string name="vmmc_temperature">jotoridi:</string>
+    <string name="vmmc_respiration_rate">Upumuaji:</string>
+    <string name="vmmc_genital_examination">Uchuguzi sehemu za siri:</string>
+    <string name="vmmc_preferred_client_mc_method">Njia ya tohara aliyochagua mteja:</string>
+    <string name="vmmc_penile_size">Kipenyo cha uume wa mteja:</string>
+    <string name="vmmc_tested_hiv">Amepima VVU:</string>
+    <string name="vmmc_hiv_result">Majibu ya VVU:</string>
+    <string name="vmmc_hiv_not_tested_reasons">Sababu za kutopima VVU:</string>
+    <string name="vmmc_hiv_viral_load_text">Kiwango cha virusi vya VVU:</string>
+    <string name="vmmc_self_test_kits">Tepe za jipime:</string>
+    <string name="vmmc_client_referred_to">Mteja amepewa rufaa kwenda:</string>
+    <string name="vmmc_client_medically_cleared">Mteja amepata idhini ya matibabu:</string>
+    <string name="vmmc_mc_reasons">Sababu za tohara:</string>
+    <string name="vmmc_uds_managed">Kutokwa uchafu usio wa kawaida kwenye njia ya mkojo kumetatuliwa:</string>
+    <string name="vmmc_smegma_managed">Utoko ndani ya ngovi imetatuliwa:</string>
+    <string name="vmmc_gud_managed">Vidonda sehemu ya siri imetatuliwa:</string>
+    <string name="vmmc_phimosis_managed">Govi kushindwa kurudi nyuma imetatuliwa:</string>
+    <string name="vmmc_paraphimosis_managed">Govi kushindwa kurudi mbele imetatuliwa:</string>
+    <string name="vmmc_underscended_managed">Kutoshuka kwa kende kumetatuliwa:</string>
+    <string name="vmmc_condylomata_managed">condylomata imetatuliwa:</string>
+    <string name="vmmc_adhesion_managed">Govi kushikana na kichwa cha uume imetatuliwa:</string>
+    <string name="vmmc_balanitis_managed">balanitis/wekundu/kuvimba kwa govi/kichwa/uume imetatuliwa:</string>
+    <string name="vmmc_urethral_managed">Maumbile yasiyo ya kawaida ya njia ya mkojo imetatuliwa:</string>
+    <string name="vmmc_chordae_managed">Uume uliopinda umetatuliwa:</string>
+    <string name="vmmc_hydrocele_managed">Busha limetatuliwa:</string>
+    <string name="vmmc_client_consent_for_mc_procedure">Ridhaa ya mteja kufanyiwa tohara:</string>
+    <string name="vmmc_health_care_provider">Mtoa huduma za afya:</string>
+
+    <string name="vmmc_is_male_procedure_circumcision_conducted">Tohara imefanyika:</string>
+    <string name="vmmc_start_time">Muda wa kuanza:</string>
+    <string name="vmmc_end_time">Muda wa kumaliza:</string>
+    <string name="vmmc_aneathesia_administered">Dawa ya ganzi iliyotumika:</string>
+    <string name="vmmc_other_aneathesia_administered">Dawa ya ganzi nyingine iliyotumika:</string>
+    <string name="vmmc_lignocaine_dosage">Dozi ya lignocaine:</string>
+    <string name="vmmc_bupivacaine_dosage">Dozi ya bupivacaine:</string>
+    <string name="vmmc_dosage">Dozi:</string>
+    <string name="vmmc_male_circumcision_method">Njia ya tohara iliyotumika:</string>
+    <string name="vmmc_device_name">Jina la kifaa:</string>
+    <string name="vmmc_lot_number">Namba ya LOT:</string>
+    <string name="vmmc_size_place">Saizi aliyowekewa:</string>
+    <string name="vmmc_surgeon_name">Jina la mtoa huduma:</string>
+    <string name="vmmc_surgeons_cadre">Kada ya mtoa huduma:</string>
+    <string name="vmmc_assistant_name">Jina la msaidizi:</string>
+    <string name="vmmc_assistant_cadre">Kada ya msaidizi:</string>
+    <string name="vmmc_intraoperative_adverse_event_occured">Madhara yaliyotokea wakati wa upasuaji:</string>
+    <string name="vmmc_type_of_adverse_event_others">Aina ya madhara mengine:</string>
+    <string name="vmmc_desc_intraoperative_ae_bleed_excessive_bleeding">Maelezo ya madhara yaliyotokea wakati wa upasuaji (Kuvuja damu kupita kiasi):</string>
+    <string name="vmmc_desc_intraoperative_ae_skin_removal">Maelezo ya madhara yaliyotokea wakati wa upasuaji (Kutoa ngozi kupita kiasi):</string>
+    <string name="vmmc_desc_intraoperative_ae_injury_to_penis">Maelezo ya madhara yaliyotokea wakati wa upasuaji (Jeraha kwenye uume):</string>
+    <string name="vmmc_desc_intraoperative_ae_anaesthetic_related_event">Maelezo ya madhara yaliyotokea wakati wa upasuaji(Madhara yatokanayo na matumizi ya dawa ya ganzi):</string>
+    <string name="vmmc_nature_of_ae">Asili ya madhara yaliyotokea:</string>
+    <string name="vmmc_what_done">Nini kilichofanyika:</string>
+    <string name="vmmc_treatment_outcome">Matokeo ya matibabu:</string>
+
+    <string name="vmmc_dressing_condition_in_relation_to_bleeding">Elezea hali ya bandeji kwa kuangalia kiasi cha damu (kwa njia ya upasuaji):</string>
+    <string name="vmmc_device_mc">Kwa njia ya kifaa, kagua yafuatayo:</string>
+    <string name="vmmc_discharge_condition">Hali ya mteja wakati wa kuruhusiwa:</string>
+    <string name="vmmc_discharged_reasons">Sababu ya kuruhusiwa:</string>
+    <string name="vmmc_analgesics_given">Dawa ya kutuliza maumivu iliyotolewa:</string>
+    <string name="vmmc_analgenics_type">Aina ya dawa ya kutuliza maumivu:</string>
+    <string name="vmmc_analgenics_dosage">Dozi ya dawa ya kutuliza maumivu:</string>
+    <string name="vmmc_analgenics_reasons">Sababu ya kutopewa dawa za kutuliza maumivu:</string>
+    <string name="vmmc_discharge_time">Muda wa kuruhusiwa:</string>
+    <string name="vmmc_discharging_provider_name">Jina la mtoa huduma aliye mruhusu :</string>
+    <string name="vmmc_provider_cadre">Kada ya mtoa huduma:</string>
+
+    <string name="vmmc_first_vital_sign_pulse_rate">Vipimo vya kwanza vya msingi ya mapigo ya moyo (mapigo kwa dakika):</string>
+    <string name="vmmc_first_vital_sign_systolic">Vipimo vya kwanza vya msingi ya Systolic (Blood Pressure):</string>
+    <string name="vmmc_first_vital_sign_diastolic">Vipimo vya kwanza vya msingi ya Diastolic (Blood Pressure):</string>
+    <string name="vmmc_first_vital_sign_temperature">Vipimo vya kwanza vya msingi ya jororidi :</string>
+    <string name="vmmc_first_vital_sign_respiration_rate">Vipimo vya kwanza vya msingi ya upumuaji (Mapigo kwa dakika) :</string>
+    <string name="vmmc_first_vital_sign_time_taken">Muda uliochukuliwa vipimo vya kwanza ya msingi :</string>
+
+    <string name="vmmc_second_vital_sign_pulse_rate">Vipimo vya pili vya msingi vya mapigo ya moyo(mapigo kwa dakika):</string>
+    <string name="vmmc_second_vital_sign_systolic">Vipimo vya pili vya msingi vya Systolic (Shinikizo la damu):</string>
+    <string name="vmmc_second_vital_sign_diastolic">Vipimo vya pili vya msingi vya Diastolic (Shinikizo la damu):</string>
+    <string name="vmmc_second_vital_sign_temperature">Vipimo vya pili vya msingi vya jotoridi :</string>
+    <string name="vmmc_second_vital_sign_respiration_rate">Vipimo vya pili vya msingi vya upumuaji (mapigo kwa dakika) :</string>
+    <string name="vmmc_second_vital_sign_time_taken">Muda uliochukuliwa vipimo vya pili vya msingi:</string>
+
+    <string name="vmmc_choose_analgenics_dose_unit">Chagua kipimo cha dozi ya dawa ya maumivu :</string>
+    <string name="vmmc_analgenics_dose">Dozi ya dawa ya maumivu :</string>
+    <string name="vmmc_analgenics_dose_duration">Muda wa dozi ya kutuliza maumivu :</string>
+
+    <string name="vmmc_visit_type">Aina ya hudhuria:</string>
+    <string name="vmmc_comment_vmmc_followup">Maelezo ya hudhuria:</string>
+    <string name="vmmc_post_op_adverse_event_occur">Madhara yoyote yaliyotokea baada ya tohara:</string>
+    <string name="vmmc_time_of_adverse_event_occured">Muda madhara kutokea:</string>
+    <string name="vmmc_time_of_adverse_event_attended">Muda madhara kuhudumiwa:</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_infection">Maelezo ya madhara yaliyotokea baada ya upasuaji (uambukizo):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_persistent_pain">Maelezo ya madhara yaliyotokea baada ya upasuaji (maumivu yasiyosikia dawa):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_bleeding">Maelezo ya madhara yaliyotokea baada ya upasuaji (kutoka damu):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_device_displacement">Maelezo ya madhara yaliyotokea baada ya upasuaji(Kuhama kwa kifaa):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_swelling">Maelezo ya madhara yaliyotokea baada ya upasuaji(kuvimba kwa uume au mapumbu):</string>
+    <string name="vmmc_desc_of_post_op_adverse_pass_urine">Maelezo ya madhara yaliyotokea baada ya upasuaji(kushindwa kukojoa):</string>
+    <string name="vmmc_type_of_adverse_event_without_device">Aina ya madhara:</string>
+    <string name="vmmc_type_of_adverse_event_others_without_device">Aina ya madhara mengine:</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_infection_without_device">Maelezo ya madhara yaliyotokea baada ya upasuaji (uambukizo):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_persistent_pain_without_device">Maelezo ya madhara yaliyotokea baada ya upasuaji (maumivu yasiyosikia dawa):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_bleeding_without_device">Maelezo ya madhara yaliyotokea baada ya upasuaji (kutoka damu):</string>
+    <string name="vmmc_desc_of_post_op_adverse_event_swelling_without_device">Maelezo ya madhara yaliyotokea baada ya upasuaji(kuvimba kwa uume au mapumbu):</string>
+    <string name="vmmc_desc_of_post_op_adverse_pass_urine_without_device">Maelezo ya madhara yaliyotokea baada ya upasuaji(kushindwa kukojoa):</string>
+    <string name="vmmc_was_condom_provided">Amepewa kondomu?:</string>
+    <string name="vmmc_condoms_issued">Aina ya kondomu zilizotolewa:</string>
+    <string name="vmmc_number_of_male_condoms_issued">Idadi ya kondomu za kiume zilizotolewa:</string>
+    <string name="vmmc_number_of_female_condoms_issued">Idadi ya kondomu za kike zilizotolewa:</string>
+    <string name="vmmc_was_bandage_given">Amepewa bandeji?:</string>
+    <string name="vmmc_number_of_bandage_given">Idadi za bandeji zilizotolewa:</string>
+    <string name="vmmc_provider_name">Jina la mtoa huduma:</string>
+
+    <string name="vmmc_was_adverse_events_notifiable">Je kuna madhara yanayohitaji kutolewa taarifa maalum? :</string>
+    <string name="vmmc_did_client_experience_nae_with_device">Je mteja alipata madhara yanayohitaji kutolewa taarifa maalum?:</string>
+    <string name="vmmc_did_client_experience_nae_without_device">Je mteja alipata madhara yanayohitaji kutolewa taarifa maalum?:</string>
+    <string name="vmmc_date_nae_occured">Tarehe ya NAE kutokea:</string>
+    <string name="vmmc_date_nae_notified">Tarehe NAE kuripotiwa:</string>
+    <string name="vmmc_time_nae_started">Muda NAE kuanza:</string>
+    <string name="vmmc_was_nae_attended">Je NAE ilitibiwa:</string>
+    <string name="vmmc_time_nae_was_attended">Muda NAE kutibiwa :</string>
 
     <string name="fp_yes">Ndiyo</string>
     <string name="fp_no">Hapana</string>

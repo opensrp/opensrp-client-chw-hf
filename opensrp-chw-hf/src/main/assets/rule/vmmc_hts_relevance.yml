@@ -72,14 +72,14 @@ actions:
 name: step1_defer_procedure_hiv_positive
 description: if defer_procedure_hiv_positive
 priority: 1
-condition: "step1_hiv_result.equalsIgnoreCase('positive') || step1_hiv_viral_load_text > 1000"
+condition: "(step1_hiv_result.equalsIgnoreCase('positive') || step1_hiv_viral_load_text > 1000) && step1_tested_hiv.equalsIgnoreCase('yes')"
 actions:
   - "isRelevant = true "
 ---
 name: step1_defer_procedure_hiv_indeterminate
 description: if defer_procedure_hiv_indeterminate
 priority: 1
-condition: "step1_hiv_result.equalsIgnoreCase('indeterminate')"
+condition: "step1_hiv_result.equalsIgnoreCase('indeterminate') && step1_tested_hiv.equalsIgnoreCase('yes')"
 actions:
   - "isRelevant = true "
 ---
@@ -93,7 +93,7 @@ actions:
 name: step1_toaster_notes_hiv_tested_positive
 description: if toaster_notes_hiv_tested_positive
 priority: 1
-condition: "step1_hiv_result.equalsIgnoreCase('positive')"
+condition: "step1_hiv_result.equalsIgnoreCase('positive')  && step1_tested_hiv.equalsIgnoreCase('yes')"
 actions:
   - "isRelevant = true "
 ---

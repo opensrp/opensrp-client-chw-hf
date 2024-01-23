@@ -390,23 +390,23 @@ public class ReportDao extends AbstractDao {
                 type_of_adverse_event.add("Excessive skin removed");
             }
 
-            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_bleeding")){
+            if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("excessive_bleeding")){
                 type_of_adverse_event.add("Excessive bleeding");
             }
 
-            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("damage_to_penis")){
+            if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("damage_to_penis")){
                 type_of_adverse_event.add("Injury to the penis");
             }
 
-            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("anesthetic_related_events")){
+            if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("anesthetic_related_events")){
                 type_of_adverse_event.add("Anesthetic related events");
             }
 
-            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("device_displacement")){
+            if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("device_displacement")){
                 type_of_adverse_event.add("Device displacement");
             }
 
-            else if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("others")){
+            if(cursor.getString(cursor.getColumnIndex("type_of_adverse_event")).contains("others")){
                 type_of_adverse_event.add(cursor.getString(cursor.getColumnIndex("type_of_adverse_event_others")));
             }
 

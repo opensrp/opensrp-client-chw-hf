@@ -1373,14 +1373,15 @@
         "key": "ae_classified_as_severe_excessive_skin_removal",
         "type": "toaster_notes",
         "text": "AE classified as SEVERE",
-        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity_id": "ae_classified_as_severe_excessive_skin_removal",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:desc_intraoperative_ae_skin_removal": {
-            "type": "string",
-            "ex": "equalTo(., \"requires_reoperation\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
           }
         }
       },
@@ -1632,9 +1633,10 @@
         "openmrs_entity_parent": "",
         "toaster_type": "warning",
         "relevance": {
-          "step1:desc_of_adverse_event_device_displacement": {
-            "type": "string",
-            "ex": "equalTo(., \"requires_any_treatment_more_than_routine_post_operative_wound_care\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
           }
         }
       },
@@ -1642,14 +1644,15 @@
         "key": "ae_classified_as_severe_device_displacement",
         "type": "toaster_notes",
         "text": "AE classified as SEVERE",
-        "openmrs_entity_id": "ae_classified_as_severe",
+        "openmrs_entity_id": "ae_classified_as_severe_device_displacement",
         "openmrs_entity": "concept",
         "openmrs_entity_parent": "",
         "toaster_type": "problem",
         "relevance": {
-          "step1:desc_of_adverse_event_device_displacement": {
-            "type": "string",
-            "ex": "equalTo(., \"intentional_movement_of_device_by_client_or_self_removal_that_requires_surgical_intervention_hospitalization_transfer\")"
+          "rules-engine": {
+            "ex-rules": {
+              "rules-file": "vmmc_mc_procedure_relevance.yml"
+            }
           }
         }
       },
