@@ -437,12 +437,6 @@
             "openmrs_entity_id": "biological_child"
           },
           {
-            "key": "non_biological_child",
-            "text": "Mtoto asiye wa kumzaa anayeishi nyumbani",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "non_biological_child"
-          },
-          {
             "key": "siblings",
             "text": "Ndugu wa kuzaliwa",
             "openmrs_entity": "concept",
@@ -451,7 +445,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Relationship is required"
+          "err": "Uhusiano unahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -473,14 +467,14 @@
         "options": [
           {
             "key": "siblings",
-            "text": "Siblings",
+            "text": "Ndugu wa kuzaliwa",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "siblings"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Relationship is required"
+          "err": "Uhusiano unahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -520,20 +514,20 @@
           },
           {
             "key": "sexual_partner",
-            "text": "Sexual partner",
+            "text": "Mwenzi wa kingono",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sexual_partner"
           },
           {
             "key": "needle_sharing_partner",
-            "text": "Needle Sharing partner",
+            "text": "Mshirika wa kujidunga",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "needle_sharing_partner"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Relationship is required"
+          "err": "Uhusiano unahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -561,20 +555,20 @@
           },
           {
             "key": "sexual_partner",
-            "text": "Sexual partner",
+            "text": "Mshiriki wa kingono",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sexual_partner"
           },
           {
             "key": "needle_sharing_partner",
-            "text": "Needle Sharing partner",
+            "text": "Mshiriki wa kujidunga",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "needle_sharing_partner"
           }
         ],
         "v_required": {
           "value": "true",
-          "err": "Relationship is required"
+          "err": "Uhusiano unahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -596,7 +590,7 @@
         "options": [
           {
             "key": "biological_mother",
-            "text": "Biological Mother",
+            "text": "Mama Mzazi",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "biological_mother"
           },
@@ -615,7 +609,7 @@
         ],
         "v_required": {
           "value": "true",
-          "err": "Relationship is required"
+          "err": "Uhusiano unahitajika"
         },
         "relevance": {
           "rules-engine": {
@@ -643,13 +637,13 @@
           },
           {
             "key": "sexual_partner",
-            "text": "Sexual partner",
+            "text": "Mshiriki wa kingono",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "sexual_partner"
           },
           {
             "key": "needle_sharing_partner",
-            "text": "Needle Sharing partner",
+            "text": "Mshiriki wa kujidunga",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "needle_sharing_partner"
           }

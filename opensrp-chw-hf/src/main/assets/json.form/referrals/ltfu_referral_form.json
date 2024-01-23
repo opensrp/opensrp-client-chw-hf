@@ -103,15 +103,6 @@
           },
           "options": [
             {
-              "name": "TEPI",
-              "text": "Followup for TEPI Elicitation",
-              "meta_data": {
-                "openmrs_entity": "concept",
-                "openmrs_entity_id": "TEPI",
-                "openmrs_entity_parent": ""
-              }
-            },
-            {
               "name": "CTC",
               "text": "CTC",
               "meta_data": {
