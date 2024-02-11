@@ -311,6 +311,15 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
+    private static void upgradeToVersion23(SQLiteDatabase db) {
+        try {
+            db.execSQL("DELETE FROM monthly_tallies");
+            db.execSQL("DELETE FROM event WHERE eventType = 'HF Monthly tallies Report'");
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion23");
+        }
+    }
+
     private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;");
@@ -437,6 +446,9 @@ public class HfChwRepository extends CoreChwRepository {
                     break;
                 case 22:
                     upgradeToVersion22(db);
+                    break;
+                case 23:
+                    upgradeToVersion23(db);
                     break;
                 default:
                     break;
