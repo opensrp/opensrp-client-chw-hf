@@ -9051,7 +9051,7 @@ indicators:
   - key: "fp-11a-rc-20-24"
     grouping: "FP"
     description: "Number of women screened for breast cancer for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefs.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efs.entity_id) as count
                      FROM ec_fp_screening efs
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efs.entity_id
                      INNER JOIN ec_family_planning efl ON efs.entity_id = efl.base_entity_id
@@ -9238,7 +9238,7 @@ indicators:
   - key: "fp-11b-rc-20-24"
     grouping: "FP"
     description: "Number of women diagnosed with breast problems for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefs.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efs.entity_id) as count
                      FROM ec_fp_screening efs
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efs.entity_id
                      INNER JOIN ec_family_planning efl ON efs.entity_id = efl.base_entity_id
@@ -9425,7 +9425,7 @@ indicators:
   - key: "fp-11c-rc-20-24"
     grouping: "FP"
     description: "Number of women screened for cervical cancer using VIA for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefs.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efs.entity_id) as count
                      FROM ec_fp_screening efs
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efs.entity_id
                      INNER JOIN ec_family_planning efl ON efs.entity_id = efl.base_entity_id
@@ -9613,7 +9613,7 @@ indicators:
   - key: "fp-11d-rc-20-24"
     grouping: "FP"
     description: "Number of women found 'POSITIVE' after screening VIA for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefs.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efs.entity_id) as count
                      FROM ec_fp_screening efs
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efs.entity_id
                      INNER JOIN ec_family_planning efl ON efs.entity_id = efl.base_entity_id
@@ -9800,7 +9800,7 @@ indicators:
   - key: "fp-11e-rc-20-24"
     grouping: "FP"
     description: "Number of women suspected of having cervical cancer for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefs.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efs.entity_id) as count
                      FROM ec_fp_screening efs
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efs.entity_id
                      INNER JOIN ec_family_planning efl ON efs.entity_id = efl.base_entity_id
@@ -9987,7 +9987,7 @@ indicators:
   - key: "fp-11e-rc-20-24"
     grouping: "FP"
     description: "Number of women suspected of having cervical cancer for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefs.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efs.entity_id) as count
                      FROM ec_fp_screening efs
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efs.entity_id
                      INNER JOIN ec_family_planning efl ON efs.entity_id = efl.base_entity_id
@@ -10166,7 +10166,7 @@ indicators:
   - key: "fp-12a-rc-20-24"
     grouping: "FP"
     description: "Number of known HIV positive Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id
@@ -10357,7 +10357,7 @@ indicators:
   - key: "fp-12b-rc-20-24"
     grouping: "FP"
     description: "Number of breastfeeding clients tested for HIV for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id
@@ -10556,7 +10556,7 @@ indicators:
   - key: "fp-12c-rc-20-24"
     grouping: "FP"
     description: "Number of breastfeeding clients tested positive for HIV for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id
@@ -10747,7 +10747,7 @@ indicators:
   - key: "fp-12d-rc-20-24"
     grouping: "FP"
     description: "Number of women tested for HIV for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id 
@@ -10934,7 +10934,7 @@ indicators:
   - key: "fp-12e-rc-20-24"
     grouping: "FP"
     description: "Number of women tested positive  for HIV for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id 
@@ -11113,7 +11113,7 @@ indicators:
   - key: "fp-12f-rc-20-24"
     grouping: "FP"
     description: "Number of partners tested for HIV for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id
@@ -11288,7 +11288,7 @@ indicators:
   - key: "fp-12g-rc-20-24"
     grouping: "FP"
     description: "Number of partners tested positive for HIV for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id
@@ -11471,7 +11471,7 @@ indicators:
   - key: "fp-12h-rc-20-24"
     grouping: "FP"
     description: "Number of female clients referred to CTC for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id 
@@ -11650,7 +11650,7 @@ indicators:
   - key: "fp-12i-rc-20-24"
     grouping: "FP"
     description: "Number of partners referred to CTC for Re-visit clients from 20-24 years"
-    indicatorQuery: "SELECT count(DISTINCTefos.entity_id) as count
+    indicatorQuery: "SELECT count(DISTINCT efos.entity_id) as count
                      FROM ec_fp_other_services efos
                      INNER JOIN ec_family_member efm ON efm.base_entity_id = efos.entity_id
                      INNER JOIN ec_family_planning efl ON efos.entity_id = efl.base_entity_id 
