@@ -311,6 +311,22 @@ public class HfChwRepository extends CoreChwRepository {
         }
     }
 
+    private static void upgradeToVersion23(SQLiteDatabase db) {
+        try {
+            db.execSQL("DELETE FROM monthly_tallies;");
+            db.execSQL("DELETE FROM event WHERE eventType = 'HF Monthly tallies Report';");
+            db.execSQL("DROP TABLE  ec_family_planning;");
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion23");
+        }
+
+        try {
+            DatabaseMigrationUtils.createAddedECTables(db, new HashSet<>(Arrays.asList("ec_family_planning","ec_fp_point_of_service_delivery", "ec_fp_screening", "ec_fp_provision_of_method","ec_fp_other_services","ec_fp_follow_up_visit","ec_fp_ecp_register","ec_fp_ecp_provision")), HealthFacilityApplication.createCommonFtsObject());
+        } catch (Exception e) {
+            Timber.e(e, "upgradeToVersion23");
+        }
+    }
+
     private static void upgradeToVersion10ForBaSouth(SQLiteDatabase db) {
         try {
             db.execSQL("ALTER TABLE ec_family_member ADD COLUMN reasons_for_registration TEXT NULL;");
@@ -437,6 +453,9 @@ public class HfChwRepository extends CoreChwRepository {
                     break;
                 case 22:
                     upgradeToVersion22(db);
+                    break;
+                case 23:
+                    upgradeToVersion23(db);
                     break;
                 default:
                     break;

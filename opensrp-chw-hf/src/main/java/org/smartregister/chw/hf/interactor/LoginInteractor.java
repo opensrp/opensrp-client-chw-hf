@@ -86,7 +86,7 @@ public class LoginInteractor extends BaseLoginInteractor implements BaseLoginCon
         ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
         ProcessVisitsServiceJob.scheduleJobImmediately(ProcessVisitsServiceJob.TAG);
         PncCloseDateServiceJob.scheduleJobImmediately(PncCloseDateServiceJob.TAG);
-        GenerateMonthlyTalliesJob.scheduleJobImmediately(GenerateMonthlyTalliesJob.TAG);
+//        GenerateMonthlyTalliesJob.scheduleJobImmediately(GenerateMonthlyTalliesJob.TAG);
         P2POptions p2POptions = CoreLibrary.getInstance().getP2POptions();
         if (p2POptions != null && p2POptions.isEnableP2PLibrary()) {
             // Finish processing any unprocessed sync records here

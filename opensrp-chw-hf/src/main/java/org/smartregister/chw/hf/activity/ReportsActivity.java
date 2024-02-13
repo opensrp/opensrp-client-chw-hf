@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
@@ -12,10 +13,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.smartregister.chw.core.job.ChwIndicatorGeneratingJob;
 import org.smartregister.chw.hf.HealthFacilityApplication;
 import org.smartregister.chw.hf.R;
-import org.smartregister.chw.hf.job.GenerateMonthlyTalliesJob;
+import org.smartregister.reporting.domain.TallyStatus;
+import org.smartregister.reporting.event.IndicatorTallyEvent;
+import org.smartregister.util.Utils;
 import org.smartregister.view.activity.SecuredActivity;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 
@@ -37,10 +43,11 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
 
     protected ConstraintLayout vmcReports;
 
+    protected TextView textViewLogs;
+
     @Override
     protected void onCreation() {
         ChwIndicatorGeneratingJob.scheduleJobImmediately(ChwIndicatorGeneratingJob.TAG);
-        GenerateMonthlyTalliesJob.scheduleJobImmediately(GenerateMonthlyTalliesJob.TAG);
         setContentView(R.layout.activity_reports);
         setUpToolbar();
         setUpViews();
@@ -59,6 +66,7 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         kvpReports = findViewById(R.id.kvp_reports);
         vmcReports = findViewById(R.id.vmmc_reports);
         fpReportsLayout = findViewById(R.id.fp_reports);
+        textViewLogs = findViewById(R.id.textView_logs);
 
         if (HealthFacilityApplication.getApplicationFlavor().hasLD())
             ldReportsLayout.setVisibility(View.VISIBLE);
@@ -150,6 +158,39 @@ public class ReportsActivity extends SecuredActivity implements View.OnClickList
         } else if (id == R.id.vmmc_reports) {
             Intent intent = new Intent(this, VmmcReportsActivity.class);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(IndicatorTallyEvent event) {
+        if (event.getStatus().equals(TallyStatus.STARTED)) {
+            textViewLogs.setVisibility(View.VISIBLE);
+            textViewLogs.setText("Started Refreshing Reports");
+            Utils.showToast(this, "Started Refreshing Reports");
+        } else if (event.getStatus().equals(TallyStatus.INPROGRESS)) {
+            textViewLogs.setVisibility(View.VISIBLE);
+            if (event.getMessage() != null) {
+                textViewLogs.setText(event.getMessage());
+            } else {
+                Utils.showToast(this, "Refreshing Reports is In-Progress");
+            }
+        } else if (event.getStatus().equals(TallyStatus.COMPLETE)) {
+            textViewLogs.setVisibility(View.GONE);
+            Utils.showToast(this, "Finished Refreshing Reports");
         }
     }
 }
