@@ -322,6 +322,7 @@ public class HfChwRepository extends CoreChwRepository {
 
         try {
             DatabaseMigrationUtils.createAddedECTables(db, new HashSet<>(Arrays.asList("ec_family_planning","ec_fp_point_of_service_delivery", "ec_fp_screening", "ec_fp_provision_of_method","ec_fp_other_services","ec_fp_follow_up_visit","ec_fp_ecp_register","ec_fp_ecp_provision")), HealthFacilityApplication.createCommonFtsObject());
+            refreshIndicatorQueries(db);
         } catch (Exception e) {
             Timber.e(e, "upgradeToVersion23");
         }
