@@ -155,14 +155,7 @@ public class ChildProfileActivity extends CoreChildProfileActivity {
         menu.findItem(R.id.action_malaria_followup_visit).setVisible(false);
         menu.findItem(R.id.action_remove_member).setVisible(false);
         menu.findItem(R.id.action_sick_child_follow_up).setVisible(true);
-
-        if (MalariaDao.isRegisteredForMalaria(childBaseEntityId)) {
-            menu.findItem(R.id.action_malaria_followup_visit).setTitle(R.string.hf_malaria_follow_up);
-            menu.findItem(R.id.action_malaria_followup_visit).setVisible(true);
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
-        } else {
-            menu.findItem(R.id.action_malaria_diagnosis).setVisible(true);
-        }
+        menu.findItem(R.id.action_malaria_diagnosis).setVisible(false);
         return true;
     }
 

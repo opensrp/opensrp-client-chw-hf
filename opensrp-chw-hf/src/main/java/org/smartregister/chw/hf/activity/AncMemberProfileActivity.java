@@ -422,11 +422,20 @@ public class AncMemberProfileActivity extends CoreAncMemberProfileActivity {
     }
 
     private void showVisitInProgress() {
-        layoutRecordView.setVisibility(View.GONE);
-        tvEdit.setVisibility(View.VISIBLE);
-        layoutNotRecordView.setVisibility(View.VISIBLE);
-        textViewNotVisitMonth.setText(getContext().getString(R.string.visit_in_progress, "ANC"));
-        imageViewCross.setImageResource(R.drawable.activityrow_visit_in_progress);
+        if (layoutRecordView != null)
+            layoutRecordView.setVisibility(View.GONE);
+
+        if (tvEdit != null)
+            tvEdit.setVisibility(View.VISIBLE);
+
+        if (layoutNotRecordView != null)
+            layoutNotRecordView.setVisibility(View.VISIBLE);
+
+        if (textViewNotVisitMonth != null)
+            textViewNotVisitMonth.setText(getContext().getString(R.string.visit_in_progress, "ANC"));
+
+        if (imageViewCross != null)
+            imageViewCross.setImageResource(R.drawable.activityrow_visit_in_progress);
     }
 
     private void showCompleteVisit(Visit visit) {

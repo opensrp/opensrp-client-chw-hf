@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class HfAncDao extends AncDao {
 
     public static boolean isReviewFormFilled(String baseEntityId) {
@@ -76,12 +78,16 @@ public class HfAncDao extends AncDao {
         List<String> partnerHivRes = readData(sql, partnerHivDataMap);
         List<String> reasonForNotConductingPartnerHivTestRes = readData(sql, reasonForNotConductingPartnerHivTestDataMap);
 
-        if (partnerHivRes.size() == 1) {
-            if (!partnerHivRes.get(0).equalsIgnoreCase("test_not_conducted"))
-                return !partnerHivRes.get(0).equalsIgnoreCase("test_not_conducted");
-            else if (reasonForNotConductingPartnerHivTestRes.size() == 1) {
-                return reasonForNotConductingPartnerHivTestRes.get(0).equalsIgnoreCase("known_on_art");
+        try {
+            if (partnerHivRes.size() == 1) {
+                if (!partnerHivRes.get(0).equalsIgnoreCase("test_not_conducted"))
+                    return !partnerHivRes.get(0).equalsIgnoreCase("test_not_conducted");
+                else if (reasonForNotConductingPartnerHivTestRes.size() == 1) {
+                    return reasonForNotConductingPartnerHivTestRes.get(0).equalsIgnoreCase("known_on_art");
+                }
             }
+        } catch (Exception e) {
+            Timber.e(e);
         }
 
         return false;
@@ -537,8 +543,12 @@ public class HfAncDao extends AncDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "malaria_preventive_therapy");
         String sql = "SELECT malaria_preventive_therapy FROM ec_anc_register WHERE base_entity_id = '" + baseEntityId + "' AND malaria_preventive_therapy IS NOT NULL AND malaria_preventive_therapy <> '0' ";
         List<String> res = readData(sql, dataMap);
-        if (res != null && res.size() > 0) {
-            return res.get(0).split("ipt")[1];
+        try {
+            if (res != null && res.size() > 0) {
+                return res.get(0).split("ipt")[1];
+            }
+        } catch (Exception e) {
+            Timber.e(e);
         }
 
         return String.valueOf(iptDoses);

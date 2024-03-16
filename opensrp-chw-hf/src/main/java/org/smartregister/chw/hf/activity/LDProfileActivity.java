@@ -73,15 +73,14 @@ import java.util.Set;
 import timber.log.Timber;
 
 public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProfileContract.View {
+    public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
     protected RecyclerView notificationAndReferralRecyclerView;
     protected RelativeLayout notificationAndReferralLayout;
-    public static final String LD_PROFILE_ACTION = "LD_PROFILE_ACTION";
+    protected HashMap<String, String> menuItemEditNames = new HashMap<>();
     private String partographVisitTitle;
     private String currentVisitItemTitle = "";
-
     private TextView processPartograph;
     private Visit lastLDVisit;
-    protected HashMap<String, String> menuItemEditNames = new HashMap<>();
 
     public static void startProfileActivity(Activity activity, String baseEntityId) {
         Intent intent = new Intent(activity, LDProfileActivity.class);
@@ -95,6 +94,33 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
         intent.putExtra(Constants.ACTIVITY_PAYLOAD.LD_FORM_NAME, formName);
         intent.putExtra(org.smartregister.chw.ld.util.Constants.ACTIVITY_PAYLOAD.ACTION, LD_PROFILE_ACTION);
         activity.startActivity(intent);
+    }
+
+    public static void closeLDVisit(String baseEntityId, Context context) {
+        AllSharedPreferences sharedPreferences = getAllSharedPreferences();
+        Event baseEvent = (Event) new Event()
+                .withBaseEntityId(baseEntityId)
+                .withEventDate(new Date())
+                .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_LD)
+                .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
+                .withEntityType(CoreConstants.TABLE_NAME.LABOUR_AND_DELIVERY)
+                .withProviderId(sharedPreferences.fetchRegisteredANM())
+                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId))
+                .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
+                .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
+                .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
+                .withClientApplicationVersion(BuildConfig.VERSION_CODE)
+                .withDateCreated(new Date());
+        org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);
+        try {
+            org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
+        } catch (Exception e) {
+            Timber.e(e);
+        }
+        Intent intent = new Intent(context, PncRegisterActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+        ((LDProfileActivity) context).finish();
     }
 
     @Override
@@ -328,11 +354,9 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
         LDGeneralExaminationVisitActivity.startLDGeneralExaminationVisitActivity(this, baseEntityId, false);
     }
 
-
     private void openActiveManagementStage() {
         LDActiveManagementStageActivity.startActiveManagementActivity(this, memberObject.getBaseEntityId(), false);
     }
-
 
     private void openPostDeliveryManagementMother(boolean editMode) {
         LDPostDeliveryManagementMotherActivity.startPostDeliveryMotherManagementActivity(this, memberObject.getBaseEntityId(), editMode);
@@ -431,33 +455,6 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
         return super.onOptionsItemSelected(item);
     }
 
-    public static void closeLDVisit(String baseEntityId, Context context) {
-        AllSharedPreferences sharedPreferences = getAllSharedPreferences();
-        Event baseEvent = (Event) new Event()
-                .withBaseEntityId(baseEntityId)
-                .withEventDate(new Date())
-                .withEventType(org.smartregister.chw.hf.utils.Constants.Events.CLOSE_LD)
-                .withFormSubmissionId(org.smartregister.util.JsonFormUtils.generateRandomUUIDString())
-                .withEntityType(CoreConstants.TABLE_NAME.LABOUR_AND_DELIVERY)
-                .withProviderId(sharedPreferences.fetchRegisteredANM())
-                .withLocationId(ChwNotificationDao.getSyncLocationId(baseEntityId))
-                .withTeamId(sharedPreferences.fetchDefaultTeamId(sharedPreferences.fetchRegisteredANM()))
-                .withTeam(sharedPreferences.fetchDefaultTeam(sharedPreferences.fetchRegisteredANM()))
-                .withClientDatabaseVersion(BuildConfig.DATABASE_VERSION)
-                .withClientApplicationVersion(BuildConfig.VERSION_CODE)
-                .withDateCreated(new Date());
-        org.smartregister.chw.hf.utils.JsonFormUtils.tagSyncMetadata(Utils.context().allSharedPreferences(), baseEvent);
-        try {
-            org.smartregister.chw.anc.util.NCUtils.processEvent(baseEvent.getBaseEntityId(), new JSONObject(org.smartregister.chw.anc.util.JsonFormUtils.gson.toJson(baseEvent)));
-        } catch (Exception e) {
-            Timber.e(e);
-        }
-        Intent intent = new Intent(context, PncRegisterActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        context.startActivity(intent);
-        ((LDProfileActivity) context).finish();
-    }
-
     private boolean getChildEmergencyReferralMenuItem(MenuItem item) {
         if (getChildren(memberObject).size() > 0) {
             for (CommonPersonObjectClient child : getChildren(memberObject)) {
@@ -551,7 +548,8 @@ public class LDProfileActivity extends BaseLDProfileActivity implements HfLDProf
     protected void initializeNotificationReferralRecyclerView() {
         notificationAndReferralLayout = findViewById(org.smartregister.chw.core.R.id.notification_and_referral_row);
         notificationAndReferralRecyclerView = findViewById(org.smartregister.chw.core.R.id.notification_and_referral_recycler_view);
-        notificationAndReferralRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if (notificationAndReferralRecyclerView != null)
+            notificationAndReferralRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void setClientTasks(Set<Task> taskList) {
