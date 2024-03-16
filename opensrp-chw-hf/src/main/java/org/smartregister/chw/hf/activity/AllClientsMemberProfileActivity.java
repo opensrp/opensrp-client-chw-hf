@@ -381,11 +381,15 @@ public class AllClientsMemberProfileActivity extends CoreAllClientsMemberProfile
     }
 
     @Override
+    protected void startGbvRegistration() {
+        //To be implemented
+    }
+
+    @Override
     protected void setIndependentClient(boolean isIndependentClient) {
         super.isIndependent = isIndependentClient;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onClickMenu(int viewId) {
         if (viewId == R.id.call_layout) {
