@@ -173,8 +173,8 @@
           }
         },
         "v_max": {
-          "value": "30",
-          "err": "Number of pills must be equal to or less than  30"
+          "value": "60",
+          "err": "Number of pills must be equal to or less than  60"
         }
       },
       {
