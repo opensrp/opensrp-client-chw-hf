@@ -96,6 +96,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "negative"
+          },
+          {
+            "key": "not_applicable",
+            "text": "Not Applicable",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_applicable"
           }
         ],
         "v_required": {
@@ -118,6 +125,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "treated"
+          },
+          {
+            "key": "not_treated",
+            "text": "Not Treated",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "not_treated"
           },
           {
             "key": "referred",
@@ -310,7 +324,7 @@
           },
           {
             "key": "mental_health",
-            "text": "Mental health",
+            "text": "Mental health and Psychological support",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "mental_health"
@@ -335,6 +349,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "iga"
+          },
+          {
+            "key": "sti",
+            "text": "Sexual Transmitted Infections",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "sti"
           },
           {
             "key": "other",
