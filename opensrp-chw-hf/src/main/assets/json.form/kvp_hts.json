@@ -214,6 +214,13 @@
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "CBHTS"
+          },
+          {
+            "key": "index",
+            "text": "Index Option",
+            "openmrs_entity_parent": "",
+            "openmrs_entity": "concept",
+            "openmrs_entity_id": "Index Option"
           }
         ],
         "v_required": {

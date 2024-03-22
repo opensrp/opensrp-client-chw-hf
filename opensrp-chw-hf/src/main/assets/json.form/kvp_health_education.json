@@ -95,13 +95,6 @@
             "openmrs_entity_id": "pep"
           },
           {
-            "key": "prep",
-            "text": "PrEP",
-            "openmrs_entity_parent": "",
-            "openmrs_entity": "concept",
-            "openmrs_entity_id": "prep"
-          },
-          {
             "key": "vmmc",
             "text": "VMMC",
             "openmrs_entity_parent": "",
@@ -124,7 +117,7 @@
           },
           {
             "key": "hiv_aids",
-            "text": "HIV and AIDS couple",
+            "text": "HIV and AIDS",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "hiv_aids"
@@ -147,6 +140,29 @@
         "v_required": {
           "value": "true",
           "err": "Please pick at least one"
+        }
+      },
+      {
+        "key": "health_education_provided",
+        "openmrs_entity_parent": "",
+        "openmrs_entity": "concept",
+        "openmrs_entity_id": "health_education_provided",
+        "type": "edit_text",
+        "hint": "Other(Specify)",
+        "v_required": {
+          "value": "true",
+          "err": "Please specify"
+        },
+        "relevance": {
+          "step1:health_education_provided": {
+            "ex-checkbox": [
+              {
+                "or": [
+                  "other"
+                ]
+              }
+            ]
+          }
         }
       }
     ]

@@ -184,7 +184,7 @@
     ]
   },
   "step4": {
-    "title": "High Risk Men",
+    "title": "Men at High Risk(MHR)",
     "next": "step5",
     "fields": [
       {
@@ -852,7 +852,7 @@
         "options": [
           {
             "key": "msm",
-            "text": "High Risk Men",
+            "text": "Men at High Risk",
             "openmrs_entity_parent": "",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "msm"

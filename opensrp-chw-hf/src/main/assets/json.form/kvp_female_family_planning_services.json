@@ -91,7 +91,7 @@
           },
           {
             "key": "tube_ligation",
-            "text": "Tube Ligation",
+            "text": "Tube Ligation/Vasectomy",
             "openmrs_entity": "concept",
             "openmrs_entity_id": "tube_ligation"
           },
